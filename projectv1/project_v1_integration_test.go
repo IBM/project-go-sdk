@@ -26,7 +26,7 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/damianovesperini/platform-services-go-sdk/projectv1"
+	"github.com/IBM/project-go-sdk/projectv1"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -144,7 +144,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`ListProjects(listProjectsOptions *ListProjectsOptions) with pagination`, func() {
 			listProjectsOptions := &projectv1.ListProjectsOptions{
-				ID:       &projectIdLink,
 				Start:    core.StringPtr("testString"),
 				Limit:    core.Int64Ptr(int64(10)),
 				Complete: core.BoolPtr(false),
@@ -172,7 +171,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`ListProjects(listProjectsOptions *ListProjectsOptions) using ProjectsPager`, func() {
 			listProjectsOptions := &projectv1.ListProjectsOptions{
-				ID:       &projectIdLink,
 				Limit:    core.Int64Ptr(int64(10)),
 				Complete: core.BoolPtr(false),
 			}
@@ -261,13 +259,13 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
-				ID:          &projectIdLink,
-				Name:        core.StringPtr("env-stage"),
-				LocatorID:   core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Labels:      []string{"env:stage", "governance:test", "build:0"},
-				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
-				Input:       []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
-				Setting:     []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
+				ID:             &projectIdLink,
+				NewName:        core.StringPtr("env-stage"),
+				NewLocatorID:   core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+				NewLabels:      []string{"env:stage", "governance:test", "build:0"},
+				NewDescription: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
+				NewInput:       []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
+				NewSetting:     []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
 
 			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)

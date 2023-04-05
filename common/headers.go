@@ -22,11 +22,10 @@ import (
 )
 
 const (
-	sdkName = "my-go-sdk"
+	sdkName             = "project-go-sdk"
 	headerNameUserAgent = "User-Agent"
 )
 
-//
 // GetSdkHeaders - returns the set of SDK-specific headers to be included in an outgoing request.
 //
 // This function is invoked by generated service methods (i.e. methods which implement the REST API operations
@@ -41,11 +40,11 @@ const (
 //
 // If you plan to gather metrics for your SDK, the User-Agent header value must
 // be a string similar to the following:
-// my-go-sdk/0.0.1 (lang=go; arch=x86_64; os=Linux; go.version=1.12.9)
+// project-go-sdk/0.0.1 (lang=go; arch=x86_64; os=Linux; go.version=1.12.9)
 //
 // In the example above, the analytics tool will parse the user-agent header and
 // use the following properties:
-// "my-go-sdk" - the name of your sdk
+// "project-go-sdk" - the name of your sdk
 // "0.0.1"- the version of your sdk
 // "lang=go" - the language of the current sdk
 // "arch=x86_64; os=Linux; go.version=1.12.9" - system information
@@ -54,13 +53,14 @@ const (
 // as the analytics data collector uses this to gather usage data.
 //
 // Parameters:
-//   serviceName - the name of the service as defined in the API definition (e.g. "MyService1")
-//   serviceVersion - the version of the service as defined in the API definition (e.g. "V1")
-//   operationId - the operationId as defined in the API definition (e.g. getContext)
+//
+//	serviceName - the name of the service as defined in the API definition (e.g. "MyService1")
+//	serviceVersion - the version of the service as defined in the API definition (e.g. "V1")
+//	operationId - the operationId as defined in the API definition (e.g. getContext)
 //
 // Returns:
-//   a Map which contains the set of headers to be included in the REST API request
 //
+//	a Map which contains the set of headers to be included in the REST API request
 func GetSdkHeaders(serviceName string, serviceVersion string, operationId string) map[string]string {
 	sdkHeaders := make(map[string]string)
 
