@@ -11,7 +11,6 @@ require (
 )
 
 require (
-	github.com/IBM/platform-services-go-sdk v0.28.2 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/damianovesperini/platform-services-go-sdk v1.4.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect

@@ -30,7 +30,7 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	common "github.com/damianovesperini/platform-services-go-sdk/common"
+	common "github.com/IBM/project-go-sdk/common"
 	"github.com/go-openapi/strfmt"
 )
 
@@ -594,7 +594,7 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *listConfigsOptions.ID,
+		"id":        *listConfigsOptions.ID,
 		"projectId": *listConfigsOptions.ProjectID,
 	}
 
@@ -662,7 +662,7 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *getConfigOptions.ID,
+		"id":        *getConfigOptions.ID,
 		"config_id": *getConfigOptions.ConfigID,
 	}
 
@@ -730,7 +730,7 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *updateConfigOptions.ID,
+		"id":        *updateConfigOptions.ID,
 		"config_id": *updateConfigOptions.ConfigID,
 	}
 
@@ -802,7 +802,7 @@ func (project *ProjectV1) DeleteConfigWithContext(ctx context.Context, deleteCon
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *deleteConfigOptions.ID,
+		"id":        *deleteConfigOptions.ID,
 		"config_id": *deleteConfigOptions.ConfigID,
 	}
 
@@ -871,7 +871,7 @@ func (project *ProjectV1) GetConfigDiffWithContext(ctx context.Context, getConfi
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *getConfigDiffOptions.ID,
+		"id":        *getConfigDiffOptions.ID,
 		"config_id": *getConfigDiffOptions.ConfigID,
 	}
 
@@ -932,7 +932,7 @@ func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceAppr
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *forceApproveOptions.ID,
+		"id":        *forceApproveOptions.ID,
 		"config_id": *forceApproveOptions.ConfigID,
 	}
 
@@ -1007,7 +1007,7 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *approveOptions.ID,
+		"id":        *approveOptions.ID,
 		"config_id": *approveOptions.ConfigID,
 	}
 
@@ -1083,7 +1083,7 @@ func (project *ProjectV1) CheckConfigWithContext(ctx context.Context, checkConfi
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *checkConfigOptions.ID,
+		"id":        *checkConfigOptions.ID,
 		"config_id": *checkConfigOptions.ConfigID,
 	}
 
@@ -1154,7 +1154,7 @@ func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installC
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *installConfigOptions.ID,
+		"id":        *installConfigOptions.ID,
 		"config_id": *installConfigOptions.ConfigID,
 	}
 
@@ -1220,7 +1220,7 @@ func (project *ProjectV1) UninstallConfigWithContext(ctx context.Context, uninst
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *uninstallConfigOptions.ID,
+		"id":        *uninstallConfigOptions.ID,
 		"config_id": *uninstallConfigOptions.ConfigID,
 	}
 
@@ -1270,9 +1270,9 @@ func (project *ProjectV1) GetSchematicsJobWithContext(ctx context.Context, getSc
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *getSchematicsJobOptions.ID,
+		"id":        *getSchematicsJobOptions.ID,
 		"config_id": *getSchematicsJobOptions.ConfigID,
-		"action": *getSchematicsJobOptions.Action,
+		"action":    *getSchematicsJobOptions.Action,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1336,7 +1336,7 @@ func (project *ProjectV1) GetCostEstimateWithContext(ctx context.Context, getCos
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *getCostEstimateOptions.ID,
+		"id":        *getCostEstimateOptions.ID,
 		"config_id": *getCostEstimateOptions.ConfigID,
 	}
 
@@ -2553,7 +2553,7 @@ type ApproveOptions struct {
 // NewApproveOptions : Instantiate ApproveOptions
 func (*ProjectV1) NewApproveOptions(id string, configID string) *ApproveOptions {
 	return &ApproveOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -2845,7 +2845,7 @@ type CheckConfigOptions struct {
 // NewCheckConfigOptions : Instantiate CheckConfigOptions
 func (*ProjectV1) NewCheckConfigOptions(id string, configID string) *CheckConfigOptions {
 	return &CheckConfigOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -2980,8 +2980,8 @@ type CreateConfigOptions struct {
 // NewCreateConfigOptions : Instantiate CreateConfigOptions
 func (*ProjectV1) NewCreateConfigOptions(id string, newName string, newLocatorID string) *CreateConfigOptions {
 	return &CreateConfigOptions{
-		ID: core.StringPtr(id),
-		NewName: core.StringPtr(newName),
+		ID:           core.StringPtr(id),
+		NewName:      core.StringPtr(newName),
 		NewLocatorID: core.StringPtr(newLocatorID),
 	}
 }
@@ -3163,7 +3163,7 @@ type DeleteConfigOptions struct {
 // NewDeleteConfigOptions : Instantiate DeleteConfigOptions
 func (*ProjectV1) NewDeleteConfigOptions(id string, configID string) *DeleteConfigOptions {
 	return &DeleteConfigOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -3295,8 +3295,8 @@ type DeleteServiceInstanceOptions struct {
 func (*ProjectV1) NewDeleteServiceInstanceOptions(instanceID string, planID string, serviceID string) *DeleteServiceInstanceOptions {
 	return &DeleteServiceInstanceOptions{
 		InstanceID: core.StringPtr(instanceID),
-		PlanID: core.StringPtr(planID),
-		ServiceID: core.StringPtr(serviceID),
+		PlanID:     core.StringPtr(planID),
+		ServiceID:  core.StringPtr(serviceID),
 	}
 }
 
@@ -3363,7 +3363,7 @@ type ForceApproveOptions struct {
 // NewForceApproveOptions : Instantiate ForceApproveOptions
 func (*ProjectV1) NewForceApproveOptions(id string, configID string) *ForceApproveOptions {
 	return &ForceApproveOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -3439,7 +3439,7 @@ type GetConfigDiffOptions struct {
 // NewGetConfigDiffOptions : Instantiate GetConfigDiffOptions
 func (*ProjectV1) NewGetConfigDiffOptions(id string, configID string) *GetConfigDiffOptions {
 	return &GetConfigDiffOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -3483,7 +3483,7 @@ type GetConfigOptions struct {
 // NewGetConfigOptions : Instantiate GetConfigOptions
 func (*ProjectV1) NewGetConfigOptions(id string, configID string) *GetConfigOptions {
 	return &GetConfigOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -3536,7 +3536,7 @@ type GetCostEstimateOptions struct {
 // NewGetCostEstimateOptions : Instantiate GetCostEstimateOptions
 func (*ProjectV1) NewGetCostEstimateOptions(id string, configID string) *GetCostEstimateOptions {
 	return &GetCostEstimateOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -3778,17 +3778,17 @@ type GetSchematicsJobOptions struct {
 // Constants associated with the GetSchematicsJobOptions.Action property.
 // The triggered action.
 const (
-	GetSchematicsJobOptions_Action_Install = "install"
-	GetSchematicsJobOptions_Action_Plan = "plan"
+	GetSchematicsJobOptions_Action_Install   = "install"
+	GetSchematicsJobOptions_Action_Plan      = "plan"
 	GetSchematicsJobOptions_Action_Uninstall = "uninstall"
 )
 
 // NewGetSchematicsJobOptions : Instantiate GetSchematicsJobOptions
 func (*ProjectV1) NewGetSchematicsJobOptions(id string, configID string, action string) *GetSchematicsJobOptions {
 	return &GetSchematicsJobOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
-		Action: core.StringPtr(action),
+		Action:   core.StringPtr(action),
 	}
 }
 
@@ -3905,14 +3905,14 @@ type InputVariable struct {
 // Constants associated with the InputVariable.Type property.
 // The variable type.
 const (
-	InputVariable_Type_Array = "array"
-	InputVariable_Type_Boolean = "boolean"
-	InputVariable_Type_Float = "float"
-	InputVariable_Type_Int = "int"
-	InputVariable_Type_Number = "number"
-	InputVariable_Type_Object = "object"
+	InputVariable_Type_Array    = "array"
+	InputVariable_Type_Boolean  = "boolean"
+	InputVariable_Type_Float    = "float"
+	InputVariable_Type_Int      = "int"
+	InputVariable_Type_Number   = "number"
+	InputVariable_Type_Object   = "object"
 	InputVariable_Type_Password = "password"
-	InputVariable_Type_String = "string"
+	InputVariable_Type_String   = "string"
 )
 
 // UnmarshalInputVariable unmarshals an instance of InputVariable from the specified map of raw messages.
@@ -3952,7 +3952,7 @@ type InstallConfigOptions struct {
 // NewInstallConfigOptions : Instantiate InstallConfigOptions
 func (*ProjectV1) NewInstallConfigOptions(id string, configID string) *InstallConfigOptions {
 	return &InstallConfigOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -3999,18 +3999,18 @@ type JSONPatchOperation struct {
 // Constants associated with the JSONPatchOperation.Op property.
 // The operation to be performed.
 const (
-	JSONPatchOperation_Op_Add = "add"
-	JSONPatchOperation_Op_Copy = "copy"
-	JSONPatchOperation_Op_Move = "move"
-	JSONPatchOperation_Op_Remove = "remove"
+	JSONPatchOperation_Op_Add     = "add"
+	JSONPatchOperation_Op_Copy    = "copy"
+	JSONPatchOperation_Op_Move    = "move"
+	JSONPatchOperation_Op_Remove  = "remove"
 	JSONPatchOperation_Op_Replace = "replace"
-	JSONPatchOperation_Op_Test = "test"
+	JSONPatchOperation_Op_Test    = "test"
 )
 
 // NewJSONPatchOperation : Instantiate JSONPatchOperation (Generic Model Constructor)
 func (*ProjectV1) NewJSONPatchOperation(op string, path string) (_model *JSONPatchOperation, err error) {
 	_model = &JSONPatchOperation{
-		Op: core.StringPtr(op),
+		Op:   core.StringPtr(op),
 		Path: core.StringPtr(path),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
@@ -4062,8 +4062,8 @@ type ListConfigsOptions struct {
 // The version of configuration to return.
 const (
 	ListConfigsOptions_Version_Active = "active"
-	ListConfigsOptions_Version_Draft = "draft"
-	ListConfigsOptions_Version_Mixed = "mixed"
+	ListConfigsOptions_Version_Draft  = "draft"
+	ListConfigsOptions_Version_Mixed  = "mixed"
 )
 
 // NewListConfigsOptions : Instantiate ListConfigsOptions
@@ -4173,7 +4173,7 @@ type NotificationEvent struct {
 // NewNotificationEvent : Instantiate NotificationEvent (Generic Model Constructor)
 func (*ProjectV1) NewNotificationEvent(event string, target string) (_model *NotificationEvent, err error) {
 	_model = &NotificationEvent{
-		Event: core.StringPtr(event),
+		Event:  core.StringPtr(event),
 		Target: core.StringPtr(target),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
@@ -4670,7 +4670,7 @@ type PostEventNotificationsIntegrationOptions struct {
 // NewPostEventNotificationsIntegrationOptions : Instantiate PostEventNotificationsIntegrationOptions
 func (*ProjectV1) NewPostEventNotificationsIntegrationOptions(id string, instanceCrn string) *PostEventNotificationsIntegrationOptions {
 	return &PostEventNotificationsIntegrationOptions{
-		ID: core.StringPtr(id),
+		ID:          core.StringPtr(id),
 		InstanceCrn: core.StringPtr(instanceCrn),
 	}
 }
@@ -4847,45 +4847,45 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 }
 
 func (*ProjectV1) NewProjectPatch(project *Project) (_patch []JSONPatchOperation) {
-	if (project.Name != nil) {
+	if project.Name != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/name"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/name"),
 			Value: project.Name,
 		})
 	}
-	if (project.Description != nil) {
+	if project.Description != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/description"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/description"),
 			Value: project.Description,
 		})
 	}
-	if (project.ID != nil) {
+	if project.ID != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/id"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/id"),
 			Value: project.ID,
 		})
 	}
-	if (project.Crn != nil) {
+	if project.Crn != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/crn"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/crn"),
 			Value: project.Crn,
 		})
 	}
-	if (project.Configs != nil) {
+	if project.Configs != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/configs"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/configs"),
 			Value: project.Configs,
 		})
 	}
-	if (project.Metadata != nil) {
+	if project.Metadata != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/metadata"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/metadata"),
 			Value: project.Metadata,
 		})
 	}
@@ -5055,7 +5055,7 @@ type ProjectConfig struct {
 // The type of a project configuration manual property.
 const (
 	ProjectConfig_Type_SchematicsBlueprint = "schematics_blueprint"
-	ProjectConfig_Type_TerraformTemplate = "terraform_template"
+	ProjectConfig_Type_TerraformTemplate   = "terraform_template"
 )
 
 // UnmarshalProjectConfig unmarshals an instance of ProjectConfig from the specified map of raw messages.
@@ -5102,66 +5102,66 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 }
 
 func (*ProjectV1) NewProjectConfigPatch(projectConfig *ProjectConfig) (_patch []JSONPatchOperation) {
-	if (projectConfig.ID != nil) {
+	if projectConfig.ID != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/id"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/id"),
 			Value: projectConfig.ID,
 		})
 	}
-	if (projectConfig.Name != nil) {
+	if projectConfig.Name != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/name"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/name"),
 			Value: projectConfig.Name,
 		})
 	}
-	if (projectConfig.Labels != nil) {
+	if projectConfig.Labels != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/labels"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/labels"),
 			Value: projectConfig.Labels,
 		})
 	}
-	if (projectConfig.Description != nil) {
+	if projectConfig.Description != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/description"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/description"),
 			Value: projectConfig.Description,
 		})
 	}
-	if (projectConfig.LocatorID != nil) {
+	if projectConfig.LocatorID != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/locator_id"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/locator_id"),
 			Value: projectConfig.LocatorID,
 		})
 	}
-	if (projectConfig.Type != nil) {
+	if projectConfig.Type != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/type"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/type"),
 			Value: projectConfig.Type,
 		})
 	}
-	if (projectConfig.Input != nil) {
+	if projectConfig.Input != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/input"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/input"),
 			Value: projectConfig.Input,
 		})
 	}
-	if (projectConfig.Output != nil) {
+	if projectConfig.Output != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/output"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/output"),
 			Value: projectConfig.Output,
 		})
 	}
-	if (projectConfig.Setting != nil) {
+	if projectConfig.Setting != nil {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/setting"),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/setting"),
 			Value: projectConfig.Setting,
 		})
 	}
@@ -5286,14 +5286,14 @@ type ProjectConfigDiffInputVariable struct {
 // Constants associated with the ProjectConfigDiffInputVariable.Type property.
 // The variable type.
 const (
-	ProjectConfigDiffInputVariable_Type_Array = "array"
-	ProjectConfigDiffInputVariable_Type_Boolean = "boolean"
-	ProjectConfigDiffInputVariable_Type_Float = "float"
-	ProjectConfigDiffInputVariable_Type_Int = "int"
-	ProjectConfigDiffInputVariable_Type_Number = "number"
-	ProjectConfigDiffInputVariable_Type_Object = "object"
+	ProjectConfigDiffInputVariable_Type_Array    = "array"
+	ProjectConfigDiffInputVariable_Type_Boolean  = "boolean"
+	ProjectConfigDiffInputVariable_Type_Float    = "float"
+	ProjectConfigDiffInputVariable_Type_Int      = "int"
+	ProjectConfigDiffInputVariable_Type_Number   = "number"
+	ProjectConfigDiffInputVariable_Type_Object   = "object"
 	ProjectConfigDiffInputVariable_Type_Password = "password"
-	ProjectConfigDiffInputVariable_Type_String = "string"
+	ProjectConfigDiffInputVariable_Type_String   = "string"
 )
 
 // UnmarshalProjectConfigDiffInputVariable unmarshals an instance of ProjectConfigDiffInputVariable from the specified map of raw messages.
@@ -5381,7 +5381,7 @@ type ProjectConfigPrototype struct {
 // NewProjectConfigPrototype : Instantiate ProjectConfigPrototype (Generic Model Constructor)
 func (*ProjectV1) NewProjectConfigPrototype(name string, locatorID string) (_model *ProjectConfigPrototype, err error) {
 	_model = &ProjectConfigPrototype{
-		Name: core.StringPtr(name),
+		Name:      core.StringPtr(name),
 		LocatorID: core.StringPtr(locatorID),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
@@ -5435,7 +5435,7 @@ type ProjectConfigSettingCollection struct {
 // NewProjectConfigSettingCollection : Instantiate ProjectConfigSettingCollection (Generic Model Constructor)
 func (*ProjectV1) NewProjectConfigSettingCollection(name string, value string) (_model *ProjectConfigSettingCollection, err error) {
 	_model = &ProjectConfigSettingCollection{
-		Name: core.StringPtr(name),
+		Name:  core.StringPtr(name),
 		Value: core.StringPtr(value),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
@@ -5559,7 +5559,7 @@ func (*ProjectV1) NewPulsarEventPrototypeCollection(eventType string, timestamp 
 		Timestamp: timestamp,
 		Publisher: core.StringPtr(publisher),
 		AccountID: core.StringPtr(accountID),
-		Version: core.StringPtr(version),
+		Version:   core.StringPtr(version),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
 	return
@@ -5775,8 +5775,8 @@ type ReplaceServiceInstanceOptions struct {
 func (*ProjectV1) NewReplaceServiceInstanceOptions(instanceID string, serviceID string, planID string) *ReplaceServiceInstanceOptions {
 	return &ReplaceServiceInstanceOptions{
 		InstanceID: core.StringPtr(instanceID),
-		ServiceID: core.StringPtr(serviceID),
-		PlanID: core.StringPtr(planID),
+		ServiceID:  core.StringPtr(serviceID),
+		PlanID:     core.StringPtr(planID),
 	}
 }
 
@@ -5876,7 +5876,7 @@ type ReplaceServiceInstanceStateOptions struct {
 func (*ProjectV1) NewReplaceServiceInstanceStateOptions(instanceID string, enabled bool) *ReplaceServiceInstanceStateOptions {
 	return &ReplaceServiceInstanceStateOptions{
 		InstanceID: core.StringPtr(instanceID),
-		Enabled: core.BoolPtr(enabled),
+		Enabled:    core.BoolPtr(enabled),
 	}
 }
 
@@ -6138,8 +6138,8 @@ func UnmarshalResourceUpdateResult(m map[string]json.RawMessage, result interfac
 func (*ProjectV1) NewResourceUpdateResultPatch(resourceUpdateResult *ResourceUpdateResult) (_patch []JSONPatchOperation) {
 	for key, value := range resourceUpdateResult.additionalProperties {
 		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/" + key),
+			Op:    core.StringPtr(JSONPatchOperation_Op_Add),
+			Path:  core.StringPtr("/" + key),
 			Value: value,
 		})
 	}
@@ -6161,7 +6161,7 @@ type UninstallConfigOptions struct {
 // NewUninstallConfigOptions : Instantiate UninstallConfigOptions
 func (*ProjectV1) NewUninstallConfigOptions(id string, configID string) *UninstallConfigOptions {
 	return &UninstallConfigOptions{
-		ID: core.StringPtr(id),
+		ID:       core.StringPtr(id),
 		ConfigID: core.StringPtr(configID),
 	}
 }
@@ -6205,8 +6205,8 @@ type UpdateConfigOptions struct {
 // NewUpdateConfigOptions : Instantiate UpdateConfigOptions
 func (*ProjectV1) NewUpdateConfigOptions(id string, configID string, projectConfig []JSONPatchOperation) *UpdateConfigOptions {
 	return &UpdateConfigOptions{
-		ID: core.StringPtr(id),
-		ConfigID: core.StringPtr(configID),
+		ID:            core.StringPtr(id),
+		ConfigID:      core.StringPtr(configID),
 		ProjectConfig: projectConfig,
 	}
 }
@@ -6256,7 +6256,7 @@ type UpdateProjectOptions struct {
 // NewUpdateProjectOptions : Instantiate UpdateProjectOptions
 func (*ProjectV1) NewUpdateProjectOptions(id string, jsonPatchOperation []JSONPatchOperation) *UpdateProjectOptions {
 	return &UpdateProjectOptions{
-		ID: core.StringPtr(id),
+		ID:                 core.StringPtr(id),
 		JSONPatchOperation: jsonPatchOperation,
 	}
 }
@@ -6305,7 +6305,7 @@ type UpdateServiceInstanceOptions struct {
 // NewUpdateServiceInstanceOptions : Instantiate UpdateServiceInstanceOptions
 func (*ProjectV1) NewUpdateServiceInstanceOptions(instanceID string, jsonPatchOperation []JSONPatchOperation) *UpdateServiceInstanceOptions {
 	return &UpdateServiceInstanceOptions{
-		InstanceID: core.StringPtr(instanceID),
+		InstanceID:         core.StringPtr(instanceID),
 		JSONPatchOperation: jsonPatchOperation,
 	}
 }
@@ -6346,13 +6346,11 @@ func (options *UpdateServiceInstanceOptions) SetHeaders(param map[string]string)
 	return options
 }
 
-//
 // ProjectsPager can be used to simplify the use of the "ListProjects" method.
-//
 type ProjectsPager struct {
-	hasNext bool
-	options *ListProjectsOptions
-	client  *ProjectV1
+	hasNext     bool
+	options     *ListProjectsOptions
+	client      *ProjectV1
 	pageContext struct {
 		next *string
 	}
