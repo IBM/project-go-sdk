@@ -25,7 +25,7 @@ import (
 	"os"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/damianovesperini/platform-services-go-sdk/projectv1"
+	"github.com/IBM/project-go-sdk/projectv1"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -192,7 +192,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			updateProjectOptions := projectService.NewUpdateProjectOptions(
-				project
+				projectIdLink,
 				[]projectv1.JSONPatchOperation{*jsonPatchOperationModel},
 			)
 
