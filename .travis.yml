@@ -27,15 +27,15 @@ script:
   - make travis-ci
 
 
-# before_deploy:
-#  - nvm install 14
-#  - npm install
-#  - pip install --user bump2version
+before_deploy:
+  - nvm install 14
+  - npm install
+  - pip install --user bump2version
 
-# deploy:
-#  - provider: script
-#    script: npm run semantic-release
-#    skip_cleanup: true
-#    on:
-#      go: '1.18.x'
-#      branch: main
+deploy:
+  - provider: script
+    script: npm run semantic-release
+    skip_cleanup: true
+    on:
+      go: '1.18.x'
+      branch: main
