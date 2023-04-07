@@ -594,8 +594,7 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 	}
 
 	pathParamsMap := map[string]string{
-		"id":        *listConfigsOptions.ID,
-		"projectId": *listConfigsOptions.ProjectID,
+		"id": *listConfigsOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
