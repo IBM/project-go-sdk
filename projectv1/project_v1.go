@@ -43,7 +43,7 @@ type ProjectV1 struct {
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://projects.api.cloud.ibm.com"
+const DefaultServiceURL = "https://projects.test.api.cloud.ibm.com"
 
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "project"
