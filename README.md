@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/IBM/project-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)](https://travis.ibm.com/IBM/project-go-sdk.svg?token=eW5FVD71iyte6tTby8gr&branch=main)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# Go SDK for IBM Cloud project services 0.0.1
+# Go SDK for IBM Cloud project services 0.0.7
 Go client library to interact with the various [IBM Cloud project APIs](https://test.cloud.ibm.com/apidocs/projects).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
@@ -51,7 +51,7 @@ Service Name | Package name
 * Go version 1.18 or above.
 
 ## Installation
-The current version of this SDK: 0.0.1
+The current version of this SDK: 0.0.7
 
 ### Go modules  
 If your application uses Go modules for dependency management (recommended), just add an import for each service 
