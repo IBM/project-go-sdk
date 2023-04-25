@@ -50,8 +50,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 		config         map[string]string
 
 		// Variables to hold link values
-		projectIdLink string
 		configIdLink  string
+		projectIdLink string
 	)
 
 	var shouldSkipTest = func() {
@@ -115,6 +115,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			createProjectOptions := projectService.NewCreateProjectOptions(
+				"Default",
+				"us-south",
 				"acme-microservice",
 			)
 			createProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
@@ -214,7 +216,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-create_config
 
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
+				Name:  core.StringPtr("account_id"),
+				Value: core.StringPtr(`$configs[].name["account-stage"].input.account_id`),
 			}
 
 			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
@@ -227,10 +230,10 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				"env-stage",
 				"1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global",
 			)
-			createConfigOptions.SetNewLabels([]string{"env:stage", "governance:test", "build:0"})
-			createConfigOptions.SetNewDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
-			createConfigOptions.SetNewInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
-			createConfigOptions.SetNewSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
+			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
+			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+			createConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
+			createConfigOptions.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
 
 			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
@@ -255,7 +258,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			listConfigsOptions := projectService.NewListConfigsOptions(
 				projectIdLink,
 			)
-			listConfigsOptions.SetProjectID(projectIdLink)
 
 			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
 			if err != nil {
@@ -570,227 +572,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(notificationsGetResponse).ToNot(BeNil())
 		})
-		It(`ReceivePulsarCatalogEvents request example`, func() {
-			// begin-receive_pulsar_catalog_events
-
-			pulsarEventPrototypeCollectionModel := &projectv1.PulsarEventPrototypeCollection{
-				EventType: core.StringPtr("create"),
-				Timestamp: CreateMockDateTime("2019-01-01T12:00:00.000Z"),
-				Publisher: core.StringPtr("provider"),
-				AccountID: core.StringPtr("accountId"),
-				Version:   core.StringPtr("v1"),
-			}
-
-			receivePulsarCatalogEventsOptions := projectService.NewReceivePulsarCatalogEventsOptions(
-				[]projectv1.PulsarEventPrototypeCollection{*pulsarEventPrototypeCollectionModel},
-			)
-
-			response, err := projectService.ReceivePulsarCatalogEvents(receivePulsarCatalogEventsOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 202 {
-				fmt.Printf("\nUnexpected response status code received from ReceivePulsarCatalogEvents(): %d\n", response.StatusCode)
-			}
-
-			// end-receive_pulsar_catalog_events
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-		})
-		It(`ReceivePulsarEventNotificationEvents request example`, func() {
-			// begin-receive_pulsar_event_notification_events
-
-			pulsarEventPrototypeCollectionModel := &projectv1.PulsarEventPrototypeCollection{
-				EventType: core.StringPtr("testString"),
-				Timestamp: CreateMockDateTime("2019-01-01T12:00:00.000Z"),
-				Publisher: core.StringPtr("provider"),
-				AccountID: core.StringPtr("accountid"),
-				Version:   core.StringPtr("v1"),
-			}
-
-			receivePulsarEventNotificationEventsOptions := projectService.NewReceivePulsarEventNotificationEventsOptions(
-				[]projectv1.PulsarEventPrototypeCollection{*pulsarEventPrototypeCollectionModel},
-			)
-
-			response, err := projectService.ReceivePulsarEventNotificationEvents(receivePulsarEventNotificationEventsOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 202 {
-				fmt.Printf("\nUnexpected response status code received from ReceivePulsarEventNotificationEvents(): %d\n", response.StatusCode)
-			}
-
-			// end-receive_pulsar_event_notification_events
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-		})
-		It(`GetHealth request example`, func() {
-			fmt.Println("\nGetHealth() result:")
-			// begin-get_health
-
-			getHealthOptions := projectService.NewGetHealthOptions()
-
-			health, response, err := projectService.GetHealth(getHealthOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(health, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_health
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(health).ToNot(BeNil())
-		})
-		It(`ReplaceServiceInstance request example`, func() {
-			fmt.Println("\nReplaceServiceInstance() result:")
-			// begin-replace_service_instance
-
-			replaceServiceInstanceOptions := projectService.NewReplaceServiceInstanceOptions(
-				"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::",
-				projectIdLink,
-				configIdLink,
-			)
-			replaceServiceInstanceOptions.SetXBrokerApiVersion("1.0")
-			replaceServiceInstanceOptions.SetXBrokerApiOriginatingIdentity("ibmcloud eyJpYW1fbWQiOiJJQk2pZC03MEdOUjcxN2lFIn0=")
-			replaceServiceInstanceOptions.SetAcceptsIncomplete(false)
-
-			resourceCreateResponse, response, err := projectService.ReplaceServiceInstance(replaceServiceInstanceOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(resourceCreateResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-replace_service_instance
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceCreateResponse).ToNot(BeNil())
-		})
-		It(`UpdateServiceInstance request example`, func() {
-			fmt.Println("\nUpdateServiceInstance() result:")
-			// begin-update_service_instance
-
-			jsonPatchOperationModel := &projectv1.JSONPatchOperation{
-				Op:   core.StringPtr("add"),
-				Path: core.StringPtr("testString"),
-			}
-
-			updateServiceInstanceOptions := projectService.NewUpdateServiceInstanceOptions(
-				"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::",
-				[]projectv1.JSONPatchOperation{*jsonPatchOperationModel},
-			)
-			updateServiceInstanceOptions.SetXBrokerApiVersion("1.0")
-			updateServiceInstanceOptions.SetXBrokerApiOriginatingIdentity("ibmcloud eyJpYW1fbWQiOiJJQk2pZC03MEdOUjcxN2lFIn0=")
-			updateServiceInstanceOptions.SetAcceptsIncomplete(false)
-
-			resourceUpdateResult, response, err := projectService.UpdateServiceInstance(updateServiceInstanceOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(resourceUpdateResult, "", "  ")
-			fmt.Println(string(b))
-
-			// end-update_service_instance
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceUpdateResult).ToNot(BeNil())
-		})
-		It(`GetLastOperation request example`, func() {
-			fmt.Println("\nGetLastOperation() result:")
-			// begin-get_last_operation
-
-			getLastOperationOptions := projectService.NewGetLastOperationOptions(
-				"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::",
-			)
-			getLastOperationOptions.SetXBrokerApiVersion("1.0")
-			getLastOperationOptions.SetOperation("ABCD")
-			getLastOperationOptions.SetPlanID("cb54391b-3316-4943-a5a6-a541678c1924")
-			getLastOperationOptions.SetServiceID("cb54391b-3316-4943-a5a6-a541678c1924")
-
-			resourceLastOperationGetResponse, response, err := projectService.GetLastOperation(getLastOperationOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(resourceLastOperationGetResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_last_operation
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceLastOperationGetResponse).ToNot(BeNil())
-		})
-		It(`ReplaceServiceInstanceState request example`, func() {
-			fmt.Println("\nReplaceServiceInstanceState() result:")
-			// begin-replace_service_instance_state
-
-			replaceServiceInstanceStateOptions := projectService.NewReplaceServiceInstanceStateOptions(
-				"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::",
-				true,
-			)
-			replaceServiceInstanceStateOptions.SetXBrokerApiVersion("1.0")
-
-			resourceStateResponse, response, err := projectService.ReplaceServiceInstanceState(replaceServiceInstanceStateOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(resourceStateResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-replace_service_instance_state
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceStateResponse).ToNot(BeNil())
-		})
-		It(`GetServiceInstance request example`, func() {
-			fmt.Println("\nGetServiceInstance() result:")
-			// begin-get_service_instance
-
-			getServiceInstanceOptions := projectService.NewGetServiceInstanceOptions(
-				"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::",
-			)
-			getServiceInstanceOptions.SetXBrokerApiVersion("1.0")
-
-			resourceStateResponse, response, err := projectService.GetServiceInstance(getServiceInstanceOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(resourceStateResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_service_instance
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceStateResponse).ToNot(BeNil())
-		})
-		It(`GetCatalog request example`, func() {
-			fmt.Println("\nGetCatalog() result:")
-			// begin-get_catalog
-
-			getCatalogOptions := projectService.NewGetCatalogOptions()
-			getCatalogOptions.SetXBrokerApiVersion("1.0")
-
-			catalogResponse, response, err := projectService.GetCatalog(getCatalogOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(catalogResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_catalog
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(catalogResponse).ToNot(BeNil())
-		})
 		It(`PostEventNotificationsIntegration request example`, func() {
 			fmt.Println("\nPostEventNotificationsIntegration() result:")
 			// begin-post_event_notifications_integration
@@ -864,7 +645,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-delete_project
 
 			deleteProjectOptions := projectService.NewDeleteProjectOptions(
-				projectIdLink,
+				"testString",
 			)
 
 			response, err := projectService.DeleteProject(deleteProjectOptions)
@@ -885,8 +666,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-delete_config
 
 			deleteConfigOptions := projectService.NewDeleteConfigOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 
 			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)
@@ -902,37 +683,11 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDelete).ToNot(BeNil())
 		})
-		It(`DeleteServiceInstance request example`, func() {
-			fmt.Println("\nDeleteServiceInstance() result:")
-			// begin-delete_service_instance
-
-			deleteServiceInstanceOptions := projectService.NewDeleteServiceInstanceOptions(
-				"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::",
-				"cb54391b-3316-4943-a5a6-a541678c1924",
-				"cb54391b-3316-4943-a5a6-a541678c1924",
-			)
-			deleteServiceInstanceOptions.SetXBrokerApiVersion("1.0")
-			deleteServiceInstanceOptions.SetXBrokerApiOriginatingIdentity("ibmcloud eyJpYW1fbWQiOiJJQk2pZC03MEdOUjcxN2lFIn0=")
-			deleteServiceInstanceOptions.SetAcceptsIncomplete(false)
-
-			resourceDeleteResponse, response, err := projectService.DeleteServiceInstance(deleteServiceInstanceOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(resourceDeleteResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-delete_service_instance
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceDeleteResponse).ToNot(BeNil())
-		})
 		It(`DeleteEventNotificationsIntegration request example`, func() {
 			// begin-delete_event_notifications_integration
 
 			deleteEventNotificationsIntegrationOptions := projectService.NewDeleteEventNotificationsIntegrationOptions(
-				projectIdLink,
+				"testString",
 			)
 
 			response, err := projectService.DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptions)

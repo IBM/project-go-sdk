@@ -49,8 +49,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		config         map[string]string
 
 		// Variables to hold link values
-		projectIdLink string
 		configIdLink  string
+		projectIdLink string
 	)
 
 	var shouldSkipTest = func() {
@@ -102,16 +102,16 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`CreateProject(createProjectOptions *CreateProjectOptions)`, func() {
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("testString"),
+				Name:  core.StringPtr("configVar1"),
+				Value: core.StringPtr("configValue1"),
 			}
 
 			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name:  core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
+				Name:  core.StringPtr("setting1"),
+				Value: core.StringPtr("value1"),
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				ID:          core.StringPtr("testString"),
 				Name:        core.StringPtr("common-variables"),
 				Labels:      []string{"testString"},
 				Description: core.StringPtr("testString"),
@@ -202,7 +202,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`GetProject - Get project by ID`, func() {
+	Describe(`GetProject - Get a project`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -250,7 +250,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`CreateConfig(createConfigOptions *CreateConfigOptions)`, func() {
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
+				Name:  core.StringPtr("account_id"),
+				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
 			}
 
 			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
@@ -259,13 +260,13 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
-				ID:             &projectIdLink,
-				NewName:        core.StringPtr("env-stage"),
-				NewLocatorID:   core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				NewLabels:      []string{"env:stage", "governance:test", "build:0"},
-				NewDescription: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
-				NewInput:       []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
-				NewSetting:     []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
+				ProjectID:   &projectIdLink,
+				Name:        core.StringPtr("env-stage"),
+				LocatorID:   core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+				Labels:      []string{"env:stage", "governance:test", "build:0"},
+				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
+				Input:       []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
+				Setting:     []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
 
 			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
@@ -284,9 +285,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`ListConfigs(listConfigsOptions *ListConfigsOptions)`, func() {
 			listConfigsOptions := &projectv1.ListConfigsOptions{
-				ID:       &projectIdLink,
-				Version:  core.StringPtr("active"),
-				Complete: core.BoolPtr(false),
+				ProjectID: &projectIdLink,
+				Version:   core.StringPtr("active"),
+				Complete:  core.BoolPtr(false),
 			}
 
 			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
@@ -302,10 +303,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`GetConfig(getConfigOptions *GetConfigOptions)`, func() {
 			getConfigOptions := &projectv1.GetConfigOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
-				Version:  core.StringPtr("active"),
-				Complete: core.BoolPtr(false),
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
+				Version:   core.StringPtr("active"),
+				Complete:  core.BoolPtr(false),
 			}
 
 			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
@@ -328,8 +329,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
-				ID:            &projectIdLink,
-				ConfigID:      &configIdLink,
+				ProjectID:     &projectIdLink,
+				ID:            &configIdLink,
 				ProjectConfig: []projectv1.JSONPatchOperation{*jsonPatchOperationModel},
 				Complete:      core.BoolPtr(false),
 			}
@@ -347,8 +348,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`GetConfigDiff(getConfigDiffOptions *GetConfigDiffOptions)`, func() {
 			getConfigDiffOptions := &projectv1.GetConfigDiffOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
 			}
 
 			projectConfigDiff, response, err := projectService.GetConfigDiff(getConfigDiffOptions)
@@ -364,10 +365,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`ForceApprove(forceApproveOptions *ForceApproveOptions)`, func() {
 			forceApproveOptions := &projectv1.ForceApproveOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
-				Comment:  core.StringPtr("Approving the changes"),
-				Complete: core.BoolPtr(false),
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
+				Comment:   core.StringPtr("Approving the changes"),
+				Complete:  core.BoolPtr(false),
 			}
 
 			projectConfig, response, err := projectService.ForceApprove(forceApproveOptions)
@@ -383,10 +384,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`Approve(approveOptions *ApproveOptions)`, func() {
 			approveOptions := &projectv1.ApproveOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
-				Comment:  core.StringPtr("Approving the changes"),
-				Complete: core.BoolPtr(false),
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
+				Comment:   core.StringPtr("Approving the changes"),
+				Complete:  core.BoolPtr(false),
 			}
 
 			projectConfig, response, err := projectService.Approve(approveOptions)
@@ -402,11 +403,11 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`CheckConfig(checkConfigOptions *CheckConfigOptions)`, func() {
 			checkConfigOptions := &projectv1.CheckConfigOptions{
-				ID:                &projectIdLink,
-				ConfigID:          &configIdLink,
+				ProjectID:         &projectIdLink,
+				ID:                &configIdLink,
 				XAuthRefreshToken: core.StringPtr("token"),
-				Version:           core.StringPtr("active"),
 				Complete:          core.BoolPtr(false),
+				Version:           core.StringPtr("active"),
 			}
 
 			projectConfig, response, err := projectService.CheckConfig(checkConfigOptions)
@@ -422,9 +423,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`InstallConfig(installConfigOptions *InstallConfigOptions)`, func() {
 			installConfigOptions := &projectv1.InstallConfigOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
-				Complete: core.BoolPtr(false),
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
+				Complete:  core.BoolPtr(false),
 			}
 
 			projectConfig, response, err := projectService.InstallConfig(installConfigOptions)
@@ -440,8 +441,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`UninstallConfig(uninstallConfigOptions *UninstallConfigOptions)`, func() {
 			uninstallConfigOptions := &projectv1.UninstallConfigOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
 			}
 
 			response, err := projectService.UninstallConfig(uninstallConfigOptions)
@@ -456,10 +457,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`GetSchematicsJob(getSchematicsJobOptions *GetSchematicsJobOptions)`, func() {
 			getSchematicsJobOptions := &projectv1.GetSchematicsJobOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
-				Action:   core.StringPtr("plan"),
-				Since:    core.Int64Ptr(int64(38)),
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
+				Action:    core.StringPtr("plan"),
+				Since:     core.Int64Ptr(int64(38)),
 			}
 
 			actionJob, response, err := projectService.GetSchematicsJob(getSchematicsJobOptions)
@@ -475,9 +476,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`GetCostEstimate(getCostEstimateOptions *GetCostEstimateOptions)`, func() {
 			getCostEstimateOptions := &projectv1.GetCostEstimateOptions{
-				ID:       &projectIdLink,
-				ConfigID: &configIdLink,
-				Version:  core.StringPtr("active"),
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
+				Version:   core.StringPtr("active"),
 			}
 
 			costEstimate, response, err := projectService.GetCostEstimate(getCostEstimateOptions)
@@ -542,200 +543,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(notificationsGetResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`ReceivePulsarCatalogEvents - Webhook for catalog events`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`ReceivePulsarCatalogEvents(receivePulsarCatalogEventsOptions *ReceivePulsarCatalogEventsOptions)`, func() {
-			pulsarEventPrototypeCollectionModel := &projectv1.PulsarEventPrototypeCollection{
-				EventType:       core.StringPtr("testString"),
-				Timestamp:       CreateMockDateTime("2019-01-01T12:00:00.000Z"),
-				Publisher:       core.StringPtr("testString"),
-				AccountID:       core.StringPtr("testString"),
-				Version:         core.StringPtr("testString"),
-				EventProperties: map[string]interface{}{"anyKey": "anyValue"},
-				EventID:         core.StringPtr("testString"),
-			}
-			pulsarEventPrototypeCollectionModel.SetProperty("foo", core.StringPtr("testString"))
-
-			receivePulsarCatalogEventsOptions := &projectv1.ReceivePulsarCatalogEventsOptions{
-				PulsarCatalogEvents: []projectv1.PulsarEventPrototypeCollection{*pulsarEventPrototypeCollectionModel},
-			}
-
-			response, err := projectService.ReceivePulsarCatalogEvents(receivePulsarCatalogEventsOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-		})
-	})
-
-	Describe(`ReceivePulsarEventNotificationEvents - Webhook for event notifications events`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`ReceivePulsarEventNotificationEvents(receivePulsarEventNotificationEventsOptions *ReceivePulsarEventNotificationEventsOptions)`, func() {
-			pulsarEventPrototypeCollectionModel := &projectv1.PulsarEventPrototypeCollection{
-				EventType:       core.StringPtr("testString"),
-				Timestamp:       CreateMockDateTime("2019-01-01T12:00:00.000Z"),
-				Publisher:       core.StringPtr("testString"),
-				AccountID:       core.StringPtr("testString"),
-				Version:         core.StringPtr("testString"),
-				EventProperties: map[string]interface{}{"anyKey": "anyValue"},
-				EventID:         core.StringPtr("testString"),
-			}
-			pulsarEventPrototypeCollectionModel.SetProperty("foo", core.StringPtr("testString"))
-
-			receivePulsarEventNotificationEventsOptions := &projectv1.ReceivePulsarEventNotificationEventsOptions{
-				PulsarEventNotificationEvents: []projectv1.PulsarEventPrototypeCollection{*pulsarEventPrototypeCollectionModel},
-			}
-
-			response, err := projectService.ReceivePulsarEventNotificationEvents(receivePulsarEventNotificationEventsOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-		})
-	})
-
-	Describe(`GetHealth - Get service health information`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetHealth(getHealthOptions *GetHealthOptions)`, func() {
-			getHealthOptions := &projectv1.GetHealthOptions{
-				Info: core.BoolPtr(false),
-			}
-
-			health, response, err := projectService.GetHealth(getHealthOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(health).ToNot(BeNil())
-		})
-	})
-
-	Describe(`ReplaceServiceInstance - Create a new service instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`ReplaceServiceInstance(replaceServiceInstanceOptions *ReplaceServiceInstanceOptions)`, func() {
-			replaceServiceInstanceOptions := &projectv1.ReplaceServiceInstanceOptions{
-				InstanceID:                    core.StringPtr("crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"),
-				ServiceID:                     core.StringPtr("testString"),
-				PlanID:                        core.StringPtr("testString"),
-				Context:                       []string{"testString"},
-				Parameters:                    map[string]interface{}{"anyKey": "anyValue"},
-				PreviousValues:                []string{"testString"},
-				XBrokerApiVersion:             core.StringPtr("1.0"),
-				XBrokerApiOriginatingIdentity: core.StringPtr("ibmcloud eyJpYW1fbWQiOiJJQk2pZC03MEdOUjcxN2lFIn0="),
-				AcceptsIncomplete:             core.BoolPtr(false),
-			}
-
-			resourceCreateResponse, response, err := projectService.ReplaceServiceInstance(replaceServiceInstanceOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceCreateResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`UpdateServiceInstance - Change of plans and service parameters in a provisioned service instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`UpdateServiceInstance(updateServiceInstanceOptions *UpdateServiceInstanceOptions)`, func() {
-			jsonPatchOperationModel := &projectv1.JSONPatchOperation{
-				Op:    core.StringPtr("add"),
-				Path:  core.StringPtr("testString"),
-				From:  core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
-			}
-
-			updateServiceInstanceOptions := &projectv1.UpdateServiceInstanceOptions{
-				InstanceID:                    core.StringPtr("crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"),
-				JSONPatchOperation:            []projectv1.JSONPatchOperation{*jsonPatchOperationModel},
-				XBrokerApiVersion:             core.StringPtr("1.0"),
-				XBrokerApiOriginatingIdentity: core.StringPtr("ibmcloud eyJpYW1fbWQiOiJJQk2pZC03MEdOUjcxN2lFIn0="),
-				AcceptsIncomplete:             core.BoolPtr(false),
-			}
-
-			resourceUpdateResult, response, err := projectService.UpdateServiceInstance(updateServiceInstanceOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceUpdateResult).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetLastOperation - Get last_operation for instance by GUID`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetLastOperation(getLastOperationOptions *GetLastOperationOptions)`, func() {
-			getLastOperationOptions := &projectv1.GetLastOperationOptions{
-				InstanceID:        core.StringPtr("crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"),
-				XBrokerApiVersion: core.StringPtr("1.0"),
-				Operation:         core.StringPtr("ABCD"),
-				PlanID:            core.StringPtr("cb54391b-3316-4943-a5a6-a541678c1924"),
-				ServiceID:         core.StringPtr("cb54391b-3316-4943-a5a6-a541678c1924"),
-			}
-
-			resourceLastOperationGetResponse, response, err := projectService.GetLastOperation(getLastOperationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceLastOperationGetResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`ReplaceServiceInstanceState - Update the state of a provisioned service instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`ReplaceServiceInstanceState(replaceServiceInstanceStateOptions *ReplaceServiceInstanceStateOptions)`, func() {
-			replaceServiceInstanceStateOptions := &projectv1.ReplaceServiceInstanceStateOptions{
-				InstanceID:        core.StringPtr("crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"),
-				Enabled:           core.BoolPtr(true),
-				InitiatorID:       core.StringPtr("testString"),
-				ReasonCode:        map[string]interface{}{"anyKey": "anyValue"},
-				PlanID:            core.StringPtr("testString"),
-				PreviousValues:    []string{"testString"},
-				XBrokerApiVersion: core.StringPtr("1.0"),
-			}
-
-			resourceStateResponse, response, err := projectService.ReplaceServiceInstanceState(replaceServiceInstanceStateOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceStateResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetServiceInstance - Get the current state information`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetServiceInstance(getServiceInstanceOptions *GetServiceInstanceOptions)`, func() {
-			getServiceInstanceOptions := &projectv1.GetServiceInstanceOptions{
-				InstanceID:        core.StringPtr("crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"),
-				XBrokerApiVersion: core.StringPtr("1.0"),
-			}
-
-			resourceStateResponse, response, err := projectService.GetServiceInstance(getServiceInstanceOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceStateResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetCatalog - Get the catalog metadata`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetCatalog(getCatalogOptions *GetCatalogOptions)`, func() {
-			getCatalogOptions := &projectv1.GetCatalogOptions{
-				XBrokerApiVersion: core.StringPtr("1.0"),
-			}
-
-			catalogResponse, response, err := projectService.GetCatalog(getCatalogOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(catalogResponse).ToNot(BeNil())
 		})
 	})
 
@@ -815,8 +622,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`DeleteConfig(deleteConfigOptions *DeleteConfigOptions)`, func() {
 			deleteConfigOptions := &projectv1.DeleteConfigOptions{
-				ID:        &projectIdLink,
-				ConfigID:  &configIdLink,
+				ProjectID: &projectIdLink,
+				ID:        &configIdLink,
 				DraftOnly: core.BoolPtr(false),
 				Destroy:   core.BoolPtr(false),
 			}
@@ -825,27 +632,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDelete).ToNot(BeNil())
-		})
-	})
-
-	Describe(`DeleteServiceInstance - Delete a project service instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`DeleteServiceInstance(deleteServiceInstanceOptions *DeleteServiceInstanceOptions)`, func() {
-			deleteServiceInstanceOptions := &projectv1.DeleteServiceInstanceOptions{
-				InstanceID:                    core.StringPtr("crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"),
-				PlanID:                        core.StringPtr("cb54391b-3316-4943-a5a6-a541678c1924"),
-				ServiceID:                     core.StringPtr("cb54391b-3316-4943-a5a6-a541678c1924"),
-				XBrokerApiVersion:             core.StringPtr("1.0"),
-				XBrokerApiOriginatingIdentity: core.StringPtr("ibmcloud eyJpYW1fbWQiOiJJQk2pZC03MEdOUjcxN2lFIn0="),
-				AcceptsIncomplete:             core.BoolPtr(false),
-			}
-
-			resourceDeleteResponse, response, err := projectService.DeleteServiceInstance(deleteServiceInstanceOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(resourceDeleteResponse).ToNot(BeNil())
 		})
 	})
 
