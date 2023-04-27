@@ -404,9 +404,16 @@ func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updatePr
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json-patch+json")
+	builder.AddHeader("Content-Type", "application/json")
 
-	_, err = builder.SetBodyContentJSON(updateProjectOptions.JSONPatchOperation)
+	body := make(map[string]interface{})
+	if updateProjectOptions.Name != nil {
+		body["name"] = updateProjectOptions.Name
+	}
+	if updateProjectOptions.Description != nil {
+		body["description"] = updateProjectOptions.Description
+	}
+	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		return
 	}
@@ -746,7 +753,7 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json-patch+json")
+	builder.AddHeader("Content-Type", "application/json")
 
 	if updateConfigOptions.Complete != nil {
 		builder.AddQuery("complete", fmt.Sprint(*updateConfigOptions.Complete))
@@ -1829,153 +1836,6 @@ func (project *ProjectV1) PostTestEventNotificationWithContext(ctx context.Conte
 	return
 }
 
-// ListComplianceProfiles : Get a list of Security and Compliance profiles for a project
-// Get a list of Security and Compliance profiles for a specific project.
-func (project *ProjectV1) ListComplianceProfiles(listComplianceProfilesOptions *ListComplianceProfilesOptions) (result *ComplianceProfileCollection, response *core.DetailedResponse, err error) {
-	return project.ListComplianceProfilesWithContext(context.Background(), listComplianceProfilesOptions)
-}
-
-// ListComplianceProfilesWithContext is an alternate form of the ListComplianceProfiles method which supports a Context parameter
-func (project *ProjectV1) ListComplianceProfilesWithContext(ctx context.Context, listComplianceProfilesOptions *ListComplianceProfilesOptions) (result *ComplianceProfileCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(listComplianceProfilesOptions, "listComplianceProfilesOptions cannot be nil")
-	if err != nil {
-		return
-	}
-	err = core.ValidateStruct(listComplianceProfilesOptions, "listComplianceProfilesOptions")
-	if err != nil {
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": *listComplianceProfilesOptions.ID,
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{id}/compliance_profiles`, pathParamsMap)
-	if err != nil {
-		return
-	}
-
-	for headerName, headerValue := range listComplianceProfilesOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListComplianceProfiles")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	if listComplianceProfilesOptions.IbmTrustedProfileID != nil {
-		builder.AddHeader("Ibm-Trusted-Profile-Id", fmt.Sprint(*listComplianceProfilesOptions.IbmTrustedProfileID))
-	}
-	if listComplianceProfilesOptions.IbmCloudApiKey != nil {
-		builder.AddHeader("Ibm-Cloud-Api-Key", fmt.Sprint(*listComplianceProfilesOptions.IbmCloudApiKey))
-	}
-
-	if listComplianceProfilesOptions.Start != nil {
-		builder.AddQuery("start", fmt.Sprint(*listComplianceProfilesOptions.Start))
-	}
-	if listComplianceProfilesOptions.Limit != nil {
-		builder.AddQuery("limit", fmt.Sprint(*listComplianceProfilesOptions.Limit))
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = project.Service.Request(request, &rawResponse)
-	if err != nil {
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalComplianceProfileCollection)
-		if err != nil {
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// ListComplianceProfileAttachments : Get a list of Security and Compliance profiles for a project
-// Get a list of Security and Compliance profiles for a specific project.
-func (project *ProjectV1) ListComplianceProfileAttachments(listComplianceProfileAttachmentsOptions *ListComplianceProfileAttachmentsOptions) (result *ComplianceProfileAttachmentCollection, response *core.DetailedResponse, err error) {
-	return project.ListComplianceProfileAttachmentsWithContext(context.Background(), listComplianceProfileAttachmentsOptions)
-}
-
-// ListComplianceProfileAttachmentsWithContext is an alternate form of the ListComplianceProfileAttachments method which supports a Context parameter
-func (project *ProjectV1) ListComplianceProfileAttachmentsWithContext(ctx context.Context, listComplianceProfileAttachmentsOptions *ListComplianceProfileAttachmentsOptions) (result *ComplianceProfileAttachmentCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(listComplianceProfileAttachmentsOptions, "listComplianceProfileAttachmentsOptions cannot be nil")
-	if err != nil {
-		return
-	}
-	err = core.ValidateStruct(listComplianceProfileAttachmentsOptions, "listComplianceProfileAttachmentsOptions")
-	if err != nil {
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": *listComplianceProfileAttachmentsOptions.ID,
-		"profile_id": *listComplianceProfileAttachmentsOptions.ProfileID,
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{id}/compliance_profiles/{profile_id}/attachments`, pathParamsMap)
-	if err != nil {
-		return
-	}
-
-	for headerName, headerValue := range listComplianceProfileAttachmentsOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListComplianceProfileAttachments")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	if listComplianceProfileAttachmentsOptions.IbmTrustedProfileID != nil {
-		builder.AddHeader("Ibm-Trusted-Profile-Id", fmt.Sprint(*listComplianceProfileAttachmentsOptions.IbmTrustedProfileID))
-	}
-	if listComplianceProfileAttachmentsOptions.IbmCloudApiKey != nil {
-		builder.AddHeader("Ibm-Cloud-Api-Key", fmt.Sprint(*listComplianceProfileAttachmentsOptions.IbmCloudApiKey))
-	}
-
-	if listComplianceProfileAttachmentsOptions.Start != nil {
-		builder.AddQuery("start", fmt.Sprint(*listComplianceProfileAttachmentsOptions.Start))
-	}
-	if listComplianceProfileAttachmentsOptions.Limit != nil {
-		builder.AddQuery("limit", fmt.Sprint(*listComplianceProfileAttachmentsOptions.Limit))
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = project.Service.Request(request, &rawResponse)
-	if err != nil {
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalComplianceProfileAttachmentCollection)
-		if err != nil {
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
 // ActionJob : The response of a fetching an action job.
 type ActionJob struct {
 	// The unique ID of a project.
@@ -2112,162 +1972,6 @@ func (_options *CheckConfigOptions) SetVersion(version string) *CheckConfigOptio
 func (options *CheckConfigOptions) SetHeaders(param map[string]string) *CheckConfigOptions {
 	options.Headers = param
 	return options
-}
-
-// ComplianceProfile : The profile fetched from Security and Compliance Center.
-type ComplianceProfile struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of ComplianceProfile
-func (o *ComplianceProfile) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ComplianceProfile
-func (o *ComplianceProfile) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ComplianceProfile
-func (o *ComplianceProfile) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ComplianceProfile
-func (o *ComplianceProfile) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of ComplianceProfile
-func (o *ComplianceProfile) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	return
-}
-
-// UnmarshalComplianceProfile unmarshals an instance of ComplianceProfile from the specified map of raw messages.
-func UnmarshalComplianceProfile(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ComplianceProfile)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = e
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ComplianceProfileAttachment : The profile attachment fetched from Security and Compliance Center.
-type ComplianceProfileAttachment struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of ComplianceProfileAttachment
-func (o *ComplianceProfileAttachment) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ComplianceProfileAttachment
-func (o *ComplianceProfileAttachment) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ComplianceProfileAttachment
-func (o *ComplianceProfileAttachment) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ComplianceProfileAttachment
-func (o *ComplianceProfileAttachment) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of ComplianceProfileAttachment
-func (o *ComplianceProfileAttachment) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	return
-}
-
-// UnmarshalComplianceProfileAttachment unmarshals an instance of ComplianceProfileAttachment from the specified map of raw messages.
-func UnmarshalComplianceProfileAttachment(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ComplianceProfileAttachment)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = e
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ComplianceProfileAttachmentCollection : The response of fetching attachments for a given profile from Security and Compliance Center.
-type ComplianceProfileAttachmentCollection struct {
-	// An array of Security and Compliance profile attachments.
-	Attachments []ComplianceProfileAttachment `json:"attachments,omitempty"`
-}
-
-// UnmarshalComplianceProfileAttachmentCollection unmarshals an instance of ComplianceProfileAttachmentCollection from the specified map of raw messages.
-func UnmarshalComplianceProfileAttachmentCollection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ComplianceProfileAttachmentCollection)
-	err = core.UnmarshalModel(m, "attachments", &obj.Attachments, UnmarshalComplianceProfileAttachment)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ComplianceProfileCollection : The response of fetching profiles from Security and Compliance Center.
-type ComplianceProfileCollection struct {
-	// An array of Security and Compliance profiles.
-	ComplianceProfiles []ComplianceProfile `json:"compliance_profiles,omitempty"`
-}
-
-// UnmarshalComplianceProfileCollection unmarshals an instance of ComplianceProfileCollection from the specified map of raw messages.
-func UnmarshalComplianceProfileCollection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ComplianceProfileCollection)
-	err = core.UnmarshalModel(m, "compliance_profiles", &obj.ComplianceProfiles, UnmarshalComplianceProfile)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
 }
 
 // CostEstimate : The cost estimate for the given configuration.
@@ -3021,7 +2725,7 @@ type InputVariable struct {
 	// The variable type.
 	Type *string `json:"type" validate:"required"`
 
-	// Can be any value - string, number, boolean, array or object.
+	// Can be any value - a string, number, boolean, array, or object.
 	Value interface{} `json:"value,omitempty"`
 
 	// Whether the variable is required or not.
@@ -3107,207 +2811,6 @@ func (_options *InstallConfigOptions) SetComplete(complete bool) *InstallConfigO
 
 // SetHeaders : Allow user to set Headers
 func (options *InstallConfigOptions) SetHeaders(param map[string]string) *InstallConfigOptions {
-	options.Headers = param
-	return options
-}
-
-// JSONPatchOperation : This model represents an individual patch operation to be performed on a JSON document, as defined by RFC 6902.
-type JSONPatchOperation struct {
-	// The operation to be performed.
-	Op *string `json:"op" validate:"required"`
-
-	// The JSON Pointer that identifies the field that is the target of the operation.
-	Path *string `json:"path" validate:"required"`
-
-	// The JSON Pointer that identifies the field that is the source of the operation.
-	From *string `json:"from,omitempty"`
-
-	// The value to be used within the operation.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// Constants associated with the JSONPatchOperation.Op property.
-// The operation to be performed.
-const (
-	JSONPatchOperation_Op_Add = "add"
-	JSONPatchOperation_Op_Copy = "copy"
-	JSONPatchOperation_Op_Move = "move"
-	JSONPatchOperation_Op_Remove = "remove"
-	JSONPatchOperation_Op_Replace = "replace"
-	JSONPatchOperation_Op_Test = "test"
-)
-
-// NewJSONPatchOperation : Instantiate JSONPatchOperation (Generic Model Constructor)
-func (*ProjectV1) NewJSONPatchOperation(op string, path string) (_model *JSONPatchOperation, err error) {
-	_model = &JSONPatchOperation{
-		Op: core.StringPtr(op),
-		Path: core.StringPtr(path),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	return
-}
-
-// UnmarshalJSONPatchOperation unmarshals an instance of JSONPatchOperation from the specified map of raw messages.
-func UnmarshalJSONPatchOperation(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(JSONPatchOperation)
-	err = core.UnmarshalPrimitive(m, "op", &obj.Op)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "path", &obj.Path)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "from", &obj.From)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ListComplianceProfileAttachmentsOptions : The ListComplianceProfileAttachments options.
-type ListComplianceProfileAttachmentsOptions struct {
-	// The unique identifier.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// The ID of the Security and Compliance profile.
-	ProfileID *string `json:"profile_id" validate:"required,ne="`
-
-	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
-	// is returned on the next page. If this parameter is not specified, the logical first page is returned.
-	Start *string `json:"start,omitempty"`
-
-	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
-	// exception of the last page.
-	Limit *int64 `json:"limit,omitempty"`
-
-	// The IBM trusted profile ID.
-	IbmTrustedProfileID *string `json:"Ibm-Trusted-Profile-Id,omitempty"`
-
-	// The IBM Cloud API key.
-	IbmCloudApiKey *string `json:"Ibm-Cloud-Api-Key,omitempty"`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewListComplianceProfileAttachmentsOptions : Instantiate ListComplianceProfileAttachmentsOptions
-func (*ProjectV1) NewListComplianceProfileAttachmentsOptions(id string, profileID string) *ListComplianceProfileAttachmentsOptions {
-	return &ListComplianceProfileAttachmentsOptions{
-		ID: core.StringPtr(id),
-		ProfileID: core.StringPtr(profileID),
-	}
-}
-
-// SetID : Allow user to set ID
-func (_options *ListComplianceProfileAttachmentsOptions) SetID(id string) *ListComplianceProfileAttachmentsOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetProfileID : Allow user to set ProfileID
-func (_options *ListComplianceProfileAttachmentsOptions) SetProfileID(profileID string) *ListComplianceProfileAttachmentsOptions {
-	_options.ProfileID = core.StringPtr(profileID)
-	return _options
-}
-
-// SetStart : Allow user to set Start
-func (_options *ListComplianceProfileAttachmentsOptions) SetStart(start string) *ListComplianceProfileAttachmentsOptions {
-	_options.Start = core.StringPtr(start)
-	return _options
-}
-
-// SetLimit : Allow user to set Limit
-func (_options *ListComplianceProfileAttachmentsOptions) SetLimit(limit int64) *ListComplianceProfileAttachmentsOptions {
-	_options.Limit = core.Int64Ptr(limit)
-	return _options
-}
-
-// SetIbmTrustedProfileID : Allow user to set IbmTrustedProfileID
-func (_options *ListComplianceProfileAttachmentsOptions) SetIbmTrustedProfileID(ibmTrustedProfileID string) *ListComplianceProfileAttachmentsOptions {
-	_options.IbmTrustedProfileID = core.StringPtr(ibmTrustedProfileID)
-	return _options
-}
-
-// SetIbmCloudApiKey : Allow user to set IbmCloudApiKey
-func (_options *ListComplianceProfileAttachmentsOptions) SetIbmCloudApiKey(ibmCloudApiKey string) *ListComplianceProfileAttachmentsOptions {
-	_options.IbmCloudApiKey = core.StringPtr(ibmCloudApiKey)
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *ListComplianceProfileAttachmentsOptions) SetHeaders(param map[string]string) *ListComplianceProfileAttachmentsOptions {
-	options.Headers = param
-	return options
-}
-
-// ListComplianceProfilesOptions : The ListComplianceProfiles options.
-type ListComplianceProfilesOptions struct {
-	// The unique identifier.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
-	// is returned on the next page. If this parameter is not specified, the logical first page is returned.
-	Start *string `json:"start,omitempty"`
-
-	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
-	// exception of the last page.
-	Limit *int64 `json:"limit,omitempty"`
-
-	// The IBM trusted profile ID.
-	IbmTrustedProfileID *string `json:"Ibm-Trusted-Profile-Id,omitempty"`
-
-	// The IBM Cloud API key.
-	IbmCloudApiKey *string `json:"Ibm-Cloud-Api-Key,omitempty"`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewListComplianceProfilesOptions : Instantiate ListComplianceProfilesOptions
-func (*ProjectV1) NewListComplianceProfilesOptions(id string) *ListComplianceProfilesOptions {
-	return &ListComplianceProfilesOptions{
-		ID: core.StringPtr(id),
-	}
-}
-
-// SetID : Allow user to set ID
-func (_options *ListComplianceProfilesOptions) SetID(id string) *ListComplianceProfilesOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetStart : Allow user to set Start
-func (_options *ListComplianceProfilesOptions) SetStart(start string) *ListComplianceProfilesOptions {
-	_options.Start = core.StringPtr(start)
-	return _options
-}
-
-// SetLimit : Allow user to set Limit
-func (_options *ListComplianceProfilesOptions) SetLimit(limit int64) *ListComplianceProfilesOptions {
-	_options.Limit = core.Int64Ptr(limit)
-	return _options
-}
-
-// SetIbmTrustedProfileID : Allow user to set IbmTrustedProfileID
-func (_options *ListComplianceProfilesOptions) SetIbmTrustedProfileID(ibmTrustedProfileID string) *ListComplianceProfilesOptions {
-	_options.IbmTrustedProfileID = core.StringPtr(ibmTrustedProfileID)
-	return _options
-}
-
-// SetIbmCloudApiKey : Allow user to set IbmCloudApiKey
-func (_options *ListComplianceProfilesOptions) SetIbmCloudApiKey(ibmCloudApiKey string) *ListComplianceProfilesOptions {
-	_options.IbmCloudApiKey = core.StringPtr(ibmCloudApiKey)
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *ListComplianceProfilesOptions) SetHeaders(param map[string]string) *ListComplianceProfilesOptions {
 	options.Headers = param
 	return options
 }
@@ -3834,7 +3337,7 @@ type OutputValue struct {
 	// A short explanation of the output value.
 	Description *string `json:"description,omitempty"`
 
-	// Can be any value - string, number, boolean, array or object.
+	// Can be any value - a string, number, boolean, array, or object.
 	Value interface{} `json:"value,omitempty"`
 }
 
@@ -4109,52 +3612,6 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 	return
 }
 
-func (*ProjectV1) NewProjectPatch(project *Project) (_patch []JSONPatchOperation) {
-	if (project.Name != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/name"),
-			Value: project.Name,
-		})
-	}
-	if (project.Description != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/description"),
-			Value: project.Description,
-		})
-	}
-	if (project.ID != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/id"),
-			Value: project.ID,
-		})
-	}
-	if (project.Crn != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/crn"),
-			Value: project.Crn,
-		})
-	}
-	if (project.Configs != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/configs"),
-			Value: project.Configs,
-		})
-	}
-	if (project.Metadata != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/metadata"),
-			Value: project.Metadata,
-		})
-	}
-	return
-}
-
 // ProjectCRNTokenResponse : The project CRN token.
 type ProjectCRNTokenResponse struct {
 	// The IAM access token.
@@ -4364,73 +3821,6 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	return
 }
 
-func (*ProjectV1) NewProjectConfigPatch(projectConfig *ProjectConfig) (_patch []JSONPatchOperation) {
-	if (projectConfig.ID != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/id"),
-			Value: projectConfig.ID,
-		})
-	}
-	if (projectConfig.Name != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/name"),
-			Value: projectConfig.Name,
-		})
-	}
-	if (projectConfig.Labels != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/labels"),
-			Value: projectConfig.Labels,
-		})
-	}
-	if (projectConfig.Description != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/description"),
-			Value: projectConfig.Description,
-		})
-	}
-	if (projectConfig.LocatorID != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/locator_id"),
-			Value: projectConfig.LocatorID,
-		})
-	}
-	if (projectConfig.Type != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/type"),
-			Value: projectConfig.Type,
-		})
-	}
-	if (projectConfig.Input != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/input"),
-			Value: projectConfig.Input,
-		})
-	}
-	if (projectConfig.Output != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/output"),
-			Value: projectConfig.Output,
-		})
-	}
-	if (projectConfig.Setting != nil) {
-		_patch = append(_patch, JSONPatchOperation{
-			Op: core.StringPtr(JSONPatchOperation_Op_Add),
-			Path: core.StringPtr("/setting"),
-			Value: projectConfig.Setting,
-		})
-	}
-	return
-}
-
 // ProjectConfigCollection : The project configuration list.
 type ProjectConfigCollection struct {
 	// The collection list operation response schema that should define the array property with the name "configs".
@@ -4545,7 +3935,7 @@ type ProjectConfigDiffInputVariable struct {
 	// The variable type.
 	Type *string `json:"type" validate:"required"`
 
-	// Can be any value - string, number, boolean, array or object.
+	// Can be any value - a string, number, boolean, array, or object.
 	Value interface{} `json:"value,omitempty"`
 }
 
@@ -4603,7 +3993,7 @@ type ProjectConfigInputVariable struct {
 	// The variable name.
 	Name *string `json:"name" validate:"required"`
 
-	// Can be any value - string, number, boolean, array or object.
+	// Can be any value - a string, number, boolean, array, or object.
 	Value interface{} `json:"value,omitempty"`
 }
 
@@ -4624,6 +4014,88 @@ func UnmarshalProjectConfigInputVariable(m map[string]json.RawMessage, result in
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigPatchRequest : The project configuration input.
+// Models which "extend" this model:
+// - ProjectConfigPatchRequestProjectConfigManualProperty
+// - ProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate
+type ProjectConfigPatchRequest struct {
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type,omitempty"`
+
+	// The external resource account ID in project configuration.
+	ExternalResourcesAccount *string `json:"external_resources_account,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The inputs of a Schematics template property.
+	Input []ProjectConfigInputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
+}
+
+// Constants associated with the ProjectConfigPatchRequest.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigPatchRequest_Type_Manual = "manual"
+)
+func (*ProjectConfigPatchRequest) isaProjectConfigPatchRequest() bool {
+	return true
+}
+
+type ProjectConfigPatchRequestIntf interface {
+	isaProjectConfigPatchRequest() bool
+}
+
+// UnmarshalProjectConfigPatchRequest unmarshals an instance of ProjectConfigPatchRequest from the specified map of raw messages.
+func UnmarshalProjectConfigPatchRequest(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigPatchRequest)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "external_resources_account", &obj.ExternalResourcesAccount)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalProjectConfigInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSettingCollection)
 	if err != nil {
 		return
 	}
@@ -4848,7 +4320,7 @@ type UpdateConfigOptions struct {
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The change delta of the project configuration to update.
-	ProjectConfig []JSONPatchOperation `json:"project_config" validate:"required"`
+	ProjectConfig ProjectConfigPatchRequestIntf `json:"project_config" validate:"required"`
 
 	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
 	Complete *bool `json:"complete,omitempty"`
@@ -4858,7 +4330,7 @@ type UpdateConfigOptions struct {
 }
 
 // NewUpdateConfigOptions : Instantiate UpdateConfigOptions
-func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string, projectConfig []JSONPatchOperation) *UpdateConfigOptions {
+func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string, projectConfig ProjectConfigPatchRequestIntf) *UpdateConfigOptions {
 	return &UpdateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
 		ID: core.StringPtr(id),
@@ -4879,7 +4351,7 @@ func (_options *UpdateConfigOptions) SetID(id string) *UpdateConfigOptions {
 }
 
 // SetProjectConfig : Allow user to set ProjectConfig
-func (_options *UpdateConfigOptions) SetProjectConfig(projectConfig []JSONPatchOperation) *UpdateConfigOptions {
+func (_options *UpdateConfigOptions) SetProjectConfig(projectConfig ProjectConfigPatchRequestIntf) *UpdateConfigOptions {
 	_options.ProjectConfig = projectConfig
 	return _options
 }
@@ -4901,18 +4373,20 @@ type UpdateProjectOptions struct {
 	// The unique identifier.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// The new project definition document.
-	JSONPatchOperation []JSONPatchOperation `json:"JsonPatchOperation" validate:"required"`
+	// The project name.
+	Name *string `json:"name,omitempty"`
+
+	// The project descriptive text.
+	Description *string `json:"description,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateProjectOptions : Instantiate UpdateProjectOptions
-func (*ProjectV1) NewUpdateProjectOptions(id string, jsonPatchOperation []JSONPatchOperation) *UpdateProjectOptions {
+func (*ProjectV1) NewUpdateProjectOptions(id string) *UpdateProjectOptions {
 	return &UpdateProjectOptions{
 		ID: core.StringPtr(id),
-		JSONPatchOperation: jsonPatchOperation,
 	}
 }
 
@@ -4922,9 +4396,15 @@ func (_options *UpdateProjectOptions) SetID(id string) *UpdateProjectOptions {
 	return _options
 }
 
-// SetJSONPatchOperation : Allow user to set JSONPatchOperation
-func (_options *UpdateProjectOptions) SetJSONPatchOperation(jsonPatchOperation []JSONPatchOperation) *UpdateProjectOptions {
-	_options.JSONPatchOperation = jsonPatchOperation
+// SetName : Allow user to set Name
+func (_options *UpdateProjectOptions) SetName(name string) *UpdateProjectOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *UpdateProjectOptions) SetDescription(description string) *UpdateProjectOptions {
+	_options.Description = core.StringPtr(description)
 	return _options
 }
 
@@ -4932,6 +4412,128 @@ func (_options *UpdateProjectOptions) SetJSONPatchOperation(jsonPatchOperation [
 func (options *UpdateProjectOptions) SetHeaders(param map[string]string) *UpdateProjectOptions {
 	options.Headers = param
 	return options
+}
+
+// ProjectConfigPatchRequestProjectConfigManualProperty : The project configuration manual type.
+// This model "extends" ProjectConfigPatchRequest
+type ProjectConfigPatchRequestProjectConfigManualProperty struct {
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type" validate:"required"`
+
+	// The external resource account ID in project configuration.
+	ExternalResourcesAccount *string `json:"external_resources_account,omitempty"`
+}
+
+// Constants associated with the ProjectConfigPatchRequestProjectConfigManualProperty.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigPatchRequestProjectConfigManualProperty_Type_Manual = "manual"
+)
+
+// NewProjectConfigPatchRequestProjectConfigManualProperty : Instantiate ProjectConfigPatchRequestProjectConfigManualProperty (Generic Model Constructor)
+func (*ProjectV1) NewProjectConfigPatchRequestProjectConfigManualProperty(typeVar string) (_model *ProjectConfigPatchRequestProjectConfigManualProperty, err error) {
+	_model = &ProjectConfigPatchRequestProjectConfigManualProperty{
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+func (*ProjectConfigPatchRequestProjectConfigManualProperty) isaProjectConfigPatchRequest() bool {
+	return true
+}
+
+// UnmarshalProjectConfigPatchRequestProjectConfigManualProperty unmarshals an instance of ProjectConfigPatchRequestProjectConfigManualProperty from the specified map of raw messages.
+func UnmarshalProjectConfigPatchRequestProjectConfigManualProperty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigPatchRequestProjectConfigManualProperty)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "external_resources_account", &obj.ExternalResourcesAccount)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate : The Schematics template property.
+// This model "extends" ProjectConfigPatchRequest
+type ProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate struct {
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The inputs of a Schematics template property.
+	Input []ProjectConfigInputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
+}
+
+func (*ProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate) isaProjectConfigPatchRequest() bool {
+	return true
+}
+
+// UnmarshalProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate unmarshals an instance of ProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate from the specified map of raw messages.
+func UnmarshalProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigPatchRequestProjectConfigPatchSchematicsTemplate)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalProjectConfigInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSettingCollection)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
 }
 
 //
