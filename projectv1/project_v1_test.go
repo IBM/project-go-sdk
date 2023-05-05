@@ -173,8 +173,8 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(createProjectPath))
 					Expect(req.Method).To(Equal("POST"))
-					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"testString"}))
-					Expect(req.URL.Query()["location"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"Default"}))
+					Expect(req.URL.Query()["location"]).To(Equal([]string{"us-south"}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -210,8 +210,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("testString")
-				createProjectOptionsModel.Location = core.StringPtr("testString")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
@@ -261,15 +261,15 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"testString"}))
-					Expect(req.URL.Query()["location"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"Default"}))
+					Expect(req.URL.Query()["location"]).To(Equal([]string{"us-south"}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -303,8 +303,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("testString")
-				createProjectOptionsModel.Location = core.StringPtr("testString")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
@@ -360,12 +360,12 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"testString"}))
-					Expect(req.URL.Query()["location"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"Default"}))
+					Expect(req.URL.Query()["location"]).To(Equal([]string{"us-south"}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -404,8 +404,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("testString")
-				createProjectOptionsModel.Location = core.StringPtr("testString")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
@@ -448,8 +448,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("testString")
-				createProjectOptionsModel.Location = core.StringPtr("testString")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
@@ -513,8 +513,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("testString")
-				createProjectOptionsModel.Location = core.StringPtr("testString")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
@@ -545,7 +545,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -563,7 +562,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
 				listProjectsOptionsModel.Start = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
-				listProjectsOptionsModel.Complete = core.BoolPtr(false)
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.ListProjects(listProjectsOptionsModel)
@@ -596,14 +594,13 @@ var _ = Describe(`ProjectV1`, func() {
 
 					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 1, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully with retries`, func() {
@@ -619,7 +616,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
 				listProjectsOptionsModel.Start = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
-				listProjectsOptionsModel.Complete = core.BoolPtr(false)
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -658,11 +654,10 @@ var _ = Describe(`ProjectV1`, func() {
 
 					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 1, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully`, func() {
@@ -683,7 +678,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
 				listProjectsOptionsModel.Start = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
-				listProjectsOptionsModel.Complete = core.BoolPtr(false)
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -705,7 +699,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
 				listProjectsOptionsModel.Start = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
-				listProjectsOptionsModel.Complete = core.BoolPtr(false)
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -741,7 +734,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
 				listProjectsOptionsModel.Start = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
-				listProjectsOptionsModel.Complete = core.BoolPtr(false)
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -790,9 +782,9 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"start":"1"},"projects":[{"id":"ID","name":"Name","description":"Description","metadata":{"crn":"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_err":"CumulativeNeedsAttentionViewErr","location":"Location","resource_group":"ResourceGroup","state":"State","event_notifications_crn":"EventNotificationsCrn"}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"next":{"start":"1"},"projects":[{"id":"ID","name":"Name","description":"Description","metadata":{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_err":"CumulativeNeedsAttentionViewErr","location":"Location","resource_group":"ResourceGroup","state":"State","event_notifications_crn":"EventNotificationsCrn"}}],"total_count":2,"limit":1}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"projects":[{"id":"ID","name":"Name","description":"Description","metadata":{"crn":"crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_err":"CumulativeNeedsAttentionViewErr","location":"Location","resource_group":"ResourceGroup","state":"State","event_notifications_crn":"EventNotificationsCrn"}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"projects":[{"id":"ID","name":"Name","description":"Description","metadata":{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_err":"CumulativeNeedsAttentionViewErr","location":"Location","resource_group":"ResourceGroup","state":"State","event_notifications_crn":"EventNotificationsCrn"}}],"total_count":2,"limit":1}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -808,7 +800,6 @@ var _ = Describe(`ProjectV1`, func() {
 
 				listProjectsOptionsModel := &projectv1.ListProjectsOptions{
 					Limit: core.Int64Ptr(int64(10)),
-					Complete: core.BoolPtr(false),
 				}
 
 				pager, err := projectService.NewProjectsPager(listProjectsOptionsModel)
@@ -834,7 +825,6 @@ var _ = Describe(`ProjectV1`, func() {
 
 				listProjectsOptionsModel := &projectv1.ListProjectsOptions{
 					Limit: core.Int64Ptr(int64(10)),
-					Complete: core.BoolPtr(false),
 				}
 
 				pager, err := projectService.NewProjectsPager(listProjectsOptionsModel)
@@ -858,8 +848,6 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(getProjectPath))
 					Expect(req.Method).To(Equal("GET"))
-					// TODO: Add check for exclude_configs query parameter
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -876,8 +864,6 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetProjectOptions model
 				getProjectOptionsModel := new(projectv1.GetProjectOptions)
 				getProjectOptionsModel.ID = core.StringPtr("testString")
-				getProjectOptionsModel.ExcludeConfigs = core.BoolPtr(false)
-				getProjectOptionsModel.Complete = core.BoolPtr(false)
 				getProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.GetProject(getProjectOptionsModel)
@@ -908,15 +894,13 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getProjectPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					// TODO: Add check for exclude_configs query parameter
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -931,8 +915,6 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetProjectOptions model
 				getProjectOptionsModel := new(projectv1.GetProjectOptions)
 				getProjectOptionsModel.ID = core.StringPtr("testString")
-				getProjectOptionsModel.ExcludeConfigs = core.BoolPtr(false)
-				getProjectOptionsModel.Complete = core.BoolPtr(false)
 				getProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -969,12 +951,10 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getProjectPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					// TODO: Add check for exclude_configs query parameter
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -994,8 +974,6 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetProjectOptions model
 				getProjectOptionsModel := new(projectv1.GetProjectOptions)
 				getProjectOptionsModel.ID = core.StringPtr("testString")
-				getProjectOptionsModel.ExcludeConfigs = core.BoolPtr(false)
-				getProjectOptionsModel.Complete = core.BoolPtr(false)
 				getProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1016,8 +994,6 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetProjectOptions model
 				getProjectOptionsModel := new(projectv1.GetProjectOptions)
 				getProjectOptionsModel.ID = core.StringPtr("testString")
-				getProjectOptionsModel.ExcludeConfigs = core.BoolPtr(false)
-				getProjectOptionsModel.Complete = core.BoolPtr(false)
 				getProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1059,8 +1035,6 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetProjectOptions model
 				getProjectOptionsModel := new(projectv1.GetProjectOptions)
 				getProjectOptionsModel.ID = core.StringPtr("testString")
-				getProjectOptionsModel.ExcludeConfigs = core.BoolPtr(false)
-				getProjectOptionsModel.Complete = core.BoolPtr(false)
 				getProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -1156,7 +1130,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully with retries`, func() {
@@ -1228,7 +1202,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:global:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully`, func() {
@@ -1741,7 +1715,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listConfigsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1759,7 +1732,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
 				listConfigsOptionsModel.Version = core.StringPtr("active")
-				listConfigsOptionsModel.Complete = core.BoolPtr(false)
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.ListConfigs(listConfigsOptionsModel)
@@ -1791,7 +1763,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -1814,7 +1785,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
 				listConfigsOptionsModel.Version = core.StringPtr("active")
-				listConfigsOptionsModel.Complete = core.BoolPtr(false)
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1852,7 +1822,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -1877,7 +1846,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
 				listConfigsOptionsModel.Version = core.StringPtr("active")
-				listConfigsOptionsModel.Complete = core.BoolPtr(false)
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1899,7 +1867,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
 				listConfigsOptionsModel.Version = core.StringPtr("active")
-				listConfigsOptionsModel.Complete = core.BoolPtr(false)
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1942,7 +1909,6 @@ var _ = Describe(`ProjectV1`, func() {
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
 				listConfigsOptionsModel.Version = core.StringPtr("active")
-				listConfigsOptionsModel.Complete = core.BoolPtr(false)
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -1969,7 +1935,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getConfigPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1988,7 +1953,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
 				getConfigOptionsModel.Version = core.StringPtr("active")
-				getConfigOptionsModel.Complete = core.BoolPtr(false)
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.GetConfig(getConfigOptionsModel)
@@ -2020,7 +1984,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -2044,7 +2007,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
 				getConfigOptionsModel.Version = core.StringPtr("active")
-				getConfigOptionsModel.Complete = core.BoolPtr(false)
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -2082,7 +2044,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2108,7 +2069,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
 				getConfigOptionsModel.Version = core.StringPtr("active")
-				getConfigOptionsModel.Complete = core.BoolPtr(false)
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -2131,7 +2091,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
 				getConfigOptionsModel.Version = core.StringPtr("active")
-				getConfigOptionsModel.Complete = core.BoolPtr(false)
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -2175,7 +2134,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
 				getConfigOptionsModel.Version = core.StringPtr("active")
-				getConfigOptionsModel.Complete = core.BoolPtr(false)
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -2201,7 +2159,6 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(updateConfigPath))
 					Expect(req.Method).To(Equal("PATCH"))
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -2239,7 +2196,6 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.ProjectConfig = projectConfigPatchRequestModel
-				updateConfigOptionsModel.Complete = core.BoolPtr(false)
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateConfig(updateConfigOptionsModel)
@@ -2286,7 +2242,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -2329,7 +2284,6 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.ProjectConfig = projectConfigPatchRequestModel
-				updateConfigOptionsModel.Complete = core.BoolPtr(false)
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -2382,7 +2336,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2427,7 +2380,6 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.ProjectConfig = projectConfigPatchRequestModel
-				updateConfigOptionsModel.Complete = core.BoolPtr(false)
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -2469,7 +2421,6 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.ProjectConfig = projectConfigPatchRequestModel
-				updateConfigOptionsModel.Complete = core.BoolPtr(false)
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -2532,7 +2483,6 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.ProjectConfig = projectConfigPatchRequestModel
-				updateConfigOptionsModel.Complete = core.BoolPtr(false)
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -3008,7 +2958,6 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(forceApprovePath))
 					Expect(req.Method).To(Equal("POST"))
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -3027,7 +2976,6 @@ var _ = Describe(`ProjectV1`, func() {
 				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
 				forceApproveOptionsModel.ID = core.StringPtr("testString")
 				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Complete = core.BoolPtr(false)
 				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
@@ -3074,7 +3022,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -3098,7 +3045,6 @@ var _ = Describe(`ProjectV1`, func() {
 				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
 				forceApproveOptionsModel.ID = core.StringPtr("testString")
 				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Complete = core.BoolPtr(false)
 				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -3151,7 +3097,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -3177,7 +3122,6 @@ var _ = Describe(`ProjectV1`, func() {
 				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
 				forceApproveOptionsModel.ID = core.StringPtr("testString")
 				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Complete = core.BoolPtr(false)
 				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -3200,7 +3144,6 @@ var _ = Describe(`ProjectV1`, func() {
 				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
 				forceApproveOptionsModel.ID = core.StringPtr("testString")
 				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Complete = core.BoolPtr(false)
 				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -3244,7 +3187,6 @@ var _ = Describe(`ProjectV1`, func() {
 				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
 				forceApproveOptionsModel.ID = core.StringPtr("testString")
 				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Complete = core.BoolPtr(false)
 				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -3270,7 +3212,6 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(approvePath))
 					Expect(req.Method).To(Equal("POST"))
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -3289,7 +3230,6 @@ var _ = Describe(`ProjectV1`, func() {
 				approveOptionsModel.ProjectID = core.StringPtr("testString")
 				approveOptionsModel.ID = core.StringPtr("testString")
 				approveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				approveOptionsModel.Complete = core.BoolPtr(false)
 				approveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.Approve(approveOptionsModel)
@@ -3336,7 +3276,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -3360,7 +3299,6 @@ var _ = Describe(`ProjectV1`, func() {
 				approveOptionsModel.ProjectID = core.StringPtr("testString")
 				approveOptionsModel.ID = core.StringPtr("testString")
 				approveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				approveOptionsModel.Complete = core.BoolPtr(false)
 				approveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -3413,7 +3351,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -3439,7 +3376,6 @@ var _ = Describe(`ProjectV1`, func() {
 				approveOptionsModel.ProjectID = core.StringPtr("testString")
 				approveOptionsModel.ID = core.StringPtr("testString")
 				approveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				approveOptionsModel.Complete = core.BoolPtr(false)
 				approveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -3462,7 +3398,6 @@ var _ = Describe(`ProjectV1`, func() {
 				approveOptionsModel.ProjectID = core.StringPtr("testString")
 				approveOptionsModel.ID = core.StringPtr("testString")
 				approveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				approveOptionsModel.Complete = core.BoolPtr(false)
 				approveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -3506,7 +3441,6 @@ var _ = Describe(`ProjectV1`, func() {
 				approveOptionsModel.ProjectID = core.StringPtr("testString")
 				approveOptionsModel.ID = core.StringPtr("testString")
 				approveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				approveOptionsModel.Complete = core.BoolPtr(false)
 				approveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -3534,7 +3468,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
 					Expect(req.Header["X-Auth-Refresh-Token"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
-					// TODO: Add check for complete query parameter
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
@@ -3554,7 +3487,6 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Complete = core.BoolPtr(false)
 				checkConfigOptionsModel.Version = core.StringPtr("active")
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -3588,7 +3520,6 @@ var _ = Describe(`ProjectV1`, func() {
 
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
 					Expect(req.Header["X-Auth-Refresh-Token"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
-					// TODO: Add check for complete query parameter
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
@@ -3613,7 +3544,6 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Complete = core.BoolPtr(false)
 				checkConfigOptionsModel.Version = core.StringPtr("active")
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3653,7 +3583,6 @@ var _ = Describe(`ProjectV1`, func() {
 
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
 					Expect(req.Header["X-Auth-Refresh-Token"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
-					// TODO: Add check for complete query parameter
 					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
@@ -3680,7 +3609,6 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Complete = core.BoolPtr(false)
 				checkConfigOptionsModel.Version = core.StringPtr("active")
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3704,7 +3632,6 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Complete = core.BoolPtr(false)
 				checkConfigOptionsModel.Version = core.StringPtr("active")
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -3749,7 +3676,6 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Complete = core.BoolPtr(false)
 				checkConfigOptionsModel.Version = core.StringPtr("active")
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3776,7 +3702,6 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(installConfigPath))
 					Expect(req.Method).To(Equal("POST"))
-					// TODO: Add check for complete query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -3794,7 +3719,6 @@ var _ = Describe(`ProjectV1`, func() {
 				installConfigOptionsModel := new(projectv1.InstallConfigOptions)
 				installConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				installConfigOptionsModel.ID = core.StringPtr("testString")
-				installConfigOptionsModel.Complete = core.BoolPtr(false)
 				installConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.InstallConfig(installConfigOptionsModel)
@@ -3825,7 +3749,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(installConfigPath))
 					Expect(req.Method).To(Equal("POST"))
 
-					// TODO: Add check for complete query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -3848,7 +3771,6 @@ var _ = Describe(`ProjectV1`, func() {
 				installConfigOptionsModel := new(projectv1.InstallConfigOptions)
 				installConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				installConfigOptionsModel.ID = core.StringPtr("testString")
-				installConfigOptionsModel.Complete = core.BoolPtr(false)
 				installConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -3885,7 +3807,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(installConfigPath))
 					Expect(req.Method).To(Equal("POST"))
 
-					// TODO: Add check for complete query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
@@ -3910,7 +3831,6 @@ var _ = Describe(`ProjectV1`, func() {
 				installConfigOptionsModel := new(projectv1.InstallConfigOptions)
 				installConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				installConfigOptionsModel.ID = core.StringPtr("testString")
-				installConfigOptionsModel.Complete = core.BoolPtr(false)
 				installConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -3932,7 +3852,6 @@ var _ = Describe(`ProjectV1`, func() {
 				installConfigOptionsModel := new(projectv1.InstallConfigOptions)
 				installConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				installConfigOptionsModel.ID = core.StringPtr("testString")
-				installConfigOptionsModel.Complete = core.BoolPtr(false)
 				installConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -3975,7 +3894,6 @@ var _ = Describe(`ProjectV1`, func() {
 				installConfigOptionsModel := new(projectv1.InstallConfigOptions)
 				installConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				installConfigOptionsModel.ID = core.StringPtr("testString")
-				installConfigOptionsModel.Complete = core.BoolPtr(false)
 				installConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -6046,13 +5964,11 @@ var _ = Describe(`ProjectV1`, func() {
 				approveOptionsModel.SetProjectID("testString")
 				approveOptionsModel.SetID("testString")
 				approveOptionsModel.SetComment("Approving the changes")
-				approveOptionsModel.SetComplete(false)
 				approveOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(approveOptionsModel).ToNot(BeNil())
 				Expect(approveOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(approveOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(approveOptionsModel.Comment).To(Equal(core.StringPtr("Approving the changes")))
-				Expect(approveOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(approveOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCheckConfigOptions successfully`, func() {
@@ -6063,14 +5979,12 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.SetProjectID("testString")
 				checkConfigOptionsModel.SetID("testString")
 				checkConfigOptionsModel.SetXAuthRefreshToken("testString")
-				checkConfigOptionsModel.SetComplete(false)
 				checkConfigOptionsModel.SetVersion("active")
 				checkConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(checkConfigOptionsModel).ToNot(BeNil())
 				Expect(checkConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(checkConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(checkConfigOptionsModel.XAuthRefreshToken).To(Equal(core.StringPtr("testString")))
-				Expect(checkConfigOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(checkConfigOptionsModel.Version).To(Equal(core.StringPtr("active")))
 				Expect(checkConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -6152,19 +6066,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigPrototypeModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
 
 				// Construct an instance of the CreateProjectOptions model
-				resourceGroup := "testString"
-				location := "testString"
+				resourceGroup := "Default"
+				location := "us-south"
 				createProjectOptionsName := "acme-microservice"
 				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location, createProjectOptionsName)
-				createProjectOptionsModel.SetResourceGroup("testString")
-				createProjectOptionsModel.SetLocation("testString")
+				createProjectOptionsModel.SetResourceGroup("Default")
+				createProjectOptionsModel.SetLocation("us-south")
 				createProjectOptionsModel.SetName("acme-microservice")
 				createProjectOptionsModel.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 				createProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createProjectOptionsModel).ToNot(BeNil())
-				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("testString")))
-				Expect(createProjectOptionsModel.Location).To(Equal(core.StringPtr("testString")))
+				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
+				Expect(createProjectOptionsModel.Location).To(Equal(core.StringPtr("us-south")))
 				Expect(createProjectOptionsModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(createProjectOptionsModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
 				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}))
@@ -6217,13 +6131,11 @@ var _ = Describe(`ProjectV1`, func() {
 				forceApproveOptionsModel.SetProjectID("testString")
 				forceApproveOptionsModel.SetID("testString")
 				forceApproveOptionsModel.SetComment("Approving the changes")
-				forceApproveOptionsModel.SetComplete(false)
 				forceApproveOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(forceApproveOptionsModel).ToNot(BeNil())
 				Expect(forceApproveOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(forceApproveOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(forceApproveOptionsModel.Comment).To(Equal(core.StringPtr("Approving the changes")))
-				Expect(forceApproveOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(forceApproveOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetConfigDiffOptions successfully`, func() {
@@ -6247,13 +6159,11 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel.SetProjectID("testString")
 				getConfigOptionsModel.SetID("testString")
 				getConfigOptionsModel.SetVersion("active")
-				getConfigOptionsModel.SetComplete(false)
 				getConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getConfigOptionsModel).ToNot(BeNil())
 				Expect(getConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(getConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(getConfigOptionsModel.Version).To(Equal(core.StringPtr("active")))
-				Expect(getConfigOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(getConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetCostEstimateOptions successfully`, func() {
@@ -6296,13 +6206,9 @@ var _ = Describe(`ProjectV1`, func() {
 				id := "testString"
 				getProjectOptionsModel := projectService.NewGetProjectOptions(id)
 				getProjectOptionsModel.SetID("testString")
-				getProjectOptionsModel.SetExcludeConfigs(false)
-				getProjectOptionsModel.SetComplete(false)
 				getProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getProjectOptionsModel).ToNot(BeNil())
 				Expect(getProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(getProjectOptionsModel.ExcludeConfigs).To(Equal(core.BoolPtr(false)))
-				Expect(getProjectOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(getProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetSchematicsJobOptions successfully`, func() {
@@ -6330,12 +6236,10 @@ var _ = Describe(`ProjectV1`, func() {
 				installConfigOptionsModel := projectService.NewInstallConfigOptions(projectID, id)
 				installConfigOptionsModel.SetProjectID("testString")
 				installConfigOptionsModel.SetID("testString")
-				installConfigOptionsModel.SetComplete(false)
 				installConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(installConfigOptionsModel).ToNot(BeNil())
 				Expect(installConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(installConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(installConfigOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(installConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListConfigsOptions successfully`, func() {
@@ -6344,12 +6248,10 @@ var _ = Describe(`ProjectV1`, func() {
 				listConfigsOptionsModel := projectService.NewListConfigsOptions(projectID)
 				listConfigsOptionsModel.SetProjectID("testString")
 				listConfigsOptionsModel.SetVersion("active")
-				listConfigsOptionsModel.SetComplete(false)
 				listConfigsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listConfigsOptionsModel).ToNot(BeNil())
 				Expect(listConfigsOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(listConfigsOptionsModel.Version).To(Equal(core.StringPtr("active")))
-				Expect(listConfigsOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(listConfigsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListProjectsOptions successfully`, func() {
@@ -6357,12 +6259,10 @@ var _ = Describe(`ProjectV1`, func() {
 				listProjectsOptionsModel := projectService.NewListProjectsOptions()
 				listProjectsOptionsModel.SetStart("testString")
 				listProjectsOptionsModel.SetLimit(int64(10))
-				listProjectsOptionsModel.SetComplete(false)
 				listProjectsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listProjectsOptionsModel).ToNot(BeNil())
 				Expect(listProjectsOptionsModel.Start).To(Equal(core.StringPtr("testString")))
 				Expect(listProjectsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
-				Expect(listProjectsOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(listProjectsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewNotificationEvent successfully`, func() {
@@ -6499,13 +6399,11 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.SetProjectID("testString")
 				updateConfigOptionsModel.SetID("testString")
 				updateConfigOptionsModel.SetProjectConfig(projectConfigPatchRequestModel)
-				updateConfigOptionsModel.SetComplete(false)
 				updateConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateConfigOptionsModel).ToNot(BeNil())
 				Expect(updateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ProjectConfig).To(Equal(projectConfigPatchRequestModel))
-				Expect(updateConfigOptionsModel.Complete).To(Equal(core.BoolPtr(false)))
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateProjectOptions successfully`, func() {
