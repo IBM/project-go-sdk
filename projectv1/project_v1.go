@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.70.0-7df966bf-20230419-195904
+ * IBM OpenAPI SDK Code Generator Version: 3.71.0-316eb5da-20230504-195406
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -274,9 +274,6 @@ func (project *ProjectV1) ListProjectsWithContext(ctx context.Context, listProje
 	if listProjectsOptions.Limit != nil {
 		builder.AddQuery("limit", fmt.Sprint(*listProjectsOptions.Limit))
 	}
-	if listProjectsOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*listProjectsOptions.Complete))
-	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -337,13 +334,6 @@ func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectO
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-
-	if getProjectOptions.ExcludeConfigs != nil {
-		builder.AddQuery("exclude_configs", fmt.Sprint(*getProjectOptions.ExcludeConfigs))
-	}
-	if getProjectOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*getProjectOptions.Complete))
-	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -621,9 +611,6 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 	if listConfigsOptions.Version != nil {
 		builder.AddQuery("version", fmt.Sprint(*listConfigsOptions.Version))
 	}
-	if listConfigsOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*listConfigsOptions.Complete))
-	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -689,9 +676,6 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 	if getConfigOptions.Version != nil {
 		builder.AddQuery("version", fmt.Sprint(*getConfigOptions.Version))
 	}
-	if getConfigOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*getConfigOptions.Complete))
-	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -755,10 +739,6 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
 
-	if updateConfigOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*updateConfigOptions.Complete))
-	}
-
 	_, err = builder.SetBodyContentJSON(updateConfigOptions.ProjectConfig)
 	if err != nil {
 		return
@@ -787,7 +767,7 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 
 // DeleteConfig : Delete a configuration in a project by ID
 // Delete a configuration in a project. Deleting the configuration will also destroy all the resources deployed by the
-// configuration if the query parameter destroy is specified.
+// configuration if the query parameter `destroy` is specified.
 func (project *ProjectV1) DeleteConfig(deleteConfigOptions *DeleteConfigOptions) (result *ProjectConfigDelete, response *core.DetailedResponse, err error) {
 	return project.DeleteConfigWithContext(context.Background(), deleteConfigOptions)
 }
@@ -957,10 +937,6 @@ func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceAppr
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
 
-	if forceApproveOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*forceApproveOptions.Complete))
-	}
-
 	body := make(map[string]interface{})
 	if forceApproveOptions.Comment != nil {
 		body["comment"] = forceApproveOptions.Comment
@@ -1031,10 +1007,6 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-
-	if approveOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*approveOptions.Complete))
-	}
 
 	body := make(map[string]interface{})
 	if approveOptions.Comment != nil {
@@ -1110,9 +1082,6 @@ func (project *ProjectV1) CheckConfigWithContext(ctx context.Context, checkConfi
 		builder.AddHeader("X-Auth-Refresh-Token", fmt.Sprint(*checkConfigOptions.XAuthRefreshToken))
 	}
 
-	if checkConfigOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*checkConfigOptions.Complete))
-	}
 	if checkConfigOptions.Version != nil {
 		builder.AddQuery("version", fmt.Sprint(*checkConfigOptions.Version))
 	}
@@ -1178,10 +1147,6 @@ func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installC
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-
-	if installConfigOptions.Complete != nil {
-		builder.AddQuery("complete", fmt.Sprint(*installConfigOptions.Complete))
-	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -1858,14 +1823,11 @@ type ApproveOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Notes on the project draft action.
 	Comment *string `json:"comment,omitempty"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -1897,12 +1859,6 @@ func (_options *ApproveOptions) SetComment(comment string) *ApproveOptions {
 	return _options
 }
 
-// SetComplete : Allow user to set Complete
-func (_options *ApproveOptions) SetComplete(complete bool) *ApproveOptions {
-	_options.Complete = core.BoolPtr(complete)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *ApproveOptions) SetHeaders(param map[string]string) *ApproveOptions {
 	options.Headers = param
@@ -1914,14 +1870,11 @@ type CheckConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The IAM refresh token.
 	XAuthRefreshToken *string `json:"X-Auth-Refresh-Token,omitempty"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// The version of the configuration that the validation check should trigger against.
 	Version *string `json:"version,omitempty"`
@@ -1953,12 +1906,6 @@ func (_options *CheckConfigOptions) SetID(id string) *CheckConfigOptions {
 // SetXAuthRefreshToken : Allow user to set XAuthRefreshToken
 func (_options *CheckConfigOptions) SetXAuthRefreshToken(xAuthRefreshToken string) *CheckConfigOptions {
 	_options.XAuthRefreshToken = core.StringPtr(xAuthRefreshToken)
-	return _options
-}
-
-// SetComplete : Allow user to set Complete
-func (_options *CheckConfigOptions) SetComplete(complete bool) *CheckConfigOptions {
-	_options.Complete = core.BoolPtr(complete)
 	return _options
 }
 
@@ -2237,7 +2184,7 @@ type DeleteConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The flag to determine if only the draft version should be deleted.
@@ -2290,7 +2237,7 @@ func (options *DeleteConfigOptions) SetHeaders(param map[string]string) *DeleteC
 
 // DeleteEventNotificationsIntegrationOptions : The DeleteEventNotificationsIntegration options.
 type DeleteEventNotificationsIntegrationOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -2318,7 +2265,7 @@ func (options *DeleteEventNotificationsIntegrationOptions) SetHeaders(param map[
 
 // DeleteProjectOptions : The DeleteProject options.
 type DeleteProjectOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The flag that indicates if the resources deployed by schematics should be destroyed.
@@ -2358,14 +2305,11 @@ type ForceApproveOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Notes on the project draft action.
 	Comment *string `json:"comment,omitempty"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2397,12 +2341,6 @@ func (_options *ForceApproveOptions) SetComment(comment string) *ForceApproveOpt
 	return _options
 }
 
-// SetComplete : Allow user to set Complete
-func (_options *ForceApproveOptions) SetComplete(complete bool) *ForceApproveOptions {
-	_options.Complete = core.BoolPtr(complete)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *ForceApproveOptions) SetHeaders(param map[string]string) *ForceApproveOptions {
 	options.Headers = param
@@ -2414,7 +2352,7 @@ type GetConfigDiffOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -2452,14 +2390,11 @@ type GetConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The version of the configuration to return.
 	Version *string `json:"version,omitempty"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2491,12 +2426,6 @@ func (_options *GetConfigOptions) SetVersion(version string) *GetConfigOptions {
 	return _options
 }
 
-// SetComplete : Allow user to set Complete
-func (_options *GetConfigOptions) SetComplete(complete bool) *GetConfigOptions {
-	_options.Complete = core.BoolPtr(complete)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetConfigOptions) SetHeaders(param map[string]string) *GetConfigOptions {
 	options.Headers = param
@@ -2508,7 +2437,7 @@ type GetCostEstimateOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The version of the configuration that the cost estimate will fetch.
@@ -2552,7 +2481,7 @@ func (options *GetCostEstimateOptions) SetHeaders(param map[string]string) *GetC
 
 // GetEventNotificationsIntegrationOptions : The GetEventNotificationsIntegration options.
 type GetEventNotificationsIntegrationOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -2580,7 +2509,7 @@ func (options *GetEventNotificationsIntegrationOptions) SetHeaders(param map[str
 
 // GetNotificationsOptions : The GetNotifications options.
 type GetNotificationsOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -2608,14 +2537,8 @@ func (options *GetNotificationsOptions) SetHeaders(param map[string]string) *Get
 
 // GetProjectOptions : The GetProject options.
 type GetProjectOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
-
-	// When set to true, exclude_configs returns only active configurations. Draft configurations are not returned.
-	ExcludeConfigs *bool `json:"exclude_configs,omitempty"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2634,18 +2557,6 @@ func (_options *GetProjectOptions) SetID(id string) *GetProjectOptions {
 	return _options
 }
 
-// SetExcludeConfigs : Allow user to set ExcludeConfigs
-func (_options *GetProjectOptions) SetExcludeConfigs(excludeConfigs bool) *GetProjectOptions {
-	_options.ExcludeConfigs = core.BoolPtr(excludeConfigs)
-	return _options
-}
-
-// SetComplete : Allow user to set Complete
-func (_options *GetProjectOptions) SetComplete(complete bool) *GetProjectOptions {
-	_options.Complete = core.BoolPtr(complete)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetProjectOptions) SetHeaders(param map[string]string) *GetProjectOptions {
 	options.Headers = param
@@ -2657,7 +2568,7 @@ type GetSchematicsJobOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The triggered action.
@@ -2773,11 +2684,8 @@ type InstallConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2803,12 +2711,6 @@ func (_options *InstallConfigOptions) SetID(id string) *InstallConfigOptions {
 	return _options
 }
 
-// SetComplete : Allow user to set Complete
-func (_options *InstallConfigOptions) SetComplete(complete bool) *InstallConfigOptions {
-	_options.Complete = core.BoolPtr(complete)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *InstallConfigOptions) SetHeaders(param map[string]string) *InstallConfigOptions {
 	options.Headers = param
@@ -2822,9 +2724,6 @@ type ListConfigsOptions struct {
 
 	// The version of configuration to return.
 	Version *string `json:"version,omitempty"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2857,12 +2756,6 @@ func (_options *ListConfigsOptions) SetVersion(version string) *ListConfigsOptio
 	return _options
 }
 
-// SetComplete : Allow user to set Complete
-func (_options *ListConfigsOptions) SetComplete(complete bool) *ListConfigsOptions {
-	_options.Complete = core.BoolPtr(complete)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *ListConfigsOptions) SetHeaders(param map[string]string) *ListConfigsOptions {
 	options.Headers = param
@@ -2878,9 +2771,6 @@ type ListProjectsOptions struct {
 	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
 	// exception of the last page.
 	Limit *int64 `json:"limit,omitempty"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2900,12 +2790,6 @@ func (_options *ListProjectsOptions) SetStart(start string) *ListProjectsOptions
 // SetLimit : Allow user to set Limit
 func (_options *ListProjectsOptions) SetLimit(limit int64) *ListProjectsOptions {
 	_options.Limit = core.Int64Ptr(limit)
-	return _options
-}
-
-// SetComplete : Allow user to set Complete
-func (_options *ListProjectsOptions) SetComplete(complete bool) *ListProjectsOptions {
-	_options.Complete = core.BoolPtr(complete)
 	return _options
 }
 
@@ -3386,7 +3270,7 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 
 // PostCrnTokenOptions : The PostCrnToken options.
 type PostCrnTokenOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -3414,7 +3298,7 @@ func (options *PostCrnTokenOptions) SetHeaders(param map[string]string) *PostCrn
 
 // PostEventNotificationsIntegrationOptions : The PostEventNotificationsIntegration options.
 type PostEventNotificationsIntegrationOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// A CRN of the instance of the event.
@@ -3479,7 +3363,7 @@ func (options *PostEventNotificationsIntegrationOptions) SetHeaders(param map[st
 
 // PostNotificationOptions : The PostNotification options.
 type PostNotificationOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Collection of the notification events to post.
@@ -3516,7 +3400,7 @@ func (options *PostNotificationOptions) SetHeaders(param map[string]string) *Pos
 
 // PostTestEventNotificationOptions : The PostTestEventNotification options.
 type PostTestEventNotificationOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The IBM default long message for the instance of an event.
@@ -4278,7 +4162,7 @@ type UninstallConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -4316,14 +4200,11 @@ type UpdateConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique identifier.
+	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The change delta of the project configuration to update.
 	ProjectConfig ProjectConfigPatchRequestIntf `json:"project_config" validate:"required"`
-
-	// Determines whether the metadata should be returned. Only the metadata for the project is returned.
-	Complete *bool `json:"complete,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -4356,12 +4237,6 @@ func (_options *UpdateConfigOptions) SetProjectConfig(projectConfig ProjectConfi
 	return _options
 }
 
-// SetComplete : Allow user to set Complete
-func (_options *UpdateConfigOptions) SetComplete(complete bool) *UpdateConfigOptions {
-	_options.Complete = core.BoolPtr(complete)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateConfigOptions {
 	options.Headers = param
@@ -4370,7 +4245,7 @@ func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateC
 
 // UpdateProjectOptions : The UpdateProject options.
 type UpdateProjectOptions struct {
-	// The unique identifier.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The project name.

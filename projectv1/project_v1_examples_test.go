@@ -116,8 +116,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			createProjectOptions := projectService.NewCreateProjectOptions(
-				"testString",
-				"testString",
+				"Default",
+				"us-south",
 				"acme-microservice",
 			)
 			createProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
@@ -154,7 +154,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			createConfigOptions := projectService.NewCreateConfigOptions(
-				"testString",
+				projectIdLink,
 				"env-stage",
 				"1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global",
 			)
@@ -184,7 +184,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-list_projects
 			listProjectsOptions := &projectv1.ListProjectsOptions{
 				Limit: core.Int64Ptr(int64(10)),
-				Complete: core.BoolPtr(false),
 			}
 
 			pager, err := projectService.NewProjectsPager(listProjectsOptions)
@@ -230,7 +229,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-update_project
 
 			updateProjectOptions := projectService.NewUpdateProjectOptions(
-				"testString",
+				projectIdLink,
 			)
 			updateProjectOptions.SetName("acme-microservice")
 			updateProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
@@ -253,7 +252,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-list_configs
 
 			listConfigsOptions := projectService.NewListConfigsOptions(
-				"testString",
+				projectIdLink,
 			)
 
 			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
@@ -274,7 +273,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_config
 
 			getConfigOptions := projectService.NewGetConfigOptions(
-				"testString",
+				projectIdLink,
 				configIdLink,
 			)
 
@@ -305,8 +304,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 				projectConfigPatchRequestModel,
 			)
 
@@ -328,8 +327,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_config_diff
 
 			getConfigDiffOptions := projectService.NewGetConfigDiffOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 
 			projectConfigDiff, response, err := projectService.GetConfigDiff(getConfigDiffOptions)
@@ -350,8 +349,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-force_approve
 
 			forceApproveOptions := projectService.NewForceApproveOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 			forceApproveOptions.SetComment("Approving the changes")
 
@@ -373,8 +372,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-approve
 
 			approveOptions := projectService.NewApproveOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 			approveOptions.SetComment("Approving the changes")
 
@@ -396,8 +395,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-check_config
 
 			checkConfigOptions := projectService.NewCheckConfigOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 
 			projectConfig, response, err := projectService.CheckConfig(checkConfigOptions)
@@ -418,8 +417,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-install_config
 
 			installConfigOptions := projectService.NewInstallConfigOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 
 			projectConfig, response, err := projectService.InstallConfig(installConfigOptions)
@@ -439,8 +438,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-uninstall_config
 
 			uninstallConfigOptions := projectService.NewUninstallConfigOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 
 			response, err := projectService.UninstallConfig(uninstallConfigOptions)
@@ -461,8 +460,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_schematics_job
 
 			getSchematicsJobOptions := projectService.NewGetSchematicsJobOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 				"plan",
 			)
 
@@ -484,8 +483,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_cost_estimate
 
 			getCostEstimateOptions := projectService.NewGetCostEstimateOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 
 			costEstimate, response, err := projectService.GetCostEstimate(getCostEstimateOptions)
@@ -506,7 +505,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-post_crn_token
 
 			postCrnTokenOptions := projectService.NewPostCrnTokenOptions(
-				"testString",
+				projectIdLink,
 			)
 
 			projectCrnTokenResponse, response, err := projectService.PostCrnToken(postCrnTokenOptions)
@@ -535,7 +534,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			postNotificationOptions := projectService.NewPostNotificationOptions(
-				"testString",
+				projectIdLink,
 			)
 			postNotificationOptions.SetNotifications([]projectv1.NotificationEvent{*notificationEventModel})
 
@@ -557,7 +556,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_notifications
 
 			getNotificationsOptions := projectService.NewGetNotificationsOptions(
-				"testString",
+				projectIdLink,
 			)
 
 			notificationsGetResponse, response, err := projectService.GetNotifications(getNotificationsOptions)
@@ -578,7 +577,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-post_event_notifications_integration
 
 			postEventNotificationsIntegrationOptions := projectService.NewPostEventNotificationsIntegrationOptions(
-				"testString",
+				projectIdLink,
 				"CRN of event notifications instance",
 			)
 			postEventNotificationsIntegrationOptions.SetDescription("A sample project source.")
@@ -603,7 +602,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_event_notifications_integration
 
 			getEventNotificationsIntegrationOptions := projectService.NewGetEventNotificationsIntegrationOptions(
-				"testString",
+				projectIdLink,
 			)
 
 			notificationsIntegrationGetResponse, response, err := projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptions)
@@ -624,7 +623,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-post_test_event_notification
 
 			postTestEventNotificationOptions := projectService.NewPostTestEventNotificationOptions(
-				"testString",
+				projectIdLink,
 			)
 			postTestEventNotificationOptions.SetIbmendefaultlong("long test notification message")
 			postTestEventNotificationOptions.SetIbmendefaultshort("Test notification")
@@ -642,33 +641,13 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(notificationsIntegrationTestPostResponse).ToNot(BeNil())
 		})
-		It(`DeleteProject request example`, func() {
-			// begin-delete_project
-
-			deleteProjectOptions := projectService.NewDeleteProjectOptions(
-				"testString",
-			)
-
-			response, err := projectService.DeleteProject(deleteProjectOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteProject(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_project
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
 		It(`DeleteConfig request example`, func() {
 			fmt.Println("\nDeleteConfig() result:")
 			// begin-delete_config
 
 			deleteConfigOptions := projectService.NewDeleteConfigOptions(
-				"testString",
-				"testString",
+				projectIdLink,
+				configIdLink,
 			)
 
 			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)
@@ -688,7 +667,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-delete_event_notifications_integration
 
 			deleteEventNotificationsIntegrationOptions := projectService.NewDeleteEventNotificationsIntegrationOptions(
-				"testString",
+				projectIdLink,
 			)
 
 			response, err := projectService.DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptions)
@@ -700,6 +679,26 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			// end-delete_event_notifications_integration
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteProject request example`, func() {
+			// begin-delete_project
+
+			deleteProjectOptions := projectService.NewDeleteProjectOptions(
+				projectIdLink,
+			)
+
+			response, err := projectService.DeleteProject(deleteProjectOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteProject(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
