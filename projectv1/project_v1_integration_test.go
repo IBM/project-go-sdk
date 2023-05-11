@@ -343,7 +343,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`CheckConfig - Run a validation check `, func() {
+	Describe(`CheckConfig - Run a validation check`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
