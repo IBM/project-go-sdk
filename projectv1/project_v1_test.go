@@ -188,6 +188,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("testString")
@@ -204,6 +215,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{"testString"}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -269,7 +281,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -280,6 +292,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
@@ -297,6 +320,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{"testString"}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -365,7 +389,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -381,6 +405,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
@@ -398,6 +433,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{"testString"}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -426,6 +462,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("testString")
@@ -442,6 +489,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{"testString"}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -491,6 +539,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("testString")
@@ -507,6 +566,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{"testString"}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -600,7 +660,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 1, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully with retries`, func() {
@@ -657,7 +717,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 1, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"id": "ID", "name": "Name", "description": "Description", "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully`, func() {
@@ -900,7 +960,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -954,7 +1014,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1039,260 +1099,6 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Invoke operation
 				result, response, operationErr := projectService.GetProject(getProjectOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`UpdateProject(updateProjectOptions *UpdateProjectOptions) - Operation response error`, func() {
-		updateProjectPath := "/v1/projects/testString"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(updateProjectPath))
-					Expect(req.Method).To(Equal("PATCH"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke UpdateProject with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
-		updateProjectPath := "/v1/projects/testString"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(updateProjectPath))
-					Expect(req.Method).To(Equal("PATCH"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
-				}))
-			})
-			It(`Invoke UpdateProject successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.UpdateProjectWithContext(ctx, updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.UpdateProjectWithContext(ctx, updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(updateProjectPath))
-					Expect(req.Method).To(Equal("PATCH"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
-				}))
-			})
-			It(`Invoke UpdateProject successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.UpdateProject(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke UpdateProject with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the UpdateProjectOptions model with no property values
-				updateProjectOptionsModelNew := new(projectv1.UpdateProjectOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.UpdateProject(updateProjectOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke UpdateProject successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -1398,6 +1204,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
@@ -1416,6 +1233,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ID = core.StringPtr("testString")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -1470,7 +1288,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully with retries`, func() {
@@ -1481,6 +1299,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
@@ -1500,6 +1329,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ID = core.StringPtr("testString")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -1557,7 +1387,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully`, func() {
@@ -1573,6 +1403,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
@@ -1592,6 +1433,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ID = core.StringPtr("testString")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -1611,6 +1453,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
@@ -1629,6 +1482,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ID = core.StringPtr("testString")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -1669,6 +1523,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
@@ -1687,6 +1552,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ID = core.StringPtr("testString")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -1769,7 +1635,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully with retries`, func() {
@@ -1825,7 +1691,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully`, func() {
@@ -1990,7 +1856,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully with retries`, func() {
@@ -2047,7 +1913,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully`, func() {
@@ -2248,7 +2114,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully with retries`, func() {
@@ -2339,7 +2205,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully`, func() {
@@ -2731,477 +2597,6 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 	})
-	Describe(`GetConfigDiff(getConfigDiffOptions *GetConfigDiffOptions) - Operation response error`, func() {
-		getConfigDiffPath := "/v1/projects/testString/configs/testString/diff"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getConfigDiffPath))
-					Expect(req.Method).To(Equal("GET"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke GetConfigDiff with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetConfigDiffOptions model
-				getConfigDiffOptionsModel := new(projectv1.GetConfigDiffOptions)
-				getConfigDiffOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.ID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.GetConfigDiff(getConfigDiffOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.GetConfigDiff(getConfigDiffOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetConfigDiff(getConfigDiffOptions *GetConfigDiffOptions)`, func() {
-		getConfigDiffPath := "/v1/projects/testString/configs/testString/diff"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getConfigDiffPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"added": {"input": [{"name": "Name", "type": "array", "value": "anyValue"}]}, "changed": {"input": [{"name": "Name", "type": "array", "value": "anyValue"}]}, "removed": {"input": [{"name": "Name", "type": "array", "value": "anyValue"}]}}`)
-				}))
-			})
-			It(`Invoke GetConfigDiff successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the GetConfigDiffOptions model
-				getConfigDiffOptionsModel := new(projectv1.GetConfigDiffOptions)
-				getConfigDiffOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.ID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.GetConfigDiffWithContext(ctx, getConfigDiffOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.GetConfigDiff(getConfigDiffOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.GetConfigDiffWithContext(ctx, getConfigDiffOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getConfigDiffPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"added": {"input": [{"name": "Name", "type": "array", "value": "anyValue"}]}, "changed": {"input": [{"name": "Name", "type": "array", "value": "anyValue"}]}, "removed": {"input": [{"name": "Name", "type": "array", "value": "anyValue"}]}}`)
-				}))
-			})
-			It(`Invoke GetConfigDiff successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.GetConfigDiff(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the GetConfigDiffOptions model
-				getConfigDiffOptionsModel := new(projectv1.GetConfigDiffOptions)
-				getConfigDiffOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.ID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.GetConfigDiff(getConfigDiffOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke GetConfigDiff with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetConfigDiffOptions model
-				getConfigDiffOptionsModel := new(projectv1.GetConfigDiffOptions)
-				getConfigDiffOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.ID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.GetConfigDiff(getConfigDiffOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the GetConfigDiffOptions model with no property values
-				getConfigDiffOptionsModelNew := new(projectv1.GetConfigDiffOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.GetConfigDiff(getConfigDiffOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke GetConfigDiff successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetConfigDiffOptions model
-				getConfigDiffOptionsModel := new(projectv1.GetConfigDiffOptions)
-				getConfigDiffOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.ID = core.StringPtr("testString")
-				getConfigDiffOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.GetConfigDiff(getConfigDiffOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`ForceApprove(forceApproveOptions *ForceApproveOptions) - Operation response error`, func() {
-		forceApprovePath := "/v1/projects/testString/configs/testString/force_approve"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(forceApprovePath))
-					Expect(req.Method).To(Equal("POST"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke ForceApprove with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`ForceApprove(forceApproveOptions *ForceApproveOptions)`, func() {
-		forceApprovePath := "/v1/projects/testString/configs/testString/force_approve"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(forceApprovePath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
-				}))
-			})
-			It(`Invoke ForceApprove successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.ForceApproveWithContext(ctx, forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.ForceApproveWithContext(ctx, forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(forceApprovePath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
-				}))
-			})
-			It(`Invoke ForceApprove successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.ForceApprove(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke ForceApprove with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the ForceApproveOptions model with no property values
-				forceApproveOptionsModelNew := new(projectv1.ForceApproveOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.ForceApprove(forceApproveOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(201)
-				}))
-			})
-			It(`Invoke ForceApprove successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`Approve(approveOptions *ApproveOptions) - Operation response error`, func() {
 		approvePath := "/v1/projects/testString/configs/testString/approve"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
@@ -3282,7 +2677,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke Approve successfully with retries`, func() {
@@ -3354,7 +2749,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke Approve successfully`, func() {
@@ -3527,7 +2922,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CheckConfig successfully with retries`, func() {
@@ -3587,7 +2982,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CheckConfig successfully`, func() {
@@ -3755,7 +3150,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully with retries`, func() {
@@ -3810,7 +3205,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully`, func() {
@@ -3979,1977 +3374,6 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 	})
-	Describe(`GetSchematicsJob(getSchematicsJobOptions *GetSchematicsJobOptions) - Operation response error`, func() {
-		getSchematicsJobPath := "/v1/projects/testString/configs/testString/job/plan"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getSchematicsJobPath))
-					Expect(req.Method).To(Equal("GET"))
-					Expect(req.URL.Query()["since"]).To(Equal([]string{fmt.Sprint(int64(38))}))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke GetSchematicsJob with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetSchematicsJobOptions model
-				getSchematicsJobOptionsModel := new(projectv1.GetSchematicsJobOptions)
-				getSchematicsJobOptionsModel.ProjectID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.ID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.Action = core.StringPtr("plan")
-				getSchematicsJobOptionsModel.Since = core.Int64Ptr(int64(38))
-				getSchematicsJobOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.GetSchematicsJob(getSchematicsJobOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.GetSchematicsJob(getSchematicsJobOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetSchematicsJob(getSchematicsJobOptions *GetSchematicsJobOptions)`, func() {
-		getSchematicsJobPath := "/v1/projects/testString/configs/testString/job/plan"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getSchematicsJobPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.URL.Query()["since"]).To(Equal([]string{fmt.Sprint(int64(38))}))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID"}`)
-				}))
-			})
-			It(`Invoke GetSchematicsJob successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the GetSchematicsJobOptions model
-				getSchematicsJobOptionsModel := new(projectv1.GetSchematicsJobOptions)
-				getSchematicsJobOptionsModel.ProjectID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.ID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.Action = core.StringPtr("plan")
-				getSchematicsJobOptionsModel.Since = core.Int64Ptr(int64(38))
-				getSchematicsJobOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.GetSchematicsJobWithContext(ctx, getSchematicsJobOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.GetSchematicsJob(getSchematicsJobOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.GetSchematicsJobWithContext(ctx, getSchematicsJobOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getSchematicsJobPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.URL.Query()["since"]).To(Equal([]string{fmt.Sprint(int64(38))}))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID"}`)
-				}))
-			})
-			It(`Invoke GetSchematicsJob successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.GetSchematicsJob(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the GetSchematicsJobOptions model
-				getSchematicsJobOptionsModel := new(projectv1.GetSchematicsJobOptions)
-				getSchematicsJobOptionsModel.ProjectID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.ID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.Action = core.StringPtr("plan")
-				getSchematicsJobOptionsModel.Since = core.Int64Ptr(int64(38))
-				getSchematicsJobOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.GetSchematicsJob(getSchematicsJobOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke GetSchematicsJob with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetSchematicsJobOptions model
-				getSchematicsJobOptionsModel := new(projectv1.GetSchematicsJobOptions)
-				getSchematicsJobOptionsModel.ProjectID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.ID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.Action = core.StringPtr("plan")
-				getSchematicsJobOptionsModel.Since = core.Int64Ptr(int64(38))
-				getSchematicsJobOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.GetSchematicsJob(getSchematicsJobOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the GetSchematicsJobOptions model with no property values
-				getSchematicsJobOptionsModelNew := new(projectv1.GetSchematicsJobOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.GetSchematicsJob(getSchematicsJobOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke GetSchematicsJob successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetSchematicsJobOptions model
-				getSchematicsJobOptionsModel := new(projectv1.GetSchematicsJobOptions)
-				getSchematicsJobOptionsModel.ProjectID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.ID = core.StringPtr("testString")
-				getSchematicsJobOptionsModel.Action = core.StringPtr("plan")
-				getSchematicsJobOptionsModel.Since = core.Int64Ptr(int64(38))
-				getSchematicsJobOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.GetSchematicsJob(getSchematicsJobOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetCostEstimate(getCostEstimateOptions *GetCostEstimateOptions) - Operation response error`, func() {
-		getCostEstimatePath := "/v1/projects/testString/configs/testString/cost_estimate"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getCostEstimatePath))
-					Expect(req.Method).To(Equal("GET"))
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke GetCostEstimate with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetCostEstimateOptions model
-				getCostEstimateOptionsModel := new(projectv1.GetCostEstimateOptions)
-				getCostEstimateOptionsModel.ProjectID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.ID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.Version = core.StringPtr("active")
-				getCostEstimateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.GetCostEstimate(getCostEstimateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.GetCostEstimate(getCostEstimateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetCostEstimate(getCostEstimateOptions *GetCostEstimateOptions)`, func() {
-		getCostEstimatePath := "/v1/projects/testString/configs/testString/cost_estimate"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getCostEstimatePath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke GetCostEstimate successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the GetCostEstimateOptions model
-				getCostEstimateOptionsModel := new(projectv1.GetCostEstimateOptions)
-				getCostEstimateOptionsModel.ProjectID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.ID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.Version = core.StringPtr("active")
-				getCostEstimateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.GetCostEstimateWithContext(ctx, getCostEstimateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.GetCostEstimate(getCostEstimateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.GetCostEstimateWithContext(ctx, getCostEstimateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getCostEstimatePath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke GetCostEstimate successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.GetCostEstimate(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the GetCostEstimateOptions model
-				getCostEstimateOptionsModel := new(projectv1.GetCostEstimateOptions)
-				getCostEstimateOptionsModel.ProjectID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.ID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.Version = core.StringPtr("active")
-				getCostEstimateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.GetCostEstimate(getCostEstimateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke GetCostEstimate with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetCostEstimateOptions model
-				getCostEstimateOptionsModel := new(projectv1.GetCostEstimateOptions)
-				getCostEstimateOptionsModel.ProjectID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.ID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.Version = core.StringPtr("active")
-				getCostEstimateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.GetCostEstimate(getCostEstimateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the GetCostEstimateOptions model with no property values
-				getCostEstimateOptionsModelNew := new(projectv1.GetCostEstimateOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.GetCostEstimate(getCostEstimateOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke GetCostEstimate successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetCostEstimateOptions model
-				getCostEstimateOptionsModel := new(projectv1.GetCostEstimateOptions)
-				getCostEstimateOptionsModel.ProjectID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.ID = core.StringPtr("testString")
-				getCostEstimateOptionsModel.Version = core.StringPtr("active")
-				getCostEstimateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.GetCostEstimate(getCostEstimateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostCrnToken(postCrnTokenOptions *PostCrnTokenOptions) - Operation response error`, func() {
-		postCrnTokenPath := "/v1/projects/testString/token"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postCrnTokenPath))
-					Expect(req.Method).To(Equal("POST"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke PostCrnToken with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostCrnTokenOptions model
-				postCrnTokenOptionsModel := new(projectv1.PostCrnTokenOptions)
-				postCrnTokenOptionsModel.ID = core.StringPtr("testString")
-				postCrnTokenOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.PostCrnToken(postCrnTokenOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.PostCrnToken(postCrnTokenOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostCrnToken(postCrnTokenOptions *PostCrnTokenOptions)`, func() {
-		postCrnTokenPath := "/v1/projects/testString/token"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postCrnTokenPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"acces_token": "AccesToken", "expiration": 10}`)
-				}))
-			})
-			It(`Invoke PostCrnToken successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the PostCrnTokenOptions model
-				postCrnTokenOptionsModel := new(projectv1.PostCrnTokenOptions)
-				postCrnTokenOptionsModel.ID = core.StringPtr("testString")
-				postCrnTokenOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.PostCrnTokenWithContext(ctx, postCrnTokenOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.PostCrnToken(postCrnTokenOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.PostCrnTokenWithContext(ctx, postCrnTokenOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postCrnTokenPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"acces_token": "AccesToken", "expiration": 10}`)
-				}))
-			})
-			It(`Invoke PostCrnToken successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.PostCrnToken(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the PostCrnTokenOptions model
-				postCrnTokenOptionsModel := new(projectv1.PostCrnTokenOptions)
-				postCrnTokenOptionsModel.ID = core.StringPtr("testString")
-				postCrnTokenOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.PostCrnToken(postCrnTokenOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke PostCrnToken with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostCrnTokenOptions model
-				postCrnTokenOptionsModel := new(projectv1.PostCrnTokenOptions)
-				postCrnTokenOptionsModel.ID = core.StringPtr("testString")
-				postCrnTokenOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.PostCrnToken(postCrnTokenOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the PostCrnTokenOptions model with no property values
-				postCrnTokenOptionsModelNew := new(projectv1.PostCrnTokenOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.PostCrnToken(postCrnTokenOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke PostCrnToken successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostCrnTokenOptions model
-				postCrnTokenOptionsModel := new(projectv1.PostCrnTokenOptions)
-				postCrnTokenOptionsModel.ID = core.StringPtr("testString")
-				postCrnTokenOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.PostCrnToken(postCrnTokenOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostNotification(postNotificationOptions *PostNotificationOptions) - Operation response error`, func() {
-		postNotificationPath := "/v1/projects/testString/event"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postNotificationPath))
-					Expect(req.Method).To(Equal("POST"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke PostNotification with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the NotificationEvent model
-				notificationEventModel := new(projectv1.NotificationEvent)
-				notificationEventModel.Event = core.StringPtr("project.create.failed")
-				notificationEventModel.Target = core.StringPtr("234234324-3444-4556-224232432")
-				notificationEventModel.Source = core.StringPtr("id.of.project.service.instance")
-				notificationEventModel.TriggeredBy = core.StringPtr("user-iam-id")
-				notificationEventModel.ActionURL = core.StringPtr("actionable/url")
-				notificationEventModel.Data = map[string]interface{}{"anyKey": "anyValue"}
-
-				// Construct an instance of the PostNotificationOptions model
-				postNotificationOptionsModel := new(projectv1.PostNotificationOptions)
-				postNotificationOptionsModel.ID = core.StringPtr("testString")
-				postNotificationOptionsModel.Notifications = []projectv1.NotificationEvent{*notificationEventModel}
-				postNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.PostNotification(postNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.PostNotification(postNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostNotification(postNotificationOptions *PostNotificationOptions)`, func() {
-		postNotificationPath := "/v1/projects/testString/event"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postNotificationPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"notifications": [{"event": "Event", "target": "Target", "source": "Source", "triggered_by": "TriggeredBy", "action_url": "ActionURL", "data": {"anyKey": "anyValue"}, "id": "ID", "status": "Status", "reasons": [{"anyKey": "anyValue"}]}]}`)
-				}))
-			})
-			It(`Invoke PostNotification successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the NotificationEvent model
-				notificationEventModel := new(projectv1.NotificationEvent)
-				notificationEventModel.Event = core.StringPtr("project.create.failed")
-				notificationEventModel.Target = core.StringPtr("234234324-3444-4556-224232432")
-				notificationEventModel.Source = core.StringPtr("id.of.project.service.instance")
-				notificationEventModel.TriggeredBy = core.StringPtr("user-iam-id")
-				notificationEventModel.ActionURL = core.StringPtr("actionable/url")
-				notificationEventModel.Data = map[string]interface{}{"anyKey": "anyValue"}
-
-				// Construct an instance of the PostNotificationOptions model
-				postNotificationOptionsModel := new(projectv1.PostNotificationOptions)
-				postNotificationOptionsModel.ID = core.StringPtr("testString")
-				postNotificationOptionsModel.Notifications = []projectv1.NotificationEvent{*notificationEventModel}
-				postNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.PostNotificationWithContext(ctx, postNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.PostNotification(postNotificationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.PostNotificationWithContext(ctx, postNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postNotificationPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"notifications": [{"event": "Event", "target": "Target", "source": "Source", "triggered_by": "TriggeredBy", "action_url": "ActionURL", "data": {"anyKey": "anyValue"}, "id": "ID", "status": "Status", "reasons": [{"anyKey": "anyValue"}]}]}`)
-				}))
-			})
-			It(`Invoke PostNotification successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.PostNotification(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the NotificationEvent model
-				notificationEventModel := new(projectv1.NotificationEvent)
-				notificationEventModel.Event = core.StringPtr("project.create.failed")
-				notificationEventModel.Target = core.StringPtr("234234324-3444-4556-224232432")
-				notificationEventModel.Source = core.StringPtr("id.of.project.service.instance")
-				notificationEventModel.TriggeredBy = core.StringPtr("user-iam-id")
-				notificationEventModel.ActionURL = core.StringPtr("actionable/url")
-				notificationEventModel.Data = map[string]interface{}{"anyKey": "anyValue"}
-
-				// Construct an instance of the PostNotificationOptions model
-				postNotificationOptionsModel := new(projectv1.PostNotificationOptions)
-				postNotificationOptionsModel.ID = core.StringPtr("testString")
-				postNotificationOptionsModel.Notifications = []projectv1.NotificationEvent{*notificationEventModel}
-				postNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.PostNotification(postNotificationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke PostNotification with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the NotificationEvent model
-				notificationEventModel := new(projectv1.NotificationEvent)
-				notificationEventModel.Event = core.StringPtr("project.create.failed")
-				notificationEventModel.Target = core.StringPtr("234234324-3444-4556-224232432")
-				notificationEventModel.Source = core.StringPtr("id.of.project.service.instance")
-				notificationEventModel.TriggeredBy = core.StringPtr("user-iam-id")
-				notificationEventModel.ActionURL = core.StringPtr("actionable/url")
-				notificationEventModel.Data = map[string]interface{}{"anyKey": "anyValue"}
-
-				// Construct an instance of the PostNotificationOptions model
-				postNotificationOptionsModel := new(projectv1.PostNotificationOptions)
-				postNotificationOptionsModel.ID = core.StringPtr("testString")
-				postNotificationOptionsModel.Notifications = []projectv1.NotificationEvent{*notificationEventModel}
-				postNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.PostNotification(postNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the PostNotificationOptions model with no property values
-				postNotificationOptionsModelNew := new(projectv1.PostNotificationOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.PostNotification(postNotificationOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke PostNotification successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the NotificationEvent model
-				notificationEventModel := new(projectv1.NotificationEvent)
-				notificationEventModel.Event = core.StringPtr("project.create.failed")
-				notificationEventModel.Target = core.StringPtr("234234324-3444-4556-224232432")
-				notificationEventModel.Source = core.StringPtr("id.of.project.service.instance")
-				notificationEventModel.TriggeredBy = core.StringPtr("user-iam-id")
-				notificationEventModel.ActionURL = core.StringPtr("actionable/url")
-				notificationEventModel.Data = map[string]interface{}{"anyKey": "anyValue"}
-
-				// Construct an instance of the PostNotificationOptions model
-				postNotificationOptionsModel := new(projectv1.PostNotificationOptions)
-				postNotificationOptionsModel.ID = core.StringPtr("testString")
-				postNotificationOptionsModel.Notifications = []projectv1.NotificationEvent{*notificationEventModel}
-				postNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.PostNotification(postNotificationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetNotifications(getNotificationsOptions *GetNotificationsOptions) - Operation response error`, func() {
-		getNotificationsPath := "/v1/projects/testString/event"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getNotificationsPath))
-					Expect(req.Method).To(Equal("GET"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke GetNotifications with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetNotificationsOptions model
-				getNotificationsOptionsModel := new(projectv1.GetNotificationsOptions)
-				getNotificationsOptionsModel.ID = core.StringPtr("testString")
-				getNotificationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.GetNotifications(getNotificationsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.GetNotifications(getNotificationsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetNotifications(getNotificationsOptions *GetNotificationsOptions)`, func() {
-		getNotificationsPath := "/v1/projects/testString/event"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getNotificationsPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"notifications": [{"event": "Event", "target": "Target", "source": "Source", "triggered_by": "TriggeredBy", "action_url": "ActionURL", "data": {"anyKey": "anyValue"}, "id": "ID"}]}`)
-				}))
-			})
-			It(`Invoke GetNotifications successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the GetNotificationsOptions model
-				getNotificationsOptionsModel := new(projectv1.GetNotificationsOptions)
-				getNotificationsOptionsModel.ID = core.StringPtr("testString")
-				getNotificationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.GetNotificationsWithContext(ctx, getNotificationsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.GetNotifications(getNotificationsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.GetNotificationsWithContext(ctx, getNotificationsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getNotificationsPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"notifications": [{"event": "Event", "target": "Target", "source": "Source", "triggered_by": "TriggeredBy", "action_url": "ActionURL", "data": {"anyKey": "anyValue"}, "id": "ID"}]}`)
-				}))
-			})
-			It(`Invoke GetNotifications successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.GetNotifications(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the GetNotificationsOptions model
-				getNotificationsOptionsModel := new(projectv1.GetNotificationsOptions)
-				getNotificationsOptionsModel.ID = core.StringPtr("testString")
-				getNotificationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.GetNotifications(getNotificationsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke GetNotifications with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetNotificationsOptions model
-				getNotificationsOptionsModel := new(projectv1.GetNotificationsOptions)
-				getNotificationsOptionsModel.ID = core.StringPtr("testString")
-				getNotificationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.GetNotifications(getNotificationsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the GetNotificationsOptions model with no property values
-				getNotificationsOptionsModelNew := new(projectv1.GetNotificationsOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.GetNotifications(getNotificationsOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke GetNotifications successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetNotificationsOptions model
-				getNotificationsOptionsModel := new(projectv1.GetNotificationsOptions)
-				getNotificationsOptionsModel.ID = core.StringPtr("testString")
-				getNotificationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.GetNotifications(getNotificationsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostEventNotificationsIntegration(postEventNotificationsIntegrationOptions *PostEventNotificationsIntegrationOptions) - Operation response error`, func() {
-		postEventNotificationsIntegrationPath := "/v1/projects/testString/event_notifications"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postEventNotificationsIntegrationPath))
-					Expect(req.Method).To(Equal("POST"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke PostEventNotificationsIntegration with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostEventNotificationsIntegrationOptions model
-				postEventNotificationsIntegrationOptionsModel := new(projectv1.PostEventNotificationsIntegrationOptions)
-				postEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				postEventNotificationsIntegrationOptionsModel.InstanceCrn = core.StringPtr("CRN of event notifications instance")
-				postEventNotificationsIntegrationOptionsModel.Description = core.StringPtr("A sample project source.")
-				postEventNotificationsIntegrationOptionsModel.EventNotificationsSourceName = core.StringPtr("project 1 source name for event notifications")
-				postEventNotificationsIntegrationOptionsModel.Enabled = core.BoolPtr(true)
-				postEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostEventNotificationsIntegration(postEventNotificationsIntegrationOptions *PostEventNotificationsIntegrationOptions)`, func() {
-		postEventNotificationsIntegrationPath := "/v1/projects/testString/event_notifications"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postEventNotificationsIntegrationPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"description": "Description", "name": "Name", "enabled": false, "id": "ID", "type": "Type", "created_at": "2019-01-01T12:00:00.000Z"}`)
-				}))
-			})
-			It(`Invoke PostEventNotificationsIntegration successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the PostEventNotificationsIntegrationOptions model
-				postEventNotificationsIntegrationOptionsModel := new(projectv1.PostEventNotificationsIntegrationOptions)
-				postEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				postEventNotificationsIntegrationOptionsModel.InstanceCrn = core.StringPtr("CRN of event notifications instance")
-				postEventNotificationsIntegrationOptionsModel.Description = core.StringPtr("A sample project source.")
-				postEventNotificationsIntegrationOptionsModel.EventNotificationsSourceName = core.StringPtr("project 1 source name for event notifications")
-				postEventNotificationsIntegrationOptionsModel.Enabled = core.BoolPtr(true)
-				postEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.PostEventNotificationsIntegrationWithContext(ctx, postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.PostEventNotificationsIntegrationWithContext(ctx, postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postEventNotificationsIntegrationPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"description": "Description", "name": "Name", "enabled": false, "id": "ID", "type": "Type", "created_at": "2019-01-01T12:00:00.000Z"}`)
-				}))
-			})
-			It(`Invoke PostEventNotificationsIntegration successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.PostEventNotificationsIntegration(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the PostEventNotificationsIntegrationOptions model
-				postEventNotificationsIntegrationOptionsModel := new(projectv1.PostEventNotificationsIntegrationOptions)
-				postEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				postEventNotificationsIntegrationOptionsModel.InstanceCrn = core.StringPtr("CRN of event notifications instance")
-				postEventNotificationsIntegrationOptionsModel.Description = core.StringPtr("A sample project source.")
-				postEventNotificationsIntegrationOptionsModel.EventNotificationsSourceName = core.StringPtr("project 1 source name for event notifications")
-				postEventNotificationsIntegrationOptionsModel.Enabled = core.BoolPtr(true)
-				postEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke PostEventNotificationsIntegration with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostEventNotificationsIntegrationOptions model
-				postEventNotificationsIntegrationOptionsModel := new(projectv1.PostEventNotificationsIntegrationOptions)
-				postEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				postEventNotificationsIntegrationOptionsModel.InstanceCrn = core.StringPtr("CRN of event notifications instance")
-				postEventNotificationsIntegrationOptionsModel.Description = core.StringPtr("A sample project source.")
-				postEventNotificationsIntegrationOptionsModel.EventNotificationsSourceName = core.StringPtr("project 1 source name for event notifications")
-				postEventNotificationsIntegrationOptionsModel.Enabled = core.BoolPtr(true)
-				postEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the PostEventNotificationsIntegrationOptions model with no property values
-				postEventNotificationsIntegrationOptionsModelNew := new(projectv1.PostEventNotificationsIntegrationOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke PostEventNotificationsIntegration successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostEventNotificationsIntegrationOptions model
-				postEventNotificationsIntegrationOptionsModel := new(projectv1.PostEventNotificationsIntegrationOptions)
-				postEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				postEventNotificationsIntegrationOptionsModel.InstanceCrn = core.StringPtr("CRN of event notifications instance")
-				postEventNotificationsIntegrationOptionsModel.Description = core.StringPtr("A sample project source.")
-				postEventNotificationsIntegrationOptionsModel.EventNotificationsSourceName = core.StringPtr("project 1 source name for event notifications")
-				postEventNotificationsIntegrationOptionsModel.Enabled = core.BoolPtr(true)
-				postEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetEventNotificationsIntegration(getEventNotificationsIntegrationOptions *GetEventNotificationsIntegrationOptions) - Operation response error`, func() {
-		getEventNotificationsIntegrationPath := "/v1/projects/testString/event_notifications"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getEventNotificationsIntegrationPath))
-					Expect(req.Method).To(Equal("GET"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke GetEventNotificationsIntegration with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetEventNotificationsIntegrationOptions model
-				getEventNotificationsIntegrationOptionsModel := new(projectv1.GetEventNotificationsIntegrationOptions)
-				getEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				getEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetEventNotificationsIntegration(getEventNotificationsIntegrationOptions *GetEventNotificationsIntegrationOptions)`, func() {
-		getEventNotificationsIntegrationPath := "/v1/projects/testString/event_notifications"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getEventNotificationsIntegrationPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"description": "Description", "name": "Name", "enabled": false, "id": "ID", "type": "Type", "updated_at": "2019-01-01T12:00:00.000Z", "topic_count": 10, "topic_names": ["TopicNames"]}`)
-				}))
-			})
-			It(`Invoke GetEventNotificationsIntegration successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the GetEventNotificationsIntegrationOptions model
-				getEventNotificationsIntegrationOptionsModel := new(projectv1.GetEventNotificationsIntegrationOptions)
-				getEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				getEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.GetEventNotificationsIntegrationWithContext(ctx, getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.GetEventNotificationsIntegrationWithContext(ctx, getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getEventNotificationsIntegrationPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"description": "Description", "name": "Name", "enabled": false, "id": "ID", "type": "Type", "updated_at": "2019-01-01T12:00:00.000Z", "topic_count": 10, "topic_names": ["TopicNames"]}`)
-				}))
-			})
-			It(`Invoke GetEventNotificationsIntegration successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.GetEventNotificationsIntegration(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the GetEventNotificationsIntegrationOptions model
-				getEventNotificationsIntegrationOptionsModel := new(projectv1.GetEventNotificationsIntegrationOptions)
-				getEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				getEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke GetEventNotificationsIntegration with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetEventNotificationsIntegrationOptions model
-				getEventNotificationsIntegrationOptionsModel := new(projectv1.GetEventNotificationsIntegrationOptions)
-				getEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				getEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the GetEventNotificationsIntegrationOptions model with no property values
-				getEventNotificationsIntegrationOptionsModelNew := new(projectv1.GetEventNotificationsIntegrationOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke GetEventNotificationsIntegration successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the GetEventNotificationsIntegrationOptions model
-				getEventNotificationsIntegrationOptionsModel := new(projectv1.GetEventNotificationsIntegrationOptions)
-				getEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				getEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptions *DeleteEventNotificationsIntegrationOptions)`, func() {
-		deleteEventNotificationsIntegrationPath := "/v1/projects/testString/event_notifications"
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(deleteEventNotificationsIntegrationPath))
-					Expect(req.Method).To(Equal("DELETE"))
-
-					res.WriteHeader(204)
-				}))
-			})
-			It(`Invoke DeleteEventNotificationsIntegration successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				response, operationErr := projectService.DeleteEventNotificationsIntegration(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-
-				// Construct an instance of the DeleteEventNotificationsIntegrationOptions model
-				deleteEventNotificationsIntegrationOptionsModel := new(projectv1.DeleteEventNotificationsIntegrationOptions)
-				deleteEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				deleteEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				response, operationErr = projectService.DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-			})
-			It(`Invoke DeleteEventNotificationsIntegration with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the DeleteEventNotificationsIntegrationOptions model
-				deleteEventNotificationsIntegrationOptionsModel := new(projectv1.DeleteEventNotificationsIntegrationOptions)
-				deleteEventNotificationsIntegrationOptionsModel.ID = core.StringPtr("testString")
-				deleteEventNotificationsIntegrationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				response, operationErr := projectService.DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				// Construct a second instance of the DeleteEventNotificationsIntegrationOptions model with no property values
-				deleteEventNotificationsIntegrationOptionsModelNew := new(projectv1.DeleteEventNotificationsIntegrationOptions)
-				// Invoke operation with invalid model (negative test)
-				response, operationErr = projectService.DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostTestEventNotification(postTestEventNotificationOptions *PostTestEventNotificationOptions) - Operation response error`, func() {
-		postTestEventNotificationPath := "/v1/projects/testString/event_notifications/test"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postTestEventNotificationPath))
-					Expect(req.Method).To(Equal("POST"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke PostTestEventNotification with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostTestEventNotificationOptions model
-				postTestEventNotificationOptionsModel := new(projectv1.PostTestEventNotificationOptions)
-				postTestEventNotificationOptionsModel.ID = core.StringPtr("testString")
-				postTestEventNotificationOptionsModel.Ibmendefaultlong = core.StringPtr("long test notification message")
-				postTestEventNotificationOptionsModel.Ibmendefaultshort = core.StringPtr("Test notification")
-				postTestEventNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.PostTestEventNotification(postTestEventNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.PostTestEventNotification(postTestEventNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`PostTestEventNotification(postTestEventNotificationOptions *PostTestEventNotificationOptions)`, func() {
-		postTestEventNotificationPath := "/v1/projects/testString/event_notifications/test"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postTestEventNotificationPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"datacontenttype": "Datacontenttype", "ibmendefaultlong": "Ibmendefaultlong", "ibmendefaultshort": "Ibmendefaultshort", "ibmensourceid": "Ibmensourceid", "id": "ID", "source": "Source", "specversion": "Specversion", "type": "Type"}`)
-				}))
-			})
-			It(`Invoke PostTestEventNotification successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the PostTestEventNotificationOptions model
-				postTestEventNotificationOptionsModel := new(projectv1.PostTestEventNotificationOptions)
-				postTestEventNotificationOptionsModel.ID = core.StringPtr("testString")
-				postTestEventNotificationOptionsModel.Ibmendefaultlong = core.StringPtr("long test notification message")
-				postTestEventNotificationOptionsModel.Ibmendefaultshort = core.StringPtr("Test notification")
-				postTestEventNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.PostTestEventNotificationWithContext(ctx, postTestEventNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.PostTestEventNotification(postTestEventNotificationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.PostTestEventNotificationWithContext(ctx, postTestEventNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(postTestEventNotificationPath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"datacontenttype": "Datacontenttype", "ibmendefaultlong": "Ibmendefaultlong", "ibmendefaultshort": "Ibmendefaultshort", "ibmensourceid": "Ibmensourceid", "id": "ID", "source": "Source", "specversion": "Specversion", "type": "Type"}`)
-				}))
-			})
-			It(`Invoke PostTestEventNotification successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.PostTestEventNotification(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the PostTestEventNotificationOptions model
-				postTestEventNotificationOptionsModel := new(projectv1.PostTestEventNotificationOptions)
-				postTestEventNotificationOptionsModel.ID = core.StringPtr("testString")
-				postTestEventNotificationOptionsModel.Ibmendefaultlong = core.StringPtr("long test notification message")
-				postTestEventNotificationOptionsModel.Ibmendefaultshort = core.StringPtr("Test notification")
-				postTestEventNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.PostTestEventNotification(postTestEventNotificationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke PostTestEventNotification with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostTestEventNotificationOptions model
-				postTestEventNotificationOptionsModel := new(projectv1.PostTestEventNotificationOptions)
-				postTestEventNotificationOptionsModel.ID = core.StringPtr("testString")
-				postTestEventNotificationOptionsModel.Ibmendefaultlong = core.StringPtr("long test notification message")
-				postTestEventNotificationOptionsModel.Ibmendefaultshort = core.StringPtr("Test notification")
-				postTestEventNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.PostTestEventNotification(postTestEventNotificationOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the PostTestEventNotificationOptions model with no property values
-				postTestEventNotificationOptionsModelNew := new(projectv1.PostTestEventNotificationOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.PostTestEventNotification(postTestEventNotificationOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke PostTestEventNotification successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the PostTestEventNotificationOptions model
-				postTestEventNotificationOptionsModel := new(projectv1.PostTestEventNotificationOptions)
-				postTestEventNotificationOptionsModel.ID = core.StringPtr("testString")
-				postTestEventNotificationOptionsModel.Ibmendefaultlong = core.StringPtr("long test notification message")
-				postTestEventNotificationOptionsModel.Ibmendefaultshort = core.StringPtr("Test notification")
-				postTestEventNotificationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.PostTestEventNotification(postTestEventNotificationOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
 			projectService, _ := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
@@ -5989,6 +3413,24 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(checkConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateConfigOptions successfully`, func() {
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				Expect(projectConfigAuthTrustedProfileModel).ToNot(BeNil())
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+				Expect(projectConfigAuthTrustedProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthTrustedProfileModel.TargetIamID).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				Expect(projectConfigAuthModel).ToNot(BeNil())
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+				Expect(projectConfigAuthModel.TrustedProfile).To(Equal(projectConfigAuthTrustedProfileModel))
+				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				Expect(projectConfigInputVariableModel).ToNot(BeNil())
@@ -6016,6 +3458,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.SetID("testString")
 				createConfigOptionsModel.SetLabels([]string{"env:stage", "governance:test", "build:0"})
 				createConfigOptionsModel.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.SetAuthorizations(projectConfigAuthModel)
 				createConfigOptionsModel.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 				createConfigOptionsModel.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
@@ -6026,11 +3469,30 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(createConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(createConfigOptionsModel.Labels).To(Equal([]string{"env:stage", "governance:test", "build:0"}))
 				Expect(createConfigOptionsModel.Description).To(Equal(core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")))
+				Expect(createConfigOptionsModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(createConfigOptionsModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
 				Expect(createConfigOptionsModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
 				Expect(createConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateProjectOptions successfully`, func() {
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				Expect(projectConfigAuthTrustedProfileModel).ToNot(BeNil())
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+				Expect(projectConfigAuthTrustedProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthTrustedProfileModel.TargetIamID).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				Expect(projectConfigAuthModel).ToNot(BeNil())
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+				Expect(projectConfigAuthModel.TrustedProfile).To(Equal(projectConfigAuthTrustedProfileModel))
+				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				Expect(projectConfigInputVariableModel).ToNot(BeNil())
@@ -6054,6 +3516,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{"testString"}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -6061,6 +3524,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigPrototypeModel.Name).To(Equal(core.StringPtr("common-variables")))
 				Expect(projectConfigPrototypeModel.Labels).To(Equal([]string{"testString"}))
 				Expect(projectConfigPrototypeModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(projectConfigPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
 				Expect(projectConfigPrototypeModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
 				Expect(projectConfigPrototypeModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
@@ -6101,16 +3565,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(deleteConfigOptionsModel.Destroy).To(Equal(core.BoolPtr(false)))
 				Expect(deleteConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
-			It(`Invoke NewDeleteEventNotificationsIntegrationOptions successfully`, func() {
-				// Construct an instance of the DeleteEventNotificationsIntegrationOptions model
-				id := "testString"
-				deleteEventNotificationsIntegrationOptionsModel := projectService.NewDeleteEventNotificationsIntegrationOptions(id)
-				deleteEventNotificationsIntegrationOptionsModel.SetID("testString")
-				deleteEventNotificationsIntegrationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(deleteEventNotificationsIntegrationOptionsModel).ToNot(BeNil())
-				Expect(deleteEventNotificationsIntegrationOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(deleteEventNotificationsIntegrationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
 			It(`Invoke NewDeleteProjectOptions successfully`, func() {
 				// Construct an instance of the DeleteProjectOptions model
 				id := "testString"
@@ -6122,34 +3576,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(deleteProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(deleteProjectOptionsModel.Destroy).To(Equal(core.BoolPtr(false)))
 				Expect(deleteProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewForceApproveOptions successfully`, func() {
-				// Construct an instance of the ForceApproveOptions model
-				projectID := "testString"
-				id := "testString"
-				forceApproveOptionsModel := projectService.NewForceApproveOptions(projectID, id)
-				forceApproveOptionsModel.SetProjectID("testString")
-				forceApproveOptionsModel.SetID("testString")
-				forceApproveOptionsModel.SetComment("Approving the changes")
-				forceApproveOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(forceApproveOptionsModel).ToNot(BeNil())
-				Expect(forceApproveOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(forceApproveOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(forceApproveOptionsModel.Comment).To(Equal(core.StringPtr("Approving the changes")))
-				Expect(forceApproveOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewGetConfigDiffOptions successfully`, func() {
-				// Construct an instance of the GetConfigDiffOptions model
-				projectID := "testString"
-				id := "testString"
-				getConfigDiffOptionsModel := projectService.NewGetConfigDiffOptions(projectID, id)
-				getConfigDiffOptionsModel.SetProjectID("testString")
-				getConfigDiffOptionsModel.SetID("testString")
-				getConfigDiffOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(getConfigDiffOptionsModel).ToNot(BeNil())
-				Expect(getConfigDiffOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(getConfigDiffOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(getConfigDiffOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetConfigOptions successfully`, func() {
 				// Construct an instance of the GetConfigOptions model
@@ -6166,41 +3592,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(getConfigOptionsModel.Version).To(Equal(core.StringPtr("active")))
 				Expect(getConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
-			It(`Invoke NewGetCostEstimateOptions successfully`, func() {
-				// Construct an instance of the GetCostEstimateOptions model
-				projectID := "testString"
-				id := "testString"
-				getCostEstimateOptionsModel := projectService.NewGetCostEstimateOptions(projectID, id)
-				getCostEstimateOptionsModel.SetProjectID("testString")
-				getCostEstimateOptionsModel.SetID("testString")
-				getCostEstimateOptionsModel.SetVersion("active")
-				getCostEstimateOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(getCostEstimateOptionsModel).ToNot(BeNil())
-				Expect(getCostEstimateOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(getCostEstimateOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(getCostEstimateOptionsModel.Version).To(Equal(core.StringPtr("active")))
-				Expect(getCostEstimateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewGetEventNotificationsIntegrationOptions successfully`, func() {
-				// Construct an instance of the GetEventNotificationsIntegrationOptions model
-				id := "testString"
-				getEventNotificationsIntegrationOptionsModel := projectService.NewGetEventNotificationsIntegrationOptions(id)
-				getEventNotificationsIntegrationOptionsModel.SetID("testString")
-				getEventNotificationsIntegrationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(getEventNotificationsIntegrationOptionsModel).ToNot(BeNil())
-				Expect(getEventNotificationsIntegrationOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(getEventNotificationsIntegrationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewGetNotificationsOptions successfully`, func() {
-				// Construct an instance of the GetNotificationsOptions model
-				id := "testString"
-				getNotificationsOptionsModel := projectService.NewGetNotificationsOptions(id)
-				getNotificationsOptionsModel.SetID("testString")
-				getNotificationsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(getNotificationsOptionsModel).ToNot(BeNil())
-				Expect(getNotificationsOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(getNotificationsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
 			It(`Invoke NewGetProjectOptions successfully`, func() {
 				// Construct an instance of the GetProjectOptions model
 				id := "testString"
@@ -6210,24 +3601,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(getProjectOptionsModel).ToNot(BeNil())
 				Expect(getProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(getProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewGetSchematicsJobOptions successfully`, func() {
-				// Construct an instance of the GetSchematicsJobOptions model
-				projectID := "testString"
-				id := "testString"
-				action := "plan"
-				getSchematicsJobOptionsModel := projectService.NewGetSchematicsJobOptions(projectID, id, action)
-				getSchematicsJobOptionsModel.SetProjectID("testString")
-				getSchematicsJobOptionsModel.SetID("testString")
-				getSchematicsJobOptionsModel.SetAction("plan")
-				getSchematicsJobOptionsModel.SetSince(int64(38))
-				getSchematicsJobOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(getSchematicsJobOptionsModel).ToNot(BeNil())
-				Expect(getSchematicsJobOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(getSchematicsJobOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(getSchematicsJobOptionsModel.Action).To(Equal(core.StringPtr("plan")))
-				Expect(getSchematicsJobOptionsModel.Since).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(getSchematicsJobOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewInstallConfigOptions successfully`, func() {
 				// Construct an instance of the InstallConfigOptions model
@@ -6264,84 +3637,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(listProjectsOptionsModel.Start).To(Equal(core.StringPtr("testString")))
 				Expect(listProjectsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listProjectsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewNotificationEvent successfully`, func() {
-				event := "testString"
-				target := "testString"
-				_model, err := projectService.NewNotificationEvent(event, target)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
-			})
-			It(`Invoke NewPostCrnTokenOptions successfully`, func() {
-				// Construct an instance of the PostCrnTokenOptions model
-				id := "testString"
-				postCrnTokenOptionsModel := projectService.NewPostCrnTokenOptions(id)
-				postCrnTokenOptionsModel.SetID("testString")
-				postCrnTokenOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(postCrnTokenOptionsModel).ToNot(BeNil())
-				Expect(postCrnTokenOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(postCrnTokenOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewPostEventNotificationsIntegrationOptions successfully`, func() {
-				// Construct an instance of the PostEventNotificationsIntegrationOptions model
-				id := "testString"
-				postEventNotificationsIntegrationOptionsInstanceCrn := "CRN of event notifications instance"
-				postEventNotificationsIntegrationOptionsModel := projectService.NewPostEventNotificationsIntegrationOptions(id, postEventNotificationsIntegrationOptionsInstanceCrn)
-				postEventNotificationsIntegrationOptionsModel.SetID("testString")
-				postEventNotificationsIntegrationOptionsModel.SetInstanceCrn("CRN of event notifications instance")
-				postEventNotificationsIntegrationOptionsModel.SetDescription("A sample project source.")
-				postEventNotificationsIntegrationOptionsModel.SetEventNotificationsSourceName("project 1 source name for event notifications")
-				postEventNotificationsIntegrationOptionsModel.SetEnabled(true)
-				postEventNotificationsIntegrationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(postEventNotificationsIntegrationOptionsModel).ToNot(BeNil())
-				Expect(postEventNotificationsIntegrationOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(postEventNotificationsIntegrationOptionsModel.InstanceCrn).To(Equal(core.StringPtr("CRN of event notifications instance")))
-				Expect(postEventNotificationsIntegrationOptionsModel.Description).To(Equal(core.StringPtr("A sample project source.")))
-				Expect(postEventNotificationsIntegrationOptionsModel.EventNotificationsSourceName).To(Equal(core.StringPtr("project 1 source name for event notifications")))
-				Expect(postEventNotificationsIntegrationOptionsModel.Enabled).To(Equal(core.BoolPtr(true)))
-				Expect(postEventNotificationsIntegrationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewPostNotificationOptions successfully`, func() {
-				// Construct an instance of the NotificationEvent model
-				notificationEventModel := new(projectv1.NotificationEvent)
-				Expect(notificationEventModel).ToNot(BeNil())
-				notificationEventModel.Event = core.StringPtr("project.create.failed")
-				notificationEventModel.Target = core.StringPtr("234234324-3444-4556-224232432")
-				notificationEventModel.Source = core.StringPtr("id.of.project.service.instance")
-				notificationEventModel.TriggeredBy = core.StringPtr("user-iam-id")
-				notificationEventModel.ActionURL = core.StringPtr("actionable/url")
-				notificationEventModel.Data = map[string]interface{}{"anyKey": "anyValue"}
-				Expect(notificationEventModel.Event).To(Equal(core.StringPtr("project.create.failed")))
-				Expect(notificationEventModel.Target).To(Equal(core.StringPtr("234234324-3444-4556-224232432")))
-				Expect(notificationEventModel.Source).To(Equal(core.StringPtr("id.of.project.service.instance")))
-				Expect(notificationEventModel.TriggeredBy).To(Equal(core.StringPtr("user-iam-id")))
-				Expect(notificationEventModel.ActionURL).To(Equal(core.StringPtr("actionable/url")))
-				Expect(notificationEventModel.Data).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
-
-				// Construct an instance of the PostNotificationOptions model
-				id := "testString"
-				postNotificationOptionsModel := projectService.NewPostNotificationOptions(id)
-				postNotificationOptionsModel.SetID("testString")
-				postNotificationOptionsModel.SetNotifications([]projectv1.NotificationEvent{*notificationEventModel})
-				postNotificationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(postNotificationOptionsModel).ToNot(BeNil())
-				Expect(postNotificationOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(postNotificationOptionsModel.Notifications).To(Equal([]projectv1.NotificationEvent{*notificationEventModel}))
-				Expect(postNotificationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewPostTestEventNotificationOptions successfully`, func() {
-				// Construct an instance of the PostTestEventNotificationOptions model
-				id := "testString"
-				postTestEventNotificationOptionsModel := projectService.NewPostTestEventNotificationOptions(id)
-				postTestEventNotificationOptionsModel.SetID("testString")
-				postTestEventNotificationOptionsModel.SetIbmendefaultlong("long test notification message")
-				postTestEventNotificationOptionsModel.SetIbmendefaultshort("Test notification")
-				postTestEventNotificationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(postTestEventNotificationOptionsModel).ToNot(BeNil())
-				Expect(postTestEventNotificationOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(postTestEventNotificationOptionsModel.Ibmendefaultlong).To(Equal(core.StringPtr("long test notification message")))
-				Expect(postTestEventNotificationOptionsModel.Ibmendefaultshort).To(Equal(core.StringPtr("Test notification")))
-				Expect(postTestEventNotificationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewProjectConfigInputVariable successfully`, func() {
 				name := "testString"
@@ -6405,20 +3700,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ProjectConfig).To(Equal(projectConfigPatchRequestModel))
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewUpdateProjectOptions successfully`, func() {
-				// Construct an instance of the UpdateProjectOptions model
-				id := "testString"
-				updateProjectOptionsModel := projectService.NewUpdateProjectOptions(id)
-				updateProjectOptionsModel.SetID("testString")
-				updateProjectOptionsModel.SetName("acme-microservice")
-				updateProjectOptionsModel.SetDescription("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(updateProjectOptionsModel).ToNot(BeNil())
-				Expect(updateProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.Name).To(Equal(core.StringPtr("acme-microservice")))
-				Expect(updateProjectOptionsModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
-				Expect(updateProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewProjectConfigPatchRequestProjectConfigManualProperty successfully`, func() {
 				typeVar := "manual"
