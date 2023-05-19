@@ -100,6 +100,23 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateProject(createProjectOptions *CreateProjectOptions)`, func() {
+			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
+				ID: core.StringPtr("testString"),
+				TargetIamID: core.StringPtr("testString"),
+			}
+
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfile: projectConfigAuthTrustedProfileModel,
+				Method: core.StringPtr("testString"),
+				ApiKey: core.StringPtr("testString"),
+			}
+
+			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
+				ID: core.StringPtr("testString"),
+				AttachmentID: core.StringPtr("testString"),
+				ProfileName: core.StringPtr("testString"),
+			}
+
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
 				Name: core.StringPtr("testString"),
 				Value: core.StringPtr("testString"),
@@ -115,6 +132,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("common-variables"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
+				Authorizations: projectConfigAuthModel,
+				ComplianceProfile: projectConfigComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
@@ -125,6 +144,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Location: core.StringPtr("us-south"),
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+				DestroyOnDelete: core.BoolPtr(true),
 				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
 			}
 
@@ -143,6 +163,23 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateConfig(createConfigOptions *CreateConfigOptions)`, func() {
+			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
+				ID: core.StringPtr("testString"),
+				TargetIamID: core.StringPtr("testString"),
+			}
+
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfile: projectConfigAuthTrustedProfileModel,
+				Method: core.StringPtr("testString"),
+				ApiKey: core.StringPtr("testString"),
+			}
+
+			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
+				ID: core.StringPtr("testString"),
+				AttachmentID: core.StringPtr("testString"),
+				ProfileName: core.StringPtr("testString"),
+			}
+
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
 				Name: core.StringPtr("account_id"),
 				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
@@ -160,6 +197,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: core.StringPtr("testString"),
 				Labels: []string{"env:stage", "governance:test", "build:0"},
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
+				Authorizations: projectConfigAuthModel,
+				ComplianceProfile: projectConfigComplianceProfileModel,
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
@@ -252,24 +291,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`UpdateProject - Update a project`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
-			updateProjectOptions := &projectv1.UpdateProjectOptions{
-				ID: &projectIdLink,
-				Name: core.StringPtr("acme-microservice"),
-				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
-			}
-
-			project, response, err := projectService.UpdateProject(updateProjectOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(project).ToNot(BeNil())
-		})
-	})
-
 	Describe(`ListConfigs - List all project configurations`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -338,41 +359,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfig).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetConfigDiff - Get a diff summary of a project configuration`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetConfigDiff(getConfigDiffOptions *GetConfigDiffOptions)`, func() {
-			getConfigDiffOptions := &projectv1.GetConfigDiffOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-			}
-
-			projectConfigDiff, response, err := projectService.GetConfigDiff(getConfigDiffOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDiff).ToNot(BeNil())
-		})
-	})
-
-	Describe(`ForceApprove - Force approve project configuration`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`ForceApprove(forceApproveOptions *ForceApproveOptions)`, func() {
-			forceApproveOptions := &projectv1.ForceApproveOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-				Comment: core.StringPtr("Approving the changes"),
-			}
-
-			projectConfig, response, err := projectService.ForceApprove(forceApproveOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
 			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
@@ -447,155 +433,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`GetSchematicsJob - View the latest schematics job`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetSchematicsJob(getSchematicsJobOptions *GetSchematicsJobOptions)`, func() {
-			getSchematicsJobOptions := &projectv1.GetSchematicsJobOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-				Action: core.StringPtr("plan"),
-				Since: core.Int64Ptr(int64(38)),
-			}
-
-			actionJob, response, err := projectService.GetSchematicsJob(getSchematicsJobOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(actionJob).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetCostEstimate - Get the cost estimate`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetCostEstimate(getCostEstimateOptions *GetCostEstimateOptions)`, func() {
-			getCostEstimateOptions := &projectv1.GetCostEstimateOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-				Version: core.StringPtr("active"),
-			}
-
-			costEstimate, response, err := projectService.GetCostEstimate(getCostEstimateOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(costEstimate).ToNot(BeNil())
-		})
-	})
-
-	Describe(`PostCrnToken - Creates a project CRN token`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`PostCrnToken(postCrnTokenOptions *PostCrnTokenOptions)`, func() {
-			postCrnTokenOptions := &projectv1.PostCrnTokenOptions{
-				ID: &projectIdLink,
-			}
-
-			projectCrnTokenResponse, response, err := projectService.PostCrnToken(postCrnTokenOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectCrnTokenResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`PostNotification - Add notifications`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`PostNotification(postNotificationOptions *PostNotificationOptions)`, func() {
-			notificationEventModel := &projectv1.NotificationEvent{
-				Event: core.StringPtr("project.create.failed"),
-				Target: core.StringPtr("234234324-3444-4556-224232432"),
-				Source: core.StringPtr("id.of.project.service.instance"),
-				TriggeredBy: core.StringPtr("user-iam-id"),
-				ActionURL: core.StringPtr("actionable/url"),
-				Data: map[string]interface{}{"anyKey": "anyValue"},
-			}
-
-			postNotificationOptions := &projectv1.PostNotificationOptions{
-				ID: &projectIdLink,
-				Notifications: []projectv1.NotificationEvent{*notificationEventModel},
-			}
-
-			notificationsPrototypePostResponse, response, err := projectService.PostNotification(postNotificationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(notificationsPrototypePostResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetNotifications - Get events by project ID`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetNotifications(getNotificationsOptions *GetNotificationsOptions)`, func() {
-			getNotificationsOptions := &projectv1.GetNotificationsOptions{
-				ID: &projectIdLink,
-			}
-
-			notificationsGetResponse, response, err := projectService.GetNotifications(getNotificationsOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(notificationsGetResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`PostEventNotificationsIntegration - Connect to a event notifications instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`PostEventNotificationsIntegration(postEventNotificationsIntegrationOptions *PostEventNotificationsIntegrationOptions)`, func() {
-			postEventNotificationsIntegrationOptions := &projectv1.PostEventNotificationsIntegrationOptions{
-				ID: &projectIdLink,
-				InstanceCrn: core.StringPtr("CRN of event notifications instance"),
-				Description: core.StringPtr("A sample project source."),
-				EventNotificationsSourceName: core.StringPtr("project 1 source name for event notifications"),
-				Enabled: core.BoolPtr(true),
-			}
-
-			notificationsIntegrationPostResponse, response, err := projectService.PostEventNotificationsIntegration(postEventNotificationsIntegrationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(notificationsIntegrationPostResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetEventNotificationsIntegration - Get event notification source details by project ID`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetEventNotificationsIntegration(getEventNotificationsIntegrationOptions *GetEventNotificationsIntegrationOptions)`, func() {
-			getEventNotificationsIntegrationOptions := &projectv1.GetEventNotificationsIntegrationOptions{
-				ID: &projectIdLink,
-			}
-
-			notificationsIntegrationGetResponse, response, err := projectService.GetEventNotificationsIntegration(getEventNotificationsIntegrationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(notificationsIntegrationGetResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`PostTestEventNotification - Send notification to event notifications instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`PostTestEventNotification(postTestEventNotificationOptions *PostTestEventNotificationOptions)`, func() {
-			postTestEventNotificationOptions := &projectv1.PostTestEventNotificationOptions{
-				ID: &projectIdLink,
-				Ibmendefaultlong: core.StringPtr("long test notification message"),
-				Ibmendefaultshort: core.StringPtr("Test notification"),
-			}
-
-			notificationsIntegrationTestPostResponse, response, err := projectService.PostTestEventNotification(postTestEventNotificationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(notificationsIntegrationTestPostResponse).ToNot(BeNil())
-		})
-	})
-
 	Describe(`DeleteConfig - Delete a configuration in a project by ID`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -605,28 +442,13 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
 				DraftOnly: core.BoolPtr(false),
-				Destroy: core.BoolPtr(false),
+				Destroy: core.BoolPtr(true),
 			}
 
 			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDelete).ToNot(BeNil())
-		})
-	})
-
-	Describe(`DeleteEventNotificationsIntegration - Delete an event notifications connection`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptions *DeleteEventNotificationsIntegrationOptions)`, func() {
-			deleteEventNotificationsIntegrationOptions := &projectv1.DeleteEventNotificationsIntegrationOptions{
-				ID: &projectIdLink,
-			}
-
-			response, err := projectService.DeleteEventNotificationsIntegration(deleteEventNotificationsIntegrationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
 		})
 	})
 
@@ -637,7 +459,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`DeleteProject(deleteProjectOptions *DeleteProjectOptions)`, func() {
 			deleteProjectOptions := &projectv1.DeleteProjectOptions{
 				ID: &projectIdLink,
-				Destroy: core.BoolPtr(false),
+				Destroy: core.BoolPtr(true),
 			}
 
 			response, err := projectService.DeleteProject(deleteProjectOptions)
