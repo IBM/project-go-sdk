@@ -113,6 +113,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
 				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
 				AttachmentID: core.StringPtr("testString"),
 				ProfileName: core.StringPtr("testString"),
 			}
@@ -176,6 +178,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
 				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
 				AttachmentID: core.StringPtr("testString"),
 				ProfileName: core.StringPtr("testString"),
 			}

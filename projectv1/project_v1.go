@@ -2082,6 +2082,12 @@ type ProjectConfigComplianceProfile struct {
 	ID *string `json:"id,omitempty"`
 
 	// The unique ID of a project.
+	InstanceID *string `json:"instance_id,omitempty"`
+
+	// The location of the compliance instance.
+	InstanceLocation *string `json:"instance_location,omitempty"`
+
+	// The unique ID of a project.
 	AttachmentID *string `json:"attachment_id,omitempty"`
 
 	// The name of the compliance profile.
@@ -2092,6 +2098,14 @@ type ProjectConfigComplianceProfile struct {
 func UnmarshalProjectConfigComplianceProfile(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigComplianceProfile)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "instance_id", &obj.InstanceID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "instance_location", &obj.InstanceLocation)
 	if err != nil {
 		return
 	}
