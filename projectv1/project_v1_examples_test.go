@@ -254,18 +254,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfig, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfig).ToNot(BeNil())
+			Expect(projectConfigGetResponse).ToNot(BeNil())
 		})
 		It(`UpdateConfig request example`, func() {
 			fmt.Println("\nUpdateConfig() result:")

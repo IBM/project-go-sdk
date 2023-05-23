@@ -202,6 +202,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -289,7 +291,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -315,6 +317,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -405,7 +409,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -436,6 +440,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -500,6 +506,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -585,6 +593,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -1000,7 +1010,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -1054,7 +1064,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
+					fmt.Fprintf(res, "%s", `{"name": "Name", "description": "Description", "destroy_on_delete": true, "id": "ID", "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "metadata": {"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_err": "CumulativeNeedsAttentionViewErr", "location": "Location", "resource_group": "ResourceGroup", "state": "State", "event_notifications_crn": "EventNotificationsCrn"}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1258,6 +1268,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -1335,7 +1347,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully with retries`, func() {
@@ -1361,6 +1373,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -1441,7 +1455,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully`, func() {
@@ -1472,6 +1486,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -1528,6 +1544,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -1605,6 +1623,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigComplianceProfile model
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
@@ -1710,7 +1730,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "metadata": {"project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "schematics": {}, "state": "State", "timeline": ["anyValue"], "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z"}}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully with retries`, func() {
@@ -1766,7 +1786,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "metadata": {"project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "schematics": {}, "state": "State", "timeline": ["anyValue"], "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z"}}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully`, func() {
@@ -1931,7 +1951,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "metadata": {"project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "schematics": {}, "state": "State", "timeline": ["anyValue"], "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully with retries`, func() {
@@ -1988,7 +2008,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "metadata": {"project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "schematics": {}, "state": "State", "timeline": ["anyValue"], "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully`, func() {
@@ -2113,6 +2133,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigComplianceProfile model
+				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
+				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
@@ -2128,6 +2167,8 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPatchRequestModel.Name = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Labels = []string{"testString"}
 				projectConfigPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigPatchRequestModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigPatchRequestModel.LocatorID = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPatchRequestModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -2189,7 +2230,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully with retries`, func() {
@@ -2200,6 +2241,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigComplianceProfile model
+				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
+				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
@@ -2216,6 +2276,8 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPatchRequestModel.Name = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Labels = []string{"testString"}
 				projectConfigPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigPatchRequestModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigPatchRequestModel.LocatorID = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPatchRequestModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -2280,7 +2342,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully`, func() {
@@ -2297,6 +2359,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigComplianceProfile model
+				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
+				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
@@ -2312,6 +2393,8 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPatchRequestModel.Name = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Labels = []string{"testString"}
 				projectConfigPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigPatchRequestModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigPatchRequestModel.LocatorID = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPatchRequestModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -2338,6 +2421,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigComplianceProfile model
+				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
+				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
@@ -2353,6 +2455,8 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPatchRequestModel.Name = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Labels = []string{"testString"}
 				projectConfigPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigPatchRequestModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigPatchRequestModel.LocatorID = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPatchRequestModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -2400,6 +2504,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigComplianceProfile model
+				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
+				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
@@ -2415,6 +2538,8 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigPatchRequestModel.Name = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Labels = []string{"testString"}
 				projectConfigPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigPatchRequestModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigPatchRequestModel.LocatorID = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPatchRequestModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
@@ -2752,7 +2877,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke Approve successfully with retries`, func() {
@@ -2824,7 +2949,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke Approve successfully`, func() {
@@ -2997,7 +3122,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CheckConfig successfully with retries`, func() {
@@ -3057,7 +3182,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke CheckConfig successfully`, func() {
@@ -3225,7 +3350,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully with retries`, func() {
@@ -3280,7 +3405,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully`, func() {
@@ -3510,9 +3635,13 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				Expect(projectConfigComplianceProfileModel).ToNot(BeNil())
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 				Expect(projectConfigComplianceProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.InstanceID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.InstanceLocation).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
 
@@ -3584,9 +3713,13 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
 				Expect(projectConfigComplianceProfileModel).ToNot(BeNil())
 				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 				Expect(projectConfigComplianceProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.InstanceID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.InstanceLocation).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
 
@@ -3773,17 +3906,53 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(uninstallConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateConfigOptions successfully`, func() {
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				Expect(projectConfigAuthTrustedProfileModel).ToNot(BeNil())
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+				Expect(projectConfigAuthTrustedProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthTrustedProfileModel.TargetIamID).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				Expect(projectConfigAuthModel).ToNot(BeNil())
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+				Expect(projectConfigAuthModel.TrustedProfile).To(Equal(projectConfigAuthTrustedProfileModel))
+				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectConfigComplianceProfile model
+				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
+				Expect(projectConfigComplianceProfileModel).ToNot(BeNil())
+				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
+				Expect(projectConfigComplianceProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.InstanceID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.InstanceLocation).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
+
 				// Construct an instance of the ProjectConfigPatchRequestProjectConfigManualProperty model
 				projectConfigPatchRequestModel := new(projectv1.ProjectConfigPatchRequestProjectConfigManualProperty)
 				Expect(projectConfigPatchRequestModel).ToNot(BeNil())
 				projectConfigPatchRequestModel.Name = core.StringPtr("testString")
 				projectConfigPatchRequestModel.Labels = []string{"testString"}
 				projectConfigPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigPatchRequestModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigPatchRequestModel.Type = core.StringPtr("manual")
 				projectConfigPatchRequestModel.ExternalResourcesAccount = core.StringPtr("testString")
 				Expect(projectConfigPatchRequestModel.Name).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigPatchRequestModel.Labels).To(Equal([]string{"testString"}))
 				Expect(projectConfigPatchRequestModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPatchRequestModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigPatchRequestModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
 				Expect(projectConfigPatchRequestModel.Type).To(Equal(core.StringPtr("manual")))
 				Expect(projectConfigPatchRequestModel.ExternalResourcesAccount).To(Equal(core.StringPtr("testString")))
 

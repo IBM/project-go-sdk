@@ -113,6 +113,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
 				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
 				AttachmentID: core.StringPtr("testString"),
 				ProfileName: core.StringPtr("testString"),
 			}
@@ -176,6 +178,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
 				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
 				AttachmentID: core.StringPtr("testString"),
 				ProfileName: core.StringPtr("testString"),
 			}
@@ -319,10 +323,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Version: core.StringPtr("active"),
 			}
 
-			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfig).ToNot(BeNil())
+			Expect(projectConfigGetResponse).ToNot(BeNil())
 		})
 	})
 
@@ -331,6 +335,25 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateConfig(updateConfigOptions *UpdateConfigOptions)`, func() {
+			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
+				ID: core.StringPtr("testString"),
+				TargetIamID: core.StringPtr("testString"),
+			}
+
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfile: projectConfigAuthTrustedProfileModel,
+				Method: core.StringPtr("testString"),
+				ApiKey: core.StringPtr("testString"),
+			}
+
+			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
+				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
+				AttachmentID: core.StringPtr("testString"),
+				ProfileName: core.StringPtr("testString"),
+			}
+
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
 				Name: core.StringPtr("account_id"),
 				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
@@ -345,6 +368,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("testString"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
+				Authorizations: projectConfigAuthModel,
+				ComplianceProfile: projectConfigComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
