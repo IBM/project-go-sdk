@@ -319,7 +319,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			getConfigOptions := &projectv1.GetConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				Version: core.StringPtr("testString"),
 			}
 
 			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
@@ -410,7 +409,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
 				XAuthRefreshToken: core.StringPtr("testString"),
-				Version: core.StringPtr("active"),
+				IsDraft: core.BoolPtr(true),
 			}
 
 			projectConfigGetResponse, response, err := projectService.CheckConfig(checkConfigOptions)
