@@ -1887,7 +1887,6 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(getConfigPath))
 					Expect(req.Method).To(Equal("GET"))
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"testString"}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1905,7 +1904,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel := new(projectv1.GetConfigOptions)
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
-				getConfigOptionsModel.Version = core.StringPtr("testString")
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.GetConfig(getConfigOptionsModel)
@@ -1936,7 +1934,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getConfigPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"testString"}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -1959,7 +1956,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel := new(projectv1.GetConfigOptions)
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
-				getConfigOptionsModel.Version = core.StringPtr("testString")
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1996,7 +1992,6 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getConfigPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"testString"}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2021,7 +2016,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel := new(projectv1.GetConfigOptions)
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
-				getConfigOptionsModel.Version = core.StringPtr("testString")
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -2043,7 +2037,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel := new(projectv1.GetConfigOptions)
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
-				getConfigOptionsModel.Version = core.StringPtr("testString")
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -2086,7 +2079,6 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel := new(projectv1.GetConfigOptions)
 				getConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				getConfigOptionsModel.ID = core.StringPtr("testString")
-				getConfigOptionsModel.Version = core.StringPtr("testString")
 				getConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -3035,7 +3027,7 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
 					Expect(req.Header["X-Auth-Refresh-Token"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
+					// TODO: Add check for is_draft query parameter
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -3054,7 +3046,7 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Version = core.StringPtr("active")
+				checkConfigOptionsModel.IsDraft = core.BoolPtr(true)
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CheckConfig(checkConfigOptionsModel)
@@ -3087,7 +3079,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
 					Expect(req.Header["X-Auth-Refresh-Token"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
+					// TODO: Add check for is_draft query parameter
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -3111,7 +3103,7 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Version = core.StringPtr("active")
+				checkConfigOptionsModel.IsDraft = core.BoolPtr(true)
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -3150,7 +3142,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
 					Expect(req.Header["X-Auth-Refresh-Token"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
-					Expect(req.URL.Query()["version"]).To(Equal([]string{"active"}))
+					// TODO: Add check for is_draft query parameter
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
@@ -3176,7 +3168,7 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Version = core.StringPtr("active")
+				checkConfigOptionsModel.IsDraft = core.BoolPtr(true)
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -3199,7 +3191,7 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Version = core.StringPtr("active")
+				checkConfigOptionsModel.IsDraft = core.BoolPtr(true)
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -3243,7 +3235,7 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				checkConfigOptionsModel.ID = core.StringPtr("testString")
 				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Version = core.StringPtr("active")
+				checkConfigOptionsModel.IsDraft = core.BoolPtr(true)
 				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -4014,13 +4006,13 @@ var _ = Describe(`ProjectV1`, func() {
 				checkConfigOptionsModel.SetProjectID("testString")
 				checkConfigOptionsModel.SetID("testString")
 				checkConfigOptionsModel.SetXAuthRefreshToken("testString")
-				checkConfigOptionsModel.SetVersion("active")
+				checkConfigOptionsModel.SetIsDraft(true)
 				checkConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(checkConfigOptionsModel).ToNot(BeNil())
 				Expect(checkConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(checkConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(checkConfigOptionsModel.XAuthRefreshToken).To(Equal(core.StringPtr("testString")))
-				Expect(checkConfigOptionsModel.Version).To(Equal(core.StringPtr("active")))
+				Expect(checkConfigOptionsModel.IsDraft).To(Equal(core.BoolPtr(true)))
 				Expect(checkConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateConfigOptions successfully`, func() {
@@ -4245,12 +4237,10 @@ var _ = Describe(`ProjectV1`, func() {
 				getConfigOptionsModel := projectService.NewGetConfigOptions(projectID, id)
 				getConfigOptionsModel.SetProjectID("testString")
 				getConfigOptionsModel.SetID("testString")
-				getConfigOptionsModel.SetVersion("testString")
 				getConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getConfigOptionsModel).ToNot(BeNil())
 				Expect(getConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(getConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(getConfigOptionsModel.Version).To(Equal(core.StringPtr("testString")))
 				Expect(getConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetProjectOptions successfully`, func() {

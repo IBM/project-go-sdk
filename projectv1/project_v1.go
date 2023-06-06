@@ -605,10 +605,6 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 	}
 	builder.AddHeader("Accept", "application/json")
 
-	if getConfigOptions.Version != nil {
-		builder.AddQuery("version", fmt.Sprint(*getConfigOptions.Version))
-	}
-
 	request, err := builder.Build()
 	if err != nil {
 		return
@@ -906,8 +902,8 @@ func (project *ProjectV1) CheckConfigWithContext(ctx context.Context, checkConfi
 		builder.AddHeader("X-Auth-Refresh-Token", fmt.Sprint(*checkConfigOptions.XAuthRefreshToken))
 	}
 
-	if checkConfigOptions.Version != nil {
-		builder.AddQuery("version", fmt.Sprint(*checkConfigOptions.Version))
+	if checkConfigOptions.IsDraft != nil {
+		builder.AddQuery("is_draft", fmt.Sprint(*checkConfigOptions.IsDraft))
 	}
 
 	request, err := builder.Build()
@@ -1224,8 +1220,8 @@ type CheckConfigOptions struct {
 	// The IAM refresh token.
 	XAuthRefreshToken *string `json:"X-Auth-Refresh-Token,omitempty"`
 
-	// The version of the configuration that the validation check should trigger against.
-	Version *string `json:"version,omitempty"`
+	// To specify whether the validation check should trigger against the draft or the active version of the configuration.
+	IsDraft *bool `json:"is_draft,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -1257,9 +1253,9 @@ func (_options *CheckConfigOptions) SetXAuthRefreshToken(xAuthRefreshToken strin
 	return _options
 }
 
-// SetVersion : Allow user to set Version
-func (_options *CheckConfigOptions) SetVersion(version string) *CheckConfigOptions {
-	_options.Version = core.StringPtr(version)
+// SetIsDraft : Allow user to set IsDraft
+func (_options *CheckConfigOptions) SetIsDraft(isDraft bool) *CheckConfigOptions {
+	_options.IsDraft = core.BoolPtr(isDraft)
 	return _options
 }
 
@@ -1643,9 +1639,6 @@ type GetConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// The version of the configuration to return.
-	Version *string `json:"version,omitempty"`
-
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -1667,12 +1660,6 @@ func (_options *GetConfigOptions) SetProjectID(projectID string) *GetConfigOptio
 // SetID : Allow user to set ID
 func (_options *GetConfigOptions) SetID(id string) *GetConfigOptions {
 	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetVersion : Allow user to set Version
-func (_options *GetConfigOptions) SetVersion(version string) *GetConfigOptions {
-	_options.Version = core.StringPtr(version)
 	return _options
 }
 
