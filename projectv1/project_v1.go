@@ -577,7 +577,7 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 
 	pathParamsMap := map[string]string{
 		"project_id": *getConfigOptions.ProjectID,
-		"id": *getConfigOptions.ID,
+		"id":         *getConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -638,7 +638,7 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 
 	pathParamsMap := map[string]string{
 		"project_id": *updateConfigOptions.ProjectID,
-		"id": *updateConfigOptions.ID,
+		"id":         *updateConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.PATCH)
@@ -731,7 +731,7 @@ func (project *ProjectV1) DeleteConfigWithContext(ctx context.Context, deleteCon
 
 	pathParamsMap := map[string]string{
 		"project_id": *deleteConfigOptions.ProjectID,
-		"id": *deleteConfigOptions.ID,
+		"id":         *deleteConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
@@ -796,7 +796,7 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 
 	pathParamsMap := map[string]string{
 		"project_id": *approveOptions.ProjectID,
-		"id": *approveOptions.ID,
+		"id":         *approveOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -868,7 +868,7 @@ func (project *ProjectV1) CheckConfigWithContext(ctx context.Context, checkConfi
 
 	pathParamsMap := map[string]string{
 		"project_id": *checkConfigOptions.ProjectID,
-		"id": *checkConfigOptions.ID,
+		"id":         *checkConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -937,7 +937,7 @@ func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installC
 
 	pathParamsMap := map[string]string{
 		"project_id": *installConfigOptions.ProjectID,
-		"id": *installConfigOptions.ID,
+		"id":         *installConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -999,7 +999,7 @@ func (project *ProjectV1) UninstallConfigWithContext(ctx context.Context, uninst
 
 	pathParamsMap := map[string]string{
 		"project_id": *uninstallConfigOptions.ProjectID,
-		"id": *uninstallConfigOptions.ID,
+		"id":         *uninstallConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -1048,7 +1048,7 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 
 	pathParamsMap := map[string]string{
 		"project_id": *listConfigResourcesOptions.ProjectID,
-		"id": *listConfigResourcesOptions.ID,
+		"id":         *listConfigResourcesOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1109,7 +1109,7 @@ func (project *ProjectV1) ListConfigDraftsWithContext(ctx context.Context, listC
 
 	pathParamsMap := map[string]string{
 		"project_id": *listConfigDraftsOptions.ProjectID,
-		"config_id": *listConfigDraftsOptions.ConfigID,
+		"config_id":  *listConfigDraftsOptions.ConfigID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1170,8 +1170,8 @@ func (project *ProjectV1) GetConfigDraftWithContext(ctx context.Context, getConf
 
 	pathParamsMap := map[string]string{
 		"project_id": *getConfigDraftOptions.ProjectID,
-		"config_id": *getConfigDraftOptions.ConfigID,
-		"version": fmt.Sprint(*getConfigDraftOptions.Version),
+		"config_id":  *getConfigDraftOptions.ConfigID,
+		"version":    fmt.Sprint(*getConfigDraftOptions.Version),
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1233,7 +1233,7 @@ type ApproveOptions struct {
 func (*ProjectV1) NewApproveOptions(projectID string, id string) *ApproveOptions {
 	return &ApproveOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -1283,7 +1283,7 @@ type CheckConfigOptions struct {
 func (*ProjectV1) NewCheckConfigOptions(projectID string, id string) *CheckConfigOptions {
 	return &CheckConfigOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -1356,7 +1356,7 @@ type CreateConfigOptions struct {
 func (*ProjectV1) NewCreateConfigOptions(projectID string, name string, locatorID string) *CreateConfigOptions {
 	return &CreateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
-		Name: core.StringPtr(name),
+		Name:      core.StringPtr(name),
 		LocatorID: core.StringPtr(locatorID),
 	}
 }
@@ -1451,8 +1451,8 @@ type CreateProjectOptions struct {
 func (*ProjectV1) NewCreateProjectOptions(resourceGroup string, location string, name string) *CreateProjectOptions {
 	return &CreateProjectOptions{
 		ResourceGroup: core.StringPtr(resourceGroup),
-		Location: core.StringPtr(location),
-		Name: core.StringPtr(name),
+		Location:      core.StringPtr(location),
+		Name:          core.StringPtr(name),
 	}
 }
 
@@ -1555,7 +1555,7 @@ type DeleteConfigOptions struct {
 func (*ProjectV1) NewDeleteConfigOptions(projectID string, id string) *DeleteConfigOptions {
 	return &DeleteConfigOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -1630,8 +1630,8 @@ type GetConfigDraftOptions struct {
 func (*ProjectV1) NewGetConfigDraftOptions(projectID string, configID string, version int64) *GetConfigDraftOptions {
 	return &GetConfigDraftOptions{
 		ProjectID: core.StringPtr(projectID),
-		ConfigID: core.StringPtr(configID),
-		Version: core.Int64Ptr(version),
+		ConfigID:  core.StringPtr(configID),
+		Version:   core.Int64Ptr(version),
 	}
 }
 
@@ -1675,7 +1675,7 @@ type GetConfigOptions struct {
 func (*ProjectV1) NewGetConfigOptions(projectID string, id string) *GetConfigOptions {
 	return &GetConfigOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -1743,14 +1743,14 @@ type InputVariable struct {
 // Constants associated with the InputVariable.Type property.
 // The variable type.
 const (
-	InputVariable_Type_Array = "array"
-	InputVariable_Type_Boolean = "boolean"
-	InputVariable_Type_Float = "float"
-	InputVariable_Type_Int = "int"
-	InputVariable_Type_Number = "number"
-	InputVariable_Type_Object = "object"
+	InputVariable_Type_Array    = "array"
+	InputVariable_Type_Boolean  = "boolean"
+	InputVariable_Type_Float    = "float"
+	InputVariable_Type_Int      = "int"
+	InputVariable_Type_Number   = "number"
+	InputVariable_Type_Object   = "object"
 	InputVariable_Type_Password = "password"
-	InputVariable_Type_String = "string"
+	InputVariable_Type_String   = "string"
 )
 
 // UnmarshalInputVariable unmarshals an instance of InputVariable from the specified map of raw messages.
@@ -1792,7 +1792,7 @@ type InstallConfigOptions struct {
 func (*ProjectV1) NewInstallConfigOptions(projectID string, id string) *InstallConfigOptions {
 	return &InstallConfigOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -1830,7 +1830,7 @@ type ListConfigDraftsOptions struct {
 func (*ProjectV1) NewListConfigDraftsOptions(projectID string, configID string) *ListConfigDraftsOptions {
 	return &ListConfigDraftsOptions{
 		ProjectID: core.StringPtr(projectID),
-		ConfigID: core.StringPtr(configID),
+		ConfigID:  core.StringPtr(configID),
 	}
 }
 
@@ -1868,7 +1868,7 @@ type ListConfigResourcesOptions struct {
 func (*ProjectV1) NewListConfigResourcesOptions(projectID string, id string) *ListConfigResourcesOptions {
 	return &ListConfigResourcesOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -2526,7 +2526,7 @@ type ProjectConfigDefinition struct {
 // The type of a project configuration manual property.
 const (
 	ProjectConfigDefinition_Type_SchematicsBlueprint = "schematics_blueprint"
-	ProjectConfigDefinition_Type_TerraformTemplate = "terraform_template"
+	ProjectConfigDefinition_Type_TerraformTemplate   = "terraform_template"
 )
 
 // UnmarshalProjectConfigDefinition unmarshals an instance of ProjectConfigDefinition from the specified map of raw messages.
@@ -3211,7 +3211,7 @@ type ProjectConfigPrototype struct {
 // NewProjectConfigPrototype : Instantiate ProjectConfigPrototype (Generic Model Constructor)
 func (*ProjectV1) NewProjectConfigPrototype(name string, locatorID string) (_model *ProjectConfigPrototype, err error) {
 	_model = &ProjectConfigPrototype{
-		Name: core.StringPtr(name),
+		Name:      core.StringPtr(name),
 		LocatorID: core.StringPtr(locatorID),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
@@ -3338,7 +3338,7 @@ type ProjectConfigSettingCollection struct {
 // NewProjectConfigSettingCollection : Instantiate ProjectConfigSettingCollection (Generic Model Constructor)
 func (*ProjectV1) NewProjectConfigSettingCollection(name string, value string) (_model *ProjectConfigSettingCollection, err error) {
 	_model = &ProjectConfigSettingCollection{
-		Name: core.StringPtr(name),
+		Name:  core.StringPtr(name),
 		Value: core.StringPtr(value),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
@@ -3491,7 +3491,7 @@ type UninstallConfigOptions struct {
 func (*ProjectV1) NewUninstallConfigOptions(projectID string, id string) *UninstallConfigOptions {
 	return &UninstallConfigOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -3555,7 +3555,7 @@ type UpdateConfigOptions struct {
 func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string) *UpdateConfigOptions {
 	return &UpdateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
+		ID:        core.StringPtr(id),
 	}
 }
 
@@ -3625,13 +3625,11 @@ func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateC
 	return options
 }
 
-//
 // ProjectsPager can be used to simplify the use of the "ListProjects" method.
-//
 type ProjectsPager struct {
-	hasNext bool
-	options *ListProjectsOptions
-	client  *ProjectV1
+	hasNext     bool
+	options     *ListProjectsOptions
+	client      *ProjectV1
 	pageContext struct {
 		next *string
 	}
