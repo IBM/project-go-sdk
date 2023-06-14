@@ -2112,7 +2112,7 @@ type ProjectCollection struct {
 	// A pagination link.
 	First *PaginationLink `json:"first" validate:"required"`
 
-	// A pagination link.
+	// A pagiProjectCollectionMemberWithMetadatanation link.
 	Last *PaginationLink `json:"last,omitempty"`
 
 	// A pagination link.
