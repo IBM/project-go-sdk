@@ -163,20 +163,20 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			createConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 			createConfigOptions.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
 
-			projectConfigGetResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 
-			configIdLink = *projectConfigGetResponse.ID
+			configIdLink = *projectConfigDraftResponse.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 		It(`ListProjects request example`, func() {
@@ -282,18 +282,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			updateConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 
-			projectConfigGetResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 		It(`Approve request example`, func() {
 			fmt.Println("\nApprove() result:")
@@ -383,6 +383,28 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
+		It(`ListConfigResources request example`, func() {
+			fmt.Println("\nListConfigResources() result:")
+			// begin-list_config_resources
+
+			listConfigResourcesOptions := projectService.NewListConfigResourcesOptions(
+				projectIdLink,
+				configIdLink,
+			)
+
+			projectConfigResourceCollection, response, err := projectService.ListConfigResources(listConfigResourcesOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigResourceCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_config_resources
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(projectConfigResourceCollection).ToNot(BeNil())
+		})
 		It(`ListConfigDrafts request example`, func() {
 			fmt.Println("\nListConfigDrafts() result:")
 			// begin-list_config_drafts
@@ -415,18 +437,84 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				int64(38),
 			)
 
-			projectConfigDraft, response, err := projectService.GetConfigDraft(getConfigDraftOptions)
+			projectConfigDraftResponse, response, err := projectService.GetConfigDraft(getConfigDraftOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigDraft, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config_draft
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDraft).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
+		})
+		It(`GetCheckJobLog request example`, func() {
+			fmt.Println("\nGetCheckJobLog() result:")
+			// begin-get_check_job_log
+
+			getCheckJobLogOptions := projectService.NewGetCheckJobLogOptions(
+				projectIdLink,
+				configIdLink,
+			)
+
+			actionJobLog, response, err := projectService.GetCheckJobLog(getCheckJobLogOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(actionJobLog, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_check_job_log
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(actionJobLog).ToNot(BeNil())
+		})
+		It(`GetInstallJobLog request example`, func() {
+			fmt.Println("\nGetInstallJobLog() result:")
+			// begin-get_install_job_log
+
+			getInstallJobLogOptions := projectService.NewGetInstallJobLogOptions(
+				projectIdLink,
+				configIdLink,
+			)
+
+			actionJobLog, response, err := projectService.GetInstallJobLog(getInstallJobLogOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(actionJobLog, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_install_job_log
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(actionJobLog).ToNot(BeNil())
+		})
+		It(`GetUninstallJobLog request example`, func() {
+			fmt.Println("\nGetUninstallJobLog() result:")
+			// begin-get_uninstall_job_log
+
+			getUninstallJobLogOptions := projectService.NewGetUninstallJobLogOptions(
+				projectIdLink,
+				configIdLink,
+			)
+
+			actionJobLog, response, err := projectService.GetUninstallJobLog(getUninstallJobLogOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(actionJobLog, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_uninstall_job_log
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(actionJobLog).ToNot(BeNil())
 		})
 		It(`DeleteConfig request example`, func() {
 			fmt.Println("\nDeleteConfig() result:")
