@@ -130,9 +130,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				ID: core.StringPtr("testString"),
 				Name: core.StringPtr("common-variables"),
-				Labels: []string{"testString"},
+				Labels: []string{},
 				Description: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
@@ -198,7 +197,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 				Name: core.StringPtr("env-stage"),
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				ID: core.StringPtr("testString"),
 				Labels: []string{"env:stage", "governance:test", "build:0"},
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
 				Authorizations: projectConfigAuthModel,
@@ -207,12 +205,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
 
-			projectConfigGetResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.CreateConfig(createConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 
-			configIdLink = *projectConfigGetResponse.ID
+			configIdLink = *projectConfigDraftResponse.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 	})
@@ -375,10 +373,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ComplianceProfile: projectConfigComplianceProfileModel,
 			}
 
-			projectConfigGetResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 	})
 
@@ -452,6 +450,23 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`ListConfigResources - List the resources deployed by a configuration`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ListConfigResources(listConfigResourcesOptions *ListConfigResourcesOptions)`, func() {
+			listConfigResourcesOptions := &projectv1.ListConfigResourcesOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+			}
+
+			projectConfigResourceCollection, response, err := projectService.ListConfigResources(listConfigResourcesOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(projectConfigResourceCollection).ToNot(BeNil())
+		})
+	})
+
 	Describe(`ListConfigDrafts - Get a list of project configuration drafts`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -480,10 +495,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Version: core.Int64Ptr(int64(38)),
 			}
 
-			projectConfigDraft, response, err := projectService.GetConfigDraft(getConfigDraftOptions)
+			projectConfigDraftResponse, response, err := projectService.GetConfigDraft(getConfigDraftOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDraft).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 	})
 
@@ -496,7 +511,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
 				DraftOnly: core.BoolPtr(false),
-				Destroy: core.BoolPtr(true),
 			}
 
 			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)
@@ -513,7 +527,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`DeleteProject(deleteProjectOptions *DeleteProjectOptions)`, func() {
 			deleteProjectOptions := &projectv1.DeleteProjectOptions{
 				ID: &projectIdLink,
-				Destroy: core.BoolPtr(true),
 			}
 
 			response, err := projectService.DeleteProject(deleteProjectOptions)
