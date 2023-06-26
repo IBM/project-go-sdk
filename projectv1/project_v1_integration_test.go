@@ -293,6 +293,25 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`UpdateProject - Update a project`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
+			updateProjectOptions := &projectv1.UpdateProjectOptions{
+				ID: &projectIdLink,
+				Name: core.StringPtr("acme-microservice"),
+				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+				DestroyOnDelete: core.BoolPtr(true),
+			}
+
+			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(projectSummary).ToNot(BeNil())
+		})
+	})
+
 	Describe(`ListConfigs - List all project configurations`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -377,6 +396,24 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDraftResponse).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ForceApprove - Force approve project configuration`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ForceApprove(forceApproveOptions *ForceApproveOptions)`, func() {
+			forceApproveOptions := &projectv1.ForceApproveOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				Comment: core.StringPtr("Approving the changes"),
+			}
+
+			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(projectConfigGetResponse).ToNot(BeNil())
 		})
 	})
 
@@ -467,7 +504,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ListConfigDrafts - Get a list of project configuration drafts`, func() {
+	Describe(`ListConfigDrafts - Get a list of drafts in a project configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -484,7 +521,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`GetConfigDraft - Get a project configuration draft`, func() {
+	Describe(`GetConfigDraft - Get a configuration draft in a project`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})

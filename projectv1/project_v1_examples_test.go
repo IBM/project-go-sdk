@@ -224,6 +224,29 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectSummary).ToNot(BeNil())
 		})
+		It(`UpdateProject request example`, func() {
+			fmt.Println("\nUpdateProject() result:")
+			// begin-update_project
+
+			updateProjectOptions := projectService.NewUpdateProjectOptions(
+				projectIdLink,
+			)
+			updateProjectOptions.SetName("acme-microservice")
+			updateProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
+
+			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_project
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(projectSummary).ToNot(BeNil())
+		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
 			// begin-list_configs
@@ -294,6 +317,29 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDraftResponse).ToNot(BeNil())
+		})
+		It(`ForceApprove request example`, func() {
+			fmt.Println("\nForceApprove() result:")
+			// begin-force_approve
+
+			forceApproveOptions := projectService.NewForceApproveOptions(
+				projectIdLink,
+				configIdLink,
+			)
+			forceApproveOptions.SetComment("Approving the changes")
+
+			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			fmt.Println(string(b))
+
+			// end-force_approve
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(projectConfigGetResponse).ToNot(BeNil())
 		})
 		It(`Approve request example`, func() {
 			fmt.Println("\nApprove() result:")
