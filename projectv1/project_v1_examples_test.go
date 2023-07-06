@@ -110,18 +110,11 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateProject() result:")
 			// begin-create_project
 
-			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				Name: core.StringPtr("common-variables"),
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-			}
-
 			createProjectOptions := projectService.NewCreateProjectOptions(
 				"Default",
 				"us-south",
-				"acme-microservice",
+				"testString",
 			)
-			createProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
-			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
@@ -143,25 +136,11 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateConfig() result:")
 			// begin-create_config
 
-			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
-				Value: core.StringPtr(`$configs[].name["account-stage"].input.account_id`),
-			}
-
-			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT"),
-				Value: core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"),
-			}
-
 			createConfigOptions := projectService.NewCreateConfigOptions(
 				projectIdLink,
-				"env-stage",
-				"1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global",
+				"testString",
+				"testString",
 			)
-			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
-			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
-			createConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
-			createConfigOptions.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
 
 			projectConfigDraftResponse, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
@@ -224,6 +203,27 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectSummary).ToNot(BeNil())
 		})
+		It(`UpdateProject request example`, func() {
+			fmt.Println("\nUpdateProject() result:")
+			// begin-update_project
+
+			updateProjectOptions := projectService.NewUpdateProjectOptions(
+				projectIdLink,
+			)
+
+			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_project
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(projectSummary).ToNot(BeNil())
+		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
 			// begin-list_configs
@@ -271,16 +271,10 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nUpdateConfig() result:")
 			// begin-update_config
 
-			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
-				Value: core.StringPtr(`$configs[].name["account-stage"].input.account_id`),
-			}
-
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
 				configIdLink,
 			)
-			updateConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 
 			projectConfigDraftResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {
@@ -294,6 +288,29 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDraftResponse).ToNot(BeNil())
+		})
+		It(`ForceApprove request example`, func() {
+			fmt.Println("\nForceApprove() result:")
+			// begin-force_approve
+
+			forceApproveOptions := projectService.NewForceApproveOptions(
+				projectIdLink,
+				configIdLink,
+			)
+			forceApproveOptions.SetComment("Approving the changes")
+
+			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			fmt.Println(string(b))
+
+			// end-force_approve
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(projectConfigGetResponse).ToNot(BeNil())
 		})
 		It(`Approve request example`, func() {
 			fmt.Println("\nApprove() result:")

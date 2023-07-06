@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.72.2-2bede9d2-20230601-202845
+ * IBM OpenAPI SDK Code Generator Version: 3.74.0-89f1dbab-20230630-160213
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -337,6 +337,82 @@ func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectO
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectSummary)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateProject : Update a project
+// Update a project by the ID.
+func (project *ProjectV1) UpdateProject(updateProjectOptions *UpdateProjectOptions) (result *ProjectSummary, response *core.DetailedResponse, err error) {
+	return project.UpdateProjectWithContext(context.Background(), updateProjectOptions)
+}
+
+// UpdateProjectWithContext is an alternate form of the UpdateProject method which supports a Context parameter
+func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updateProjectOptions *UpdateProjectOptions) (result *ProjectSummary, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateProjectOptions, "updateProjectOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(updateProjectOptions, "updateProjectOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *updateProjectOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{id}`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range updateProjectOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateProject")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateProjectOptions.Name != nil {
+		body["name"] = updateProjectOptions.Name
+	}
+	if updateProjectOptions.Description != nil {
+		body["description"] = updateProjectOptions.Description
+	}
+	if updateProjectOptions.DestroyOnDelete != nil {
+		body["destroy_on_delete"] = updateProjectOptions.DestroyOnDelete
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -777,6 +853,77 @@ func (project *ProjectV1) DeleteConfigWithContext(ctx context.Context, deleteCon
 	return
 }
 
+// ForceApprove : Force approve project configuration
+// Force approve configuration edits to the main configuration with an approving comment.
+func (project *ProjectV1) ForceApprove(forceApproveOptions *ForceApproveOptions) (result *ProjectConfigGetResponse, response *core.DetailedResponse, err error) {
+	return project.ForceApproveWithContext(context.Background(), forceApproveOptions)
+}
+
+// ForceApproveWithContext is an alternate form of the ForceApprove method which supports a Context parameter
+func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceApproveOptions *ForceApproveOptions) (result *ProjectConfigGetResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(forceApproveOptions, "forceApproveOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(forceApproveOptions, "forceApproveOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *forceApproveOptions.ProjectID,
+		"id": *forceApproveOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/force_approve`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range forceApproveOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ForceApprove")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if forceApproveOptions.Comment != nil {
+		body["comment"] = forceApproveOptions.Comment
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigGetResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // Approve : Approve and merge a configuration draft
 // Approve and merge configuration edits to the main configuration.
 func (project *ProjectV1) Approve(approveOptions *ApproveOptions) (result *ProjectConfigGetResponse, response *core.DetailedResponse, err error) {
@@ -1090,7 +1237,7 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 	return
 }
 
-// ListConfigDrafts : Get a list of project configuration drafts
+// ListConfigDrafts : Get a list of drafts in a project configuration
 // Returns a list of previous and current configuration drafts in a specific project.
 func (project *ProjectV1) ListConfigDrafts(listConfigDraftsOptions *ListConfigDraftsOptions) (result *ProjectConfigDraftSummaryCollection, response *core.DetailedResponse, err error) {
 	return project.ListConfigDraftsWithContext(context.Background(), listConfigDraftsOptions)
@@ -1151,7 +1298,7 @@ func (project *ProjectV1) ListConfigDraftsWithContext(ctx context.Context, listC
 	return
 }
 
-// GetConfigDraft : Get a project configuration draft
+// GetConfigDraft : Get a configuration draft in a project
 // Returns the specific version of a configuration draft in a specific project.
 func (project *ProjectV1) GetConfigDraft(getConfigDraftOptions *GetConfigDraftOptions) (result *ProjectConfigDraftResponse, response *core.DetailedResponse, err error) {
 	return project.GetConfigDraftWithContext(context.Background(), getConfigDraftOptions)
@@ -1503,10 +1650,10 @@ type CumulativeNeedsAttention struct {
 	// The event name.
 	Event *string `json:"event,omitempty"`
 
-	// The unique ID of a project.
+	// A unique ID for that individual event.
 	EventID *string `json:"event_id,omitempty"`
 
-	// The unique ID of a project.
+	// A unique ID for the configuration.
 	ConfigID *string `json:"config_id,omitempty"`
 
 	// The version number of the configuration.
@@ -1607,6 +1754,54 @@ func (_options *DeleteProjectOptions) SetID(id string) *DeleteProjectOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *DeleteProjectOptions) SetHeaders(param map[string]string) *DeleteProjectOptions {
+	options.Headers = param
+	return options
+}
+
+// ForceApproveOptions : The ForceApprove options.
+type ForceApproveOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique config ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Notes on the project draft action. If this is a forced approve on the draft configuration, a non-empty comment is
+	// required.
+	Comment *string `json:"comment,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewForceApproveOptions : Instantiate ForceApproveOptions
+func (*ProjectV1) NewForceApproveOptions(projectID string, id string) *ForceApproveOptions {
+	return &ForceApproveOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *ForceApproveOptions) SetProjectID(projectID string) *ForceApproveOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *ForceApproveOptions) SetID(id string) *ForceApproveOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetComment : Allow user to set Comment
+func (_options *ForceApproveOptions) SetComment(comment string) *ForceApproveOptions {
+	_options.Comment = core.StringPtr(comment)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ForceApproveOptions) SetHeaders(param map[string]string) *ForceApproveOptions {
 	options.Headers = param
 	return options
 }
@@ -3730,6 +3925,61 @@ func (_options *UpdateConfigOptions) SetComplianceProfile(complianceProfile *Pro
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateProjectOptions : The UpdateProject options.
+type UpdateProjectOptions struct {
+	// The unique project ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The project name.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the project.
+	Description *string `json:"description,omitempty"`
+
+	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
+	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateProjectOptions : Instantiate UpdateProjectOptions
+func (*ProjectV1) NewUpdateProjectOptions(id string) *UpdateProjectOptions {
+	return &UpdateProjectOptions{
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateProjectOptions) SetID(id string) *UpdateProjectOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetName : Allow user to set Name
+func (_options *UpdateProjectOptions) SetName(name string) *UpdateProjectOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *UpdateProjectOptions) SetDescription(description string) *UpdateProjectOptions {
+	_options.Description = core.StringPtr(description)
+	return _options
+}
+
+// SetDestroyOnDelete : Allow user to set DestroyOnDelete
+func (_options *UpdateProjectOptions) SetDestroyOnDelete(destroyOnDelete bool) *UpdateProjectOptions {
+	_options.DestroyOnDelete = core.BoolPtr(destroyOnDelete)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateProjectOptions) SetHeaders(param map[string]string) *UpdateProjectOptions {
 	options.Headers = param
 	return options
 }
