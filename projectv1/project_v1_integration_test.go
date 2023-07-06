@@ -130,12 +130,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				Name: core.StringPtr("testString"),
+				Name: core.StringPtr("common-variables"),
 				Labels: []string{},
 				Description: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
-				LocatorID: core.StringPtr("testString"),
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
@@ -143,8 +143,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			createProjectOptions := &projectv1.CreateProjectOptions{
 				ResourceGroup: core.StringPtr("Default"),
 				Location: core.StringPtr("us-south"),
-				Name: core.StringPtr("testString"),
-				Description: core.StringPtr("testString"),
+				Name: core.StringPtr("acme-microservice"),
+				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
 				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
 			}
@@ -184,21 +184,21 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
+				Name: core.StringPtr("account_id"),
+				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
 			}
 
 			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
+				Name: core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT"),
+				Value: core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"),
 			}
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
-				Name: core.StringPtr("testString"),
-				LocatorID: core.StringPtr("testString"),
-				Labels: []string{},
-				Description: core.StringPtr("testString"),
+				Name: core.StringPtr("env-stage"),
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+				Labels: []string{"env:stage", "governance:test", "build:0"},
+				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
@@ -293,25 +293,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`UpdateProject - Update a project`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
-			updateProjectOptions := &projectv1.UpdateProjectOptions{
-				ID: &projectIdLink,
-				Name: core.StringPtr("testString"),
-				Description: core.StringPtr("testString"),
-				DestroyOnDelete: core.BoolPtr(true),
-			}
-
-			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
-		})
-	})
-
 	Describe(`ListConfigs - List all project configurations`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -351,8 +332,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`UpdateConfig(updateConfigOptions *UpdateConfigOptions)`, func() {
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
+				Name: core.StringPtr("account_id"),
+				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
 			}
 
 			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
@@ -396,24 +377,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDraftResponse).ToNot(BeNil())
-		})
-	})
-
-	Describe(`ForceApprove - Force approve project configuration`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`ForceApprove(forceApproveOptions *ForceApproveOptions)`, func() {
-			forceApproveOptions := &projectv1.ForceApproveOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-				Comment: core.StringPtr("Approving the changes"),
-			}
-
-			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
 		})
 	})
 
@@ -504,7 +467,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ListConfigDrafts - Get a list of drafts in a project configuration`, func() {
+	Describe(`ListConfigDrafts - Get a list of project configuration drafts`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -521,7 +484,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`GetConfigDraft - Get a configuration draft in a project`, func() {
+	Describe(`GetConfigDraft - Get a project configuration draft`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})

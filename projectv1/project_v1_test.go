@@ -219,12 +219,12 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
 				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
@@ -232,8 +232,8 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.Name = core.StringPtr("testString")
-				createProjectOptionsModel.Description = core.StringPtr("testString")
+				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -333,12 +333,12 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
 				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
@@ -346,8 +346,8 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.Name = core.StringPtr("testString")
-				createProjectOptionsModel.Description = core.StringPtr("testString")
+				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -455,12 +455,12 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
 				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
@@ -468,8 +468,8 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.Name = core.StringPtr("testString")
-				createProjectOptionsModel.Description = core.StringPtr("testString")
+				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -520,12 +520,12 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
 				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
@@ -533,8 +533,8 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.Name = core.StringPtr("testString")
-				createProjectOptionsModel.Description = core.StringPtr("testString")
+				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -606,12 +606,12 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
 				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
@@ -619,8 +619,8 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.Name = core.StringPtr("testString")
-				createProjectOptionsModel.Description = core.StringPtr("testString")
+				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -1155,265 +1155,6 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 	})
-	Describe(`UpdateProject(updateProjectOptions *UpdateProjectOptions) - Operation response error`, func() {
-		updateProjectPath := "/v1/projects/testString"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(updateProjectPath))
-					Expect(req.Method).To(Equal("PATCH"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke UpdateProject with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("testString")
-				updateProjectOptionsModel.Description = core.StringPtr("testString")
-				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
-		updateProjectPath := "/v1/projects/testString"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(updateProjectPath))
-					Expect(req.Method).To(Equal("PATCH"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
-				}))
-			})
-			It(`Invoke UpdateProject successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("testString")
-				updateProjectOptionsModel.Description = core.StringPtr("testString")
-				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.UpdateProjectWithContext(ctx, updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.UpdateProjectWithContext(ctx, updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(updateProjectPath))
-					Expect(req.Method).To(Equal("PATCH"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
-				}))
-			})
-			It(`Invoke UpdateProject successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.UpdateProject(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("testString")
-				updateProjectOptionsModel.Description = core.StringPtr("testString")
-				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke UpdateProject with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("testString")
-				updateProjectOptionsModel.Description = core.StringPtr("testString")
-				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the UpdateProjectOptions model with no property values
-				updateProjectOptionsModelNew := new(projectv1.UpdateProjectOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.UpdateProject(updateProjectOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke UpdateProject successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the UpdateProjectOptions model
-				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
-				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Name = core.StringPtr("testString")
-				updateProjectOptionsModel.Description = core.StringPtr("testString")
-				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`DeleteProject(deleteProjectOptions *DeleteProjectOptions)`, func() {
 		deleteProjectPath := "/v1/projects/testString"
 		Context(`Using mock server endpoint`, func() {
@@ -1526,21 +1267,21 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				projectConfigSettingCollectionModel.Name = core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT")
+				projectConfigSettingCollectionModel.Value = core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
@@ -1630,21 +1371,21 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				projectConfigSettingCollectionModel.Name = core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT")
+				projectConfigSettingCollectionModel.Value = core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
@@ -1742,21 +1483,21 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				projectConfigSettingCollectionModel.Name = core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT")
+				projectConfigSettingCollectionModel.Value = core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
@@ -1799,21 +1540,21 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				projectConfigSettingCollectionModel.Name = core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT")
+				projectConfigSettingCollectionModel.Value = core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
@@ -1877,21 +1618,21 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				projectConfigSettingCollectionModel.Name = core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT")
+				projectConfigSettingCollectionModel.Value = core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
@@ -2365,8 +2106,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
@@ -2470,8 +2211,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
@@ -2583,8 +2324,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
@@ -2641,8 +2382,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
@@ -2720,8 +2461,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
@@ -2988,260 +2729,6 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Invoke operation
 				result, response, operationErr := projectService.DeleteConfig(deleteConfigOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`ForceApprove(forceApproveOptions *ForceApproveOptions) - Operation response error`, func() {
-		forceApprovePath := "/v1/projects/testString/configs/testString/force_approve"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(forceApprovePath))
-					Expect(req.Method).To(Equal("POST"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke ForceApprove with error: Operation response processing error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`ForceApprove(forceApproveOptions *ForceApproveOptions)`, func() {
-		forceApprovePath := "/v1/projects/testString/configs/testString/force_approve"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(forceApprovePath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "deleted", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "job_summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_deployment_job_summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}, "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}}`)
-				}))
-			})
-			It(`Invoke ForceApprove successfully with retries`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-				projectService.EnableRetries(0, 0)
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := projectService.ForceApproveWithContext(ctx, forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				projectService.DisableRetries()
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = projectService.ForceApproveWithContext(ctx, forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(forceApprovePath))
-					Expect(req.Method).To(Equal("POST"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "deleted", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "job_summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_deployment_job_summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}, "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": [{"name": "Name", "type": "array", "value": "anyValue", "required": true}], "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}}`)
-				}))
-			})
-			It(`Invoke ForceApprove successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.ForceApprove(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke ForceApprove with error: Operation validation and request error`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := projectService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the ForceApproveOptions model with no property values
-				forceApproveOptionsModelNew := new(projectv1.ForceApproveOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.ForceApprove(forceApproveOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(201)
-				}))
-			})
-			It(`Invoke ForceApprove successfully`, func() {
-				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(projectService).ToNot(BeNil())
-
-				// Construct an instance of the ForceApproveOptions model
-				forceApproveOptionsModel := new(projectv1.ForceApproveOptions)
-				forceApproveOptionsModel.ProjectID = core.StringPtr("testString")
-				forceApproveOptionsModel.ID = core.StringPtr("testString")
-				forceApproveOptionsModel.Comment = core.StringPtr("Approving the changes")
-				forceApproveOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := projectService.ForceApprove(forceApproveOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -4760,29 +4247,29 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				Expect(projectConfigInputVariableModel).ToNot(BeNil())
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr("testString")))
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("account_id")))
+				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr(`$configs[].name["account-stage"].input.account_id`)))
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
 				Expect(projectConfigSettingCollectionModel).ToNot(BeNil())
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("testString")))
+				projectConfigSettingCollectionModel.Name = core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT")
+				projectConfigSettingCollectionModel.Value = core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")
+				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT")))
+				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")))
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
-				createConfigOptionsName := "testString"
-				createConfigOptionsLocatorID := "testString"
+				createConfigOptionsName := "env-stage"
+				createConfigOptionsLocatorID := "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"
 				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID, createConfigOptionsName, createConfigOptionsLocatorID)
 				createConfigOptionsModel.SetProjectID("testString")
-				createConfigOptionsModel.SetName("testString")
-				createConfigOptionsModel.SetLocatorID("testString")
-				createConfigOptionsModel.SetLabels([]string{})
-				createConfigOptionsModel.SetDescription("testString")
+				createConfigOptionsModel.SetName("env-stage")
+				createConfigOptionsModel.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.SetLabels([]string{"env:stage", "governance:test", "build:0"})
+				createConfigOptionsModel.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.SetAuthorizations(projectConfigAuthModel)
 				createConfigOptionsModel.SetComplianceProfile(projectConfigComplianceProfileModel)
 				createConfigOptionsModel.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
@@ -4790,10 +4277,10 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createConfigOptionsModel).ToNot(BeNil())
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Labels).To(Equal([]string{}))
-				Expect(createConfigOptionsModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(createConfigOptionsModel.Name).To(Equal(core.StringPtr("env-stage")))
+				Expect(createConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(createConfigOptionsModel.Labels).To(Equal([]string{"env:stage", "governance:test", "build:0"}))
+				Expect(createConfigOptionsModel.Description).To(Equal(core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")))
 				Expect(createConfigOptionsModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(createConfigOptionsModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
 				Expect(createConfigOptionsModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
@@ -4852,40 +4339,40 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
 				Expect(projectConfigPrototypeModel).ToNot(BeNil())
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
 				projectConfigPrototypeModel.Labels = []string{}
 				projectConfigPrototypeModel.Description = core.StringPtr("testString")
 				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
 				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-				Expect(projectConfigPrototypeModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeModel.Name).To(Equal(core.StringPtr("common-variables")))
 				Expect(projectConfigPrototypeModel.Labels).To(Equal([]string{}))
 				Expect(projectConfigPrototypeModel.Description).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(projectConfigPrototypeModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
-				Expect(projectConfigPrototypeModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
 				Expect(projectConfigPrototypeModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
 				Expect(projectConfigPrototypeModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
 
 				// Construct an instance of the CreateProjectOptions model
 				resourceGroup := "Default"
 				location := "us-south"
-				createProjectOptionsName := "testString"
+				createProjectOptionsName := "acme-microservice"
 				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location, createProjectOptionsName)
 				createProjectOptionsModel.SetResourceGroup("Default")
 				createProjectOptionsModel.SetLocation("us-south")
-				createProjectOptionsModel.SetName("testString")
-				createProjectOptionsModel.SetDescription("testString")
+				createProjectOptionsModel.SetName("acme-microservice")
+				createProjectOptionsModel.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.SetDestroyOnDelete(true)
 				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 				createProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createProjectOptionsModel).ToNot(BeNil())
 				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
 				Expect(createProjectOptionsModel.Location).To(Equal(core.StringPtr("us-south")))
-				Expect(createProjectOptionsModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(createProjectOptionsModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(createProjectOptionsModel.Name).To(Equal(core.StringPtr("acme-microservice")))
+				Expect(createProjectOptionsModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
 				Expect(createProjectOptionsModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
 				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}))
 				Expect(createProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -4914,21 +4401,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(deleteProjectOptionsModel).ToNot(BeNil())
 				Expect(deleteProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(deleteProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewForceApproveOptions successfully`, func() {
-				// Construct an instance of the ForceApproveOptions model
-				projectID := "testString"
-				id := "testString"
-				forceApproveOptionsModel := projectService.NewForceApproveOptions(projectID, id)
-				forceApproveOptionsModel.SetProjectID("testString")
-				forceApproveOptionsModel.SetID("testString")
-				forceApproveOptionsModel.SetComment("Approving the changes")
-				forceApproveOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(forceApproveOptionsModel).ToNot(BeNil())
-				Expect(forceApproveOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(forceApproveOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(forceApproveOptionsModel.Comment).To(Equal(core.StringPtr("Approving the changes")))
-				Expect(forceApproveOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetConfigDraftOptions successfully`, func() {
 				// Construct an instance of the GetConfigDraftOptions model
@@ -5066,10 +4538,10 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigInputVariable model
 				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
 				Expect(projectConfigInputVariableModel).ToNot(BeNil())
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr("testString")))
+				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
+				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("account_id")))
+				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr(`$configs[].name["account-stage"].input.account_id`)))
 
 				// Construct an instance of the ProjectConfigSettingCollection model
 				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
@@ -5138,22 +4610,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateConfigOptionsModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(updateConfigOptionsModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewUpdateProjectOptions successfully`, func() {
-				// Construct an instance of the UpdateProjectOptions model
-				id := "testString"
-				updateProjectOptionsModel := projectService.NewUpdateProjectOptions(id)
-				updateProjectOptionsModel.SetID("testString")
-				updateProjectOptionsModel.SetName("testString")
-				updateProjectOptionsModel.SetDescription("testString")
-				updateProjectOptionsModel.SetDestroyOnDelete(true)
-				updateProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(updateProjectOptionsModel).ToNot(BeNil())
-				Expect(updateProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
-				Expect(updateProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 		})
 	})
