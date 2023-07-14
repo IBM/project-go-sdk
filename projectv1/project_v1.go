@@ -2612,6 +2612,38 @@ func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface
 
 // ProjectConfigDraftResponse : The project configuration draft.
 type ProjectConfigDraftResponse struct {
+	// The name of the configuration.
+	Name *string `json:"name" validate:"required"`
+
+	// A collection of configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// The description of the project configuration.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectConfigComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id" validate:"required"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type" validate:"required"`
+
+	// The outputs of a Schematics template property.
+	Input []InputVariable `json:"input,omitempty"`
+
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
+	// specified when the configuration was initially created.
+	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
+
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
 	ID *string `json:"id" validate:"required"`
 
@@ -2663,10 +2695,14 @@ type ProjectConfigDraftResponse struct {
 
 	// The summaries of jobs that were performed on the configuration.
 	LastDeploymentJobSummary *ProjectConfigMetadataJobSummary `json:"last_deployment_job_summary,omitempty"`
-
-	// The project configuration definition.
-	Definition *ProjectConfig `json:"definition" validate:"required"`
 }
+
+// Constants associated with the ProjectConfigDraftResponse.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigDraftResponse_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigDraftResponse_Type_TerraformTemplate = "terraform_template"
+)
 
 // Constants associated with the ProjectConfigDraftResponse.State property.
 // The state of the configuration.
@@ -2694,6 +2730,46 @@ const (
 // UnmarshalProjectConfigDraftResponse unmarshals an instance of ProjectConfigDraftResponse from the specified map of raw messages.
 func UnmarshalProjectConfigDraftResponse(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigDraftResponse)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectConfigComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSettingCollection)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
@@ -2755,10 +2831,6 @@ func UnmarshalProjectConfigDraftResponse(m map[string]json.RawMessage, result in
 		return
 	}
 	err = core.UnmarshalModel(m, "last_deployment_job_summary", &obj.LastDeploymentJobSummary, UnmarshalProjectConfigMetadataJobSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfig)
 	if err != nil {
 		return
 	}
