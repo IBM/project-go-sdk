@@ -2217,6 +2217,9 @@ type Project struct {
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete" validate:"required"`
 
+	// The unique ID of a project.
+	ID *string `json:"id" validate:"required"`
+
 	// The metadata of the project.
 	Metadata *ProjectMetadata `json:"metadata,omitempty"`
 
@@ -2237,6 +2240,10 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
 	}
