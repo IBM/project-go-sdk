@@ -2207,6 +2207,36 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 
 // Project : The project returned in the response body.
 type Project struct {
+	// An IBM Cloud resource name, which uniquely identifies a resource.
+	Crn *string `json:"crn" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+
+	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
+	// could be empty is returned.
+	CumulativeNeedsAttentionView []CumulativeNeedsAttention `json:"cumulative_needs_attention_view,omitempty"`
+
+	// True indicates that the fetch of the needs attention items failed. It only exists if there was an error while
+	// retrieving the cumulative needs attention view.
+	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
+
+	// The unique ID of a project.
+	ID *string `json:"id" validate:"required"`
+
+	// The IBM Cloud location where a resource is deployed.
+	Location *string `json:"location" validate:"required"`
+
+	// The resource group where the project's data and tools are created.
+	ResourceGroup *string `json:"resource_group" validate:"required"`
+
+	// The project status value.
+	State *string `json:"state" validate:"required"`
+
+	// The CRN of the event notifications instance if one is connected to this project.
+	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
+
 	// The name of the project.
 	Name *string `json:"name" validate:"required"`
 
@@ -2217,20 +2247,58 @@ type Project struct {
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete" validate:"required"`
 
-	// The unique ID of a project.
-	ID *string `json:"id" validate:"required"`
-
-	// The metadata of the project.
-	Metadata *ProjectMetadata `json:"metadata,omitempty"`
-
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
 	Configs []ProjectConfig `json:"configs,omitempty"`
 }
 
+// Constants associated with the Project.State property.
+// The project status value.
+const (
+	Project_State_Deleting = "deleting"
+	Project_State_DeletingFailed = "deleting_failed"
+	Project_State_Ready = "ready"
+)
+
 // UnmarshalProject unmarshals an instance of Project from the specified map of raw messages.
 func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(Project)
+	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "cumulative_needs_attention_view", &obj.CumulativeNeedsAttentionView, UnmarshalCumulativeNeedsAttention)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "cumulative_needs_attention_view_error", &obj.CumulativeNeedsAttentionViewError)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "location", &obj.Location)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_group", &obj.ResourceGroup)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "event_notifications_crn", &obj.EventNotificationsCrn)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		return
@@ -2240,14 +2308,6 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "metadata", &obj.Metadata, UnmarshalProjectMetadata)
 	if err != nil {
 		return
 	}
@@ -2359,6 +2419,9 @@ type ProjectConfig struct {
 	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 	// specified when the configuration was initially created.
 	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
+
+	// The unique ID of a project.
+	ID *string `json:"id" validate:"required"`
 }
 
 // Constants associated with the ProjectConfig.Type property.
@@ -2408,6 +2471,10 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 		return
 	}
 	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSettingCollection)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
 	}
@@ -3281,90 +3348,6 @@ func UnmarshalProjectConfigSettingCollection(m map[string]json.RawMessage, resul
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectMetadata : The metadata of the project.
-type ProjectMetadata struct {
-	// An IBM Cloud resource name, which uniquely identifies a resource.
-	Crn *string `json:"crn" validate:"required"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
-
-	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
-	// could be empty is returned.
-	CumulativeNeedsAttentionView []CumulativeNeedsAttention `json:"cumulative_needs_attention_view,omitempty"`
-
-	// True indicates that the fetch of the needs attention items failed. It only exists if there was an error while
-	// retrieving the cumulative needs attention view.
-	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
-
-	// The unique ID of a project.
-	ID *string `json:"id,omitempty"`
-
-	// The IBM Cloud location where a resource is deployed.
-	Location *string `json:"location" validate:"required"`
-
-	// The resource group where the project's data and tools are created.
-	ResourceGroup *string `json:"resource_group" validate:"required"`
-
-	// The project status value.
-	State *string `json:"state" validate:"required"`
-
-	// The CRN of the event notifications instance if one is connected to this project.
-	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
-}
-
-// Constants associated with the ProjectMetadata.State property.
-// The project status value.
-const (
-	ProjectMetadata_State_Deleting = "deleting"
-	ProjectMetadata_State_DeletingFailed = "deleting_failed"
-	ProjectMetadata_State_Ready = "ready"
-)
-
-// UnmarshalProjectMetadata unmarshals an instance of ProjectMetadata from the specified map of raw messages.
-func UnmarshalProjectMetadata(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectMetadata)
-	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "cumulative_needs_attention_view", &obj.CumulativeNeedsAttentionView, UnmarshalCumulativeNeedsAttention)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "cumulative_needs_attention_view_error", &obj.CumulativeNeedsAttentionViewError)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "location", &obj.Location)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "resource_group", &obj.ResourceGroup)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "event_notifications_crn", &obj.EventNotificationsCrn)
 	if err != nil {
 		return
 	}
