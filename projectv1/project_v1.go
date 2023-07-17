@@ -2422,6 +2422,42 @@ type ProjectConfig struct {
 
 	// The unique ID of a project.
 	ID *string `json:"id" validate:"required"`
+
+	// The unique ID of a project.
+	ProjectID *string `json:"project_id,omitempty"`
+
+	// The version of the configuration.
+	Version *int64 `json:"version,omitempty"`
+
+	// The flag that indicates whether the version of the configuration is draft, or active.
+	IsDraft *bool `json:"is_draft,omitempty"`
+
+	// The needs attention state of a configuration.
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
+
+	// The state of the configuration.
+	State *string `json:"state,omitempty"`
+
+	// The pipeline state of the configuration. It only exists after the first configuration validation.
+	PipelineState *string `json:"pipeline_state,omitempty"`
+
+	// The flag that indicates whether a configuration update is available.
+	UpdateAvailable *bool `json:"update_available,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
+
+	// The last approved metadata of the configuration.
+	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
 }
 
 // Constants associated with the ProjectConfig.Type property.
@@ -2429,6 +2465,29 @@ type ProjectConfig struct {
 const (
 	ProjectConfig_Type_SchematicsBlueprint = "schematics_blueprint"
 	ProjectConfig_Type_TerraformTemplate = "terraform_template"
+)
+
+// Constants associated with the ProjectConfig.State property.
+// The state of the configuration.
+const (
+	ProjectConfig_State_Active = "active"
+	ProjectConfig_State_Deleted = "deleted"
+	ProjectConfig_State_Deleting = "deleting"
+	ProjectConfig_State_DeletingFailed = "deleting_failed"
+	ProjectConfig_State_Installed = "installed"
+	ProjectConfig_State_InstalledFailed = "installed_failed"
+	ProjectConfig_State_Installing = "installing"
+	ProjectConfig_State_NotInstalled = "not_installed"
+	ProjectConfig_State_Uninstalling = "uninstalling"
+	ProjectConfig_State_UninstallingFailed = "uninstalling_failed"
+)
+
+// Constants associated with the ProjectConfig.PipelineState property.
+// The pipeline state of the configuration. It only exists after the first configuration validation.
+const (
+	ProjectConfig_PipelineState_PipelineFailed = "pipeline_failed"
+	ProjectConfig_PipelineState_PipelineRunning = "pipeline_running"
+	ProjectConfig_PipelineState_PipelineSucceeded = "pipeline_succeeded"
 )
 
 // UnmarshalProjectConfig unmarshals an instance of ProjectConfig from the specified map of raw messages.
@@ -2475,6 +2534,50 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "pipeline_state", &obj.PipelineState)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "last_approved", &obj.LastApproved, UnmarshalProjectConfigMetadataLastApproved)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
 	if err != nil {
 		return
 	}
