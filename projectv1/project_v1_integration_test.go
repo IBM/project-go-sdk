@@ -131,7 +131,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
 				Name: core.StringPtr("common-variables"),
-				Labels: []string{},
+				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
@@ -205,12 +205,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
 
-			projectConfigDraftResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigDraftResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 
-			configIdLink = *projectConfigDraftResponse.ID
+			configIdLink = *projectConfig.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 	})
@@ -228,7 +228,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			listProjectsOptions.Start = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.Project
 			for {
 				projectCollection, response, err := projectService.ListProjects(listProjectsOptions)
 				Expect(err).To(BeNil())
@@ -255,7 +255,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.Project
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				Expect(err).To(BeNil())
@@ -286,10 +286,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &projectIdLink,
 			}
 
-			projectSummary, response, err := projectService.GetProject(getProjectOptions)
+			project, response, err := projectService.GetProject(getProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 	})
 
@@ -305,10 +305,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				DestroyOnDelete: core.BoolPtr(true),
 			}
 
-			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			project, response, err := projectService.UpdateProject(updateProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 	})
 
@@ -338,10 +338,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -392,10 +392,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ComplianceProfile: projectConfigComplianceProfileModel,
 			}
 
-			projectConfigDraftResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDraftResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -410,10 +410,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfig, response, err := projectService.ForceApprove(forceApproveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -428,10 +428,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigGetResponse, response, err := projectService.Approve(approveOptions)
+			projectConfigDraftResponse, response, err := projectService.Approve(approveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 	})
 
@@ -447,10 +447,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				IsDraft: core.BoolPtr(true),
 			}
 
-			projectConfigGetResponse, response, err := projectService.CheckConfig(checkConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.CheckConfig(checkConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 	})
 
@@ -464,10 +464,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigGetResponse, response, err := projectService.InstallConfig(installConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.InstallConfig(installConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 	})
 

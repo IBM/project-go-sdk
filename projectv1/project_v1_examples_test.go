@@ -163,20 +163,20 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			createConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 			createConfigOptions.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
 
-			projectConfigDraftResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigDraftResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 
-			configIdLink = *projectConfigDraftResponse.ID
+			configIdLink = *projectConfig.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 		It(`ListProjects request example`, func() {
@@ -191,7 +191,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				panic(err)
 			}
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.Project
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				if err != nil {
@@ -211,18 +211,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 			)
 
-			projectSummary, response, err := projectService.GetProject(getProjectOptions)
+			project, response, err := projectService.GetProject(getProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			b, _ := json.MarshalIndent(project, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 		It(`UpdateProject request example`, func() {
 			fmt.Println("\nUpdateProject() result:")
@@ -234,18 +234,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			updateProjectOptions.SetName("acme-microservice")
 			updateProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 
-			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			project, response, err := projectService.UpdateProject(updateProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			b, _ := json.MarshalIndent(project, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
@@ -277,18 +277,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`UpdateConfig request example`, func() {
 			fmt.Println("\nUpdateConfig() result:")
@@ -305,18 +305,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			updateConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 
-			projectConfigDraftResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDraftResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`ForceApprove request example`, func() {
 			fmt.Println("\nForceApprove() result:")
@@ -328,18 +328,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			forceApproveOptions.SetComment("Approving the changes")
 
-			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfig, response, err := projectService.ForceApprove(forceApproveOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-force_approve
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`Approve request example`, func() {
 			fmt.Println("\nApprove() result:")
@@ -351,18 +351,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			approveOptions.SetComment("Approving the changes")
 
-			projectConfigGetResponse, response, err := projectService.Approve(approveOptions)
+			projectConfigDraftResponse, response, err := projectService.Approve(approveOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
 			fmt.Println(string(b))
 
 			// end-approve
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 		It(`CheckConfig request example`, func() {
 			fmt.Println("\nCheckConfig() result:")
@@ -373,18 +373,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigGetResponse, response, err := projectService.CheckConfig(checkConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.CheckConfig(checkConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
 			fmt.Println(string(b))
 
 			// end-check_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 		It(`InstallConfig request example`, func() {
 			fmt.Println("\nInstallConfig() result:")
@@ -395,18 +395,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigGetResponse, response, err := projectService.InstallConfig(installConfigOptions)
+			projectConfigDraftResponse, response, err := projectService.InstallConfig(installConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigDraftResponse, "", "  ")
 			fmt.Println(string(b))
 
 			// end-install_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
 		It(`UninstallConfig request example`, func() {
 			// begin-uninstall_config
