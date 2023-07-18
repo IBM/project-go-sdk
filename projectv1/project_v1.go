@@ -2205,7 +2205,7 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
-// Project : The project returned in the response body.
+// Project : The definition of the project.
 type Project struct {
 	// An IBM Cloud resource name, which uniquely identifies a resource.
 	Crn *string `json:"crn" validate:"required"`
@@ -2249,7 +2249,7 @@ type Project struct {
 
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
-	Configs []ProjectConfig `json:"configs,omitempty"`
+	Configs []ProjectConfigPrototype `json:"configs,omitempty"`
 }
 
 // Constants associated with the Project.State property.
@@ -2311,7 +2311,7 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfig)
+	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigPrototype)
 	if err != nil {
 		return
 	}
