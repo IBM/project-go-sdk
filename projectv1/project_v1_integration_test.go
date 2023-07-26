@@ -334,7 +334,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Value: core.StringPtr("testString"),
 			}
 
-			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
+			projectConfigPrototypeTerraformModel := &projectv1.ProjectConfigPrototypeTerraform{
 				Name: core.StringPtr("testString"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
@@ -359,7 +359,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				NewCumulativeNeedsAttentionView: []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel},
 				NewCumulativeNeedsAttentionViewError: core.BoolPtr(true),
 				NewEventNotificationsCrn: core.StringPtr("testString"),
-				NewConfigs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
+				NewConfigs: []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel},
 			}
 
 			projectTerraform, response, err := projectService.UpdateProject(updateProjectOptions)

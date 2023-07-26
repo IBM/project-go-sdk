@@ -1214,16 +1214,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototype model
-				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeModel.Labels = []string{"testString"}
-				projectConfigPrototypeModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototypeTerraform model
+				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
+				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
+				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1240,7 +1240,7 @@ var _ = Describe(`ProjectV1`, func() {
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
 				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
+				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
@@ -1341,16 +1341,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototype model
-				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeModel.Labels = []string{"testString"}
-				projectConfigPrototypeModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototypeTerraform model
+				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
+				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
+				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1367,7 +1367,7 @@ var _ = Describe(`ProjectV1`, func() {
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
 				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
+				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1476,16 +1476,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototype model
-				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeModel.Labels = []string{"testString"}
-				projectConfigPrototypeModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototypeTerraform model
+				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
+				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
+				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1502,7 +1502,7 @@ var _ = Describe(`ProjectV1`, func() {
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
 				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
+				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1556,16 +1556,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototype model
-				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeModel.Labels = []string{"testString"}
-				projectConfigPrototypeModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototypeTerraform model
+				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
+				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
+				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1582,7 +1582,7 @@ var _ = Describe(`ProjectV1`, func() {
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
 				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
+				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1657,16 +1657,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototype model
-				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeModel.Labels = []string{"testString"}
-				projectConfigPrototypeModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototypeTerraform model
+				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
+				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
+				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1683,7 +1683,7 @@ var _ = Describe(`ProjectV1`, func() {
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
 				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
 				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
+				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -5317,13 +5317,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
-			It(`Invoke NewProjectConfigPrototype successfully`, func() {
-				name := "testString"
-				locatorID := "testString"
-				_model, err := projectService.NewProjectConfigPrototype(name, locatorID)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
-			})
 			It(`Invoke NewProjectConfigSettingCollection successfully`, func() {
 				name := "testString"
 				value := "testString"
@@ -5482,25 +5475,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigPrototype model
-				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				Expect(projectConfigPrototypeModel).ToNot(BeNil())
-				projectConfigPrototypeModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeModel.Labels = []string{"testString"}
-				projectConfigPrototypeModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-				Expect(projectConfigPrototypeModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeModel.Labels).To(Equal([]string{"testString"}))
-				Expect(projectConfigPrototypeModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigPrototypeModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
-				Expect(projectConfigPrototypeModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
-				Expect(projectConfigPrototypeModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
+				// Construct an instance of the ProjectConfigPrototypeTerraform model
+				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
+				Expect(projectConfigPrototypeTerraformModel).ToNot(BeNil())
+				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
+				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				Expect(projectConfigPrototypeTerraformModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeTerraformModel.Labels).To(Equal([]string{"testString"}))
+				Expect(projectConfigPrototypeTerraformModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeTerraformModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigPrototypeTerraformModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
+				Expect(projectConfigPrototypeTerraformModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeTerraformModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
+				Expect(projectConfigPrototypeTerraformModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
 
 				// Construct an instance of the UpdateProjectOptions model
 				id := "testString"
@@ -5527,7 +5520,7 @@ var _ = Describe(`ProjectV1`, func() {
 				updateProjectOptionsModel.SetNewCumulativeNeedsAttentionView([]projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel})
 				updateProjectOptionsModel.SetNewCumulativeNeedsAttentionViewError(true)
 				updateProjectOptionsModel.SetNewEventNotificationsCrn("testString")
-				updateProjectOptionsModel.SetNewConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
+				updateProjectOptionsModel.SetNewConfigs([]projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel})
 				updateProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateProjectOptionsModel).ToNot(BeNil())
 				Expect(updateProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
@@ -5543,7 +5536,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateProjectOptionsModel.NewCumulativeNeedsAttentionView).To(Equal([]projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}))
 				Expect(updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError).To(Equal(core.BoolPtr(true)))
 				Expect(updateProjectOptionsModel.NewEventNotificationsCrn).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.NewConfigs).To(Equal([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}))
+				Expect(updateProjectOptionsModel.NewConfigs).To(Equal([]projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}))
 				Expect(updateProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 		})
