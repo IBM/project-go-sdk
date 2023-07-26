@@ -1616,7 +1616,7 @@ type CreateProjectOptions struct {
 
 	// The project configurations. If configurations are not included, the project resource is persisted without this
 	// property.
-	Configs []ProjectConfigPrototype `json:"configs,omitempty"`
+	Configs []ProjectConfigPrototypeTerraform `json:"configs,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -1661,7 +1661,7 @@ func (_options *CreateProjectOptions) SetDestroyOnDelete(destroyOnDelete bool) *
 }
 
 // SetConfigs : Allow user to set Configs
-func (_options *CreateProjectOptions) SetConfigs(configs []ProjectConfigPrototype) *CreateProjectOptions {
+func (_options *CreateProjectOptions) SetConfigs(configs []ProjectConfigPrototypeTerraform) *CreateProjectOptions {
 	_options.Configs = configs
 	return _options
 }

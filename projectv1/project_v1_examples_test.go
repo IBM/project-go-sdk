@@ -110,7 +110,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateProject() result:")
 			// begin-create_project
 
-			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
+			projectConfigPrototypeTerraformModel := &projectv1.ProjectConfigPrototypeTerraform{
 				Name: core.StringPtr("common-variables"),
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 			}
@@ -121,7 +121,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			createProjectOptions.SetName("acme-microservice")
 			createProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
-			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
+			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel})
 
 			projectTerraform, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
