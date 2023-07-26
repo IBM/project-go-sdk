@@ -196,21 +196,21 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
 				Name: core.StringPtr("env-stage"),
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Labels: []string{"env:stage", "governance:test", "build:0"},
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
 
-			projectConfigTerraform, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigTerraform).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 
-			configIdLink = *projectConfigTerraform.ID
+			configIdLink = *projectConfig.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 	})
@@ -378,10 +378,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 			}
 
-			projectConfigCollectionTerraform, response, err := projectService.ListConfigs(listConfigsOptions)
+			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCollectionTerraform).ToNot(BeNil())
+			Expect(projectConfigCollection).ToNot(BeNil())
 		})
 	})
 
@@ -395,10 +395,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigTerraform, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigTerraform).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -449,10 +449,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ComplianceProfile: projectConfigComplianceProfileModel,
 			}
 
-			projectConfigTerraform, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigTerraform).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
