@@ -49,10 +49,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 	var (
 		projectService *projectv1.ProjectV1
 		config       map[string]string
-
-		// Variables to hold link values
-		configIdLink string
-		projectIdLink string
 	)
 
 	var shouldSkipTest = func() {
@@ -135,49 +131,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(projectTerraform).ToNot(BeNil())
-
-			projectIdLink = *projectTerraform.ID
-			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
-		})
-		It(`CreateConfig request example`, func() {
-			fmt.Println("\nCreateConfig() result:")
-			// begin-create_config
-
-			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
-				Value: core.StringPtr(`$configs[].name["account-stage"].input.account_id`),
-			}
-
-			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT"),
-				Value: core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"),
-			}
-
-			createConfigOptions := projectService.NewCreateConfigOptions(
-				projectIdLink,
-			)
-			createConfigOptions.SetName("env-stage")
-			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
-			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
-			createConfigOptions.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-			createConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
-			createConfigOptions.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
-
-			projectConfigTerraform, response, err := projectService.CreateConfig(createConfigOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(projectConfigTerraform, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_config
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigTerraform).ToNot(BeNil())
-
-			configIdLink = *projectConfigTerraform.ID
-			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 		It(`ListProjects request example`, func() {
 			fmt.Println("\nListProjects() result:")
@@ -208,7 +161,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_project
 
 			getProjectOptions := projectService.NewGetProjectOptions(
-				projectIdLink,
+				"testString",
 			)
 
 			projectTerraform, response, err := projectService.GetProject(getProjectOptions)
@@ -229,7 +182,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-update_project
 
 			updateProjectOptions := projectService.NewUpdateProjectOptions(
-				projectIdLink,
+				"testString",
 				"testString",
 				CreateMockDateTime("2019-01-01T12:00:00.000Z"),
 				"testString",
@@ -254,12 +207,49 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectTerraform).ToNot(BeNil())
 		})
+		It(`CreateConfig request example`, func() {
+			fmt.Println("\nCreateConfig() result:")
+			// begin-create_config
+
+			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
+				Name: core.StringPtr("account_id"),
+				Value: core.StringPtr(`$configs[].name["account-stage"].input.account_id`),
+			}
+
+			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
+				Name: core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT"),
+				Value: core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"),
+			}
+
+			createConfigOptions := projectService.NewCreateConfigOptions(
+				"testString",
+			)
+			createConfigOptions.SetName("env-stage")
+			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
+			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+			createConfigOptions.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+			createConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
+			createConfigOptions.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
+
+			projectConfigTerraform, response, err := projectService.CreateConfig(createConfigOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigTerraform, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_config
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(projectConfigTerraform).ToNot(BeNil())
+		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
 			// begin-list_configs
 
 			listConfigsOptions := projectService.NewListConfigsOptions(
-				projectIdLink,
+				"testString",
 			)
 
 			projectConfigCollectionTerraform, response, err := projectService.ListConfigs(listConfigsOptions)
@@ -280,8 +270,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_config
 
 			getConfigOptions := projectService.NewGetConfigOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 
 			projectConfigTerraform, response, err := projectService.GetConfig(getConfigOptions)
@@ -307,8 +297,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 			updateConfigOptions.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 
@@ -330,8 +320,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-force_approve
 
 			forceApproveOptions := projectService.NewForceApproveOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 			forceApproveOptions.SetComment("Approving the changes")
 
@@ -353,8 +343,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-approve
 
 			approveOptions := projectService.NewApproveOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 			approveOptions.SetComment("Approving the changes")
 
@@ -376,8 +366,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-check_config
 
 			checkConfigOptions := projectService.NewCheckConfigOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 
 			projectConfigDraftResponse, response, err := projectService.CheckConfig(checkConfigOptions)
@@ -398,8 +388,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-install_config
 
 			installConfigOptions := projectService.NewInstallConfigOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 
 			projectConfigDraftResponse, response, err := projectService.InstallConfig(installConfigOptions)
@@ -419,8 +409,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-uninstall_config
 
 			uninstallConfigOptions := projectService.NewUninstallConfigOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 
 			response, err := projectService.UninstallConfig(uninstallConfigOptions)
@@ -441,8 +431,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-list_config_resources
 
 			listConfigResourcesOptions := projectService.NewListConfigResourcesOptions(
-				projectIdLink,
-				configIdLink,
+				"testString",
+				"testString",
 			)
 
 			projectConfigResourceCollection, response, err := projectService.ListConfigResources(listConfigResourcesOptions)
@@ -463,7 +453,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-list_config_drafts
 
 			listConfigDraftsOptions := projectService.NewListConfigDraftsOptions(
-				projectIdLink,
+				"testString",
 				"testString",
 			)
 
@@ -485,7 +475,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-get_config_draft
 
 			getConfigDraftOptions := projectService.NewGetConfigDraftOptions(
-				projectIdLink,
+				"testString",
 				"testString",
 				int64(38),
 			)
@@ -503,33 +493,11 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigDraftResponse).ToNot(BeNil())
 		})
-		It(`DeleteConfig request example`, func() {
-			fmt.Println("\nDeleteConfig() result:")
-			// begin-delete_config
-
-			deleteConfigOptions := projectService.NewDeleteConfigOptions(
-				projectIdLink,
-				configIdLink,
-			)
-
-			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(projectConfigDelete, "", "  ")
-			fmt.Println(string(b))
-
-			// end-delete_config
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDelete).ToNot(BeNil())
-		})
 		It(`DeleteProject request example`, func() {
 			// begin-delete_project
 
 			deleteProjectOptions := projectService.NewDeleteProjectOptions(
-				projectIdLink,
+				"testString",
 			)
 
 			response, err := projectService.DeleteProject(deleteProjectOptions)
@@ -544,6 +512,28 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteConfig request example`, func() {
+			fmt.Println("\nDeleteConfig() result:")
+			// begin-delete_config
+
+			deleteConfigOptions := projectService.NewDeleteConfigOptions(
+				"testString",
+				"testString",
+			)
+
+			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigDelete, "", "  ")
+			fmt.Println(string(b))
+
+			// end-delete_config
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(projectConfigDelete).ToNot(BeNil())
 		})
 	})
 })

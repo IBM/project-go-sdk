@@ -1286,13 +1286,13 @@ func (project *ProjectV1) ListConfigDraftsWithContext(ctx context.Context, listC
 
 	pathParamsMap := map[string]string{
 		"project_id": *listConfigDraftsOptions.ProjectID,
-		"config_id": *listConfigDraftsOptions.ConfigID,
+		"id": *listConfigDraftsOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{config_id}/drafts`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/drafts`, pathParamsMap)
 	if err != nil {
 		return
 	}
@@ -1347,14 +1347,14 @@ func (project *ProjectV1) GetConfigDraftWithContext(ctx context.Context, getConf
 
 	pathParamsMap := map[string]string{
 		"project_id": *getConfigDraftOptions.ProjectID,
-		"config_id": *getConfigDraftOptions.ConfigID,
+		"id": *getConfigDraftOptions.ID,
 		"version": fmt.Sprint(*getConfigDraftOptions.Version),
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{config_id}/drafts/{version}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/drafts/{version}`, pathParamsMap)
 	if err != nil {
 		return
 	}
@@ -1838,8 +1838,8 @@ type GetConfigDraftOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique configuration ID.
-	ConfigID *string `json:"config_id" validate:"required,ne="`
+	// The unique config ID.
+	ID *string `json:"id" validate:"required,ne="`
 
 	// The configuration version.
 	Version *int64 `json:"version" validate:"required"`
@@ -1849,10 +1849,10 @@ type GetConfigDraftOptions struct {
 }
 
 // NewGetConfigDraftOptions : Instantiate GetConfigDraftOptions
-func (*ProjectV1) NewGetConfigDraftOptions(projectID string, configID string, version int64) *GetConfigDraftOptions {
+func (*ProjectV1) NewGetConfigDraftOptions(projectID string, id string, version int64) *GetConfigDraftOptions {
 	return &GetConfigDraftOptions{
 		ProjectID: core.StringPtr(projectID),
-		ConfigID: core.StringPtr(configID),
+		ID: core.StringPtr(id),
 		Version: core.Int64Ptr(version),
 	}
 }
@@ -1863,9 +1863,9 @@ func (_options *GetConfigDraftOptions) SetProjectID(projectID string) *GetConfig
 	return _options
 }
 
-// SetConfigID : Allow user to set ConfigID
-func (_options *GetConfigDraftOptions) SetConfigID(configID string) *GetConfigDraftOptions {
-	_options.ConfigID = core.StringPtr(configID)
+// SetID : Allow user to set ID
+func (_options *GetConfigDraftOptions) SetID(id string) *GetConfigDraftOptions {
+	_options.ID = core.StringPtr(id)
 	return _options
 }
 
@@ -2041,18 +2041,18 @@ type ListConfigDraftsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique configuration ID.
-	ConfigID *string `json:"config_id" validate:"required,ne="`
+	// The unique config ID.
+	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewListConfigDraftsOptions : Instantiate ListConfigDraftsOptions
-func (*ProjectV1) NewListConfigDraftsOptions(projectID string, configID string) *ListConfigDraftsOptions {
+func (*ProjectV1) NewListConfigDraftsOptions(projectID string, id string) *ListConfigDraftsOptions {
 	return &ListConfigDraftsOptions{
 		ProjectID: core.StringPtr(projectID),
-		ConfigID: core.StringPtr(configID),
+		ID: core.StringPtr(id),
 	}
 }
 
@@ -2062,9 +2062,9 @@ func (_options *ListConfigDraftsOptions) SetProjectID(projectID string) *ListCon
 	return _options
 }
 
-// SetConfigID : Allow user to set ConfigID
-func (_options *ListConfigDraftsOptions) SetConfigID(configID string) *ListConfigDraftsOptions {
-	_options.ConfigID = core.StringPtr(configID)
+// SetID : Allow user to set ID
+func (_options *ListConfigDraftsOptions) SetID(id string) *ListConfigDraftsOptions {
+	_options.ID = core.StringPtr(id)
 	return _options
 }
 

@@ -4558,7 +4558,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigDraftsOptions model
 				listConfigDraftsOptionsModel := new(projectv1.ListConfigDraftsOptions)
 				listConfigDraftsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigDraftsOptionsModel.ConfigID = core.StringPtr("testString")
+				listConfigDraftsOptionsModel.ID = core.StringPtr("testString")
 				listConfigDraftsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.ListConfigDrafts(listConfigDraftsOptionsModel)
@@ -4610,7 +4610,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigDraftsOptions model
 				listConfigDraftsOptionsModel := new(projectv1.ListConfigDraftsOptions)
 				listConfigDraftsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigDraftsOptionsModel.ConfigID = core.StringPtr("testString")
+				listConfigDraftsOptionsModel.ID = core.StringPtr("testString")
 				listConfigDraftsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -4670,7 +4670,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigDraftsOptions model
 				listConfigDraftsOptionsModel := new(projectv1.ListConfigDraftsOptions)
 				listConfigDraftsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigDraftsOptionsModel.ConfigID = core.StringPtr("testString")
+				listConfigDraftsOptionsModel.ID = core.StringPtr("testString")
 				listConfigDraftsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -4691,7 +4691,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigDraftsOptions model
 				listConfigDraftsOptionsModel := new(projectv1.ListConfigDraftsOptions)
 				listConfigDraftsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigDraftsOptionsModel.ConfigID = core.StringPtr("testString")
+				listConfigDraftsOptionsModel.ID = core.StringPtr("testString")
 				listConfigDraftsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -4733,7 +4733,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigDraftsOptions model
 				listConfigDraftsOptionsModel := new(projectv1.ListConfigDraftsOptions)
 				listConfigDraftsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigDraftsOptionsModel.ConfigID = core.StringPtr("testString")
+				listConfigDraftsOptionsModel.ID = core.StringPtr("testString")
 				listConfigDraftsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -4775,7 +4775,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetConfigDraftOptions model
 				getConfigDraftOptionsModel := new(projectv1.GetConfigDraftOptions)
 				getConfigDraftOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDraftOptionsModel.ConfigID = core.StringPtr("testString")
+				getConfigDraftOptionsModel.ID = core.StringPtr("testString")
 				getConfigDraftOptionsModel.Version = core.Int64Ptr(int64(38))
 				getConfigDraftOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -4828,7 +4828,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetConfigDraftOptions model
 				getConfigDraftOptionsModel := new(projectv1.GetConfigDraftOptions)
 				getConfigDraftOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDraftOptionsModel.ConfigID = core.StringPtr("testString")
+				getConfigDraftOptionsModel.ID = core.StringPtr("testString")
 				getConfigDraftOptionsModel.Version = core.Int64Ptr(int64(38))
 				getConfigDraftOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -4889,7 +4889,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetConfigDraftOptions model
 				getConfigDraftOptionsModel := new(projectv1.GetConfigDraftOptions)
 				getConfigDraftOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDraftOptionsModel.ConfigID = core.StringPtr("testString")
+				getConfigDraftOptionsModel.ID = core.StringPtr("testString")
 				getConfigDraftOptionsModel.Version = core.Int64Ptr(int64(38))
 				getConfigDraftOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -4911,7 +4911,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetConfigDraftOptions model
 				getConfigDraftOptionsModel := new(projectv1.GetConfigDraftOptions)
 				getConfigDraftOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDraftOptionsModel.ConfigID = core.StringPtr("testString")
+				getConfigDraftOptionsModel.ID = core.StringPtr("testString")
 				getConfigDraftOptionsModel.Version = core.Int64Ptr(int64(38))
 				getConfigDraftOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -4954,7 +4954,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the GetConfigDraftOptions model
 				getConfigDraftOptionsModel := new(projectv1.GetConfigDraftOptions)
 				getConfigDraftOptionsModel.ProjectID = core.StringPtr("testString")
-				getConfigDraftOptionsModel.ConfigID = core.StringPtr("testString")
+				getConfigDraftOptionsModel.ID = core.StringPtr("testString")
 				getConfigDraftOptionsModel.Version = core.Int64Ptr(int64(38))
 				getConfigDraftOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -5215,16 +5215,16 @@ var _ = Describe(`ProjectV1`, func() {
 			It(`Invoke NewGetConfigDraftOptions successfully`, func() {
 				// Construct an instance of the GetConfigDraftOptions model
 				projectID := "testString"
-				configID := "testString"
+				id := "testString"
 				version := int64(38)
-				getConfigDraftOptionsModel := projectService.NewGetConfigDraftOptions(projectID, configID, version)
+				getConfigDraftOptionsModel := projectService.NewGetConfigDraftOptions(projectID, id, version)
 				getConfigDraftOptionsModel.SetProjectID("testString")
-				getConfigDraftOptionsModel.SetConfigID("testString")
+				getConfigDraftOptionsModel.SetID("testString")
 				getConfigDraftOptionsModel.SetVersion(int64(38))
 				getConfigDraftOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getConfigDraftOptionsModel).ToNot(BeNil())
 				Expect(getConfigDraftOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(getConfigDraftOptionsModel.ConfigID).To(Equal(core.StringPtr("testString")))
+				Expect(getConfigDraftOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(getConfigDraftOptionsModel.Version).To(Equal(core.Int64Ptr(int64(38))))
 				Expect(getConfigDraftOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -5267,14 +5267,14 @@ var _ = Describe(`ProjectV1`, func() {
 			It(`Invoke NewListConfigDraftsOptions successfully`, func() {
 				// Construct an instance of the ListConfigDraftsOptions model
 				projectID := "testString"
-				configID := "testString"
-				listConfigDraftsOptionsModel := projectService.NewListConfigDraftsOptions(projectID, configID)
+				id := "testString"
+				listConfigDraftsOptionsModel := projectService.NewListConfigDraftsOptions(projectID, id)
 				listConfigDraftsOptionsModel.SetProjectID("testString")
-				listConfigDraftsOptionsModel.SetConfigID("testString")
+				listConfigDraftsOptionsModel.SetID("testString")
 				listConfigDraftsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listConfigDraftsOptionsModel).ToNot(BeNil())
 				Expect(listConfigDraftsOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(listConfigDraftsOptionsModel.ConfigID).To(Equal(core.StringPtr("testString")))
+				Expect(listConfigDraftsOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(listConfigDraftsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListConfigResourcesOptions successfully`, func() {
