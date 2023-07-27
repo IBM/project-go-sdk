@@ -129,7 +129,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Value: core.StringPtr("testString"),
 			}
 
-			projectConfigPrototypeTerraformModel := &projectv1.ProjectConfigPrototypeTerraform{
+			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
 				Name: core.StringPtr("common-variables"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
@@ -146,15 +146,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
-				Configs: []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel},
+				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
 			}
 
-			projectTerraform, response, err := projectService.CreateProject(createProjectOptions)
+			project, response, err := projectService.CreateProject(createProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectTerraform).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 
-			projectIdLink = *projectTerraform.ID
+			projectIdLink = *project.ID
 			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
 		})
 	})
@@ -196,21 +196,21 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
 				Name: core.StringPtr("env-stage"),
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Labels: []string{"env:stage", "governance:test", "build:0"},
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
 				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
 			}
 
-			projectConfigTerraform, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigTerraform).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 
-			configIdLink = *projectConfigTerraform.ID
+			configIdLink = *projectConfig.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 	})
@@ -228,15 +228,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			listProjectsOptions.Start = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
-			var allResults []projectv1.ProjectTerraform
+			var allResults []projectv1.Project
 			for {
-				projectCollectionTerraform, response, err := projectService.ListProjects(listProjectsOptions)
+				projectCollection, response, err := projectService.ListProjects(listProjectsOptions)
 				Expect(err).To(BeNil())
 				Expect(response.StatusCode).To(Equal(200))
-				Expect(projectCollectionTerraform).ToNot(BeNil())
-				allResults = append(allResults, projectCollectionTerraform.Projects...)
+				Expect(projectCollection).ToNot(BeNil())
+				allResults = append(allResults, projectCollection.Projects...)
 
-				listProjectsOptions.Start, err = projectCollectionTerraform.GetNextStart()
+				listProjectsOptions.Start, err = projectCollection.GetNextStart()
 				Expect(err).To(BeNil())
 
 				if listProjectsOptions.Start == nil {
@@ -255,7 +255,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
 
-			var allResults []projectv1.ProjectTerraform
+			var allResults []projectv1.Project
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				Expect(err).To(BeNil())
@@ -286,10 +286,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &projectIdLink,
 			}
 
-			projectTerraform, response, err := projectService.GetProject(getProjectOptions)
+			project, response, err := projectService.GetProject(getProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectTerraform).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 	})
 
@@ -298,74 +298,17 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
-			cumulativeNeedsAttentionModel := &projectv1.CumulativeNeedsAttention{
-				Event: core.StringPtr("testString"),
-				EventID: core.StringPtr("testString"),
-				ConfigID: core.StringPtr("testString"),
-				ConfigVersion: core.Int64Ptr(int64(38)),
-			}
-
-			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
-				ID: core.StringPtr("testString"),
-				TargetIamID: core.StringPtr("testString"),
-			}
-
-			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfile: projectConfigAuthTrustedProfileModel,
-				Method: core.StringPtr("testString"),
-				ApiKey: core.StringPtr("testString"),
-			}
-
-			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
-				ID: core.StringPtr("testString"),
-				InstanceID: core.StringPtr("testString"),
-				InstanceLocation: core.StringPtr("testString"),
-				AttachmentID: core.StringPtr("testString"),
-				ProfileName: core.StringPtr("testString"),
-			}
-
-			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
-			}
-
-			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
-			}
-
-			projectConfigPrototypeTerraformModel := &projectv1.ProjectConfigPrototypeTerraform{
-				Name: core.StringPtr("testString"),
-				Labels: []string{"testString"},
-				Description: core.StringPtr("testString"),
-				Authorizations: projectConfigAuthModel,
-				ComplianceProfile: projectConfigComplianceProfileModel,
-				LocatorID: core.StringPtr("testString"),
-				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
-				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
-			}
-
 			updateProjectOptions := &projectv1.UpdateProjectOptions{
 				ID: &projectIdLink,
-				NewCrn: core.StringPtr("testString"),
-				NewCreatedAt: CreateMockDateTime("2019-01-01T12:00:00.000Z"),
-				NewID: core.StringPtr("testString"),
-				NewLocation: core.StringPtr("testString"),
-				NewResourceGroup: core.StringPtr("testString"),
-				NewState: core.StringPtr("ready"),
-				NewName: core.StringPtr("acme-microservice"),
-				NewDescription: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
-				NewDestroyOnDelete: core.BoolPtr(true),
-				NewCumulativeNeedsAttentionView: []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel},
-				NewCumulativeNeedsAttentionViewError: core.BoolPtr(true),
-				NewEventNotificationsCrn: core.StringPtr("testString"),
-				NewConfigs: []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel},
+				Name: core.StringPtr("acme-microservice"),
+				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+				DestroyOnDelete: core.BoolPtr(true),
 			}
 
-			projectTerraform, response, err := projectService.UpdateProject(updateProjectOptions)
+			project, response, err := projectService.UpdateProject(updateProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectTerraform).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 	})
 
@@ -378,10 +321,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 			}
 
-			projectConfigCollectionTerraform, response, err := projectService.ListConfigs(listConfigsOptions)
+			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCollectionTerraform).ToNot(BeNil())
+			Expect(projectConfigCollection).ToNot(BeNil())
 		})
 	})
 
@@ -395,10 +338,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigTerraform, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigTerraform).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -449,10 +392,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ComplianceProfile: projectConfigComplianceProfileModel,
 			}
 
-			projectConfigTerraform, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigTerraform).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 

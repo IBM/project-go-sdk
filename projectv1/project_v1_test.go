@@ -217,16 +217,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("common-variables")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototype model
+				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
+				projectConfigPrototypeModel.Labels = []string{"testString"}
+				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -235,7 +235,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CreateProject(createProjectOptionsModel)
@@ -290,7 +290,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -331,16 +331,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("common-variables")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototype model
+				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
+				projectConfigPrototypeModel.Labels = []string{"testString"}
+				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -349,7 +349,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -407,7 +407,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -453,16 +453,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("common-variables")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototype model
+				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
+				projectConfigPrototypeModel.Labels = []string{"testString"}
+				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -471,7 +471,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -518,16 +518,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("common-variables")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototype model
+				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
+				projectConfigPrototypeModel.Labels = []string{"testString"}
+				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -536,7 +536,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -604,16 +604,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
 				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("common-variables")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				// Construct an instance of the ProjectConfigPrototype model
+				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
+				projectConfigPrototypeModel.Labels = []string{"testString"}
+				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -622,7 +622,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -705,7 +705,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully with retries`, func() {
@@ -762,7 +762,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully`, func() {
@@ -855,7 +855,7 @@ var _ = Describe(`ProjectV1`, func() {
 		})
 		Context(`Test pagination helper method on response`, func() {
 			It(`Invoke GetNextStart successfully`, func() {
-				responseObject := new(projectv1.ProjectCollectionTerraform)
+				responseObject := new(projectv1.ProjectCollection)
 				nextObject := new(projectv1.PaginationLink)
 				nextObject.Start = core.StringPtr("abc-123")
 				responseObject.Next = nextObject
@@ -865,7 +865,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(value).To(Equal(core.StringPtr("abc-123")))
 			})
 			It(`Invoke GetNextStart without a "Next" property in the response`, func() {
-				responseObject := new(projectv1.ProjectCollectionTerraform)
+				responseObject := new(projectv1.ProjectCollection)
 	
 				value, err := responseObject.GetNextStart()
 				Expect(err).To(BeNil())
@@ -887,9 +887,9 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"start":"1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","name":"Name","description":"Description","destroy_on_delete":true,"configs":[{"name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}]}],"definition":{"name":"Name","description":"Description","destroy_on_delete":true}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"next":{"start":"1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","name":"Name","description":"Description","destroy_on_delete":true,"configs":[{"name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}]}]}],"total_count":2,"limit":1}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","name":"Name","description":"Description","destroy_on_delete":true,"configs":[{"name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}]}],"definition":{"name":"Name","description":"Description","destroy_on_delete":true}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","name":"Name","description":"Description","destroy_on_delete":true,"configs":[{"name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}]}]}],"total_count":2,"limit":1}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -911,7 +911,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(err).To(BeNil())
 				Expect(pager).ToNot(BeNil())
 
-				var allResults []projectv1.ProjectTerraform
+				var allResults []projectv1.Project
 				for pager.HasNext() {
 					nextPage, err := pager.GetNext()
 					Expect(err).To(BeNil())
@@ -1005,7 +1005,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -1059,7 +1059,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1178,69 +1178,12 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the CumulativeNeedsAttention model
-				cumulativeNeedsAttentionModel := new(projectv1.CumulativeNeedsAttention)
-				cumulativeNeedsAttentionModel.Event = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.EventID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigVersion = core.Int64Ptr(int64(38))
-
-				// Construct an instance of the ProjectConfigAuthTrustedProfile model
-				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
-				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
-				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigAuth model
-				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
-				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
-				projectConfigAuthModel.Method = core.StringPtr("testString")
-				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigComplianceProfile model
-				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
-				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCreatedAt = CreateMockDateTime("2019-01-01T12:00:00.000Z")
-				updateProjectOptionsModel.NewID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewLocation = core.StringPtr("testString")
-				updateProjectOptionsModel.NewResourceGroup = core.StringPtr("testString")
-				updateProjectOptionsModel.NewState = core.StringPtr("ready")
-				updateProjectOptionsModel.NewName = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.NewDescription = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.NewDestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
-				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
@@ -1293,7 +1236,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully with retries`, func() {
@@ -1305,69 +1248,12 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
-				// Construct an instance of the CumulativeNeedsAttention model
-				cumulativeNeedsAttentionModel := new(projectv1.CumulativeNeedsAttention)
-				cumulativeNeedsAttentionModel.Event = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.EventID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigVersion = core.Int64Ptr(int64(38))
-
-				// Construct an instance of the ProjectConfigAuthTrustedProfile model
-				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
-				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
-				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigAuth model
-				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
-				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
-				projectConfigAuthModel.Method = core.StringPtr("testString")
-				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigComplianceProfile model
-				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
-				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCreatedAt = CreateMockDateTime("2019-01-01T12:00:00.000Z")
-				updateProjectOptionsModel.NewID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewLocation = core.StringPtr("testString")
-				updateProjectOptionsModel.NewResourceGroup = core.StringPtr("testString")
-				updateProjectOptionsModel.NewState = core.StringPtr("ready")
-				updateProjectOptionsModel.NewName = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.NewDescription = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.NewDestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
-				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1423,7 +1309,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}], "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "configs": [{"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}]}]}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully`, func() {
@@ -1440,69 +1326,12 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the CumulativeNeedsAttention model
-				cumulativeNeedsAttentionModel := new(projectv1.CumulativeNeedsAttention)
-				cumulativeNeedsAttentionModel.Event = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.EventID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigVersion = core.Int64Ptr(int64(38))
-
-				// Construct an instance of the ProjectConfigAuthTrustedProfile model
-				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
-				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
-				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigAuth model
-				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
-				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
-				projectConfigAuthModel.Method = core.StringPtr("testString")
-				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigComplianceProfile model
-				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
-				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCreatedAt = CreateMockDateTime("2019-01-01T12:00:00.000Z")
-				updateProjectOptionsModel.NewID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewLocation = core.StringPtr("testString")
-				updateProjectOptionsModel.NewResourceGroup = core.StringPtr("testString")
-				updateProjectOptionsModel.NewState = core.StringPtr("ready")
-				updateProjectOptionsModel.NewName = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.NewDescription = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.NewDestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
-				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1520,69 +1349,12 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the CumulativeNeedsAttention model
-				cumulativeNeedsAttentionModel := new(projectv1.CumulativeNeedsAttention)
-				cumulativeNeedsAttentionModel.Event = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.EventID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigVersion = core.Int64Ptr(int64(38))
-
-				// Construct an instance of the ProjectConfigAuthTrustedProfile model
-				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
-				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
-				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigAuth model
-				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
-				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
-				projectConfigAuthModel.Method = core.StringPtr("testString")
-				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigComplianceProfile model
-				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
-				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCreatedAt = CreateMockDateTime("2019-01-01T12:00:00.000Z")
-				updateProjectOptionsModel.NewID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewLocation = core.StringPtr("testString")
-				updateProjectOptionsModel.NewResourceGroup = core.StringPtr("testString")
-				updateProjectOptionsModel.NewState = core.StringPtr("ready")
-				updateProjectOptionsModel.NewName = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.NewDescription = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.NewDestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
-				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1621,69 +1393,12 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the CumulativeNeedsAttention model
-				cumulativeNeedsAttentionModel := new(projectv1.CumulativeNeedsAttention)
-				cumulativeNeedsAttentionModel.Event = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.EventID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigVersion = core.Int64Ptr(int64(38))
-
-				// Construct an instance of the ProjectConfigAuthTrustedProfile model
-				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
-				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
-				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigAuth model
-				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
-				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
-				projectConfigAuthModel.Method = core.StringPtr("testString")
-				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigComplianceProfile model
-				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
-				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewCreatedAt = CreateMockDateTime("2019-01-01T12:00:00.000Z")
-				updateProjectOptionsModel.NewID = core.StringPtr("testString")
-				updateProjectOptionsModel.NewLocation = core.StringPtr("testString")
-				updateProjectOptionsModel.NewResourceGroup = core.StringPtr("testString")
-				updateProjectOptionsModel.NewState = core.StringPtr("ready")
-				updateProjectOptionsModel.NewName = core.StringPtr("acme-microservice")
-				updateProjectOptionsModel.NewDescription = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.NewDestroyOnDelete = core.BoolPtr(true)
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionView = []projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}
-				updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError = core.BoolPtr(true)
-				updateProjectOptionsModel.NewEventNotificationsCrn = core.StringPtr("testString")
-				updateProjectOptionsModel.NewConfigs = []projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}
+				updateProjectOptionsModel.Name = core.StringPtr("acme-microservice")
+				updateProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				updateProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -1823,11 +1538,11 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -1927,11 +1642,11 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -2039,11 +1754,11 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -2096,11 +1811,11 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -2174,11 +1889,11 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -5060,25 +4775,27 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
-				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID)
+				createConfigOptionsName := "env-stage"
+				createConfigOptionsLocatorID := "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"
+				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID, createConfigOptionsName, createConfigOptionsLocatorID)
 				createConfigOptionsModel.SetProjectID("testString")
 				createConfigOptionsModel.SetName("env-stage")
+				createConfigOptionsModel.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.SetLabels([]string{"env:stage", "governance:test", "build:0"})
 				createConfigOptionsModel.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 				createConfigOptionsModel.SetAuthorizations(projectConfigAuthModel)
 				createConfigOptionsModel.SetComplianceProfile(projectConfigComplianceProfileModel)
-				createConfigOptionsModel.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 				createConfigOptionsModel.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
 				createConfigOptionsModel.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createConfigOptionsModel).ToNot(BeNil())
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(createConfigOptionsModel.Name).To(Equal(core.StringPtr("env-stage")))
+				Expect(createConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
 				Expect(createConfigOptionsModel.Labels).To(Equal([]string{"env:stage", "governance:test", "build:0"}))
 				Expect(createConfigOptionsModel.Description).To(Equal(core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")))
 				Expect(createConfigOptionsModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(createConfigOptionsModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
-				Expect(createConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
 				Expect(createConfigOptionsModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
 				Expect(createConfigOptionsModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
 				Expect(createConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -5132,36 +4849,37 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				Expect(projectConfigPrototypeTerraformModel).ToNot(BeNil())
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("common-variables")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-				Expect(projectConfigPrototypeTerraformModel.Name).To(Equal(core.StringPtr("common-variables")))
-				Expect(projectConfigPrototypeTerraformModel.Labels).To(Equal([]string{"testString"}))
-				Expect(projectConfigPrototypeTerraformModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeTerraformModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigPrototypeTerraformModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
-				Expect(projectConfigPrototypeTerraformModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
-				Expect(projectConfigPrototypeTerraformModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
-				Expect(projectConfigPrototypeTerraformModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
+				// Construct an instance of the ProjectConfigPrototype model
+				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
+				Expect(projectConfigPrototypeModel).ToNot(BeNil())
+				projectConfigPrototypeModel.Name = core.StringPtr("common-variables")
+				projectConfigPrototypeModel.Labels = []string{"testString"}
+				projectConfigPrototypeModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigPrototypeModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
+				projectConfigPrototypeModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				Expect(projectConfigPrototypeModel.Name).To(Equal(core.StringPtr("common-variables")))
+				Expect(projectConfigPrototypeModel.Labels).To(Equal([]string{"testString"}))
+				Expect(projectConfigPrototypeModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigPrototypeModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
+				Expect(projectConfigPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(projectConfigPrototypeModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
+				Expect(projectConfigPrototypeModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
 
 				// Construct an instance of the CreateProjectOptions model
 				resourceGroup := "Default"
 				location := "us-south"
-				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location)
+				createProjectOptionsName := "acme-microservice"
+				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location, createProjectOptionsName)
 				createProjectOptionsModel.SetResourceGroup("Default")
 				createProjectOptionsModel.SetLocation("us-south")
 				createProjectOptionsModel.SetName("acme-microservice")
 				createProjectOptionsModel.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.SetDestroyOnDelete(true)
-				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel})
+				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 				createProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createProjectOptionsModel).ToNot(BeNil())
 				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
@@ -5169,7 +4887,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(createProjectOptionsModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(createProjectOptionsModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
 				Expect(createProjectOptionsModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
-				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}))
+				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}))
 				Expect(createProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteConfigOptions successfully`, func() {
@@ -5317,6 +5035,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
+			It(`Invoke NewProjectConfigPrototype successfully`, func() {
+				name := "testString"
+				locatorID := "testString"
+				_model, err := projectService.NewProjectConfigPrototype(name, locatorID)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 			It(`Invoke NewProjectConfigSettingCollection successfully`, func() {
 				name := "testString"
 				value := "testString"
@@ -5415,128 +5140,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateProjectOptions successfully`, func() {
-				// Construct an instance of the CumulativeNeedsAttention model
-				cumulativeNeedsAttentionModel := new(projectv1.CumulativeNeedsAttention)
-				Expect(cumulativeNeedsAttentionModel).ToNot(BeNil())
-				cumulativeNeedsAttentionModel.Event = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.EventID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigID = core.StringPtr("testString")
-				cumulativeNeedsAttentionModel.ConfigVersion = core.Int64Ptr(int64(38))
-				Expect(cumulativeNeedsAttentionModel.Event).To(Equal(core.StringPtr("testString")))
-				Expect(cumulativeNeedsAttentionModel.EventID).To(Equal(core.StringPtr("testString")))
-				Expect(cumulativeNeedsAttentionModel.ConfigID).To(Equal(core.StringPtr("testString")))
-				Expect(cumulativeNeedsAttentionModel.ConfigVersion).To(Equal(core.Int64Ptr(int64(38))))
-
-				// Construct an instance of the ProjectConfigAuthTrustedProfile model
-				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
-				Expect(projectConfigAuthTrustedProfileModel).ToNot(BeNil())
-				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
-				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
-				Expect(projectConfigAuthTrustedProfileModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigAuthTrustedProfileModel.TargetIamID).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the ProjectConfigAuth model
-				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
-				Expect(projectConfigAuthModel).ToNot(BeNil())
-				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
-				projectConfigAuthModel.Method = core.StringPtr("testString")
-				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
-				Expect(projectConfigAuthModel.TrustedProfile).To(Equal(projectConfigAuthTrustedProfileModel))
-				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the ProjectConfigComplianceProfile model
-				projectConfigComplianceProfileModel := new(projectv1.ProjectConfigComplianceProfile)
-				Expect(projectConfigComplianceProfileModel).ToNot(BeNil())
-				projectConfigComplianceProfileModel.ID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
-				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
-				Expect(projectConfigComplianceProfileModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigComplianceProfileModel.InstanceID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigComplianceProfileModel.InstanceLocation).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				Expect(projectConfigInputVariableModel).ToNot(BeNil())
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				Expect(projectConfigSettingCollectionModel).ToNot(BeNil())
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the ProjectConfigPrototypeTerraform model
-				projectConfigPrototypeTerraformModel := new(projectv1.ProjectConfigPrototypeTerraform)
-				Expect(projectConfigPrototypeTerraformModel).ToNot(BeNil())
-				projectConfigPrototypeTerraformModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Labels = []string{"testString"}
-				projectConfigPrototypeTerraformModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigPrototypeTerraformModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeTerraformModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigPrototypeTerraformModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
-				Expect(projectConfigPrototypeTerraformModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeTerraformModel.Labels).To(Equal([]string{"testString"}))
-				Expect(projectConfigPrototypeTerraformModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeTerraformModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigPrototypeTerraformModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
-				Expect(projectConfigPrototypeTerraformModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeTerraformModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
-				Expect(projectConfigPrototypeTerraformModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
-
 				// Construct an instance of the UpdateProjectOptions model
 				id := "testString"
-				updateProjectOptionsNewCrn := "testString"
-				updateProjectOptionsNewCreatedAt := CreateMockDateTime("2019-01-01T12:00:00.000Z")
-				updateProjectOptionsNewID := "testString"
-				updateProjectOptionsNewLocation := "testString"
-				updateProjectOptionsNewResourceGroup := "testString"
-				updateProjectOptionsNewState := "ready"
-				updateProjectOptionsNewName := "acme-microservice"
-				updateProjectOptionsNewDescription := "A microservice to deploy on top of ACME infrastructure."
-				updateProjectOptionsNewDestroyOnDelete := true
-				updateProjectOptionsModel := projectService.NewUpdateProjectOptions(id, updateProjectOptionsNewCrn, updateProjectOptionsNewCreatedAt, updateProjectOptionsNewID, updateProjectOptionsNewLocation, updateProjectOptionsNewResourceGroup, updateProjectOptionsNewState, updateProjectOptionsNewName, updateProjectOptionsNewDescription, updateProjectOptionsNewDestroyOnDelete)
+				updateProjectOptionsModel := projectService.NewUpdateProjectOptions(id)
 				updateProjectOptionsModel.SetID("testString")
-				updateProjectOptionsModel.SetNewCrn("testString")
-				updateProjectOptionsModel.SetNewCreatedAt(CreateMockDateTime("2019-01-01T12:00:00.000Z"))
-				updateProjectOptionsModel.SetNewID("testString")
-				updateProjectOptionsModel.SetNewLocation("testString")
-				updateProjectOptionsModel.SetNewResourceGroup("testString")
-				updateProjectOptionsModel.SetNewState("ready")
-				updateProjectOptionsModel.SetNewName("acme-microservice")
-				updateProjectOptionsModel.SetNewDescription("A microservice to deploy on top of ACME infrastructure.")
-				updateProjectOptionsModel.SetNewDestroyOnDelete(true)
-				updateProjectOptionsModel.SetNewCumulativeNeedsAttentionView([]projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel})
-				updateProjectOptionsModel.SetNewCumulativeNeedsAttentionViewError(true)
-				updateProjectOptionsModel.SetNewEventNotificationsCrn("testString")
-				updateProjectOptionsModel.SetNewConfigs([]projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel})
+				updateProjectOptionsModel.SetName("acme-microservice")
+				updateProjectOptionsModel.SetDescription("A microservice to deploy on top of ACME infrastructure.")
+				updateProjectOptionsModel.SetDestroyOnDelete(true)
 				updateProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateProjectOptionsModel).ToNot(BeNil())
 				Expect(updateProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.NewCrn).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.NewCreatedAt).To(Equal(CreateMockDateTime("2019-01-01T12:00:00.000Z")))
-				Expect(updateProjectOptionsModel.NewID).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.NewLocation).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.NewResourceGroup).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.NewState).To(Equal(core.StringPtr("ready")))
-				Expect(updateProjectOptionsModel.NewName).To(Equal(core.StringPtr("acme-microservice")))
-				Expect(updateProjectOptionsModel.NewDescription).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
-				Expect(updateProjectOptionsModel.NewDestroyOnDelete).To(Equal(core.BoolPtr(true)))
-				Expect(updateProjectOptionsModel.NewCumulativeNeedsAttentionView).To(Equal([]projectv1.CumulativeNeedsAttention{*cumulativeNeedsAttentionModel}))
-				Expect(updateProjectOptionsModel.NewCumulativeNeedsAttentionViewError).To(Equal(core.BoolPtr(true)))
-				Expect(updateProjectOptionsModel.NewEventNotificationsCrn).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.NewConfigs).To(Equal([]projectv1.ProjectConfigPrototypeTerraform{*projectConfigPrototypeTerraformModel}))
+				Expect(updateProjectOptionsModel.Name).To(Equal(core.StringPtr("acme-microservice")))
+				Expect(updateProjectOptionsModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
+				Expect(updateProjectOptionsModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
 				Expect(updateProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 		})
