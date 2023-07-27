@@ -129,7 +129,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Value: core.StringPtr("testString"),
 			}
 
-			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
+			projectConfigModel := &projectv1.ProjectConfig{
 				Name: core.StringPtr("common-variables"),
 				Labels: []string{},
 				Description: core.StringPtr("testString"),
@@ -146,15 +146,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
-				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
+				Configs: []projectv1.ProjectConfig{*projectConfigModel},
 			}
 
-			project, response, err := projectService.CreateProject(createProjectOptions)
+			projectCanonical, response, err := projectService.CreateProject(createProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(project).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 
-			projectIdLink = *project.ID
+			projectIdLink = *projectCanonical.ID
 			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
 		})
 	})
@@ -184,21 +184,21 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
-				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
+				Name: core.StringPtr("testString"),
+				Value: core.StringPtr("testString"),
 			}
 
 			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT"),
-				Value: core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"),
+				Name: core.StringPtr("testString"),
+				Value: core.StringPtr("testString"),
 			}
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
-				Name: core.StringPtr("env-stage"),
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Labels: []string{"env:stage", "governance:test", "build:0"},
-				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
+				Name: core.StringPtr("testString"),
+				LocatorID: core.StringPtr("testString"),
+				Labels: []string{},
+				Description: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
 				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
@@ -228,7 +228,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			listProjectsOptions.Start = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectCanonical
 			for {
 				projectCollection, response, err := projectService.ListProjects(listProjectsOptions)
 				Expect(err).To(BeNil())
@@ -255,7 +255,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectCanonical
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				Expect(err).To(BeNil())
@@ -286,10 +286,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &projectIdLink,
 			}
 
-			projectSummary, response, err := projectService.GetProject(getProjectOptions)
+			projectResponseSummary, response, err := projectService.GetProject(getProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(projectResponseSummary).ToNot(BeNil())
 		})
 	})
 
@@ -305,10 +305,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				DestroyOnDelete: core.BoolPtr(true),
 			}
 
-			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			projectResponseSummary, response, err := projectService.UpdateProject(updateProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(projectResponseSummary).ToNot(BeNil())
 		})
 	})
 
@@ -410,10 +410,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfigVersionResponse, response, err := projectService.ForceApprove(forceApproveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -428,10 +428,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigGetResponse, response, err := projectService.Approve(approveOptions)
+			projectConfigVersionResponse, response, err := projectService.Approve(approveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -446,10 +446,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				XAuthRefreshToken: core.StringPtr("testString"),
 			}
 
-			projectConfigGetResponse, response, err := projectService.CheckConfig(checkConfigOptions)
+			projectConfigVersionResponse, response, err := projectService.CheckConfig(checkConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -463,10 +463,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigGetResponse, response, err := projectService.InstallConfig(installConfigOptions)
+			projectConfigVersionResponse, response, err := projectService.InstallConfig(installConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -510,7 +510,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions)`, func() {
 			listConfigVersionsOptions := &projectv1.ListConfigVersionsOptions{
 				ProjectID: &projectIdLink,
-				ConfigID: core.StringPtr("testString"),
+				ID: &configIdLink,
 			}
 
 			projectConfigVersionSummaryCollection, response, err := projectService.ListConfigVersions(listConfigVersionsOptions)
@@ -527,7 +527,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`GetConfigVersion(getConfigVersionOptions *GetConfigVersionOptions)`, func() {
 			getConfigVersionOptions := &projectv1.GetConfigVersionOptions{
 				ProjectID: &projectIdLink,
-				ConfigID: core.StringPtr("testString"),
+				ID: &configIdLink,
 				Version: core.Int64Ptr(int64(38)),
 			}
 
