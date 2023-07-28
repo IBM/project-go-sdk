@@ -220,7 +220,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -334,7 +334,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -456,7 +456,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -521,7 +521,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -607,7 +607,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -1539,7 +1539,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("testString")
 				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
+				createConfigOptionsModel.Labels = []string{"testString"}
 				createConfigOptionsModel.Description = core.StringPtr("testString")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -1643,7 +1643,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("testString")
 				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
+				createConfigOptionsModel.Labels = []string{"testString"}
 				createConfigOptionsModel.Description = core.StringPtr("testString")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -1755,7 +1755,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("testString")
 				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
+				createConfigOptionsModel.Labels = []string{"testString"}
 				createConfigOptionsModel.Description = core.StringPtr("testString")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -1812,7 +1812,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("testString")
 				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
+				createConfigOptionsModel.Labels = []string{"testString"}
 				createConfigOptionsModel.Description = core.StringPtr("testString")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -1890,7 +1890,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				createConfigOptionsModel.Name = core.StringPtr("testString")
 				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{}
+				createConfigOptionsModel.Labels = []string{"testString"}
 				createConfigOptionsModel.Description = core.StringPtr("testString")
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -4771,7 +4771,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createConfigOptionsModel.SetProjectID("testString")
 				createConfigOptionsModel.SetName("testString")
 				createConfigOptionsModel.SetLocatorID("testString")
-				createConfigOptionsModel.SetLabels([]string{})
+				createConfigOptionsModel.SetLabels([]string{"testString"})
 				createConfigOptionsModel.SetDescription("testString")
 				createConfigOptionsModel.SetAuthorizations(projectConfigAuthModel)
 				createConfigOptionsModel.SetComplianceProfile(projectConfigComplianceProfileModel)
@@ -4782,7 +4782,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(createConfigOptionsModel.Name).To(Equal(core.StringPtr("testString")))
 				Expect(createConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Labels).To(Equal([]string{}))
+				Expect(createConfigOptionsModel.Labels).To(Equal([]string{"testString"}))
 				Expect(createConfigOptionsModel.Description).To(Equal(core.StringPtr("testString")))
 				Expect(createConfigOptionsModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(createConfigOptionsModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
@@ -4843,7 +4843,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel := new(projectv1.ProjectConfig)
 				Expect(projectConfigModel).ToNot(BeNil())
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
@@ -4851,7 +4851,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
 				projectConfigModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
 				Expect(projectConfigModel.Name).To(Equal(core.StringPtr("common-variables")))
-				Expect(projectConfigModel.Labels).To(Equal([]string{}))
+				Expect(projectConfigModel.Labels).To(Equal([]string{"testString"}))
 				Expect(projectConfigModel.Description).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(projectConfigModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
