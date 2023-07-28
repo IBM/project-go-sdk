@@ -2086,6 +2086,37 @@ func (options *ListProjectsOptions) SetHeaders(param map[string]string) *ListPro
 	return options
 }
 
+// OutputValue : OutputValue struct
+type OutputValue struct {
+	// The variable name.
+	Name *string `json:"name" validate:"required"`
+
+	// A short explanation of the output value.
+	Description *string `json:"description,omitempty"`
+
+	// Can be any value - a string, number, boolean, array, or object.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// UnmarshalOutputValue unmarshals an instance of OutputValue from the specified map of raw messages.
+func UnmarshalOutputValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(OutputValue)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // PaginationLink : A pagination link.
 type PaginationLink struct {
 	// A relative URL.
@@ -2432,7 +2463,7 @@ func UnmarshalProjectConfigAuthTrustedProfile(m map[string]json.RawMessage, resu
 	return
 }
 
-// ProjectConfigCanonical : The configuration metadata.
+// ProjectConfigCanonical : The project configuration version.
 type ProjectConfigCanonical struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
 	ID *string `json:"id,omitempty"`
@@ -2472,6 +2503,47 @@ type ProjectConfigCanonical struct {
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
 	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
+
+	// The name of the configuration.
+	Name *string `json:"name" validate:"required"`
+
+	// A collection of configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// The description of the project configuration.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectConfigComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id" validate:"required"`
+
+	// The inputs of a Schematics template property.
+	Input []ProjectConfigInputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
+	// specified when the configuration was initially created.
+	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type" validate:"required"`
+
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+
+	// The project configuration version.
+	ActiveDraft *ProjectConfigVersionSummary `json:"active_draft,omitempty"`
+
+	// The project configuration definition.
+	Definition *ProjectConfigDefinition `json:"definition,omitempty"`
+
+	// A relative URL.
+	Href *string `json:"href,omitempty"`
 }
 
 // Constants associated with the ProjectConfigCanonical.State property.
@@ -2500,6 +2572,13 @@ const (
 	ProjectConfigCanonical_PipelineState_PipelineFailed = "pipeline_failed"
 	ProjectConfigCanonical_PipelineState_PipelineRunning = "pipeline_running"
 	ProjectConfigCanonical_PipelineState_PipelineSucceeded = "pipeline_succeeded"
+)
+
+// Constants associated with the ProjectConfigCanonical.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigCanonical_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigCanonical_Type_TerraformTemplate = "terraform_template"
 )
 
 // UnmarshalProjectConfigCanonical unmarshals an instance of ProjectConfigCanonical from the specified map of raw messages.
@@ -2550,6 +2629,58 @@ func UnmarshalProjectConfigCanonical(m map[string]json.RawMessage, result interf
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectConfigComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalProjectConfigInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSettingCollection)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "active_draft", &obj.ActiveDraft, UnmarshalProjectConfigVersionSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinition)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		return
 	}
@@ -2612,6 +2743,95 @@ func UnmarshalProjectConfigComplianceProfile(m map[string]json.RawMessage, resul
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "profile_name", &obj.ProfileName)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigDefinition : The project configuration definition.
+type ProjectConfigDefinition struct {
+	// The name of the configuration.
+	Name *string `json:"name" validate:"required"`
+
+	// A collection of configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// The description of the project configuration.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectConfigComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id" validate:"required"`
+
+	// The inputs of a Schematics template property.
+	Input []ProjectConfigInputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
+	// specified when the configuration was initially created.
+	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type" validate:"required"`
+
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+}
+
+// Constants associated with the ProjectConfigDefinition.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigDefinition_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigDefinition_Type_TerraformTemplate = "terraform_template"
+)
+
+// UnmarshalProjectConfigDefinition unmarshals an instance of ProjectConfigDefinition from the specified map of raw messages.
+func UnmarshalProjectConfigDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinition)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectConfigComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalProjectConfigInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSettingCollection)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
 	if err != nil {
 		return
 	}
