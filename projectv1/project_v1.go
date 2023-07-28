@@ -2531,7 +2531,7 @@ type ProjectConfigCanonical struct {
 	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
 
 	// The type of a project configuration manual property.
-	Type *string `json:"type" validate:"required"`
+	Type *string `json:"type,omitempty"`
 
 	// The outputs of a Schematics template property.
 	Output []OutputValue `json:"output,omitempty"`
@@ -2779,7 +2779,7 @@ type ProjectConfigDefinition struct {
 	Setting []ProjectConfigSettingCollection `json:"setting,omitempty"`
 
 	// The type of a project configuration manual property.
-	Type *string `json:"type" validate:"required"`
+	Type *string `json:"type,omitempty"`
 
 	// The outputs of a Schematics template property.
 	Output []OutputValue `json:"output,omitempty"`
