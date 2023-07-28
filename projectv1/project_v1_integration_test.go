@@ -286,10 +286,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &projectIdLink,
 			}
 
-			projectResponseSummary, response, err := projectService.GetProject(getProjectOptions)
+			projectCanonical, response, err := projectService.GetProject(getProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectResponseSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 	})
 
@@ -305,10 +305,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				DestroyOnDelete: core.BoolPtr(true),
 			}
 
-			projectResponseSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			projectCanonical, response, err := projectService.UpdateProject(updateProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectResponseSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 	})
 

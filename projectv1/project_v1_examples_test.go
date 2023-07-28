@@ -197,18 +197,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 			)
 
-			projectResponseSummary, response, err := projectService.GetProject(getProjectOptions)
+			projectCanonical, response, err := projectService.GetProject(getProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectResponseSummary, "", "  ")
+			b, _ := json.MarshalIndent(projectCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectResponseSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 		It(`UpdateProject request example`, func() {
 			fmt.Println("\nUpdateProject() result:")
@@ -220,18 +220,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			updateProjectOptions.SetName("acme-microservice")
 			updateProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 
-			projectResponseSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			projectCanonical, response, err := projectService.UpdateProject(updateProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectResponseSummary, "", "  ")
+			b, _ := json.MarshalIndent(projectCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectResponseSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
