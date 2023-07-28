@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.73.0-eeee85a9-20230607-165104
+ * IBM OpenAPI SDK Code Generator Version: 3.76.0-ad3e6f96-20230724-172814
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -2313,7 +2313,7 @@ type ProjectCollection struct {
 	TotalCount *int64 `json:"total_count" validate:"required"`
 
 	// A pagination link.
-	First *PaginationLink `json:"first" validate:"required"`
+	First *PaginationLink `json:"first,omitempty"`
 
 	// A pagination link.
 	Last *PaginationLink `json:"last,omitempty"`
