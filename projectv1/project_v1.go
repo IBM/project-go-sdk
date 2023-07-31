@@ -2185,19 +2185,12 @@ func UnmarshalOutputValue(m map[string]json.RawMessage, result interface{}) (err
 type PaginationLink struct {
 	// A relative URL.
 	Href *string `json:"href" validate:"required"`
-
-	// A pagination token.
-	Start *string `json:"start,omitempty"`
 }
 
 // UnmarshalPaginationLink unmarshals an instance of PaginationLink from the specified map of raw messages.
 func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(PaginationLink)
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "start", &obj.Start)
 	if err != nil {
 		return
 	}
@@ -2313,7 +2306,7 @@ type ProjectCollection struct {
 	TotalCount *int64 `json:"total_count" validate:"required"`
 
 	// A pagination link.
-	First *PaginationLink `json:"first,omitempty"`
+	First *PaginationLink `json:"first" validate:"required"`
 
 	// A pagination link.
 	Last *PaginationLink `json:"last,omitempty"`
@@ -2368,7 +2361,11 @@ func (resp *ProjectCollection) GetNextStart() (*string, error) {
 	if core.IsNil(resp.Next) {
 		return nil, nil
 	}
-	return resp.Next.Start, nil
+	start, err := core.GetQueryParam(resp.Next.Href, "start")
+	if err != nil || start == nil {
+		return nil, err
+	}
+	return start, nil
 }
 
 // ProjectCollectionMemberWithMetadata : The metadata of the project.
@@ -4032,7 +4029,13 @@ func (pager *ProjectsPager) GetNextWithContext(ctx context.Context) (page []Proj
 
 	var next *string
 	if result.Next != nil {
-		next = result.Next.Start
+		var start *string
+		start, err = core.GetQueryParam(result.Next.Href, "start")
+		if err != nil {
+			err = fmt.Errorf("error retrieving 'start' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
+			return
+		}
+		next = start
 	}
 	pager.pageContext.next = next
 	pager.hasNext = (pager.pageContext.next != nil)
