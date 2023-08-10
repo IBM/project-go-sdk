@@ -207,26 +207,24 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
+				projectConfigModel.Labels = []string{}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				projectConfigModel.Input = inputVariableModel
+				projectConfigModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -290,7 +288,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "check_job": {"id": "ID", "href": "Href"}, "install_job": {"id": "ID", "href": "Href"}, "uninstall_job": {"id": "ID", "href": "Href"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -321,26 +319,24 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
+				projectConfigModel.Labels = []string{}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				projectConfigModel.Input = inputVariableModel
+				projectConfigModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -407,7 +403,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "check_job": {"id": "ID", "href": "Href"}, "install_job": {"id": "ID", "href": "Href"}, "uninstall_job": {"id": "ID", "href": "Href"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -443,26 +439,24 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
+				projectConfigModel.Labels = []string{}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				projectConfigModel.Input = inputVariableModel
+				projectConfigModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -508,26 +502,24 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
+				projectConfigModel.Labels = []string{}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				projectConfigModel.Input = inputVariableModel
+				projectConfigModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -594,26 +586,24 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
+				projectConfigModel.Labels = []string{}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				projectConfigModel.Input = inputVariableModel
+				projectConfigModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -705,7 +695,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href"}, "last": {"href": "Href"}, "previous": {"href": "Href"}, "next": {"href": "Href"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully with retries`, func() {
@@ -762,7 +752,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href", "start": "Start"}, "last": {"href": "Href", "start": "Start"}, "previous": {"href": "Href", "start": "Start"}, "next": {"href": "Href", "start": "Start"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "total_count": 0, "first": {"href": "Href"}, "last": {"href": "Href"}, "previous": {"href": "Href"}, "next": {"href": "Href"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully`, func() {
@@ -857,7 +847,7 @@ var _ = Describe(`ProjectV1`, func() {
 			It(`Invoke GetNextStart successfully`, func() {
 				responseObject := new(projectv1.ProjectCollection)
 				nextObject := new(projectv1.PaginationLink)
-				nextObject.Start = core.StringPtr("abc-123")
+				nextObject.Href = core.StringPtr("ibm.com?start=abc-123")
 				responseObject.Next = nextObject
 	
 				value, err := responseObject.GetNextStart()
@@ -866,6 +856,16 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 			It(`Invoke GetNextStart without a "Next" property in the response`, func() {
 				responseObject := new(projectv1.ProjectCollection)
+	
+				value, err := responseObject.GetNextStart()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
+			It(`Invoke GetNextStart without any query params in the "Next" URL`, func() {
+				responseObject := new(projectv1.ProjectCollection)
+				nextObject := new(projectv1.PaginationLink)
+				nextObject.Href = core.StringPtr("ibm.com")
+				responseObject.Next = nextObject
 	
 				value, err := responseObject.GetNextStart()
 				Expect(err).To(BeNil())
@@ -887,9 +887,9 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"start":"1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","name":"Name","description":"Description","destroy_on_delete":true,"definition":{"name":"Name","description":"Description","destroy_on_delete":true},"configs":[{"id":"ID","project_id":"ProjectID","version":7,"is_draft":false,"needs_attention_state":["anyValue"],"state":"approved","pipeline_state":"pipeline_failed","update_available":false,"created_at":"2019-01-01T12:00:00.000Z","updated_at":"2019-01-01T12:00:00.000Z","last_approved":{"is_forced":true,"comment":"Comment","timestamp":"2019-01-01T12:00:00.000Z","user_id":"UserID"},"last_save":"2019-01-01T12:00:00.000Z","name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}],"type":"terraform_template","output":[{"name":"Name","description":"Description","value":"anyValue"}],"active_draft":{"version":7,"state":"discarded","pipeline_state":"pipeline_failed","href":"Href"},"definition":{"name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}],"type":"terraform_template","output":[{"name":"Name","description":"Description","value":"anyValue"}]},"href":"Href"}]}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?start=1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","definition":{"name":"Name","description":"Description","destroy_on_delete":true}}],"total_count":2,"limit":1}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","name":"Name","description":"Description","destroy_on_delete":true,"definition":{"name":"Name","description":"Description","destroy_on_delete":true},"configs":[{"id":"ID","project_id":"ProjectID","version":7,"is_draft":false,"needs_attention_state":["anyValue"],"state":"approved","pipeline_state":"pipeline_failed","update_available":false,"created_at":"2019-01-01T12:00:00.000Z","updated_at":"2019-01-01T12:00:00.000Z","last_approved":{"is_forced":true,"comment":"Comment","timestamp":"2019-01-01T12:00:00.000Z","user_id":"UserID"},"last_save":"2019-01-01T12:00:00.000Z","name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}],"type":"terraform_template","output":[{"name":"Name","description":"Description","value":"anyValue"}],"active_draft":{"version":7,"state":"discarded","pipeline_state":"pipeline_failed","href":"Href"},"definition":{"name":"Name","labels":["Labels"],"description":"Description","authorizations":{"trusted_profile":{"id":"ID","target_iam_id":"TargetIamID"},"method":"Method","api_key":"ApiKey"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"},"locator_id":"LocatorID","input":[{"name":"Name","value":"anyValue"}],"setting":[{"name":"Name","value":"Value"}],"type":"terraform_template","output":[{"name":"Name","description":"Description","value":"anyValue"}]},"href":"Href"}]}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group":"ResourceGroup","state":"ready","event_notifications_crn":"EventNotificationsCrn","definition":{"name":"Name","description":"Description","destroy_on_delete":true}}],"total_count":2,"limit":1}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -911,7 +911,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(err).To(BeNil())
 				Expect(pager).ToNot(BeNil())
 
-				var allResults []projectv1.ProjectCanonical
+				var allResults []projectv1.ProjectCollectionMemberWithMetadata
 				for pager.HasNext() {
 					nextPage, err := pager.GetNext()
 					Expect(err).To(BeNil())
@@ -1005,7 +1005,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -1059,7 +1059,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1236,7 +1236,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully with retries`, func() {
@@ -1309,7 +1309,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "name": "Name", "description": "Description", "destroy_on_delete": true, "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully`, func() {
@@ -1524,27 +1524,29 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{"testString"}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				createConfigOptionsModel.Input = inputVariableModel
+				createConfigOptionsModel.Setting = projectConfigSettingModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CreateConfig(createConfigOptionsModel)
@@ -1597,7 +1599,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully with retries`, func() {
@@ -1628,27 +1630,29 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{"testString"}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				createConfigOptionsModel.Input = inputVariableModel
+				createConfigOptionsModel.Setting = projectConfigSettingModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1704,7 +1708,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully`, func() {
@@ -1740,27 +1744,29 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{"testString"}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				createConfigOptionsModel.Input = inputVariableModel
+				createConfigOptionsModel.Setting = projectConfigSettingModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1797,27 +1803,29 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{"testString"}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				createConfigOptionsModel.Input = inputVariableModel
+				createConfigOptionsModel.Setting = projectConfigSettingModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1875,27 +1883,29 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigComplianceProfileModel.AttachmentID = core.StringPtr("testString")
 				projectConfigComplianceProfileModel.ProfileName = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Name = core.StringPtr("testString")
-				createConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				createConfigOptionsModel.Labels = []string{"testString"}
-				createConfigOptionsModel.Description = core.StringPtr("testString")
+				createConfigOptionsModel.Name = core.StringPtr("env-stage")
+				createConfigOptionsModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.Description = core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.Labels = []string{"env:stage", "governance:test", "build:0"}
 				createConfigOptionsModel.Authorizations = projectConfigAuthModel
 				createConfigOptionsModel.ComplianceProfile = projectConfigComplianceProfileModel
-				createConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				createConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				createConfigOptionsModel.Input = inputVariableModel
+				createConfigOptionsModel.Setting = projectConfigSettingModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -1973,7 +1983,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "check_job": {"id": "ID", "href": "Href"}, "install_job": {"id": "ID", "href": "Href"}, "uninstall_job": {"id": "ID", "href": "Href"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully with retries`, func() {
@@ -2027,7 +2037,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "check_job": {"id": "ID", "href": "Href"}, "install_job": {"id": "ID", "href": "Href"}, "uninstall_job": {"id": "ID", "href": "Href"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully`, func() {
@@ -2186,7 +2196,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully with retries`, func() {
@@ -2241,7 +2251,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully`, func() {
@@ -2363,15 +2373,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
-				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfigAuthTrustedProfile model
 				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
@@ -2397,8 +2409,8 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				updateConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				updateConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				updateConfigOptionsModel.Input = inputVariableModel
+				updateConfigOptionsModel.Setting = projectConfigSettingModel
 				updateConfigOptionsModel.Name = core.StringPtr("testString")
 				updateConfigOptionsModel.Labels = []string{"testString"}
 				updateConfigOptionsModel.Description = core.StringPtr("testString")
@@ -2456,7 +2468,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully with retries`, func() {
@@ -2468,15 +2480,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
-				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfigAuthTrustedProfile model
 				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
@@ -2502,8 +2516,8 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				updateConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				updateConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				updateConfigOptionsModel.Input = inputVariableModel
+				updateConfigOptionsModel.Setting = projectConfigSettingModel
 				updateConfigOptionsModel.Name = core.StringPtr("testString")
 				updateConfigOptionsModel.Labels = []string{"testString"}
 				updateConfigOptionsModel.Description = core.StringPtr("testString")
@@ -2564,7 +2578,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully`, func() {
@@ -2581,15 +2595,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
-				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfigAuthTrustedProfile model
 				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
@@ -2615,8 +2631,8 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				updateConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				updateConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				updateConfigOptionsModel.Input = inputVariableModel
+				updateConfigOptionsModel.Setting = projectConfigSettingModel
 				updateConfigOptionsModel.Name = core.StringPtr("testString")
 				updateConfigOptionsModel.Labels = []string{"testString"}
 				updateConfigOptionsModel.Description = core.StringPtr("testString")
@@ -2639,15 +2655,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
-				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfigAuthTrustedProfile model
 				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
@@ -2673,8 +2691,8 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				updateConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				updateConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				updateConfigOptionsModel.Input = inputVariableModel
+				updateConfigOptionsModel.Setting = projectConfigSettingModel
 				updateConfigOptionsModel.Name = core.StringPtr("testString")
 				updateConfigOptionsModel.Labels = []string{"testString"}
 				updateConfigOptionsModel.Description = core.StringPtr("testString")
@@ -2718,15 +2736,17 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
-				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 				// Construct an instance of the ProjectConfigAuthTrustedProfile model
 				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
@@ -2752,8 +2772,8 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
 				updateConfigOptionsModel.LocatorID = core.StringPtr("testString")
-				updateConfigOptionsModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				updateConfigOptionsModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				updateConfigOptionsModel.Input = inputVariableModel
+				updateConfigOptionsModel.Setting = projectConfigSettingModel
 				updateConfigOptionsModel.Name = core.StringPtr("testString")
 				updateConfigOptionsModel.Labels = []string{"testString"}
 				updateConfigOptionsModel.Description = core.StringPtr("testString")
@@ -3079,7 +3099,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke ForceApprove successfully with retries`, func() {
@@ -3151,7 +3171,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke ForceApprove successfully`, func() {
@@ -3333,7 +3353,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke Approve successfully with retries`, func() {
@@ -3405,7 +3425,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke Approve successfully`, func() {
@@ -3575,7 +3595,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke CheckConfig successfully with retries`, func() {
@@ -3633,7 +3653,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke CheckConfig successfully`, func() {
@@ -3798,7 +3818,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully with retries`, func() {
@@ -3853,7 +3873,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully`, func() {
@@ -4302,7 +4322,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"versions": [{"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"versions": [{"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListConfigVersions successfully with retries`, func() {
@@ -4357,7 +4377,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"versions": [{"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"versions": [{"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListConfigVersions successfully`, func() {
@@ -4520,7 +4540,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfigVersion successfully with retries`, func() {
@@ -4576,7 +4596,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "pipeline_state": "pipeline_failed", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "active_draft": {"version": 7, "state": "discarded", "pipeline_state": "pipeline_failed", "href": "Href"}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": [{"name": "Name", "value": "anyValue"}], "setting": [{"name": "Name", "value": "Value"}], "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "check_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "install_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "uninstall_job": {"id": "ID", "href": "Href", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfigVersion successfully`, func() {
@@ -4747,47 +4767,75 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				Expect(projectConfigInputVariableModel).ToNot(BeNil())
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr("testString")))
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				Expect(inputVariableModel).ToNot(BeNil())
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
+				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
+				Expect(inputVariableModel.GetProperty("account_id")).To(Equal(core.StringPtr(`$configs[].name["account-stage"].input.account_id`)))
+				Expect(inputVariableModel.GetProperty("resource_group")).To(Equal(core.StringPtr("stage")))
+				Expect(inputVariableModel.GetProperty("access_tags")).To(Equal(core.StringPtr(`["env:stage"]`)))
+				Expect(inputVariableModel.GetProperty("logdna_name")).To(Equal(core.StringPtr("Name of the LogDNA stage service instance")))
+				Expect(inputVariableModel.GetProperty("sysdig_name")).To(Equal(core.StringPtr("Name of the SysDig stage service instance")))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				Expect(projectConfigSettingCollectionModel).ToNot(BeNil())
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("testString")))
+				inputVariableModel.SetProperties(nil)
+				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
+
+				inputVariableModelExpectedMap := make(map[string]interface{})
+				inputVariableModelExpectedMap["account_id"] = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				inputVariableModelExpectedMap["resource_group"] = core.StringPtr("stage")
+				inputVariableModelExpectedMap["access_tags"] = core.StringPtr(`["env:stage"]`)
+				inputVariableModelExpectedMap["logdna_name"] = core.StringPtr("Name of the LogDNA stage service instance")
+				inputVariableModelExpectedMap["sysdig_name"] = core.StringPtr("Name of the SysDig stage service instance")
+				inputVariableModel.SetProperties(inputVariableModelExpectedMap)
+				inputVariableModelActualMap := inputVariableModel.GetProperties()
+				Expect(inputVariableModelActualMap).To(Equal(inputVariableModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				Expect(projectConfigSettingModel).ToNot(BeNil())
+				projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
+				Expect(projectConfigSettingModel.GetProperties()).ToNot(BeEmpty())
+				Expect(projectConfigSettingModel.GetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT")).To(Equal(core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")))
+
+				projectConfigSettingModel.SetProperties(nil)
+				Expect(projectConfigSettingModel.GetProperties()).To(BeEmpty())
+
+				projectConfigSettingModelExpectedMap := make(map[string]interface{})
+				projectConfigSettingModelExpectedMap["IBMCLOUD_TOOLCHAIN_ENDPOINT"] = core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com")
+				projectConfigSettingModel.SetProperties(projectConfigSettingModelExpectedMap)
+				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
+				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
-				createConfigOptionsName := "testString"
-				createConfigOptionsLocatorID := "testString"
+				createConfigOptionsName := "env-stage"
+				createConfigOptionsLocatorID := "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"
 				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID, createConfigOptionsName, createConfigOptionsLocatorID)
 				createConfigOptionsModel.SetProjectID("testString")
-				createConfigOptionsModel.SetName("testString")
-				createConfigOptionsModel.SetLocatorID("testString")
-				createConfigOptionsModel.SetLabels([]string{"testString"})
-				createConfigOptionsModel.SetDescription("testString")
+				createConfigOptionsModel.SetName("env-stage")
+				createConfigOptionsModel.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				createConfigOptionsModel.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+				createConfigOptionsModel.SetLabels([]string{"env:stage", "governance:test", "build:0"})
 				createConfigOptionsModel.SetAuthorizations(projectConfigAuthModel)
 				createConfigOptionsModel.SetComplianceProfile(projectConfigComplianceProfileModel)
-				createConfigOptionsModel.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
-				createConfigOptionsModel.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
+				createConfigOptionsModel.SetInput(inputVariableModel)
+				createConfigOptionsModel.SetSetting(projectConfigSettingModel)
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createConfigOptionsModel).ToNot(BeNil())
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Labels).To(Equal([]string{"testString"}))
-				Expect(createConfigOptionsModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(createConfigOptionsModel.Name).To(Equal(core.StringPtr("env-stage")))
+				Expect(createConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(createConfigOptionsModel.Description).To(Equal(core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")))
+				Expect(createConfigOptionsModel.Labels).To(Equal([]string{"env:stage", "governance:test", "build:0"}))
 				Expect(createConfigOptionsModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(createConfigOptionsModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
-				Expect(createConfigOptionsModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
-				Expect(createConfigOptionsModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
+				Expect(createConfigOptionsModel.Input).To(Equal(inputVariableModel))
+				Expect(createConfigOptionsModel.Setting).To(Equal(projectConfigSettingModel))
 				Expect(createConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateProjectOptions successfully`, func() {
@@ -4823,41 +4871,57 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
 				Expect(projectConfigComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				Expect(projectConfigInputVariableModel).ToNot(BeNil())
-				projectConfigInputVariableModel.Name = core.StringPtr("testString")
-				projectConfigInputVariableModel.Value = core.StringPtr("testString")
-				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr("testString")))
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				Expect(inputVariableModel).ToNot(BeNil())
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
+				Expect(inputVariableModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				Expect(projectConfigSettingCollectionModel).ToNot(BeNil())
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("testString")))
+				inputVariableModel.SetProperties(nil)
+				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
+
+				inputVariableModelExpectedMap := make(map[string]interface{})
+				inputVariableModelExpectedMap["foo"] = core.StringPtr("testString")
+				inputVariableModel.SetProperties(inputVariableModelExpectedMap)
+				inputVariableModelActualMap := inputVariableModel.GetProperties()
+				Expect(inputVariableModelActualMap).To(Equal(inputVariableModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				Expect(projectConfigSettingModel).ToNot(BeNil())
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(projectConfigSettingModel.GetProperties()).ToNot(BeEmpty())
+				Expect(projectConfigSettingModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+
+				projectConfigSettingModel.SetProperties(nil)
+				Expect(projectConfigSettingModel.GetProperties()).To(BeEmpty())
+
+				projectConfigSettingModelExpectedMap := make(map[string]interface{})
+				projectConfigSettingModelExpectedMap["foo"] = core.StringPtr("testString")
+				projectConfigSettingModel.SetProperties(projectConfigSettingModelExpectedMap)
+				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
+				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
 
 				// Construct an instance of the ProjectConfig model
 				projectConfigModel := new(projectv1.ProjectConfig)
 				Expect(projectConfigModel).ToNot(BeNil())
 				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Description = core.StringPtr("testString")
+				projectConfigModel.Labels = []string{}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}
-				projectConfigModel.Setting = []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}
+				projectConfigModel.Input = inputVariableModel
+				projectConfigModel.Setting = projectConfigSettingModel
 				Expect(projectConfigModel.Name).To(Equal(core.StringPtr("common-variables")))
-				Expect(projectConfigModel.Labels).To(Equal([]string{"testString"}))
 				Expect(projectConfigModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigModel.Labels).To(Equal([]string{}))
 				Expect(projectConfigModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(projectConfigModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
 				Expect(projectConfigModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
-				Expect(projectConfigModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
-				Expect(projectConfigModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
+				Expect(projectConfigModel.Input).To(Equal(inputVariableModel))
+				Expect(projectConfigModel.Setting).To(Equal(projectConfigSettingModel))
 
 				// Construct an instance of the CreateProjectOptions model
 				resourceGroup := "Default"
@@ -5026,19 +5090,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
-			It(`Invoke NewProjectConfigInputVariable successfully`, func() {
-				name := "testString"
-				_model, err := projectService.NewProjectConfigInputVariable(name)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
-			})
-			It(`Invoke NewProjectConfigSettingCollection successfully`, func() {
-				name := "testString"
-				value := "testString"
-				_model, err := projectService.NewProjectConfigSettingCollection(name, value)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
-			})
 			It(`Invoke NewUninstallConfigOptions successfully`, func() {
 				// Construct an instance of the UninstallConfigOptions model
 				projectID := "testString"
@@ -5053,21 +5104,49 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(uninstallConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateConfigOptions successfully`, func() {
-				// Construct an instance of the ProjectConfigInputVariable model
-				projectConfigInputVariableModel := new(projectv1.ProjectConfigInputVariable)
-				Expect(projectConfigInputVariableModel).ToNot(BeNil())
-				projectConfigInputVariableModel.Name = core.StringPtr("account_id")
-				projectConfigInputVariableModel.Value = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
-				Expect(projectConfigInputVariableModel.Name).To(Equal(core.StringPtr("account_id")))
-				Expect(projectConfigInputVariableModel.Value).To(Equal(core.StringPtr(`$configs[].name["account-stage"].input.account_id`)))
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				Expect(inputVariableModel).ToNot(BeNil())
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
+				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
+				Expect(inputVariableModel.GetProperty("account_id")).To(Equal(core.StringPtr(`$configs[].name["account-stage"].input.account_id`)))
+				Expect(inputVariableModel.GetProperty("resource_group")).To(Equal(core.StringPtr("stage")))
+				Expect(inputVariableModel.GetProperty("access_tags")).To(Equal(core.StringPtr(`["env:stage"]`)))
+				Expect(inputVariableModel.GetProperty("logdna_name")).To(Equal(core.StringPtr("Name of the LogDNA stage service instance")))
+				Expect(inputVariableModel.GetProperty("sysdig_name")).To(Equal(core.StringPtr("Name of the SysDig stage service instance")))
 
-				// Construct an instance of the ProjectConfigSettingCollection model
-				projectConfigSettingCollectionModel := new(projectv1.ProjectConfigSettingCollection)
-				Expect(projectConfigSettingCollectionModel).ToNot(BeNil())
-				projectConfigSettingCollectionModel.Name = core.StringPtr("testString")
-				projectConfigSettingCollectionModel.Value = core.StringPtr("testString")
-				Expect(projectConfigSettingCollectionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigSettingCollectionModel.Value).To(Equal(core.StringPtr("testString")))
+				inputVariableModel.SetProperties(nil)
+				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
+
+				inputVariableModelExpectedMap := make(map[string]interface{})
+				inputVariableModelExpectedMap["account_id"] = core.StringPtr(`$configs[].name["account-stage"].input.account_id`)
+				inputVariableModelExpectedMap["resource_group"] = core.StringPtr("stage")
+				inputVariableModelExpectedMap["access_tags"] = core.StringPtr(`["env:stage"]`)
+				inputVariableModelExpectedMap["logdna_name"] = core.StringPtr("Name of the LogDNA stage service instance")
+				inputVariableModelExpectedMap["sysdig_name"] = core.StringPtr("Name of the SysDig stage service instance")
+				inputVariableModel.SetProperties(inputVariableModelExpectedMap)
+				inputVariableModelActualMap := inputVariableModel.GetProperties()
+				Expect(inputVariableModelActualMap).To(Equal(inputVariableModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				Expect(projectConfigSettingModel).ToNot(BeNil())
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(projectConfigSettingModel.GetProperties()).ToNot(BeEmpty())
+				Expect(projectConfigSettingModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+
+				projectConfigSettingModel.SetProperties(nil)
+				Expect(projectConfigSettingModel.GetProperties()).To(BeEmpty())
+
+				projectConfigSettingModelExpectedMap := make(map[string]interface{})
+				projectConfigSettingModelExpectedMap["foo"] = core.StringPtr("testString")
+				projectConfigSettingModel.SetProperties(projectConfigSettingModelExpectedMap)
+				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
+				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
 
 				// Construct an instance of the ProjectConfigAuthTrustedProfile model
 				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
@@ -5108,8 +5187,8 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel.SetProjectID("testString")
 				updateConfigOptionsModel.SetID("testString")
 				updateConfigOptionsModel.SetLocatorID("testString")
-				updateConfigOptionsModel.SetInput([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel})
-				updateConfigOptionsModel.SetSetting([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel})
+				updateConfigOptionsModel.SetInput(inputVariableModel)
+				updateConfigOptionsModel.SetSetting(projectConfigSettingModel)
 				updateConfigOptionsModel.SetName("testString")
 				updateConfigOptionsModel.SetLabels([]string{"testString"})
 				updateConfigOptionsModel.SetDescription("testString")
@@ -5120,8 +5199,8 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(updateConfigOptionsModel.Input).To(Equal([]projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel}))
-				Expect(updateConfigOptionsModel.Setting).To(Equal([]projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel}))
+				Expect(updateConfigOptionsModel.Input).To(Equal(inputVariableModel))
+				Expect(updateConfigOptionsModel.Setting).To(Equal(projectConfigSettingModel))
 				Expect(updateConfigOptionsModel.Name).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.Labels).To(Equal([]string{"testString"}))
 				Expect(updateConfigOptionsModel.Description).To(Equal(core.StringPtr("testString")))
