@@ -219,7 +219,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
 				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
@@ -331,7 +331,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
 				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
@@ -451,7 +451,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
 				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
@@ -514,7 +514,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
 				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
@@ -598,7 +598,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel := new(projectv1.ProjectConfig)
 				projectConfigModel.Name = core.StringPtr("common-variables")
 				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
@@ -4908,7 +4908,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigModel).ToNot(BeNil())
 				projectConfigModel.Name = core.StringPtr("common-variables")
 				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{}
+				projectConfigModel.Labels = []string{"testString"}
 				projectConfigModel.Authorizations = projectConfigAuthModel
 				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
 				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
@@ -4916,7 +4916,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigModel.Setting = projectConfigSettingModel
 				Expect(projectConfigModel.Name).To(Equal(core.StringPtr("common-variables")))
 				Expect(projectConfigModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigModel.Labels).To(Equal([]string{}))
+				Expect(projectConfigModel.Labels).To(Equal([]string{"testString"}))
 				Expect(projectConfigModel.Authorizations).To(Equal(projectConfigAuthModel))
 				Expect(projectConfigModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
 				Expect(projectConfigModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))

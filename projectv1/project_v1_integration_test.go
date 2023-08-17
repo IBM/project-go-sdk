@@ -130,7 +130,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigModel := &projectv1.ProjectConfig{
 				Name: core.StringPtr("common-variables"),
 				Description: core.StringPtr("testString"),
-				Labels: []string{},
+				Labels: []string{"testString"},
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
