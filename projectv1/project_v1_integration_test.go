@@ -147,12 +147,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Configs: []projectv1.ProjectConfig{*projectConfigModel},
 			}
 
-			project, response, err := projectService.CreateProject(createProjectOptions)
+			projectCanonical, response, err := projectService.CreateProject(createProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(project).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 
-			projectIdLink = *project.ID
+			projectIdLink = *projectCanonical.ID
 			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
 		})
 	})
@@ -228,15 +228,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			listProjectsOptions.Start = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectCanonical
 			for {
-				projectCollection, response, err := projectService.ListProjects(listProjectsOptions)
+				projectCollectionTerraform, response, err := projectService.ListProjects(listProjectsOptions)
 				Expect(err).To(BeNil())
 				Expect(response.StatusCode).To(Equal(200))
-				Expect(projectCollection).ToNot(BeNil())
-				allResults = append(allResults, projectCollection.Projects...)
+				Expect(projectCollectionTerraform).ToNot(BeNil())
+				allResults = append(allResults, projectCollectionTerraform.Projects...)
 
-				listProjectsOptions.Start, err = projectCollection.GetNextStart()
+				listProjectsOptions.Start, err = projectCollectionTerraform.GetNextStart()
 				Expect(err).To(BeNil())
 
 				if listProjectsOptions.Start == nil {
@@ -255,7 +255,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectCanonical
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				Expect(err).To(BeNil())
@@ -286,10 +286,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &projectIdLink,
 			}
 
-			projectSummary, response, err := projectService.GetProject(getProjectOptions)
+			projectCanonical, response, err := projectService.GetProject(getProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 	})
 
@@ -305,10 +305,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				DestroyOnDelete: core.BoolPtr(true),
 			}
 
-			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			projectCanonical, response, err := projectService.UpdateProject(updateProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 	})
 

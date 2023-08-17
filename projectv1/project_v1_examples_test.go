@@ -123,20 +123,20 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			createProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 			createProjectOptions.SetConfigs([]projectv1.ProjectConfig{*projectConfigModel})
 
-			project, response, err := projectService.CreateProject(createProjectOptions)
+			projectCanonical, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(project, "", "  ")
+			b, _ := json.MarshalIndent(projectCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(project).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 
-			projectIdLink = *project.ID
+			projectIdLink = *projectCanonical.ID
 			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
 		})
 		It(`CreateConfig request example`, func() {
@@ -193,7 +193,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				panic(err)
 			}
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectCanonical
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				if err != nil {
@@ -213,18 +213,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 			)
 
-			projectSummary, response, err := projectService.GetProject(getProjectOptions)
+			projectCanonical, response, err := projectService.GetProject(getProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			b, _ := json.MarshalIndent(projectCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 		It(`UpdateProject request example`, func() {
 			fmt.Println("\nUpdateProject() result:")
@@ -236,18 +236,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			updateProjectOptions.SetName("acme-microservice")
 			updateProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 
-			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			projectCanonical, response, err := projectService.UpdateProject(updateProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			b, _ := json.MarshalIndent(projectCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(projectCanonical).ToNot(BeNil())
 		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
