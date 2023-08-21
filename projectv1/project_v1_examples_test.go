@@ -157,28 +157,28 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			createConfigOptions := projectService.NewCreateConfigOptions(
 				projectIdLink,
-				"env-stage",
-				"1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global",
 			)
+			createConfigOptions.SetName("env-stage")
 			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
 			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
+			createConfigOptions.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
 			createConfigOptions.SetInput(inputVariableModel)
 			createConfigOptions.SetSetting(projectConfigSettingModel)
 
-			projectConfigVersionResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfigCanonical, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonical).ToNot(BeNil())
 
-			configIdLink = *projectConfigVersionResponse.ID
+			configIdLink = *projectConfigCanonical.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 		It(`ListProjects request example`, func() {
@@ -279,18 +279,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigVersionResponse, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfigCanonical, response, err := projectService.GetConfig(getConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonical).ToNot(BeNil())
 		})
 		It(`UpdateConfig request example`, func() {
 			fmt.Println("\nUpdateConfig() result:")
@@ -310,18 +310,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			updateConfigOptions.SetInput(inputVariableModel)
 
-			projectConfigVersionResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfigCanonical, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigCanonical, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonical).ToNot(BeNil())
 		})
 		It(`ForceApprove request example`, func() {
 			fmt.Println("\nForceApprove() result:")
