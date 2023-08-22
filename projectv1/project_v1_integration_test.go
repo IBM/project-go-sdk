@@ -127,7 +127,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigModel := &projectv1.ProjectConfig{
+			projectConfigTerraformModel := &projectv1.ProjectConfigTerraform{
 				Name: core.StringPtr("common-variables"),
 				Description: core.StringPtr("testString"),
 				Labels: []string{"testString"},
@@ -144,7 +144,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
-				Configs: []projectv1.ProjectConfig{*projectConfigModel},
+				Configs: []projectv1.ProjectConfigTerraform{*projectConfigTerraformModel},
 			}
 
 			projectCanonical, response, err := projectService.CreateProject(createProjectOptions)

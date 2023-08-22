@@ -1676,7 +1676,7 @@ type CreateProjectOptions struct {
 	Location *string `json:"location" validate:"required"`
 
 	// The name of the project.
-	Name *string `json:"name" validate:"required"`
+	Name *string `json:"name,omitempty"`
 
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
 	// a project without providing a description.
@@ -1687,18 +1687,17 @@ type CreateProjectOptions struct {
 
 	// The project configurations. If configurations are not included, the project resource is persisted without this
 	// property.
-	Configs []ProjectConfig `json:"configs,omitempty"`
+	Configs []ProjectConfigTerraform `json:"configs,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewCreateProjectOptions : Instantiate CreateProjectOptions
-func (*ProjectV1) NewCreateProjectOptions(resourceGroup string, location string, name string) *CreateProjectOptions {
+func (*ProjectV1) NewCreateProjectOptions(resourceGroup string, location string) *CreateProjectOptions {
 	return &CreateProjectOptions{
 		ResourceGroup: core.StringPtr(resourceGroup),
 		Location: core.StringPtr(location),
-		Name: core.StringPtr(name),
 	}
 }
 
@@ -1733,7 +1732,7 @@ func (_options *CreateProjectOptions) SetDestroyOnDelete(destroyOnDelete bool) *
 }
 
 // SetConfigs : Allow user to set Configs
-func (_options *CreateProjectOptions) SetConfigs(configs []ProjectConfig) *CreateProjectOptions {
+func (_options *CreateProjectOptions) SetConfigs(configs []ProjectConfigTerraform) *CreateProjectOptions {
 	_options.Configs = configs
 	return _options
 }
@@ -2497,84 +2496,6 @@ func (resp *ProjectCollectionTerraform) GetNextStart() (*string, error) {
 		return nil, err
 	}
 	return start, nil
-}
-
-// ProjectConfig : The input of a project configuration.
-type ProjectConfig struct {
-	// The name of the configuration.
-	Name *string `json:"name" validate:"required"`
-
-	// The description of the project configuration.
-	Description *string `json:"description,omitempty"`
-
-	// A collection of configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
-	// The authorization for a configuration.
-	// You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The profile required for compliance.
-	ComplianceProfile *ProjectConfigComplianceProfile `json:"compliance_profile,omitempty"`
-
-	// A dotted value of catalogID.versionID.
-	LocatorID *string `json:"locator_id" validate:"required"`
-
-	// The input variables for the configuration definition.
-	Input *InputVariable `json:"input,omitempty"`
-
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
-}
-
-// NewProjectConfig : Instantiate ProjectConfig (Generic Model Constructor)
-func (*ProjectV1) NewProjectConfig(name string, locatorID string) (_model *ProjectConfig, err error) {
-	_model = &ProjectConfig{
-		Name: core.StringPtr(name),
-		LocatorID: core.StringPtr(locatorID),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	return
-}
-
-// UnmarshalProjectConfig unmarshals an instance of ProjectConfig from the specified map of raw messages.
-func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfig)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectConfigComplianceProfile)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
 }
 
 // ProjectConfigAuth : The authorization for a configuration. You can authorize by using a trusted profile or an API key in Secrets Manager.
@@ -3559,6 +3480,74 @@ func UnmarshalProjectConfigSetting(m map[string]json.RawMessage, result interfac
 			return
 		}
 		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigTerraform : The input of a project configuration.
+type ProjectConfigTerraform struct {
+	// The name of the configuration.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the project configuration.
+	Description *string `json:"description,omitempty"`
+
+	// A collection of configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectConfigComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The input variables for the configuration definition.
+	Input *InputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	// Settings are only available if they were specified when the configuration was initially created.
+	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+}
+
+// UnmarshalProjectConfigTerraform unmarshals an instance of ProjectConfigTerraform from the specified map of raw messages.
+func UnmarshalProjectConfigTerraform(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigTerraform)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectConfigComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	if err != nil {
+		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return

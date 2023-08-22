@@ -215,16 +215,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfig model
-				projectConfigModel := new(projectv1.ProjectConfig)
-				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{"testString"}
-				projectConfigModel.Authorizations = projectConfigAuthModel
-				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = inputVariableModel
-				projectConfigModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigTerraform model
+				projectConfigTerraformModel := new(projectv1.ProjectConfigTerraform)
+				projectConfigTerraformModel.Name = core.StringPtr("common-variables")
+				projectConfigTerraformModel.Description = core.StringPtr("testString")
+				projectConfigTerraformModel.Labels = []string{"testString"}
+				projectConfigTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigTerraformModel.Input = inputVariableModel
+				projectConfigTerraformModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -233,7 +233,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigTerraform{*projectConfigTerraformModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CreateProject(createProjectOptionsModel)
@@ -327,16 +327,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfig model
-				projectConfigModel := new(projectv1.ProjectConfig)
-				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{"testString"}
-				projectConfigModel.Authorizations = projectConfigAuthModel
-				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = inputVariableModel
-				projectConfigModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigTerraform model
+				projectConfigTerraformModel := new(projectv1.ProjectConfigTerraform)
+				projectConfigTerraformModel.Name = core.StringPtr("common-variables")
+				projectConfigTerraformModel.Description = core.StringPtr("testString")
+				projectConfigTerraformModel.Labels = []string{"testString"}
+				projectConfigTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigTerraformModel.Input = inputVariableModel
+				projectConfigTerraformModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -345,7 +345,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigTerraform{*projectConfigTerraformModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -447,16 +447,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfig model
-				projectConfigModel := new(projectv1.ProjectConfig)
-				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{"testString"}
-				projectConfigModel.Authorizations = projectConfigAuthModel
-				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = inputVariableModel
-				projectConfigModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigTerraform model
+				projectConfigTerraformModel := new(projectv1.ProjectConfigTerraform)
+				projectConfigTerraformModel.Name = core.StringPtr("common-variables")
+				projectConfigTerraformModel.Description = core.StringPtr("testString")
+				projectConfigTerraformModel.Labels = []string{"testString"}
+				projectConfigTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigTerraformModel.Input = inputVariableModel
+				projectConfigTerraformModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -465,7 +465,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigTerraform{*projectConfigTerraformModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -510,16 +510,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfig model
-				projectConfigModel := new(projectv1.ProjectConfig)
-				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{"testString"}
-				projectConfigModel.Authorizations = projectConfigAuthModel
-				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = inputVariableModel
-				projectConfigModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigTerraform model
+				projectConfigTerraformModel := new(projectv1.ProjectConfigTerraform)
+				projectConfigTerraformModel.Name = core.StringPtr("common-variables")
+				projectConfigTerraformModel.Description = core.StringPtr("testString")
+				projectConfigTerraformModel.Labels = []string{"testString"}
+				projectConfigTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigTerraformModel.Input = inputVariableModel
+				projectConfigTerraformModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -528,7 +528,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigTerraform{*projectConfigTerraformModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -594,16 +594,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfig model
-				projectConfigModel := new(projectv1.ProjectConfig)
-				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{"testString"}
-				projectConfigModel.Authorizations = projectConfigAuthModel
-				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = inputVariableModel
-				projectConfigModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigTerraform model
+				projectConfigTerraformModel := new(projectv1.ProjectConfigTerraform)
+				projectConfigTerraformModel.Name = core.StringPtr("common-variables")
+				projectConfigTerraformModel.Description = core.StringPtr("testString")
+				projectConfigTerraformModel.Labels = []string{"testString"}
+				projectConfigTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigTerraformModel.Input = inputVariableModel
+				projectConfigTerraformModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
@@ -612,7 +612,7 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.Name = core.StringPtr("acme-microservice")
 				createProjectOptionsModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.DestroyOnDelete = core.BoolPtr(true)
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfigTerraform{*projectConfigTerraformModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -4901,37 +4901,36 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
 				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
 
-				// Construct an instance of the ProjectConfig model
-				projectConfigModel := new(projectv1.ProjectConfig)
-				Expect(projectConfigModel).ToNot(BeNil())
-				projectConfigModel.Name = core.StringPtr("common-variables")
-				projectConfigModel.Description = core.StringPtr("testString")
-				projectConfigModel.Labels = []string{"testString"}
-				projectConfigModel.Authorizations = projectConfigAuthModel
-				projectConfigModel.ComplianceProfile = projectConfigComplianceProfileModel
-				projectConfigModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigModel.Input = inputVariableModel
-				projectConfigModel.Setting = projectConfigSettingModel
-				Expect(projectConfigModel.Name).To(Equal(core.StringPtr("common-variables")))
-				Expect(projectConfigModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigModel.Labels).To(Equal([]string{"testString"}))
-				Expect(projectConfigModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
-				Expect(projectConfigModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
-				Expect(projectConfigModel.Input).To(Equal(inputVariableModel))
-				Expect(projectConfigModel.Setting).To(Equal(projectConfigSettingModel))
+				// Construct an instance of the ProjectConfigTerraform model
+				projectConfigTerraformModel := new(projectv1.ProjectConfigTerraform)
+				Expect(projectConfigTerraformModel).ToNot(BeNil())
+				projectConfigTerraformModel.Name = core.StringPtr("common-variables")
+				projectConfigTerraformModel.Description = core.StringPtr("testString")
+				projectConfigTerraformModel.Labels = []string{"testString"}
+				projectConfigTerraformModel.Authorizations = projectConfigAuthModel
+				projectConfigTerraformModel.ComplianceProfile = projectConfigComplianceProfileModel
+				projectConfigTerraformModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigTerraformModel.Input = inputVariableModel
+				projectConfigTerraformModel.Setting = projectConfigSettingModel
+				Expect(projectConfigTerraformModel.Name).To(Equal(core.StringPtr("common-variables")))
+				Expect(projectConfigTerraformModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigTerraformModel.Labels).To(Equal([]string{"testString"}))
+				Expect(projectConfigTerraformModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigTerraformModel.ComplianceProfile).To(Equal(projectConfigComplianceProfileModel))
+				Expect(projectConfigTerraformModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(projectConfigTerraformModel.Input).To(Equal(inputVariableModel))
+				Expect(projectConfigTerraformModel.Setting).To(Equal(projectConfigSettingModel))
 
 				// Construct an instance of the CreateProjectOptions model
 				resourceGroup := "Default"
 				location := "us-south"
-				createProjectOptionsName := "acme-microservice"
-				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location, createProjectOptionsName)
+				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location)
 				createProjectOptionsModel.SetResourceGroup("Default")
 				createProjectOptionsModel.SetLocation("us-south")
 				createProjectOptionsModel.SetName("acme-microservice")
 				createProjectOptionsModel.SetDescription("A microservice to deploy on top of ACME infrastructure.")
 				createProjectOptionsModel.SetDestroyOnDelete(true)
-				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfig{*projectConfigModel})
+				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfigTerraform{*projectConfigTerraformModel})
 				createProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createProjectOptionsModel).ToNot(BeNil())
 				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
@@ -4939,7 +4938,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(createProjectOptionsModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(createProjectOptionsModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
 				Expect(createProjectOptionsModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
-				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfig{*projectConfigModel}))
+				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigTerraform{*projectConfigTerraformModel}))
 				Expect(createProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteConfigOptions successfully`, func() {
@@ -5080,13 +5079,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(listProjectsOptionsModel.Start).To(Equal(core.StringPtr("testString")))
 				Expect(listProjectsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listProjectsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewProjectConfig successfully`, func() {
-				name := "testString"
-				locatorID := "testString"
-				_model, err := projectService.NewProjectConfig(name, locatorID)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
 			})
 			It(`Invoke NewUninstallConfigOptions successfully`, func() {
 				// Construct an instance of the UninstallConfigOptions model
