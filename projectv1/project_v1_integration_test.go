@@ -321,10 +321,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 			}
 
-			projectConfigCollectionTerraform, response, err := projectService.ListConfigs(listConfigsOptions)
+			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCollectionTerraform).ToNot(BeNil())
+			Expect(projectConfigCollection).ToNot(BeNil())
 		})
 	})
 
