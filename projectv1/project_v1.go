@@ -2350,7 +2350,7 @@ type ProjectCanonical struct {
 
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
-	Configs []ProjectConfigCanonical `json:"configs,omitempty"`
+	Configs []ProjectConfigTerraform `json:"configs,omitempty"`
 
 	// The definition of the project.
 	Definition *ProjectDefinitionResponseTerraform `json:"definition,omitempty"`
@@ -2415,7 +2415,7 @@ func UnmarshalProjectCanonical(m map[string]json.RawMessage, result interface{})
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCanonical)
+	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigTerraform)
 	if err != nil {
 		return
 	}
