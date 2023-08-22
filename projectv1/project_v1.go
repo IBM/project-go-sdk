@@ -576,12 +576,12 @@ func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createCon
 
 // ListConfigs : List all project configurations
 // The collection of configurations that are returned.
-func (project *ProjectV1) ListConfigs(listConfigsOptions *ListConfigsOptions) (result *ProjectConfigCollection, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ListConfigs(listConfigsOptions *ListConfigsOptions) (result *ProjectConfigCollectionTerraform, response *core.DetailedResponse, err error) {
 	return project.ListConfigsWithContext(context.Background(), listConfigsOptions)
 }
 
 // ListConfigsWithContext is an alternate form of the ListConfigs method which supports a Context parameter
-func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfigsOptions *ListConfigsOptions) (result *ProjectConfigCollection, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfigsOptions *ListConfigsOptions) (result *ProjectConfigCollectionTerraform, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(listConfigsOptions, "listConfigsOptions cannot be nil")
 	if err != nil {
 		return
@@ -624,7 +624,7 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCollection)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCollectionTerraform)
 		if err != nil {
 			return
 		}
@@ -2350,7 +2350,7 @@ type ProjectCanonical struct {
 
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
-	Configs []ProjectConfigCollectionMember `json:"configs,omitempty"`
+	Configs []ProjectConfigCanonical `json:"configs,omitempty"`
 
 	// The definition of the project.
 	Definition *ProjectDefinitionResponseTerraform `json:"definition,omitempty"`
@@ -2415,7 +2415,7 @@ func UnmarshalProjectCanonical(m map[string]json.RawMessage, result interface{})
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCollectionMember)
+	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCanonical)
 	if err != nil {
 		return
 	}
@@ -2875,42 +2875,25 @@ func UnmarshalProjectConfigCanonicalDefinition(m map[string]json.RawMessage, res
 	return
 }
 
-// ProjectConfigCollection : The project configuration list.
-type ProjectConfigCollection struct {
-	// The collection list operation response schema that should define the array property with the name "configs".
-	Configs []ProjectConfigCollectionMember `json:"configs,omitempty"`
-}
-
-// UnmarshalProjectConfigCollection unmarshals an instance of ProjectConfigCollection from the specified map of raw messages.
-func UnmarshalProjectConfigCollection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigCollection)
-	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCollectionMember)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigCollectionMember : The configuration metadata.
-type ProjectConfigCollectionMember struct {
+// ProjectConfigCollectionMemberTerraform : The configuration metadata.
+type ProjectConfigCollectionMemberTerraform struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// The unique ID.
-	ProjectID *string `json:"project_id" validate:"required"`
+	ProjectID *string `json:"project_id,omitempty"`
 
 	// The version of the configuration.
-	Version *int64 `json:"version" validate:"required"`
+	Version *int64 `json:"version,omitempty"`
 
 	// The flag that indicates whether the version of the configuration is draft, or active.
-	IsDraft *bool `json:"is_draft" validate:"required"`
+	IsDraft *bool `json:"is_draft,omitempty"`
 
 	// The needs attention state of a configuration.
 	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
+	State *string `json:"state,omitempty"`
 
 	// The project configuration version.
 	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
@@ -2919,7 +2902,7 @@ type ProjectConfigCollectionMember struct {
 	InstalledVersion *ProjectConfigVersionSummary `json:"installed_version,omitempty"`
 
 	// The project configuration definition summary.
-	Definition *ProjectConfigDefinitionSummary `json:"definition" validate:"required"`
+	Definition *ProjectConfigDefinitionSummary `json:"definition,omitempty"`
 
 	// The action job performed on the project configuration.
 	CheckJob *ActionJobWithIdAndHref `json:"check_job,omitempty"`
@@ -2931,32 +2914,32 @@ type ProjectConfigCollectionMember struct {
 	UninstallJob *ActionJobWithIdAndHref `json:"uninstall_job,omitempty"`
 
 	// A relative URL.
-	Href *string `json:"href" validate:"required"`
+	Href *string `json:"href,omitempty"`
 }
 
-// Constants associated with the ProjectConfigCollectionMember.State property.
+// Constants associated with the ProjectConfigCollectionMemberTerraform.State property.
 // The state of the configuration.
 const (
-	ProjectConfigCollectionMember_State_Approved = "approved"
-	ProjectConfigCollectionMember_State_Deleted = "deleted"
-	ProjectConfigCollectionMember_State_Deleting = "deleting"
-	ProjectConfigCollectionMember_State_DeletingFailed = "deleting_failed"
-	ProjectConfigCollectionMember_State_Discarded = "discarded"
-	ProjectConfigCollectionMember_State_Draft = "draft"
-	ProjectConfigCollectionMember_State_Installed = "installed"
-	ProjectConfigCollectionMember_State_InstalledFailed = "installed_failed"
-	ProjectConfigCollectionMember_State_Installing = "installing"
-	ProjectConfigCollectionMember_State_Superceded = "superceded"
-	ProjectConfigCollectionMember_State_Uninstalling = "uninstalling"
-	ProjectConfigCollectionMember_State_UninstallingFailed = "uninstalling_failed"
-	ProjectConfigCollectionMember_State_Validated = "validated"
-	ProjectConfigCollectionMember_State_Validating = "validating"
-	ProjectConfigCollectionMember_State_ValidatingFailed = "validating_failed"
+	ProjectConfigCollectionMemberTerraform_State_Approved = "approved"
+	ProjectConfigCollectionMemberTerraform_State_Deleted = "deleted"
+	ProjectConfigCollectionMemberTerraform_State_Deleting = "deleting"
+	ProjectConfigCollectionMemberTerraform_State_DeletingFailed = "deleting_failed"
+	ProjectConfigCollectionMemberTerraform_State_Discarded = "discarded"
+	ProjectConfigCollectionMemberTerraform_State_Draft = "draft"
+	ProjectConfigCollectionMemberTerraform_State_Installed = "installed"
+	ProjectConfigCollectionMemberTerraform_State_InstalledFailed = "installed_failed"
+	ProjectConfigCollectionMemberTerraform_State_Installing = "installing"
+	ProjectConfigCollectionMemberTerraform_State_Superceded = "superceded"
+	ProjectConfigCollectionMemberTerraform_State_Uninstalling = "uninstalling"
+	ProjectConfigCollectionMemberTerraform_State_UninstallingFailed = "uninstalling_failed"
+	ProjectConfigCollectionMemberTerraform_State_Validated = "validated"
+	ProjectConfigCollectionMemberTerraform_State_Validating = "validating"
+	ProjectConfigCollectionMemberTerraform_State_ValidatingFailed = "validating_failed"
 )
 
-// UnmarshalProjectConfigCollectionMember unmarshals an instance of ProjectConfigCollectionMember from the specified map of raw messages.
-func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigCollectionMember)
+// UnmarshalProjectConfigCollectionMemberTerraform unmarshals an instance of ProjectConfigCollectionMemberTerraform from the specified map of raw messages.
+func UnmarshalProjectConfigCollectionMemberTerraform(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigCollectionMemberTerraform)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
@@ -3006,6 +2989,23 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigCollectionTerraform : The project configuration list.
+type ProjectConfigCollectionTerraform struct {
+	// The collection list operation response schema that should define the array property with the name "configs".
+	Configs []ProjectConfigCollectionMemberTerraform `json:"configs,omitempty"`
+}
+
+// UnmarshalProjectConfigCollectionTerraform unmarshals an instance of ProjectConfigCollectionTerraform from the specified map of raw messages.
+func UnmarshalProjectConfigCollectionTerraform(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigCollectionTerraform)
+	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCollectionMemberTerraform)
 	if err != nil {
 		return
 	}

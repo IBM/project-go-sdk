@@ -257,18 +257,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 			)
 
-			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
+			projectConfigCollectionTerraform, response, err := projectService.ListConfigs(listConfigsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigCollection, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigCollectionTerraform, "", "  ")
 			fmt.Println(string(b))
 
 			// end-list_configs
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCollection).ToNot(BeNil())
+			Expect(projectConfigCollectionTerraform).ToNot(BeNil())
 		})
 		It(`GetConfig request example`, func() {
 			fmt.Println("\nGetConfig() result:")
