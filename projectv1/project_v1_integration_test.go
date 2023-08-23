@@ -298,11 +298,50 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
+			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
+				ID: core.StringPtr("testString"),
+				TargetIamID: core.StringPtr("testString"),
+			}
+
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfile: projectConfigAuthTrustedProfileModel,
+				Method: core.StringPtr("testString"),
+				ApiKey: core.StringPtr("testString"),
+			}
+
+			projectConfigComplianceProfileModel := &projectv1.ProjectConfigComplianceProfile{
+				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
+				AttachmentID: core.StringPtr("testString"),
+				ProfileName: core.StringPtr("testString"),
+			}
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
+			}
+			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+			projectConfigTerraformModel := &projectv1.ProjectConfigTerraform{
+				Name: core.StringPtr("testString"),
+				Description: core.StringPtr("testString"),
+				Labels: []string{"testString"},
+				Authorizations: projectConfigAuthModel,
+				ComplianceProfile: projectConfigComplianceProfileModel,
+				LocatorID: core.StringPtr("testString"),
+				Input: inputVariableModel,
+				Setting: projectConfigSettingModel,
+			}
+
 			updateProjectOptions := &projectv1.UpdateProjectOptions{
 				ID: &projectIdLink,
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
+				Configs: []projectv1.ProjectConfigTerraform{*projectConfigTerraformModel},
 			}
 
 			projectCanonical, response, err := projectService.UpdateProject(updateProjectOptions)
@@ -321,10 +360,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 			}
 
-			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
+			projectConfigCollectionTerraform, response, err := projectService.ListConfigs(listConfigsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCollection).ToNot(BeNil())
+			Expect(projectConfigCollectionTerraform).ToNot(BeNil())
 		})
 	})
 
