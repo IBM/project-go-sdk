@@ -2554,7 +2554,7 @@ func UnmarshalProjectConfigAuthTrustedProfile(m map[string]json.RawMessage, resu
 	return
 }
 
-// ProjectConfigCanonical : The configuration metadata.
+// ProjectConfigCanonical : The project configuration version.
 type ProjectConfigCanonical struct {
 	// The name of the configuration.
 	Name *string `json:"name,omitempty"`
@@ -2640,7 +2640,7 @@ type ProjectConfigCanonical struct {
 	// The type of a project configuration manual property.
 	Type *string `json:"type,omitempty"`
 
-	// The input of a project configuration.
+	// The Schematics template property.
 	Definition *ProjectConfigCanonicalDefinition `json:"definition,omitempty"`
 }
 
@@ -2786,7 +2786,7 @@ func UnmarshalProjectConfigCanonical(m map[string]json.RawMessage, result interf
 	return
 }
 
-// ProjectConfigCanonicalDefinition : The input of a project configuration.
+// ProjectConfigCanonicalDefinition : The Schematics template property.
 type ProjectConfigCanonicalDefinition struct {
 	// The name of the configuration.
 	Name *string `json:"name,omitempty"`
@@ -3485,7 +3485,7 @@ func UnmarshalProjectConfigSetting(m map[string]json.RawMessage, result interfac
 	return
 }
 
-// ProjectConfigTerraform : The input of a project configuration.
+// ProjectConfigTerraform : The Schematics template property.
 type ProjectConfigTerraform struct {
 	// The name of the configuration.
 	Name *string `json:"name,omitempty"`
