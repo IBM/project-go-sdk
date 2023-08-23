@@ -119,25 +119,23 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
+			inputVariableModel := &projectv1.InputVariable{
 			}
+			inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
+			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
 			}
+			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
+			projectConfigModel := &projectv1.ProjectConfig{
 				Name: core.StringPtr("common-variables"),
-				Labels: []string{},
 				Description: core.StringPtr("testString"),
+				Labels: []string{},
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
-				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
+				Input: inputVariableModel,
+				Setting: projectConfigSettingModel,
 			}
 
 			createProjectOptions := &projectv1.CreateProjectOptions{
@@ -146,7 +144,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
-				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
+				Configs: []projectv1.ProjectConfig{*projectConfigModel},
 			}
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
@@ -183,34 +181,36 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
-				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
+			inputVariableModel := &projectv1.InputVariable{
 			}
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`))
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("IBMCLOUD_TOOLCHAIN_ENDPOINT"),
-				Value: core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"),
+			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
 			}
+			projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
 				Name: core.StringPtr("env-stage"),
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Labels: []string{"env:stage", "governance:test", "build:0"},
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
+				Labels: []string{"env:stage", "governance:test", "build:0"},
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectConfigComplianceProfileModel,
-				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
-				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
+				Input: inputVariableModel,
+				Setting: projectConfigSettingModel,
 			}
 
-			projectConfigDraftResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfigVersionResponse, response, err := projectService.CreateConfig(createConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigDraftResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 
-			configIdLink = *projectConfigDraftResponse.ID
+			configIdLink = *projectConfigVersionResponse.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 	})
@@ -350,15 +350,17 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateConfig(updateConfigOptions *UpdateConfigOptions)`, func() {
-			projectConfigInputVariableModel := &projectv1.ProjectConfigInputVariable{
-				Name: core.StringPtr("account_id"),
-				Value: core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`),
+			inputVariableModel := &projectv1.InputVariable{
 			}
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`))
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-			projectConfigSettingCollectionModel := &projectv1.ProjectConfigSettingCollection{
-				Name: core.StringPtr("testString"),
-				Value: core.StringPtr("testString"),
+			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
 			}
+			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
 				ID: core.StringPtr("testString"),
@@ -383,8 +385,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
 				LocatorID: core.StringPtr("testString"),
-				Input: []projectv1.ProjectConfigInputVariable{*projectConfigInputVariableModel},
-				Setting: []projectv1.ProjectConfigSettingCollection{*projectConfigSettingCollectionModel},
+				Input: inputVariableModel,
+				Setting: projectConfigSettingModel,
 				Name: core.StringPtr("testString"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
@@ -392,10 +394,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ComplianceProfile: projectConfigComplianceProfileModel,
 			}
 
-			projectConfigDraftResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfigVersionResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDraftResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -410,10 +412,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigGetResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfigVersionResponse, response, err := projectService.ForceApprove(forceApproveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -428,10 +430,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigGetResponse, response, err := projectService.Approve(approveOptions)
+			projectConfigVersionResponse, response, err := projectService.Approve(approveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -444,13 +446,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
 				XAuthRefreshToken: core.StringPtr("testString"),
-				IsDraft: core.BoolPtr(true),
 			}
 
-			projectConfigGetResponse, response, err := projectService.CheckConfig(checkConfigOptions)
+			projectConfigVersionResponse, response, err := projectService.CheckConfig(checkConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -464,10 +465,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigGetResponse, response, err := projectService.InstallConfig(installConfigOptions)
+			projectConfigVersionResponse, response, err := projectService.InstallConfig(installConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
@@ -504,38 +505,38 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ListConfigDrafts - Get a list of drafts in a project configuration`, func() {
+	Describe(`ListConfigVersions - Get a list of versions of a project configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`ListConfigDrafts(listConfigDraftsOptions *ListConfigDraftsOptions)`, func() {
-			listConfigDraftsOptions := &projectv1.ListConfigDraftsOptions{
+		It(`ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions)`, func() {
+			listConfigVersionsOptions := &projectv1.ListConfigVersionsOptions{
 				ProjectID: &projectIdLink,
-				ConfigID: core.StringPtr("testString"),
+				ID: &configIdLink,
 			}
 
-			projectConfigDraftSummaryCollection, response, err := projectService.ListConfigDrafts(listConfigDraftsOptions)
+			projectConfigVersionSummaryCollection, response, err := projectService.ListConfigVersions(listConfigVersionsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDraftSummaryCollection).ToNot(BeNil())
+			Expect(projectConfigVersionSummaryCollection).ToNot(BeNil())
 		})
 	})
 
-	Describe(`GetConfigDraft - Get a configuration draft in a project`, func() {
+	Describe(`GetConfigVersion - Get a specific version of a project configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`GetConfigDraft(getConfigDraftOptions *GetConfigDraftOptions)`, func() {
-			getConfigDraftOptions := &projectv1.GetConfigDraftOptions{
+		It(`GetConfigVersion(getConfigVersionOptions *GetConfigVersionOptions)`, func() {
+			getConfigVersionOptions := &projectv1.GetConfigVersionOptions{
 				ProjectID: &projectIdLink,
-				ConfigID: core.StringPtr("testString"),
+				ID: &configIdLink,
 				Version: core.Int64Ptr(int64(38)),
 			}
 
-			projectConfigDraftResponse, response, err := projectService.GetConfigDraft(getConfigDraftOptions)
+			projectConfigVersionResponse, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDraftResponse).ToNot(BeNil())
+			Expect(projectConfigVersionResponse).ToNot(BeNil())
 		})
 	})
 
