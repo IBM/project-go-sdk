@@ -51,7 +51,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 		config       map[string]string
 
 		// Variables to hold link values
-		configIdLink string
 		projectIdLink string
 	)
 
@@ -139,48 +138,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			projectIdLink = *projectCanonical.ID
 			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
 		})
-		It(`CreateConfig request example`, func() {
-			fmt.Println("\nCreateConfig() result:")
-			// begin-create_config
-
-			inputVariableModel := &projectv1.InputVariable{
-			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
-			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
-			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
-			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
-			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
-
-			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
-			}
-			projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
-
-			createConfigOptions := projectService.NewCreateConfigOptions(
-				projectIdLink,
-			)
-			createConfigOptions.SetName("env-stage")
-			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
-			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
-			createConfigOptions.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-			createConfigOptions.SetInput(inputVariableModel)
-			createConfigOptions.SetSetting(projectConfigSettingModel)
-
-			projectConfigCanonical, response, err := projectService.CreateConfig(createConfigOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(projectConfigCanonical, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_config
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigCanonical).ToNot(BeNil())
-
-			configIdLink = *projectConfigCanonical.ID
-			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
-		})
 		It(`ListProjects request example`, func() {
 			fmt.Println("\nListProjects() result:")
 			// begin-list_projects
@@ -249,6 +206,45 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectCanonical).ToNot(BeNil())
 		})
+		It(`CreateConfig request example`, func() {
+			fmt.Println("\nCreateConfig() result:")
+			// begin-create_config
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
+			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
+			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
+
+			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
+			}
+			projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
+
+			createConfigOptions := projectService.NewCreateConfigOptions(
+				projectIdLink,
+			)
+			createConfigOptions.SetName("env-stage")
+			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
+			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
+			createConfigOptions.SetLocatorID("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+			createConfigOptions.SetInput(inputVariableModel)
+			createConfigOptions.SetSetting(projectConfigSettingModel)
+
+			projectConfigCanonical, response, err := projectService.CreateConfig(createConfigOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigCanonical, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_config
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(projectConfigCanonical).ToNot(BeNil())
+		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
 			// begin-list_configs
@@ -276,7 +272,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			getConfigOptions := projectService.NewGetConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigCanonical, response, err := projectService.GetConfig(getConfigOptions)
@@ -306,7 +302,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 			updateConfigOptions.SetInput(inputVariableModel)
 
@@ -329,7 +325,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			forceApproveOptions := projectService.NewForceApproveOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 			forceApproveOptions.SetComment("Approving the changes")
 
@@ -352,7 +348,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			approveOptions := projectService.NewApproveOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 			approveOptions.SetComment("Approving the changes")
 
@@ -375,7 +371,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			checkConfigOptions := projectService.NewCheckConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigVersionResponse, response, err := projectService.CheckConfig(checkConfigOptions)
@@ -397,7 +393,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			installConfigOptions := projectService.NewInstallConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigVersionResponse, response, err := projectService.InstallConfig(installConfigOptions)
@@ -418,7 +414,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			uninstallConfigOptions := projectService.NewUninstallConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			response, err := projectService.UninstallConfig(uninstallConfigOptions)
@@ -440,7 +436,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			listConfigResourcesOptions := projectService.NewListConfigResourcesOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigResourceCollection, response, err := projectService.ListConfigResources(listConfigResourcesOptions)
@@ -462,7 +458,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			listConfigVersionsOptions := projectService.NewListConfigVersionsOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigVersionSummaryCollection, response, err := projectService.ListConfigVersions(listConfigVersionsOptions)
@@ -484,7 +480,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			getConfigVersionOptions := projectService.NewGetConfigVersionOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 				int64(38),
 			)
 
@@ -507,7 +503,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			deleteConfigOptions := projectService.NewDeleteConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)

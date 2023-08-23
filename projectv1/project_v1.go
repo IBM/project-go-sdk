@@ -2586,7 +2586,7 @@ type ProjectConfigCanonical struct {
 	Setting *ProjectConfigSetting `json:"setting,omitempty"`
 
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
-	ID *string `json:"id,omitempty"`
+	ConfigID *string `json:"config_id,omitempty"`
 
 	// The unique ID.
 	ProjectID *string `json:"project_id,omitempty"`
@@ -2605,14 +2605,6 @@ type ProjectConfigCanonical struct {
 
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
@@ -2709,7 +2701,7 @@ func UnmarshalProjectConfigCanonical(m map[string]json.RawMessage, result interf
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	err = core.UnmarshalPrimitive(m, "config_id", &obj.ConfigID)
 	if err != nil {
 		return
 	}
@@ -2734,14 +2726,6 @@ func UnmarshalProjectConfigCanonical(m map[string]json.RawMessage, result interf
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
 	if err != nil {
 		return
 	}
@@ -2881,7 +2865,7 @@ func UnmarshalProjectConfigCanonicalDefinition(m map[string]json.RawMessage, res
 // ProjectConfigCollectionMemberTerraform : The configuration metadata.
 type ProjectConfigCollectionMemberTerraform struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
-	ID *string `json:"id,omitempty"`
+	ConfigID *string `json:"config_id,omitempty"`
 
 	// The unique ID.
 	ProjectID *string `json:"project_id,omitempty"`
@@ -2943,7 +2927,7 @@ const (
 // UnmarshalProjectConfigCollectionMemberTerraform unmarshals an instance of ProjectConfigCollectionMemberTerraform from the specified map of raw messages.
 func UnmarshalProjectConfigCollectionMemberTerraform(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigCollectionMemberTerraform)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	err = core.UnmarshalPrimitive(m, "config_id", &obj.ConfigID)
 	if err != nil {
 		return
 	}
