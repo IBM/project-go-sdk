@@ -2351,9 +2351,12 @@ type ProjectCanonical struct {
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
+	// The definition of the project.
+	Definition *ProjectDefinitionTerraform `json:"definition,omitempty"`
+
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
-	Configs []ProjectConfigCanonical `json:"configs,omitempty"`
+	Configs []ProjectConfigCollectionMemberTerraform `json:"configs,omitempty"`
 }
 
 // Constants associated with the ProjectCanonical.State property.
@@ -2415,7 +2418,11 @@ func UnmarshalProjectCanonical(m map[string]json.RawMessage, result interface{})
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCanonical)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionTerraform)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCollectionMemberTerraform)
 	if err != nil {
 		return
 	}
@@ -2630,11 +2637,8 @@ type ProjectConfigCanonical struct {
 	// The action job performed on the project configuration.
 	UninstallJob *ActionJobWithSummaryAndHref `json:"uninstall_job,omitempty"`
 
-	// The outputs of a Schematics template property.
-	Output []OutputValue `json:"output,omitempty"`
-
-	// The type of a project configuration manual property.
-	Type *string `json:"type,omitempty"`
+	// The Schematics template property.
+	Definition *ProjectConfigDefinitionResponseTerraform `json:"definition,omitempty"`
 }
 
 // Constants associated with the ProjectConfigCanonical.State property.
@@ -2655,13 +2659,6 @@ const (
 	ProjectConfigCanonical_State_Validated = "validated"
 	ProjectConfigCanonical_State_Validating = "validating"
 	ProjectConfigCanonical_State_ValidatingFailed = "validating_failed"
-)
-
-// Constants associated with the ProjectConfigCanonical.Type property.
-// The type of a project configuration manual property.
-const (
-	ProjectConfigCanonical_Type_SchematicsBlueprint = "schematics_blueprint"
-	ProjectConfigCanonical_Type_TerraformTemplate = "terraform_template"
 )
 
 // UnmarshalProjectConfigCanonical unmarshals an instance of ProjectConfigCanonical from the specified map of raw messages.
@@ -2763,11 +2760,7 @@ func UnmarshalProjectConfigCanonical(m map[string]json.RawMessage, result interf
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionResponseTerraform)
 	if err != nil {
 		return
 	}
@@ -3036,6 +3029,95 @@ func UnmarshalProjectConfigDefinition(m map[string]json.RawMessage, result inter
 		return
 	}
 	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigDefinitionResponseTerraform : The Schematics template property.
+type ProjectConfigDefinitionResponseTerraform struct {
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type,omitempty"`
+
+	// The name of the configuration.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the project configuration.
+	Description *string `json:"description,omitempty"`
+
+	// A collection of configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectConfigComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The input variables for the configuration definition.
+	Input *InputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	// Settings are only available if they were specified when the configuration was initially created.
+	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+}
+
+// Constants associated with the ProjectConfigDefinitionResponseTerraform.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigDefinitionResponseTerraform_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigDefinitionResponseTerraform_Type_TerraformTemplate = "terraform_template"
+)
+
+// UnmarshalProjectConfigDefinitionResponseTerraform unmarshals an instance of ProjectConfigDefinitionResponseTerraform from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionResponseTerraform(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionResponseTerraform)
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectConfigComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
 	if err != nil {
 		return
 	}
@@ -3674,6 +3756,38 @@ type ProjectConfigVersionSummaryCollection struct {
 func UnmarshalProjectConfigVersionSummaryCollection(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummaryCollection)
 	err = core.UnmarshalModel(m, "versions", &obj.Versions, UnmarshalProjectConfigVersionSummary)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectDefinitionTerraform : The definition of the project.
+type ProjectDefinitionTerraform struct {
+	// The name of the project.
+	Name *string `json:"name,omitempty"`
+
+	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
+	// a project without providing a description.
+	Description *string `json:"description,omitempty"`
+
+	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
+	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
+}
+
+// UnmarshalProjectDefinitionTerraform unmarshals an instance of ProjectDefinitionTerraform from the specified map of raw messages.
+func UnmarshalProjectDefinitionTerraform(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDefinitionTerraform)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
 	if err != nil {
 		return
 	}
