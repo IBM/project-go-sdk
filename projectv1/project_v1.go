@@ -2637,6 +2637,12 @@ type ProjectConfigCanonical struct {
 	// The action job performed on the project configuration.
 	UninstallJob *ActionJobWithSummaryAndHref `json:"uninstall_job,omitempty"`
 
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type,omitempty"`
+
 	// The Schematics template property.
 	Definition *ProjectConfigDefinitionResponseTerraform `json:"definition,omitempty"`
 }
@@ -2659,6 +2665,13 @@ const (
 	ProjectConfigCanonical_State_Validated = "validated"
 	ProjectConfigCanonical_State_Validating = "validating"
 	ProjectConfigCanonical_State_ValidatingFailed = "validating_failed"
+)
+
+// Constants associated with the ProjectConfigCanonical.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigCanonical_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigCanonical_Type_TerraformTemplate = "terraform_template"
 )
 
 // UnmarshalProjectConfigCanonical unmarshals an instance of ProjectConfigCanonical from the specified map of raw messages.
@@ -2757,6 +2770,14 @@ func UnmarshalProjectConfigCanonical(m map[string]json.RawMessage, result interf
 		return
 	}
 	err = core.UnmarshalModel(m, "uninstall_job", &obj.UninstallJob, UnmarshalActionJobWithSummaryAndHref)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
 	if err != nil {
 		return
 	}
