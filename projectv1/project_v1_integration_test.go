@@ -424,10 +424,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigVersionResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.ForceApprove(forceApproveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 	})
 
@@ -442,10 +442,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigVersionResponse, response, err := projectService.Approve(approveOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.Approve(approveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 	})
 
@@ -460,10 +460,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				XAuthRefreshToken: core.StringPtr("testString"),
 			}
 
-			projectConfigVersionResponse, response, err := projectService.CheckConfig(checkConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.CheckConfig(checkConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 	})
 
@@ -477,10 +477,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigVersionResponse, response, err := projectService.InstallConfig(installConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.InstallConfig(installConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 	})
 
@@ -545,10 +545,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Version: core.Int64Ptr(int64(38)),
 			}
 
-			projectConfigVersionResponse, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 	})
 
