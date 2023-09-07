@@ -1544,7 +1544,7 @@ type CreateConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	Definition *ProjectConfigPrototypeGraphFragmentDefinition `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypeDefinitionGraphFragmentDefinition `json:"definition,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -1564,7 +1564,7 @@ func (_options *CreateConfigOptions) SetProjectID(projectID string) *CreateConfi
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *CreateConfigOptions) SetDefinition(definition *ProjectConfigPrototypeGraphFragmentDefinition) *CreateConfigOptions {
+func (_options *CreateConfigOptions) SetDefinition(definition *ProjectConfigPrototypeDefinitionGraphFragmentDefinition) *CreateConfigOptions {
 	_options.Definition = definition
 	return _options
 }
@@ -2783,6 +2783,38 @@ type ProjectConfigCanonicalGraphFragment struct {
 	LastUninstalled *LastActionWithSummary `json:"last_uninstalled,omitempty"`
 
 	Definition *ProjectConfigCanonicalGraphFragmentDefinition `json:"definition,omitempty"`
+
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The input variables for the configuration definition.
+	Input *InputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	// Settings are only available if they were specified when the configuration was initially created.
+	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type,omitempty"`
+
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
 }
 
 // Constants associated with the ProjectConfigCanonicalGraphFragment.State property.
@@ -2803,6 +2835,13 @@ const (
 	ProjectConfigCanonicalGraphFragment_State_Validated = "validated"
 	ProjectConfigCanonicalGraphFragment_State_Validating = "validating"
 	ProjectConfigCanonicalGraphFragment_State_ValidatingFailed = "validating_failed"
+)
+
+// Constants associated with the ProjectConfigCanonicalGraphFragment.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigCanonicalGraphFragment_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigCanonicalGraphFragment_Type_TerraformTemplate = "terraform_template"
 )
 
 // UnmarshalProjectConfigCanonicalGraphFragment unmarshals an instance of ProjectConfigCanonicalGraphFragment from the specified map of raw messages.
@@ -2865,6 +2904,46 @@ func UnmarshalProjectConfigCanonicalGraphFragment(m map[string]json.RawMessage, 
 		return
 	}
 	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigCanonicalGraphFragmentDefinition)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
 	if err != nil {
 		return
 	}
@@ -3473,8 +3552,8 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 	return
 }
 
-// ProjectConfigPrototypeGraphFragmentDefinition : ProjectConfigPrototypeGraphFragmentDefinition struct
-type ProjectConfigPrototypeGraphFragmentDefinition struct {
+// ProjectConfigPrototypeDefinitionGraphFragmentDefinition : ProjectConfigPrototypeDefinitionGraphFragmentDefinition struct
+type ProjectConfigPrototypeDefinitionGraphFragmentDefinition struct {
 	// The configuration name.
 	Name *string `json:"name,omitempty"`
 
@@ -3502,9 +3581,9 @@ type ProjectConfigPrototypeGraphFragmentDefinition struct {
 	Setting *ProjectConfigSetting `json:"setting,omitempty"`
 }
 
-// UnmarshalProjectConfigPrototypeGraphFragmentDefinition unmarshals an instance of ProjectConfigPrototypeGraphFragmentDefinition from the specified map of raw messages.
-func UnmarshalProjectConfigPrototypeGraphFragmentDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigPrototypeGraphFragmentDefinition)
+// UnmarshalProjectConfigPrototypeDefinitionGraphFragmentDefinition unmarshals an instance of ProjectConfigPrototypeDefinitionGraphFragmentDefinition from the specified map of raw messages.
+func UnmarshalProjectConfigPrototypeDefinitionGraphFragmentDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		return
@@ -4036,7 +4115,7 @@ type UpdateConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	Definition *ProjectConfigPrototypeGraphFragmentDefinition `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypeDefinitionGraphFragmentDefinition `json:"definition,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -4063,7 +4142,7 @@ func (_options *UpdateConfigOptions) SetID(id string) *UpdateConfigOptions {
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *UpdateConfigOptions) SetDefinition(definition *ProjectConfigPrototypeGraphFragmentDefinition) *UpdateConfigOptions {
+func (_options *UpdateConfigOptions) SetDefinition(definition *ProjectConfigPrototypeDefinitionGraphFragmentDefinition) *UpdateConfigOptions {
 	_options.Definition = definition
 	return _options
 }

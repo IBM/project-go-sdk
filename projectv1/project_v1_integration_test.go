@@ -197,7 +197,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigPrototypeGraphFragmentDefinitionModel := &projectv1.ProjectConfigPrototypeGraphFragmentDefinition{
+			projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := &projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition{
 				Name: core.StringPtr("testString"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
@@ -210,7 +210,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
-				Definition: projectConfigPrototypeGraphFragmentDefinitionModel,
+				Definition: projectConfigPrototypeDefinitionGraphFragmentDefinitionModel,
 			}
 
 			projectConfigCanonicalGraphFragment, response, err := projectService.CreateConfig(createConfigOptions)
@@ -389,7 +389,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigPrototypeGraphFragmentDefinitionModel := &projectv1.ProjectConfigPrototypeGraphFragmentDefinition{
+			projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := &projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition{
 				Name: core.StringPtr("testString"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
@@ -403,7 +403,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				Definition: projectConfigPrototypeGraphFragmentDefinitionModel,
+				Definition: projectConfigPrototypeDefinitionGraphFragmentDefinitionModel,
 			}
 
 			projectConfigCanonicalGraphFragment, response, err := projectService.UpdateConfig(updateConfigOptions)

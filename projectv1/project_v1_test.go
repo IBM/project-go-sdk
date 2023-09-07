@@ -1592,21 +1592,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				createConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CreateConfig(createConfigOptionsModel)
@@ -1659,7 +1659,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully with retries`, func() {
@@ -1698,21 +1698,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				createConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1768,7 +1768,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully`, func() {
@@ -1812,21 +1812,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				createConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1871,21 +1871,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				createConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1951,21 +1951,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				createConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -2256,7 +2256,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully with retries`, func() {
@@ -2311,7 +2311,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully`, func() {
@@ -2460,22 +2460,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				updateConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateConfig(updateConfigOptionsModel)
@@ -2528,7 +2528,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully with retries`, func() {
@@ -2567,22 +2567,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				updateConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -2638,7 +2638,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_checked": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}, "name": "Name", "labels": ["Labels"], "description": "Description", "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "input": {}, "setting": {}, "type": "terraform_template", "output": [{"name": "Name", "description": "Description", "value": "anyValue"}]}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully`, func() {
@@ -2682,22 +2682,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				updateConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -2742,22 +2742,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				updateConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -2823,22 +2823,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigPrototypeGraphFragmentDefinitionModel
+				updateConfigOptionsModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -5073,35 +5073,35 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
 				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel).ToNot(BeNil())
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Labels).To(Equal([]string{"testString"}))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Input).To(Equal(inputVariableModel))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Setting).To(Equal(projectConfigSettingModel))
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel).ToNot(BeNil())
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels).To(Equal([]string{"testString"}))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input).To(Equal(inputVariableModel))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting).To(Equal(projectConfigSettingModel))
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
 				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID)
 				createConfigOptionsModel.SetProjectID("testString")
-				createConfigOptionsModel.SetDefinition(projectConfigPrototypeGraphFragmentDefinitionModel)
+				createConfigOptionsModel.SetDefinition(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel)
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createConfigOptionsModel).ToNot(BeNil())
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Definition).To(Equal(projectConfigPrototypeGraphFragmentDefinitionModel))
+				Expect(createConfigOptionsModel.Definition).To(Equal(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel))
 				Expect(createConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateProjectOptions successfully`, func() {
@@ -5465,25 +5465,25 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
 				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
 
-				// Construct an instance of the ProjectConfigPrototypeGraphFragmentDefinition model
-				projectConfigPrototypeGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeGraphFragmentDefinition)
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel).ToNot(BeNil())
-				projectConfigPrototypeGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Labels).To(Equal([]string{"testString"}))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Input).To(Equal(inputVariableModel))
-				Expect(projectConfigPrototypeGraphFragmentDefinitionModel.Setting).To(Equal(projectConfigSettingModel))
+				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel).ToNot(BeNil())
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
+				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels).To(Equal([]string{"testString"}))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input).To(Equal(inputVariableModel))
+				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting).To(Equal(projectConfigSettingModel))
 
 				// Construct an instance of the UpdateConfigOptions model
 				projectID := "testString"
@@ -5491,12 +5491,12 @@ var _ = Describe(`ProjectV1`, func() {
 				updateConfigOptionsModel := projectService.NewUpdateConfigOptions(projectID, id)
 				updateConfigOptionsModel.SetProjectID("testString")
 				updateConfigOptionsModel.SetID("testString")
-				updateConfigOptionsModel.SetDefinition(projectConfigPrototypeGraphFragmentDefinitionModel)
+				updateConfigOptionsModel.SetDefinition(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel)
 				updateConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateConfigOptionsModel).ToNot(BeNil())
 				Expect(updateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateConfigOptionsModel.Definition).To(Equal(projectConfigPrototypeGraphFragmentDefinitionModel))
+				Expect(updateConfigOptionsModel.Definition).To(Equal(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel))
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateProjectOptions successfully`, func() {
