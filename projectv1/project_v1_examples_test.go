@@ -110,14 +110,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateProject() result:")
 			// begin-create_project
 
-			projectConfigModel := &projectv1.ProjectConfig{
+			projectConfigPrototypeDefinitionGraphFragmentModel := &projectv1.ProjectConfigPrototypeDefinitionGraphFragment{
 			}
 
 			createProjectOptions := projectService.NewCreateProjectOptions(
 				"Default",
 				"us-south",
 			)
-			createProjectOptions.SetConfigs([]projectv1.ProjectConfig{*projectConfigModel})
+			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel})
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
