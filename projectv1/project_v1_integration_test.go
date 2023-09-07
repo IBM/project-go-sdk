@@ -197,10 +197,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigDefinitionPropModel := &projectv1.ProjectConfigDefinitionProp{
+			projectConfigPrototypeGraphFragmentDefinitionModel := &projectv1.ProjectConfigPrototypeGraphFragmentDefinition{
 				Name: core.StringPtr("testString"),
+				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
-				Labels: []string{},
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
@@ -210,15 +210,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
-				Definition: projectConfigDefinitionPropModel,
+				Definition: projectConfigPrototypeGraphFragmentDefinitionModel,
 			}
 
-			projectConfigVersionResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.CreateConfig(createConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 
-			configIdLink = *projectConfigVersionResponse.ID
+			configIdLink = *projectConfigCanonicalGraphFragment.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 	})
@@ -350,10 +350,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.GetConfig(getConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 	})
 
@@ -362,14 +362,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateConfig(updateConfigOptions *UpdateConfigOptions)`, func() {
-			inputVariableModel := &projectv1.InputVariable{
-			}
-			inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
-
-			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
-			}
-			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
-
 			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
 				ID: core.StringPtr("testString"),
 				TargetIamID: core.StringPtr("testString"),
@@ -389,27 +381,35 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigDefinitionPropPatchRequestModel := &projectv1.ProjectConfigDefinitionPropPatchRequest{
-				LocatorID: core.StringPtr("testString"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
+			}
+			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+			projectConfigPrototypeGraphFragmentDefinitionModel := &projectv1.ProjectConfigPrototypeGraphFragmentDefinition{
 				Name: core.StringPtr("testString"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
+				LocatorID: core.StringPtr("testString"),
+				Input: inputVariableModel,
+				Setting: projectConfigSettingModel,
 			}
 
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				Definition: projectConfigDefinitionPropPatchRequestModel,
+				Definition: projectConfigPrototypeGraphFragmentDefinitionModel,
 			}
 
-			projectConfigVersionResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 	})
 

@@ -143,20 +143,20 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 			)
 
-			projectConfigVersionResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigCanonicalGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 
-			configIdLink = *projectConfigVersionResponse.ID
+			configIdLink = *projectConfigCanonicalGraphFragment.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 		It(`ListProjects request example`, func() {
@@ -255,18 +255,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.GetConfig(getConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigCanonicalGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 		It(`UpdateConfig request example`, func() {
 			fmt.Println("\nUpdateConfig() result:")
@@ -277,18 +277,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigVersionResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigCanonicalGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
 		It(`ForceApprove request example`, func() {
 			fmt.Println("\nForceApprove() result:")
