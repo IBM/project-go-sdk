@@ -51,7 +51,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 		config       map[string]string
 
 		// Variables to hold link values
-		configIdLink string
 		projectIdLink string
 	)
 
@@ -110,14 +109,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateProject() result:")
 			// begin-create_project
 
-			projectConfigModel := &projectv1.ProjectConfig{
+			projectConfigPrototypeGraphFragmentModel := &projectv1.ProjectConfigPrototypeGraphFragment{
 			}
 
 			createProjectOptions := projectService.NewCreateProjectOptions(
 				"Default",
 				"us-south",
 			)
-			createProjectOptions.SetConfigs([]projectv1.ProjectConfig{*projectConfigModel})
+			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototypeGraphFragment{*projectConfigPrototypeGraphFragmentModel})
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
@@ -134,30 +133,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			projectIdLink = *project.ID
 			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
-		})
-		It(`CreateConfig request example`, func() {
-			fmt.Println("\nCreateConfig() result:")
-			// begin-create_config
-
-			createConfigOptions := projectService.NewCreateConfigOptions(
-				projectIdLink,
-			)
-
-			projectConfigVersionResponse, response, err := projectService.CreateConfig(createConfigOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_config
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
-
-			configIdLink = *projectConfigVersionResponse.ID
-			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 		It(`ListProjects request example`, func() {
 			fmt.Println("\nListProjects() result:")
@@ -225,6 +200,27 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(project).ToNot(BeNil())
 		})
+		It(`CreateConfig request example`, func() {
+			fmt.Println("\nCreateConfig() result:")
+			// begin-create_config
+
+			createConfigOptions := projectService.NewCreateConfigOptions(
+				projectIdLink,
+			)
+
+			projectConfigPrototypeGraphFragment, response, err := projectService.CreateConfig(createConfigOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigPrototypeGraphFragment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_config
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(projectConfigPrototypeGraphFragment).ToNot(BeNil())
+		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
 			// begin-list_configs
@@ -252,7 +248,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			getConfigOptions := projectService.NewGetConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
@@ -274,21 +270,21 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
-			projectConfigVersionResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfigPrototypeGraphFragment, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigPrototypeGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigPrototypeGraphFragment).ToNot(BeNil())
 		})
 		It(`ForceApprove request example`, func() {
 			fmt.Println("\nForceApprove() result:")
@@ -296,22 +292,22 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			forceApproveOptions := projectService.NewForceApproveOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 			forceApproveOptions.SetComment("Approving the changes")
 
-			projectConfigVersionResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfigPrototypeGraphFragment, response, err := projectService.ForceApprove(forceApproveOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigPrototypeGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-force_approve
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigPrototypeGraphFragment).ToNot(BeNil())
 		})
 		It(`Approve request example`, func() {
 			fmt.Println("\nApprove() result:")
@@ -319,22 +315,22 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			approveOptions := projectService.NewApproveOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 			approveOptions.SetComment("Approving the changes")
 
-			projectConfigVersionResponse, response, err := projectService.Approve(approveOptions)
+			projectConfigPrototypeGraphFragment, response, err := projectService.Approve(approveOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigPrototypeGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-approve
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigPrototypeGraphFragment).ToNot(BeNil())
 		})
 		It(`ValidateConfig request example`, func() {
 			fmt.Println("\nValidateConfig() result:")
@@ -342,21 +338,21 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			validateConfigOptions := projectService.NewValidateConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
-			projectConfigVersionResponse, response, err := projectService.ValidateConfig(validateConfigOptions)
+			projectConfigPrototypeGraphFragment, response, err := projectService.ValidateConfig(validateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigPrototypeGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-validate_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigPrototypeGraphFragment).ToNot(BeNil())
 		})
 		It(`InstallConfig request example`, func() {
 			fmt.Println("\nInstallConfig() result:")
@@ -364,28 +360,28 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			installConfigOptions := projectService.NewInstallConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
-			projectConfigVersionResponse, response, err := projectService.InstallConfig(installConfigOptions)
+			projectConfigPrototypeGraphFragment, response, err := projectService.InstallConfig(installConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigPrototypeGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-install_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigPrototypeGraphFragment).ToNot(BeNil())
 		})
 		It(`UninstallConfig request example`, func() {
 			// begin-uninstall_config
 
 			uninstallConfigOptions := projectService.NewUninstallConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			response, err := projectService.UninstallConfig(uninstallConfigOptions)
@@ -407,7 +403,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			listConfigResourcesOptions := projectService.NewListConfigResourcesOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigResourceCollection, response, err := projectService.ListConfigResources(listConfigResourcesOptions)
@@ -429,7 +425,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			listConfigVersionsOptions := projectService.NewListConfigVersionsOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigVersionSummaryCollection, response, err := projectService.ListConfigVersions(listConfigVersionsOptions)
@@ -451,22 +447,22 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			getConfigVersionOptions := projectService.NewGetConfigVersionOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 				int64(38),
 			)
 
-			projectConfigVersionResponse, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
+			projectConfigPrototypeGraphFragment, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfigPrototypeGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config_version
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfigPrototypeGraphFragment).ToNot(BeNil())
 		})
 		It(`DeleteConfig request example`, func() {
 			fmt.Println("\nDeleteConfig() result:")
@@ -474,7 +470,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			deleteConfigOptions := projectService.NewDeleteConfigOptions(
 				projectIdLink,
-				configIdLink,
+				"testString",
 			)
 
 			projectConfigDelete, response, err := projectService.DeleteConfig(deleteConfigOptions)
@@ -485,29 +481,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println(string(b))
 
 			// end-delete_config
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigDelete).ToNot(BeNil())
-		})
-		It(`DeleteConfigVersion request example`, func() {
-			fmt.Println("\nDeleteConfigVersion() result:")
-			// begin-delete_config_version
-
-			deleteConfigVersionOptions := projectService.NewDeleteConfigVersionOptions(
-				projectIdLink,
-				configIdLink,
-				int64(38),
-			)
-
-			projectConfigDelete, response, err := projectService.DeleteConfigVersion(deleteConfigVersionOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(projectConfigDelete, "", "  ")
-			fmt.Println(string(b))
-
-			// end-delete_config_version
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
@@ -532,6 +505,29 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteConfigVersion request example`, func() {
+			fmt.Println("\nDeleteConfigVersion() result:")
+			// begin-delete_config_version
+
+			deleteConfigVersionOptions := projectService.NewDeleteConfigVersionOptions(
+				projectIdLink,
+				"testString",
+				int64(38),
+			)
+
+			projectConfigDelete, response, err := projectService.DeleteConfigVersion(deleteConfigVersionOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(projectConfigDelete, "", "  ")
+			fmt.Println(string(b))
+
+			// end-delete_config_version
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(projectConfigDelete).ToNot(BeNil())
 		})
 	})
 })
