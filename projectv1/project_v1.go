@@ -1361,89 +1361,6 @@ func (project *ProjectV1) DeleteConfigVersionWithContext(ctx context.Context, de
 	return
 }
 
-// ActionJobSummary : The summaries of jobs that were performed on the configuration.
-type ActionJobSummary struct {
-	// The summary of the plan jobs on the configuration.
-	PlanSummary map[string]interface{} `json:"plan_summary,omitempty"`
-
-	// The summary of the apply jobs on the configuration.
-	ApplySummary map[string]interface{} `json:"apply_summary,omitempty"`
-
-	// The summary of the destroy jobs on the configuration.
-	DestroySummary map[string]interface{} `json:"destroy_summary,omitempty"`
-
-	// The message summaries of jobs on the configuration.
-	MessageSummary map[string]interface{} `json:"message_summary,omitempty"`
-
-	// The messages of plan jobs on the configuration.
-	PlanMessages map[string]interface{} `json:"plan_messages,omitempty"`
-
-	// The messages of apply jobs on the configuration.
-	ApplyMessages map[string]interface{} `json:"apply_messages,omitempty"`
-
-	// The messages of destroy jobs on the configuration.
-	DestroyMessages map[string]interface{} `json:"destroy_messages,omitempty"`
-}
-
-// UnmarshalActionJobSummary unmarshals an instance of ActionJobSummary from the specified map of raw messages.
-func UnmarshalActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ActionJobSummary)
-	err = core.UnmarshalPrimitive(m, "plan_summary", &obj.PlanSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "apply_summary", &obj.ApplySummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "destroy_summary", &obj.DestroySummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "message_summary", &obj.MessageSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "plan_messages", &obj.PlanMessages)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "apply_messages", &obj.ApplyMessages)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "destroy_messages", &obj.DestroyMessages)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ActionJobWithIdAndSummary : A brief summary of an action.
-type ActionJobWithIdAndSummary struct {
-	// The unique ID.
-	ID *string `json:"id,omitempty"`
-
-	// The summaries of jobs that were performed on the configuration.
-	Summary *ActionJobSummary `json:"summary,omitempty"`
-}
-
-// UnmarshalActionJobWithIdAndSummary unmarshals an instance of ActionJobWithIdAndSummary from the specified map of raw messages.
-func UnmarshalActionJobWithIdAndSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ActionJobWithIdAndSummary)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalActionJobSummary)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ApproveOptions : The Approve options.
 type ApproveOptions struct {
 	// The unique project ID.
@@ -2045,55 +1962,8 @@ func (options *InstallConfigOptions) SetHeaders(param map[string]string) *Instal
 	return options
 }
 
-// LastActionWithSummary : The action job performed on the project configuration.
-type LastActionWithSummary struct {
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
-
-	// The result of the last action.
-	Result *string `json:"result,omitempty"`
-
-	// A brief summary of an action.
-	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
-}
-
-// Constants associated with the LastActionWithSummary.Result property.
-// The result of the last action.
-const (
-	LastActionWithSummary_Result_Failed = "failed"
-	LastActionWithSummary_Result_Passed = "passed"
-)
-
-// UnmarshalLastActionWithSummary unmarshals an instance of LastActionWithSummary from the specified map of raw messages.
-func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(LastActionWithSummary)
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// LastCheckedActionWithSummary : The action job performed on the project configuration.
+// LastCheckedActionWithSummary : LastCheckedActionWithSummary struct
 type LastCheckedActionWithSummary struct {
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
-
-	// The result of the last action.
-	Result *string `json:"result,omitempty"`
-
-	// A brief summary of an action.
-	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
-
 	// The cost estimate of the configuration.
 	// It only exists after the first configuration validation.
 	CostEstimate *ProjectConfigMetadataCostEstimate `json:"cost_estimate,omitempty"`
@@ -2102,28 +1972,9 @@ type LastCheckedActionWithSummary struct {
 	CraLogs *ProjectConfigMetadataCraLogs `json:"cra_logs,omitempty"`
 }
 
-// Constants associated with the LastCheckedActionWithSummary.Result property.
-// The result of the last action.
-const (
-	LastCheckedActionWithSummary_Result_Failed = "failed"
-	LastCheckedActionWithSummary_Result_Passed = "passed"
-)
-
 // UnmarshalLastCheckedActionWithSummary unmarshals an instance of LastCheckedActionWithSummary from the specified map of raw messages.
 func UnmarshalLastCheckedActionWithSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(LastCheckedActionWithSummary)
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalModel(m, "cost_estimate", &obj.CostEstimate, UnmarshalProjectConfigMetadataCostEstimate)
 	if err != nil {
 		return
@@ -2725,14 +2576,7 @@ type ProjectConfigCanonicalGraphFragment struct {
 	// format as specified by RFC 3339.
 	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
 
-	// The action job performed on the project configuration.
 	LastChecked *LastCheckedActionWithSummary `json:"last_checked,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastInstalled *LastActionWithSummary `json:"last_installed,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastUninstalled *LastActionWithSummary `json:"last_uninstalled,omitempty"`
 
 	Definition *ProjectConfigCanonicalGraphFragmentDefinition `json:"definition,omitempty"`
 
@@ -2844,14 +2688,6 @@ func UnmarshalProjectConfigCanonicalGraphFragment(m map[string]json.RawMessage, 
 		return
 	}
 	err = core.UnmarshalModel(m, "last_checked", &obj.LastChecked, UnmarshalLastCheckedActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_installed", &obj.LastInstalled, UnmarshalLastActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_uninstalled", &obj.LastUninstalled, UnmarshalLastActionWithSummary)
 	if err != nil {
 		return
 	}
