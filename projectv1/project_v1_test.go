@@ -221,27 +221,27 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectPrototypeConfigsItemDefinition model
+				projectPrototypeConfigsItemDefinitionModel := new(projectv1.ProjectPrototypeConfigsItemDefinition)
+				projectPrototypeConfigsItemDefinitionModel.Name = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Labels = []string{"testString"}
+				projectPrototypeConfigsItemDefinitionModel.Description = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Authorizations = projectConfigAuthModel
+				projectPrototypeConfigsItemDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectPrototypeConfigsItemDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Input = inputVariableModel
+				projectPrototypeConfigsItemDefinitionModel.Setting = projectConfigSettingModel
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				projectConfigPrototypeDefinitionGraphFragmentModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
+				// Construct an instance of the ProjectPrototypeConfigsItem model
+				projectPrototypeConfigsItemModel := new(projectv1.ProjectPrototypeConfigsItem)
+				projectPrototypeConfigsItemModel.Definition = projectPrototypeConfigsItemDefinitionModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CreateProject(createProjectOptionsModel)
@@ -341,27 +341,27 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectPrototypeConfigsItemDefinition model
+				projectPrototypeConfigsItemDefinitionModel := new(projectv1.ProjectPrototypeConfigsItemDefinition)
+				projectPrototypeConfigsItemDefinitionModel.Name = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Labels = []string{"testString"}
+				projectPrototypeConfigsItemDefinitionModel.Description = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Authorizations = projectConfigAuthModel
+				projectPrototypeConfigsItemDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectPrototypeConfigsItemDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Input = inputVariableModel
+				projectPrototypeConfigsItemDefinitionModel.Setting = projectConfigSettingModel
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				projectConfigPrototypeDefinitionGraphFragmentModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
+				// Construct an instance of the ProjectPrototypeConfigsItem model
+				projectPrototypeConfigsItemModel := new(projectv1.ProjectPrototypeConfigsItem)
+				projectPrototypeConfigsItemModel.Definition = projectPrototypeConfigsItemDefinitionModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -469,27 +469,27 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectPrototypeConfigsItemDefinition model
+				projectPrototypeConfigsItemDefinitionModel := new(projectv1.ProjectPrototypeConfigsItemDefinition)
+				projectPrototypeConfigsItemDefinitionModel.Name = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Labels = []string{"testString"}
+				projectPrototypeConfigsItemDefinitionModel.Description = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Authorizations = projectConfigAuthModel
+				projectPrototypeConfigsItemDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectPrototypeConfigsItemDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Input = inputVariableModel
+				projectPrototypeConfigsItemDefinitionModel.Setting = projectConfigSettingModel
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				projectConfigPrototypeDefinitionGraphFragmentModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
+				// Construct an instance of the ProjectPrototypeConfigsItem model
+				projectPrototypeConfigsItemModel := new(projectv1.ProjectPrototypeConfigsItem)
+				projectPrototypeConfigsItemModel.Definition = projectPrototypeConfigsItemDefinitionModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -540,27 +540,27 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectPrototypeConfigsItemDefinition model
+				projectPrototypeConfigsItemDefinitionModel := new(projectv1.ProjectPrototypeConfigsItemDefinition)
+				projectPrototypeConfigsItemDefinitionModel.Name = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Labels = []string{"testString"}
+				projectPrototypeConfigsItemDefinitionModel.Description = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Authorizations = projectConfigAuthModel
+				projectPrototypeConfigsItemDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectPrototypeConfigsItemDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Input = inputVariableModel
+				projectPrototypeConfigsItemDefinitionModel.Setting = projectConfigSettingModel
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				projectConfigPrototypeDefinitionGraphFragmentModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
+				// Construct an instance of the ProjectPrototypeConfigsItem model
+				projectPrototypeConfigsItemModel := new(projectv1.ProjectPrototypeConfigsItem)
+				projectPrototypeConfigsItemModel.Definition = projectPrototypeConfigsItemDefinitionModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -632,27 +632,27 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
 				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
+				// Construct an instance of the ProjectPrototypeConfigsItemDefinition model
+				projectPrototypeConfigsItemDefinitionModel := new(projectv1.ProjectPrototypeConfigsItemDefinition)
+				projectPrototypeConfigsItemDefinitionModel.Name = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Labels = []string{"testString"}
+				projectPrototypeConfigsItemDefinitionModel.Description = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Authorizations = projectConfigAuthModel
+				projectPrototypeConfigsItemDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectPrototypeConfigsItemDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Input = inputVariableModel
+				projectPrototypeConfigsItemDefinitionModel.Setting = projectConfigSettingModel
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				projectConfigPrototypeDefinitionGraphFragmentModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
+				// Construct an instance of the ProjectPrototypeConfigsItem model
+				projectPrototypeConfigsItemModel := new(projectv1.ProjectPrototypeConfigsItem)
+				projectPrototypeConfigsItemModel.Definition = projectPrototypeConfigsItemDefinitionModel
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
-				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel}
+				createProjectOptionsModel.Configs = []projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -5179,31 +5179,31 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
 				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragmentDefinition model
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition)
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel).ToNot(BeNil())
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels = []string{"testString"}
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations = projectConfigAuthModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input = inputVariableModel
-				projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting = projectConfigSettingModel
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Name).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Labels).To(Equal([]string{"testString"}))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Input).To(Equal(inputVariableModel))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel.Setting).To(Equal(projectConfigSettingModel))
+				// Construct an instance of the ProjectPrototypeConfigsItemDefinition model
+				projectPrototypeConfigsItemDefinitionModel := new(projectv1.ProjectPrototypeConfigsItemDefinition)
+				Expect(projectPrototypeConfigsItemDefinitionModel).ToNot(BeNil())
+				projectPrototypeConfigsItemDefinitionModel.Name = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Labels = []string{"testString"}
+				projectPrototypeConfigsItemDefinitionModel.Description = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Authorizations = projectConfigAuthModel
+				projectPrototypeConfigsItemDefinitionModel.ComplianceProfile = projectComplianceProfileModel
+				projectPrototypeConfigsItemDefinitionModel.LocatorID = core.StringPtr("testString")
+				projectPrototypeConfigsItemDefinitionModel.Input = inputVariableModel
+				projectPrototypeConfigsItemDefinitionModel.Setting = projectConfigSettingModel
+				Expect(projectPrototypeConfigsItemDefinitionModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectPrototypeConfigsItemDefinitionModel.Labels).To(Equal([]string{"testString"}))
+				Expect(projectPrototypeConfigsItemDefinitionModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectPrototypeConfigsItemDefinitionModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectPrototypeConfigsItemDefinitionModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectPrototypeConfigsItemDefinitionModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectPrototypeConfigsItemDefinitionModel.Input).To(Equal(inputVariableModel))
+				Expect(projectPrototypeConfigsItemDefinitionModel.Setting).To(Equal(projectConfigSettingModel))
 
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel).ToNot(BeNil())
-				projectConfigPrototypeDefinitionGraphFragmentModel.Definition = projectConfigPrototypeDefinitionGraphFragmentDefinitionModel
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel.Definition).To(Equal(projectConfigPrototypeDefinitionGraphFragmentDefinitionModel))
+				// Construct an instance of the ProjectPrototypeConfigsItem model
+				projectPrototypeConfigsItemModel := new(projectv1.ProjectPrototypeConfigsItem)
+				Expect(projectPrototypeConfigsItemModel).ToNot(BeNil())
+				projectPrototypeConfigsItemModel.Definition = projectPrototypeConfigsItemDefinitionModel
+				Expect(projectPrototypeConfigsItemModel.Definition).To(Equal(projectPrototypeConfigsItemDefinitionModel))
 
 				// Construct an instance of the CreateProjectOptions model
 				resourceGroup := "Default"
@@ -5212,13 +5212,13 @@ var _ = Describe(`ProjectV1`, func() {
 				createProjectOptionsModel.SetResourceGroup("Default")
 				createProjectOptionsModel.SetLocation("us-south")
 				createProjectOptionsModel.SetDefinition(projectPrototypeDefinitionPropModel)
-				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel})
+				createProjectOptionsModel.SetConfigs([]projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel})
 				createProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createProjectOptionsModel).ToNot(BeNil())
 				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
 				Expect(createProjectOptionsModel.Location).To(Equal(core.StringPtr("us-south")))
 				Expect(createProjectOptionsModel.Definition).To(Equal(projectPrototypeDefinitionPropModel))
-				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel}))
+				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel}))
 				Expect(createProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteConfigOptions successfully`, func() {

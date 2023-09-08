@@ -133,7 +133,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigPrototypeDefinitionGraphFragmentDefinitionModel := &projectv1.ProjectConfigPrototypeDefinitionGraphFragmentDefinition{
+			projectPrototypeConfigsItemDefinitionModel := &projectv1.ProjectPrototypeConfigsItemDefinition{
 				Name: core.StringPtr("testString"),
 				Labels: []string{"testString"},
 				Description: core.StringPtr("testString"),
@@ -144,15 +144,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Setting: projectConfigSettingModel,
 			}
 
-			projectConfigPrototypeDefinitionGraphFragmentModel := &projectv1.ProjectConfigPrototypeDefinitionGraphFragment{
-				Definition: projectConfigPrototypeDefinitionGraphFragmentDefinitionModel,
+			projectPrototypeConfigsItemModel := &projectv1.ProjectPrototypeConfigsItem{
+				Definition: projectPrototypeConfigsItemDefinitionModel,
 			}
 
 			createProjectOptions := &projectv1.CreateProjectOptions{
 				ResourceGroup: core.StringPtr("Default"),
 				Location: core.StringPtr("us-south"),
 				Definition: projectPrototypeDefinitionPropModel,
-				Configs: []projectv1.ProjectConfigPrototypeDefinitionGraphFragment{*projectConfigPrototypeDefinitionGraphFragmentModel},
+				Configs: []projectv1.ProjectPrototypeConfigsItem{*projectPrototypeConfigsItemModel},
 			}
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
