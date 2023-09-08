@@ -188,11 +188,60 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectPrototypeDefinitionProp model
+				projectPrototypeDefinitionPropModel := new(projectv1.ProjectPrototypeDefinitionProp)
+				projectPrototypeDefinitionPropModel.Name = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.Description = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.DestroyOnDelete = core.BoolPtr(true)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
+				// Construct an instance of the ProjectConfig model
+				projectConfigModel := new(projectv1.ProjectConfig)
+				projectConfigModel.Definition = projectConfigDefinitionPropModel
+
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.ProjectPrototype = projectPrototypeModel
+				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CreateProject(createProjectOptionsModel)
@@ -247,7 +296,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -259,11 +308,60 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
+				// Construct an instance of the ProjectPrototypeDefinitionProp model
+				projectPrototypeDefinitionPropModel := new(projectv1.ProjectPrototypeDefinitionProp)
+				projectPrototypeDefinitionPropModel.Name = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.Description = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.DestroyOnDelete = core.BoolPtr(true)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
+				// Construct an instance of the ProjectConfig model
+				projectConfigModel := new(projectv1.ProjectConfig)
+				projectConfigModel.Definition = projectConfigDefinitionPropModel
+
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.ProjectPrototype = projectPrototypeModel
+				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -321,7 +419,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -338,11 +436,60 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
+				// Construct an instance of the ProjectPrototypeDefinitionProp model
+				projectPrototypeDefinitionPropModel := new(projectv1.ProjectPrototypeDefinitionProp)
+				projectPrototypeDefinitionPropModel.Name = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.Description = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.DestroyOnDelete = core.BoolPtr(true)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
+				// Construct an instance of the ProjectConfig model
+				projectConfigModel := new(projectv1.ProjectConfig)
+				projectConfigModel.Definition = projectConfigDefinitionPropModel
+
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.ProjectPrototype = projectPrototypeModel
+				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -360,11 +507,60 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectPrototypeDefinitionProp model
+				projectPrototypeDefinitionPropModel := new(projectv1.ProjectPrototypeDefinitionProp)
+				projectPrototypeDefinitionPropModel.Name = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.Description = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.DestroyOnDelete = core.BoolPtr(true)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
+				// Construct an instance of the ProjectConfig model
+				projectConfigModel := new(projectv1.ProjectConfig)
+				projectConfigModel.Definition = projectConfigDefinitionPropModel
+
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.ProjectPrototype = projectPrototypeModel
+				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -403,11 +599,60 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectPrototypeDefinitionProp model
+				projectPrototypeDefinitionPropModel := new(projectv1.ProjectPrototypeDefinitionProp)
+				projectPrototypeDefinitionPropModel.Name = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.Description = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.DestroyOnDelete = core.BoolPtr(true)
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
+				// Construct an instance of the ProjectConfig model
+				projectConfigModel := new(projectv1.ProjectConfig)
+				projectConfigModel.Definition = projectConfigDefinitionPropModel
+
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
 				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Location = core.StringPtr("us-south")
-				createProjectOptionsModel.ProjectPrototype = projectPrototypeModel
+				createProjectOptionsModel.Definition = projectPrototypeDefinitionPropModel
+				createProjectOptionsModel.Configs = []projectv1.ProjectConfig{*projectConfigModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -800,7 +1045,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -854,7 +1099,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1035,7 +1280,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully with retries`, func() {
@@ -1112,7 +1357,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group": "ResourceGroup", "state": "ready", "event_notifications_crn": "EventNotificationsCrn", "definition": {"name": "Name", "description": "Description", "destroy_on_delete": true}, "configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully`, func() {
@@ -1320,10 +1565,48 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPropModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.CreateConfig(createConfigOptionsModel)
@@ -1376,7 +1659,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully with retries`, func() {
@@ -1388,10 +1671,48 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPropModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1447,7 +1768,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully`, func() {
@@ -1464,10 +1785,48 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPropModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1485,10 +1844,48 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPropModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1527,10 +1924,48 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPropModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -1608,7 +2043,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully with retries`, func() {
@@ -1662,7 +2097,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"configs": [{}]}`)
+					fmt.Fprintf(res, "%s", `{"configs": [{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description"}, "last_validated": {"href": "Href", "result": "failed"}, "last_installed": {"href": "Href", "result": "failed"}, "last_uninstalled": {"href": "Href", "result": "failed"}, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListConfigs successfully`, func() {
@@ -1821,7 +2256,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully with retries`, func() {
@@ -1876,7 +2311,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "approved_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "installed_version": {"needs_attention_state": ["anyValue"], "state": "approved", "version": 7, "href": "Href"}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully`, func() {
@@ -1998,11 +2433,49 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigDefinitionPropPatchRequest model
+				projectConfigDefinitionPropPatchRequestModel := new(projectv1.ProjectConfigDefinitionPropPatchRequest)
+				projectConfigDefinitionPropPatchRequestModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Input = inputVariableModel
+				projectConfigDefinitionPropPatchRequestModel.Setting = projectConfigSettingModel
+				projectConfigDefinitionPropPatchRequestModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Labels = []string{"testString"}
+				projectConfigDefinitionPropPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropPatchRequestModel.ComplianceProfile = projectComplianceProfileModel
+
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPropPatchRequestModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateConfig(updateConfigOptionsModel)
@@ -2055,7 +2528,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully with retries`, func() {
@@ -2067,11 +2540,49 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigDefinitionPropPatchRequest model
+				projectConfigDefinitionPropPatchRequestModel := new(projectv1.ProjectConfigDefinitionPropPatchRequest)
+				projectConfigDefinitionPropPatchRequestModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Input = inputVariableModel
+				projectConfigDefinitionPropPatchRequestModel.Setting = projectConfigSettingModel
+				projectConfigDefinitionPropPatchRequestModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Labels = []string{"testString"}
+				projectConfigDefinitionPropPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropPatchRequestModel.ComplianceProfile = projectComplianceProfileModel
+
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPropPatchRequestModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -2127,7 +2638,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully`, func() {
@@ -2144,11 +2655,49 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigDefinitionPropPatchRequest model
+				projectConfigDefinitionPropPatchRequestModel := new(projectv1.ProjectConfigDefinitionPropPatchRequest)
+				projectConfigDefinitionPropPatchRequestModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Input = inputVariableModel
+				projectConfigDefinitionPropPatchRequestModel.Setting = projectConfigSettingModel
+				projectConfigDefinitionPropPatchRequestModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Labels = []string{"testString"}
+				projectConfigDefinitionPropPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropPatchRequestModel.ComplianceProfile = projectComplianceProfileModel
+
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPropPatchRequestModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -2166,11 +2715,49 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigDefinitionPropPatchRequest model
+				projectConfigDefinitionPropPatchRequestModel := new(projectv1.ProjectConfigDefinitionPropPatchRequest)
+				projectConfigDefinitionPropPatchRequestModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Input = inputVariableModel
+				projectConfigDefinitionPropPatchRequestModel.Setting = projectConfigSettingModel
+				projectConfigDefinitionPropPatchRequestModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Labels = []string{"testString"}
+				projectConfigDefinitionPropPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropPatchRequestModel.ComplianceProfile = projectComplianceProfileModel
+
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPropPatchRequestModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -2209,11 +2796,49 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+
+				// Construct an instance of the ProjectConfigDefinitionPropPatchRequest model
+				projectConfigDefinitionPropPatchRequestModel := new(projectv1.ProjectConfigDefinitionPropPatchRequest)
+				projectConfigDefinitionPropPatchRequestModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Input = inputVariableModel
+				projectConfigDefinitionPropPatchRequestModel.Setting = projectConfigSettingModel
+				projectConfigDefinitionPropPatchRequestModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Labels = []string{"testString"}
+				projectConfigDefinitionPropPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropPatchRequestModel.ComplianceProfile = projectComplianceProfileModel
+
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.ProjectConfig = projectConfigPrototypeDefinitionGraphFragmentModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPropPatchRequestModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -2526,7 +3151,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke ForceApprove successfully with retries`, func() {
@@ -2598,7 +3223,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke ForceApprove successfully`, func() {
@@ -2780,7 +3405,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke Approve successfully with retries`, func() {
@@ -2852,7 +3477,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke Approve successfully`, func() {
@@ -3022,7 +3647,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke ValidateConfig successfully with retries`, func() {
@@ -3080,7 +3705,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke ValidateConfig successfully`, func() {
@@ -3245,7 +3870,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully with retries`, func() {
@@ -3300,7 +3925,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke InstallConfig successfully`, func() {
@@ -3967,7 +4592,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfigVersion successfully with retries`, func() {
@@ -4023,7 +4648,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "version": 7, "is_draft": false, "needs_attention_state": ["anyValue"], "state": "approved", "update_available": false, "created_at": "2019-01-01T12:00:00.000Z", "updated_at": "2019-01-01T12:00:00.000Z", "last_approved": {"is_forced": true, "comment": "Comment", "timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "last_save": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}, "cost_estimate": {"version": "Version", "currency": "Currency", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "CraVersion", "schema_version": "SchemaVersion", "status": "Status", "summary": {"anyKey": "anyValue"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_installed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "last_uninstalled": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"anyKey": "anyValue"}, "apply_summary": {"anyKey": "anyValue"}, "destroy_summary": {"anyKey": "anyValue"}, "message_summary": {"anyKey": "anyValue"}, "plan_messages": {"anyKey": "anyValue"}, "apply_messages": {"anyKey": "anyValue"}, "destroy_messages": {"anyKey": "anyValue"}}}}, "definition": {"name": "Name", "description": "Description", "labels": ["Labels"], "authorizations": {"trusted_profile": {"id": "ID", "target_iam_id": "TargetIamID"}, "method": "Method", "api_key": "ApiKey"}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "type": "terraform_template", "input": {}, "output": [{"name": "Name", "description": "Description", "value": "anyValue"}], "setting": {}}}`)
 				}))
 			})
 			It(`Invoke GetConfigVersion successfully`, func() {
@@ -4369,64 +4994,216 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(approveOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateConfigOptions successfully`, func() {
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel).ToNot(BeNil())
-				projectConfigPrototypeDefinitionGraphFragmentModel.SetProperty("foo", core.StringPtr("testString"))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel.GetProperties()).ToNot(BeEmpty())
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				Expect(projectConfigAuthTrustedProfileModel).ToNot(BeNil())
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+				Expect(projectConfigAuthTrustedProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthTrustedProfileModel.TargetIamID).To(Equal(core.StringPtr("testString")))
 
-				projectConfigPrototypeDefinitionGraphFragmentModel.SetProperties(nil)
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel.GetProperties()).To(BeEmpty())
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				Expect(projectConfigAuthModel).ToNot(BeNil())
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+				Expect(projectConfigAuthModel.TrustedProfile).To(Equal(projectConfigAuthTrustedProfileModel))
+				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
 
-				projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap := make(map[string]interface{})
-				projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap["foo"] = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentModel.SetProperties(projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap)
-				projectConfigPrototypeDefinitionGraphFragmentModelActualMap := projectConfigPrototypeDefinitionGraphFragmentModel.GetProperties()
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModelActualMap).To(Equal(projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap))
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				Expect(projectComplianceProfileModel).ToNot(BeNil())
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+				Expect(projectComplianceProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.InstanceID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.InstanceLocation).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				Expect(inputVariableModel).ToNot(BeNil())
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
+				Expect(inputVariableModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+
+				inputVariableModel.SetProperties(nil)
+				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
+
+				inputVariableModelExpectedMap := make(map[string]interface{})
+				inputVariableModelExpectedMap["foo"] = core.StringPtr("testString")
+				inputVariableModel.SetProperties(inputVariableModelExpectedMap)
+				inputVariableModelActualMap := inputVariableModel.GetProperties()
+				Expect(inputVariableModelActualMap).To(Equal(inputVariableModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				Expect(projectConfigSettingModel).ToNot(BeNil())
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(projectConfigSettingModel.GetProperties()).ToNot(BeEmpty())
+				Expect(projectConfigSettingModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+
+				projectConfigSettingModel.SetProperties(nil)
+				Expect(projectConfigSettingModel.GetProperties()).To(BeEmpty())
+
+				projectConfigSettingModelExpectedMap := make(map[string]interface{})
+				projectConfigSettingModelExpectedMap["foo"] = core.StringPtr("testString")
+				projectConfigSettingModel.SetProperties(projectConfigSettingModelExpectedMap)
+				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
+				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				Expect(projectConfigDefinitionPropModel).ToNot(BeNil())
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+				Expect(projectConfigDefinitionPropModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropModel.Labels).To(Equal([]string{}))
+				Expect(projectConfigDefinitionPropModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPropModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPropModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropModel.Input).To(Equal(inputVariableModel))
+				Expect(projectConfigDefinitionPropModel.Setting).To(Equal(projectConfigSettingModel))
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
-				var projectConfig *projectv1.ProjectConfigPrototypeDefinitionGraphFragment = nil
-				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID, projectConfig)
+				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID)
 				createConfigOptionsModel.SetProjectID("testString")
-				createConfigOptionsModel.SetProjectConfig(projectConfigPrototypeDefinitionGraphFragmentModel)
+				createConfigOptionsModel.SetDefinition(projectConfigDefinitionPropModel)
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createConfigOptionsModel).ToNot(BeNil())
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.ProjectConfig).To(Equal(projectConfigPrototypeDefinitionGraphFragmentModel))
+				Expect(createConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionPropModel))
 				Expect(createConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateProjectOptions successfully`, func() {
-				// Construct an instance of the ProjectPrototype model
-				projectPrototypeModel := new(projectv1.ProjectPrototype)
-				Expect(projectPrototypeModel).ToNot(BeNil())
-				projectPrototypeModel.SetProperty("foo", core.StringPtr("testString"))
-				Expect(projectPrototypeModel.GetProperties()).ToNot(BeEmpty())
-				Expect(projectPrototypeModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+				// Construct an instance of the ProjectPrototypeDefinitionProp model
+				projectPrototypeDefinitionPropModel := new(projectv1.ProjectPrototypeDefinitionProp)
+				Expect(projectPrototypeDefinitionPropModel).ToNot(BeNil())
+				projectPrototypeDefinitionPropModel.Name = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.Description = core.StringPtr("testString")
+				projectPrototypeDefinitionPropModel.DestroyOnDelete = core.BoolPtr(true)
+				Expect(projectPrototypeDefinitionPropModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectPrototypeDefinitionPropModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectPrototypeDefinitionPropModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
 
-				projectPrototypeModel.SetProperties(nil)
-				Expect(projectPrototypeModel.GetProperties()).To(BeEmpty())
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				Expect(projectConfigAuthTrustedProfileModel).ToNot(BeNil())
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+				Expect(projectConfigAuthTrustedProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthTrustedProfileModel.TargetIamID).To(Equal(core.StringPtr("testString")))
 
-				projectPrototypeModelExpectedMap := make(map[string]interface{})
-				projectPrototypeModelExpectedMap["foo"] = core.StringPtr("testString")
-				projectPrototypeModel.SetProperties(projectPrototypeModelExpectedMap)
-				projectPrototypeModelActualMap := projectPrototypeModel.GetProperties()
-				Expect(projectPrototypeModelActualMap).To(Equal(projectPrototypeModelExpectedMap))
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				Expect(projectConfigAuthModel).ToNot(BeNil())
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+				Expect(projectConfigAuthModel.TrustedProfile).To(Equal(projectConfigAuthTrustedProfileModel))
+				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				Expect(projectComplianceProfileModel).ToNot(BeNil())
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+				Expect(projectComplianceProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.InstanceID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.InstanceLocation).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				Expect(inputVariableModel).ToNot(BeNil())
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
+				Expect(inputVariableModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+
+				inputVariableModel.SetProperties(nil)
+				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
+
+				inputVariableModelExpectedMap := make(map[string]interface{})
+				inputVariableModelExpectedMap["foo"] = core.StringPtr("testString")
+				inputVariableModel.SetProperties(inputVariableModelExpectedMap)
+				inputVariableModelActualMap := inputVariableModel.GetProperties()
+				Expect(inputVariableModelActualMap).To(Equal(inputVariableModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				Expect(projectConfigSettingModel).ToNot(BeNil())
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(projectConfigSettingModel.GetProperties()).ToNot(BeEmpty())
+				Expect(projectConfigSettingModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+
+				projectConfigSettingModel.SetProperties(nil)
+				Expect(projectConfigSettingModel.GetProperties()).To(BeEmpty())
+
+				projectConfigSettingModelExpectedMap := make(map[string]interface{})
+				projectConfigSettingModelExpectedMap["foo"] = core.StringPtr("testString")
+				projectConfigSettingModel.SetProperties(projectConfigSettingModelExpectedMap)
+				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
+				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigDefinitionProp model
+				projectConfigDefinitionPropModel := new(projectv1.ProjectConfigDefinitionProp)
+				Expect(projectConfigDefinitionPropModel).ToNot(BeNil())
+				projectConfigDefinitionPropModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Labels = []string{}
+				projectConfigDefinitionPropModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPropModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropModel.Input = inputVariableModel
+				projectConfigDefinitionPropModel.Setting = projectConfigSettingModel
+				Expect(projectConfigDefinitionPropModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropModel.Labels).To(Equal([]string{}))
+				Expect(projectConfigDefinitionPropModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPropModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPropModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropModel.Input).To(Equal(inputVariableModel))
+				Expect(projectConfigDefinitionPropModel.Setting).To(Equal(projectConfigSettingModel))
+
+				// Construct an instance of the ProjectConfig model
+				projectConfigModel := new(projectv1.ProjectConfig)
+				Expect(projectConfigModel).ToNot(BeNil())
+				projectConfigModel.Definition = projectConfigDefinitionPropModel
+				Expect(projectConfigModel.Definition).To(Equal(projectConfigDefinitionPropModel))
 
 				// Construct an instance of the CreateProjectOptions model
 				resourceGroup := "Default"
 				location := "us-south"
-				var projectPrototype *projectv1.ProjectPrototype = nil
-				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location, projectPrototype)
+				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location)
 				createProjectOptionsModel.SetResourceGroup("Default")
 				createProjectOptionsModel.SetLocation("us-south")
-				createProjectOptionsModel.SetProjectPrototype(projectPrototypeModel)
+				createProjectOptionsModel.SetDefinition(projectPrototypeDefinitionPropModel)
+				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfig{*projectConfigModel})
 				createProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createProjectOptionsModel).ToNot(BeNil())
 				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
 				Expect(createProjectOptionsModel.Location).To(Equal(core.StringPtr("us-south")))
-				Expect(createProjectOptionsModel.ProjectPrototype).To(Equal(projectPrototypeModel))
+				Expect(createProjectOptionsModel.Definition).To(Equal(projectPrototypeDefinitionPropModel))
+				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfig{*projectConfigModel}))
 				Expect(createProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteConfigOptions successfully`, func() {
@@ -4582,6 +5359,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(listProjectsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listProjectsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewProjectConfigDefinitionProp successfully`, func() {
+				name := "testString"
+				locatorID := "testString"
+				_model, err := projectService.NewProjectConfigDefinitionProp(name, locatorID)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewProjectPrototypeDefinitionProp successfully`, func() {
+				name := "testString"
+				_model, err := projectService.NewProjectPrototypeDefinitionProp(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 			It(`Invoke NewUninstallConfigOptions successfully`, func() {
 				// Construct an instance of the UninstallConfigOptions model
 				projectID := "testString"
@@ -4596,35 +5386,102 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(uninstallConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateConfigOptions successfully`, func() {
-				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
-				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel).ToNot(BeNil())
-				projectConfigPrototypeDefinitionGraphFragmentModel.SetProperty("foo", core.StringPtr("testString"))
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel.GetProperties()).ToNot(BeEmpty())
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+				// Construct an instance of the InputVariable model
+				inputVariableModel := new(projectv1.InputVariable)
+				Expect(inputVariableModel).ToNot(BeNil())
+				inputVariableModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
+				Expect(inputVariableModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
 
-				projectConfigPrototypeDefinitionGraphFragmentModel.SetProperties(nil)
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModel.GetProperties()).To(BeEmpty())
+				inputVariableModel.SetProperties(nil)
+				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
 
-				projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap := make(map[string]interface{})
-				projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap["foo"] = core.StringPtr("testString")
-				projectConfigPrototypeDefinitionGraphFragmentModel.SetProperties(projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap)
-				projectConfigPrototypeDefinitionGraphFragmentModelActualMap := projectConfigPrototypeDefinitionGraphFragmentModel.GetProperties()
-				Expect(projectConfigPrototypeDefinitionGraphFragmentModelActualMap).To(Equal(projectConfigPrototypeDefinitionGraphFragmentModelExpectedMap))
+				inputVariableModelExpectedMap := make(map[string]interface{})
+				inputVariableModelExpectedMap["foo"] = core.StringPtr("testString")
+				inputVariableModel.SetProperties(inputVariableModelExpectedMap)
+				inputVariableModelActualMap := inputVariableModel.GetProperties()
+				Expect(inputVariableModelActualMap).To(Equal(inputVariableModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigSetting model
+				projectConfigSettingModel := new(projectv1.ProjectConfigSetting)
+				Expect(projectConfigSettingModel).ToNot(BeNil())
+				projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
+				Expect(projectConfigSettingModel.GetProperties()).ToNot(BeEmpty())
+				Expect(projectConfigSettingModel.GetProperty("foo")).To(Equal(core.StringPtr("testString")))
+
+				projectConfigSettingModel.SetProperties(nil)
+				Expect(projectConfigSettingModel.GetProperties()).To(BeEmpty())
+
+				projectConfigSettingModelExpectedMap := make(map[string]interface{})
+				projectConfigSettingModelExpectedMap["foo"] = core.StringPtr("testString")
+				projectConfigSettingModel.SetProperties(projectConfigSettingModelExpectedMap)
+				projectConfigSettingModelActualMap := projectConfigSettingModel.GetProperties()
+				Expect(projectConfigSettingModelActualMap).To(Equal(projectConfigSettingModelExpectedMap))
+
+				// Construct an instance of the ProjectConfigAuthTrustedProfile model
+				projectConfigAuthTrustedProfileModel := new(projectv1.ProjectConfigAuthTrustedProfile)
+				Expect(projectConfigAuthTrustedProfileModel).ToNot(BeNil())
+				projectConfigAuthTrustedProfileModel.ID = core.StringPtr("testString")
+				projectConfigAuthTrustedProfileModel.TargetIamID = core.StringPtr("testString")
+				Expect(projectConfigAuthTrustedProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthTrustedProfileModel.TargetIamID).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectConfigAuth model
+				projectConfigAuthModel := new(projectv1.ProjectConfigAuth)
+				Expect(projectConfigAuthModel).ToNot(BeNil())
+				projectConfigAuthModel.TrustedProfile = projectConfigAuthTrustedProfileModel
+				projectConfigAuthModel.Method = core.StringPtr("testString")
+				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
+				Expect(projectConfigAuthModel.TrustedProfile).To(Equal(projectConfigAuthTrustedProfileModel))
+				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectComplianceProfile model
+				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfile)
+				Expect(projectComplianceProfileModel).ToNot(BeNil())
+				projectComplianceProfileModel.ID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceID = core.StringPtr("testString")
+				projectComplianceProfileModel.InstanceLocation = core.StringPtr("testString")
+				projectComplianceProfileModel.AttachmentID = core.StringPtr("testString")
+				projectComplianceProfileModel.ProfileName = core.StringPtr("testString")
+				Expect(projectComplianceProfileModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.InstanceID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.InstanceLocation).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.AttachmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectComplianceProfileModel.ProfileName).To(Equal(core.StringPtr("testString")))
+
+				// Construct an instance of the ProjectConfigDefinitionPropPatchRequest model
+				projectConfigDefinitionPropPatchRequestModel := new(projectv1.ProjectConfigDefinitionPropPatchRequest)
+				Expect(projectConfigDefinitionPropPatchRequestModel).ToNot(BeNil())
+				projectConfigDefinitionPropPatchRequestModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Input = inputVariableModel
+				projectConfigDefinitionPropPatchRequestModel.Setting = projectConfigSettingModel
+				projectConfigDefinitionPropPatchRequestModel.Name = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Labels = []string{"testString"}
+				projectConfigDefinitionPropPatchRequestModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPropPatchRequestModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPropPatchRequestModel.ComplianceProfile = projectComplianceProfileModel
+				Expect(projectConfigDefinitionPropPatchRequestModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropPatchRequestModel.Input).To(Equal(inputVariableModel))
+				Expect(projectConfigDefinitionPropPatchRequestModel.Setting).To(Equal(projectConfigSettingModel))
+				Expect(projectConfigDefinitionPropPatchRequestModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropPatchRequestModel.Labels).To(Equal([]string{"testString"}))
+				Expect(projectConfigDefinitionPropPatchRequestModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPropPatchRequestModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPropPatchRequestModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
 
 				// Construct an instance of the UpdateConfigOptions model
 				projectID := "testString"
 				id := "testString"
-				var projectConfig *projectv1.ProjectConfigPrototypeDefinitionGraphFragment = nil
-				updateConfigOptionsModel := projectService.NewUpdateConfigOptions(projectID, id, projectConfig)
+				updateConfigOptionsModel := projectService.NewUpdateConfigOptions(projectID, id)
 				updateConfigOptionsModel.SetProjectID("testString")
 				updateConfigOptionsModel.SetID("testString")
-				updateConfigOptionsModel.SetProjectConfig(projectConfigPrototypeDefinitionGraphFragmentModel)
+				updateConfigOptionsModel.SetDefinition(projectConfigDefinitionPropPatchRequestModel)
 				updateConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateConfigOptionsModel).ToNot(BeNil())
 				Expect(updateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateConfigOptionsModel.ProjectConfig).To(Equal(projectConfigPrototypeDefinitionGraphFragmentModel))
+				Expect(updateConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionPropPatchRequestModel))
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateProjectOptions successfully`, func() {
