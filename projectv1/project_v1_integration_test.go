@@ -136,7 +136,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigDefinitionPropModel := &projectv1.ProjectConfigDefinitionProp{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
-				Labels: []string{},
+				Labels: []string{"testString"},
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
@@ -200,7 +200,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigDefinitionPropModel := &projectv1.ProjectConfigDefinitionProp{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
-				Labels: []string{},
+				Labels: []string{"testString"},
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
