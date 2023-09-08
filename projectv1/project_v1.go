@@ -2732,9 +2732,6 @@ type ProjectConfigCanonicalGraphFragment struct {
 	// The flag that indicates whether the version of the configuration is draft, or active.
 	IsDraft *bool `json:"is_draft,omitempty"`
 
-	// The needs attention state of a configuration.
-	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
-
 	// The state of the configuration.
 	State *string `json:"state,omitempty"`
 
@@ -2843,10 +2840,6 @@ func UnmarshalProjectConfigCanonicalGraphFragment(m map[string]json.RawMessage, 
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
@@ -3054,9 +3047,6 @@ type ProjectConfigCollectionMember struct {
 	// The flag that indicates whether the version of the configuration is draft, or active.
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
-	// The needs attention state of a configuration.
-	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
-
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
@@ -3118,10 +3108,6 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
@@ -3569,9 +3555,6 @@ func UnmarshalProjectConfigSetting(m map[string]json.RawMessage, result interfac
 
 // ProjectConfigVersionSummary : The project configuration version.
 type ProjectConfigVersionSummary struct {
-	// The needs attention state of a configuration.
-	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
-
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
@@ -3605,10 +3588,6 @@ const (
 // UnmarshalProjectConfigVersionSummary unmarshals an instance of ProjectConfigVersionSummary from the specified map of raw messages.
 func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummary)
-	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		return
