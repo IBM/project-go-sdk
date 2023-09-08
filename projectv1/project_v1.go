@@ -473,12 +473,12 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 
 // CreateConfig : Add a new configuration
 // Add a new configuration to a project.
-func (project *ProjectV1) CreateConfig(createConfigOptions *CreateConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) CreateConfig(createConfigOptions *CreateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	return project.CreateConfigWithContext(context.Background(), createConfigOptions)
 }
 
 // CreateConfigWithContext is an alternate form of the CreateConfig method which supports a Context parameter
-func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createConfigOptions *CreateConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createConfigOptions *CreateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(createConfigOptions, "createConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -531,7 +531,7 @@ func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createCon
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigPrototypeGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
 		if err != nil {
 			return
 		}
@@ -664,12 +664,12 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 
 // UpdateConfig : Update a configuration
 // Update a configuration in a project by the ID.
-func (project *ProjectV1) UpdateConfig(updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) UpdateConfig(updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	return project.UpdateConfigWithContext(context.Background(), updateConfigOptions)
 }
 
 // UpdateConfigWithContext is an alternate form of the UpdateConfig method which supports a Context parameter
-func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(updateConfigOptions, "updateConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -723,7 +723,7 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigPrototypeGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
 		if err != nil {
 			return
 		}
@@ -797,12 +797,12 @@ func (project *ProjectV1) DeleteConfigWithContext(ctx context.Context, deleteCon
 
 // ForceApprove : Force approve project configuration
 // Force approve configuration edits to the main configuration with an approving comment.
-func (project *ProjectV1) ForceApprove(forceApproveOptions *ForceApproveOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ForceApprove(forceApproveOptions *ForceApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	return project.ForceApproveWithContext(context.Background(), forceApproveOptions)
 }
 
 // ForceApproveWithContext is an alternate form of the ForceApprove method which supports a Context parameter
-func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceApproveOptions *ForceApproveOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceApproveOptions *ForceApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(forceApproveOptions, "forceApproveOptions cannot be nil")
 	if err != nil {
 		return
@@ -856,7 +856,7 @@ func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceAppr
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigPrototypeGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
 		if err != nil {
 			return
 		}
@@ -868,12 +868,12 @@ func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceAppr
 
 // Approve : Approve and merge a configuration draft
 // Approve and merge configuration edits to the main configuration.
-func (project *ProjectV1) Approve(approveOptions *ApproveOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) Approve(approveOptions *ApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	return project.ApproveWithContext(context.Background(), approveOptions)
 }
 
 // ApproveWithContext is an alternate form of the Approve method which supports a Context parameter
-func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions *ApproveOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions *ApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(approveOptions, "approveOptions cannot be nil")
 	if err != nil {
 		return
@@ -927,7 +927,7 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigPrototypeGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
 		if err != nil {
 			return
 		}
@@ -940,12 +940,12 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 // ValidateConfig : Run a validation check
 // Run a validation check on a given configuration in project. The check includes creating or updating the associated
 // schematics workspace with a plan job, running the CRA scans, and cost estimatation.
-func (project *ProjectV1) ValidateConfig(validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ValidateConfig(validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	return project.ValidateConfigWithContext(context.Background(), validateConfigOptions)
 }
 
 // ValidateConfigWithContext is an alternate form of the ValidateConfig method which supports a Context parameter
-func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(validateConfigOptions, "validateConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -992,7 +992,7 @@ func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validat
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigPrototypeGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
 		if err != nil {
 			return
 		}
@@ -1005,12 +1005,12 @@ func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validat
 // InstallConfig : Deploy a configuration
 // Deploy a project's configuration. It's an asynchronous operation that can be tracked using the get project
 // configuration API with full metadata.
-func (project *ProjectV1) InstallConfig(installConfigOptions *InstallConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) InstallConfig(installConfigOptions *InstallConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	return project.InstallConfigWithContext(context.Background(), installConfigOptions)
 }
 
 // InstallConfigWithContext is an alternate form of the InstallConfig method which supports a Context parameter
-func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installConfigOptions *InstallConfigOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installConfigOptions *InstallConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(installConfigOptions, "installConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -1054,7 +1054,7 @@ func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installC
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigPrototypeGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
 		if err != nil {
 			return
 		}
@@ -1238,12 +1238,12 @@ func (project *ProjectV1) ListConfigVersionsWithContext(ctx context.Context, lis
 
 // GetConfigVersion : Get a specific version of a project configuration
 // Returns a specific version of a project configuration in a specific project.
-func (project *ProjectV1) GetConfigVersion(getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetConfigVersion(getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	return project.GetConfigVersionWithContext(context.Background(), getConfigVersionOptions)
 }
 
 // GetConfigVersionWithContext is an alternate form of the GetConfigVersion method which supports a Context parameter
-func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigPrototypeGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getConfigVersionOptions, "getConfigVersionOptions cannot be nil")
 	if err != nil {
 		return
@@ -1288,7 +1288,7 @@ func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getCo
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigPrototypeGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
 		if err != nil {
 			return
 		}
@@ -2664,6 +2664,290 @@ func UnmarshalProjectConfigAuthTrustedProfile(m map[string]json.RawMessage, resu
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "target_iam_id", &obj.TargetIamID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigCanonicalGraphFragment : ProjectConfigCanonicalGraphFragment struct
+type ProjectConfigCanonicalGraphFragment struct {
+	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
+	ID *string `json:"id,omitempty"`
+
+	// The unique ID.
+	ProjectID *string `json:"project_id,omitempty"`
+
+	// The version of the configuration.
+	Version *int64 `json:"version,omitempty"`
+
+	// The flag that indicates whether the version of the configuration is draft, or active.
+	IsDraft *bool `json:"is_draft,omitempty"`
+
+	// The needs attention state of a configuration.
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
+
+	// The state of the configuration.
+	State *string `json:"state,omitempty"`
+
+	// The flag that indicates whether a configuration update is available.
+	UpdateAvailable *bool `json:"update_available,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
+
+	// The last approved metadata of the configuration.
+	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
+
+	Definition *ProjectConfigCanonicalGraphFragmentDefinition `json:"definition,omitempty"`
+
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The input variables for the configuration definition.
+	Input *InputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	// Settings are only available if they were specified when the configuration was initially created.
+	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type,omitempty"`
+
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+}
+
+// Constants associated with the ProjectConfigCanonicalGraphFragment.State property.
+// The state of the configuration.
+const (
+	ProjectConfigCanonicalGraphFragment_State_Approved = "approved"
+	ProjectConfigCanonicalGraphFragment_State_Deleted = "deleted"
+	ProjectConfigCanonicalGraphFragment_State_Deleting = "deleting"
+	ProjectConfigCanonicalGraphFragment_State_DeletingFailed = "deleting_failed"
+	ProjectConfigCanonicalGraphFragment_State_Discarded = "discarded"
+	ProjectConfigCanonicalGraphFragment_State_Draft = "draft"
+	ProjectConfigCanonicalGraphFragment_State_Installed = "installed"
+	ProjectConfigCanonicalGraphFragment_State_InstalledFailed = "installed_failed"
+	ProjectConfigCanonicalGraphFragment_State_Installing = "installing"
+	ProjectConfigCanonicalGraphFragment_State_Superceded = "superceded"
+	ProjectConfigCanonicalGraphFragment_State_Uninstalling = "uninstalling"
+	ProjectConfigCanonicalGraphFragment_State_UninstallingFailed = "uninstalling_failed"
+	ProjectConfigCanonicalGraphFragment_State_Validated = "validated"
+	ProjectConfigCanonicalGraphFragment_State_Validating = "validating"
+	ProjectConfigCanonicalGraphFragment_State_ValidatingFailed = "validating_failed"
+)
+
+// Constants associated with the ProjectConfigCanonicalGraphFragment.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigCanonicalGraphFragment_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigCanonicalGraphFragment_Type_TerraformTemplate = "terraform_template"
+)
+
+// UnmarshalProjectConfigCanonicalGraphFragment unmarshals an instance of ProjectConfigCanonicalGraphFragment from the specified map of raw messages.
+func UnmarshalProjectConfigCanonicalGraphFragment(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigCanonicalGraphFragment)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "last_approved", &obj.LastApproved, UnmarshalProjectConfigMetadataLastApproved)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigCanonicalGraphFragmentDefinition)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigCanonicalGraphFragmentDefinition : ProjectConfigCanonicalGraphFragmentDefinition struct
+type ProjectConfigCanonicalGraphFragmentDefinition struct {
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The input variables for the configuration definition.
+	Input *InputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	// Settings are only available if they were specified when the configuration was initially created.
+	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type,omitempty"`
+
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+}
+
+// Constants associated with the ProjectConfigCanonicalGraphFragmentDefinition.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigCanonicalGraphFragmentDefinition_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigCanonicalGraphFragmentDefinition_Type_TerraformTemplate = "terraform_template"
+)
+
+// UnmarshalProjectConfigCanonicalGraphFragmentDefinition unmarshals an instance of ProjectConfigCanonicalGraphFragmentDefinition from the specified map of raw messages.
+func UnmarshalProjectConfigCanonicalGraphFragmentDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigCanonicalGraphFragmentDefinition)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
 	if err != nil {
 		return
 	}
