@@ -2954,15 +2954,15 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 	})
-	Describe(`CheckConfig(checkConfigOptions *CheckConfigOptions) - Operation response error`, func() {
-		checkConfigPath := "/v1/projects/testString/configs/testString/check"
+	Describe(`ValidateConfig(validateConfigOptions *ValidateConfigOptions) - Operation response error`, func() {
+		validateConfigPath := "/v1/projects/testString/configs/testString/validate"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(checkConfigPath))
+					Expect(req.URL.EscapedPath()).To(Equal(validateConfigPath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
 					Expect(req.Header["X-Auth-Refresh-Token"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
@@ -2971,7 +2971,7 @@ var _ = Describe(`ProjectV1`, func() {
 					fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
-			It(`Invoke CheckConfig with error: Operation response processing error`, func() {
+			It(`Invoke ValidateConfig with error: Operation response processing error`, func() {
 				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -2979,21 +2979,21 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the CheckConfigOptions model
-				checkConfigOptionsModel := new(projectv1.CheckConfigOptions)
-				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				checkConfigOptionsModel.ID = core.StringPtr("testString")
-				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the ValidateConfigOptions model
+				validateConfigOptionsModel := new(projectv1.ValidateConfigOptions)
+				validateConfigOptionsModel.ProjectID = core.StringPtr("testString")
+				validateConfigOptionsModel.ID = core.StringPtr("testString")
+				validateConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
+				validateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := projectService.CheckConfig(checkConfigOptionsModel)
+				result, response, operationErr := projectService.ValidateConfig(validateConfigOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
 				projectService.EnableRetries(0, 0)
-				result, response, operationErr = projectService.CheckConfig(checkConfigOptionsModel)
+				result, response, operationErr = projectService.ValidateConfig(validateConfigOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -3003,15 +3003,15 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 	})
-	Describe(`CheckConfig(checkConfigOptions *CheckConfigOptions)`, func() {
-		checkConfigPath := "/v1/projects/testString/configs/testString/check"
+	Describe(`ValidateConfig(validateConfigOptions *ValidateConfigOptions)`, func() {
+		validateConfigPath := "/v1/projects/testString/configs/testString/validate"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(checkConfigPath))
+					Expect(req.URL.EscapedPath()).To(Equal(validateConfigPath))
 					Expect(req.Method).To(Equal("POST"))
 
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
@@ -3025,7 +3025,7 @@ var _ = Describe(`ProjectV1`, func() {
 					fmt.Fprintf(res, "%s", `{}`)
 				}))
 			})
-			It(`Invoke CheckConfig successfully with retries`, func() {
+			It(`Invoke ValidateConfig successfully with retries`, func() {
 				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -3034,23 +3034,23 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
-				// Construct an instance of the CheckConfigOptions model
-				checkConfigOptionsModel := new(projectv1.CheckConfigOptions)
-				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				checkConfigOptionsModel.ID = core.StringPtr("testString")
-				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the ValidateConfigOptions model
+				validateConfigOptionsModel := new(projectv1.ValidateConfigOptions)
+				validateConfigOptionsModel.ProjectID = core.StringPtr("testString")
+				validateConfigOptionsModel.ID = core.StringPtr("testString")
+				validateConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
+				validateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := projectService.CheckConfigWithContext(ctx, checkConfigOptionsModel)
+				_, _, operationErr := projectService.ValidateConfigWithContext(ctx, validateConfigOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
 				projectService.DisableRetries()
-				result, response, operationErr := projectService.CheckConfig(checkConfigOptionsModel)
+				result, response, operationErr := projectService.ValidateConfig(validateConfigOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -3058,7 +3058,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = projectService.CheckConfigWithContext(ctx, checkConfigOptionsModel)
+				_, _, operationErr = projectService.ValidateConfigWithContext(ctx, validateConfigOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -3072,7 +3072,7 @@ var _ = Describe(`ProjectV1`, func() {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(checkConfigPath))
+					Expect(req.URL.EscapedPath()).To(Equal(validateConfigPath))
 					Expect(req.Method).To(Equal("POST"))
 
 					Expect(req.Header["X-Auth-Refresh-Token"]).ToNot(BeNil())
@@ -3083,7 +3083,7 @@ var _ = Describe(`ProjectV1`, func() {
 					fmt.Fprintf(res, "%s", `{}`)
 				}))
 			})
-			It(`Invoke CheckConfig successfully`, func() {
+			It(`Invoke ValidateConfig successfully`, func() {
 				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -3092,26 +3092,26 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := projectService.CheckConfig(nil)
+				result, response, operationErr := projectService.ValidateConfig(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the CheckConfigOptions model
-				checkConfigOptionsModel := new(projectv1.CheckConfigOptions)
-				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				checkConfigOptionsModel.ID = core.StringPtr("testString")
-				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the ValidateConfigOptions model
+				validateConfigOptionsModel := new(projectv1.ValidateConfigOptions)
+				validateConfigOptionsModel.ProjectID = core.StringPtr("testString")
+				validateConfigOptionsModel.ID = core.StringPtr("testString")
+				validateConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
+				validateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = projectService.CheckConfig(checkConfigOptionsModel)
+				result, response, operationErr = projectService.ValidateConfig(validateConfigOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
-			It(`Invoke CheckConfig with error: Operation validation and request error`, func() {
+			It(`Invoke ValidateConfig with error: Operation validation and request error`, func() {
 				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -3119,24 +3119,24 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the CheckConfigOptions model
-				checkConfigOptionsModel := new(projectv1.CheckConfigOptions)
-				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				checkConfigOptionsModel.ID = core.StringPtr("testString")
-				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the ValidateConfigOptions model
+				validateConfigOptionsModel := new(projectv1.ValidateConfigOptions)
+				validateConfigOptionsModel.ProjectID = core.StringPtr("testString")
+				validateConfigOptionsModel.ID = core.StringPtr("testString")
+				validateConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
+				validateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := projectService.CheckConfig(checkConfigOptionsModel)
+				result, response, operationErr := projectService.ValidateConfig(validateConfigOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
-				// Construct a second instance of the CheckConfigOptions model with no property values
-				checkConfigOptionsModelNew := new(projectv1.CheckConfigOptions)
+				// Construct a second instance of the ValidateConfigOptions model with no property values
+				validateConfigOptionsModelNew := new(projectv1.ValidateConfigOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = projectService.CheckConfig(checkConfigOptionsModelNew)
+				result, response, operationErr = projectService.ValidateConfig(validateConfigOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -3154,7 +3154,7 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(202)
 				}))
 			})
-			It(`Invoke CheckConfig successfully`, func() {
+			It(`Invoke ValidateConfig successfully`, func() {
 				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -3162,15 +3162,15 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
-				// Construct an instance of the CheckConfigOptions model
-				checkConfigOptionsModel := new(projectv1.CheckConfigOptions)
-				checkConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				checkConfigOptionsModel.ID = core.StringPtr("testString")
-				checkConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
-				checkConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the ValidateConfigOptions model
+				validateConfigOptionsModel := new(projectv1.ValidateConfigOptions)
+				validateConfigOptionsModel.ProjectID = core.StringPtr("testString")
+				validateConfigOptionsModel.ID = core.StringPtr("testString")
+				validateConfigOptionsModel.XAuthRefreshToken = core.StringPtr("testString")
+				validateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := projectService.CheckConfig(checkConfigOptionsModel)
+				result, response, operationErr := projectService.ValidateConfig(validateConfigOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -4368,21 +4368,6 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(approveOptionsModel.Comment).To(Equal(core.StringPtr("Approving the changes")))
 				Expect(approveOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
-			It(`Invoke NewCheckConfigOptions successfully`, func() {
-				// Construct an instance of the CheckConfigOptions model
-				projectID := "testString"
-				id := "testString"
-				checkConfigOptionsModel := projectService.NewCheckConfigOptions(projectID, id)
-				checkConfigOptionsModel.SetProjectID("testString")
-				checkConfigOptionsModel.SetID("testString")
-				checkConfigOptionsModel.SetXAuthRefreshToken("testString")
-				checkConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(checkConfigOptionsModel).ToNot(BeNil())
-				Expect(checkConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(checkConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(checkConfigOptionsModel.XAuthRefreshToken).To(Equal(core.StringPtr("testString")))
-				Expect(checkConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
 			It(`Invoke NewCreateConfigOptions successfully`, func() {
 				// Construct an instance of the ProjectConfigPrototypeDefinitionGraphFragment model
 				projectConfigPrototypeDefinitionGraphFragmentModel := new(projectv1.ProjectConfigPrototypeDefinitionGraphFragment)
@@ -4663,6 +4648,21 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(updateProjectOptionsModel.Definition).To(Equal(projectPatchDefinitionPropModel))
 				Expect(updateProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewValidateConfigOptions successfully`, func() {
+				// Construct an instance of the ValidateConfigOptions model
+				projectID := "testString"
+				id := "testString"
+				validateConfigOptionsModel := projectService.NewValidateConfigOptions(projectID, id)
+				validateConfigOptionsModel.SetProjectID("testString")
+				validateConfigOptionsModel.SetID("testString")
+				validateConfigOptionsModel.SetXAuthRefreshToken("testString")
+				validateConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(validateConfigOptionsModel).ToNot(BeNil())
+				Expect(validateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(validateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(validateConfigOptionsModel.XAuthRefreshToken).To(Equal(core.StringPtr("testString")))
+				Expect(validateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 		})
 	})

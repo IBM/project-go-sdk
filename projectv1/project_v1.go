@@ -922,48 +922,48 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 	return
 }
 
-// CheckConfig : Run a validation check
+// ValidateConfig : Run a validation check
 // Run a validation check on a given configuration in project. The check includes creating or updating the associated
 // schematics workspace with a plan job, running the CRA scans, and cost estimatation.
-func (project *ProjectV1) CheckConfig(checkConfigOptions *CheckConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
-	return project.CheckConfigWithContext(context.Background(), checkConfigOptions)
+func (project *ProjectV1) ValidateConfig(validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+	return project.ValidateConfigWithContext(context.Background(), validateConfigOptions)
 }
 
-// CheckConfigWithContext is an alternate form of the CheckConfig method which supports a Context parameter
-func (project *ProjectV1) CheckConfigWithContext(ctx context.Context, checkConfigOptions *CheckConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(checkConfigOptions, "checkConfigOptions cannot be nil")
+// ValidateConfigWithContext is an alternate form of the ValidateConfig method which supports a Context parameter
+func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(validateConfigOptions, "validateConfigOptions cannot be nil")
 	if err != nil {
 		return
 	}
-	err = core.ValidateStruct(checkConfigOptions, "checkConfigOptions")
+	err = core.ValidateStruct(validateConfigOptions, "validateConfigOptions")
 	if err != nil {
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"project_id": *checkConfigOptions.ProjectID,
-		"id": *checkConfigOptions.ID,
+		"project_id": *validateConfigOptions.ProjectID,
+		"id": *validateConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/check`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/validate`, pathParamsMap)
 	if err != nil {
 		return
 	}
 
-	for headerName, headerValue := range checkConfigOptions.Headers {
+	for headerName, headerValue := range validateConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "CheckConfig")
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ValidateConfig")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if checkConfigOptions.XAuthRefreshToken != nil {
-		builder.AddHeader("X-Auth-Refresh-Token", fmt.Sprint(*checkConfigOptions.XAuthRefreshToken))
+	if validateConfigOptions.XAuthRefreshToken != nil {
+		builder.AddHeader("X-Auth-Refresh-Token", fmt.Sprint(*validateConfigOptions.XAuthRefreshToken))
 	}
 
 	request, err := builder.Build()
@@ -1390,53 +1390,6 @@ func (_options *ApproveOptions) SetComment(comment string) *ApproveOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *ApproveOptions) SetHeaders(param map[string]string) *ApproveOptions {
-	options.Headers = param
-	return options
-}
-
-// CheckConfigOptions : The CheckConfig options.
-type CheckConfigOptions struct {
-	// The unique project ID.
-	ProjectID *string `json:"project_id" validate:"required,ne="`
-
-	// The unique config ID.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// The IAM refresh token.
-	XAuthRefreshToken *string `json:"X-Auth-Refresh-Token,omitempty"`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewCheckConfigOptions : Instantiate CheckConfigOptions
-func (*ProjectV1) NewCheckConfigOptions(projectID string, id string) *CheckConfigOptions {
-	return &CheckConfigOptions{
-		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
-	}
-}
-
-// SetProjectID : Allow user to set ProjectID
-func (_options *CheckConfigOptions) SetProjectID(projectID string) *CheckConfigOptions {
-	_options.ProjectID = core.StringPtr(projectID)
-	return _options
-}
-
-// SetID : Allow user to set ID
-func (_options *CheckConfigOptions) SetID(id string) *CheckConfigOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetXAuthRefreshToken : Allow user to set XAuthRefreshToken
-func (_options *CheckConfigOptions) SetXAuthRefreshToken(xAuthRefreshToken string) *CheckConfigOptions {
-	_options.XAuthRefreshToken = core.StringPtr(xAuthRefreshToken)
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *CheckConfigOptions) SetHeaders(param map[string]string) *CheckConfigOptions {
 	options.Headers = param
 	return options
 }
@@ -2804,6 +2757,53 @@ func (_options *UpdateProjectOptions) SetDefinition(definition *ProjectPatchDefi
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateProjectOptions) SetHeaders(param map[string]string) *UpdateProjectOptions {
+	options.Headers = param
+	return options
+}
+
+// ValidateConfigOptions : The ValidateConfig options.
+type ValidateConfigOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique config ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The IAM refresh token.
+	XAuthRefreshToken *string `json:"X-Auth-Refresh-Token,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewValidateConfigOptions : Instantiate ValidateConfigOptions
+func (*ProjectV1) NewValidateConfigOptions(projectID string, id string) *ValidateConfigOptions {
+	return &ValidateConfigOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *ValidateConfigOptions) SetProjectID(projectID string) *ValidateConfigOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *ValidateConfigOptions) SetID(id string) *ValidateConfigOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetXAuthRefreshToken : Allow user to set XAuthRefreshToken
+func (_options *ValidateConfigOptions) SetXAuthRefreshToken(xAuthRefreshToken string) *ValidateConfigOptions {
+	_options.XAuthRefreshToken = core.StringPtr(xAuthRefreshToken)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ValidateConfigOptions) SetHeaders(param map[string]string) *ValidateConfigOptions {
 	options.Headers = param
 	return options
 }

@@ -314,18 +314,18 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`CheckConfig - Run a validation check`, func() {
+	Describe(`ValidateConfig - Run a validation check`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`CheckConfig(checkConfigOptions *CheckConfigOptions)`, func() {
-			checkConfigOptions := &projectv1.CheckConfigOptions{
+		It(`ValidateConfig(validateConfigOptions *ValidateConfigOptions)`, func() {
+			validateConfigOptions := &projectv1.ValidateConfigOptions{
 				ProjectID: core.StringPtr("testString"),
 				ID: core.StringPtr("testString"),
 				XAuthRefreshToken: core.StringPtr("testString"),
 			}
 
-			projectConfigCanonicalGraphFragment, response, err := projectService.CheckConfig(checkConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.ValidateConfig(validateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
 			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())

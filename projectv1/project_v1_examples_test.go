@@ -325,23 +325,23 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(projectConfigCanonicalGraphFragment).ToNot(BeNil())
 		})
-		It(`CheckConfig request example`, func() {
-			fmt.Println("\nCheckConfig() result:")
-			// begin-check_config
+		It(`ValidateConfig request example`, func() {
+			fmt.Println("\nValidateConfig() result:")
+			// begin-validate_config
 
-			checkConfigOptions := projectService.NewCheckConfigOptions(
+			validateConfigOptions := projectService.NewValidateConfigOptions(
 				"testString",
 				"testString",
 			)
 
-			projectConfigCanonicalGraphFragment, response, err := projectService.CheckConfig(checkConfigOptions)
+			projectConfigCanonicalGraphFragment, response, err := projectService.ValidateConfig(validateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
 			b, _ := json.MarshalIndent(projectConfigCanonicalGraphFragment, "", "  ")
 			fmt.Println(string(b))
 
-			// end-check_config
+			// end-validate_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
