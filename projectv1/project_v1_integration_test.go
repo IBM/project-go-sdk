@@ -155,12 +155,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
 			}
 
-			projectCanonical, response, err := projectService.CreateProject(createProjectOptions)
+			project, response, err := projectService.CreateProject(createProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectCanonical).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 
-			projectIdLink = *projectCanonical.ID
+			projectIdLink = *project.ID
 			fmt.Fprintf(GinkgoWriter, "Saved projectIdLink value: %v\n", projectIdLink)
 		})
 	})
@@ -217,12 +217,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Definition: projectConfigPrototypeDefinitionBlockModel,
 			}
 
-			projectConfigCanonical, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 
-			configIdLink = *projectConfigCanonical.ID
+			configIdLink = *projectConfig.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 	})
@@ -240,7 +240,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			listProjectsOptions.Start = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
-			var allResults []projectv1.ProjectCanonicalCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectCollectionMemberWithMetadata
 			for {
 				projectCollection, response, err := projectService.ListProjects(listProjectsOptions)
 				Expect(err).To(BeNil())
@@ -267,7 +267,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
 
-			var allResults []projectv1.ProjectCanonicalCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectCollectionMemberWithMetadata
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				Expect(err).To(BeNil())
@@ -298,10 +298,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &projectIdLink,
 			}
 
-			projectCanonical, response, err := projectService.GetProject(getProjectOptions)
+			project, response, err := projectService.GetProject(getProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectCanonical).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 	})
 
@@ -321,10 +321,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Definition: projectPrototypePatchDefinitionBlockModel,
 			}
 
-			projectCanonical, response, err := projectService.UpdateProject(updateProjectOptions)
+			project, response, err := projectService.UpdateProject(updateProjectOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectCanonical).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 	})
 
@@ -354,10 +354,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigCanonical, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -414,10 +414,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Definition: projectConfigPrototypePatchDefinitionBlockModel,
 			}
 
-			projectConfigCanonical, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -432,10 +432,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigCanonical, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfig, response, err := projectService.ForceApprove(forceApproveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -450,10 +450,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfigCanonical, response, err := projectService.Approve(approveOptions)
+			projectConfig, response, err := projectService.Approve(approveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -468,10 +468,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				XAuthRefreshToken: core.StringPtr("testString"),
 			}
 
-			projectConfigCanonical, response, err := projectService.ValidateConfig(validateConfigOptions)
+			projectConfig, response, err := projectService.ValidateConfig(validateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -485,10 +485,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfigCanonical, response, err := projectService.DeployConfig(deployConfigOptions)
+			projectConfig, response, err := projectService.DeployConfig(deployConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 
@@ -553,10 +553,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Version: core.Int64Ptr(int64(38)),
 			}
 
-			projectConfigCanonical, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
+			projectConfig, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCanonical).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 	})
 

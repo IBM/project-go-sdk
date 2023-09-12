@@ -951,7 +951,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(err).To(BeNil())
 				Expect(pager).ToNot(BeNil())
 
-				var allResults []projectv1.ProjectCanonicalCollectionMemberWithMetadata
+				var allResults []projectv1.ProjectCollectionMemberWithMetadata
 				for pager.HasNext() {
 					nextPage, err := pager.GetNext()
 					Expect(err).To(BeNil())
