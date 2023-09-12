@@ -164,12 +164,12 @@ func (project *ProjectV1) DisableRetries() {
 // CreateProject : Create a project
 // Create a new project and asynchronously setup the tools to manage it. Add a deployable architecture by customizing
 // the configuration. After the changes are validated and approved, deploy the resources that the project configures.
-func (project *ProjectV1) CreateProject(createProjectOptions *CreateProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) CreateProject(createProjectOptions *CreateProjectOptions) (result *ProjectCanonical, response *core.DetailedResponse, err error) {
 	return project.CreateProjectWithContext(context.Background(), createProjectOptions)
 }
 
 // CreateProjectWithContext is an alternate form of the CreateProject method which supports a Context parameter
-func (project *ProjectV1) CreateProjectWithContext(ctx context.Context, createProjectOptions *CreateProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) CreateProjectWithContext(ctx context.Context, createProjectOptions *CreateProjectOptions) (result *ProjectCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(createProjectOptions, "createProjectOptions cannot be nil")
 	if err != nil {
 		return
@@ -224,7 +224,7 @@ func (project *ProjectV1) CreateProjectWithContext(ctx context.Context, createPr
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProject)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectCanonical)
 		if err != nil {
 			return
 		}
@@ -295,12 +295,12 @@ func (project *ProjectV1) ListProjectsWithContext(ctx context.Context, listProje
 
 // GetProject : Get a project
 // Get information about a project.
-func (project *ProjectV1) GetProject(getProjectOptions *GetProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetProject(getProjectOptions *GetProjectOptions) (result *ProjectCanonical, response *core.DetailedResponse, err error) {
 	return project.GetProjectWithContext(context.Background(), getProjectOptions)
 }
 
 // GetProjectWithContext is an alternate form of the GetProject method which supports a Context parameter
-func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectOptions *GetProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectOptions *GetProjectOptions) (result *ProjectCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getProjectOptions, "getProjectOptions cannot be nil")
 	if err != nil {
 		return
@@ -343,7 +343,7 @@ func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectO
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProject)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectCanonical)
 		if err != nil {
 			return
 		}
@@ -355,12 +355,12 @@ func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectO
 
 // UpdateProject : Update a project
 // Update a project by the ID.
-func (project *ProjectV1) UpdateProject(updateProjectOptions *UpdateProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) UpdateProject(updateProjectOptions *UpdateProjectOptions) (result *ProjectCanonical, response *core.DetailedResponse, err error) {
 	return project.UpdateProjectWithContext(context.Background(), updateProjectOptions)
 }
 
 // UpdateProjectWithContext is an alternate form of the UpdateProject method which supports a Context parameter
-func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updateProjectOptions *UpdateProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updateProjectOptions *UpdateProjectOptions) (result *ProjectCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(updateProjectOptions, "updateProjectOptions cannot be nil")
 	if err != nil {
 		return
@@ -413,7 +413,7 @@ func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updatePr
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProject)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectCanonical)
 		if err != nil {
 			return
 		}
@@ -473,12 +473,12 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 
 // CreateConfig : Add a new configuration
 // Add a new configuration to a project.
-func (project *ProjectV1) CreateConfig(createConfigOptions *CreateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) CreateConfig(createConfigOptions *CreateConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	return project.CreateConfigWithContext(context.Background(), createConfigOptions)
 }
 
 // CreateConfigWithContext is an alternate form of the CreateConfig method which supports a Context parameter
-func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createConfigOptions *CreateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createConfigOptions *CreateConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(createConfigOptions, "createConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -531,7 +531,7 @@ func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createCon
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -603,12 +603,12 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 
 // GetConfig : Get a project configuration
 // Returns the specified project configuration in a specific project.
-func (project *ProjectV1) GetConfig(getConfigOptions *GetConfigOptions) (result *ProjectConfigGetResponse, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetConfig(getConfigOptions *GetConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	return project.GetConfigWithContext(context.Background(), getConfigOptions)
 }
 
 // GetConfigWithContext is an alternate form of the GetConfig method which supports a Context parameter
-func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOptions *GetConfigOptions) (result *ProjectConfigGetResponse, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOptions *GetConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getConfigOptions, "getConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -652,7 +652,7 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigGetResponse)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -664,12 +664,12 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 
 // UpdateConfig : Update a configuration
 // Update a configuration in a project by the ID.
-func (project *ProjectV1) UpdateConfig(updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) UpdateConfig(updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	return project.UpdateConfigWithContext(context.Background(), updateConfigOptions)
 }
 
 // UpdateConfigWithContext is an alternate form of the UpdateConfig method which supports a Context parameter
-func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateConfigOptions *UpdateConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(updateConfigOptions, "updateConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -723,7 +723,7 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -797,12 +797,12 @@ func (project *ProjectV1) DeleteConfigWithContext(ctx context.Context, deleteCon
 
 // ForceApprove : Force approve project configuration
 // Force approve configuration edits to the main configuration with an approving comment.
-func (project *ProjectV1) ForceApprove(forceApproveOptions *ForceApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ForceApprove(forceApproveOptions *ForceApproveOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	return project.ForceApproveWithContext(context.Background(), forceApproveOptions)
 }
 
 // ForceApproveWithContext is an alternate form of the ForceApprove method which supports a Context parameter
-func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceApproveOptions *ForceApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceApproveOptions *ForceApproveOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(forceApproveOptions, "forceApproveOptions cannot be nil")
 	if err != nil {
 		return
@@ -856,7 +856,7 @@ func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceAppr
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -868,12 +868,12 @@ func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceAppr
 
 // Approve : Approve and merge a configuration draft
 // Approve and merge configuration edits to the main configuration.
-func (project *ProjectV1) Approve(approveOptions *ApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) Approve(approveOptions *ApproveOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	return project.ApproveWithContext(context.Background(), approveOptions)
 }
 
 // ApproveWithContext is an alternate form of the Approve method which supports a Context parameter
-func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions *ApproveOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions *ApproveOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(approveOptions, "approveOptions cannot be nil")
 	if err != nil {
 		return
@@ -927,7 +927,7 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -940,12 +940,12 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 // ValidateConfig : Run a validation check
 // Run a validation check on a given configuration in project. The check includes creating or updating the associated
 // schematics workspace with a plan job, running the CRA scans, and cost estimatation.
-func (project *ProjectV1) ValidateConfig(validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ValidateConfig(validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	return project.ValidateConfigWithContext(context.Background(), validateConfigOptions)
 }
 
 // ValidateConfigWithContext is an alternate form of the ValidateConfig method which supports a Context parameter
-func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(validateConfigOptions, "validateConfigOptions cannot be nil")
 	if err != nil {
 		return
@@ -992,7 +992,7 @@ func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validat
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -1002,42 +1002,42 @@ func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validat
 	return
 }
 
-// InstallConfig : Deploy a configuration
+// DeployConfig : Deploy a configuration
 // Deploy a project's configuration. It's an asynchronous operation that can be tracked using the get project
 // configuration API with full metadata.
-func (project *ProjectV1) InstallConfig(installConfigOptions *InstallConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
-	return project.InstallConfigWithContext(context.Background(), installConfigOptions)
+func (project *ProjectV1) DeployConfig(deployConfigOptions *DeployConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
+	return project.DeployConfigWithContext(context.Background(), deployConfigOptions)
 }
 
-// InstallConfigWithContext is an alternate form of the InstallConfig method which supports a Context parameter
-func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installConfigOptions *InstallConfigOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(installConfigOptions, "installConfigOptions cannot be nil")
+// DeployConfigWithContext is an alternate form of the DeployConfig method which supports a Context parameter
+func (project *ProjectV1) DeployConfigWithContext(ctx context.Context, deployConfigOptions *DeployConfigOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deployConfigOptions, "deployConfigOptions cannot be nil")
 	if err != nil {
 		return
 	}
-	err = core.ValidateStruct(installConfigOptions, "installConfigOptions")
+	err = core.ValidateStruct(deployConfigOptions, "deployConfigOptions")
 	if err != nil {
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"project_id": *installConfigOptions.ProjectID,
-		"id": *installConfigOptions.ID,
+		"project_id": *deployConfigOptions.ProjectID,
+		"id": *deployConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/install`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/deploy`, pathParamsMap)
 	if err != nil {
 		return
 	}
 
-	for headerName, headerValue := range installConfigOptions.Headers {
+	for headerName, headerValue := range deployConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "InstallConfig")
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeployConfig")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -1054,7 +1054,7 @@ func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installC
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -1064,42 +1064,42 @@ func (project *ProjectV1) InstallConfigWithContext(ctx context.Context, installC
 	return
 }
 
-// UninstallConfig : Destroy configuration resources
+// UndeployConfig : Destroy configuration resources
 // Destroy a project's configuration resources. The operation destroys all the resources that are deployed with the
 // specific configuration. You can track it by using the get project configuration API with full metadata.
-func (project *ProjectV1) UninstallConfig(uninstallConfigOptions *UninstallConfigOptions) (response *core.DetailedResponse, err error) {
-	return project.UninstallConfigWithContext(context.Background(), uninstallConfigOptions)
+func (project *ProjectV1) UndeployConfig(undeployConfigOptions *UndeployConfigOptions) (response *core.DetailedResponse, err error) {
+	return project.UndeployConfigWithContext(context.Background(), undeployConfigOptions)
 }
 
-// UninstallConfigWithContext is an alternate form of the UninstallConfig method which supports a Context parameter
-func (project *ProjectV1) UninstallConfigWithContext(ctx context.Context, uninstallConfigOptions *UninstallConfigOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(uninstallConfigOptions, "uninstallConfigOptions cannot be nil")
+// UndeployConfigWithContext is an alternate form of the UndeployConfig method which supports a Context parameter
+func (project *ProjectV1) UndeployConfigWithContext(ctx context.Context, undeployConfigOptions *UndeployConfigOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(undeployConfigOptions, "undeployConfigOptions cannot be nil")
 	if err != nil {
 		return
 	}
-	err = core.ValidateStruct(uninstallConfigOptions, "uninstallConfigOptions")
+	err = core.ValidateStruct(undeployConfigOptions, "undeployConfigOptions")
 	if err != nil {
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"project_id": *uninstallConfigOptions.ProjectID,
-		"id": *uninstallConfigOptions.ID,
+		"project_id": *undeployConfigOptions.ProjectID,
+		"id": *undeployConfigOptions.ID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/uninstall`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/undeploy`, pathParamsMap)
 	if err != nil {
 		return
 	}
 
-	for headerName, headerValue := range uninstallConfigOptions.Headers {
+	for headerName, headerValue := range undeployConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "UninstallConfig")
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UndeployConfig")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -1238,12 +1238,12 @@ func (project *ProjectV1) ListConfigVersionsWithContext(ctx context.Context, lis
 
 // GetConfigVersion : Get a specific version of a project configuration
 // Returns a specific version of a project configuration in a specific project.
-func (project *ProjectV1) GetConfigVersion(getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetConfigVersion(getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	return project.GetConfigVersionWithContext(context.Background(), getConfigVersionOptions)
 }
 
 // GetConfigVersionWithContext is an alternate form of the GetConfigVersion method which supports a Context parameter
-func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigCanonicalGraphFragment, response *core.DetailedResponse, err error) {
+func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigCanonical, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(getConfigVersionOptions, "getConfigVersionOptions cannot be nil")
 	if err != nil {
 		return
@@ -1288,7 +1288,7 @@ func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getCo
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonicalGraphFragment)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectConfigCanonical)
 		if err != nil {
 			return
 		}
@@ -1361,89 +1361,6 @@ func (project *ProjectV1) DeleteConfigVersionWithContext(ctx context.Context, de
 	return
 }
 
-// ActionJobSummary : The summaries of jobs that were performed on the configuration.
-type ActionJobSummary struct {
-	// The summary of the plan jobs on the configuration.
-	PlanSummary map[string]interface{} `json:"plan_summary,omitempty"`
-
-	// The summary of the apply jobs on the configuration.
-	ApplySummary map[string]interface{} `json:"apply_summary,omitempty"`
-
-	// The summary of the destroy jobs on the configuration.
-	DestroySummary map[string]interface{} `json:"destroy_summary,omitempty"`
-
-	// The message summaries of jobs on the configuration.
-	MessageSummary map[string]interface{} `json:"message_summary,omitempty"`
-
-	// The messages of plan jobs on the configuration.
-	PlanMessages map[string]interface{} `json:"plan_messages,omitempty"`
-
-	// The messages of apply jobs on the configuration.
-	ApplyMessages map[string]interface{} `json:"apply_messages,omitempty"`
-
-	// The messages of destroy jobs on the configuration.
-	DestroyMessages map[string]interface{} `json:"destroy_messages,omitempty"`
-}
-
-// UnmarshalActionJobSummary unmarshals an instance of ActionJobSummary from the specified map of raw messages.
-func UnmarshalActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ActionJobSummary)
-	err = core.UnmarshalPrimitive(m, "plan_summary", &obj.PlanSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "apply_summary", &obj.ApplySummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "destroy_summary", &obj.DestroySummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "message_summary", &obj.MessageSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "plan_messages", &obj.PlanMessages)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "apply_messages", &obj.ApplyMessages)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "destroy_messages", &obj.DestroyMessages)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ActionJobWithIdAndSummary : A brief summary of an action.
-type ActionJobWithIdAndSummary struct {
-	// The unique ID.
-	ID *string `json:"id,omitempty"`
-
-	// The summaries of jobs that were performed on the configuration.
-	Summary *ActionJobSummary `json:"summary,omitempty"`
-}
-
-// UnmarshalActionJobWithIdAndSummary unmarshals an instance of ActionJobWithIdAndSummary from the specified map of raw messages.
-func UnmarshalActionJobWithIdAndSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ActionJobWithIdAndSummary)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalActionJobSummary)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ApproveOptions : The Approve options.
 type ApproveOptions struct {
 	// The unique project ID.
@@ -1497,7 +1414,8 @@ type CreateConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	Definition *ProjectConfigPrototypeGraphFragmentDefinition `json:"definition,omitempty"`
+	// The name and description of a project configuration.
+	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -1517,7 +1435,7 @@ func (_options *CreateConfigOptions) SetProjectID(projectID string) *CreateConfi
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *CreateConfigOptions) SetDefinition(definition *ProjectConfigPrototypeGraphFragmentDefinition) *CreateConfigOptions {
+func (_options *CreateConfigOptions) SetDefinition(definition *ProjectConfigPrototypeDefinitionBlock) *CreateConfigOptions {
 	_options.Definition = definition
 	return _options
 }
@@ -1537,11 +1455,11 @@ type CreateProjectOptions struct {
 	Location *string `json:"location" validate:"required"`
 
 	// The definition of the project.
-	Definition *ProjectPrototypeDefinitionProp `json:"definition,omitempty"`
+	Definition *ProjectPrototypeDefinition `json:"definition,omitempty"`
 
-	// The project configurations. If configurations are not included, the project resource is persisted without this
-	// property.
-	Configs []ProjectConfigPrototypeGraphFragment `json:"configs,omitempty"`
+	// The project configurations. These configurations are only included in the response of creating a project if a
+	// configs array is specified in the request payload.
+	Configs []ProjectConfigPrototype `json:"configs,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -1568,13 +1486,13 @@ func (_options *CreateProjectOptions) SetLocation(location string) *CreateProjec
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *CreateProjectOptions) SetDefinition(definition *ProjectPrototypeDefinitionProp) *CreateProjectOptions {
+func (_options *CreateProjectOptions) SetDefinition(definition *ProjectPrototypeDefinition) *CreateProjectOptions {
 	_options.Definition = definition
 	return _options
 }
 
 // SetConfigs : Allow user to set Configs
-func (_options *CreateProjectOptions) SetConfigs(configs []ProjectConfigPrototypeGraphFragment) *CreateProjectOptions {
+func (_options *CreateProjectOptions) SetConfigs(configs []ProjectConfigPrototype) *CreateProjectOptions {
 	_options.Configs = configs
 	return _options
 }
@@ -1733,6 +1651,44 @@ func (_options *DeleteProjectOptions) SetID(id string) *DeleteProjectOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *DeleteProjectOptions) SetHeaders(param map[string]string) *DeleteProjectOptions {
+	options.Headers = param
+	return options
+}
+
+// DeployConfigOptions : The DeployConfig options.
+type DeployConfigOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique config ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewDeployConfigOptions : Instantiate DeployConfigOptions
+func (*ProjectV1) NewDeployConfigOptions(projectID string, id string) *DeployConfigOptions {
+	return &DeployConfigOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *DeployConfigOptions) SetProjectID(projectID string) *DeployConfigOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *DeployConfigOptions) SetID(id string) *DeployConfigOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeployConfigOptions) SetHeaders(param map[string]string) *DeployConfigOptions {
 	options.Headers = param
 	return options
 }
@@ -1960,166 +1916,6 @@ func UnmarshalInputVariable(m map[string]json.RawMessage, result interface{}) (e
 	return
 }
 
-// InstallConfigOptions : The InstallConfig options.
-type InstallConfigOptions struct {
-	// The unique project ID.
-	ProjectID *string `json:"project_id" validate:"required,ne="`
-
-	// The unique config ID.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewInstallConfigOptions : Instantiate InstallConfigOptions
-func (*ProjectV1) NewInstallConfigOptions(projectID string, id string) *InstallConfigOptions {
-	return &InstallConfigOptions{
-		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
-	}
-}
-
-// SetProjectID : Allow user to set ProjectID
-func (_options *InstallConfigOptions) SetProjectID(projectID string) *InstallConfigOptions {
-	_options.ProjectID = core.StringPtr(projectID)
-	return _options
-}
-
-// SetID : Allow user to set ID
-func (_options *InstallConfigOptions) SetID(id string) *InstallConfigOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *InstallConfigOptions) SetHeaders(param map[string]string) *InstallConfigOptions {
-	options.Headers = param
-	return options
-}
-
-// LastActionWithHrefAndResult : The action job performed on the project configuration.
-type LastActionWithHrefAndResult struct {
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
-
-	// The result of the last action.
-	Result *string `json:"result,omitempty"`
-}
-
-// Constants associated with the LastActionWithHrefAndResult.Result property.
-// The result of the last action.
-const (
-	LastActionWithHrefAndResult_Result_Failed = "failed"
-	LastActionWithHrefAndResult_Result_Passed = "passed"
-)
-
-// UnmarshalLastActionWithHrefAndResult unmarshals an instance of LastActionWithHrefAndResult from the specified map of raw messages.
-func UnmarshalLastActionWithHrefAndResult(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(LastActionWithHrefAndResult)
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// LastActionWithSummary : The action job performed on the project configuration.
-type LastActionWithSummary struct {
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
-
-	// The result of the last action.
-	Result *string `json:"result,omitempty"`
-
-	// A brief summary of an action.
-	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
-}
-
-// Constants associated with the LastActionWithSummary.Result property.
-// The result of the last action.
-const (
-	LastActionWithSummary_Result_Failed = "failed"
-	LastActionWithSummary_Result_Passed = "passed"
-)
-
-// UnmarshalLastActionWithSummary unmarshals an instance of LastActionWithSummary from the specified map of raw messages.
-func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(LastActionWithSummary)
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// LastValidatedActionWithSummary : The action job performed on the project configuration.
-type LastValidatedActionWithSummary struct {
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
-
-	// The result of the last action.
-	Result *string `json:"result,omitempty"`
-
-	// A brief summary of an action.
-	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
-
-	// The cost estimate of the configuration.
-	// It only exists after the first configuration validation.
-	CostEstimate *ProjectConfigMetadataCostEstimate `json:"cost_estimate,omitempty"`
-
-	// The Code Risk Analyzer logs of the configuration.
-	CraLogs *ProjectConfigMetadataCraLogs `json:"cra_logs,omitempty"`
-}
-
-// Constants associated with the LastValidatedActionWithSummary.Result property.
-// The result of the last action.
-const (
-	LastValidatedActionWithSummary_Result_Failed = "failed"
-	LastValidatedActionWithSummary_Result_Passed = "passed"
-)
-
-// UnmarshalLastValidatedActionWithSummary unmarshals an instance of LastValidatedActionWithSummary from the specified map of raw messages.
-func UnmarshalLastValidatedActionWithSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(LastValidatedActionWithSummary)
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "cost_estimate", &obj.CostEstimate, UnmarshalProjectConfigMetadataCostEstimate)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "cra_logs", &obj.CraLogs, UnmarshalProjectConfigMetadataCraLogs)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ListConfigResourcesOptions : The ListConfigResources options.
 type ListConfigResourcesOptions struct {
 	// The unique project ID.
@@ -2309,14 +2105,14 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
-// Project : The project returned in the response body.
-type Project struct {
+// ProjectCanonical : The canonical schema of a project.
+type ProjectCanonical struct {
 	// An IBM Cloud resource name, which uniquely identifies a resource.
-	Crn *string `json:"crn" validate:"required"`
+	Crn *string `json:"crn,omitempty"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
 
 	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
 	// could be empty is returned.
@@ -2330,36 +2126,36 @@ type Project struct {
 	ID *string `json:"id" validate:"required"`
 
 	// The IBM Cloud location where a resource is deployed.
-	Location *string `json:"location" validate:"required"`
+	Location *string `json:"location,omitempty"`
 
 	// The resource group where the project's data and tools are created.
-	ResourceGroup *string `json:"resource_group" validate:"required"`
+	ResourceGroup *string `json:"resource_group,omitempty"`
 
 	// The project status value.
-	State *string `json:"state" validate:"required"`
+	State *string `json:"state,omitempty"`
 
 	// The CRN of the event notifications instance if one is connected to this project.
 	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
 
-	// The definition of the project.
-	Definition *ProjectDefinitionResponse `json:"definition,omitempty"`
-
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
-	Configs []ProjectConfigCollectionMember `json:"configs,omitempty"`
+	Configs []ProjectConfigCanonicalCollectionMember `json:"configs,omitempty"`
+
+	// The definition of the project.
+	Definition *ProjectCanonicalDefinition `json:"definition" validate:"required"`
 }
 
-// Constants associated with the Project.State property.
+// Constants associated with the ProjectCanonical.State property.
 // The project status value.
 const (
-	Project_State_Deleting = "deleting"
-	Project_State_DeletingFailed = "deleting_failed"
-	Project_State_Ready = "ready"
+	ProjectCanonical_State_Deleting = "deleting"
+	ProjectCanonical_State_DeletingFailed = "deleting_failed"
+	ProjectCanonical_State_Ready = "ready"
 )
 
-// UnmarshalProject unmarshals an instance of Project from the specified map of raw messages.
-func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(Project)
+// UnmarshalProjectCanonical unmarshals an instance of ProjectCanonical from the specified map of raw messages.
+func UnmarshalProjectCanonical(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectCanonical)
 	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
 	if err != nil {
 		return
@@ -2396,11 +2192,134 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionResponse)
+	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCanonicalCollectionMember)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCollectionMember)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectCanonicalDefinition)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectCanonicalCollectionMemberWithMetadata : ProjectCanonicalCollectionMemberWithMetadata struct
+type ProjectCanonicalCollectionMemberWithMetadata struct {
+	// An IBM Cloud resource name, which uniquely identifies a resource.
+	Crn *string `json:"crn,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+
+	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
+	// could be empty is returned.
+	CumulativeNeedsAttentionView []CumulativeNeedsAttention `json:"cumulative_needs_attention_view,omitempty"`
+
+	// True indicates that the fetch of the needs attention items failed. It only exists if there was an error while
+	// retrieving the cumulative needs attention view.
+	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
+
+	// The unique ID.
+	ID *string `json:"id" validate:"required"`
+
+	// The IBM Cloud location where a resource is deployed.
+	Location *string `json:"location,omitempty"`
+
+	// The resource group where the project's data and tools are created.
+	ResourceGroup *string `json:"resource_group,omitempty"`
+
+	// The project status value.
+	State *string `json:"state,omitempty"`
+
+	// The CRN of the event notifications instance if one is connected to this project.
+	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
+
+	// The definition of the project.
+	Definition *ProjectCanonicalDefinition `json:"definition" validate:"required"`
+}
+
+// Constants associated with the ProjectCanonicalCollectionMemberWithMetadata.State property.
+// The project status value.
+const (
+	ProjectCanonicalCollectionMemberWithMetadata_State_Deleting = "deleting"
+	ProjectCanonicalCollectionMemberWithMetadata_State_DeletingFailed = "deleting_failed"
+	ProjectCanonicalCollectionMemberWithMetadata_State_Ready = "ready"
+)
+
+// UnmarshalProjectCanonicalCollectionMemberWithMetadata unmarshals an instance of ProjectCanonicalCollectionMemberWithMetadata from the specified map of raw messages.
+func UnmarshalProjectCanonicalCollectionMemberWithMetadata(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectCanonicalCollectionMemberWithMetadata)
+	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "cumulative_needs_attention_view", &obj.CumulativeNeedsAttentionView, UnmarshalCumulativeNeedsAttention)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "cumulative_needs_attention_view_error", &obj.CumulativeNeedsAttentionViewError)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "location", &obj.Location)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_group", &obj.ResourceGroup)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "event_notifications_crn", &obj.EventNotificationsCrn)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectCanonicalDefinition)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectCanonicalDefinition : The definition of the project.
+type ProjectCanonicalDefinition struct {
+	// The name of the project.
+	Name *string `json:"name" validate:"required"`
+
+	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
+	// a project without providing a description.
+	Description *string `json:"description,omitempty"`
+
+	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
+	DestroyOnDelete *bool `json:"destroy_on_delete" validate:"required"`
+}
+
+// UnmarshalProjectCanonicalDefinition unmarshals an instance of ProjectCanonicalDefinition from the specified map of raw messages.
+func UnmarshalProjectCanonicalDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectCanonicalDefinition)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
 	if err != nil {
 		return
 	}
@@ -2429,7 +2348,7 @@ type ProjectCollection struct {
 	Next *PaginationLink `json:"next,omitempty"`
 
 	// An array of projects.
-	Projects []ProjectCollectionMemberWithMetadata `json:"projects,omitempty"`
+	Projects []ProjectCanonicalCollectionMemberWithMetadata `json:"projects,omitempty"`
 }
 
 // UnmarshalProjectCollection unmarshals an instance of ProjectCollection from the specified map of raw messages.
@@ -2459,7 +2378,7 @@ func UnmarshalProjectCollection(m map[string]json.RawMessage, result interface{}
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "projects", &obj.Projects, UnmarshalProjectCollectionMemberWithMetadata)
+	err = core.UnmarshalModel(m, "projects", &obj.Projects, UnmarshalProjectCanonicalCollectionMemberWithMetadata)
 	if err != nil {
 		return
 	}
@@ -2477,97 +2396,6 @@ func (resp *ProjectCollection) GetNextStart() (*string, error) {
 		return nil, err
 	}
 	return start, nil
-}
-
-// ProjectCollectionMemberWithMetadata : The metadata of the project.
-type ProjectCollectionMemberWithMetadata struct {
-	// An IBM Cloud resource name, which uniquely identifies a resource.
-	Crn *string `json:"crn" validate:"required"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
-
-	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
-	// could be empty is returned.
-	CumulativeNeedsAttentionView []CumulativeNeedsAttention `json:"cumulative_needs_attention_view,omitempty"`
-
-	// True indicates that the fetch of the needs attention items failed. It only exists if there was an error while
-	// retrieving the cumulative needs attention view.
-	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
-
-	// The unique ID.
-	ID *string `json:"id,omitempty"`
-
-	// The IBM Cloud location where a resource is deployed.
-	Location *string `json:"location" validate:"required"`
-
-	// The resource group where the project's data and tools are created.
-	ResourceGroup *string `json:"resource_group" validate:"required"`
-
-	// The project status value.
-	State *string `json:"state" validate:"required"`
-
-	// The CRN of the event notifications instance if one is connected to this project.
-	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
-
-	// The definition of the project.
-	Definition *ProjectDefinitionResponse `json:"definition,omitempty"`
-}
-
-// Constants associated with the ProjectCollectionMemberWithMetadata.State property.
-// The project status value.
-const (
-	ProjectCollectionMemberWithMetadata_State_Deleting = "deleting"
-	ProjectCollectionMemberWithMetadata_State_DeletingFailed = "deleting_failed"
-	ProjectCollectionMemberWithMetadata_State_Ready = "ready"
-)
-
-// UnmarshalProjectCollectionMemberWithMetadata unmarshals an instance of ProjectCollectionMemberWithMetadata from the specified map of raw messages.
-func UnmarshalProjectCollectionMemberWithMetadata(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectCollectionMemberWithMetadata)
-	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "cumulative_needs_attention_view", &obj.CumulativeNeedsAttentionView, UnmarshalCumulativeNeedsAttention)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "cumulative_needs_attention_view_error", &obj.CumulativeNeedsAttentionViewError)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "location", &obj.Location)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "resource_group", &obj.ResourceGroup)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "event_notifications_crn", &obj.EventNotificationsCrn)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionResponse)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
 }
 
 // ProjectComplianceProfile : The profile required for compliance.
@@ -2671,628 +2499,8 @@ func UnmarshalProjectConfigAuthTrustedProfile(m map[string]json.RawMessage, resu
 	return
 }
 
-// ProjectConfigCanonicalGraphFragment : ProjectConfigCanonicalGraphFragment struct
-type ProjectConfigCanonicalGraphFragment struct {
-	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
-	ID *string `json:"id,omitempty"`
-
-	// The unique ID.
-	ProjectID *string `json:"project_id,omitempty"`
-
-	// The version of the configuration.
-	Version *int64 `json:"version,omitempty"`
-
-	// The flag that indicates whether the version of the configuration is draft, or active.
-	IsDraft *bool `json:"is_draft,omitempty"`
-
-	// The needs attention state of a configuration.
-	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
-
-	// The state of the configuration.
-	State *string `json:"state,omitempty"`
-
-	// The flag that indicates whether a configuration update is available.
-	UpdateAvailable *bool `json:"update_available,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
-
-	// The last approved metadata of the configuration.
-	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
-
-	Definition *ProjectConfigCanonicalGraphFragmentDefinition `json:"definition,omitempty"`
-
-	// The configuration name.
-	Name *string `json:"name,omitempty"`
-
-	// The configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The authorization for a configuration.
-	// You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The profile required for compliance.
-	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
-
-	// A dotted value of catalogID.versionID.
-	LocatorID *string `json:"locator_id,omitempty"`
-
-	// The input variables for the configuration definition.
-	Input *InputVariable `json:"input,omitempty"`
-
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
-
-	// The type of a project configuration manual property.
-	Type *string `json:"type,omitempty"`
-
-	// The outputs of a Schematics template property.
-	Output []OutputValue `json:"output,omitempty"`
-}
-
-// Constants associated with the ProjectConfigCanonicalGraphFragment.State property.
-// The state of the configuration.
-const (
-	ProjectConfigCanonicalGraphFragment_State_Approved = "approved"
-	ProjectConfigCanonicalGraphFragment_State_Deleted = "deleted"
-	ProjectConfigCanonicalGraphFragment_State_Deleting = "deleting"
-	ProjectConfigCanonicalGraphFragment_State_DeletingFailed = "deleting_failed"
-	ProjectConfigCanonicalGraphFragment_State_Discarded = "discarded"
-	ProjectConfigCanonicalGraphFragment_State_Draft = "draft"
-	ProjectConfigCanonicalGraphFragment_State_Installed = "installed"
-	ProjectConfigCanonicalGraphFragment_State_InstalledFailed = "installed_failed"
-	ProjectConfigCanonicalGraphFragment_State_Installing = "installing"
-	ProjectConfigCanonicalGraphFragment_State_Superceded = "superceded"
-	ProjectConfigCanonicalGraphFragment_State_Uninstalling = "uninstalling"
-	ProjectConfigCanonicalGraphFragment_State_UninstallingFailed = "uninstalling_failed"
-	ProjectConfigCanonicalGraphFragment_State_Validated = "validated"
-	ProjectConfigCanonicalGraphFragment_State_Validating = "validating"
-	ProjectConfigCanonicalGraphFragment_State_ValidatingFailed = "validating_failed"
-)
-
-// Constants associated with the ProjectConfigCanonicalGraphFragment.Type property.
-// The type of a project configuration manual property.
-const (
-	ProjectConfigCanonicalGraphFragment_Type_SchematicsBlueprint = "schematics_blueprint"
-	ProjectConfigCanonicalGraphFragment_Type_TerraformTemplate = "terraform_template"
-)
-
-// UnmarshalProjectConfigCanonicalGraphFragment unmarshals an instance of ProjectConfigCanonicalGraphFragment from the specified map of raw messages.
-func UnmarshalProjectConfigCanonicalGraphFragment(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigCanonicalGraphFragment)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_approved", &obj.LastApproved, UnmarshalProjectConfigMetadataLastApproved)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigCanonicalGraphFragmentDefinition)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigCanonicalGraphFragmentDefinition : ProjectConfigCanonicalGraphFragmentDefinition struct
-type ProjectConfigCanonicalGraphFragmentDefinition struct {
-	// The configuration name.
-	Name *string `json:"name,omitempty"`
-
-	// The configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The authorization for a configuration.
-	// You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The profile required for compliance.
-	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
-
-	// A dotted value of catalogID.versionID.
-	LocatorID *string `json:"locator_id,omitempty"`
-
-	// The input variables for the configuration definition.
-	Input *InputVariable `json:"input,omitempty"`
-
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
-
-	// The type of a project configuration manual property.
-	Type *string `json:"type,omitempty"`
-
-	// The outputs of a Schematics template property.
-	Output []OutputValue `json:"output,omitempty"`
-}
-
-// Constants associated with the ProjectConfigCanonicalGraphFragmentDefinition.Type property.
-// The type of a project configuration manual property.
-const (
-	ProjectConfigCanonicalGraphFragmentDefinition_Type_SchematicsBlueprint = "schematics_blueprint"
-	ProjectConfigCanonicalGraphFragmentDefinition_Type_TerraformTemplate = "terraform_template"
-)
-
-// UnmarshalProjectConfigCanonicalGraphFragmentDefinition unmarshals an instance of ProjectConfigCanonicalGraphFragmentDefinition from the specified map of raw messages.
-func UnmarshalProjectConfigCanonicalGraphFragmentDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigCanonicalGraphFragmentDefinition)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigCollection : The project configuration list.
-type ProjectConfigCollection struct {
-	// The collection list operation response schema that should define the array property with the name "configs".
-	Configs []ProjectConfigCollectionMember `json:"configs,omitempty"`
-}
-
-// UnmarshalProjectConfigCollection unmarshals an instance of ProjectConfigCollection from the specified map of raw messages.
-func UnmarshalProjectConfigCollection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigCollection)
-	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCollectionMember)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigCollectionMember : The configuration metadata.
-type ProjectConfigCollectionMember struct {
-	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
-	ID *string `json:"id" validate:"required"`
-
-	// The unique ID.
-	ProjectID *string `json:"project_id" validate:"required"`
-
-	// The version of the configuration.
-	Version *int64 `json:"version" validate:"required"`
-
-	// The flag that indicates whether the version of the configuration is draft, or active.
-	IsDraft *bool `json:"is_draft" validate:"required"`
-
-	// The needs attention state of a configuration.
-	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
-
-	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
-
-	// The project configuration version.
-	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
-
-	// The project configuration version.
-	InstalledVersion *ProjectConfigVersionSummary `json:"installed_version,omitempty"`
-
-	// The project configuration definition summary.
-	Definition *ProjectConfigDefinitionSummary `json:"definition" validate:"required"`
-
-	// The action job performed on the project configuration.
-	LastValidated *LastActionWithHrefAndResult `json:"last_validated,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastInstalled *LastActionWithHrefAndResult `json:"last_installed,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastUninstalled *LastActionWithHrefAndResult `json:"last_uninstalled,omitempty"`
-
-	// A relative URL.
-	Href *string `json:"href" validate:"required"`
-}
-
-// Constants associated with the ProjectConfigCollectionMember.State property.
-// The state of the configuration.
-const (
-	ProjectConfigCollectionMember_State_Approved = "approved"
-	ProjectConfigCollectionMember_State_Deleted = "deleted"
-	ProjectConfigCollectionMember_State_Deleting = "deleting"
-	ProjectConfigCollectionMember_State_DeletingFailed = "deleting_failed"
-	ProjectConfigCollectionMember_State_Discarded = "discarded"
-	ProjectConfigCollectionMember_State_Draft = "draft"
-	ProjectConfigCollectionMember_State_Installed = "installed"
-	ProjectConfigCollectionMember_State_InstalledFailed = "installed_failed"
-	ProjectConfigCollectionMember_State_Installing = "installing"
-	ProjectConfigCollectionMember_State_Superceded = "superceded"
-	ProjectConfigCollectionMember_State_Uninstalling = "uninstalling"
-	ProjectConfigCollectionMember_State_UninstallingFailed = "uninstalling_failed"
-	ProjectConfigCollectionMember_State_Validated = "validated"
-	ProjectConfigCollectionMember_State_Validating = "validating"
-	ProjectConfigCollectionMember_State_ValidatingFailed = "validating_failed"
-)
-
-// UnmarshalProjectConfigCollectionMember unmarshals an instance of ProjectConfigCollectionMember from the specified map of raw messages.
-func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigCollectionMember)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "approved_version", &obj.ApprovedVersion, UnmarshalProjectConfigVersionSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "installed_version", &obj.InstalledVersion, UnmarshalProjectConfigVersionSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_validated", &obj.LastValidated, UnmarshalLastActionWithHrefAndResult)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_installed", &obj.LastInstalled, UnmarshalLastActionWithHrefAndResult)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_uninstalled", &obj.LastUninstalled, UnmarshalLastActionWithHrefAndResult)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigDefinition : The project configuration definition.
-type ProjectConfigDefinition struct {
-	// The name of the configuration.
-	Name *string `json:"name" validate:"required"`
-
-	// The description of the project configuration.
-	Description *string `json:"description,omitempty"`
-
-	// A collection of configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
-	// The authorization for a configuration.
-	// You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The profile required for compliance.
-	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
-
-	// A dotted value of catalogID.versionID.
-	LocatorID *string `json:"locator_id" validate:"required"`
-
-	// The type of a project configuration manual property.
-	Type *string `json:"type" validate:"required"`
-
-	// The input variables for the configuration definition.
-	Input *InputVariable `json:"input,omitempty"`
-
-	// The outputs of a Schematics template property.
-	Output []OutputValue `json:"output,omitempty"`
-
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
-}
-
-// Constants associated with the ProjectConfigDefinition.Type property.
-// The type of a project configuration manual property.
-const (
-	ProjectConfigDefinition_Type_SchematicsBlueprint = "schematics_blueprint"
-	ProjectConfigDefinition_Type_TerraformTemplate = "terraform_template"
-)
-
-// UnmarshalProjectConfigDefinition unmarshals an instance of ProjectConfigDefinition from the specified map of raw messages.
-func UnmarshalProjectConfigDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinition)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigDefinitionPropPatchRequest : The Schematics template property.
-type ProjectConfigDefinitionPropPatchRequest struct {
-	// A dotted value of catalogID.versionID.
-	LocatorID *string `json:"locator_id,omitempty"`
-
-	// The input variables for the configuration definition.
-	Input *InputVariable `json:"input,omitempty"`
-
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
-
-	// The configuration name.
-	Name *string `json:"name,omitempty"`
-
-	// The configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The authorization for a configuration.
-	// You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The profile required for compliance.
-	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
-}
-
-// UnmarshalProjectConfigDefinitionPropPatchRequest unmarshals an instance of ProjectConfigDefinitionPropPatchRequest from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionPropPatchRequest(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionPropPatchRequest)
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigDefinitionSummary : The project configuration definition summary.
-type ProjectConfigDefinitionSummary struct {
-	// The name of the configuration.
-	Name *string `json:"name" validate:"required"`
-
-	// The description of the project configuration.
-	Description *string `json:"description,omitempty"`
-}
-
-// UnmarshalProjectConfigDefinitionSummary unmarshals an instance of ProjectConfigDefinitionSummary from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionSummary)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigDelete : Deletes the configuration response.
-type ProjectConfigDelete struct {
-	// The unique ID.
-	ID *string `json:"id" validate:"required"`
-}
-
-// UnmarshalProjectConfigDelete unmarshals an instance of ProjectConfigDelete from the specified map of raw messages.
-func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDelete)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigGetResponse : The configuration metadata.
-type ProjectConfigGetResponse struct {
+// ProjectConfigCanonical : The canonical schema of a project configuration.
+type ProjectConfigCanonical struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
 	ID *string `json:"id" validate:"required"`
 
@@ -3316,11 +2524,11 @@ type ProjectConfigGetResponse struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
+	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
@@ -3329,48 +2537,33 @@ type ProjectConfigGetResponse struct {
 	// format as specified by RFC 3339.
 	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
 
-	// The action job performed on the project configuration.
-	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastInstalled *LastActionWithSummary `json:"last_installed,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastUninstalled *LastActionWithSummary `json:"last_uninstalled,omitempty"`
-
-	// The project configuration version.
-	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
-
-	// The project configuration version.
-	InstalledVersion *ProjectConfigVersionSummary `json:"installed_version,omitempty"`
-
-	// The project configuration definition.
-	Definition *ProjectConfigDefinition `json:"definition" validate:"required"`
+	// The type and output of a project configuration.
+	Definition *ProjectConfigResponseDefinition `json:"definition" validate:"required"`
 }
 
-// Constants associated with the ProjectConfigGetResponse.State property.
+// Constants associated with the ProjectConfigCanonical.State property.
 // The state of the configuration.
 const (
-	ProjectConfigGetResponse_State_Approved = "approved"
-	ProjectConfigGetResponse_State_Deleted = "deleted"
-	ProjectConfigGetResponse_State_Deleting = "deleting"
-	ProjectConfigGetResponse_State_DeletingFailed = "deleting_failed"
-	ProjectConfigGetResponse_State_Discarded = "discarded"
-	ProjectConfigGetResponse_State_Draft = "draft"
-	ProjectConfigGetResponse_State_Installed = "installed"
-	ProjectConfigGetResponse_State_InstalledFailed = "installed_failed"
-	ProjectConfigGetResponse_State_Installing = "installing"
-	ProjectConfigGetResponse_State_Superceded = "superceded"
-	ProjectConfigGetResponse_State_Uninstalling = "uninstalling"
-	ProjectConfigGetResponse_State_UninstallingFailed = "uninstalling_failed"
-	ProjectConfigGetResponse_State_Validated = "validated"
-	ProjectConfigGetResponse_State_Validating = "validating"
-	ProjectConfigGetResponse_State_ValidatingFailed = "validating_failed"
+	ProjectConfigCanonical_State_Approved = "approved"
+	ProjectConfigCanonical_State_Deleted = "deleted"
+	ProjectConfigCanonical_State_Deleting = "deleting"
+	ProjectConfigCanonical_State_DeletingFailed = "deleting_failed"
+	ProjectConfigCanonical_State_Deployed = "deployed"
+	ProjectConfigCanonical_State_Deploying = "deploying"
+	ProjectConfigCanonical_State_DeployingFailed = "deploying_failed"
+	ProjectConfigCanonical_State_Discarded = "discarded"
+	ProjectConfigCanonical_State_Draft = "draft"
+	ProjectConfigCanonical_State_Superceded = "superceded"
+	ProjectConfigCanonical_State_Undeploying = "undeploying"
+	ProjectConfigCanonical_State_UndeployingFailed = "undeploying_failed"
+	ProjectConfigCanonical_State_Validated = "validated"
+	ProjectConfigCanonical_State_Validating = "validating"
+	ProjectConfigCanonical_State_ValidatingFailed = "validating_failed"
 )
 
-// UnmarshalProjectConfigGetResponse unmarshals an instance of ProjectConfigGetResponse from the specified map of raw messages.
-func UnmarshalProjectConfigGetResponse(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigGetResponse)
+// UnmarshalProjectConfigCanonical unmarshals an instance of ProjectConfigCanonical from the specified map of raw messages.
+func UnmarshalProjectConfigCanonical(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigCanonical)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
@@ -3415,27 +2608,7 @@ func UnmarshalProjectConfigGetResponse(m map[string]json.RawMessage, result inte
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "last_validated", &obj.LastValidated, UnmarshalLastValidatedActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_installed", &obj.LastInstalled, UnmarshalLastActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_uninstalled", &obj.LastUninstalled, UnmarshalLastActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "approved_version", &obj.ApprovedVersion, UnmarshalProjectConfigVersionSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "installed_version", &obj.InstalledVersion, UnmarshalProjectConfigVersionSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinition)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigResponseDefinition)
 	if err != nil {
 		return
 	}
@@ -3443,80 +2616,123 @@ func UnmarshalProjectConfigGetResponse(m map[string]json.RawMessage, result inte
 	return
 }
 
-// ProjectConfigMetadataCostEstimate : The cost estimate of the configuration. It only exists after the first configuration validation.
-type ProjectConfigMetadataCostEstimate struct {
-	// The version of the cost estimate of the configuration.
-	Version *string `json:"version,omitempty"`
+// ProjectConfigCanonicalCollectionMember : ProjectConfigCanonicalCollectionMember struct
+type ProjectConfigCanonicalCollectionMember struct {
+	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
+	ID *string `json:"id" validate:"required"`
 
-	// The currency of the cost estimate of the configuration.
-	Currency *string `json:"currency,omitempty"`
+	// The unique ID.
+	ProjectID *string `json:"project_id" validate:"required"`
 
-	// The total hourly cost estimate of the configuration.
-	TotalHourlyCost *string `json:"totalHourlyCost,omitempty"`
+	// The version of the configuration.
+	Version *int64 `json:"version" validate:"required"`
 
-	// The total monthly cost estimate of the configuration.
-	TotalMonthlyCost *string `json:"totalMonthlyCost,omitempty"`
+	// The flag that indicates whether the version of the configuration is draft, or active.
+	IsDraft *bool `json:"is_draft" validate:"required"`
 
-	// The past total hourly cost estimate of the configuration.
-	PastTotalHourlyCost *string `json:"pastTotalHourlyCost,omitempty"`
+	// The needs attention state of a configuration.
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
-	// The past total monthly cost estimate of the configuration.
-	PastTotalMonthlyCost *string `json:"pastTotalMonthlyCost,omitempty"`
+	// The state of the configuration.
+	State *string `json:"state" validate:"required"`
 
-	// The difference between current and past total hourly cost estimates of the configuration.
-	DiffTotalHourlyCost *string `json:"diffTotalHourlyCost,omitempty"`
-
-	// The difference between current and past total monthly cost estimates of the configuration.
-	DiffTotalMonthlyCost *string `json:"diffTotalMonthlyCost,omitempty"`
+	// The flag that indicates whether a configuration update is available.
+	UpdateAvailable *bool `json:"update_available" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	TimeGenerated *strfmt.DateTime `json:"timeGenerated,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
 
-	// The unique ID.
-	UserID *string `json:"user_id,omitempty"`
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
+
+	// The last approved metadata of the configuration.
+	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
+
+	// A relative URL.
+	Href *string `json:"href" validate:"required"`
+
+	// The name and description of a project configuration.
+	Definition *ProjectConfigDefinitionNameDescription `json:"definition" validate:"required"`
 }
 
-// UnmarshalProjectConfigMetadataCostEstimate unmarshals an instance of ProjectConfigMetadataCostEstimate from the specified map of raw messages.
-func UnmarshalProjectConfigMetadataCostEstimate(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigMetadataCostEstimate)
+// Constants associated with the ProjectConfigCanonicalCollectionMember.State property.
+// The state of the configuration.
+const (
+	ProjectConfigCanonicalCollectionMember_State_Approved = "approved"
+	ProjectConfigCanonicalCollectionMember_State_Deleted = "deleted"
+	ProjectConfigCanonicalCollectionMember_State_Deleting = "deleting"
+	ProjectConfigCanonicalCollectionMember_State_DeletingFailed = "deleting_failed"
+	ProjectConfigCanonicalCollectionMember_State_Deployed = "deployed"
+	ProjectConfigCanonicalCollectionMember_State_Deploying = "deploying"
+	ProjectConfigCanonicalCollectionMember_State_DeployingFailed = "deploying_failed"
+	ProjectConfigCanonicalCollectionMember_State_Discarded = "discarded"
+	ProjectConfigCanonicalCollectionMember_State_Draft = "draft"
+	ProjectConfigCanonicalCollectionMember_State_Superceded = "superceded"
+	ProjectConfigCanonicalCollectionMember_State_Undeploying = "undeploying"
+	ProjectConfigCanonicalCollectionMember_State_UndeployingFailed = "undeploying_failed"
+	ProjectConfigCanonicalCollectionMember_State_Validated = "validated"
+	ProjectConfigCanonicalCollectionMember_State_Validating = "validating"
+	ProjectConfigCanonicalCollectionMember_State_ValidatingFailed = "validating_failed"
+)
+
+// UnmarshalProjectConfigCanonicalCollectionMember unmarshals an instance of ProjectConfigCanonicalCollectionMember from the specified map of raw messages.
+func UnmarshalProjectConfigCanonicalCollectionMember(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigCanonicalCollectionMember)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "currency", &obj.Currency)
+	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "totalHourlyCost", &obj.TotalHourlyCost)
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "totalMonthlyCost", &obj.TotalMonthlyCost)
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "pastTotalHourlyCost", &obj.PastTotalHourlyCost)
+	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "pastTotalMonthlyCost", &obj.PastTotalMonthlyCost)
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "diffTotalHourlyCost", &obj.DiffTotalHourlyCost)
+	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "diffTotalMonthlyCost", &obj.DiffTotalMonthlyCost)
+	err = core.UnmarshalModel(m, "last_approved", &obj.LastApproved, UnmarshalProjectConfigMetadataLastApproved)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "timeGenerated", &obj.TimeGenerated)
+	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionNameDescription)
 	if err != nil {
 		return
 	}
@@ -3524,45 +2740,57 @@ func UnmarshalProjectConfigMetadataCostEstimate(m map[string]json.RawMessage, re
 	return
 }
 
-// ProjectConfigMetadataCraLogs : The Code Risk Analyzer logs of the configuration.
-type ProjectConfigMetadataCraLogs struct {
-	// The version of the Code Risk Analyzer logs of the configuration.
-	CraVersion *string `json:"cra_version,omitempty"`
-
-	// The schema version of Code Risk Analyzer logs of the configuration.
-	SchemaVersion *string `json:"schema_version,omitempty"`
-
-	// The status of the Code Risk Analyzer logs of the configuration.
-	Status *string `json:"status,omitempty"`
-
-	// The summary of the Code Risk Analyzer logs of the configuration.
-	Summary map[string]interface{} `json:"summary,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	Timestamp *strfmt.DateTime `json:"timestamp,omitempty"`
+// ProjectConfigCollection : The project configuration list.
+type ProjectConfigCollection struct {
+	// The collection list operation response schema that should define the array property with the name "configs".
+	Configs []ProjectConfigCanonicalCollectionMember `json:"configs,omitempty"`
 }
 
-// UnmarshalProjectConfigMetadataCraLogs unmarshals an instance of ProjectConfigMetadataCraLogs from the specified map of raw messages.
-func UnmarshalProjectConfigMetadataCraLogs(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigMetadataCraLogs)
-	err = core.UnmarshalPrimitive(m, "cra_version", &obj.CraVersion)
+// UnmarshalProjectConfigCollection unmarshals an instance of ProjectConfigCollection from the specified map of raw messages.
+func UnmarshalProjectConfigCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigCollection)
+	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigCanonicalCollectionMember)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "schema_version", &obj.SchemaVersion)
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigDefinitionNameDescription : The name and description of a project configuration.
+type ProjectConfigDefinitionNameDescription struct {
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+}
+
+// UnmarshalProjectConfigDefinitionNameDescription unmarshals an instance of ProjectConfigDefinitionNameDescription from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionNameDescription(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionNameDescription)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "status", &obj.Status)
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "summary", &obj.Summary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigDelete : Deletes the configuration response.
+type ProjectConfigDelete struct {
+	// The unique ID.
+	ID *string `json:"id" validate:"required"`
+}
+
+// UnmarshalProjectConfigDelete unmarshals an instance of ProjectConfigDelete from the specified map of raw messages.
+func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDelete)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
 	}
@@ -3609,15 +2837,16 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 	return
 }
 
-// ProjectConfigPrototypeGraphFragment : The input of a project configuration.
-type ProjectConfigPrototypeGraphFragment struct {
-	Definition *ProjectConfigPrototypeGraphFragmentDefinition `json:"definition,omitempty"`
+// ProjectConfigPrototype : The input of a project configuration.
+type ProjectConfigPrototype struct {
+	// The name and description of a project configuration.
+	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition,omitempty"`
 }
 
-// UnmarshalProjectConfigPrototypeGraphFragment unmarshals an instance of ProjectConfigPrototypeGraphFragment from the specified map of raw messages.
-func UnmarshalProjectConfigPrototypeGraphFragment(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigPrototypeGraphFragment)
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigPrototypeGraphFragmentDefinition)
+// UnmarshalProjectConfigPrototype unmarshals an instance of ProjectConfigPrototype from the specified map of raw messages.
+func UnmarshalProjectConfigPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigPrototype)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigPrototypeDefinitionBlock)
 	if err != nil {
 		return
 	}
@@ -3625,16 +2854,94 @@ func UnmarshalProjectConfigPrototypeGraphFragment(m map[string]json.RawMessage, 
 	return
 }
 
-// ProjectConfigPrototypeGraphFragmentDefinition : ProjectConfigPrototypeGraphFragmentDefinition struct
-type ProjectConfigPrototypeGraphFragmentDefinition struct {
+// ProjectConfigPrototypeDefinitionBlock : The name and description of a project configuration.
+type ProjectConfigPrototypeDefinitionBlock struct {
 	// The configuration name.
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name" validate:"required"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
 
 	// The configuration labels.
 	Labels []string `json:"labels,omitempty"`
 
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id" validate:"required"`
+
+	// The input variables for the configuration definition.
+	Input *InputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	// Settings are only available if they were specified when the configuration was initially created.
+	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+}
+
+// NewProjectConfigPrototypeDefinitionBlock : Instantiate ProjectConfigPrototypeDefinitionBlock (Generic Model Constructor)
+func (*ProjectV1) NewProjectConfigPrototypeDefinitionBlock(name string, locatorID string) (_model *ProjectConfigPrototypeDefinitionBlock, err error) {
+	_model = &ProjectConfigPrototypeDefinitionBlock{
+		Name: core.StringPtr(name),
+		LocatorID: core.StringPtr(locatorID),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalProjectConfigPrototypeDefinitionBlock unmarshals an instance of ProjectConfigPrototypeDefinitionBlock from the specified map of raw messages.
+func UnmarshalProjectConfigPrototypeDefinitionBlock(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigPrototypeDefinitionBlock)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigPrototypePatchDefinitionBlock : The name and description of a project configuration.
+type ProjectConfigPrototypePatchDefinitionBlock struct {
+	// The configuration name.
+	Name *string `json:"name,omitempty"`
+
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
 
 	// The authorization for a configuration.
 	// You can authorize by using a trusted profile or an API key in Secrets Manager.
@@ -3654,18 +2961,18 @@ type ProjectConfigPrototypeGraphFragmentDefinition struct {
 	Setting *ProjectConfigSetting `json:"setting,omitempty"`
 }
 
-// UnmarshalProjectConfigPrototypeGraphFragmentDefinition unmarshals an instance of ProjectConfigPrototypeGraphFragmentDefinition from the specified map of raw messages.
-func UnmarshalProjectConfigPrototypeGraphFragmentDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigPrototypeGraphFragmentDefinition)
+// UnmarshalProjectConfigPrototypePatchDefinitionBlock unmarshals an instance of ProjectConfigPrototypePatchDefinitionBlock from the specified map of raw messages.
+func UnmarshalProjectConfigPrototypePatchDefinitionBlock(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigPrototypePatchDefinitionBlock)
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
 	if err != nil {
 		return
 	}
@@ -3762,6 +3069,95 @@ func UnmarshalProjectConfigResourceCollection(m map[string]json.RawMessage, resu
 	return
 }
 
+// ProjectConfigResponseDefinition : The type and output of a project configuration.
+type ProjectConfigResponseDefinition struct {
+	// The configuration name.
+	Name *string `json:"name" validate:"required"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The configuration labels.
+	Labels []string `json:"labels,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A dotted value of catalogID.versionID.
+	LocatorID *string `json:"locator_id" validate:"required"`
+
+	// The input variables for the configuration definition.
+	Input *InputVariable `json:"input,omitempty"`
+
+	// Schematics environment variables to use to deploy the configuration.
+	// Settings are only available if they were specified when the configuration was initially created.
+	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+
+	// The type of a project configuration manual property.
+	Type *string `json:"type,omitempty"`
+
+	// The outputs of a Schematics template property.
+	Output []OutputValue `json:"output,omitempty"`
+}
+
+// Constants associated with the ProjectConfigResponseDefinition.Type property.
+// The type of a project configuration manual property.
+const (
+	ProjectConfigResponseDefinition_Type_SchematicsBlueprint = "schematics_blueprint"
+	ProjectConfigResponseDefinition_Type_TerraformTemplate = "terraform_template"
+)
+
+// UnmarshalProjectConfigResponseDefinition unmarshals an instance of ProjectConfigResponseDefinition from the specified map of raw messages.
+func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigResponseDefinition)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ProjectConfigSetting : Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 // specified when the configuration was initially created.
 type ProjectConfigSetting struct {
@@ -3846,14 +3242,14 @@ const (
 	ProjectConfigVersionSummary_State_Deleted = "deleted"
 	ProjectConfigVersionSummary_State_Deleting = "deleting"
 	ProjectConfigVersionSummary_State_DeletingFailed = "deleting_failed"
+	ProjectConfigVersionSummary_State_Deployed = "deployed"
+	ProjectConfigVersionSummary_State_Deploying = "deploying"
+	ProjectConfigVersionSummary_State_DeployingFailed = "deploying_failed"
 	ProjectConfigVersionSummary_State_Discarded = "discarded"
 	ProjectConfigVersionSummary_State_Draft = "draft"
-	ProjectConfigVersionSummary_State_Installed = "installed"
-	ProjectConfigVersionSummary_State_InstalledFailed = "installed_failed"
-	ProjectConfigVersionSummary_State_Installing = "installing"
 	ProjectConfigVersionSummary_State_Superceded = "superceded"
-	ProjectConfigVersionSummary_State_Uninstalling = "uninstalling"
-	ProjectConfigVersionSummary_State_UninstallingFailed = "uninstalling_failed"
+	ProjectConfigVersionSummary_State_Undeploying = "undeploying"
+	ProjectConfigVersionSummary_State_UndeployingFailed = "undeploying_failed"
 	ProjectConfigVersionSummary_State_Validated = "validated"
 	ProjectConfigVersionSummary_State_Validating = "validating"
 	ProjectConfigVersionSummary_State_ValidatingFailed = "validating_failed"
@@ -3899,22 +3295,31 @@ func UnmarshalProjectConfigVersionSummaryCollection(m map[string]json.RawMessage
 	return
 }
 
-// ProjectDefinitionResponse : The definition of the project.
-type ProjectDefinitionResponse struct {
+// ProjectPrototypeDefinition : The definition of the project.
+type ProjectPrototypeDefinition struct {
 	// The name of the project.
 	Name *string `json:"name" validate:"required"`
 
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
 	// a project without providing a description.
-	Description *string `json:"description" validate:"required"`
+	Description *string `json:"description,omitempty"`
 
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
-	DestroyOnDelete *bool `json:"destroy_on_delete" validate:"required"`
+	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 }
 
-// UnmarshalProjectDefinitionResponse unmarshals an instance of ProjectDefinitionResponse from the specified map of raw messages.
-func UnmarshalProjectDefinitionResponse(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectDefinitionResponse)
+// NewProjectPrototypeDefinition : Instantiate ProjectPrototypeDefinition (Generic Model Constructor)
+func (*ProjectV1) NewProjectPrototypeDefinition(name string) (_model *ProjectPrototypeDefinition, err error) {
+	_model = &ProjectPrototypeDefinition{
+		Name: core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalProjectPrototypeDefinition unmarshals an instance of ProjectPrototypeDefinition from the specified map of raw messages.
+func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectPrototypeDefinition)
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		return
@@ -3931,8 +3336,8 @@ func UnmarshalProjectDefinitionResponse(m map[string]json.RawMessage, result int
 	return
 }
 
-// ProjectPatchDefinitionProp : The definition of the project.
-type ProjectPatchDefinitionProp struct {
+// ProjectPrototypePatchDefinitionBlock : The definition of the project.
+type ProjectPrototypePatchDefinitionBlock struct {
 	// The name of the project.
 	Name *string `json:"name,omitempty"`
 
@@ -3944,9 +3349,9 @@ type ProjectPatchDefinitionProp struct {
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 }
 
-// UnmarshalProjectPatchDefinitionProp unmarshals an instance of ProjectPatchDefinitionProp from the specified map of raw messages.
-func UnmarshalProjectPatchDefinitionProp(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectPatchDefinitionProp)
+// UnmarshalProjectPrototypePatchDefinitionBlock unmarshals an instance of ProjectPrototypePatchDefinitionBlock from the specified map of raw messages.
+func UnmarshalProjectPrototypePatchDefinitionBlock(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectPrototypePatchDefinitionBlock)
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		return
@@ -3963,49 +3368,8 @@ func UnmarshalProjectPatchDefinitionProp(m map[string]json.RawMessage, result in
 	return
 }
 
-// ProjectPrototypeDefinitionProp : The definition of the project.
-type ProjectPrototypeDefinitionProp struct {
-	// The name of the project.
-	Name *string `json:"name" validate:"required"`
-
-	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
-	// a project without providing a description.
-	Description *string `json:"description,omitempty"`
-
-	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
-	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
-}
-
-// NewProjectPrototypeDefinitionProp : Instantiate ProjectPrototypeDefinitionProp (Generic Model Constructor)
-func (*ProjectV1) NewProjectPrototypeDefinitionProp(name string) (_model *ProjectPrototypeDefinitionProp, err error) {
-	_model = &ProjectPrototypeDefinitionProp{
-		Name: core.StringPtr(name),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	return
-}
-
-// UnmarshalProjectPrototypeDefinitionProp unmarshals an instance of ProjectPrototypeDefinitionProp from the specified map of raw messages.
-func UnmarshalProjectPrototypeDefinitionProp(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectPrototypeDefinitionProp)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// UninstallConfigOptions : The UninstallConfig options.
-type UninstallConfigOptions struct {
+// UndeployConfigOptions : The UndeployConfig options.
+type UndeployConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
@@ -4016,28 +3380,28 @@ type UninstallConfigOptions struct {
 	Headers map[string]string
 }
 
-// NewUninstallConfigOptions : Instantiate UninstallConfigOptions
-func (*ProjectV1) NewUninstallConfigOptions(projectID string, id string) *UninstallConfigOptions {
-	return &UninstallConfigOptions{
+// NewUndeployConfigOptions : Instantiate UndeployConfigOptions
+func (*ProjectV1) NewUndeployConfigOptions(projectID string, id string) *UndeployConfigOptions {
+	return &UndeployConfigOptions{
 		ProjectID: core.StringPtr(projectID),
 		ID: core.StringPtr(id),
 	}
 }
 
 // SetProjectID : Allow user to set ProjectID
-func (_options *UninstallConfigOptions) SetProjectID(projectID string) *UninstallConfigOptions {
+func (_options *UndeployConfigOptions) SetProjectID(projectID string) *UndeployConfigOptions {
 	_options.ProjectID = core.StringPtr(projectID)
 	return _options
 }
 
 // SetID : Allow user to set ID
-func (_options *UninstallConfigOptions) SetID(id string) *UninstallConfigOptions {
+func (_options *UndeployConfigOptions) SetID(id string) *UndeployConfigOptions {
 	_options.ID = core.StringPtr(id)
 	return _options
 }
 
 // SetHeaders : Allow user to set Headers
-func (options *UninstallConfigOptions) SetHeaders(param map[string]string) *UninstallConfigOptions {
+func (options *UndeployConfigOptions) SetHeaders(param map[string]string) *UndeployConfigOptions {
 	options.Headers = param
 	return options
 }
@@ -4050,8 +3414,8 @@ type UpdateConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// The Schematics template property.
-	Definition *ProjectConfigDefinitionPropPatchRequest `json:"definition,omitempty"`
+	// The name and description of a project configuration.
+	Definition *ProjectConfigPrototypePatchDefinitionBlock `json:"definition,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -4078,7 +3442,7 @@ func (_options *UpdateConfigOptions) SetID(id string) *UpdateConfigOptions {
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *UpdateConfigOptions) SetDefinition(definition *ProjectConfigDefinitionPropPatchRequest) *UpdateConfigOptions {
+func (_options *UpdateConfigOptions) SetDefinition(definition *ProjectConfigPrototypePatchDefinitionBlock) *UpdateConfigOptions {
 	_options.Definition = definition
 	return _options
 }
@@ -4095,7 +3459,7 @@ type UpdateProjectOptions struct {
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The definition of the project.
-	Definition *ProjectPatchDefinitionProp `json:"definition,omitempty"`
+	Definition *ProjectPrototypePatchDefinitionBlock `json:"definition,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -4115,7 +3479,7 @@ func (_options *UpdateProjectOptions) SetID(id string) *UpdateProjectOptions {
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *UpdateProjectOptions) SetDefinition(definition *ProjectPatchDefinitionProp) *UpdateProjectOptions {
+func (_options *UpdateProjectOptions) SetDefinition(definition *ProjectPrototypePatchDefinitionBlock) *UpdateProjectOptions {
 	_options.Definition = definition
 	return _options
 }
@@ -4207,7 +3571,7 @@ func (pager *ProjectsPager) HasNext() bool {
 }
 
 // GetNextWithContext returns the next page of results using the specified Context.
-func (pager *ProjectsPager) GetNextWithContext(ctx context.Context) (page []ProjectCollectionMemberWithMetadata, err error) {
+func (pager *ProjectsPager) GetNextWithContext(ctx context.Context) (page []ProjectCanonicalCollectionMemberWithMetadata, err error) {
 	if !pager.HasNext() {
 		return nil, fmt.Errorf("no more results available")
 	}
@@ -4238,9 +3602,9 @@ func (pager *ProjectsPager) GetNextWithContext(ctx context.Context) (page []Proj
 
 // GetAllWithContext returns all results by invoking GetNextWithContext() repeatedly
 // until all pages of results have been retrieved.
-func (pager *ProjectsPager) GetAllWithContext(ctx context.Context) (allItems []ProjectCollectionMemberWithMetadata, err error) {
+func (pager *ProjectsPager) GetAllWithContext(ctx context.Context) (allItems []ProjectCanonicalCollectionMemberWithMetadata, err error) {
 	for pager.HasNext() {
-		var nextPage []ProjectCollectionMemberWithMetadata
+		var nextPage []ProjectCanonicalCollectionMemberWithMetadata
 		nextPage, err = pager.GetNextWithContext(ctx)
 		if err != nil {
 			return
@@ -4251,11 +3615,11 @@ func (pager *ProjectsPager) GetAllWithContext(ctx context.Context) (allItems []P
 }
 
 // GetNext invokes GetNextWithContext() using context.Background() as the Context parameter.
-func (pager *ProjectsPager) GetNext() (page []ProjectCollectionMemberWithMetadata, err error) {
+func (pager *ProjectsPager) GetNext() (page []ProjectCanonicalCollectionMemberWithMetadata, err error) {
 	return pager.GetNextWithContext(context.Background())
 }
 
 // GetAll invokes GetAllWithContext() using context.Background() as the Context parameter.
-func (pager *ProjectsPager) GetAll() (allItems []ProjectCollectionMemberWithMetadata, err error) {
+func (pager *ProjectsPager) GetAll() (allItems []ProjectCanonicalCollectionMemberWithMetadata, err error) {
 	return pager.GetAllWithContext(context.Background())
 }
