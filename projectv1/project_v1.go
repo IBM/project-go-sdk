@@ -2426,7 +2426,7 @@ type ProjectConfig struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []ProjectConfigNeedsAttentionState `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -2492,7 +2492,7 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "needs_attention_state", &obj.NeedsAttentionState, UnmarshalProjectConfigNeedsAttentionState)
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
@@ -2616,7 +2616,7 @@ type ProjectConfigCollectionMember struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []ProjectConfigNeedsAttentionState `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -2685,7 +2685,7 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "needs_attention_state", &obj.NeedsAttentionState, UnmarshalProjectConfigNeedsAttentionState)
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
@@ -2798,46 +2798,6 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigNeedsAttentionState : The needs attention state of a configuration.
-type ProjectConfigNeedsAttentionState struct {
-	EventID *string `json:"event_id,omitempty"`
-
-	Event *string `json:"event,omitempty"`
-
-	Severity *string `json:"severity,omitempty"`
-
-	ActionURL *string `json:"action_url,omitempty"`
-
-	Timestamp *string `json:"timestamp,omitempty"`
-}
-
-// UnmarshalProjectConfigNeedsAttentionState unmarshals an instance of ProjectConfigNeedsAttentionState from the specified map of raw messages.
-func UnmarshalProjectConfigNeedsAttentionState(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigNeedsAttentionState)
-	err = core.UnmarshalPrimitive(m, "event_id", &obj.EventID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "event", &obj.Event)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "severity", &obj.Severity)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "action_url", &obj.ActionURL)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
 	if err != nil {
 		return
 	}
