@@ -2065,8 +2065,7 @@ type OutputValue struct {
 	// A short explanation of the output value.
 	Description *string `json:"description,omitempty"`
 
-	// The resource.
-	Value *ProjectConfigObject `json:"value,omitempty"`
+	Value map[string]interface{} `json:"value,omitempty"`
 }
 
 // UnmarshalOutputValue unmarshals an instance of OutputValue from the specified map of raw messages.
@@ -2080,7 +2079,7 @@ func UnmarshalOutputValue(m map[string]json.RawMessage, result interface{}) (err
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalProjectConfigObject)
+	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
 	if err != nil {
 		return
 	}
@@ -2426,7 +2425,7 @@ type ProjectConfig struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []ProjectConfigObject `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -2492,7 +2491,7 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "needs_attention_state", &obj.NeedsAttentionState, UnmarshalProjectConfigObject)
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
@@ -2616,7 +2615,7 @@ type ProjectConfigCollectionMember struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []ProjectConfigObject `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -2685,7 +2684,7 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "needs_attention_state", &obj.NeedsAttentionState, UnmarshalProjectConfigObject)
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
@@ -2800,67 +2799,6 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
 	if err != nil {
 		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigObject : The resource.
-type ProjectConfigObject struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of ProjectConfigObject
-func (o *ProjectConfigObject) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ProjectConfigObject
-func (o *ProjectConfigObject) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ProjectConfigObject
-func (o *ProjectConfigObject) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ProjectConfigObject
-func (o *ProjectConfigObject) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of ProjectConfigObject
-func (o *ProjectConfigObject) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	return
-}
-
-// UnmarshalProjectConfigObject unmarshals an instance of ProjectConfigObject from the specified map of raw messages.
-func UnmarshalProjectConfigObject(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigObject)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = e
-			return
-		}
-		obj.SetProperty(k, v)
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
@@ -3252,7 +3190,7 @@ func UnmarshalProjectConfigSetting(m map[string]json.RawMessage, result interfac
 // ProjectConfigVersionSummary : The project configuration version.
 type ProjectConfigVersionSummary struct {
 	// The needs attention state of a configuration.
-	NeedsAttentionState []ProjectConfigObject `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -3287,7 +3225,7 @@ const (
 // UnmarshalProjectConfigVersionSummary unmarshals an instance of ProjectConfigVersionSummary from the specified map of raw messages.
 func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummary)
-	err = core.UnmarshalModel(m, "needs_attention_state", &obj.NeedsAttentionState, UnmarshalProjectConfigObject)
+	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
 	if err != nil {
 		return
 	}
