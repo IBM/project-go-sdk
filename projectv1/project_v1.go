@@ -2768,60 +2768,38 @@ func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface
 
 // ProjectConfigMetadataLastApproved : The last approved metadata of the configuration.
 type ProjectConfigMetadataLastApproved struct {
+	// The flag that indicates whether the approval was forced approved.
+	IsForced *bool `json:"is_forced" validate:"required"`
 
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
+	// The comment left by the user who approved the configuration.
+	Comment *string `json:"comment,omitempty"`
 
-// SetProperty allows the user to set an arbitrary property on an instance of ProjectConfigMetadataLastApproved
-func (o *ProjectConfigMetadataLastApproved) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	Timestamp *strfmt.DateTime `json:"timestamp" validate:"required"`
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ProjectConfigMetadataLastApproved
-func (o *ProjectConfigMetadataLastApproved) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ProjectConfigMetadataLastApproved
-func (o *ProjectConfigMetadataLastApproved) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ProjectConfigMetadataLastApproved
-func (o *ProjectConfigMetadataLastApproved) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of ProjectConfigMetadataLastApproved
-func (o *ProjectConfigMetadataLastApproved) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	return
+	// The unique ID.
+	UserID *string `json:"user_id" validate:"required"`
 }
 
 // UnmarshalProjectConfigMetadataLastApproved unmarshals an instance of ProjectConfigMetadataLastApproved from the specified map of raw messages.
 func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigMetadataLastApproved)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = e
-			return
-		}
-		obj.SetProperty(k, v)
+	err = core.UnmarshalPrimitive(m, "is_forced", &obj.IsForced)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "comment", &obj.Comment)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
+	if err != nil {
+		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
