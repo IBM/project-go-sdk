@@ -2426,7 +2426,7 @@ type ProjectConfig struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -2616,7 +2616,7 @@ type ProjectConfigCollectionMember struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -3191,7 +3191,7 @@ func UnmarshalProjectConfigSetting(m map[string]json.RawMessage, result interfac
 // ProjectConfigVersionSummary : The project configuration version.
 type ProjectConfigVersionSummary struct {
 	// The needs attention state of a configuration.
-	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state,omitempty"`
+	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
