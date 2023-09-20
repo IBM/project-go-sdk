@@ -911,6 +911,16 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(err).To(BeNil())
 				Expect(value).To(BeNil())
 			})
+			It(`Invoke GetNextStart without any query params in the "Next" URL`, func() {
+				responseObject := new(projectv1.ProjectCollection)
+				nextObject := new(projectv1.PaginationLink)
+				nextObject.Href = core.StringPtr("ibm.com")
+				responseObject.Next = nextObject
+	
+				value, err := responseObject.GetNextStart()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
 		})
 		Context(`Using mock server endpoint - paginated response`, func() {
 			BeforeEach(func() {
