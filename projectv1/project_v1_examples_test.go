@@ -454,6 +454,27 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
+		It(`SyncConfig request example`, func() {
+			// begin-sync_config
+
+			syncConfigOptions := projectService.NewSyncConfigOptions(
+				projectIdLink,
+				configIdLink,
+			)
+
+			response, err := projectService.SyncConfig(syncConfigOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from SyncConfig(): %d\n", response.StatusCode)
+			}
+
+			// end-sync_config
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
 		It(`ListConfigResources request example`, func() {
 			fmt.Println("\nListConfigResources() result:")
 			// begin-list_config_resources

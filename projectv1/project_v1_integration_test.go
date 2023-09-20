@@ -508,6 +508,22 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`SyncConfig - Sync a project configuration`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`SyncConfig(syncConfigOptions *SyncConfigOptions)`, func() {
+			syncConfigOptions := &projectv1.SyncConfigOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+			}
+
+			response, err := projectService.SyncConfig(syncConfigOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+	})
+
 	Describe(`ListConfigResources - List the resources deployed by a configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()

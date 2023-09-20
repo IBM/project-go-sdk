@@ -1114,6 +1114,56 @@ func (project *ProjectV1) UndeployConfigWithContext(ctx context.Context, undeplo
 	return
 }
 
+// SyncConfig : Sync a project configuration
+// Sync a project configuration by analyzing the associated pipeline runs and schematics workspace logs to get the
+// configuration back to a working state.
+func (project *ProjectV1) SyncConfig(syncConfigOptions *SyncConfigOptions) (response *core.DetailedResponse, err error) {
+	return project.SyncConfigWithContext(context.Background(), syncConfigOptions)
+}
+
+// SyncConfigWithContext is an alternate form of the SyncConfig method which supports a Context parameter
+func (project *ProjectV1) SyncConfigWithContext(ctx context.Context, syncConfigOptions *SyncConfigOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(syncConfigOptions, "syncConfigOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(syncConfigOptions, "syncConfigOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *syncConfigOptions.ProjectID,
+		"id": *syncConfigOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/sync`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range syncConfigOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "SyncConfig")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	response, err = project.Service.Request(request, nil)
+
+	return
+}
+
 // ListConfigResources : List the resources deployed by a configuration
 // A list of resources deployed by a configuraton.
 func (project *ProjectV1) ListConfigResources(listConfigResourcesOptions *ListConfigResourcesOptions) (result *ProjectConfigResourceCollection, response *core.DetailedResponse, err error) {
@@ -1358,6 +1408,89 @@ func (project *ProjectV1) DeleteConfigVersionWithContext(ctx context.Context, de
 		response.Result = result
 	}
 
+	return
+}
+
+// ActionJobSummary : The summaries of jobs that were performed on the configuration.
+type ActionJobSummary struct {
+	// The summary of the plan jobs on the configuration.
+	PlanSummary map[string]interface{} `json:"plan_summary,omitempty"`
+
+	// The summary of the apply jobs on the configuration.
+	ApplySummary map[string]interface{} `json:"apply_summary,omitempty"`
+
+	// The summary of the destroy jobs on the configuration.
+	DestroySummary map[string]interface{} `json:"destroy_summary,omitempty"`
+
+	// The message summaries of jobs on the configuration.
+	MessageSummary map[string]interface{} `json:"message_summary,omitempty"`
+
+	// The messages of plan jobs on the configuration.
+	PlanMessages map[string]interface{} `json:"plan_messages,omitempty"`
+
+	// The messages of apply jobs on the configuration.
+	ApplyMessages map[string]interface{} `json:"apply_messages,omitempty"`
+
+	// The messages of destroy jobs on the configuration.
+	DestroyMessages map[string]interface{} `json:"destroy_messages,omitempty"`
+}
+
+// UnmarshalActionJobSummary unmarshals an instance of ActionJobSummary from the specified map of raw messages.
+func UnmarshalActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobSummary)
+	err = core.UnmarshalPrimitive(m, "plan_summary", &obj.PlanSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "apply_summary", &obj.ApplySummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_summary", &obj.DestroySummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "message_summary", &obj.MessageSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "plan_messages", &obj.PlanMessages)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "apply_messages", &obj.ApplyMessages)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_messages", &obj.DestroyMessages)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobWithIdAndSummary : A brief summary of an action.
+type ActionJobWithIdAndSummary struct {
+	// The unique ID.
+	ID *string `json:"id,omitempty"`
+
+	// The summaries of jobs that were performed on the configuration.
+	Summary *ActionJobSummary `json:"summary,omitempty"`
+}
+
+// UnmarshalActionJobWithIdAndSummary unmarshals an instance of ActionJobWithIdAndSummary from the specified map of raw messages.
+func UnmarshalActionJobWithIdAndSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobWithIdAndSummary)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalActionJobSummary)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
@@ -1855,7 +1988,7 @@ func (options *GetProjectOptions) SetHeaders(param map[string]string) *GetProjec
 	return options
 }
 
-// InputVariable : The input variables for the configuration definition.
+// InputVariable : The input variables for configuration definition and environment.
 type InputVariable struct {
 
 	// Allows users to set arbitrary properties
@@ -1911,6 +2044,97 @@ func UnmarshalInputVariable(m map[string]json.RawMessage, result interface{}) (e
 			return
 		}
 		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// LastActionWithSummary : The action job performed on the project configuration.
+type LastActionWithSummary struct {
+	// A relative URL.
+	Href *string `json:"href,omitempty"`
+
+	// The result of the last action.
+	Result *string `json:"result,omitempty"`
+
+	// A brief summary of an action.
+	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
+}
+
+// Constants associated with the LastActionWithSummary.Result property.
+// The result of the last action.
+const (
+	LastActionWithSummary_Result_Failed = "failed"
+	LastActionWithSummary_Result_Passed = "passed"
+)
+
+// UnmarshalLastActionWithSummary unmarshals an instance of LastActionWithSummary from the specified map of raw messages.
+func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(LastActionWithSummary)
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// LastValidatedActionWithSummary : The action job performed on the project configuration.
+type LastValidatedActionWithSummary struct {
+	// A relative URL.
+	Href *string `json:"href,omitempty"`
+
+	// The result of the last action.
+	Result *string `json:"result,omitempty"`
+
+	// A brief summary of an action.
+	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
+
+	// The cost estimate of the configuration.
+	// It only exists after the first configuration validation.
+	CostEstimate *ProjectConfigMetadataCostEstimate `json:"cost_estimate,omitempty"`
+
+	// The Code Risk Analyzer logs of the configuration.
+	CraLogs *ProjectConfigMetadataCraLogs `json:"cra_logs,omitempty"`
+}
+
+// Constants associated with the LastValidatedActionWithSummary.Result property.
+// The result of the last action.
+const (
+	LastValidatedActionWithSummary_Result_Failed = "failed"
+	LastValidatedActionWithSummary_Result_Passed = "passed"
+)
+
+// UnmarshalLastValidatedActionWithSummary unmarshals an instance of LastValidatedActionWithSummary from the specified map of raw messages.
+func UnmarshalLastValidatedActionWithSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(LastValidatedActionWithSummary)
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "cost_estimate", &obj.CostEstimate, UnmarshalProjectConfigMetadataCostEstimate)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "cra_logs", &obj.CraLogs, UnmarshalProjectConfigMetadataCraLogs)
+	if err != nil {
+		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
@@ -2065,8 +2289,8 @@ type OutputValue struct {
 	// A short explanation of the output value.
 	Description *string `json:"description,omitempty"`
 
-	// The output value object.
-	Value map[string]interface{} `json:"value,omitempty"`
+	// Can be any value - a string, number, boolean, array, or object.
+	Value interface{} `json:"value,omitempty"`
 }
 
 // UnmarshalOutputValue unmarshals an instance of OutputValue from the specified map of raw messages.
@@ -2449,6 +2673,15 @@ type ProjectConfig struct {
 	// format as specified by RFC 3339.
 	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
 
+	// The action job performed on the project configuration.
+	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
+
+	// The action job performed on the project configuration.
+	LastDeployed *LastActionWithSummary `json:"last_deployed,omitempty"`
+
+	// The action job performed on the project configuration.
+	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
+
 	// The type and output of a project configuration.
 	Definition *ProjectConfigResponseDefinition `json:"definition" validate:"required"`
 }
@@ -2517,6 +2750,18 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "last_validated", &obj.LastValidated, UnmarshalLastValidatedActionWithSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "last_deployed", &obj.LastDeployed, UnmarshalLastActionWithSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "last_undeployed", &obj.LastUndeployed, UnmarshalLastActionWithSummary)
 	if err != nil {
 		return
 	}
@@ -2639,6 +2884,15 @@ type ProjectConfigCollectionMember struct {
 	// format as specified by RFC 3339.
 	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
 
+	// The action job performed on the project configuration.
+	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
+
+	// The action job performed on the project configuration.
+	LastDeployed *LastActionWithSummary `json:"last_deployed,omitempty"`
+
+	// The action job performed on the project configuration.
+	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
+
 	// A relative URL.
 	Href *string `json:"href" validate:"required"`
 
@@ -2713,6 +2967,18 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "last_validated", &obj.LastValidated, UnmarshalLastValidatedActionWithSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "last_deployed", &obj.LastDeployed, UnmarshalLastActionWithSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "last_undeployed", &obj.LastUndeployed, UnmarshalLastActionWithSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		return
@@ -2759,6 +3025,133 @@ type ProjectConfigDelete struct {
 func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigDelete)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigMetadataCostEstimate : The cost estimate of the configuration. It only exists after the first configuration validation.
+type ProjectConfigMetadataCostEstimate struct {
+	// The version of the cost estimate of the configuration.
+	Version *string `json:"version,omitempty"`
+
+	// The currency of the cost estimate of the configuration.
+	Currency *string `json:"currency,omitempty"`
+
+	// The total hourly cost estimate of the configuration.
+	TotalHourlyCost *string `json:"totalHourlyCost,omitempty"`
+
+	// The total monthly cost estimate of the configuration.
+	TotalMonthlyCost *string `json:"totalMonthlyCost,omitempty"`
+
+	// The past total hourly cost estimate of the configuration.
+	PastTotalHourlyCost *string `json:"pastTotalHourlyCost,omitempty"`
+
+	// The past total monthly cost estimate of the configuration.
+	PastTotalMonthlyCost *string `json:"pastTotalMonthlyCost,omitempty"`
+
+	// The difference between current and past total hourly cost estimates of the configuration.
+	DiffTotalHourlyCost *string `json:"diffTotalHourlyCost,omitempty"`
+
+	// The difference between current and past total monthly cost estimates of the configuration.
+	DiffTotalMonthlyCost *string `json:"diffTotalMonthlyCost,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	TimeGenerated *strfmt.DateTime `json:"timeGenerated,omitempty"`
+
+	// The unique ID.
+	UserID *string `json:"user_id,omitempty"`
+}
+
+// UnmarshalProjectConfigMetadataCostEstimate unmarshals an instance of ProjectConfigMetadataCostEstimate from the specified map of raw messages.
+func UnmarshalProjectConfigMetadataCostEstimate(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigMetadataCostEstimate)
+	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "currency", &obj.Currency)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "totalHourlyCost", &obj.TotalHourlyCost)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "totalMonthlyCost", &obj.TotalMonthlyCost)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "pastTotalHourlyCost", &obj.PastTotalHourlyCost)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "pastTotalMonthlyCost", &obj.PastTotalMonthlyCost)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "diffTotalHourlyCost", &obj.DiffTotalHourlyCost)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "diffTotalMonthlyCost", &obj.DiffTotalMonthlyCost)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "timeGenerated", &obj.TimeGenerated)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigMetadataCraLogs : The Code Risk Analyzer logs of the configuration.
+type ProjectConfigMetadataCraLogs struct {
+	// The version of the Code Risk Analyzer logs of the configuration.
+	CraVersion *string `json:"cra_version,omitempty"`
+
+	// The schema version of Code Risk Analyzer logs of the configuration.
+	SchemaVersion *string `json:"schema_version,omitempty"`
+
+	// The status of the Code Risk Analyzer logs of the configuration.
+	Status *string `json:"status,omitempty"`
+
+	// The summary of the Code Risk Analyzer logs of the configuration.
+	Summary map[string]interface{} `json:"summary,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	Timestamp *strfmt.DateTime `json:"timestamp,omitempty"`
+}
+
+// UnmarshalProjectConfigMetadataCraLogs unmarshals an instance of ProjectConfigMetadataCraLogs from the specified map of raw messages.
+func UnmarshalProjectConfigMetadataCraLogs(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigMetadataCraLogs)
+	err = core.UnmarshalPrimitive(m, "cra_version", &obj.CraVersion)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "schema_version", &obj.SchemaVersion)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "status", &obj.Status)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "summary", &obj.Summary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
 	if err != nil {
 		return
 	}
@@ -2843,7 +3236,7 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	// A dotted value of catalogID.versionID.
 	LocatorID *string `json:"locator_id" validate:"required"`
 
-	// The input variables for the configuration definition.
+	// The input variables for configuration definition and environment.
 	Input *InputVariable `json:"input,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration.
@@ -2921,7 +3314,7 @@ type ProjectConfigPrototypePatchDefinitionBlock struct {
 	// A dotted value of catalogID.versionID.
 	LocatorID *string `json:"locator_id,omitempty"`
 
-	// The input variables for the configuration definition.
+	// The input variables for configuration definition and environment.
 	Input *InputVariable `json:"input,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration.
@@ -3058,7 +3451,7 @@ type ProjectConfigResponseDefinition struct {
 	// A dotted value of catalogID.versionID.
 	LocatorID *string `json:"locator_id" validate:"required"`
 
-	// The input variables for the configuration definition.
+	// The input variables for configuration definition and environment.
 	Input *InputVariable `json:"input,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration.
@@ -3366,6 +3759,44 @@ func UnmarshalProjectPrototypePatchDefinitionBlock(m map[string]json.RawMessage,
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// SyncConfigOptions : The SyncConfig options.
+type SyncConfigOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique config ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewSyncConfigOptions : Instantiate SyncConfigOptions
+func (*ProjectV1) NewSyncConfigOptions(projectID string, id string) *SyncConfigOptions {
+	return &SyncConfigOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *SyncConfigOptions) SetProjectID(projectID string) *SyncConfigOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *SyncConfigOptions) SetID(id string) *SyncConfigOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *SyncConfigOptions) SetHeaders(param map[string]string) *SyncConfigOptions {
+	options.Headers = param
+	return options
 }
 
 // UndeployConfigOptions : The UndeployConfig options.
