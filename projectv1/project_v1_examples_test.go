@@ -127,8 +127,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			createProjectOptions := projectService.NewCreateProjectOptions(
 				"Default",
 				"us-south",
+				projectPrototypeDefinitionModel,
 			)
-			createProjectOptions.SetDefinition(projectPrototypeDefinitionModel)
 			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
@@ -174,8 +174,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			createConfigOptions := projectService.NewCreateConfigOptions(
 				projectIdLink,
+				projectConfigPrototypeDefinitionBlockModel,
 			)
-			createConfigOptions.SetDefinition(projectConfigPrototypeDefinitionBlockModel)
 
 			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
@@ -249,8 +249,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			updateProjectOptions := projectService.NewUpdateProjectOptions(
 				projectIdLink,
+				projectPrototypePatchDefinitionBlockModel,
 			)
-			updateProjectOptions.SetDefinition(projectPrototypePatchDefinitionBlockModel)
 
 			project, response, err := projectService.UpdateProject(updateProjectOptions)
 			if err != nil {
@@ -327,8 +327,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
 				configIdLink,
+				projectConfigPrototypePatchDefinitionBlockModel,
 			)
-			updateConfigOptions.SetDefinition(projectConfigPrototypePatchDefinitionBlockModel)
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {

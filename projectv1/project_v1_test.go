@@ -5220,7 +5220,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
-				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID)
+				var createConfigOptionsDefinition *projectv1.ProjectConfigPrototypeDefinitionBlock = nil
+				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID, createConfigOptionsDefinition)
 				createConfigOptionsModel.SetProjectID("testString")
 				createConfigOptionsModel.SetDefinition(projectConfigPrototypeDefinitionBlockModel)
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
@@ -5333,7 +5334,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateProjectOptions model
 				resourceGroup := "Default"
 				location := "us-south"
-				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location)
+				var createProjectOptionsDefinition *projectv1.ProjectPrototypeDefinition = nil
+				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location, createProjectOptionsDefinition)
 				createProjectOptionsModel.SetResourceGroup("Default")
 				createProjectOptionsModel.SetLocation("us-south")
 				createProjectOptionsModel.SetDefinition(projectPrototypeDefinitionModel)
@@ -5499,6 +5501,11 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(listProjectsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listProjectsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewProjectConfigPrototype successfully`, func() {
+				var definition *projectv1.ProjectConfigPrototypeDefinitionBlock = nil
+				_, err := projectService.NewProjectConfigPrototype(definition)
+				Expect(err).ToNot(BeNil())
+			})
 			It(`Invoke NewProjectConfigPrototypeDefinitionBlock successfully`, func() {
 				name := "testString"
 				locatorID := "testString"
@@ -5640,7 +5647,8 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the UpdateConfigOptions model
 				projectID := "testString"
 				id := "testString"
-				updateConfigOptionsModel := projectService.NewUpdateConfigOptions(projectID, id)
+				var updateConfigOptionsDefinition *projectv1.ProjectConfigPrototypePatchDefinitionBlock = nil
+				updateConfigOptionsModel := projectService.NewUpdateConfigOptions(projectID, id, updateConfigOptionsDefinition)
 				updateConfigOptionsModel.SetProjectID("testString")
 				updateConfigOptionsModel.SetID("testString")
 				updateConfigOptionsModel.SetDefinition(projectConfigPrototypePatchDefinitionBlockModel)
@@ -5664,7 +5672,8 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the UpdateProjectOptions model
 				id := "testString"
-				updateProjectOptionsModel := projectService.NewUpdateProjectOptions(id)
+				var updateProjectOptionsDefinition *projectv1.ProjectPrototypePatchDefinitionBlock = nil
+				updateProjectOptionsModel := projectService.NewUpdateProjectOptions(id, updateProjectOptionsDefinition)
 				updateProjectOptionsModel.SetID("testString")
 				updateProjectOptionsModel.SetDefinition(projectPrototypePatchDefinitionBlockModel)
 				updateProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})

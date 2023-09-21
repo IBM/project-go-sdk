@@ -1558,16 +1558,17 @@ type CreateConfigOptions struct {
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
 	// The name and description of a project configuration.
-	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewCreateConfigOptions : Instantiate CreateConfigOptions
-func (*ProjectV1) NewCreateConfigOptions(projectID string) *CreateConfigOptions {
+func (*ProjectV1) NewCreateConfigOptions(projectID string, definition *ProjectConfigPrototypeDefinitionBlock) *CreateConfigOptions {
 	return &CreateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
+		Definition: definition,
 	}
 }
 
@@ -1598,7 +1599,7 @@ type CreateProjectOptions struct {
 	Location *string `json:"location" validate:"required"`
 
 	// The definition of the project.
-	Definition *ProjectPrototypeDefinition `json:"definition,omitempty"`
+	Definition *ProjectPrototypeDefinition `json:"definition" validate:"required"`
 
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
@@ -1609,10 +1610,11 @@ type CreateProjectOptions struct {
 }
 
 // NewCreateProjectOptions : Instantiate CreateProjectOptions
-func (*ProjectV1) NewCreateProjectOptions(resourceGroup string, location string) *CreateProjectOptions {
+func (*ProjectV1) NewCreateProjectOptions(resourceGroup string, location string, definition *ProjectPrototypeDefinition) *CreateProjectOptions {
 	return &CreateProjectOptions{
 		ResourceGroup: core.StringPtr(resourceGroup),
 		Location: core.StringPtr(location),
+		Definition: definition,
 	}
 }
 
@@ -3211,7 +3213,16 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 // ProjectConfigPrototype : The input of a project configuration.
 type ProjectConfigPrototype struct {
 	// The name and description of a project configuration.
-	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
+}
+
+// NewProjectConfigPrototype : Instantiate ProjectConfigPrototype (Generic Model Constructor)
+func (*ProjectV1) NewProjectConfigPrototype(definition *ProjectConfigPrototypeDefinitionBlock) (_model *ProjectConfigPrototype, err error) {
+	_model = &ProjectConfigPrototype{
+		Definition: definition,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
 }
 
 // UnmarshalProjectConfigPrototype unmarshals an instance of ProjectConfigPrototype from the specified map of raw messages.
@@ -3865,17 +3876,18 @@ type UpdateConfigOptions struct {
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The name and description of a project configuration.
-	Definition *ProjectConfigPrototypePatchDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypePatchDefinitionBlock `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateConfigOptions : Instantiate UpdateConfigOptions
-func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string) *UpdateConfigOptions {
+func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string, definition *ProjectConfigPrototypePatchDefinitionBlock) *UpdateConfigOptions {
 	return &UpdateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
 		ID: core.StringPtr(id),
+		Definition: definition,
 	}
 }
 
@@ -3909,16 +3921,17 @@ type UpdateProjectOptions struct {
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The definition of the project.
-	Definition *ProjectPrototypePatchDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectPrototypePatchDefinitionBlock `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateProjectOptions : Instantiate UpdateProjectOptions
-func (*ProjectV1) NewUpdateProjectOptions(id string) *UpdateProjectOptions {
+func (*ProjectV1) NewUpdateProjectOptions(id string, definition *ProjectPrototypePatchDefinitionBlock) *UpdateProjectOptions {
 	return &UpdateProjectOptions{
 		ID: core.StringPtr(id),
+		Definition: definition,
 	}
 }
 
