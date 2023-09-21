@@ -461,6 +461,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 				configIdLink,
 			)
+			syncConfigOptions.SetWorkspaceID("us-south.workspace.service.e0106139")
 
 			response, err := projectService.SyncConfig(syncConfigOptions)
 			if err != nil {

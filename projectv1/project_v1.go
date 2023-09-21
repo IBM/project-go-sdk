@@ -1153,6 +1153,16 @@ func (project *ProjectV1) SyncConfigWithContext(ctx context.Context, syncConfigO
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if syncConfigOptions.WorkspaceID != nil {
+		body["workspace_id"] = syncConfigOptions.WorkspaceID
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -3769,6 +3779,9 @@ type SyncConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
+	// An existing schematics workspace ID.
+	WorkspaceID *string `json:"workspace_id,omitempty"`
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -3790,6 +3803,12 @@ func (_options *SyncConfigOptions) SetProjectID(projectID string) *SyncConfigOpt
 // SetID : Allow user to set ID
 func (_options *SyncConfigOptions) SetID(id string) *SyncConfigOptions {
 	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetWorkspaceID : Allow user to set WorkspaceID
+func (_options *SyncConfigOptions) SetWorkspaceID(workspaceID string) *SyncConfigOptions {
+	_options.WorkspaceID = core.StringPtr(workspaceID)
 	return _options
 }
 

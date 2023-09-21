@@ -516,6 +516,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			syncConfigOptions := &projectv1.SyncConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
+				WorkspaceID: core.StringPtr("us-south.workspace.service.e0106139"),
 			}
 
 			response, err := projectService.SyncConfig(syncConfigOptions)
