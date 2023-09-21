@@ -110,18 +110,26 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateProject() result:")
 			// begin-create_project
 
-			projectConfigModel := &projectv1.ProjectConfig{
+			projectPrototypeDefinitionModel := &projectv1.ProjectPrototypeDefinition{
+				Name: core.StringPtr("acme-microservice"),
+				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+			}
+
+			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
 				Name: core.StringPtr("common-variables"),
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+			}
+
+			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
+				Definition: projectConfigPrototypeDefinitionBlockModel,
 			}
 
 			createProjectOptions := projectService.NewCreateProjectOptions(
 				"Default",
 				"us-south",
-				"acme-microservice",
 			)
-			createProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
-			createProjectOptions.SetConfigs([]projectv1.ProjectConfig{*projectConfigModel})
+			createProjectOptions.SetDefinition(projectPrototypeDefinitionModel)
+			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
@@ -155,30 +163,34 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 			projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
 
+			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
+				Name: core.StringPtr("env-stage"),
+				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
+				Labels: []string{"env:stage", "governance:test", "build:0"},
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+				Input: inputVariableModel,
+				Setting: projectConfigSettingModel,
+			}
+
 			createConfigOptions := projectService.NewCreateConfigOptions(
 				projectIdLink,
-				"env-stage",
-				"1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global",
 			)
-			createConfigOptions.SetDescription("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace.")
-			createConfigOptions.SetLabels([]string{"env:stage", "governance:test", "build:0"})
-			createConfigOptions.SetInput(inputVariableModel)
-			createConfigOptions.SetSetting(projectConfigSettingModel)
+			createConfigOptions.SetDefinition(projectConfigPrototypeDefinitionBlockModel)
 
-			projectConfigVersionResponse, response, err := projectService.CreateConfig(createConfigOptions)
+			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-create_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 
-			configIdLink = *projectConfigVersionResponse.ID
+			configIdLink = *projectConfig.ID
 			fmt.Fprintf(GinkgoWriter, "Saved configIdLink value: %v\n", configIdLink)
 		})
 		It(`ListProjects request example`, func() {
@@ -213,41 +225,45 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 			)
 
-			projectSummary, response, err := projectService.GetProject(getProjectOptions)
+			project, response, err := projectService.GetProject(getProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			b, _ := json.MarshalIndent(project, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 		It(`UpdateProject request example`, func() {
 			fmt.Println("\nUpdateProject() result:")
 			// begin-update_project
 
+			projectPrototypePatchDefinitionBlockModel := &projectv1.ProjectPrototypePatchDefinitionBlock{
+				Name: core.StringPtr("acme-microservice"),
+				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+			}
+
 			updateProjectOptions := projectService.NewUpdateProjectOptions(
 				projectIdLink,
 			)
-			updateProjectOptions.SetName("acme-microservice")
-			updateProjectOptions.SetDescription("A microservice to deploy on top of ACME infrastructure.")
+			updateProjectOptions.SetDefinition(projectPrototypePatchDefinitionBlockModel)
 
-			projectSummary, response, err := projectService.UpdateProject(updateProjectOptions)
+			project, response, err := projectService.UpdateProject(updateProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectSummary, "", "  ")
+			b, _ := json.MarshalIndent(project, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_project
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectSummary).ToNot(BeNil())
+			Expect(project).ToNot(BeNil())
 		})
 		It(`CreateProjectEnvironment request example`, func() {
 			fmt.Println("\nCreateProjectEnvironment() result:")
@@ -393,18 +409,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigGetResponse, response, err := projectService.GetConfig(getConfigOptions)
+			projectConfig, response, err := projectService.GetConfig(getConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigGetResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigGetResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`UpdateConfig request example`, func() {
 			fmt.Println("\nUpdateConfig() result:")
@@ -418,24 +434,28 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
 			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
+			projectConfigPrototypePatchDefinitionBlockModel := &projectv1.ProjectConfigPrototypePatchDefinitionBlock{
+				Input: inputVariableModel,
+			}
+
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
 				configIdLink,
 			)
-			updateConfigOptions.SetInput(inputVariableModel)
+			updateConfigOptions.SetDefinition(projectConfigPrototypePatchDefinitionBlockModel)
 
-			projectConfigVersionResponse, response, err := projectService.UpdateConfig(updateConfigOptions)
+			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-update_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`ForceApprove request example`, func() {
 			fmt.Println("\nForceApprove() result:")
@@ -447,18 +467,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			forceApproveOptions.SetComment("Approving the changes")
 
-			projectConfigVersionResponse, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfig, response, err := projectService.ForceApprove(forceApproveOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-force_approve
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`Approve request example`, func() {
 			fmt.Println("\nApprove() result:")
@@ -470,18 +490,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			)
 			approveOptions.SetComment("Approving the changes")
 
-			projectConfigVersionResponse, response, err := projectService.Approve(approveOptions)
+			projectConfig, response, err := projectService.Approve(approveOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-approve
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`ValidateConfig request example`, func() {
 			fmt.Println("\nValidateConfig() result:")
@@ -492,18 +512,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigVersionResponse, response, err := projectService.ValidateConfig(validateConfigOptions)
+			projectConfig, response, err := projectService.ValidateConfig(validateConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-validate_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`DeployConfig request example`, func() {
 			fmt.Println("\nDeployConfig() result:")
@@ -514,18 +534,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			projectConfigVersionResponse, response, err := projectService.DeployConfig(deployConfigOptions)
+			projectConfig, response, err := projectService.DeployConfig(deployConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-deploy_config
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`UndeployConfig request example`, func() {
 			// begin-undeploy_config
@@ -623,18 +643,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				int64(38),
 			)
 
-			projectConfigVersionResponse, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
+			projectConfig, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigVersionResponse, "", "  ")
+			b, _ := json.MarshalIndent(projectConfig, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_config_version
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigVersionResponse).ToNot(BeNil())
+			Expect(projectConfig).ToNot(BeNil())
 		})
 		It(`ListEnvironments request example`, func() {
 			fmt.Println("\nListEnvironments() result:")
