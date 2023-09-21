@@ -149,9 +149,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			createProjectOptions := &projectv1.CreateProjectOptions{
-				ResourceGroup: core.StringPtr("Default"),
-				Location: core.StringPtr("us-south"),
 				Definition: projectPrototypeDefinitionModel,
+				Location: core.StringPtr("us-south"),
+				ResourceGroup: core.StringPtr("Default"),
 				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
 			}
 

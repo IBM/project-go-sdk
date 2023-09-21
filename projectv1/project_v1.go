@@ -198,12 +198,15 @@ func (project *ProjectV1) CreateProjectWithContext(ctx context.Context, createPr
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
 
-	builder.AddQuery("resource_group", fmt.Sprint(*createProjectOptions.ResourceGroup))
-	builder.AddQuery("location", fmt.Sprint(*createProjectOptions.Location))
-
 	body := make(map[string]interface{})
 	if createProjectOptions.Definition != nil {
 		body["definition"] = createProjectOptions.Definition
+	}
+	if createProjectOptions.Location != nil {
+		body["location"] = createProjectOptions.Location
+	}
+	if createProjectOptions.ResourceGroup != nil {
+		body["resource_group"] = createProjectOptions.ResourceGroup
 	}
 	if createProjectOptions.Configs != nil {
 		body["configs"] = createProjectOptions.Configs
@@ -1592,14 +1595,14 @@ func (options *CreateConfigOptions) SetHeaders(param map[string]string) *CreateC
 
 // CreateProjectOptions : The CreateProject options.
 type CreateProjectOptions struct {
-	// The resource group where the project's data and tools are created.
-	ResourceGroup *string `json:"resource_group" validate:"required"`
-
-	// The location where the project's data and tools are created.
-	Location *string `json:"location" validate:"required"`
-
 	// The definition of the project.
 	Definition *ProjectPrototypeDefinition `json:"definition" validate:"required"`
+
+	// The IBM Cloud location where a resource is deployed.
+	Location *string `json:"location" validate:"required"`
+
+	// The resource group where the project's data and tools are created.
+	ResourceGroup *string `json:"resource_group" validate:"required"`
 
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
@@ -1610,17 +1613,17 @@ type CreateProjectOptions struct {
 }
 
 // NewCreateProjectOptions : Instantiate CreateProjectOptions
-func (*ProjectV1) NewCreateProjectOptions(resourceGroup string, location string, definition *ProjectPrototypeDefinition) *CreateProjectOptions {
+func (*ProjectV1) NewCreateProjectOptions(definition *ProjectPrototypeDefinition, location string, resourceGroup string) *CreateProjectOptions {
 	return &CreateProjectOptions{
-		ResourceGroup: core.StringPtr(resourceGroup),
-		Location: core.StringPtr(location),
 		Definition: definition,
+		Location: core.StringPtr(location),
+		ResourceGroup: core.StringPtr(resourceGroup),
 	}
 }
 
-// SetResourceGroup : Allow user to set ResourceGroup
-func (_options *CreateProjectOptions) SetResourceGroup(resourceGroup string) *CreateProjectOptions {
-	_options.ResourceGroup = core.StringPtr(resourceGroup)
+// SetDefinition : Allow user to set Definition
+func (_options *CreateProjectOptions) SetDefinition(definition *ProjectPrototypeDefinition) *CreateProjectOptions {
+	_options.Definition = definition
 	return _options
 }
 
@@ -1630,9 +1633,9 @@ func (_options *CreateProjectOptions) SetLocation(location string) *CreateProjec
 	return _options
 }
 
-// SetDefinition : Allow user to set Definition
-func (_options *CreateProjectOptions) SetDefinition(definition *ProjectPrototypeDefinition) *CreateProjectOptions {
-	_options.Definition = definition
+// SetResourceGroup : Allow user to set ResourceGroup
+func (_options *CreateProjectOptions) SetResourceGroup(resourceGroup string) *CreateProjectOptions {
+	_options.ResourceGroup = core.StringPtr(resourceGroup)
 	return _options
 }
 

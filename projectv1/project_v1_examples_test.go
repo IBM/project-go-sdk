@@ -125,9 +125,9 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			createProjectOptions := projectService.NewCreateProjectOptions(
-				"Default",
-				"us-south",
 				projectPrototypeDefinitionModel,
+				"us-south",
+				"Default",
 			)
 			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 

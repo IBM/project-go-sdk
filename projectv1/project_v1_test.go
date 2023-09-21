@@ -173,8 +173,6 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(createProjectPath))
 					Expect(req.Method).To(Equal("POST"))
-					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"Default"}))
-					Expect(req.URL.Query()["location"]).To(Equal([]string{"us-south"}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -238,9 +236,9 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
-				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionModel
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -288,8 +286,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"Default"}))
-					Expect(req.URL.Query()["location"]).To(Equal([]string{"us-south"}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -358,9 +354,9 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
-				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionModel
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -414,8 +410,6 @@ var _ = Describe(`ProjectV1`, func() {
 					}
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
-					Expect(req.URL.Query()["resource_group"]).To(Equal([]string{"Default"}))
-					Expect(req.URL.Query()["location"]).To(Equal([]string{"us-south"}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -486,9 +480,9 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
-				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionModel
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -557,9 +551,9 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
-				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionModel
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -649,9 +643,9 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateProjectOptions model
 				createProjectOptionsModel := new(projectv1.CreateProjectOptions)
-				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
-				createProjectOptionsModel.Location = core.StringPtr("us-south")
 				createProjectOptionsModel.Definition = projectPrototypeDefinitionModel
+				createProjectOptionsModel.Location = core.StringPtr("us-south")
+				createProjectOptionsModel.ResourceGroup = core.StringPtr("Default")
 				createProjectOptionsModel.Configs = []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}
 				createProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -5332,19 +5326,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigPrototypeModel.Definition).To(Equal(projectConfigPrototypeDefinitionBlockModel))
 
 				// Construct an instance of the CreateProjectOptions model
-				resourceGroup := "Default"
-				location := "us-south"
 				var createProjectOptionsDefinition *projectv1.ProjectPrototypeDefinition = nil
-				createProjectOptionsModel := projectService.NewCreateProjectOptions(resourceGroup, location, createProjectOptionsDefinition)
-				createProjectOptionsModel.SetResourceGroup("Default")
-				createProjectOptionsModel.SetLocation("us-south")
+				createProjectOptionsLocation := "us-south"
+				createProjectOptionsResourceGroup := "Default"
+				createProjectOptionsModel := projectService.NewCreateProjectOptions(createProjectOptionsDefinition, createProjectOptionsLocation, createProjectOptionsResourceGroup)
 				createProjectOptionsModel.SetDefinition(projectPrototypeDefinitionModel)
+				createProjectOptionsModel.SetLocation("us-south")
+				createProjectOptionsModel.SetResourceGroup("Default")
 				createProjectOptionsModel.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 				createProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createProjectOptionsModel).ToNot(BeNil())
-				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
-				Expect(createProjectOptionsModel.Location).To(Equal(core.StringPtr("us-south")))
 				Expect(createProjectOptionsModel.Definition).To(Equal(projectPrototypeDefinitionModel))
+				Expect(createProjectOptionsModel.Location).To(Equal(core.StringPtr("us-south")))
+				Expect(createProjectOptionsModel.ResourceGroup).To(Equal(core.StringPtr("Default")))
 				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}))
 				Expect(createProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
