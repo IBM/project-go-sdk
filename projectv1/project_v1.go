@@ -198,12 +198,15 @@ func (project *ProjectV1) CreateProjectWithContext(ctx context.Context, createPr
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
 
-	builder.AddQuery("resource_group", fmt.Sprint(*createProjectOptions.ResourceGroup))
-	builder.AddQuery("location", fmt.Sprint(*createProjectOptions.Location))
-
 	body := make(map[string]interface{})
 	if createProjectOptions.Definition != nil {
 		body["definition"] = createProjectOptions.Definition
+	}
+	if createProjectOptions.Location != nil {
+		body["location"] = createProjectOptions.Location
+	}
+	if createProjectOptions.ResourceGroup != nil {
+		body["resource_group"] = createProjectOptions.ResourceGroup
 	}
 	if createProjectOptions.Configs != nil {
 		body["configs"] = createProjectOptions.Configs
@@ -1153,6 +1156,16 @@ func (project *ProjectV1) SyncConfigWithContext(ctx context.Context, syncConfigO
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if syncConfigOptions.WorkspaceID != nil {
+		body["workspace_id"] = syncConfigOptions.WorkspaceID
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -1548,16 +1561,17 @@ type CreateConfigOptions struct {
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
 	// The name and description of a project configuration.
-	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewCreateConfigOptions : Instantiate CreateConfigOptions
-func (*ProjectV1) NewCreateConfigOptions(projectID string) *CreateConfigOptions {
+func (*ProjectV1) NewCreateConfigOptions(projectID string, definition *ProjectConfigPrototypeDefinitionBlock) *CreateConfigOptions {
 	return &CreateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
+		Definition: definition,
 	}
 }
 
@@ -1581,14 +1595,14 @@ func (options *CreateConfigOptions) SetHeaders(param map[string]string) *CreateC
 
 // CreateProjectOptions : The CreateProject options.
 type CreateProjectOptions struct {
-	// The resource group where the project's data and tools are created.
-	ResourceGroup *string `json:"resource_group" validate:"required"`
+	// The definition of the project.
+	Definition *ProjectPrototypeDefinition `json:"definition" validate:"required"`
 
-	// The location where the project's data and tools are created.
+	// The IBM Cloud location where a resource is deployed.
 	Location *string `json:"location" validate:"required"`
 
-	// The definition of the project.
-	Definition *ProjectPrototypeDefinition `json:"definition,omitempty"`
+	// The resource group where the project's data and tools are created.
+	ResourceGroup *string `json:"resource_group" validate:"required"`
 
 	// The project configurations. These configurations are only included in the response of creating a project if a
 	// configs array is specified in the request payload.
@@ -1599,16 +1613,17 @@ type CreateProjectOptions struct {
 }
 
 // NewCreateProjectOptions : Instantiate CreateProjectOptions
-func (*ProjectV1) NewCreateProjectOptions(resourceGroup string, location string) *CreateProjectOptions {
+func (*ProjectV1) NewCreateProjectOptions(definition *ProjectPrototypeDefinition, location string, resourceGroup string) *CreateProjectOptions {
 	return &CreateProjectOptions{
-		ResourceGroup: core.StringPtr(resourceGroup),
+		Definition: definition,
 		Location: core.StringPtr(location),
+		ResourceGroup: core.StringPtr(resourceGroup),
 	}
 }
 
-// SetResourceGroup : Allow user to set ResourceGroup
-func (_options *CreateProjectOptions) SetResourceGroup(resourceGroup string) *CreateProjectOptions {
-	_options.ResourceGroup = core.StringPtr(resourceGroup)
+// SetDefinition : Allow user to set Definition
+func (_options *CreateProjectOptions) SetDefinition(definition *ProjectPrototypeDefinition) *CreateProjectOptions {
+	_options.Definition = definition
 	return _options
 }
 
@@ -1618,9 +1633,9 @@ func (_options *CreateProjectOptions) SetLocation(location string) *CreateProjec
 	return _options
 }
 
-// SetDefinition : Allow user to set Definition
-func (_options *CreateProjectOptions) SetDefinition(definition *ProjectPrototypeDefinition) *CreateProjectOptions {
-	_options.Definition = definition
+// SetResourceGroup : Allow user to set ResourceGroup
+func (_options *CreateProjectOptions) SetResourceGroup(resourceGroup string) *CreateProjectOptions {
+	_options.ResourceGroup = core.StringPtr(resourceGroup)
 	return _options
 }
 
@@ -3201,7 +3216,16 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 // ProjectConfigPrototype : The input of a project configuration.
 type ProjectConfigPrototype struct {
 	// The name and description of a project configuration.
-	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
+}
+
+// NewProjectConfigPrototype : Instantiate ProjectConfigPrototype (Generic Model Constructor)
+func (*ProjectV1) NewProjectConfigPrototype(definition *ProjectConfigPrototypeDefinitionBlock) (_model *ProjectConfigPrototype, err error) {
+	_model = &ProjectConfigPrototype{
+		Definition: definition,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
 }
 
 // UnmarshalProjectConfigPrototype unmarshals an instance of ProjectConfigPrototype from the specified map of raw messages.
@@ -3769,6 +3793,9 @@ type SyncConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
+	// An existing schematics workspace ID.
+	WorkspaceID *string `json:"workspace_id,omitempty"`
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -3790,6 +3817,12 @@ func (_options *SyncConfigOptions) SetProjectID(projectID string) *SyncConfigOpt
 // SetID : Allow user to set ID
 func (_options *SyncConfigOptions) SetID(id string) *SyncConfigOptions {
 	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetWorkspaceID : Allow user to set WorkspaceID
+func (_options *SyncConfigOptions) SetWorkspaceID(workspaceID string) *SyncConfigOptions {
+	_options.WorkspaceID = core.StringPtr(workspaceID)
 	return _options
 }
 
@@ -3846,17 +3879,18 @@ type UpdateConfigOptions struct {
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The name and description of a project configuration.
-	Definition *ProjectConfigPrototypePatchDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectConfigPrototypePatchDefinitionBlock `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateConfigOptions : Instantiate UpdateConfigOptions
-func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string) *UpdateConfigOptions {
+func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string, definition *ProjectConfigPrototypePatchDefinitionBlock) *UpdateConfigOptions {
 	return &UpdateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
 		ID: core.StringPtr(id),
+		Definition: definition,
 	}
 }
 
@@ -3890,16 +3924,17 @@ type UpdateProjectOptions struct {
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The definition of the project.
-	Definition *ProjectPrototypePatchDefinitionBlock `json:"definition,omitempty"`
+	Definition *ProjectPrototypePatchDefinitionBlock `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateProjectOptions : Instantiate UpdateProjectOptions
-func (*ProjectV1) NewUpdateProjectOptions(id string) *UpdateProjectOptions {
+func (*ProjectV1) NewUpdateProjectOptions(id string, definition *ProjectPrototypePatchDefinitionBlock) *UpdateProjectOptions {
 	return &UpdateProjectOptions{
 		ID: core.StringPtr(id),
+		Definition: definition,
 	}
 }
 

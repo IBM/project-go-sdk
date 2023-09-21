@@ -149,9 +149,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			createProjectOptions := &projectv1.CreateProjectOptions{
-				ResourceGroup: core.StringPtr("Default"),
-				Location: core.StringPtr("us-south"),
 				Definition: projectPrototypeDefinitionModel,
+				Location: core.StringPtr("us-south"),
+				ResourceGroup: core.StringPtr("Default"),
 				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
 			}
 
@@ -516,6 +516,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			syncConfigOptions := &projectv1.SyncConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
+				WorkspaceID: core.StringPtr("us-south.workspace.service.e0106139"),
 			}
 
 			response, err := projectService.SyncConfig(syncConfigOptions)
