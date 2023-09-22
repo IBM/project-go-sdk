@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.79.0-2eb6af3d-20230905-174838
+ * IBM OpenAPI SDK Code Generator Version: 3.75.0-726bc7e3-20230713-221716
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -470,6 +470,353 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 	}
 
 	response, err = project.Service.Request(request, nil)
+
+	return
+}
+
+// CreateProjectEnvironment : Create an environment
+// Create an environment.
+func (project *ProjectV1) CreateProjectEnvironment(createProjectEnvironmentOptions *CreateProjectEnvironmentOptions) (result *EnvironmentResponse, response *core.DetailedResponse, err error) {
+	return project.CreateProjectEnvironmentWithContext(context.Background(), createProjectEnvironmentOptions)
+}
+
+// CreateProjectEnvironmentWithContext is an alternate form of the CreateProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) CreateProjectEnvironmentWithContext(ctx context.Context, createProjectEnvironmentOptions *CreateProjectEnvironmentOptions) (result *EnvironmentResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createProjectEnvironmentOptions, "createProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(createProjectEnvironmentOptions, "createProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *createProjectEnvironmentOptions.ProjectID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range createProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createProjectEnvironmentOptions.Name != nil {
+		body["name"] = createProjectEnvironmentOptions.Name
+	}
+	if createProjectEnvironmentOptions.Description != nil {
+		body["description"] = createProjectEnvironmentOptions.Description
+	}
+	if createProjectEnvironmentOptions.Authorizations != nil {
+		body["authorizations"] = createProjectEnvironmentOptions.Authorizations
+	}
+	if createProjectEnvironmentOptions.Inputs != nil {
+		body["inputs"] = createProjectEnvironmentOptions.Inputs
+	}
+	if createProjectEnvironmentOptions.ComplianceProfile != nil {
+		body["compliance_profile"] = createProjectEnvironmentOptions.ComplianceProfile
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironmentResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ListProjectEnvironments : List environments
+// Returns all environments.
+func (project *ProjectV1) ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) (result *EnvironmentListResponse, response *core.DetailedResponse, err error) {
+	return project.ListProjectEnvironmentsWithContext(context.Background(), listProjectEnvironmentsOptions)
+}
+
+// ListProjectEnvironmentsWithContext is an alternate form of the ListProjectEnvironments method which supports a Context parameter
+func (project *ProjectV1) ListProjectEnvironmentsWithContext(ctx context.Context, listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) (result *EnvironmentListResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(listProjectEnvironmentsOptions, "listProjectEnvironmentsOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(listProjectEnvironmentsOptions, "listProjectEnvironmentsOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *listProjectEnvironmentsOptions.ProjectID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range listProjectEnvironmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListProjectEnvironments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironmentListResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetProjectEnvironment : Get an environment
+// Returns an environment.
+func (project *ProjectV1) GetProjectEnvironment(getProjectEnvironmentOptions *GetProjectEnvironmentOptions) (result *EnvironmentResponse, response *core.DetailedResponse, err error) {
+	return project.GetProjectEnvironmentWithContext(context.Background(), getProjectEnvironmentOptions)
+}
+
+// GetProjectEnvironmentWithContext is an alternate form of the GetProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) GetProjectEnvironmentWithContext(ctx context.Context, getProjectEnvironmentOptions *GetProjectEnvironmentOptions) (result *EnvironmentResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getProjectEnvironmentOptions, "getProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(getProjectEnvironmentOptions, "getProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *getProjectEnvironmentOptions.ProjectID,
+		"id": *getProjectEnvironmentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments/{id}`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range getProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironmentResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateProjectEnvironment : Update an environment
+// Update an environment by the ID.
+func (project *ProjectV1) UpdateProjectEnvironment(updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions) (result *EnvironmentResponse, response *core.DetailedResponse, err error) {
+	return project.UpdateProjectEnvironmentWithContext(context.Background(), updateProjectEnvironmentOptions)
+}
+
+// UpdateProjectEnvironmentWithContext is an alternate form of the UpdateProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) UpdateProjectEnvironmentWithContext(ctx context.Context, updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions) (result *EnvironmentResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateProjectEnvironmentOptions, "updateProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(updateProjectEnvironmentOptions, "updateProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *updateProjectEnvironmentOptions.ProjectID,
+		"id": *updateProjectEnvironmentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments/{id}`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range updateProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateProjectEnvironmentOptions.Name != nil {
+		body["name"] = updateProjectEnvironmentOptions.Name
+	}
+	if updateProjectEnvironmentOptions.Description != nil {
+		body["description"] = updateProjectEnvironmentOptions.Description
+	}
+	if updateProjectEnvironmentOptions.Authorizations != nil {
+		body["authorizations"] = updateProjectEnvironmentOptions.Authorizations
+	}
+	if updateProjectEnvironmentOptions.Inputs != nil {
+		body["inputs"] = updateProjectEnvironmentOptions.Inputs
+	}
+	if updateProjectEnvironmentOptions.ComplianceProfile != nil {
+		body["compliance_profile"] = updateProjectEnvironmentOptions.ComplianceProfile
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironmentResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteProjectEnvironment : Delete an environment
+// Delete an environment in a project by ID.
+func (project *ProjectV1) DeleteProjectEnvironment(deleteProjectEnvironmentOptions *DeleteProjectEnvironmentOptions) (result *EnvironmentDeleteResponse, response *core.DetailedResponse, err error) {
+	return project.DeleteProjectEnvironmentWithContext(context.Background(), deleteProjectEnvironmentOptions)
+}
+
+// DeleteProjectEnvironmentWithContext is an alternate form of the DeleteProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) DeleteProjectEnvironmentWithContext(ctx context.Context, deleteProjectEnvironmentOptions *DeleteProjectEnvironmentOptions) (result *EnvironmentDeleteResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteProjectEnvironmentOptions, "deleteProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(deleteProjectEnvironmentOptions, "deleteProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *deleteProjectEnvironmentOptions.ProjectID,
+		"id": *deleteProjectEnvironmentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments/{id}`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range deleteProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironmentDeleteResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
 
 	return
 }
@@ -1593,6 +1940,80 @@ func (options *CreateConfigOptions) SetHeaders(param map[string]string) *CreateC
 	return options
 }
 
+// CreateProjectEnvironmentOptions : The CreateProjectEnvironment options.
+type CreateProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The name of the environment.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the environment.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The input variables for configuration definition and environment.
+	Inputs *InputVariable `json:"inputs,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateProjectEnvironmentOptions : Instantiate CreateProjectEnvironmentOptions
+func (*ProjectV1) NewCreateProjectEnvironmentOptions(projectID string) *CreateProjectEnvironmentOptions {
+	return &CreateProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *CreateProjectEnvironmentOptions) SetProjectID(projectID string) *CreateProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetName : Allow user to set Name
+func (_options *CreateProjectEnvironmentOptions) SetName(name string) *CreateProjectEnvironmentOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *CreateProjectEnvironmentOptions) SetDescription(description string) *CreateProjectEnvironmentOptions {
+	_options.Description = core.StringPtr(description)
+	return _options
+}
+
+// SetAuthorizations : Allow user to set Authorizations
+func (_options *CreateProjectEnvironmentOptions) SetAuthorizations(authorizations *ProjectConfigAuth) *CreateProjectEnvironmentOptions {
+	_options.Authorizations = authorizations
+	return _options
+}
+
+// SetInputs : Allow user to set Inputs
+func (_options *CreateProjectEnvironmentOptions) SetInputs(inputs *InputVariable) *CreateProjectEnvironmentOptions {
+	_options.Inputs = inputs
+	return _options
+}
+
+// SetComplianceProfile : Allow user to set ComplianceProfile
+func (_options *CreateProjectEnvironmentOptions) SetComplianceProfile(complianceProfile *ProjectComplianceProfile) *CreateProjectEnvironmentOptions {
+	_options.ComplianceProfile = complianceProfile
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateProjectEnvironmentOptions) SetHeaders(param map[string]string) *CreateProjectEnvironmentOptions {
+	options.Headers = param
+	return options
+}
+
 // CreateProjectOptions : The CreateProject options.
 type CreateProjectOptions struct {
 	// The definition of the project.
@@ -1775,6 +2196,44 @@ func (options *DeleteConfigVersionOptions) SetHeaders(param map[string]string) *
 	return options
 }
 
+// DeleteProjectEnvironmentOptions : The DeleteProjectEnvironment options.
+type DeleteProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The environment ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewDeleteProjectEnvironmentOptions : Instantiate DeleteProjectEnvironmentOptions
+func (*ProjectV1) NewDeleteProjectEnvironmentOptions(projectID string, id string) *DeleteProjectEnvironmentOptions {
+	return &DeleteProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *DeleteProjectEnvironmentOptions) SetProjectID(projectID string) *DeleteProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *DeleteProjectEnvironmentOptions) SetID(id string) *DeleteProjectEnvironmentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeleteProjectEnvironmentOptions) SetHeaders(param map[string]string) *DeleteProjectEnvironmentOptions {
+	options.Headers = param
+	return options
+}
+
 // DeleteProjectOptions : The DeleteProject options.
 type DeleteProjectOptions struct {
 	// The unique project ID.
@@ -1839,6 +2298,133 @@ func (_options *DeployConfigOptions) SetID(id string) *DeployConfigOptions {
 func (options *DeployConfigOptions) SetHeaders(param map[string]string) *DeployConfigOptions {
 	options.Headers = param
 	return options
+}
+
+// EnvironmentDeleteResponse : The delete environment response.
+type EnvironmentDeleteResponse struct {
+	// The environment id as a friendly name.
+	ID *string `json:"id" validate:"required"`
+}
+
+// UnmarshalEnvironmentDeleteResponse unmarshals an instance of EnvironmentDeleteResponse from the specified map of raw messages.
+func UnmarshalEnvironmentDeleteResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentDeleteResponse)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentListResponse : The list environment response.
+type EnvironmentListResponse struct {
+	// The environments.
+	Environments []EnvironmentResponse `json:"environments,omitempty"`
+}
+
+// UnmarshalEnvironmentListResponse unmarshals an instance of EnvironmentListResponse from the specified map of raw messages.
+func UnmarshalEnvironmentListResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentListResponse)
+	err = core.UnmarshalModel(m, "environments", &obj.Environments, UnmarshalEnvironmentResponse)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentMetadata : The environment metadata.
+type EnvironmentMetadata struct {
+	// The unique ID.
+	ProjectID *string `json:"project_id" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
+}
+
+// UnmarshalEnvironmentMetadata unmarshals an instance of EnvironmentMetadata from the specified map of raw messages.
+func UnmarshalEnvironmentMetadata(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentMetadata)
+	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentResponse : The environment response.
+type EnvironmentResponse struct {
+	// The environment id as a friendly name.
+	ID *string `json:"id" validate:"required"`
+
+	// The name of the environment.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the environment.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The input variables for configuration definition and environment.
+	Inputs *InputVariable `json:"inputs,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// The environment metadata.
+	Metadata *EnvironmentMetadata `json:"metadata" validate:"required"`
+}
+
+// UnmarshalEnvironmentResponse unmarshals an instance of EnvironmentResponse from the specified map of raw messages.
+func UnmarshalEnvironmentResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentResponse)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "metadata", &obj.Metadata, UnmarshalEnvironmentMetadata)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
 }
 
 // ForceApproveOptions : The ForceApprove options.
@@ -1971,6 +2557,44 @@ func (_options *GetConfigVersionOptions) SetVersion(version int64) *GetConfigVer
 
 // SetHeaders : Allow user to set Headers
 func (options *GetConfigVersionOptions) SetHeaders(param map[string]string) *GetConfigVersionOptions {
+	options.Headers = param
+	return options
+}
+
+// GetProjectEnvironmentOptions : The GetProjectEnvironment options.
+type GetProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The environment ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetProjectEnvironmentOptions : Instantiate GetProjectEnvironmentOptions
+func (*ProjectV1) NewGetProjectEnvironmentOptions(projectID string, id string) *GetProjectEnvironmentOptions {
+	return &GetProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *GetProjectEnvironmentOptions) SetProjectID(projectID string) *GetProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *GetProjectEnvironmentOptions) SetID(id string) *GetProjectEnvironmentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetProjectEnvironmentOptions) SetHeaders(param map[string]string) *GetProjectEnvironmentOptions {
 	options.Headers = param
 	return options
 }
@@ -2255,6 +2879,34 @@ func (_options *ListConfigsOptions) SetProjectID(projectID string) *ListConfigsO
 
 // SetHeaders : Allow user to set Headers
 func (options *ListConfigsOptions) SetHeaders(param map[string]string) *ListConfigsOptions {
+	options.Headers = param
+	return options
+}
+
+// ListProjectEnvironmentsOptions : The ListProjectEnvironments options.
+type ListProjectEnvironmentsOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewListProjectEnvironmentsOptions : Instantiate ListProjectEnvironmentsOptions
+func (*ProjectV1) NewListProjectEnvironmentsOptions(projectID string) *ListProjectEnvironmentsOptions {
+	return &ListProjectEnvironmentsOptions{
+		ProjectID: core.StringPtr(projectID),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *ListProjectEnvironmentsOptions) SetProjectID(projectID string) *ListProjectEnvironmentsOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ListProjectEnvironmentsOptions) SetHeaders(param map[string]string) *ListProjectEnvironmentsOptions {
 	options.Headers = param
 	return options
 }
@@ -3914,6 +4566,90 @@ func (_options *UpdateConfigOptions) SetDefinition(definition *ProjectConfigProt
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateProjectEnvironmentOptions : The UpdateProjectEnvironment options.
+type UpdateProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The environment ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The name of the environment.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the environment.
+	Description *string `json:"description,omitempty"`
+
+	// The authorization for a configuration.
+	// You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The input variables for configuration definition and environment.
+	Inputs *InputVariable `json:"inputs,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateProjectEnvironmentOptions : Instantiate UpdateProjectEnvironmentOptions
+func (*ProjectV1) NewUpdateProjectEnvironmentOptions(projectID string, id string) *UpdateProjectEnvironmentOptions {
+	return &UpdateProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *UpdateProjectEnvironmentOptions) SetProjectID(projectID string) *UpdateProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateProjectEnvironmentOptions) SetID(id string) *UpdateProjectEnvironmentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetName : Allow user to set Name
+func (_options *UpdateProjectEnvironmentOptions) SetName(name string) *UpdateProjectEnvironmentOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *UpdateProjectEnvironmentOptions) SetDescription(description string) *UpdateProjectEnvironmentOptions {
+	_options.Description = core.StringPtr(description)
+	return _options
+}
+
+// SetAuthorizations : Allow user to set Authorizations
+func (_options *UpdateProjectEnvironmentOptions) SetAuthorizations(authorizations *ProjectConfigAuth) *UpdateProjectEnvironmentOptions {
+	_options.Authorizations = authorizations
+	return _options
+}
+
+// SetInputs : Allow user to set Inputs
+func (_options *UpdateProjectEnvironmentOptions) SetInputs(inputs *InputVariable) *UpdateProjectEnvironmentOptions {
+	_options.Inputs = inputs
+	return _options
+}
+
+// SetComplianceProfile : Allow user to set ComplianceProfile
+func (_options *UpdateProjectEnvironmentOptions) SetComplianceProfile(complianceProfile *ProjectComplianceProfile) *UpdateProjectEnvironmentOptions {
+	_options.ComplianceProfile = complianceProfile
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateProjectEnvironmentOptions) SetHeaders(param map[string]string) *UpdateProjectEnvironmentOptions {
 	options.Headers = param
 	return options
 }

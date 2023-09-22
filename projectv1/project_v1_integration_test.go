@@ -328,6 +328,130 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`CreateProjectEnvironment - Create an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateProjectEnvironment(createProjectEnvironmentOptions *CreateProjectEnvironmentOptions)`, func() {
+			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
+				ID: core.StringPtr("testString"),
+				TargetIamID: core.StringPtr("testString"),
+			}
+
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfile: projectConfigAuthTrustedProfileModel,
+				Method: core.StringPtr("API_KEY"),
+				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+			}
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
+
+			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
+				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
+				AttachmentID: core.StringPtr("testString"),
+				ProfileName: core.StringPtr("testString"),
+			}
+
+			createProjectEnvironmentOptions := &projectv1.CreateProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				Name: core.StringPtr("development"),
+				Description: core.StringPtr("The environment 'development'"),
+				Authorizations: projectConfigAuthModel,
+				Inputs: inputVariableModel,
+				ComplianceProfile: projectComplianceProfileModel,
+			}
+
+			environmentResponse, response, err := projectService.CreateProjectEnvironment(createProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(environmentResponse).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ListProjectEnvironments - List environments`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions)`, func() {
+			listProjectEnvironmentsOptions := &projectv1.ListProjectEnvironmentsOptions{
+				ProjectID: &projectIdLink,
+			}
+
+			environmentListResponse, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentListResponse).ToNot(BeNil())
+		})
+	})
+
+	Describe(`GetProjectEnvironment - Get an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetProjectEnvironment(getProjectEnvironmentOptions *GetProjectEnvironmentOptions)`, func() {
+			getProjectEnvironmentOptions := &projectv1.GetProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				ID: &projectIdLink,
+			}
+
+			environmentResponse, response, err := projectService.GetProjectEnvironment(getProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentResponse).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateProjectEnvironment - Update an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateProjectEnvironment(updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions)`, func() {
+			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
+				ID: core.StringPtr("testString"),
+				TargetIamID: core.StringPtr("testString"),
+			}
+
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfile: projectConfigAuthTrustedProfileModel,
+				Method: core.StringPtr("API_KEY"),
+				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+			}
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
+
+			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
+				ID: core.StringPtr("testString"),
+				InstanceID: core.StringPtr("testString"),
+				InstanceLocation: core.StringPtr("testString"),
+				AttachmentID: core.StringPtr("testString"),
+				ProfileName: core.StringPtr("testString"),
+			}
+
+			updateProjectEnvironmentOptions := &projectv1.UpdateProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				ID: &projectIdLink,
+				Name: core.StringPtr("dev"),
+				Description: core.StringPtr("The new environment 'dev'"),
+				Authorizations: projectConfigAuthModel,
+				Inputs: inputVariableModel,
+				ComplianceProfile: projectComplianceProfileModel,
+			}
+
+			environmentResponse, response, err := projectService.UpdateProjectEnvironment(updateProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentResponse).ToNot(BeNil())
+		})
+	})
+
 	Describe(`ListConfigs - List all project configurations`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -574,6 +698,23 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfig).ToNot(BeNil())
+		})
+	})
+
+	Describe(`DeleteProjectEnvironment - Delete an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`DeleteProjectEnvironment(deleteProjectEnvironmentOptions *DeleteProjectEnvironmentOptions)`, func() {
+			deleteProjectEnvironmentOptions := &projectv1.DeleteProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				ID: &projectIdLink,
+			}
+
+			environmentDeleteResponse, response, err := projectService.DeleteProjectEnvironment(deleteProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentDeleteResponse).ToNot(BeNil())
 		})
 	})
 
