@@ -115,21 +115,11 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 			}
 
-			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
-				Name: core.StringPtr("common-variables"),
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-			}
-
-			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				Definition: projectConfigPrototypeDefinitionBlockModel,
-			}
-
 			createProjectOptions := projectService.NewCreateProjectOptions(
 				projectPrototypeDefinitionModel,
 				"us-south",
 				"Default",
 			)
-			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
@@ -264,6 +254,146 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(project).ToNot(BeNil())
+		})
+		It(`CreateProjectEnvironment request example`, func() {
+			fmt.Println("\nCreateProjectEnvironment() result:")
+			// begin-create_project_environment
+
+			environmentAuthModel := &projectv1.EnvironmentAuth{
+				Method: core.StringPtr("API_KEY"),
+				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+			}
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
+
+			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
+				ID: core.StringPtr("some-profile-id"),
+				InstanceID: core.StringPtr("some-instance-id"),
+				InstanceLocation: core.StringPtr("us-south"),
+				AttachmentID: core.StringPtr("some-attachment-id"),
+				ProfileName: core.StringPtr("some-profile-name"),
+			}
+
+			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
+				Name: core.StringPtr("development"),
+				Description: core.StringPtr("The environment 'development'"),
+				Authorizations: environmentAuthModel,
+				Inputs: inputVariableModel,
+				ComplianceProfile: projectComplianceProfileModel,
+			}
+
+			createProjectEnvironmentOptions := projectService.NewCreateProjectEnvironmentOptions(
+				projectIdLink,
+				environmentDefinitionRequiredPropertiesModel,
+			)
+
+			environment, response, err := projectService.CreateProjectEnvironment(createProjectEnvironmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(environment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_project_environment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(environment).ToNot(BeNil())
+		})
+		It(`ListProjectEnvironments request example`, func() {
+			fmt.Println("\nListProjectEnvironments() result:")
+			// begin-list_project_environments
+
+			listProjectEnvironmentsOptions := projectService.NewListProjectEnvironmentsOptions(
+				projectIdLink,
+			)
+
+			environmentListResponse, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(environmentListResponse, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_project_environments
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentListResponse).ToNot(BeNil())
+		})
+		It(`GetProjectEnvironment request example`, func() {
+			fmt.Println("\nGetProjectEnvironment() result:")
+			// begin-get_project_environment
+
+			getProjectEnvironmentOptions := projectService.NewGetProjectEnvironmentOptions(
+				projectIdLink,
+				projectIdLink,
+			)
+
+			environment, response, err := projectService.GetProjectEnvironment(getProjectEnvironmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(environment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_project_environment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environment).ToNot(BeNil())
+		})
+		It(`UpdateProjectEnvironment request example`, func() {
+			fmt.Println("\nUpdateProjectEnvironment() result:")
+			// begin-update_project_environment
+
+			environmentAuthModel := &projectv1.EnvironmentAuth{
+				Method: core.StringPtr("API_KEY"),
+				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+			}
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
+
+			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
+				ID: core.StringPtr("some-profile-id"),
+				InstanceID: core.StringPtr("some-instance-id"),
+				InstanceLocation: core.StringPtr("us-south"),
+				AttachmentID: core.StringPtr("some-attachment-id"),
+				ProfileName: core.StringPtr("some-profile-name"),
+			}
+
+			environmentDefinitionPropertiesModel := &projectv1.EnvironmentDefinitionProperties{
+				Name: core.StringPtr("development"),
+				Description: core.StringPtr("The environment 'development'"),
+				Authorizations: environmentAuthModel,
+				Inputs: inputVariableModel,
+				ComplianceProfile: projectComplianceProfileModel,
+			}
+
+			updateProjectEnvironmentOptions := projectService.NewUpdateProjectEnvironmentOptions(
+				projectIdLink,
+				projectIdLink,
+				environmentDefinitionPropertiesModel,
+			)
+
+			environment, response, err := projectService.UpdateProjectEnvironment(updateProjectEnvironmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(environment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_project_environment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environment).ToNot(BeNil())
 		})
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
@@ -457,11 +587,15 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 		It(`SyncConfig request example`, func() {
 			// begin-sync_config
 
+			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
+				WorkspaceID: core.StringPtr("us-south.workspace.service.e0106139"),
+			}
+
 			syncConfigOptions := projectService.NewSyncConfigOptions(
 				projectIdLink,
 				configIdLink,
 			)
-			syncConfigOptions.SetWorkspaceID("us-south.workspace.service.e0106139")
+			syncConfigOptions.SetSchematics(schematicsWorkspaceModel)
 
 			response, err := projectService.SyncConfig(syncConfigOptions)
 			if err != nil {
@@ -542,6 +676,28 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfig).ToNot(BeNil())
+		})
+		It(`DeleteProjectEnvironment request example`, func() {
+			fmt.Println("\nDeleteProjectEnvironment() result:")
+			// begin-delete_project_environment
+
+			deleteProjectEnvironmentOptions := projectService.NewDeleteProjectEnvironmentOptions(
+				projectIdLink,
+				projectIdLink,
+			)
+
+			environmentDeleteResponse, response, err := projectService.DeleteProjectEnvironment(deleteProjectEnvironmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(environmentDeleteResponse, "", "  ")
+			fmt.Println(string(b))
+
+			// end-delete_project_environment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentDeleteResponse).ToNot(BeNil())
 		})
 		It(`DeleteConfig request example`, func() {
 			fmt.Println("\nDeleteConfig() result:")
