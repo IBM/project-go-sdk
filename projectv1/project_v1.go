@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.79.0-2eb6af3d-20230905-174838
+ * IBM OpenAPI SDK Code Generator Version: 3.80.0-29334a73-20230925-151553
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -474,6 +474,329 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 	return
 }
 
+// CreateProjectEnvironment : Create an environment
+// Create an environment.
+func (project *ProjectV1) CreateProjectEnvironment(createProjectEnvironmentOptions *CreateProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
+	return project.CreateProjectEnvironmentWithContext(context.Background(), createProjectEnvironmentOptions)
+}
+
+// CreateProjectEnvironmentWithContext is an alternate form of the CreateProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) CreateProjectEnvironmentWithContext(ctx context.Context, createProjectEnvironmentOptions *CreateProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createProjectEnvironmentOptions, "createProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(createProjectEnvironmentOptions, "createProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *createProjectEnvironmentOptions.ProjectID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range createProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createProjectEnvironmentOptions.Definition != nil {
+		body["definition"] = createProjectEnvironmentOptions.Definition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironment)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ListProjectEnvironments : List environments
+// Returns all environments.
+func (project *ProjectV1) ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) (result *EnvironmentListResponse, response *core.DetailedResponse, err error) {
+	return project.ListProjectEnvironmentsWithContext(context.Background(), listProjectEnvironmentsOptions)
+}
+
+// ListProjectEnvironmentsWithContext is an alternate form of the ListProjectEnvironments method which supports a Context parameter
+func (project *ProjectV1) ListProjectEnvironmentsWithContext(ctx context.Context, listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) (result *EnvironmentListResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(listProjectEnvironmentsOptions, "listProjectEnvironmentsOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(listProjectEnvironmentsOptions, "listProjectEnvironmentsOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *listProjectEnvironmentsOptions.ProjectID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range listProjectEnvironmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListProjectEnvironments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironmentListResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetProjectEnvironment : Get an environment
+// Returns an environment.
+func (project *ProjectV1) GetProjectEnvironment(getProjectEnvironmentOptions *GetProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
+	return project.GetProjectEnvironmentWithContext(context.Background(), getProjectEnvironmentOptions)
+}
+
+// GetProjectEnvironmentWithContext is an alternate form of the GetProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) GetProjectEnvironmentWithContext(ctx context.Context, getProjectEnvironmentOptions *GetProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getProjectEnvironmentOptions, "getProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(getProjectEnvironmentOptions, "getProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *getProjectEnvironmentOptions.ProjectID,
+		"id": *getProjectEnvironmentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments/{id}`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range getProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironment)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateProjectEnvironment : Update an environment
+// Update an environment by the ID.
+func (project *ProjectV1) UpdateProjectEnvironment(updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
+	return project.UpdateProjectEnvironmentWithContext(context.Background(), updateProjectEnvironmentOptions)
+}
+
+// UpdateProjectEnvironmentWithContext is an alternate form of the UpdateProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) UpdateProjectEnvironmentWithContext(ctx context.Context, updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateProjectEnvironmentOptions, "updateProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(updateProjectEnvironmentOptions, "updateProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *updateProjectEnvironmentOptions.ProjectID,
+		"id": *updateProjectEnvironmentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments/{id}`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range updateProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateProjectEnvironmentOptions.Definition != nil {
+		body["definition"] = updateProjectEnvironmentOptions.Definition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironment)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteProjectEnvironment : Delete an environment
+// Delete an environment in a project by ID.
+func (project *ProjectV1) DeleteProjectEnvironment(deleteProjectEnvironmentOptions *DeleteProjectEnvironmentOptions) (result *EnvironmentDeleteResponse, response *core.DetailedResponse, err error) {
+	return project.DeleteProjectEnvironmentWithContext(context.Background(), deleteProjectEnvironmentOptions)
+}
+
+// DeleteProjectEnvironmentWithContext is an alternate form of the DeleteProjectEnvironment method which supports a Context parameter
+func (project *ProjectV1) DeleteProjectEnvironmentWithContext(ctx context.Context, deleteProjectEnvironmentOptions *DeleteProjectEnvironmentOptions) (result *EnvironmentDeleteResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteProjectEnvironmentOptions, "deleteProjectEnvironmentOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(deleteProjectEnvironmentOptions, "deleteProjectEnvironmentOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *deleteProjectEnvironmentOptions.ProjectID,
+		"id": *deleteProjectEnvironmentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/environments/{id}`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range deleteProjectEnvironmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnvironmentDeleteResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // CreateConfig : Add a new configuration
 // Add a new configuration to a project.
 func (project *ProjectV1) CreateConfig(createConfigOptions *CreateConfigOptions) (result *ProjectConfig, response *core.DetailedResponse, err error) {
@@ -517,6 +840,9 @@ func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createCon
 	body := make(map[string]interface{})
 	if createConfigOptions.Definition != nil {
 		body["definition"] = createConfigOptions.Definition
+	}
+	if createConfigOptions.Schematics != nil {
+		body["schematics"] = createConfigOptions.Schematics
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -1159,8 +1485,8 @@ func (project *ProjectV1) SyncConfigWithContext(ctx context.Context, syncConfigO
 	builder.AddHeader("Content-Type", "application/json")
 
 	body := make(map[string]interface{})
-	if syncConfigOptions.WorkspaceID != nil {
-		body["workspace_id"] = syncConfigOptions.WorkspaceID
+	if syncConfigOptions.Schematics != nil {
+		body["schematics"] = syncConfigOptions.Schematics
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -1563,6 +1889,9 @@ type CreateConfigOptions struct {
 	// The name and description of a project configuration.
 	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
 
+	// A schematics workspace associated to a project configuration.
+	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -1587,8 +1916,52 @@ func (_options *CreateConfigOptions) SetDefinition(definition *ProjectConfigProt
 	return _options
 }
 
+// SetSchematics : Allow user to set Schematics
+func (_options *CreateConfigOptions) SetSchematics(schematics *SchematicsWorkspace) *CreateConfigOptions {
+	_options.Schematics = schematics
+	return _options
+}
+
 // SetHeaders : Allow user to set Headers
 func (options *CreateConfigOptions) SetHeaders(param map[string]string) *CreateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// CreateProjectEnvironmentOptions : The CreateProjectEnvironment options.
+type CreateProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The environment definition.
+	Definition *EnvironmentDefinitionRequiredProperties `json:"definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateProjectEnvironmentOptions : Instantiate CreateProjectEnvironmentOptions
+func (*ProjectV1) NewCreateProjectEnvironmentOptions(projectID string, definition *EnvironmentDefinitionRequiredProperties) *CreateProjectEnvironmentOptions {
+	return &CreateProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+		Definition: definition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *CreateProjectEnvironmentOptions) SetProjectID(projectID string) *CreateProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetDefinition : Allow user to set Definition
+func (_options *CreateProjectEnvironmentOptions) SetDefinition(definition *EnvironmentDefinitionRequiredProperties) *CreateProjectEnvironmentOptions {
+	_options.Definition = definition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateProjectEnvironmentOptions) SetHeaders(param map[string]string) *CreateProjectEnvironmentOptions {
 	options.Headers = param
 	return options
 }
@@ -1775,6 +2148,44 @@ func (options *DeleteConfigVersionOptions) SetHeaders(param map[string]string) *
 	return options
 }
 
+// DeleteProjectEnvironmentOptions : The DeleteProjectEnvironment options.
+type DeleteProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The environment ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewDeleteProjectEnvironmentOptions : Instantiate DeleteProjectEnvironmentOptions
+func (*ProjectV1) NewDeleteProjectEnvironmentOptions(projectID string, id string) *DeleteProjectEnvironmentOptions {
+	return &DeleteProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *DeleteProjectEnvironmentOptions) SetProjectID(projectID string) *DeleteProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *DeleteProjectEnvironmentOptions) SetID(id string) *DeleteProjectEnvironmentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeleteProjectEnvironmentOptions) SetHeaders(param map[string]string) *DeleteProjectEnvironmentOptions {
+	options.Headers = param
+	return options
+}
+
 // DeleteProjectOptions : The DeleteProject options.
 type DeleteProjectOptions struct {
 	// The unique project ID.
@@ -1839,6 +2250,225 @@ func (_options *DeployConfigOptions) SetID(id string) *DeployConfigOptions {
 func (options *DeployConfigOptions) SetHeaders(param map[string]string) *DeployConfigOptions {
 	options.Headers = param
 	return options
+}
+
+// Environment : The definition of a project environment.
+type Environment struct {
+	// The unique ID.
+	ProjectID *string `json:"project_id" validate:"required"`
+
+	// An IBM Cloud resource name, which uniquely identifies a resource.
+	ProjectCrn *string `json:"project_crn" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	UserModifiedAt *strfmt.DateTime `json:"user_modified_at" validate:"required"`
+
+	// The environment id as a friendly name.
+	ID *string `json:"id,omitempty"`
+
+	// The environment definition.
+	Definition *EnvironmentDefinitionRequiredProperties `json:"definition" validate:"required"`
+}
+
+// UnmarshalEnvironment unmarshals an instance of Environment from the specified map of raw messages.
+func UnmarshalEnvironment(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(Environment)
+	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "project_crn", &obj.ProjectCrn)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalEnvironmentDefinitionRequiredProperties)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentAuth : The authorizations for the environment.
+type EnvironmentAuth struct {
+	// The unique ID.
+	TrustedProfileID *string `json:"trusted_profile_id,omitempty"`
+
+	// The authorization for a configuration. You can authorize by using a trusted profile or an API key in Secrets
+	// Manager.
+	Method *string `json:"method,omitempty"`
+
+	// The IBM Cloud API Key.
+	ApiKey *string `json:"api_key,omitempty"`
+}
+
+// UnmarshalEnvironmentAuth unmarshals an instance of EnvironmentAuth from the specified map of raw messages.
+func UnmarshalEnvironmentAuth(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentAuth)
+	err = core.UnmarshalPrimitive(m, "trusted_profile_id", &obj.TrustedProfileID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "method", &obj.Method)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "api_key", &obj.ApiKey)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentDefinitionProperties : The environment definition used for updates.
+type EnvironmentDefinitionProperties struct {
+	// The name of the environment.
+	Name *string `json:"name,omitempty"`
+
+	// The description of the environment.
+	Description *string `json:"description,omitempty"`
+
+	// The authorizations for the environment.
+	Authorizations *EnvironmentAuth `json:"authorizations,omitempty"`
+
+	// The input variables for configuration definition and environment.
+	Inputs *InputVariable `json:"inputs,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+}
+
+// UnmarshalEnvironmentDefinitionProperties unmarshals an instance of EnvironmentDefinitionProperties from the specified map of raw messages.
+func UnmarshalEnvironmentDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentDefinitionProperties)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalEnvironmentAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentDefinitionRequiredProperties : The environment definition.
+type EnvironmentDefinitionRequiredProperties struct {
+	// The name of the environment.
+	Name *string `json:"name" validate:"required"`
+
+	// The description of the environment.
+	Description *string `json:"description,omitempty"`
+
+	// The authorizations for the environment.
+	Authorizations *EnvironmentAuth `json:"authorizations,omitempty"`
+
+	// The input variables for configuration definition and environment.
+	Inputs *InputVariable `json:"inputs,omitempty"`
+
+	// The profile required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+}
+
+// NewEnvironmentDefinitionRequiredProperties : Instantiate EnvironmentDefinitionRequiredProperties (Generic Model Constructor)
+func (*ProjectV1) NewEnvironmentDefinitionRequiredProperties(name string) (_model *EnvironmentDefinitionRequiredProperties, err error) {
+	_model = &EnvironmentDefinitionRequiredProperties{
+		Name: core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalEnvironmentDefinitionRequiredProperties unmarshals an instance of EnvironmentDefinitionRequiredProperties from the specified map of raw messages.
+func UnmarshalEnvironmentDefinitionRequiredProperties(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentDefinitionRequiredProperties)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalEnvironmentAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentDeleteResponse : The delete environment response.
+type EnvironmentDeleteResponse struct {
+	// The environment id as a friendly name.
+	ID *string `json:"id" validate:"required"`
+}
+
+// UnmarshalEnvironmentDeleteResponse unmarshals an instance of EnvironmentDeleteResponse from the specified map of raw messages.
+func UnmarshalEnvironmentDeleteResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentDeleteResponse)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnvironmentListResponse : The list environment response.
+type EnvironmentListResponse struct {
+	// The environments.
+	Environments []Environment `json:"environments,omitempty"`
+}
+
+// UnmarshalEnvironmentListResponse unmarshals an instance of EnvironmentListResponse from the specified map of raw messages.
+func UnmarshalEnvironmentListResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentListResponse)
+	err = core.UnmarshalModel(m, "environments", &obj.Environments, UnmarshalEnvironment)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
 }
 
 // ForceApproveOptions : The ForceApprove options.
@@ -1975,6 +2605,44 @@ func (options *GetConfigVersionOptions) SetHeaders(param map[string]string) *Get
 	return options
 }
 
+// GetProjectEnvironmentOptions : The GetProjectEnvironment options.
+type GetProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The environment ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetProjectEnvironmentOptions : Instantiate GetProjectEnvironmentOptions
+func (*ProjectV1) NewGetProjectEnvironmentOptions(projectID string, id string) *GetProjectEnvironmentOptions {
+	return &GetProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *GetProjectEnvironmentOptions) SetProjectID(projectID string) *GetProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *GetProjectEnvironmentOptions) SetID(id string) *GetProjectEnvironmentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetProjectEnvironmentOptions) SetHeaders(param map[string]string) *GetProjectEnvironmentOptions {
+	options.Headers = param
+	return options
+}
+
 // GetProjectOptions : The GetProject options.
 type GetProjectOptions struct {
 	// The unique project ID.
@@ -2072,6 +2740,12 @@ type LastActionWithSummary struct {
 	// The result of the last action.
 	Result *string `json:"result,omitempty"`
 
+	// A brief summary of a pre/post action.
+	PreJob *PrePostActionJobWithIdAndSummary `json:"pre_job,omitempty"`
+
+	// A brief summary of a pre/post action.
+	PostJob *PrePostActionJobWithIdAndSummary `json:"post_job,omitempty"`
+
 	// A brief summary of an action.
 	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
 }
@@ -2094,6 +2768,14 @@ func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interfa
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "pre_job", &obj.PreJob, UnmarshalPrePostActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "post_job", &obj.PostJob, UnmarshalPrePostActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
 	if err != nil {
 		return
@@ -2109,6 +2791,12 @@ type LastValidatedActionWithSummary struct {
 
 	// The result of the last action.
 	Result *string `json:"result,omitempty"`
+
+	// A brief summary of a pre/post action.
+	PreJob *PrePostActionJobWithIdAndSummary `json:"pre_job,omitempty"`
+
+	// A brief summary of a pre/post action.
+	PostJob *PrePostActionJobWithIdAndSummary `json:"post_job,omitempty"`
 
 	// A brief summary of an action.
 	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
@@ -2136,6 +2824,14 @@ func UnmarshalLastValidatedActionWithSummary(m map[string]json.RawMessage, resul
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "pre_job", &obj.PreJob, UnmarshalPrePostActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "post_job", &obj.PostJob, UnmarshalPrePostActionJobWithIdAndSummary)
 	if err != nil {
 		return
 	}
@@ -2259,6 +2955,34 @@ func (options *ListConfigsOptions) SetHeaders(param map[string]string) *ListConf
 	return options
 }
 
+// ListProjectEnvironmentsOptions : The ListProjectEnvironments options.
+type ListProjectEnvironmentsOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewListProjectEnvironmentsOptions : Instantiate ListProjectEnvironmentsOptions
+func (*ProjectV1) NewListProjectEnvironmentsOptions(projectID string) *ListProjectEnvironmentsOptions {
+	return &ListProjectEnvironmentsOptions{
+		ProjectID: core.StringPtr(projectID),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *ListProjectEnvironmentsOptions) SetProjectID(projectID string) *ListProjectEnvironmentsOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ListProjectEnvironmentsOptions) SetHeaders(param map[string]string) *ListProjectEnvironmentsOptions {
+	options.Headers = param
+	return options
+}
+
 // ListProjectsOptions : The ListProjects options.
 type ListProjectsOptions struct {
 	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
@@ -2337,6 +3061,30 @@ type PaginationLink struct {
 func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(PaginationLink)
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// PrePostActionJobWithIdAndSummary : A brief summary of a pre/post action.
+type PrePostActionJobWithIdAndSummary struct {
+	// The unique ID.
+	ID *string `json:"id,omitempty"`
+
+	// The Summary of the pre/post job of the configuration.
+	Summary map[string]interface{} `json:"summary,omitempty"`
+}
+
+// UnmarshalPrePostActionJobWithIdAndSummary unmarshals an instance of PrePostActionJobWithIdAndSummary from the specified map of raw messages.
+func UnmarshalPrePostActionJobWithIdAndSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(PrePostActionJobWithIdAndSummary)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "summary", &obj.Summary)
 	if err != nil {
 		return
 	}
@@ -2679,7 +3427,7 @@ type ProjectConfig struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
+	UserModifiedAt *strfmt.DateTime `json:"user_modified_at,omitempty"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
@@ -2696,6 +3444,9 @@ type ProjectConfig struct {
 
 	// The action job performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
+
+	// A schematics workspace associated to a project configuration.
+	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
 	// The type and output of a project configuration.
 	Definition *ProjectConfigResponseDefinition `json:"definition" validate:"required"`
@@ -2756,7 +3507,7 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
 	if err != nil {
 		return
 	}
@@ -2777,6 +3528,10 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 		return
 	}
 	err = core.UnmarshalModel(m, "last_undeployed", &obj.LastUndeployed, UnmarshalLastActionWithSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
 	if err != nil {
 		return
 	}
@@ -2890,7 +3645,7 @@ type ProjectConfigCollectionMember struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
+	UserModifiedAt *strfmt.DateTime `json:"user_modified_at,omitempty"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
@@ -2907,6 +3662,9 @@ type ProjectConfigCollectionMember struct {
 
 	// The action job performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
+
+	// A schematics workspace associated to a project configuration.
+	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
 	// A relative URL.
 	Href *string `json:"href" validate:"required"`
@@ -2970,7 +3728,7 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
 	if err != nil {
 		return
 	}
@@ -2991,6 +3749,10 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 		return
 	}
 	err = core.UnmarshalModel(m, "last_undeployed", &obj.LastUndeployed, UnmarshalLastActionWithSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
 	if err != nil {
 		return
 	}
@@ -3217,6 +3979,9 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 type ProjectConfigPrototype struct {
 	// The name and description of a project configuration.
 	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
+
+	// A schematics workspace associated to a project configuration.
+	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 }
 
 // NewProjectConfigPrototype : Instantiate ProjectConfigPrototype (Generic Model Constructor)
@@ -3232,6 +3997,10 @@ func (*ProjectV1) NewProjectConfigPrototype(definition *ProjectConfigPrototypeDe
 func UnmarshalProjectConfigPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigPrototype)
 	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigPrototypeDefinitionBlock)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
 	if err != nil {
 		return
 	}
@@ -3258,7 +4027,7 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
 	// A dotted value of catalogID.versionID.
-	LocatorID *string `json:"locator_id" validate:"required"`
+	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
 	Input *InputVariable `json:"input,omitempty"`
@@ -3269,10 +4038,9 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 }
 
 // NewProjectConfigPrototypeDefinitionBlock : Instantiate ProjectConfigPrototypeDefinitionBlock (Generic Model Constructor)
-func (*ProjectV1) NewProjectConfigPrototypeDefinitionBlock(name string, locatorID string) (_model *ProjectConfigPrototypeDefinitionBlock, err error) {
+func (*ProjectV1) NewProjectConfigPrototypeDefinitionBlock(name string) (_model *ProjectConfigPrototypeDefinitionBlock, err error) {
 	_model = &ProjectConfigPrototypeDefinitionBlock{
 		Name: core.StringPtr(name),
-		LocatorID: core.StringPtr(locatorID),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
 	return
@@ -3785,6 +4553,23 @@ func UnmarshalProjectPrototypePatchDefinitionBlock(m map[string]json.RawMessage,
 	return
 }
 
+// SchematicsWorkspace : A schematics workspace associated to a project configuration.
+type SchematicsWorkspace struct {
+	// An existing schematics workspace ID.
+	WorkspaceID *string `json:"workspace_id,omitempty"`
+}
+
+// UnmarshalSchematicsWorkspace unmarshals an instance of SchematicsWorkspace from the specified map of raw messages.
+func UnmarshalSchematicsWorkspace(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(SchematicsWorkspace)
+	err = core.UnmarshalPrimitive(m, "workspace_id", &obj.WorkspaceID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // SyncConfigOptions : The SyncConfig options.
 type SyncConfigOptions struct {
 	// The unique project ID.
@@ -3793,8 +4578,8 @@ type SyncConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// An existing schematics workspace ID.
-	WorkspaceID *string `json:"workspace_id,omitempty"`
+	// A schematics workspace associated to a project configuration.
+	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3820,9 +4605,9 @@ func (_options *SyncConfigOptions) SetID(id string) *SyncConfigOptions {
 	return _options
 }
 
-// SetWorkspaceID : Allow user to set WorkspaceID
-func (_options *SyncConfigOptions) SetWorkspaceID(workspaceID string) *SyncConfigOptions {
-	_options.WorkspaceID = core.StringPtr(workspaceID)
+// SetSchematics : Allow user to set Schematics
+func (_options *SyncConfigOptions) SetSchematics(schematics *SchematicsWorkspace) *SyncConfigOptions {
+	_options.Schematics = schematics
 	return _options
 }
 
@@ -3914,6 +4699,54 @@ func (_options *UpdateConfigOptions) SetDefinition(definition *ProjectConfigProt
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateProjectEnvironmentOptions : The UpdateProjectEnvironment options.
+type UpdateProjectEnvironmentOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The environment ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The environment definition used for updates.
+	Definition *EnvironmentDefinitionProperties `json:"definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateProjectEnvironmentOptions : Instantiate UpdateProjectEnvironmentOptions
+func (*ProjectV1) NewUpdateProjectEnvironmentOptions(projectID string, id string, definition *EnvironmentDefinitionProperties) *UpdateProjectEnvironmentOptions {
+	return &UpdateProjectEnvironmentOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		Definition: definition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *UpdateProjectEnvironmentOptions) SetProjectID(projectID string) *UpdateProjectEnvironmentOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateProjectEnvironmentOptions) SetID(id string) *UpdateProjectEnvironmentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetDefinition : Allow user to set Definition
+func (_options *UpdateProjectEnvironmentOptions) SetDefinition(definition *EnvironmentDefinitionProperties) *UpdateProjectEnvironmentOptions {
+	_options.Definition = definition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateProjectEnvironmentOptions) SetHeaders(param map[string]string) *UpdateProjectEnvironmentOptions {
 	options.Headers = param
 	return options
 }
