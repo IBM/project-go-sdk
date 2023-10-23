@@ -2339,7 +2339,7 @@ type EnvironmentDefinitionProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Input *InputVariable `json:"input,omitempty"`
+	Inputs *InputVariable `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -2360,7 +2360,7 @@ func UnmarshalEnvironmentDefinitionProperties(m map[string]json.RawMessage, resu
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
 	if err != nil {
 		return
 	}
@@ -2384,7 +2384,7 @@ type EnvironmentDefinitionRequiredProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Input *InputVariable `json:"input,omitempty"`
+	Inputs *InputVariable `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -2414,7 +2414,7 @@ func UnmarshalEnvironmentDefinitionRequiredProperties(m map[string]json.RawMessa
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
 	if err != nil {
 		return
 	}
@@ -3412,12 +3412,6 @@ type ProjectConfig struct {
 	// The needs attention state of a configuration.
 	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
-	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
-
-	// The flag that indicates whether a configuration update is available.
-	UpdateAvailable *bool `json:"update_available" validate:"required"`
-
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
@@ -3431,10 +3425,7 @@ type ProjectConfig struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
-
-	// The references used in the config to resolve input values.
-	References map[string]interface{} `json:"references,omitempty"`
+	LastSavedAt *strfmt.DateTime `json:"last_saved_at,omitempty"`
 
 	// The action job performed on the project configuration.
 	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
@@ -3445,8 +3436,20 @@ type ProjectConfig struct {
 	// The action job performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
 
+	// The outputs of a Schematics template property.
+	Outputs []OutputValue `json:"outputs,omitempty"`
+
+	// The references used in the config to resolve input values.
+	References map[string]interface{} `json:"references,omitempty"`
+
 	// A schematics workspace associated to a project configuration.
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
+
+	// The state of the configuration.
+	State *string `json:"state" validate:"required"`
+
+	// The flag that indicates whether a configuration update is available.
+	UpdateAvailable *bool `json:"update_available" validate:"required"`
 
 	// The type and output of a project configuration.
 	Definition *ProjectConfigResponseDefinition `json:"definition" validate:"required"`
@@ -3470,7 +3473,7 @@ const (
 	ProjectConfig_State_DeployingFailed = "deploying_failed"
 	ProjectConfig_State_Discarded = "discarded"
 	ProjectConfig_State_Draft = "draft"
-	ProjectConfig_State_Superceded = "superceded"
+	ProjectConfig_State_Superseded = "superseded"
 	ProjectConfig_State_Undeploying = "undeploying"
 	ProjectConfig_State_UndeployingFailed = "undeploying_failed"
 	ProjectConfig_State_Validated = "validated"
@@ -3501,14 +3504,6 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
 	if err != nil {
 		return
@@ -3521,11 +3516,7 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "references", &obj.References)
+	err = core.UnmarshalPrimitive(m, "last_saved_at", &obj.LastSavedAt)
 	if err != nil {
 		return
 	}
@@ -3541,7 +3532,23 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "references", &obj.References)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
 	if err != nil {
 		return
 	}
@@ -3572,6 +3579,13 @@ type ProjectConfigAuth struct {
 	// The IBM Cloud API Key.
 	ApiKey *string `json:"api_key,omitempty"`
 }
+
+// Constants associated with the ProjectConfigAuth.Method property.
+// The authorization method. You can authorize by using a trusted profile or an API key in Secrets Manager.
+const (
+	ProjectConfigAuth_Method_ApiKey = "api_key"
+	ProjectConfigAuth_Method_TrustedProfile = "trusted_profile"
+)
 
 // UnmarshalProjectConfigAuth unmarshals an instance of ProjectConfigAuth from the specified map of raw messages.
 func UnmarshalProjectConfigAuth(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -3632,12 +3646,6 @@ type ProjectConfigCollectionMember struct {
 	// The needs attention state of a configuration.
 	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
-	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
-
-	// The flag that indicates whether a configuration update is available.
-	UpdateAvailable *bool `json:"update_available" validate:"required"`
-
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
@@ -3651,10 +3659,7 @@ type ProjectConfigCollectionMember struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
-
-	// The references used in the config to resolve input values.
-	References map[string]interface{} `json:"references,omitempty"`
+	LastSavedAt *strfmt.DateTime `json:"last_saved_at,omitempty"`
 
 	// The action job performed on the project configuration.
 	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
@@ -3665,8 +3670,20 @@ type ProjectConfigCollectionMember struct {
 	// The action job performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
 
+	// The outputs of a Schematics template property.
+	Outputs []OutputValue `json:"outputs,omitempty"`
+
+	// The references used in the config to resolve input values.
+	References map[string]interface{} `json:"references,omitempty"`
+
 	// A schematics workspace associated to a project configuration.
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
+
+	// The state of the configuration.
+	State *string `json:"state" validate:"required"`
+
+	// The flag that indicates whether a configuration update is available.
+	UpdateAvailable *bool `json:"update_available" validate:"required"`
 
 	// A relative URL.
 	Href *string `json:"href" validate:"required"`
@@ -3687,7 +3704,7 @@ const (
 	ProjectConfigCollectionMember_State_DeployingFailed = "deploying_failed"
 	ProjectConfigCollectionMember_State_Discarded = "discarded"
 	ProjectConfigCollectionMember_State_Draft = "draft"
-	ProjectConfigCollectionMember_State_Superceded = "superceded"
+	ProjectConfigCollectionMember_State_Superseded = "superseded"
 	ProjectConfigCollectionMember_State_Undeploying = "undeploying"
 	ProjectConfigCollectionMember_State_UndeployingFailed = "undeploying_failed"
 	ProjectConfigCollectionMember_State_Validated = "validated"
@@ -3726,14 +3743,6 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
 	if err != nil {
 		return
@@ -3746,11 +3755,7 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "references", &obj.References)
+	err = core.UnmarshalPrimitive(m, "last_saved_at", &obj.LastSavedAt)
 	if err != nil {
 		return
 	}
@@ -3766,7 +3771,23 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "references", &obj.References)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
 	if err != nil {
 		return
 	}
@@ -3952,15 +3973,15 @@ func UnmarshalProjectConfigMetadataCraLogs(m map[string]json.RawMessage, result 
 
 // ProjectConfigMetadataLastApproved : The last approved metadata of the configuration.
 type ProjectConfigMetadataLastApproved struct {
-	// The flag that indicates whether the approval was forced approved.
-	IsForced *bool `json:"is_forced" validate:"required"`
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	At *strfmt.DateTime `json:"at" validate:"required"`
 
 	// The comment left by the user who approved the configuration.
 	Comment *string `json:"comment,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	Timestamp *strfmt.DateTime `json:"timestamp" validate:"required"`
+	// The flag that indicates whether the approval was forced approved.
+	IsForced *bool `json:"is_forced" validate:"required"`
 
 	// The unique ID.
 	UserID *string `json:"user_id" validate:"required"`
@@ -3969,7 +3990,7 @@ type ProjectConfigMetadataLastApproved struct {
 // UnmarshalProjectConfigMetadataLastApproved unmarshals an instance of ProjectConfigMetadataLastApproved from the specified map of raw messages.
 func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigMetadataLastApproved)
-	err = core.UnmarshalPrimitive(m, "is_forced", &obj.IsForced)
+	err = core.UnmarshalPrimitive(m, "at", &obj.At)
 	if err != nil {
 		return
 	}
@@ -3977,7 +3998,7 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
+	err = core.UnmarshalPrimitive(m, "is_forced", &obj.IsForced)
 	if err != nil {
 		return
 	}
@@ -4046,11 +4067,11 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Input *InputVariable `json:"input,omitempty"`
+	Inputs *InputVariable `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration.
 	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+	Settings *ProjectConfigSetting `json:"settings,omitempty"`
 }
 
 // NewProjectConfigPrototypeDefinitionBlock : Instantiate ProjectConfigPrototypeDefinitionBlock (Generic Model Constructor)
@@ -4093,11 +4114,11 @@ func UnmarshalProjectConfigPrototypeDefinitionBlock(m map[string]json.RawMessage
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	err = core.UnmarshalModel(m, "settings", &obj.Settings, UnmarshalProjectConfigSetting)
 	if err != nil {
 		return
 	}
@@ -4129,11 +4150,11 @@ type ProjectConfigPrototypePatchDefinitionBlock struct {
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Input *InputVariable `json:"input,omitempty"`
+	Inputs *InputVariable `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration.
 	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+	Settings *ProjectConfigSetting `json:"settings,omitempty"`
 }
 
 // UnmarshalProjectConfigPrototypePatchDefinitionBlock unmarshals an instance of ProjectConfigPrototypePatchDefinitionBlock from the specified map of raw messages.
@@ -4167,11 +4188,11 @@ func UnmarshalProjectConfigPrototypePatchDefinitionBlock(m map[string]json.RawMe
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	err = core.UnmarshalModel(m, "settings", &obj.Settings, UnmarshalProjectConfigSetting)
 	if err != nil {
 		return
 	}
@@ -4272,17 +4293,14 @@ type ProjectConfigResponseDefinition struct {
 	LocatorID *string `json:"locator_id" validate:"required"`
 
 	// The input variables for configuration definition and environment.
-	Input *InputVariable `json:"input,omitempty"`
+	Inputs *InputVariable `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration.
 	// Settings are only available if they were specified when the configuration was initially created.
-	Setting *ProjectConfigSetting `json:"setting,omitempty"`
+	Settings *ProjectConfigSetting `json:"settings,omitempty"`
 
 	// The type of a project configuration manual property.
 	Type *string `json:"type,omitempty"`
-
-	// The outputs of a Schematics template property.
-	Output []OutputValue `json:"output,omitempty"`
 }
 
 // Constants associated with the ProjectConfigResponseDefinition.Type property.
@@ -4323,19 +4341,15 @@ func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, resu
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "input", &obj.Input, UnmarshalInputVariable)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "setting", &obj.Setting, UnmarshalProjectConfigSetting)
+	err = core.UnmarshalModel(m, "settings", &obj.Settings, UnmarshalProjectConfigSetting)
 	if err != nil {
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "output", &obj.Output, UnmarshalOutputValue)
 	if err != nil {
 		return
 	}
@@ -4422,12 +4436,6 @@ type ProjectConfigVersion struct {
 	// The needs attention state of a configuration.
 	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
 
-	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
-
-	// The flag that indicates whether a configuration update is available.
-	UpdateAvailable *bool `json:"update_available" validate:"required"`
-
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
@@ -4441,10 +4449,7 @@ type ProjectConfigVersion struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	LastSave *strfmt.DateTime `json:"last_save,omitempty"`
-
-	// The references used in the config to resolve input values.
-	References map[string]interface{} `json:"references,omitempty"`
+	LastSavedAt *strfmt.DateTime `json:"last_saved_at,omitempty"`
 
 	// The action job performed on the project configuration.
 	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
@@ -4455,8 +4460,20 @@ type ProjectConfigVersion struct {
 	// The action job performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
 
+	// The outputs of a Schematics template property.
+	Outputs []OutputValue `json:"outputs,omitempty"`
+
+	// The references used in the config to resolve input values.
+	References map[string]interface{} `json:"references,omitempty"`
+
 	// A schematics workspace associated to a project configuration.
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
+
+	// The state of the configuration.
+	State *string `json:"state" validate:"required"`
+
+	// The flag that indicates whether a configuration update is available.
+	UpdateAvailable *bool `json:"update_available" validate:"required"`
 
 	// The type and output of a project configuration.
 	Definition *ProjectConfigResponseDefinition `json:"definition" validate:"required"`
@@ -4474,7 +4491,7 @@ const (
 	ProjectConfigVersion_State_DeployingFailed = "deploying_failed"
 	ProjectConfigVersion_State_Discarded = "discarded"
 	ProjectConfigVersion_State_Draft = "draft"
-	ProjectConfigVersion_State_Superceded = "superceded"
+	ProjectConfigVersion_State_Superseded = "superseded"
 	ProjectConfigVersion_State_Undeploying = "undeploying"
 	ProjectConfigVersion_State_UndeployingFailed = "undeploying_failed"
 	ProjectConfigVersion_State_Validated = "validated"
@@ -4505,14 +4522,6 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
 	if err != nil {
 		return
@@ -4525,11 +4534,7 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "last_save", &obj.LastSave)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "references", &obj.References)
+	err = core.UnmarshalPrimitive(m, "last_saved_at", &obj.LastSavedAt)
 	if err != nil {
 		return
 	}
@@ -4545,7 +4550,23 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "references", &obj.References)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
 	if err != nil {
 		return
 	}
@@ -4584,7 +4605,7 @@ const (
 	ProjectConfigVersionSummary_State_DeployingFailed = "deploying_failed"
 	ProjectConfigVersionSummary_State_Discarded = "discarded"
 	ProjectConfigVersionSummary_State_Draft = "draft"
-	ProjectConfigVersionSummary_State_Superceded = "superceded"
+	ProjectConfigVersionSummary_State_Superseded = "superseded"
 	ProjectConfigVersionSummary_State_Undeploying = "undeploying"
 	ProjectConfigVersionSummary_State_UndeployingFailed = "undeploying_failed"
 	ProjectConfigVersionSummary_State_Validated = "validated"

@@ -108,7 +108,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
 				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("testString"),
 			}
 
@@ -136,8 +136,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+				Inputs: inputVariableModel,
+				Settings: projectConfigSettingModel,
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -173,7 +173,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`CreateConfig(createConfigOptions *CreateConfigOptions)`, func() {
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
 				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("testString"),
 			}
 
@@ -187,7 +187,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -205,8 +205,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+				Inputs: inputVariableModel,
+				Settings: projectConfigSettingModel,
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -337,7 +337,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`CreateProjectEnvironment(createProjectEnvironmentOptions *CreateProjectEnvironmentOptions)`, func() {
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
 				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("API_KEY"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
 			}
 
@@ -358,7 +358,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Input: inputVariableModel,
+				Inputs: inputVariableModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -414,7 +414,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`UpdateProjectEnvironment(updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions)`, func() {
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
 				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("API_KEY"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
 			}
 
@@ -435,7 +435,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Input: inputVariableModel,
+				Inputs: inputVariableModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -492,7 +492,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`UpdateConfig(updateConfigOptions *UpdateConfigOptions)`, func() {
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
 				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("testString"),
 			}
 
@@ -506,7 +506,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -524,8 +524,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+				Inputs: inputVariableModel,
+				Settings: projectConfigSettingModel,
 			}
 
 			updateConfigOptions := &projectv1.UpdateConfigOptions{

@@ -143,7 +143,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -158,8 +158,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
 				Labels: []string{"env:stage", "governance:test", "build:0"},
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+				Inputs: inputVariableModel,
+				Settings: projectConfigSettingModel,
 			}
 
 			createConfigOptions := projectService.NewCreateConfigOptions(
@@ -260,7 +260,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-create_project_environment
 
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				Method: core.StringPtr("API_KEY"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
 			}
 
@@ -281,7 +281,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Input: inputVariableModel,
+				Inputs: inputVariableModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -351,7 +351,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-update_project_environment
 
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				Method: core.StringPtr("API_KEY"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
 			}
 
@@ -372,7 +372,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Input: inputVariableModel,
+				Inputs: inputVariableModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -444,14 +444,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].input.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
 			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
 			projectConfigPrototypePatchDefinitionBlockModel := &projectv1.ProjectConfigPrototypePatchDefinitionBlock{
-				Input: inputVariableModel,
+				Inputs: inputVariableModel,
 			}
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
