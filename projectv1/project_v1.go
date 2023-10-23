@@ -2261,9 +2261,6 @@ type Environment struct {
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// An IBM Cloud resource name, which uniquely identifies a resource.
-	ProjectCrn *string `json:"project_crn" validate:"required"`
-
 	// The target account ID derived from the authentication block values.
 	TargetAccount *string `json:"target_account,omitempty"`
 
@@ -2287,10 +2284,6 @@ func UnmarshalEnvironment(m map[string]json.RawMessage, result interface{}) (err
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "project_crn", &obj.ProjectCrn)
 	if err != nil {
 		return
 	}

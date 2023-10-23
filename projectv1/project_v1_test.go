@@ -1647,7 +1647,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
 				}))
 			})
 			It(`Invoke CreateProjectEnvironment successfully with retries`, func() {
@@ -1745,7 +1745,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
 				}))
 			})
 			It(`Invoke CreateProjectEnvironment successfully`, func() {
@@ -1987,7 +1987,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"environments": [{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}]}`)
+					fmt.Fprintf(res, "%s", `{"environments": [{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}]}`)
 				}))
 			})
 			It(`Invoke ListProjectEnvironments successfully with retries`, func() {
@@ -2041,7 +2041,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"environments": [{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}]}`)
+					fmt.Fprintf(res, "%s", `{"environments": [{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}]}`)
 				}))
 			})
 			It(`Invoke ListProjectEnvironments successfully`, func() {
@@ -2200,7 +2200,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
 				}))
 			})
 			It(`Invoke GetProjectEnvironment successfully with retries`, func() {
@@ -2255,7 +2255,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
 				}))
 			})
 			It(`Invoke GetProjectEnvironment successfully`, func() {
@@ -2461,7 +2461,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
 				}))
 			})
 			It(`Invoke UpdateProjectEnvironment successfully with retries`, func() {
@@ -2560,7 +2560,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "project_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "project_id": "ProjectID", "created_at": "2019-01-01T12:00:00.000Z", "target_account": "TargetAccount", "user_modified_at": "2019-01-01T12:00:00.000Z", "definition": {"name": "Name", "description": "Description", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "Method", "api_key": "ApiKey"}, "input": {}, "compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}}}`)
 				}))
 			})
 			It(`Invoke UpdateProjectEnvironment successfully`, func() {
