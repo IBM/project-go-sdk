@@ -3013,8 +3013,8 @@ func UnmarshalInputVariable(m map[string]json.RawMessage, result interface{}) (e
 
 // LastActionWithSummary : The action job performed on the project configuration.
 type LastActionWithSummary struct {
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
+	// A URL.
+	Href *string `json:"href" validate:"required"`
 
 	// The result of the last action.
 	Result *string `json:"result,omitempty"`
@@ -3065,8 +3065,8 @@ func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interfa
 
 // LastValidatedActionWithSummary : The action job performed on the project configuration.
 type LastValidatedActionWithSummary struct {
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
+	// A URL.
+	Href *string `json:"href" validate:"required"`
 
 	// The result of the last action.
 	Result *string `json:"result,omitempty"`
@@ -3332,7 +3332,7 @@ func UnmarshalOutputValue(m map[string]json.RawMessage, result interface{}) (err
 
 // PaginationLink : A pagination link.
 type PaginationLink struct {
-	// A relative URL.
+	// A URL.
 	Href *string `json:"href" validate:"required"`
 }
 
@@ -3941,7 +3941,7 @@ type ProjectConfigCollectionMember struct {
 	// format as specified by RFC 3339.
 	UserModifiedAt *strfmt.DateTime `json:"user_modified_at,omitempty"`
 
-	// A relative URL.
+	// A URL.
 	Href *string `json:"href" validate:"required"`
 
 	// The name and description of a project configuration.
@@ -4798,8 +4798,8 @@ type ProjectConfigVersionSummary struct {
 	// The version number of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
-	// A relative URL.
-	Href *string `json:"href,omitempty"`
+	// A URL.
+	Href *string `json:"href" validate:"required"`
 }
 
 // Constants associated with the ProjectConfigVersionSummary.State property.
@@ -4902,7 +4902,7 @@ type ProjectEnvironmentCollectionMember struct {
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// A relative URL.
+	// A URL.
 	Href *string `json:"href" validate:"required"`
 
 	// The environment definition used in the project collection.
