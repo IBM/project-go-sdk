@@ -141,7 +141,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
-				WorkspaceID: core.StringPtr("testString"),
+				WorkspaceCrn: core.StringPtr("testString"),
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
@@ -210,7 +210,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
-				WorkspaceID: core.StringPtr("testString"),
+				WorkspaceCrn: core.StringPtr("testString"),
 			}
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
@@ -633,7 +633,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`SyncConfig(syncConfigOptions *SyncConfigOptions)`, func() {
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
-				WorkspaceID: core.StringPtr("us-south.workspace.service.e0106139"),
+				WorkspaceCrn: core.StringPtr("crn:v1:staging:public:schematics:us-south:a/38acaf4469814090a4e675dc0c317a0d:95ad49de-ab96-4e7d-a08c-45c38aa448e6:workspace:us-south.workspace.service.e0106139"),
 			}
 
 			syncConfigOptions := &projectv1.SyncConfigOptions{

@@ -1747,58 +1747,348 @@ func (project *ProjectV1) DeleteConfigVersionWithContext(ctx context.Context, de
 	return
 }
 
+// ActionJobApplyMessagesSummary : The messages of apply jobs on the configuration.
+type ActionJobApplyMessagesSummary struct {
+	// The collection of error messages.
+	ErrorMessages []string `json:"error_messages,omitempty"`
+
+	// The collection of success messages.
+	SucessMessage []string `json:"sucess_message,omitempty"`
+}
+
+// UnmarshalActionJobApplyMessagesSummary unmarshals an instance of ActionJobApplyMessagesSummary from the specified map of raw messages.
+func UnmarshalActionJobApplyMessagesSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobApplyMessagesSummary)
+	err = core.UnmarshalPrimitive(m, "error_messages", &obj.ErrorMessages)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "sucess_message", &obj.SucessMessage)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobApplySummary : The summary of the apply jobs on the configuration.
+type ActionJobApplySummary struct {
+	// The number of applied resources.
+	Success *int64 `json:"success,omitempty"`
+
+	// The number of failed resources.
+	Failed *int64 `json:"failed,omitempty"`
+
+	// The collection of successfully applied resources.
+	SuccessResources []string `json:"success_resources,omitempty"`
+
+	// The collection of failed applied resources.
+	FailedResources []string `json:"failed_resources,omitempty"`
+}
+
+// UnmarshalActionJobApplySummary unmarshals an instance of ActionJobApplySummary from the specified map of raw messages.
+func UnmarshalActionJobApplySummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobApplySummary)
+	err = core.UnmarshalPrimitive(m, "success", &obj.Success)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed", &obj.Failed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "success_resources", &obj.SuccessResources)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed_resources", &obj.FailedResources)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobDestroyMessagesSummary : The messages of destroy jobs on the configuration.
+type ActionJobDestroyMessagesSummary struct {
+	// The collection of error messages.
+	ErrorMessages []string `json:"error_messages,omitempty"`
+}
+
+// UnmarshalActionJobDestroyMessagesSummary unmarshals an instance of ActionJobDestroyMessagesSummary from the specified map of raw messages.
+func UnmarshalActionJobDestroyMessagesSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobDestroyMessagesSummary)
+	err = core.UnmarshalPrimitive(m, "error_messages", &obj.ErrorMessages)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobDestroySummary : The summary of the destroy jobs on the configuration.
+type ActionJobDestroySummary struct {
+	// The number of destroyed resources.
+	Success *int64 `json:"success,omitempty"`
+
+	// The number of failed resources.
+	Failed *int64 `json:"failed,omitempty"`
+
+	// The number of tainted resources.
+	Tainted *int64 `json:"tainted,omitempty"`
+
+	// The destroy resources results from the job.
+	Resources *ActionJobDestroySummaryResources `json:"resources,omitempty"`
+}
+
+// UnmarshalActionJobDestroySummary unmarshals an instance of ActionJobDestroySummary from the specified map of raw messages.
+func UnmarshalActionJobDestroySummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobDestroySummary)
+	err = core.UnmarshalPrimitive(m, "success", &obj.Success)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed", &obj.Failed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tainted", &obj.Tainted)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "resources", &obj.Resources, UnmarshalActionJobDestroySummaryResources)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobDestroySummaryResources : The destroy resources results from the job.
+type ActionJobDestroySummaryResources struct {
+	// The collection of destroyed resources.
+	Success []string `json:"success,omitempty"`
+
+	// The collection of failed resources.
+	Failed []string `json:"failed,omitempty"`
+
+	// The collection of tainted resources.
+	Tainted []string `json:"tainted,omitempty"`
+}
+
+// UnmarshalActionJobDestroySummaryResources unmarshals an instance of ActionJobDestroySummaryResources from the specified map of raw messages.
+func UnmarshalActionJobDestroySummaryResources(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobDestroySummaryResources)
+	err = core.UnmarshalPrimitive(m, "success", &obj.Success)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed", &obj.Failed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tainted", &obj.Tainted)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobMessageSummary : The message summaries of jobs on the configuration.
+type ActionJobMessageSummary struct {
+	// The number of info messages.
+	Info *int64 `json:"info,omitempty"`
+
+	// The number of debug messages.
+	Debug *int64 `json:"debug,omitempty"`
+
+	// The number of error messages.
+	Error *int64 `json:"error,omitempty"`
+}
+
+// UnmarshalActionJobMessageSummary unmarshals an instance of ActionJobMessageSummary from the specified map of raw messages.
+func UnmarshalActionJobMessageSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobMessageSummary)
+	err = core.UnmarshalPrimitive(m, "info", &obj.Info)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "debug", &obj.Debug)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "error", &obj.Error)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobPlanMessagesSummary : The plan messages on the configuration.
+type ActionJobPlanMessagesSummary struct {
+	// The collection of error messages.
+	ErrorMessages []string `json:"error_messages,omitempty"`
+
+	// The collection of success messages.
+	SucessMessage []string `json:"sucess_message,omitempty"`
+
+	// The collection of update messages.
+	UpdateMessage []string `json:"update_message,omitempty"`
+
+	// The collection of destroy messages.
+	DestroyMessage []string `json:"destroy_message,omitempty"`
+}
+
+// UnmarshalActionJobPlanMessagesSummary unmarshals an instance of ActionJobPlanMessagesSummary from the specified map of raw messages.
+func UnmarshalActionJobPlanMessagesSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobPlanMessagesSummary)
+	err = core.UnmarshalPrimitive(m, "error_messages", &obj.ErrorMessages)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "sucess_message", &obj.SucessMessage)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update_message", &obj.UpdateMessage)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_message", &obj.DestroyMessage)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobPlanSummary : The summary of the plan jobs on the configuration.
+type ActionJobPlanSummary struct {
+	// The number of resources to be added.
+	Add *int64 `json:"add,omitempty"`
+
+	// The number of resources that failed during the plan job.
+	Failed *int64 `json:"failed,omitempty"`
+
+	// The number of resources to be updated.
+	Update *int64 `json:"update,omitempty"`
+
+	// The number of resources to be destroyed.
+	Destroy *int64 `json:"destroy,omitempty"`
+
+	// The collection of planned added resources.
+	AddResources []string `json:"add_resources,omitempty"`
+
+	// The collection of failed planned resources.
+	FailedResources []string `json:"failed_resources,omitempty"`
+
+	// The collection of planned updated resources.
+	UpdatedResources []string `json:"updated_resources,omitempty"`
+
+	// The collection of planned destroy resources.
+	DestroyResources []string `json:"destroy_resources,omitempty"`
+}
+
+// UnmarshalActionJobPlanSummary unmarshals an instance of ActionJobPlanSummary from the specified map of raw messages.
+func UnmarshalActionJobPlanSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobPlanSummary)
+	err = core.UnmarshalPrimitive(m, "add", &obj.Add)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed", &obj.Failed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update", &obj.Update)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy", &obj.Destroy)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "add_resources", &obj.AddResources)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed_resources", &obj.FailedResources)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_resources", &obj.UpdatedResources)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_resources", &obj.DestroyResources)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ActionJobSummary : The summaries of jobs that were performed on the configuration.
 type ActionJobSummary struct {
+	// The terraform log version used.
+	TfLogVersion *string `json:"tf_log_version,omitempty"`
+
 	// The summary of the plan jobs on the configuration.
-	PlanSummary map[string]interface{} `json:"plan_summary,omitempty"`
+	PlanSummary *ActionJobPlanSummary `json:"plan_summary,omitempty"`
 
 	// The summary of the apply jobs on the configuration.
-	ApplySummary map[string]interface{} `json:"apply_summary,omitempty"`
+	ApplySummary *ActionJobApplySummary `json:"apply_summary,omitempty"`
 
 	// The summary of the destroy jobs on the configuration.
-	DestroySummary map[string]interface{} `json:"destroy_summary,omitempty"`
+	DestroySummary *ActionJobDestroySummary `json:"destroy_summary,omitempty"`
 
 	// The message summaries of jobs on the configuration.
-	MessageSummary map[string]interface{} `json:"message_summary,omitempty"`
+	MessageSummary *ActionJobMessageSummary `json:"message_summary,omitempty"`
 
-	// The messages of plan jobs on the configuration.
-	PlanMessages map[string]interface{} `json:"plan_messages,omitempty"`
+	// The plan messages on the configuration.
+	PlanMessages *ActionJobPlanMessagesSummary `json:"plan_messages,omitempty"`
 
 	// The messages of apply jobs on the configuration.
-	ApplyMessages map[string]interface{} `json:"apply_messages,omitempty"`
+	ApplyMessages *ActionJobApplyMessagesSummary `json:"apply_messages,omitempty"`
 
 	// The messages of destroy jobs on the configuration.
-	DestroyMessages map[string]interface{} `json:"destroy_messages,omitempty"`
+	DestroyMessages *ActionJobDestroyMessagesSummary `json:"destroy_messages,omitempty"`
 }
 
 // UnmarshalActionJobSummary unmarshals an instance of ActionJobSummary from the specified map of raw messages.
 func UnmarshalActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ActionJobSummary)
-	err = core.UnmarshalPrimitive(m, "plan_summary", &obj.PlanSummary)
+	err = core.UnmarshalPrimitive(m, "tf_log_version", &obj.TfLogVersion)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "apply_summary", &obj.ApplySummary)
+	err = core.UnmarshalModel(m, "plan_summary", &obj.PlanSummary, UnmarshalActionJobPlanSummary)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "destroy_summary", &obj.DestroySummary)
+	err = core.UnmarshalModel(m, "apply_summary", &obj.ApplySummary, UnmarshalActionJobApplySummary)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "message_summary", &obj.MessageSummary)
+	err = core.UnmarshalModel(m, "destroy_summary", &obj.DestroySummary, UnmarshalActionJobDestroySummary)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "plan_messages", &obj.PlanMessages)
+	err = core.UnmarshalModel(m, "message_summary", &obj.MessageSummary, UnmarshalActionJobMessageSummary)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "apply_messages", &obj.ApplyMessages)
+	err = core.UnmarshalModel(m, "plan_messages", &obj.PlanMessages, UnmarshalActionJobPlanMessagesSummary)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "destroy_messages", &obj.DestroyMessages)
+	err = core.UnmarshalModel(m, "apply_messages", &obj.ApplyMessages, UnmarshalActionJobApplyMessagesSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "destroy_messages", &obj.DestroyMessages, UnmarshalActionJobDestroyMessagesSummary)
 	if err != nil {
 		return
 	}
@@ -3640,11 +3930,8 @@ type ProjectConfigCollectionMember struct {
 	// The version of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
-	// The flag that indicates whether the version of the configuration is draft, or active.
-	IsDraft *bool `json:"is_draft" validate:"required"`
-
-	// The needs attention state of a configuration.
-	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
+	// The state of the configuration.
+	State *string `json:"state" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
@@ -3653,37 +3940,6 @@ type ProjectConfigCollectionMember struct {
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
 	UserModifiedAt *strfmt.DateTime `json:"user_modified_at,omitempty"`
-
-	// The last approved metadata of the configuration.
-	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	LastSavedAt *strfmt.DateTime `json:"last_saved_at,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastDeployed *LastActionWithSummary `json:"last_deployed,omitempty"`
-
-	// The action job performed on the project configuration.
-	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
-
-	// The outputs of a Schematics template property.
-	Outputs []OutputValue `json:"outputs,omitempty"`
-
-	// The references used in the config to resolve input values.
-	References map[string]interface{} `json:"references,omitempty"`
-
-	// A schematics workspace associated to a project configuration.
-	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
-
-	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
-
-	// The flag that indicates whether a configuration update is available.
-	UpdateAvailable *bool `json:"update_available" validate:"required"`
 
 	// A relative URL.
 	Href *string `json:"href" validate:"required"`
@@ -3735,11 +3991,7 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		return
 	}
@@ -3748,46 +4000,6 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_approved", &obj.LastApproved, UnmarshalProjectConfigMetadataLastApproved)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "last_saved_at", &obj.LastSavedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_validated", &obj.LastValidated, UnmarshalLastValidatedActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_deployed", &obj.LastDeployed, UnmarshalLastActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "last_undeployed", &obj.LastUndeployed, UnmarshalLastActionWithSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "references", &obj.References)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
 	if err != nil {
 		return
 	}
@@ -4580,9 +4792,6 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 
 // ProjectConfigVersionSummary : The project configuration version.
 type ProjectConfigVersionSummary struct {
-	// The needs attention state of a configuration.
-	NeedsAttentionState []interface{} `json:"needs_attention_state,omitempty"`
-
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
@@ -4616,10 +4825,6 @@ const (
 // UnmarshalProjectConfigVersionSummary unmarshals an instance of ProjectConfigVersionSummary from the specified map of raw messages.
 func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummary)
-	err = core.UnmarshalPrimitive(m, "needs_attention_state", &obj.NeedsAttentionState)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		return
@@ -4806,14 +5011,14 @@ func UnmarshalProjectPrototypePatchDefinitionBlock(m map[string]json.RawMessage,
 
 // SchematicsWorkspace : A schematics workspace associated to a project configuration.
 type SchematicsWorkspace struct {
-	// An existing schematics workspace ID.
-	WorkspaceID *string `json:"workspace_id,omitempty"`
+	// An existing schematics workspace CRN.
+	WorkspaceCrn *string `json:"workspace_crn,omitempty"`
 }
 
 // UnmarshalSchematicsWorkspace unmarshals an instance of SchematicsWorkspace from the specified map of raw messages.
 func UnmarshalSchematicsWorkspace(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(SchematicsWorkspace)
-	err = core.UnmarshalPrimitive(m, "workspace_id", &obj.WorkspaceID)
+	err = core.UnmarshalPrimitive(m, "workspace_crn", &obj.WorkspaceCrn)
 	if err != nil {
 		return
 	}
