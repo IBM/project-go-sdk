@@ -2032,9 +2032,6 @@ func UnmarshalActionJobPlanSummary(m map[string]json.RawMessage, result interfac
 
 // ActionJobSummary : The summaries of jobs that were performed on the configuration.
 type ActionJobSummary struct {
-	// The terraform log version used.
-	TfLogVersion *string `json:"tf_log_version,omitempty"`
-
 	// The summary of the plan jobs on the configuration.
 	PlanSummary *ActionJobPlanSummary `json:"plan_summary,omitempty"`
 
@@ -2060,10 +2057,6 @@ type ActionJobSummary struct {
 // UnmarshalActionJobSummary unmarshals an instance of ActionJobSummary from the specified map of raw messages.
 func UnmarshalActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ActionJobSummary)
-	err = core.UnmarshalPrimitive(m, "tf_log_version", &obj.TfLogVersion)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalModel(m, "plan_summary", &obj.PlanSummary, UnmarshalActionJobPlanSummary)
 	if err != nil {
 		return
@@ -2544,8 +2537,8 @@ type Environment struct {
 	// The environment id as a friendly name.
 	ID *string `json:"id" validate:"required"`
 
-	// The unique ID.
-	ProjectID *string `json:"project_id" validate:"required"`
+	// The project referenced by this resource.
+	Project *ProjectReference `json:"project" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
@@ -2569,7 +2562,7 @@ func UnmarshalEnvironment(m map[string]json.RawMessage, result interface{}) (err
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	err = core.UnmarshalModel(m, "project", &obj.Project, UnmarshalProjectReference)
 	if err != nil {
 		return
 	}
@@ -3690,9 +3683,6 @@ type ProjectConfig struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
 	ID *string `json:"id" validate:"required"`
 
-	// The unique ID.
-	ProjectID *string `json:"project_id" validate:"required"`
-
 	// The version of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
@@ -3728,6 +3718,9 @@ type ProjectConfig struct {
 
 	// The outputs of a Schematics template property.
 	Outputs []OutputValue `json:"outputs,omitempty"`
+
+	// The project referenced by this resource.
+	Project *ProjectReference `json:"project" validate:"required"`
 
 	// The references used in the config to resolve input values.
 	References map[string]interface{} `json:"references,omitempty"`
@@ -3778,10 +3771,6 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
 	if err != nil {
 		return
@@ -3823,6 +3812,10 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 		return
 	}
 	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "project", &obj.Project, UnmarshalProjectReference)
 	if err != nil {
 		return
 	}
@@ -3924,9 +3917,6 @@ type ProjectConfigCollectionMember struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
 	ID *string `json:"id" validate:"required"`
 
-	// The unique ID.
-	ProjectID *string `json:"project_id" validate:"required"`
-
 	// The version of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
@@ -3946,6 +3936,9 @@ type ProjectConfigCollectionMember struct {
 
 	// The name and description of a project configuration.
 	Definition *ProjectConfigDefinitionNameDescription `json:"definition" validate:"required"`
+
+	// The project referenced by this resource.
+	Project *ProjectReference `json:"project" validate:"required"`
 }
 
 // Constants associated with the ProjectConfigCollectionMember.State property.
@@ -3983,10 +3976,6 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
 	if err != nil {
 		return
@@ -4008,6 +3997,10 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 		return
 	}
 	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionNameDescription)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "project", &obj.Project, UnmarshalProjectReference)
 	if err != nil {
 		return
 	}
@@ -4636,9 +4629,6 @@ type ProjectConfigVersion struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
 	ID *string `json:"id" validate:"required"`
 
-	// The unique ID.
-	ProjectID *string `json:"project_id" validate:"required"`
-
 	// The version of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
@@ -4674,6 +4664,9 @@ type ProjectConfigVersion struct {
 
 	// The outputs of a Schematics template property.
 	Outputs []OutputValue `json:"outputs,omitempty"`
+
+	// The project referenced by this resource.
+	Project *ProjectReference `json:"project" validate:"required"`
 
 	// The references used in the config to resolve input values.
 	References map[string]interface{} `json:"references,omitempty"`
@@ -4718,10 +4711,6 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
 	if err != nil {
 		return
@@ -4763,6 +4752,10 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 		return
 	}
 	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "project", &obj.Project, UnmarshalProjectReference)
 	if err != nil {
 		return
 	}
@@ -4890,13 +4883,30 @@ func UnmarshalProjectDefinitionProperties(m map[string]json.RawMessage, result i
 	return
 }
 
+// ProjectDefinitionReference : The definition of the project reference.
+type ProjectDefinitionReference struct {
+	// The name of the project.
+	Name *string `json:"name" validate:"required"`
+}
+
+// UnmarshalProjectDefinitionReference unmarshals an instance of ProjectDefinitionReference from the specified map of raw messages.
+func UnmarshalProjectDefinitionReference(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDefinitionReference)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ProjectEnvironmentCollectionMember : The environment metadata.
 type ProjectEnvironmentCollectionMember struct {
 	// The environment id as a friendly name.
 	ID *string `json:"id" validate:"required"`
 
-	// The unique ID.
-	ProjectID *string `json:"project_id" validate:"required"`
+	// The project referenced by this resource.
+	Project *ProjectReference `json:"project" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
@@ -4916,7 +4926,7 @@ func UnmarshalProjectEnvironmentCollectionMember(m map[string]json.RawMessage, r
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	err = core.UnmarshalModel(m, "project", &obj.Project, UnmarshalProjectReference)
 	if err != nil {
 		return
 	}
@@ -5002,6 +5012,44 @@ func UnmarshalProjectPrototypePatchDefinitionBlock(m map[string]json.RawMessage,
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectReference : The project referenced by this resource.
+type ProjectReference struct {
+	// The unique ID.
+	ID *string `json:"id" validate:"required"`
+
+	// The definition of the project reference.
+	Definition *ProjectDefinitionReference `json:"definition" validate:"required"`
+
+	// An IBM Cloud resource name, which uniquely identifies a resource.
+	Crn *string `json:"crn" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+}
+
+// UnmarshalProjectReference unmarshals an instance of ProjectReference from the specified map of raw messages.
+func UnmarshalProjectReference(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectReference)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionReference)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		return
 	}
