@@ -143,7 +143,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["\account-stage\"].inputs.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -444,7 +444,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["\account-stage\"].inputs.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
