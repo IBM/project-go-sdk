@@ -3381,7 +3381,7 @@ type Project struct {
 	// retrieving the cumulative needs attention view.
 	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
 
-	// The ID of the project.
+	// The unique ID.
 	ID *string `json:"id" validate:"required"`
 
 	// The IBM Cloud location where a resource is deployed.
@@ -3559,7 +3559,7 @@ type ProjectCollectionMemberWithMetadata struct {
 	// retrieving the cumulative needs attention view.
 	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
 
-	// The ID of the project.
+	// The unique ID.
 	ID *string `json:"id" validate:"required"`
 
 	// The IBM Cloud location where a resource is deployed.
