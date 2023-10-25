@@ -106,14 +106,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				DestroyOnDelete: core.BoolPtr(true),
 			}
 
-			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
-				ID: core.StringPtr("testString"),
-				TargetIamID: core.StringPtr("testString"),
-			}
-
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfile: projectConfigAuthTrustedProfileModel,
-				Method: core.StringPtr("testString"),
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("testString"),
 			}
 
@@ -134,18 +129,24 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
 			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
-				Name: core.StringPtr("common-variables"),
+				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
 				Labels: []string{"testString"},
+				Environment: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+				LocatorID: core.StringPtr("testString"),
+				Inputs: inputVariableModel,
+				Settings: projectConfigSettingModel,
+			}
+
+			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
+				WorkspaceCrn: core.StringPtr("testString"),
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
 				Definition: projectConfigPrototypeDefinitionBlockModel,
+				Schematics: schematicsWorkspaceModel,
 			}
 
 			createProjectOptions := &projectv1.CreateProjectOptions{
@@ -170,14 +171,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateConfig(createConfigOptions *CreateConfigOptions)`, func() {
-			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
-				ID: core.StringPtr("testString"),
-				TargetIamID: core.StringPtr("testString"),
-			}
-
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfile: projectConfigAuthTrustedProfileModel,
-				Method: core.StringPtr("testString"),
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("testString"),
 			}
 
@@ -191,7 +187,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -205,16 +201,22 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("env-stage"),
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
 				Labels: []string{"env:stage", "governance:test", "build:0"},
+				Environment: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+				Inputs: inputVariableModel,
+				Settings: projectConfigSettingModel,
+			}
+
+			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
+				WorkspaceCrn: core.StringPtr("testString"),
 			}
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
 				Definition: projectConfigPrototypeDefinitionBlockModel,
+				Schematics: schematicsWorkspaceModel,
 			}
 
 			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
@@ -328,6 +330,128 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`CreateProjectEnvironment - Create an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateProjectEnvironment(createProjectEnvironmentOptions *CreateProjectEnvironmentOptions)`, func() {
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
+				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+			}
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
+
+			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
+				ID: core.StringPtr("some-profile-id"),
+				InstanceID: core.StringPtr("some-instance-id"),
+				InstanceLocation: core.StringPtr("us-south"),
+				AttachmentID: core.StringPtr("some-attachment-id"),
+				ProfileName: core.StringPtr("some-profile-name"),
+			}
+
+			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
+				Name: core.StringPtr("development"),
+				Description: core.StringPtr("The environment 'development'"),
+				Authorizations: projectConfigAuthModel,
+				Inputs: inputVariableModel,
+				ComplianceProfile: projectComplianceProfileModel,
+			}
+
+			createProjectEnvironmentOptions := &projectv1.CreateProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				Definition: environmentDefinitionRequiredPropertiesModel,
+			}
+
+			environment, response, err := projectService.CreateProjectEnvironment(createProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(environment).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ListProjectEnvironments - List environments`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions)`, func() {
+			listProjectEnvironmentsOptions := &projectv1.ListProjectEnvironmentsOptions{
+				ProjectID: &projectIdLink,
+			}
+
+			environmentListResponse, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentListResponse).ToNot(BeNil())
+		})
+	})
+
+	Describe(`GetProjectEnvironment - Get an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetProjectEnvironment(getProjectEnvironmentOptions *GetProjectEnvironmentOptions)`, func() {
+			getProjectEnvironmentOptions := &projectv1.GetProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				ID: &projectIdLink,
+			}
+
+			environment, response, err := projectService.GetProjectEnvironment(getProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environment).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateProjectEnvironment - Update an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateProjectEnvironment(updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions)`, func() {
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
+				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+			}
+
+			inputVariableModel := &projectv1.InputVariable{
+			}
+			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
+			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
+
+			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
+				ID: core.StringPtr("some-profile-id"),
+				InstanceID: core.StringPtr("some-instance-id"),
+				InstanceLocation: core.StringPtr("us-south"),
+				AttachmentID: core.StringPtr("some-attachment-id"),
+				ProfileName: core.StringPtr("some-profile-name"),
+			}
+
+			environmentDefinitionPropertiesModel := &projectv1.EnvironmentDefinitionProperties{
+				Name: core.StringPtr("development"),
+				Description: core.StringPtr("The environment 'development'"),
+				Authorizations: projectConfigAuthModel,
+				Inputs: inputVariableModel,
+				ComplianceProfile: projectComplianceProfileModel,
+			}
+
+			updateProjectEnvironmentOptions := &projectv1.UpdateProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				ID: &projectIdLink,
+				Definition: environmentDefinitionPropertiesModel,
+			}
+
+			environment, response, err := projectService.UpdateProjectEnvironment(updateProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environment).ToNot(BeNil())
+		})
+	})
+
 	Describe(`ListConfigs - List all project configurations`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -366,14 +490,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateConfig(updateConfigOptions *UpdateConfigOptions)`, func() {
-			projectConfigAuthTrustedProfileModel := &projectv1.ProjectConfigAuthTrustedProfile{
-				ID: core.StringPtr("testString"),
-				TargetIamID: core.StringPtr("testString"),
-			}
-
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfile: projectConfigAuthTrustedProfileModel,
-				Method: core.StringPtr("testString"),
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
 				ApiKey: core.StringPtr("testString"),
 			}
 
@@ -387,7 +506,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			inputVariableModel := &projectv1.InputVariable{
 			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].input.account_id`))
+			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
 			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -401,11 +520,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
 				Labels: []string{"testString"},
+				Environment: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
-				Input: inputVariableModel,
-				Setting: projectConfigSettingModel,
+				Inputs: inputVariableModel,
+				Settings: projectConfigSettingModel,
 			}
 
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
@@ -432,10 +552,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfig, response, err := projectService.ForceApprove(forceApproveOptions)
+			projectConfigVersion, response, err := projectService.ForceApprove(forceApproveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfig).ToNot(BeNil())
+			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 	})
 
@@ -450,10 +570,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Comment: core.StringPtr("Approving the changes"),
 			}
 
-			projectConfig, response, err := projectService.Approve(approveOptions)
+			projectConfigVersion, response, err := projectService.Approve(approveOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(projectConfig).ToNot(BeNil())
+			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 	})
 
@@ -465,13 +585,12 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			validateConfigOptions := &projectv1.ValidateConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				XAuthRefreshToken: core.StringPtr("testString"),
 			}
 
-			projectConfig, response, err := projectService.ValidateConfig(validateConfigOptions)
+			projectConfigVersion, response, err := projectService.ValidateConfig(validateConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfig).ToNot(BeNil())
+			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 	})
 
@@ -485,10 +604,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			projectConfig, response, err := projectService.DeployConfig(deployConfigOptions)
+			projectConfigVersion, response, err := projectService.DeployConfig(deployConfigOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
-			Expect(projectConfig).ToNot(BeNil())
+			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 	})
 
@@ -513,10 +632,14 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`SyncConfig(syncConfigOptions *SyncConfigOptions)`, func() {
+			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
+				WorkspaceCrn: core.StringPtr("crn:v1:staging:public:schematics:us-south:a/38acaf4469814090a4e675dc0c317a0d:95ad49de-ab96-4e7d-a08c-45c38aa448e6:workspace:us-south.workspace.service.e0106139"),
+			}
+
 			syncConfigOptions := &projectv1.SyncConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				WorkspaceID: core.StringPtr("us-south.workspace.service.e0106139"),
+				Schematics: schematicsWorkspaceModel,
 			}
 
 			response, err := projectService.SyncConfig(syncConfigOptions)
@@ -570,10 +693,27 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Version: core.Int64Ptr(int64(38)),
 			}
 
-			projectConfig, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
+			projectConfigVersion, response, err := projectService.GetConfigVersion(getConfigVersionOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfig).ToNot(BeNil())
+			Expect(projectConfigVersion).ToNot(BeNil())
+		})
+	})
+
+	Describe(`DeleteProjectEnvironment - Delete an environment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`DeleteProjectEnvironment(deleteProjectEnvironmentOptions *DeleteProjectEnvironmentOptions)`, func() {
+			deleteProjectEnvironmentOptions := &projectv1.DeleteProjectEnvironmentOptions{
+				ProjectID: &projectIdLink,
+				ID: &projectIdLink,
+			}
+
+			environmentDeleteResponse, response, err := projectService.DeleteProjectEnvironment(deleteProjectEnvironmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(environmentDeleteResponse).ToNot(BeNil())
 		})
 	})
 
