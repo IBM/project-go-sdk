@@ -2161,6 +2161,44 @@ func (options *ApproveOptions) SetHeaders(param map[string]string) *ApproveOptio
 	return options
 }
 
+// CodeRiskAnalyzerLogsSummary : The Code Risk Analyzer logs summary of the configuration.
+type CodeRiskAnalyzerLogsSummary struct {
+	// The total number of Code Risk Analyzer rules that were applied in the scan.
+	Total *int64 `json:"total,omitempty"`
+
+	// The number of Code Risk Analyzer rules that passed in the scan.
+	Passed *int64 `json:"passed,omitempty"`
+
+	// The number of Code Risk Analyzer rules that failed in the scan.
+	Failed *int64 `json:"failed,omitempty"`
+
+	// The number of Code Risk Analyzer rules that were skipped in the scan.
+	Skipped *int64 `json:"skipped,omitempty"`
+}
+
+// UnmarshalCodeRiskAnalyzerLogsSummary unmarshals an instance of CodeRiskAnalyzerLogsSummary from the specified map of raw messages.
+func UnmarshalCodeRiskAnalyzerLogsSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(CodeRiskAnalyzerLogsSummary)
+	err = core.UnmarshalPrimitive(m, "total", &obj.Total)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "passed", &obj.Passed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed", &obj.Failed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "skipped", &obj.Skipped)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // CreateConfigOptions : The CreateConfig options.
 type CreateConfigOptions struct {
 	// The unique project ID.
@@ -2549,7 +2587,7 @@ type Environment struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	UserModifiedAt *strfmt.DateTime `json:"user_modified_at" validate:"required"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
 
 	// The environment definition.
 	Definition *EnvironmentDefinitionRequiredProperties `json:"definition" validate:"required"`
@@ -2574,7 +2612,7 @@ func UnmarshalEnvironment(m map[string]json.RawMessage, result interface{}) (err
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
+	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
 	if err != nil {
 		return
 	}
@@ -3078,7 +3116,7 @@ type LastValidatedActionWithSummary struct {
 	CostEstimate *ProjectConfigMetadataCostEstimate `json:"cost_estimate,omitempty"`
 
 	// The Code Risk Analyzer logs of the configuration.
-	CraLogs *ProjectConfigMetadataCraLogs `json:"cra_logs,omitempty"`
+	CraLogs *ProjectConfigMetadataCodeRiskAnalyzerLogs `json:"cra_logs,omitempty"`
 }
 
 // Constants associated with the LastValidatedActionWithSummary.Result property.
@@ -3115,7 +3153,7 @@ func UnmarshalLastValidatedActionWithSummary(m map[string]json.RawMessage, resul
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "cra_logs", &obj.CraLogs, UnmarshalProjectConfigMetadataCraLogs)
+	err = core.UnmarshalModel(m, "cra_logs", &obj.CraLogs, UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogs)
 	if err != nil {
 		return
 	}
@@ -3698,7 +3736,7 @@ type ProjectConfig struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	UserModifiedAt *strfmt.DateTime `json:"user_modified_at,omitempty"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
@@ -3787,7 +3825,7 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
+	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
 	if err != nil {
 		return
 	}
@@ -3929,7 +3967,7 @@ type ProjectConfigCollectionMember struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	UserModifiedAt *strfmt.DateTime `json:"user_modified_at,omitempty"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
 
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -3988,7 +4026,7 @@ func UnmarshalProjectConfigCollectionMember(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
+	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
 	if err != nil {
 		return
 	}
@@ -4042,6 +4080,60 @@ type ProjectConfigDelete struct {
 func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigDelete)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigMetadataCodeRiskAnalyzerLogs : The Code Risk Analyzer logs of the configuration.
+type ProjectConfigMetadataCodeRiskAnalyzerLogs struct {
+	// The version of the Code Risk Analyzer logs of the configuration. This will change as the Code Risk Analyzer is
+	// updated.
+	CraVersion *string `json:"cra_version,omitempty"`
+
+	// The schema version of Code Risk Analyzer logs of the configuration.
+	SchemaVersion *string `json:"schema_version,omitempty"`
+
+	// The status of the Code Risk Analyzer logs of the configuration.
+	Status *string `json:"status,omitempty"`
+
+	// The Code Risk Analyzer logs summary of the configuration.
+	Summary *CodeRiskAnalyzerLogsSummary `json:"summary,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	Timestamp *strfmt.DateTime `json:"timestamp,omitempty"`
+}
+
+// Constants associated with the ProjectConfigMetadataCodeRiskAnalyzerLogs.Status property.
+// The status of the Code Risk Analyzer logs of the configuration.
+const (
+	ProjectConfigMetadataCodeRiskAnalyzerLogs_Status_Failed = "failed"
+	ProjectConfigMetadataCodeRiskAnalyzerLogs_Status_Passed = "passed"
+)
+
+// UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogs unmarshals an instance of ProjectConfigMetadataCodeRiskAnalyzerLogs from the specified map of raw messages.
+func UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogs(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigMetadataCodeRiskAnalyzerLogs)
+	err = core.UnmarshalPrimitive(m, "cra_version", &obj.CraVersion)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "schema_version", &obj.SchemaVersion)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "status", &obj.Status)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalCodeRiskAnalyzerLogsSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
 	if err != nil {
 		return
 	}
@@ -4123,52 +4215,6 @@ func UnmarshalProjectConfigMetadataCostEstimate(m map[string]json.RawMessage, re
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigMetadataCraLogs : The Code Risk Analyzer logs of the configuration.
-type ProjectConfigMetadataCraLogs struct {
-	// The version of the Code Risk Analyzer logs of the configuration.
-	CraVersion *string `json:"cra_version,omitempty"`
-
-	// The schema version of Code Risk Analyzer logs of the configuration.
-	SchemaVersion *string `json:"schema_version,omitempty"`
-
-	// The status of the Code Risk Analyzer logs of the configuration.
-	Status *string `json:"status,omitempty"`
-
-	// The summary of the Code Risk Analyzer logs of the configuration.
-	Summary map[string]interface{} `json:"summary,omitempty"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
-	// format as specified by RFC 3339.
-	Timestamp *strfmt.DateTime `json:"timestamp,omitempty"`
-}
-
-// UnmarshalProjectConfigMetadataCraLogs unmarshals an instance of ProjectConfigMetadataCraLogs from the specified map of raw messages.
-func UnmarshalProjectConfigMetadataCraLogs(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigMetadataCraLogs)
-	err = core.UnmarshalPrimitive(m, "cra_version", &obj.CraVersion)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "schema_version", &obj.SchemaVersion)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "status", &obj.Status)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "summary", &obj.Summary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
 	if err != nil {
 		return
 	}
@@ -4644,7 +4690,7 @@ type ProjectConfigVersion struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	UserModifiedAt *strfmt.DateTime `json:"user_modified_at,omitempty"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
@@ -4727,7 +4773,7 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "user_modified_at", &obj.UserModifiedAt)
+	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
 	if err != nil {
 		return
 	}
