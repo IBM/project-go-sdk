@@ -2994,7 +2994,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -3104,7 +3104,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -3222,7 +3222,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -3285,7 +3285,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -3369,7 +3369,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -3882,7 +3882,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -3988,7 +3988,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -4102,7 +4102,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -4161,7 +4161,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -4241,7 +4241,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
@@ -6534,13 +6534,13 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
 				Expect(inputVariableModel).ToNot(BeNil())
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
 				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
-				Expect(inputVariableModel.GetProperty("account_id")).To(Equal(core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`)))
+				Expect(inputVariableModel.GetProperty("account_id")).To(Equal(core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`)))
 				Expect(inputVariableModel.GetProperty("resource_group")).To(Equal(core.StringPtr("stage")))
 				Expect(inputVariableModel.GetProperty("access_tags")).To(Equal(core.StringPtr(`["env:stage"]`)))
 				Expect(inputVariableModel.GetProperty("logdna_name")).To(Equal(core.StringPtr("Name of the LogDNA stage service instance")))
@@ -6550,7 +6550,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
 
 				inputVariableModelExpectedMap := make(map[string]interface{})
-				inputVariableModelExpectedMap["account_id"] = core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`)
+				inputVariableModelExpectedMap["account_id"] = core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`)
 				inputVariableModelExpectedMap["resource_group"] = core.StringPtr("stage")
 				inputVariableModelExpectedMap["access_tags"] = core.StringPtr(`["env:stage"]`)
 				inputVariableModelExpectedMap["logdna_name"] = core.StringPtr("Name of the LogDNA stage service instance")
@@ -7077,13 +7077,13 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the InputVariable model
 				inputVariableModel := new(projectv1.InputVariable)
 				Expect(inputVariableModel).ToNot(BeNil())
-				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`))
+				inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
 				inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
 				inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
 				inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
 				inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 				Expect(inputVariableModel.GetProperties()).ToNot(BeEmpty())
-				Expect(inputVariableModel.GetProperty("account_id")).To(Equal(core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`)))
+				Expect(inputVariableModel.GetProperty("account_id")).To(Equal(core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`)))
 				Expect(inputVariableModel.GetProperty("resource_group")).To(Equal(core.StringPtr("stage")))
 				Expect(inputVariableModel.GetProperty("access_tags")).To(Equal(core.StringPtr(`["env:stage"]`)))
 				Expect(inputVariableModel.GetProperty("logdna_name")).To(Equal(core.StringPtr("Name of the LogDNA stage service instance")))
@@ -7093,7 +7093,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(inputVariableModel.GetProperties()).To(BeEmpty())
 
 				inputVariableModelExpectedMap := make(map[string]interface{})
-				inputVariableModelExpectedMap["account_id"] = core.StringPtr(`$configs[].name[\"account-stage\"].inputs.account_id`)
+				inputVariableModelExpectedMap["account_id"] = core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`)
 				inputVariableModelExpectedMap["resource_group"] = core.StringPtr("stage")
 				inputVariableModelExpectedMap["access_tags"] = core.StringPtr(`["env:stage"]`)
 				inputVariableModelExpectedMap["logdna_name"] = core.StringPtr("Name of the LogDNA stage service instance")
