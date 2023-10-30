@@ -131,7 +131,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
-				Labels: []string{"testString"},
 				Environment: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
@@ -200,7 +199,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
 				Name: core.StringPtr("env-stage"),
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
-				Labels: []string{"env:stage", "governance:test", "build:0"},
 				Environment: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
@@ -519,7 +517,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigPrototypePatchDefinitionBlockModel := &projectv1.ProjectConfigPrototypePatchDefinitionBlock{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
-				Labels: []string{"testString"},
 				Environment: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,

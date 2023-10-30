@@ -2033,25 +2033,25 @@ func UnmarshalActionJobPlanSummary(m map[string]json.RawMessage, result interfac
 // ActionJobSummary : The summaries of jobs that were performed on the configuration.
 type ActionJobSummary struct {
 	// The summary of the plan jobs on the configuration.
-	PlanSummary *ActionJobPlanSummary `json:"plan_summary,omitempty"`
+	PlanSummary *ActionJobPlanSummary `json:"plan_summary" validate:"required"`
 
 	// The summary of the apply jobs on the configuration.
-	ApplySummary *ActionJobApplySummary `json:"apply_summary,omitempty"`
+	ApplySummary *ActionJobApplySummary `json:"apply_summary" validate:"required"`
 
 	// The summary of the destroy jobs on the configuration.
-	DestroySummary *ActionJobDestroySummary `json:"destroy_summary,omitempty"`
+	DestroySummary *ActionJobDestroySummary `json:"destroy_summary" validate:"required"`
 
 	// The message summaries of jobs on the configuration.
-	MessageSummary *ActionJobMessageSummary `json:"message_summary,omitempty"`
+	MessageSummary *ActionJobMessageSummary `json:"message_summary" validate:"required"`
 
 	// The plan messages on the configuration.
-	PlanMessages *ActionJobPlanMessagesSummary `json:"plan_messages,omitempty"`
+	PlanMessages *ActionJobPlanMessagesSummary `json:"plan_messages" validate:"required"`
 
 	// The messages of apply jobs on the configuration.
-	ApplyMessages *ActionJobApplyMessagesSummary `json:"apply_messages,omitempty"`
+	ApplyMessages *ActionJobApplyMessagesSummary `json:"apply_messages" validate:"required"`
 
 	// The messages of destroy jobs on the configuration.
-	DestroyMessages *ActionJobDestroyMessagesSummary `json:"destroy_messages,omitempty"`
+	DestroyMessages *ActionJobDestroyMessagesSummary `json:"destroy_messages" validate:"required"`
 }
 
 // UnmarshalActionJobSummary unmarshals an instance of ActionJobSummary from the specified map of raw messages.
@@ -2092,10 +2092,10 @@ func UnmarshalActionJobSummary(m map[string]json.RawMessage, result interface{})
 // ActionJobWithIdAndSummary : A brief summary of an action.
 type ActionJobWithIdAndSummary struct {
 	// The unique ID.
-	ID *string `json:"id,omitempty"`
+	ID *string `json:"id" validate:"required"`
 
 	// The summaries of jobs that were performed on the configuration.
-	Summary *ActionJobSummary `json:"summary,omitempty"`
+	Summary *ActionJobSummary `json:"summary" validate:"required"`
 }
 
 // UnmarshalActionJobWithIdAndSummary unmarshals an instance of ActionJobWithIdAndSummary from the specified map of raw messages.
@@ -2587,7 +2587,7 @@ type Environment struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
 	// The environment definition.
 	Definition *EnvironmentDefinitionRequiredProperties `json:"definition" validate:"required"`
@@ -3381,10 +3381,10 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 // PrePostActionJobWithIdAndSummary : A brief summary of a pre/post action.
 type PrePostActionJobWithIdAndSummary struct {
 	// The unique ID.
-	ID *string `json:"id,omitempty"`
+	ID *string `json:"id" validate:"required"`
 
 	// The Summary of the pre/post job of the configuration.
-	Summary map[string]interface{} `json:"summary,omitempty"`
+	Summary map[string]interface{} `json:"summary" validate:"required"`
 }
 
 // UnmarshalPrePostActionJobWithIdAndSummary unmarshals an instance of PrePostActionJobWithIdAndSummary from the specified map of raw messages.
@@ -3405,11 +3405,11 @@ func UnmarshalPrePostActionJobWithIdAndSummary(m map[string]json.RawMessage, res
 // Project : The canonical schema of a project.
 type Project struct {
 	// An IBM Cloud resource name, which uniquely identifies a resource.
-	Crn *string `json:"crn,omitempty"`
+	Crn *string `json:"crn" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
 	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
 	// could be empty is returned.
@@ -3423,13 +3423,13 @@ type Project struct {
 	ID *string `json:"id" validate:"required"`
 
 	// The IBM Cloud location where a resource is deployed.
-	Location *string `json:"location,omitempty"`
+	Location *string `json:"location" validate:"required"`
 
 	// The resource group where the project's data and tools are created.
-	ResourceGroup *string `json:"resource_group,omitempty"`
+	ResourceGroup *string `json:"resource_group" validate:"required"`
 
 	// The project status value.
-	State *string `json:"state,omitempty"`
+	State *string `json:"state" validate:"required"`
 
 	// The CRN of the event notifications instance if one is connected to this project.
 	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
@@ -3583,11 +3583,11 @@ func (resp *ProjectCollection) GetNextStart() (*string, error) {
 // ProjectCollectionMemberWithMetadata : ProjectCollectionMemberWithMetadata struct
 type ProjectCollectionMemberWithMetadata struct {
 	// An IBM Cloud resource name, which uniquely identifies a resource.
-	Crn *string `json:"crn,omitempty"`
+	Crn *string `json:"crn" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
 	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
 	// could be empty is returned.
@@ -3601,13 +3601,13 @@ type ProjectCollectionMemberWithMetadata struct {
 	ID *string `json:"id" validate:"required"`
 
 	// The IBM Cloud location where a resource is deployed.
-	Location *string `json:"location,omitempty"`
+	Location *string `json:"location" validate:"required"`
 
 	// The resource group where the project's data and tools are created.
-	ResourceGroup *string `json:"resource_group,omitempty"`
+	ResourceGroup *string `json:"resource_group" validate:"required"`
 
 	// The project status value.
-	State *string `json:"state,omitempty"`
+	State *string `json:"state" validate:"required"`
 
 	// The CRN of the event notifications instance if one is connected to this project.
 	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
@@ -3732,11 +3732,11 @@ type ProjectConfig struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
@@ -4302,9 +4302,6 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
 	// The ID of the project environment.
 	Environment *string `json:"environment,omitempty"`
 
@@ -4345,10 +4342,6 @@ func UnmarshalProjectConfigPrototypeDefinitionBlock(m map[string]json.RawMessage
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "environment", &obj.Environment)
 	if err != nil {
 		return
@@ -4385,9 +4378,6 @@ type ProjectConfigPrototypePatchDefinitionBlock struct {
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
 	// The ID of the project environment.
 	Environment *string `json:"environment,omitempty"`
 
@@ -4416,10 +4406,6 @@ func UnmarshalProjectConfigPrototypePatchDefinitionBlock(m map[string]json.RawMe
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
 	if err != nil {
 		return
 	}
@@ -4528,9 +4514,6 @@ type ProjectConfigResponseDefinition struct {
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration labels.
-	Labels []string `json:"labels,omitempty"`
-
 	// The ID of the project environment.
 	Environment *string `json:"environment,omitempty"`
 
@@ -4569,10 +4552,6 @@ func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, resu
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
 	if err != nil {
 		return
 	}
@@ -4686,11 +4665,11 @@ type ProjectConfigVersion struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
