@@ -427,7 +427,7 @@ func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updatePr
 }
 
 // DeleteProject : Delete a project
-// Delete a project document by the ID. A project can only be deleted after deleting all of its artifacts.
+// Delete a project document by the ID. A project can only be deleted after deleting all of its resources.
 func (project *ProjectV1) DeleteProject(deleteProjectOptions *DeleteProjectOptions) (response *core.DetailedResponse, err error) {
 	return project.DeleteProjectWithContext(context.Background(), deleteProjectOptions)
 }
@@ -2164,16 +2164,16 @@ func (options *ApproveOptions) SetHeaders(param map[string]string) *ApproveOptio
 // CodeRiskAnalyzerLogsSummary : The Code Risk Analyzer logs summary of the configuration.
 type CodeRiskAnalyzerLogsSummary struct {
 	// The total number of Code Risk Analyzer rules that were applied in the scan.
-	Total *int64 `json:"total,omitempty"`
+	Total *string `json:"total,omitempty"`
 
 	// The number of Code Risk Analyzer rules that passed in the scan.
-	Passed *int64 `json:"passed,omitempty"`
+	Passed *string `json:"passed,omitempty"`
 
 	// The number of Code Risk Analyzer rules that failed in the scan.
-	Failed *int64 `json:"failed,omitempty"`
+	Failed *string `json:"failed,omitempty"`
 
 	// The number of Code Risk Analyzer rules that were skipped in the scan.
-	Skipped *int64 `json:"skipped,omitempty"`
+	Skipped *string `json:"skipped,omitempty"`
 }
 
 // UnmarshalCodeRiskAnalyzerLogsSummary unmarshals an instance of CodeRiskAnalyzerLogsSummary from the specified map of raw messages.
