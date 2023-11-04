@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.80.0-29334a73-20230925-151553
+ * IBM OpenAPI SDK Code Generator Version: 3.82.0-2aef8017-20231103-171818
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -1750,7 +1750,7 @@ func (project *ProjectV1) DeleteConfigVersionWithContext(ctx context.Context, de
 // ActionJobApplyMessagesSummary : The messages of apply jobs on the configuration.
 type ActionJobApplyMessagesSummary struct {
 	// The collection of error messages.
-	ErrorMessages []string `json:"error_messages,omitempty"`
+	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 
 	// The collection of success messages.
 	SucessMessage []string `json:"sucess_message,omitempty"`
@@ -1759,7 +1759,7 @@ type ActionJobApplyMessagesSummary struct {
 // UnmarshalActionJobApplyMessagesSummary unmarshals an instance of ActionJobApplyMessagesSummary from the specified map of raw messages.
 func UnmarshalActionJobApplyMessagesSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ActionJobApplyMessagesSummary)
-	err = core.UnmarshalPrimitive(m, "error_messages", &obj.ErrorMessages)
+	err = core.UnmarshalModel(m, "error_messages", &obj.ErrorMessages, UnmarshalTerraformLogAnalyzerErrorMessage)
 	if err != nil {
 		return
 	}
@@ -1812,13 +1812,13 @@ func UnmarshalActionJobApplySummary(m map[string]json.RawMessage, result interfa
 // ActionJobDestroyMessagesSummary : The messages of destroy jobs on the configuration.
 type ActionJobDestroyMessagesSummary struct {
 	// The collection of error messages.
-	ErrorMessages []string `json:"error_messages,omitempty"`
+	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 }
 
 // UnmarshalActionJobDestroyMessagesSummary unmarshals an instance of ActionJobDestroyMessagesSummary from the specified map of raw messages.
 func UnmarshalActionJobDestroyMessagesSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ActionJobDestroyMessagesSummary)
-	err = core.UnmarshalPrimitive(m, "error_messages", &obj.ErrorMessages)
+	err = core.UnmarshalModel(m, "error_messages", &obj.ErrorMessages, UnmarshalTerraformLogAnalyzerErrorMessage)
 	if err != nil {
 		return
 	}
@@ -1929,7 +1929,7 @@ func UnmarshalActionJobMessageSummary(m map[string]json.RawMessage, result inter
 // ActionJobPlanMessagesSummary : The plan messages on the configuration.
 type ActionJobPlanMessagesSummary struct {
 	// The collection of error messages.
-	ErrorMessages []string `json:"error_messages,omitempty"`
+	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 
 	// The collection of success messages.
 	SucessMessage []string `json:"sucess_message,omitempty"`
@@ -1944,7 +1944,7 @@ type ActionJobPlanMessagesSummary struct {
 // UnmarshalActionJobPlanMessagesSummary unmarshals an instance of ActionJobPlanMessagesSummary from the specified map of raw messages.
 func UnmarshalActionJobPlanMessagesSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ActionJobPlanMessagesSummary)
-	err = core.UnmarshalPrimitive(m, "error_messages", &obj.ErrorMessages)
+	err = core.UnmarshalModel(m, "error_messages", &obj.ErrorMessages, UnmarshalTerraformLogAnalyzerErrorMessage)
 	if err != nil {
 		return
 	}
@@ -5144,6 +5144,67 @@ func (_options *SyncConfigOptions) SetSchematics(schematics *SchematicsWorkspace
 func (options *SyncConfigOptions) SetHeaders(param map[string]string) *SyncConfigOptions {
 	options.Headers = param
 	return options
+}
+
+// TerraformLogAnalyzerErrorMessage : The error message parsed by the Terraform Log Analyzer.
+type TerraformLogAnalyzerErrorMessage struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of TerraformLogAnalyzerErrorMessage
+func (o *TerraformLogAnalyzerErrorMessage) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of TerraformLogAnalyzerErrorMessage
+func (o *TerraformLogAnalyzerErrorMessage) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of TerraformLogAnalyzerErrorMessage
+func (o *TerraformLogAnalyzerErrorMessage) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of TerraformLogAnalyzerErrorMessage
+func (o *TerraformLogAnalyzerErrorMessage) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of TerraformLogAnalyzerErrorMessage
+func (o *TerraformLogAnalyzerErrorMessage) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	return
+}
+
+// UnmarshalTerraformLogAnalyzerErrorMessage unmarshals an instance of TerraformLogAnalyzerErrorMessage from the specified map of raw messages.
+func UnmarshalTerraformLogAnalyzerErrorMessage(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(TerraformLogAnalyzerErrorMessage)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = e
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
 }
 
 // UndeployConfigOptions : The UndeployConfig options.
