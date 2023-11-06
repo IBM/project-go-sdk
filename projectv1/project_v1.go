@@ -34,8 +34,7 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// ProjectV1 : This document is the **REST API specification** for the Projects Service. The Projects service provides
-// the capability to manage Infrastructure as Code in IBM Cloud.
+// ProjectV1 : Manage infrastructure as code in IBM Cloud.
 //
 // API Version: 1.0.0
 type ProjectV1 struct {
