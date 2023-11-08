@@ -194,7 +194,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				panic(err)
 			}
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectSummary
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				if err != nil {
@@ -231,14 +231,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nUpdateProject() result:")
 			// begin-update_project
 
-			projectPrototypePatchDefinitionBlockModel := &projectv1.ProjectPrototypePatchDefinitionBlock{
+			projectPatchDefinitionBlockModel := &projectv1.ProjectPatchDefinitionBlock{
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 			}
 
 			updateProjectOptions := projectService.NewUpdateProjectOptions(
 				projectIdLink,
-				projectPrototypePatchDefinitionBlockModel,
+				projectPatchDefinitionBlockModel,
 			)
 
 			project, response, err := projectService.UpdateProject(updateProjectOptions)
@@ -310,18 +310,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				projectIdLink,
 			)
 
-			environmentListResponse, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+			environmentCollection, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(environmentListResponse, "", "  ")
+			b, _ := json.MarshalIndent(environmentCollection, "", "  ")
 			fmt.Println(string(b))
 
 			// end-list_project_environments
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(environmentListResponse).ToNot(BeNil())
+			Expect(environmentCollection).ToNot(BeNil())
 		})
 		It(`GetProjectEnvironment request example`, func() {
 			fmt.Println("\nGetProjectEnvironment() result:")
@@ -449,14 +449,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
 			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
 
-			projectConfigPrototypePatchDefinitionBlockModel := &projectv1.ProjectConfigPrototypePatchDefinitionBlock{
+			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlock{
 				Inputs: inputVariableModel,
 			}
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
 				configIdLink,
-				projectConfigPrototypePatchDefinitionBlockModel,
+				projectConfigPatchDefinitionBlockModel,
 			)
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
