@@ -240,7 +240,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			listProjectsOptions.Start = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectSummary
 			for {
 				projectCollection, response, err := projectService.ListProjects(listProjectsOptions)
 				Expect(err).To(BeNil())
@@ -267,7 +267,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
 
-			var allResults []projectv1.ProjectCollectionMemberWithMetadata
+			var allResults []projectv1.ProjectSummary
 			for pager.HasNext() {
 				nextPage, err := pager.GetNext()
 				Expect(err).To(BeNil())
@@ -310,7 +310,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
-			projectPrototypePatchDefinitionBlockModel := &projectv1.ProjectPrototypePatchDefinitionBlock{
+			projectPatchDefinitionBlockModel := &projectv1.ProjectPatchDefinitionBlock{
 				Name: core.StringPtr("acme-microservice"),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
@@ -318,7 +318,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			updateProjectOptions := &projectv1.UpdateProjectOptions{
 				ID: &projectIdLink,
-				Definition: projectPrototypePatchDefinitionBlockModel,
+				Definition: projectPatchDefinitionBlockModel,
 			}
 
 			project, response, err := projectService.UpdateProject(updateProjectOptions)
@@ -381,10 +381,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProjectID: &projectIdLink,
 			}
 
-			environmentListResponse, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+			environmentCollection, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(environmentListResponse).ToNot(BeNil())
+			Expect(environmentCollection).ToNot(BeNil())
 		})
 	})
 
@@ -514,7 +514,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 			projectConfigSettingModel.SetProperty("foo", core.StringPtr("testString"))
 
-			projectConfigPrototypePatchDefinitionBlockModel := &projectv1.ProjectConfigPrototypePatchDefinitionBlock{
+			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlock{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
 				Environment: core.StringPtr("testString"),
@@ -528,7 +528,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				Definition: projectConfigPrototypePatchDefinitionBlockModel,
+				Definition: projectConfigPatchDefinitionBlockModel,
 			}
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
