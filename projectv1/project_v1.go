@@ -3442,7 +3442,7 @@ type Project struct {
 
 	// The project environments. These environments are only included in the response if project environments were created
 	// on the project.
-	Environments []ProjectEnvironmentCollectionMember `json:"environments,omitempty"`
+	Environments []ProjectEnvironmentSummary `json:"environments,omitempty"`
 
 	// The definition of the project.
 	Definition *ProjectDefinitionProperties `json:"definition" validate:"required"`
@@ -3503,7 +3503,7 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "environments", &obj.Environments, UnmarshalProjectEnvironmentCollectionMember)
+	err = core.UnmarshalModel(m, "environments", &obj.Environments, UnmarshalProjectEnvironmentSummary)
 	if err != nil {
 		return
 	}
@@ -3678,8 +3678,8 @@ type ProjectConfig struct {
 	// The references used in the config to resolve input values.
 	References map[string]interface{} `json:"references,omitempty"`
 
-	// A schematics workspace associated to a project configuration.
-	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
+	// A schematics workspace associated to a project configuration, with scripts.
+	Schematics *SchematicsMetadata `json:"schematics,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -3776,7 +3776,7 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
+	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsMetadata)
 	if err != nil {
 		return
 	}
@@ -4481,11 +4481,11 @@ type ProjectConfigSummary struct {
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
 	// format as specified by RFC 3339.
-	ModifiedAt *strfmt.DateTime `json:"modified_at,omitempty"`
+	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -4611,8 +4611,8 @@ type ProjectConfigVersion struct {
 	// The references used in the config to resolve input values.
 	References map[string]interface{} `json:"references,omitempty"`
 
-	// A schematics workspace associated to a project configuration.
-	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
+	// A schematics workspace associated to a project configuration, with scripts.
+	Schematics *SchematicsMetadata `json:"schematics,omitempty"`
 
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
@@ -4703,7 +4703,7 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsWorkspace)
+	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsMetadata)
 	if err != nil {
 		return
 	}
@@ -4840,8 +4840,8 @@ func UnmarshalProjectDefinitionReference(m map[string]json.RawMessage, result in
 	return
 }
 
-// ProjectEnvironmentCollectionMember : The environment metadata.
-type ProjectEnvironmentCollectionMember struct {
+// ProjectEnvironmentSummary : The environment metadata.
+type ProjectEnvironmentSummary struct {
 	// The environment id as a friendly name.
 	ID *string `json:"id" validate:"required"`
 
@@ -4859,9 +4859,9 @@ type ProjectEnvironmentCollectionMember struct {
 	Definition *EnvironmentDefinitionNameDescription `json:"definition" validate:"required"`
 }
 
-// UnmarshalProjectEnvironmentCollectionMember unmarshals an instance of ProjectEnvironmentCollectionMember from the specified map of raw messages.
-func UnmarshalProjectEnvironmentCollectionMember(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectEnvironmentCollectionMember)
+// UnmarshalProjectEnvironmentSummary unmarshals an instance of ProjectEnvironmentSummary from the specified map of raw messages.
+func UnmarshalProjectEnvironmentSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectEnvironmentSummary)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
@@ -5081,6 +5081,71 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
+// SchematicsMetadata : A schematics workspace associated to a project configuration, with scripts.
+type SchematicsMetadata struct {
+	// An existing schematics workspace CRN.
+	WorkspaceCrn *string `json:"workspace_crn,omitempty"`
+
+	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
+	// undeploy).
+	ValidatePreScript *Script `json:"validate_pre_script,omitempty"`
+
+	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
+	// undeploy).
+	ValidatePostScript *Script `json:"validate_post_script,omitempty"`
+
+	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
+	// undeploy).
+	DeployPreScript *Script `json:"deploy_pre_script,omitempty"`
+
+	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
+	// undeploy).
+	DeployPostScript *Script `json:"deploy_post_script,omitempty"`
+
+	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
+	// undeploy).
+	UndeployPreScript *Script `json:"undeploy_pre_script,omitempty"`
+
+	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
+	// undeploy).
+	UndeployPostScript *Script `json:"undeploy_post_script,omitempty"`
+}
+
+// UnmarshalSchematicsMetadata unmarshals an instance of SchematicsMetadata from the specified map of raw messages.
+func UnmarshalSchematicsMetadata(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(SchematicsMetadata)
+	err = core.UnmarshalPrimitive(m, "workspace_crn", &obj.WorkspaceCrn)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "validate_pre_script", &obj.ValidatePreScript, UnmarshalScript)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "validate_post_script", &obj.ValidatePostScript, UnmarshalScript)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "deploy_pre_script", &obj.DeployPreScript, UnmarshalScript)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "deploy_post_script", &obj.DeployPostScript, UnmarshalScript)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "undeploy_pre_script", &obj.UndeployPreScript, UnmarshalScript)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "undeploy_post_script", &obj.UndeployPostScript, UnmarshalScript)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // SchematicsWorkspace : A schematics workspace associated to a project configuration.
 type SchematicsWorkspace struct {
 	// An existing schematics workspace CRN.
@@ -5091,6 +5156,38 @@ type SchematicsWorkspace struct {
 func UnmarshalSchematicsWorkspace(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(SchematicsWorkspace)
 	err = core.UnmarshalPrimitive(m, "workspace_crn", &obj.WorkspaceCrn)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// Script : A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
+// undeploy).
+type Script struct {
+	// The type of the script.
+	Type *string `json:"type,omitempty"`
+
+	// The path to this script within the current version source.
+	Path *string `json:"path,omitempty"`
+
+	// The short description for this script.
+	ShortDescription *string `json:"short_description,omitempty"`
+}
+
+// UnmarshalScript unmarshals an instance of Script from the specified map of raw messages.
+func UnmarshalScript(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(Script)
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "path", &obj.Path)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "short_description", &obj.ShortDescription)
 	if err != nil {
 		return
 	}
