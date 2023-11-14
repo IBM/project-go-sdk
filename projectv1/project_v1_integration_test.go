@@ -131,7 +131,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
-				Environment: core.StringPtr("testString"),
+				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
@@ -199,7 +199,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
 				Name: core.StringPtr("env-stage"),
 				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
-				Environment: core.StringPtr("testString"),
+				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
@@ -517,7 +517,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlock{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
-				Environment: core.StringPtr("testString"),
+				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
@@ -608,7 +608,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`UndeployConfig - Destroy configuration resources`, func() {
+	Describe(`UndeployConfig - Undeploy configuration resources`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})

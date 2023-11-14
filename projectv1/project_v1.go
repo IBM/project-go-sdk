@@ -1062,8 +1062,7 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 }
 
 // DeleteConfig : Delete a configuration in a project by ID
-// Delete a configuration in a project. Deleting the configuration will also destroy all the resources deployed by the
-// configuration if the query parameter `destroy` is specified.
+// Delete a configuration in a project.
 func (project *ProjectV1) DeleteConfig(deleteConfigOptions *DeleteConfigOptions) (result *ProjectConfigDelete, response *core.DetailedResponse, err error) {
 	return project.DeleteConfigWithContext(context.Background(), deleteConfigOptions)
 }
@@ -1389,8 +1388,8 @@ func (project *ProjectV1) DeployConfigWithContext(ctx context.Context, deployCon
 	return
 }
 
-// UndeployConfig : Destroy configuration resources
-// Destroy a project's configuration resources. The operation destroys all the resources that are deployed with the
+// UndeployConfig : Undeploy configuration resources
+// Undeploy a project's configuration resources. The operation undeploys all the resources that are deployed with the
 // specific configuration. You can track it by using the get project configuration API with full metadata.
 func (project *ProjectV1) UndeployConfig(undeployConfigOptions *UndeployConfigOptions) (response *core.DetailedResponse, err error) {
 	return project.UndeployConfigWithContext(context.Background(), undeployConfigOptions)
@@ -1684,8 +1683,7 @@ func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getCo
 }
 
 // DeleteConfigVersion : Delete a configuration for the specified project ID and version
-// Delete a configuration in a project. Deleting the configuration will also destroy all the resources deployed by the
-// configuration if the query parameter `destroy` is specified.
+// Delete a configuration in a project.
 func (project *ProjectV1) DeleteConfigVersion(deleteConfigVersionOptions *DeleteConfigVersionOptions) (result *ProjectConfigDelete, response *core.DetailedResponse, err error) {
 	return project.DeleteConfigVersionWithContext(context.Background(), deleteConfigVersionOptions)
 }
@@ -2642,7 +2640,7 @@ func UnmarshalEnvironmentCollection(m map[string]json.RawMessage, result interfa
 
 // EnvironmentDefinitionNameDescription : The environment definition used in the project collection.
 type EnvironmentDefinitionNameDescription struct {
-	// The name of the environment.
+	// The name of the environment.  It is unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The description of the environment.
@@ -2666,7 +2664,7 @@ func UnmarshalEnvironmentDefinitionNameDescription(m map[string]json.RawMessage,
 
 // EnvironmentDefinitionProperties : The environment definition used for updates.
 type EnvironmentDefinitionProperties struct {
-	// The name of the environment.
+	// The name of the environment.  It is unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The description of the environment.
@@ -2711,7 +2709,7 @@ func UnmarshalEnvironmentDefinitionProperties(m map[string]json.RawMessage, resu
 
 // EnvironmentDefinitionRequiredProperties : The environment definition.
 type EnvironmentDefinitionRequiredProperties struct {
-	// The name of the environment.
+	// The name of the environment.  It is unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
 
 	// The description of the environment.
@@ -3418,7 +3416,7 @@ type Project struct {
 	// retrieving the cumulative needs attention view.
 	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
 
-	// The unique ID.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required"`
 
 	// The IBM Cloud location where a resource is deployed.
@@ -3588,16 +3586,16 @@ func (resp *ProjectCollection) GetNextStart() (*string, error) {
 
 // ProjectComplianceProfile : The profile required for compliance.
 type ProjectComplianceProfile struct {
-	// The unique ID.
+	// The unique ID for that compliance profile.
 	ID *string `json:"id,omitempty"`
 
-	// The unique ID.
+	// A unique ID for an instance of a compliance profile.
 	InstanceID *string `json:"instance_id,omitempty"`
 
 	// The location of the compliance instance.
 	InstanceLocation *string `json:"instance_location,omitempty"`
 
-	// The unique ID.
+	// A unique ID for the attachment to a compliance profile.
 	AttachmentID *string `json:"attachment_id,omitempty"`
 
 	// The name of the compliance profile.
@@ -3861,7 +3859,7 @@ func UnmarshalProjectConfigCollection(m map[string]json.RawMessage, result inter
 
 // ProjectConfigDefinitionNameDescription : The name and description of a project configuration.
 type ProjectConfigDefinitionNameDescription struct {
-	// The configuration name.
+	// The configuration name. It is unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// A project configuration description.
@@ -3885,7 +3883,7 @@ func UnmarshalProjectConfigDefinitionNameDescription(m map[string]json.RawMessag
 
 // ProjectConfigDelete : Deletes the configuration response.
 type ProjectConfigDelete struct {
-	// The unique ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required"`
 }
 
@@ -4076,14 +4074,14 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 
 // ProjectConfigPatchDefinitionBlock : The name and description of a project configuration.
 type ProjectConfigPatchDefinitionBlock struct {
-	// The configuration name.
+	// The configuration name. It is unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
 	// The ID of the project environment.
-	Environment *string `json:"environment,omitempty"`
+	EnvironmentID *string `json:"environment_id,omitempty"`
 
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
@@ -4091,7 +4089,7 @@ type ProjectConfigPatchDefinitionBlock struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A dotted value of catalogID.versionID.
+	// A unique concanctenation of catalogID.versionID that identifies the DA in catalog.
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
@@ -4113,7 +4111,7 @@ func UnmarshalProjectConfigPatchDefinitionBlock(m map[string]json.RawMessage, re
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "environment", &obj.Environment)
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
 	if err != nil {
 		return
 	}
@@ -4176,14 +4174,14 @@ func UnmarshalProjectConfigPrototype(m map[string]json.RawMessage, result interf
 
 // ProjectConfigPrototypeDefinitionBlock : The name and description of a project configuration.
 type ProjectConfigPrototypeDefinitionBlock struct {
-	// The configuration name.
+	// The configuration name. It is unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
 	// The ID of the project environment.
-	Environment *string `json:"environment,omitempty"`
+	EnvironmentID *string `json:"environment_id,omitempty"`
 
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
@@ -4191,7 +4189,7 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A dotted value of catalogID.versionID.
+	// A unique concanctenation of catalogID.versionID that identifies the DA in catalog.
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
@@ -4222,7 +4220,7 @@ func UnmarshalProjectConfigPrototypeDefinitionBlock(m map[string]json.RawMessage
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "environment", &obj.Environment)
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
 	if err != nil {
 		return
 	}
@@ -4321,14 +4319,14 @@ func UnmarshalProjectConfigResourceCollection(m map[string]json.RawMessage, resu
 
 // ProjectConfigResponseDefinition : The type and output of a project configuration.
 type ProjectConfigResponseDefinition struct {
-	// The configuration name.
+	// The configuration name. It is unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
 	// The ID of the project environment.
-	Environment *string `json:"environment,omitempty"`
+	EnvironmentID *string `json:"environment_id,omitempty"`
 
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
@@ -4336,7 +4334,7 @@ type ProjectConfigResponseDefinition struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A dotted value of catalogID.versionID.
+	// A unique concanctenation of catalogID.versionID that identifies the DA in catalog.
 	LocatorID *string `json:"locator_id" validate:"required"`
 
 	// The input variables for configuration definition and environment.
@@ -4368,7 +4366,7 @@ func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, resu
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "environment", &obj.Environment)
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
 	if err != nil {
 		return
 	}
@@ -4793,7 +4791,7 @@ func UnmarshalProjectConfigVersionSummaryCollection(m map[string]json.RawMessage
 
 // ProjectDefinitionProperties : The definition of the project.
 type ProjectDefinitionProperties struct {
-	// The name of the project.
+	// The name of the project.  It is unique within the account across regions.
 	Name *string `json:"name" validate:"required"`
 
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
@@ -4888,7 +4886,7 @@ func UnmarshalProjectEnvironmentSummary(m map[string]json.RawMessage, result int
 
 // ProjectPatchDefinitionBlock : The definition of the project.
 type ProjectPatchDefinitionBlock struct {
-	// The name of the project.
+	// The name of the project.  It is unique within the account across regions.
 	Name *string `json:"name,omitempty"`
 
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
@@ -4920,14 +4918,14 @@ func UnmarshalProjectPatchDefinitionBlock(m map[string]json.RawMessage, result i
 
 // ProjectPrototypeDefinition : The definition of the project.
 type ProjectPrototypeDefinition struct {
-	// The name of the project.
+	// The name of the project.  It is unique within the account across regions.
 	Name *string `json:"name" validate:"required"`
 
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
 	// a project without providing a description.
 	Description *string `json:"description,omitempty"`
 
-	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
+	// The policy that indicates whether the resources are undeployed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 }
 
@@ -5014,7 +5012,7 @@ type ProjectSummary struct {
 	// retrieving the cumulative needs attention view.
 	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
 
-	// The unique ID.
+	// The unique project ID.
 	ID *string `json:"id" validate:"required"`
 
 	// The IBM Cloud location where a resource is deployed.
