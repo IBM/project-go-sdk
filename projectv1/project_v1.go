@@ -3685,7 +3685,7 @@ type ProjectConfig struct {
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available" validate:"required"`
 
-	// The type and output of a project configuration.
+	// The name and description of a project configuration.
 	Definition *ProjectConfigResponseDefinition `json:"definition" validate:"required"`
 
 	// The project configuration version.
@@ -4089,7 +4089,7 @@ type ProjectConfigPatchDefinitionBlock struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concanctenation of catalogID.versionID that identifies the DA in catalog.
+	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog.
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
@@ -4189,7 +4189,7 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concanctenation of catalogID.versionID that identifies the DA in catalog.
+	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog.
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
@@ -4317,7 +4317,7 @@ func UnmarshalProjectConfigResourceCollection(m map[string]json.RawMessage, resu
 	return
 }
 
-// ProjectConfigResponseDefinition : The type and output of a project configuration.
+// ProjectConfigResponseDefinition : The name and description of a project configuration.
 type ProjectConfigResponseDefinition struct {
 	// The configuration name. It is unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
@@ -4334,7 +4334,7 @@ type ProjectConfigResponseDefinition struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concanctenation of catalogID.versionID that identifies the DA in catalog.
+	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog.
 	LocatorID *string `json:"locator_id" validate:"required"`
 
 	// The input variables for configuration definition and environment.
@@ -4343,17 +4343,7 @@ type ProjectConfigResponseDefinition struct {
 	// Schematics environment variables to use to deploy the configuration.
 	// Settings are only available if they were specified when the configuration was initially created.
 	Settings *ProjectConfigSetting `json:"settings,omitempty"`
-
-	// The type of a project configuration manual property.
-	Type *string `json:"type,omitempty"`
 }
-
-// Constants associated with the ProjectConfigResponseDefinition.Type property.
-// The type of a project configuration manual property.
-const (
-	ProjectConfigResponseDefinition_Type_SchematicsBlueprint = "schematics_blueprint"
-	ProjectConfigResponseDefinition_Type_TerraformTemplate = "terraform_template"
-)
 
 // UnmarshalProjectConfigResponseDefinition unmarshals an instance of ProjectConfigResponseDefinition from the specified map of raw messages.
 func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -4387,10 +4377,6 @@ func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, resu
 		return
 	}
 	err = core.UnmarshalModel(m, "settings", &obj.Settings, UnmarshalProjectConfigSetting)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
 	if err != nil {
 		return
 	}
@@ -4618,7 +4604,7 @@ type ProjectConfigVersion struct {
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available" validate:"required"`
 
-	// The type and output of a project configuration.
+	// The name and description of a project configuration.
 	Definition *ProjectConfigResponseDefinition `json:"definition" validate:"required"`
 }
 
