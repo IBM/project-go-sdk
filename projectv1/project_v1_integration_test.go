@@ -127,8 +127,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
-				Inputs: map[string]interface{}{"anyKey": "anyValue"},
-				Settings: map[string]interface{}{"anyKey": "anyValue"},
+				Inputs: map[string]string{"key1": "testString"},
+				Settings: map[string]string{"key1": "testString"},
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -183,8 +183,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Inputs: map[string]interface{}{"anyKey": "anyValue"},
-				Settings: map[string]interface{}{"anyKey": "anyValue"},
+				Inputs: map[string]string{"key1": "testString"},
+				Settings: map[string]string{"key1": "testString"},
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -331,7 +331,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Inputs: map[string]interface{}{"anyKey": "anyValue"},
+				Inputs: map[string]string{"key1": "testString"},
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -403,7 +403,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Inputs: map[string]interface{}{"anyKey": "anyValue"},
+				Inputs: map[string]string{"key1": "testString"},
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -479,8 +479,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
-				Inputs: map[string]interface{}{"anyKey": "anyValue"},
-				Settings: map[string]interface{}{"anyKey": "anyValue"},
+				Inputs: map[string]string{"key1": "testString"},
+				Settings: map[string]string{"key1": "testString"},
 			}
 
 			updateConfigOptions := &projectv1.UpdateConfigOptions{

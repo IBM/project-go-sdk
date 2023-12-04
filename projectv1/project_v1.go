@@ -2675,7 +2675,7 @@ type EnvironmentDefinitionProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
+	Inputs map[string]string `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -2720,7 +2720,7 @@ type EnvironmentDefinitionRequiredProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
+	Inputs map[string]string `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -4035,11 +4035,11 @@ type ProjectConfigPatchDefinitionBlock struct {
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
+	Inputs map[string]string `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 	// specified when the configuration was initially created.
-	Settings map[string]interface{} `json:"settings,omitempty"`
+	Settings map[string]string `json:"settings,omitempty"`
 }
 
 // UnmarshalProjectConfigPatchDefinitionBlock unmarshals an instance of ProjectConfigPatchDefinitionBlock from the specified map of raw messages.
@@ -4137,11 +4137,11 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
+	Inputs map[string]string `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 	// specified when the configuration was initially created.
-	Settings map[string]interface{} `json:"settings,omitempty"`
+	Settings map[string]string `json:"settings,omitempty"`
 }
 
 // NewProjectConfigPrototypeDefinitionBlock : Instantiate ProjectConfigPrototypeDefinitionBlock (Generic Model Constructor)
@@ -4283,11 +4283,11 @@ type ProjectConfigResponseDefinition struct {
 	LocatorID *string `json:"locator_id" validate:"required"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
+	Inputs map[string]string `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 	// specified when the configuration was initially created.
-	Settings map[string]interface{} `json:"settings,omitempty"`
+	Settings map[string]string `json:"settings,omitempty"`
 }
 
 // UnmarshalProjectConfigResponseDefinition unmarshals an instance of ProjectConfigResponseDefinition from the specified map of raw messages.
