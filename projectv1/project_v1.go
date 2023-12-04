@@ -2675,7 +2675,7 @@ type EnvironmentDefinitionProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]string `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -2720,7 +2720,7 @@ type EnvironmentDefinitionRequiredProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]string `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -3316,13 +3316,134 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
+// PrePostActionJobSummary : A brief summary of a pre/post action job.
+type PrePostActionJobSummary struct {
+	// The ID of the Schematics action job that ran as part of the pre/post job.
+	JobID *string `json:"job_id" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	StartTime *strfmt.DateTime `json:"start_time,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	EndTime *strfmt.DateTime `json:"end_time,omitempty"`
+
+	// The number of tasks run in the job.
+	Tasks *int64 `json:"tasks,omitempty"`
+
+	// The number of tasks that successfully ran in the job.
+	Ok *int64 `json:"ok,omitempty"`
+
+	// The number of tasks that failed in the job.
+	Failed *int64 `json:"failed,omitempty"`
+
+	// The number of tasks that were skipped in the job.
+	Skipped *int64 `json:"skipped,omitempty"`
+
+	// The number of tasks that were changed in the job.
+	Changed *int64 `json:"changed,omitempty"`
+
+	// A system-level error from the pipeline that ran for this specific pre- and post-job.
+	ProjectError *PrePostActionJobSystemError `json:"project_error,omitempty"`
+}
+
+// UnmarshalPrePostActionJobSummary unmarshals an instance of PrePostActionJobSummary from the specified map of raw messages.
+func UnmarshalPrePostActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(PrePostActionJobSummary)
+	err = core.UnmarshalPrimitive(m, "job_id", &obj.JobID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "start_time", &obj.StartTime)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "end_time", &obj.EndTime)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tasks", &obj.Tasks)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "ok", &obj.Ok)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed", &obj.Failed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "skipped", &obj.Skipped)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "changed", &obj.Changed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "project_error", &obj.ProjectError, UnmarshalPrePostActionJobSystemError)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// PrePostActionJobSystemError : System level error captured in the Projects Pipelines for pre/post job.
+type PrePostActionJobSystemError struct {
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	Timestamp *strfmt.DateTime `json:"timestamp" validate:"required"`
+
+	// Id of user that triggered pipeline that ran pre/post job.
+	UserID *string `json:"user_id" validate:"required"`
+
+	// HTTP status code for the error.
+	StatusCode *string `json:"status_code" validate:"required"`
+
+	// Summary description of the error.
+	Description *string `json:"description" validate:"required"`
+
+	// Detailed message from the source error.
+	ErrorResponse *string `json:"error_response,omitempty"`
+}
+
+// UnmarshalPrePostActionJobSystemError unmarshals an instance of PrePostActionJobSystemError from the specified map of raw messages.
+func UnmarshalPrePostActionJobSystemError(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(PrePostActionJobSystemError)
+	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "status_code", &obj.StatusCode)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "error_response", &obj.ErrorResponse)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // PrePostActionJobWithIdAndSummary : A brief summary of a pre/post action.
 type PrePostActionJobWithIdAndSummary struct {
 	// The unique ID.
 	ID *string `json:"id" validate:"required"`
 
-	// The Summary of the pre/post job of the configuration.
-	Summary map[string]interface{} `json:"summary" validate:"required"`
+	// A brief summary of a pre/post action job.
+	Summary *PrePostActionJobSummary `json:"summary" validate:"required"`
 }
 
 // UnmarshalPrePostActionJobWithIdAndSummary unmarshals an instance of PrePostActionJobWithIdAndSummary from the specified map of raw messages.
@@ -3332,7 +3453,7 @@ func UnmarshalPrePostActionJobWithIdAndSummary(m map[string]json.RawMessage, res
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "summary", &obj.Summary)
+	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalPrePostActionJobSummary)
 	if err != nil {
 		return
 	}
@@ -4035,11 +4156,11 @@ type ProjectConfigPatchDefinitionBlock struct {
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]string `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 	// specified when the configuration was initially created.
-	Settings map[string]string `json:"settings,omitempty"`
+	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
 // UnmarshalProjectConfigPatchDefinitionBlock unmarshals an instance of ProjectConfigPatchDefinitionBlock from the specified map of raw messages.
@@ -4137,11 +4258,11 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]string `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 	// specified when the configuration was initially created.
-	Settings map[string]string `json:"settings,omitempty"`
+	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
 // NewProjectConfigPrototypeDefinitionBlock : Instantiate ProjectConfigPrototypeDefinitionBlock (Generic Model Constructor)
@@ -4283,11 +4404,11 @@ type ProjectConfigResponseDefinition struct {
 	LocatorID *string `json:"locator_id" validate:"required"`
 
 	// The input variables for configuration definition and environment.
-	Inputs map[string]string `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
 	// specified when the configuration was initially created.
-	Settings map[string]string `json:"settings,omitempty"`
+	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
 // UnmarshalProjectConfigResponseDefinition unmarshals an instance of ProjectConfigResponseDefinition from the specified map of raw messages.
