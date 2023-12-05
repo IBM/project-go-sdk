@@ -2204,7 +2204,8 @@ type CreateConfigOptions struct {
 	// The name and description of a project configuration.
 	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
 
-	// A schematics workspace associated to a project configuration.
+	// A Schematics workspace to use for deploying this configuration.
+	// Either schematics.workspace_crn, definition.locator_id, or both must be specified.
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -2674,7 +2675,7 @@ type EnvironmentDefinitionProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -2695,7 +2696,7 @@ func UnmarshalEnvironmentDefinitionProperties(m map[string]json.RawMessage, resu
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		return
 	}
@@ -2719,7 +2720,7 @@ type EnvironmentDefinitionRequiredProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -2749,7 +2750,7 @@ func UnmarshalEnvironmentDefinitionRequiredProperties(m map[string]json.RawMessa
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		return
 	}
@@ -2788,17 +2789,18 @@ type ForceApproveOptions struct {
 
 	// Notes on the project draft action. If this is a forced approve on the draft configuration, a non-empty comment is
 	// required.
-	Comment *string `json:"comment,omitempty"`
+	Comment *string `json:"comment" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewForceApproveOptions : Instantiate ForceApproveOptions
-func (*ProjectV1) NewForceApproveOptions(projectID string, id string) *ForceApproveOptions {
+func (*ProjectV1) NewForceApproveOptions(projectID string, id string, comment string) *ForceApproveOptions {
 	return &ForceApproveOptions{
 		ProjectID: core.StringPtr(projectID),
 		ID: core.StringPtr(id),
+		Comment: core.StringPtr(comment),
 	}
 }
 
@@ -2976,67 +2978,6 @@ func (_options *GetProjectOptions) SetID(id string) *GetProjectOptions {
 func (options *GetProjectOptions) SetHeaders(param map[string]string) *GetProjectOptions {
 	options.Headers = param
 	return options
-}
-
-// InputVariable : The input variables for configuration definition and environment.
-type InputVariable struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of InputVariable
-func (o *InputVariable) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of InputVariable
-func (o *InputVariable) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of InputVariable
-func (o *InputVariable) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of InputVariable
-func (o *InputVariable) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of InputVariable
-func (o *InputVariable) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	return
-}
-
-// UnmarshalInputVariable unmarshals an instance of InputVariable from the specified map of raw messages.
-func UnmarshalInputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(InputVariable)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = e
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
 }
 
 // LastActionWithSummary : The action job performed on the project configuration.
@@ -3375,13 +3316,134 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
+// PrePostActionJobSummary : A brief summary of a pre/post action job.
+type PrePostActionJobSummary struct {
+	// The ID of the Schematics action job that ran as part of the pre/post job.
+	JobID *string `json:"job_id" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	StartTime *strfmt.DateTime `json:"start_time,omitempty"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	EndTime *strfmt.DateTime `json:"end_time,omitempty"`
+
+	// The number of tasks run in the job.
+	Tasks *int64 `json:"tasks,omitempty"`
+
+	// The number of tasks that successfully ran in the job.
+	Ok *int64 `json:"ok,omitempty"`
+
+	// The number of tasks that failed in the job.
+	Failed *int64 `json:"failed,omitempty"`
+
+	// The number of tasks that were skipped in the job.
+	Skipped *int64 `json:"skipped,omitempty"`
+
+	// The number of tasks that were changed in the job.
+	Changed *int64 `json:"changed,omitempty"`
+
+	// A system-level error from the pipeline that ran for this specific pre- and post-job.
+	ProjectError *PrePostActionJobSystemError `json:"project_error,omitempty"`
+}
+
+// UnmarshalPrePostActionJobSummary unmarshals an instance of PrePostActionJobSummary from the specified map of raw messages.
+func UnmarshalPrePostActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(PrePostActionJobSummary)
+	err = core.UnmarshalPrimitive(m, "job_id", &obj.JobID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "start_time", &obj.StartTime)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "end_time", &obj.EndTime)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tasks", &obj.Tasks)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "ok", &obj.Ok)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "failed", &obj.Failed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "skipped", &obj.Skipped)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "changed", &obj.Changed)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "project_error", &obj.ProjectError, UnmarshalPrePostActionJobSystemError)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// PrePostActionJobSystemError : System level error captured in the Projects Pipelines for pre/post job.
+type PrePostActionJobSystemError struct {
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// format as specified by RFC 3339.
+	Timestamp *strfmt.DateTime `json:"timestamp" validate:"required"`
+
+	// Id of user that triggered pipeline that ran pre/post job.
+	UserID *string `json:"user_id" validate:"required"`
+
+	// HTTP status code for the error.
+	StatusCode *string `json:"status_code" validate:"required"`
+
+	// Summary description of the error.
+	Description *string `json:"description" validate:"required"`
+
+	// Detailed message from the source error.
+	ErrorResponse *string `json:"error_response,omitempty"`
+}
+
+// UnmarshalPrePostActionJobSystemError unmarshals an instance of PrePostActionJobSystemError from the specified map of raw messages.
+func UnmarshalPrePostActionJobSystemError(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(PrePostActionJobSystemError)
+	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "status_code", &obj.StatusCode)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "error_response", &obj.ErrorResponse)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // PrePostActionJobWithIdAndSummary : A brief summary of a pre/post action.
 type PrePostActionJobWithIdAndSummary struct {
 	// The unique ID.
 	ID *string `json:"id" validate:"required"`
 
-	// The Summary of the pre/post job of the configuration.
-	Summary map[string]interface{} `json:"summary" validate:"required"`
+	// A brief summary of a pre/post action job.
+	Summary *PrePostActionJobSummary `json:"summary" validate:"required"`
 }
 
 // UnmarshalPrePostActionJobWithIdAndSummary unmarshals an instance of PrePostActionJobWithIdAndSummary from the specified map of raw messages.
@@ -3391,7 +3453,7 @@ func UnmarshalPrePostActionJobWithIdAndSummary(m map[string]json.RawMessage, res
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "summary", &obj.Summary)
+	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalPrePostActionJobSummary)
 	if err != nil {
 		return
 	}
@@ -4089,15 +4151,16 @@ type ProjectConfigPatchDefinitionBlock struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog.
+	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
+	// schematics.workspace_crn, definition.locator_id, or both must be specified.
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Settings *ProjectConfigSetting `json:"settings,omitempty"`
+	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
+	// specified when the configuration was initially created.
+	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
 // UnmarshalProjectConfigPatchDefinitionBlock unmarshals an instance of ProjectConfigPatchDefinitionBlock from the specified map of raw messages.
@@ -4127,11 +4190,11 @@ func UnmarshalProjectConfigPatchDefinitionBlock(m map[string]json.RawMessage, re
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "settings", &obj.Settings, UnmarshalProjectConfigSetting)
+	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
 	if err != nil {
 		return
 	}
@@ -4144,7 +4207,8 @@ type ProjectConfigPrototype struct {
 	// The name and description of a project configuration.
 	Definition *ProjectConfigPrototypeDefinitionBlock `json:"definition" validate:"required"`
 
-	// A schematics workspace associated to a project configuration.
+	// A Schematics workspace to use for deploying this configuration.
+	// Either schematics.workspace_crn, definition.locator_id, or both must be specified.
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 }
 
@@ -4189,15 +4253,16 @@ type ProjectConfigPrototypeDefinitionBlock struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog.
+	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
+	// schematics.workspace_crn, definition.locator_id, or both must be specified.
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// The input variables for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Settings *ProjectConfigSetting `json:"settings,omitempty"`
+	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
+	// specified when the configuration was initially created.
+	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
 // NewProjectConfigPrototypeDefinitionBlock : Instantiate ProjectConfigPrototypeDefinitionBlock (Generic Model Constructor)
@@ -4236,11 +4301,11 @@ func UnmarshalProjectConfigPrototypeDefinitionBlock(m map[string]json.RawMessage
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "settings", &obj.Settings, UnmarshalProjectConfigSetting)
+	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
 	if err != nil {
 		return
 	}
@@ -4334,15 +4399,16 @@ type ProjectConfigResponseDefinition struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog.
+	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
+	// schematics.workspace_crn, definition.locator_id, or both must be specified.
 	LocatorID *string `json:"locator_id" validate:"required"`
 
 	// The input variables for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration.
-	// Settings are only available if they were specified when the configuration was initially created.
-	Settings *ProjectConfigSetting `json:"settings,omitempty"`
+	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
+	// specified when the configuration was initially created.
+	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
 // UnmarshalProjectConfigResponseDefinition unmarshals an instance of ProjectConfigResponseDefinition from the specified map of raw messages.
@@ -4372,75 +4438,13 @@ func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, resu
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "settings", &obj.Settings, UnmarshalProjectConfigSetting)
+	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
 	if err != nil {
 		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigSetting : Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-// specified when the configuration was initially created.
-type ProjectConfigSetting struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of ProjectConfigSetting
-func (o *ProjectConfigSetting) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ProjectConfigSetting
-func (o *ProjectConfigSetting) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ProjectConfigSetting
-func (o *ProjectConfigSetting) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ProjectConfigSetting
-func (o *ProjectConfigSetting) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of ProjectConfigSetting
-func (o *ProjectConfigSetting) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	return
-}
-
-// UnmarshalProjectConfigSetting unmarshals an instance of ProjectConfigSetting from the specified map of raw messages.
-func UnmarshalProjectConfigSetting(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigSetting)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = e
-			return
-		}
-		obj.SetProperty(k, v)
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
@@ -5067,7 +5071,7 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 
 // SchematicsMetadata : A schematics workspace associated to a project configuration, with scripts.
 type SchematicsMetadata struct {
-	// An existing schematics workspace CRN.
+	// An IBM Cloud resource name, which uniquely identifies a resource.
 	WorkspaceCrn *string `json:"workspace_crn,omitempty"`
 
 	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
@@ -5130,9 +5134,10 @@ func UnmarshalSchematicsMetadata(m map[string]json.RawMessage, result interface{
 	return
 }
 
-// SchematicsWorkspace : A schematics workspace associated to a project configuration.
+// SchematicsWorkspace : A Schematics workspace to use for deploying this configuration. Either schematics.workspace_crn,
+// definition.locator_id, or both must be specified.
 type SchematicsWorkspace struct {
-	// An existing schematics workspace CRN.
+	// An IBM Cloud resource name, which uniquely identifies a resource.
 	WorkspaceCrn *string `json:"workspace_crn,omitempty"`
 }
 
@@ -5187,7 +5192,8 @@ type SyncConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// A schematics workspace associated to a project configuration.
+	// A Schematics workspace to use for deploying this configuration.
+	// Either schematics.workspace_crn, definition.locator_id, or both must be specified.
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
 	// Allows users to set headers on API requests

@@ -141,24 +141,10 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateConfig() result:")
 			// begin-create_config
 
-			inputVariableModel := &projectv1.InputVariable{
-			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
-			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
-			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
-			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
-			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
-
-			projectConfigSettingModel := &projectv1.ProjectConfigSetting{
-			}
-			projectConfigSettingModel.SetProperty("IBMCLOUD_TOOLCHAIN_ENDPOINT", core.StringPtr("https://api.us-south.devops.dev.cloud.ibm.com"))
-
 			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
 				Name: core.StringPtr("env-stage"),
-				Description: core.StringPtr("Stage environment configuration, which includes services common to all the environment regions. There must be a blueprint configuring all the services common to the stage regions. It is a terraform_template type of configuration that points to a Github repo hosting the terraform modules that can be deployed by a Schematics Workspace."),
+				Description: core.StringPtr("Stage environment configuration."),
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Inputs: inputVariableModel,
-				Settings: projectConfigSettingModel,
 			}
 
 			createConfigOptions := projectService.NewCreateConfigOptions(
@@ -263,11 +249,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
 			}
 
-			inputVariableModel := &projectv1.InputVariable{
-			}
-			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
-			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
-
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
 				ID: core.StringPtr("some-profile-id"),
 				InstanceID: core.StringPtr("some-instance-id"),
@@ -280,7 +261,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Inputs: inputVariableModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -354,11 +334,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
 			}
 
-			inputVariableModel := &projectv1.InputVariable{
-			}
-			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
-			inputVariableModel.SetProperty("region", core.StringPtr("us-south"))
-
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
 				ID: core.StringPtr("some-profile-id"),
 				InstanceID: core.StringPtr("some-instance-id"),
@@ -371,7 +346,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
 				Authorizations: projectConfigAuthModel,
-				Inputs: inputVariableModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
 
@@ -441,16 +415,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nUpdateConfig() result:")
 			// begin-update_config
 
-			inputVariableModel := &projectv1.InputVariable{
-			}
-			inputVariableModel.SetProperty("account_id", core.StringPtr(`$configs[].name["account-stage"].inputs.account_id`))
-			inputVariableModel.SetProperty("resource_group", core.StringPtr("stage"))
-			inputVariableModel.SetProperty("access_tags", core.StringPtr(`["env:stage"]`))
-			inputVariableModel.SetProperty("logdna_name", core.StringPtr("Name of the LogDNA stage service instance"))
-			inputVariableModel.SetProperty("sysdig_name", core.StringPtr("Name of the SysDig stage service instance"))
-
 			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlock{
-				Inputs: inputVariableModel,
+				Name: core.StringPtr("env-stage"),
 			}
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
@@ -479,8 +445,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			forceApproveOptions := projectService.NewForceApproveOptions(
 				projectIdLink,
 				configIdLink,
+				"Approving the changes",
 			)
-			forceApproveOptions.SetComment("Approving the changes")
 
 			projectConfigVersion, response, err := projectService.ForceApprove(forceApproveOptions)
 			if err != nil {
