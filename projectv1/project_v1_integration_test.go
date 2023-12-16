@@ -1,4 +1,4 @@
-// +build integration
+//go:build integration
 
 /**
  * (C) Copyright IBM Corp. 2023.
@@ -120,15 +120,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
+			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlockDAConfigDefinitionProperties{
 				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
-				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("testString"),
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				Settings: map[string]interface{}{"anyKey": "anyValue"},
+				ComplianceProfile: projectComplianceProfileModel,
+				LocatorID: core.StringPtr("testString"),
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -140,11 +140,24 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Schematics: schematicsWorkspaceModel,
 			}
 
+			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
+				Name: core.StringPtr("testString"),
+				Description: core.StringPtr("testString"),
+				Authorizations: projectConfigAuthModel,
+				Inputs: map[string]interface{}{"anyKey": "anyValue"},
+				ComplianceProfile: projectComplianceProfileModel,
+			}
+
+			environmentPrototypeModel := &projectv1.EnvironmentPrototype{
+				Definition: environmentDefinitionRequiredPropertiesModel,
+			}
+
 			createProjectOptions := &projectv1.CreateProjectOptions{
 				Definition: projectPrototypeDefinitionModel,
 				Location: core.StringPtr("us-south"),
 				ResourceGroup: core.StringPtr("Default"),
 				Configs: []projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel},
+				Environments: []projectv1.EnvironmentPrototype{*environmentPrototypeModel},
 			}
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
@@ -176,15 +189,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
+			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlockDAConfigDefinitionProperties{
 				Name: core.StringPtr("env-stage"),
 				Description: core.StringPtr("Stage environment configuration."),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
-				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				Settings: map[string]interface{}{"anyKey": "anyValue"},
+				ComplianceProfile: projectComplianceProfileModel,
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -472,15 +485,15 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlock{
+			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlockDAConfigDefinitionProperties{
 				Name: core.StringPtr("env-stage"),
 				Description: core.StringPtr("testString"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
-				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("testString"),
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				Settings: map[string]interface{}{"anyKey": "anyValue"},
+				ComplianceProfile: projectComplianceProfileModel,
+				LocatorID: core.StringPtr("testString"),
 			}
 
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
