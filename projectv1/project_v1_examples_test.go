@@ -1,4 +1,4 @@
-// +build examples
+//go:build examples
 
 /**
  * (C) Copyright IBM Corp. 2023.
@@ -141,7 +141,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateConfig() result:")
 			// begin-create_config
 
-			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlock{
+			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlockDAConfigDefinitionProperties{
 				Name: core.StringPtr("env-stage"),
 				Description: core.StringPtr("Stage environment configuration."),
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
@@ -415,7 +415,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nUpdateConfig() result:")
 			// begin-update_config
 
-			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlock{
+			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlockDAConfigDefinitionProperties{
 				Name: core.StringPtr("env-stage"),
 			}
 
