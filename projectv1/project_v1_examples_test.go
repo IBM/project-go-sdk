@@ -141,15 +141,15 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateConfig() result:")
 			// begin-create_config
 
-			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlockDAConfigDefinitionProperties{
-				Name: core.StringPtr("env-stage"),
-				Description: core.StringPtr("Stage environment configuration."),
+			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+				Description: core.StringPtr("Stage environment configuration."),
+				Name: core.StringPtr("env-stage"),
 			}
 
 			createConfigOptions := projectService.NewCreateConfigOptions(
 				projectIdLink,
-				projectConfigPrototypeDefinitionBlockModel,
+				projectConfigDefinitionBlockPrototypeModel,
 			)
 
 			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
@@ -258,8 +258,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
-				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
+				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
@@ -342,9 +342,9 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				ProfileName: core.StringPtr("some-profile-name"),
 			}
 
-			environmentDefinitionPropertiesModel := &projectv1.EnvironmentDefinitionProperties{
-				Name: core.StringPtr("development"),
+			environmentDefinitionPropertiesPatchModel := &projectv1.EnvironmentDefinitionPropertiesPatch{
 				Description: core.StringPtr("The environment 'development'"),
+				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
 			}
@@ -352,7 +352,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			updateProjectEnvironmentOptions := projectService.NewUpdateProjectEnvironmentOptions(
 				projectIdLink,
 				projectIdLink,
-				environmentDefinitionPropertiesModel,
+				environmentDefinitionPropertiesPatchModel,
 			)
 
 			environment, response, err := projectService.UpdateProjectEnvironment(updateProjectEnvironmentOptions)
@@ -415,14 +415,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nUpdateConfig() result:")
 			// begin-update_config
 
-			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlockDAConfigDefinitionProperties{
+			projectConfigDefinitionBlockPatchModel := &projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch{
 				Name: core.StringPtr("env-stage"),
 			}
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
 				configIdLink,
-				projectConfigPatchDefinitionBlockModel,
+				projectConfigDefinitionBlockPatchModel,
 			)
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
@@ -458,7 +458,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// end-force_approve
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
+			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 		It(`Approve request example`, func() {
@@ -481,7 +481,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// end-approve
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
+			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 		It(`ValidateConfig request example`, func() {
@@ -529,6 +529,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 		It(`UndeployConfig request example`, func() {
+			fmt.Println("\nUndeployConfig() result:")
 			// begin-undeploy_config
 
 			undeployConfigOptions := projectService.NewUndeployConfigOptions(
@@ -536,18 +537,18 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				configIdLink,
 			)
 
-			response, err := projectService.UndeployConfig(undeployConfigOptions)
+			projectConfigVersion, response, err := projectService.UndeployConfig(undeployConfigOptions)
 			if err != nil {
 				panic(err)
 			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from UndeployConfig(): %d\n", response.StatusCode)
-			}
+			b, _ := json.MarshalIndent(projectConfigVersion, "", "  ")
+			fmt.Println(string(b))
 
 			// end-undeploy_config
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 		It(`SyncConfig request example`, func() {
 			// begin-sync_config

@@ -102,14 +102,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`CreateProject(createProjectOptions *CreateProjectOptions)`, func() {
 			projectPrototypeDefinitionModel := &projectv1.ProjectPrototypeDefinition{
 				Name: core.StringPtr("acme-microservice"),
-				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
-			}
-
-			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("api_key"),
-				ApiKey: core.StringPtr("testString"),
+				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 			}
 
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
@@ -120,15 +114,21 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlockDAConfigDefinitionProperties{
-				Name: core.StringPtr("testString"),
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
+				ApiKey: core.StringPtr("testString"),
+			}
+
+			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+				ComplianceProfile: projectComplianceProfileModel,
+				LocatorID: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
+				Name: core.StringPtr("testString"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				Settings: map[string]interface{}{"anyKey": "anyValue"},
-				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("testString"),
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -136,13 +136,13 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				Definition: projectConfigPrototypeDefinitionBlockModel,
+				Definition: projectConfigDefinitionBlockPrototypeModel,
 				Schematics: schematicsWorkspaceModel,
 			}
 
 			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
-				Name: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
+				Name: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				ComplianceProfile: projectComplianceProfileModel,
@@ -175,12 +175,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateConfig(createConfigOptions *CreateConfigOptions)`, func() {
-			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("api_key"),
-				ApiKey: core.StringPtr("testString"),
-			}
-
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
 				ID: core.StringPtr("testString"),
 				InstanceID: core.StringPtr("testString"),
@@ -189,15 +183,21 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigPrototypeDefinitionBlockModel := &projectv1.ProjectConfigPrototypeDefinitionBlockDAConfigDefinitionProperties{
-				Name: core.StringPtr("env-stage"),
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
+				ApiKey: core.StringPtr("testString"),
+			}
+
+			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+				ComplianceProfile: projectComplianceProfileModel,
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 				Description: core.StringPtr("Stage environment configuration."),
+				Name: core.StringPtr("env-stage"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				Settings: map[string]interface{}{"anyKey": "anyValue"},
-				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
 			}
 
 			schematicsWorkspaceModel := &projectv1.SchematicsWorkspace{
@@ -206,7 +206,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
-				Definition: projectConfigPrototypeDefinitionBlockModel,
+				Definition: projectConfigDefinitionBlockPrototypeModel,
 				Schematics: schematicsWorkspaceModel,
 			}
 
@@ -305,8 +305,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
 			projectPatchDefinitionBlockModel := &projectv1.ProjectPatchDefinitionBlock{
 				Name: core.StringPtr("acme-microservice"),
-				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				DestroyOnDelete: core.BoolPtr(true),
+				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 			}
 
 			updateProjectOptions := &projectv1.UpdateProjectOptions{
@@ -341,8 +341,8 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
-				Name: core.StringPtr("development"),
 				Description: core.StringPtr("The environment 'development'"),
+				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				ComplianceProfile: projectComplianceProfileModel,
@@ -412,9 +412,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("some-profile-name"),
 			}
 
-			environmentDefinitionPropertiesModel := &projectv1.EnvironmentDefinitionProperties{
-				Name: core.StringPtr("development"),
+			environmentDefinitionPropertiesPatchModel := &projectv1.EnvironmentDefinitionPropertiesPatch{
 				Description: core.StringPtr("The environment 'development'"),
+				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				ComplianceProfile: projectComplianceProfileModel,
@@ -423,7 +423,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			updateProjectEnvironmentOptions := &projectv1.UpdateProjectEnvironmentOptions{
 				ProjectID: &projectIdLink,
 				ID: &projectIdLink,
-				Definition: environmentDefinitionPropertiesModel,
+				Definition: environmentDefinitionPropertiesPatchModel,
 			}
 
 			environment, response, err := projectService.UpdateProjectEnvironment(updateProjectEnvironmentOptions)
@@ -471,12 +471,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateConfig(updateConfigOptions *UpdateConfigOptions)`, func() {
-			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("api_key"),
-				ApiKey: core.StringPtr("testString"),
-			}
-
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
 				ID: core.StringPtr("testString"),
 				InstanceID: core.StringPtr("testString"),
@@ -485,21 +479,27 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ProfileName: core.StringPtr("testString"),
 			}
 
-			projectConfigPatchDefinitionBlockModel := &projectv1.ProjectConfigPatchDefinitionBlockDAConfigDefinitionProperties{
-				Name: core.StringPtr("env-stage"),
+			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
+				TrustedProfileID: core.StringPtr("testString"),
+				Method: core.StringPtr("api_key"),
+				ApiKey: core.StringPtr("testString"),
+			}
+
+			projectConfigDefinitionBlockPatchModel := &projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch{
+				ComplianceProfile: projectComplianceProfileModel,
+				LocatorID: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
+				Name: core.StringPtr("env-stage"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
 				Settings: map[string]interface{}{"anyKey": "anyValue"},
-				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("testString"),
 			}
 
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				Definition: projectConfigPatchDefinitionBlockModel,
+				Definition: projectConfigDefinitionBlockPatchModel,
 			}
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
@@ -522,7 +522,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigVersion, response, err := projectService.ForceApprove(forceApproveOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
+			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 	})
@@ -540,7 +540,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigVersion, response, err := projectService.Approve(approveOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
+			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 	})
@@ -589,9 +589,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &configIdLink,
 			}
 
-			response, err := projectService.UndeployConfig(undeployConfigOptions)
+			projectConfigVersion, response, err := projectService.UndeployConfig(undeployConfigOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(projectConfigVersion).ToNot(BeNil())
 		})
 	})
 
