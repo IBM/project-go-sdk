@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.84.2-a032c73d-20240125-175315
+ * IBM OpenAPI SDK Code Generator Version: 3.85.0-75c38f8f-20240206-210220
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -430,12 +430,12 @@ func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updatePr
 
 // DeleteProject : Delete a project
 // Delete a project document by the ID. A project can only be deleted after deleting all of its resources.
-func (project *ProjectV1) DeleteProject(deleteProjectOptions *DeleteProjectOptions) (response *core.DetailedResponse, err error) {
+func (project *ProjectV1) DeleteProject(deleteProjectOptions *DeleteProjectOptions) (result *ProjectDeleteResponse, response *core.DetailedResponse, err error) {
 	return project.DeleteProjectWithContext(context.Background(), deleteProjectOptions)
 }
 
 // DeleteProjectWithContext is an alternate form of the DeleteProject method which supports a Context parameter
-func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deleteProjectOptions *DeleteProjectOptions) (response *core.DetailedResponse, err error) {
+func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deleteProjectOptions *DeleteProjectOptions) (result *ProjectDeleteResponse, response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(deleteProjectOptions, "deleteProjectOptions cannot be nil")
 	if err != nil {
 		return
@@ -465,13 +465,25 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
+	builder.AddHeader("Accept", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
 		return
 	}
 
-	response, err = project.Service.Request(request, nil)
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectDeleteResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
 
 	return
 }
@@ -584,6 +596,13 @@ func (project *ProjectV1) ListProjectEnvironmentsWithContext(ctx context.Context
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+
+	if listProjectEnvironmentsOptions.Start != nil {
+		builder.AddQuery("start", fmt.Sprint(*listProjectEnvironmentsOptions.Start))
+	}
+	if listProjectEnvironmentsOptions.Limit != nil {
+		builder.AddQuery("limit", fmt.Sprint(*listProjectEnvironmentsOptions.Limit))
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -2658,6 +2677,15 @@ func UnmarshalEnvironment(m map[string]json.RawMessage, result interface{}) (err
 
 // EnvironmentCollection : The list environment response.
 type EnvironmentCollection struct {
+	// A pagination limit.
+	Limit *int64 `json:"limit" validate:"required"`
+
+	// A pagination link.
+	First *PaginationLink `json:"first" validate:"required"`
+
+	// A pagination link.
+	Next *PaginationLink `json:"next,omitempty"`
+
 	// The environments.
 	Environments []Environment `json:"environments,omitempty"`
 }
@@ -2665,12 +2693,36 @@ type EnvironmentCollection struct {
 // UnmarshalEnvironmentCollection unmarshals an instance of EnvironmentCollection from the specified map of raw messages.
 func UnmarshalEnvironmentCollection(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(EnvironmentCollection)
+	err = core.UnmarshalPrimitive(m, "limit", &obj.Limit)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "first", &obj.First, UnmarshalPaginationLink)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "next", &obj.Next, UnmarshalPaginationLink)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "environments", &obj.Environments, UnmarshalEnvironment)
 	if err != nil {
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// Retrieve the value to be passed to a request to access the next page of results
+func (resp *EnvironmentCollection) GetNextStart() (*string, error) {
+	if core.IsNil(resp.Next) {
+		return nil, nil
+	}
+	start, err := core.GetQueryParam(resp.Next.Href, "start")
+	if err != nil || start == nil {
+		return nil, err
+	}
+	return start, nil
 }
 
 // EnvironmentDefinitionPropertiesPatch : The environment definition used for updates.
@@ -3024,14 +3076,14 @@ type LastActionWithSummary struct {
 	// The result of the last action.
 	Result *string `json:"result,omitempty"`
 
+	// A brief summary of an action.
+	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
+
 	// A brief summary of a pre/post action.
 	PreJob *PrePostActionJobWithIdAndSummary `json:"pre_job,omitempty"`
 
 	// A brief summary of a pre/post action.
 	PostJob *PrePostActionJobWithIdAndSummary `json:"post_job,omitempty"`
-
-	// A brief summary of an action.
-	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
 }
 
 // Constants associated with the LastActionWithSummary.Result property.
@@ -3052,6 +3104,10 @@ func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interfa
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "pre_job", &obj.PreJob, UnmarshalPrePostActionJobWithIdAndSummary)
 	if err != nil {
 		return
@@ -3060,7 +3116,58 @@ func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interfa
 	if err != nil {
 		return
 	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// LastDriftDetectionJobSummary : The drift detection job performed as part of the monitoring action.
+type LastDriftDetectionJobSummary struct {
+	// A brief summary of an action.
+	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
+}
+
+// UnmarshalLastDriftDetectionJobSummary unmarshals an instance of LastDriftDetectionJobSummary from the specified map of raw messages.
+func UnmarshalLastDriftDetectionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(LastDriftDetectionJobSummary)
 	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// LastMonitoringActionWithSummary : The monitoring action job performed on the project configuration.
+type LastMonitoringActionWithSummary struct {
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+
+	// The result of the last action.
+	Result *string `json:"result,omitempty"`
+
+	// The drift detection job performed as part of the monitoring action.
+	DriftDetection *LastDriftDetectionJobSummary `json:"drift_detection,omitempty"`
+}
+
+// Constants associated with the LastMonitoringActionWithSummary.Result property.
+// The result of the last action.
+const (
+	LastMonitoringActionWithSummary_Result_Failed = "failed"
+	LastMonitoringActionWithSummary_Result_Passed = "passed"
+)
+
+// UnmarshalLastMonitoringActionWithSummary unmarshals an instance of LastMonitoringActionWithSummary from the specified map of raw messages.
+func UnmarshalLastMonitoringActionWithSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(LastMonitoringActionWithSummary)
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "drift_detection", &obj.DriftDetection, UnmarshalLastDriftDetectionJobSummary)
 	if err != nil {
 		return
 	}
@@ -3076,14 +3183,14 @@ type LastValidatedActionWithSummary struct {
 	// The result of the last action.
 	Result *string `json:"result,omitempty"`
 
+	// A brief summary of an action.
+	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
+
 	// A brief summary of a pre/post action.
 	PreJob *PrePostActionJobWithIdAndSummary `json:"pre_job,omitempty"`
 
 	// A brief summary of a pre/post action.
 	PostJob *PrePostActionJobWithIdAndSummary `json:"post_job,omitempty"`
-
-	// A brief summary of an action.
-	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
 
 	// The cost estimate of the configuration.
 	// It only exists after the first configuration validation.
@@ -3112,15 +3219,15 @@ func UnmarshalLastValidatedActionWithSummary(m map[string]json.RawMessage, resul
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "pre_job", &obj.PreJob, UnmarshalPrePostActionJobWithIdAndSummary)
 	if err != nil {
 		return
 	}
 	err = core.UnmarshalModel(m, "post_job", &obj.PostJob, UnmarshalPrePostActionJobWithIdAndSummary)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "job", &obj.Job, UnmarshalActionJobWithIdAndSummary)
 	if err != nil {
 		return
 	}
@@ -3245,6 +3352,14 @@ type ListProjectEnvironmentsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
+	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
+	// is returned on the next page. If this parameter is not specified, the logical first page is returned.
+	Start *string `json:"start,omitempty"`
+
+	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
+	// exception of the last page.
+	Limit *int64 `json:"limit,omitempty"`
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -3259,6 +3374,18 @@ func (*ProjectV1) NewListProjectEnvironmentsOptions(projectID string) *ListProje
 // SetProjectID : Allow user to set ProjectID
 func (_options *ListProjectEnvironmentsOptions) SetProjectID(projectID string) *ListProjectEnvironmentsOptions {
 	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetStart : Allow user to set Start
+func (_options *ListProjectEnvironmentsOptions) SetStart(start string) *ListProjectEnvironmentsOptions {
+	_options.Start = core.StringPtr(start)
+	return _options
+}
+
+// SetLimit : Allow user to set Limit
+func (_options *ListProjectEnvironmentsOptions) SetLimit(limit int64) *ListProjectEnvironmentsOptions {
+	_options.Limit = core.Int64Ptr(limit)
 	return _options
 }
 
@@ -3754,6 +3881,9 @@ type ProjectConfig struct {
 	// The action job performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
 
+	// The monitoring action job performed on the project configuration.
+	LastMonitoring *LastMonitoringActionWithSummary `json:"last_monitoring,omitempty"`
+
 	// The outputs of a Schematics template property.
 	Outputs []OutputValue `json:"outputs" validate:"required"`
 
@@ -3771,6 +3901,9 @@ type ProjectConfig struct {
 
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
+
+	// The configuration UUIDs associated to this stack.
+	Members []string `json:"members,omitempty"`
 
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -3853,6 +3986,10 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "last_monitoring", &obj.LastMonitoring, UnmarshalLastMonitoringActionWithSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
 	if err != nil {
 		return
@@ -3874,6 +4011,10 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "members", &obj.Members)
 	if err != nil {
 		return
 	}
@@ -4122,9 +4263,9 @@ func UnmarshalProjectConfigDefinitionBlockPrototype(m map[string]json.RawMessage
 	return
 }
 
-// ProjectConfigDelete : Deletes the configuration response.
+// ProjectConfigDelete : The ID of the deleted config.
 type ProjectConfigDelete struct {
-	// The unique configuration ID.
+	// The ID of the deleted project or configuration.
 	ID *string `json:"id" validate:"required"`
 }
 
@@ -4429,6 +4570,7 @@ func UnmarshalProjectConfigResourceCollection(m map[string]json.RawMessage, resu
 // Models which "extend" this model:
 // - ProjectConfigResponseDefinitionDAConfigDefinitionProperties
 // - ProjectConfigResponseDefinitionResourceConfigDefinitionProperties
+// - ProjectConfigResponseDefinitionStackConfigDefinitionProperties
 type ProjectConfigResponseDefinition struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -4690,6 +4832,9 @@ type ProjectConfigVersion struct {
 	// The action job performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
 
+	// The monitoring action job performed on the project configuration.
+	LastMonitoring *LastMonitoringActionWithSummary `json:"last_monitoring,omitempty"`
+
 	// The outputs of a Schematics template property.
 	Outputs []OutputValue `json:"outputs" validate:"required"`
 
@@ -4707,6 +4852,9 @@ type ProjectConfigVersion struct {
 
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
+
+	// The configuration UUIDs associated to this stack.
+	Members []string `json:"members,omitempty"`
 
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -4783,6 +4931,10 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalModel(m, "last_monitoring", &obj.LastMonitoring, UnmarshalLastMonitoringActionWithSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalOutputValue)
 	if err != nil {
 		return
@@ -4804,6 +4956,10 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "members", &obj.Members)
 	if err != nil {
 		return
 	}
@@ -4900,6 +5056,9 @@ type ProjectDefinitionProperties struct {
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
 	// a project without providing a description.
 	Description *string `json:"description" validate:"required"`
+
+	// A boolean flag to enable project monitoring.
+	MonitoringEnabled *bool `json:"monitoring_enabled" validate:"required"`
 }
 
 // UnmarshalProjectDefinitionProperties unmarshals an instance of ProjectDefinitionProperties from the specified map of raw messages.
@@ -4917,6 +5076,10 @@ func UnmarshalProjectDefinitionProperties(m map[string]json.RawMessage, result i
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
+	if err != nil {
+		return
+	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
@@ -4931,6 +5094,23 @@ type ProjectDefinitionReference struct {
 func UnmarshalProjectDefinitionReference(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectDefinitionReference)
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectDeleteResponse : The ID of the deleted project.
+type ProjectDeleteResponse struct {
+	// The ID of the deleted project or configuration.
+	ID *string `json:"id" validate:"required"`
+}
+
+// UnmarshalProjectDeleteResponse unmarshals an instance of ProjectDeleteResponse from the specified map of raw messages.
+func UnmarshalProjectDeleteResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDeleteResponse)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		return
 	}
@@ -5019,6 +5199,9 @@ type ProjectPatchDefinitionBlock struct {
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
 	// a project without providing a description.
 	Description *string `json:"description,omitempty"`
+
+	// A boolean flag to enable project monitoring.
+	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
 }
 
 // UnmarshalProjectPatchDefinitionBlock unmarshals an instance of ProjectPatchDefinitionBlock from the specified map of raw messages.
@@ -5033,6 +5216,10 @@ func UnmarshalProjectPatchDefinitionBlock(m map[string]json.RawMessage, result i
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
 	if err != nil {
 		return
 	}
@@ -5051,6 +5238,9 @@ type ProjectPrototypeDefinition struct {
 	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
 	// a project without providing a description.
 	Description *string `json:"description,omitempty"`
+
+	// A boolean flag to enable project monitoring.
+	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
 }
 
 // NewProjectPrototypeDefinition : Instantiate ProjectPrototypeDefinition (Generic Model Constructor)
@@ -5074,6 +5264,10 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
 	if err != nil {
 		return
 	}
@@ -6147,6 +6341,50 @@ func UnmarshalProjectConfigResponseDefinitionResourceConfigDefinitionProperties(
 	return
 }
 
+// ProjectConfigResponseDefinitionStackConfigDefinitionProperties : The name and description of a project configuration.
+// This model "extends" ProjectConfigResponseDefinition
+type ProjectConfigResponseDefinitionStackConfigDefinitionProperties struct {
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The configuration name. It is unique within the account across projects and regions.
+	Name *string `json:"name,omitempty"`
+
+	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
+	// schematics.workspace_crn, definition.locator_id, or both must be specified.
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The ID of the project environment.
+	EnvironmentID *string `json:"environment_id,omitempty"`
+}
+
+func (*ProjectConfigResponseDefinitionStackConfigDefinitionProperties) isaProjectConfigResponseDefinition() bool {
+	return true
+}
+
+// UnmarshalProjectConfigResponseDefinitionStackConfigDefinitionProperties unmarshals an instance of ProjectConfigResponseDefinitionStackConfigDefinitionProperties from the specified map of raw messages.
+func UnmarshalProjectConfigResponseDefinitionStackConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigResponseDefinitionStackConfigDefinitionProperties)
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 //
 // ProjectsPager can be used to simplify the use of the "ListProjects" method.
 //
@@ -6231,5 +6469,92 @@ func (pager *ProjectsPager) GetNext() (page []ProjectSummary, err error) {
 
 // GetAll invokes GetAllWithContext() using context.Background() as the Context parameter.
 func (pager *ProjectsPager) GetAll() (allItems []ProjectSummary, err error) {
+	return pager.GetAllWithContext(context.Background())
+}
+
+//
+// ProjectEnvironmentsPager can be used to simplify the use of the "ListProjectEnvironments" method.
+//
+type ProjectEnvironmentsPager struct {
+	hasNext bool
+	options *ListProjectEnvironmentsOptions
+	client  *ProjectV1
+	pageContext struct {
+		next *string
+	}
+}
+
+// NewProjectEnvironmentsPager returns a new ProjectEnvironmentsPager instance.
+func (project *ProjectV1) NewProjectEnvironmentsPager(options *ListProjectEnvironmentsOptions) (pager *ProjectEnvironmentsPager, err error) {
+	if options.Start != nil && *options.Start != "" {
+		err = fmt.Errorf("the 'options.Start' field should not be set")
+		return
+	}
+
+	var optionsCopy ListProjectEnvironmentsOptions = *options
+	pager = &ProjectEnvironmentsPager{
+		hasNext: true,
+		options: &optionsCopy,
+		client:  project,
+	}
+	return
+}
+
+// HasNext returns true if there are potentially more results to be retrieved.
+func (pager *ProjectEnvironmentsPager) HasNext() bool {
+	return pager.hasNext
+}
+
+// GetNextWithContext returns the next page of results using the specified Context.
+func (pager *ProjectEnvironmentsPager) GetNextWithContext(ctx context.Context) (page []Environment, err error) {
+	if !pager.HasNext() {
+		return nil, fmt.Errorf("no more results available")
+	}
+
+	pager.options.Start = pager.pageContext.next
+
+	result, _, err := pager.client.ListProjectEnvironmentsWithContext(ctx, pager.options)
+	if err != nil {
+		return
+	}
+
+	var next *string
+	if result.Next != nil {
+		var start *string
+		start, err = core.GetQueryParam(result.Next.Href, "start")
+		if err != nil {
+			err = fmt.Errorf("error retrieving 'start' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
+			return
+		}
+		next = start
+	}
+	pager.pageContext.next = next
+	pager.hasNext = (pager.pageContext.next != nil)
+	page = result.Environments
+
+	return
+}
+
+// GetAllWithContext returns all results by invoking GetNextWithContext() repeatedly
+// until all pages of results have been retrieved.
+func (pager *ProjectEnvironmentsPager) GetAllWithContext(ctx context.Context) (allItems []Environment, err error) {
+	for pager.HasNext() {
+		var nextPage []Environment
+		nextPage, err = pager.GetNextWithContext(ctx)
+		if err != nil {
+			return
+		}
+		allItems = append(allItems, nextPage...)
+	}
+	return
+}
+
+// GetNext invokes GetNextWithContext() using context.Background() as the Context parameter.
+func (pager *ProjectEnvironmentsPager) GetNext() (page []Environment, err error) {
+	return pager.GetNextWithContext(context.Background())
+}
+
+// GetAll invokes GetAllWithContext() using context.Background() as the Context parameter.
+func (pager *ProjectEnvironmentsPager) GetAll() (allItems []Environment, err error) {
 	return pager.GetAllWithContext(context.Background())
 }

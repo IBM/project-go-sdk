@@ -285,23 +285,27 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 		It(`ListProjectEnvironments request example`, func() {
 			fmt.Println("\nListProjectEnvironments() result:")
 			// begin-list_project_environments
+			listProjectEnvironmentsOptions := &projectv1.ListProjectEnvironmentsOptions{
+				ProjectID: &projectIdLink,
+				Limit: core.Int64Ptr(int64(10)),
+			}
 
-			listProjectEnvironmentsOptions := projectService.NewListProjectEnvironmentsOptions(
-				projectIdLink,
-			)
-
-			environmentCollection, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+			pager, err := projectService.NewProjectEnvironmentsPager(listProjectEnvironmentsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(environmentCollection, "", "  ")
+
+			var allResults []projectv1.Environment
+			for pager.HasNext() {
+				nextPage, err := pager.GetNext()
+				if err != nil {
+					panic(err)
+				}
+				allResults = append(allResults, nextPage...)
+			}
+			b, _ := json.MarshalIndent(allResults, "", "  ")
 			fmt.Println(string(b))
-
 			// end-list_project_environments
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(environmentCollection).ToNot(BeNil())
 		})
 		It(`GetProjectEnvironment request example`, func() {
 			fmt.Println("\nGetProjectEnvironment() result:")
@@ -711,24 +715,25 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(projectConfigDelete).ToNot(BeNil())
 		})
 		It(`DeleteProject request example`, func() {
+			fmt.Println("\nDeleteProject() result:")
 			// begin-delete_project
 
 			deleteProjectOptions := projectService.NewDeleteProjectOptions(
 				projectIdLink,
 			)
 
-			response, err := projectService.DeleteProject(deleteProjectOptions)
+			projectDeleteResponse, response, err := projectService.DeleteProject(deleteProjectOptions)
 			if err != nil {
 				panic(err)
 			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteProject(): %d\n", response.StatusCode)
-			}
+			b, _ := json.MarshalIndent(projectDeleteResponse, "", "  ")
+			fmt.Println(string(b))
 
 			// end-delete_project
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(projectDeleteResponse).ToNot(BeNil())
 		})
 	})
 })

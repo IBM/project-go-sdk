@@ -104,6 +104,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				DestroyOnDelete: core.BoolPtr(true),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+				MonitoringEnabled: core.BoolPtr(true),
 			}
 
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
@@ -307,6 +308,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				DestroyOnDelete: core.BoolPtr(true),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+				MonitoringEnabled: core.BoolPtr(true),
 			}
 
 			updateProjectOptions := &projectv1.UpdateProjectOptions{
@@ -364,15 +366,63 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions)`, func() {
+		It(`ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) with pagination`, func(){
 			listProjectEnvironmentsOptions := &projectv1.ListProjectEnvironmentsOptions{
 				ProjectID: &projectIdLink,
+				Start: core.StringPtr("testString"),
+				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			environmentCollection, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+			listProjectEnvironmentsOptions.Start = nil
+			listProjectEnvironmentsOptions.Limit = core.Int64Ptr(1)
+
+			var allResults []projectv1.Environment
+			for {
+				environmentCollection, response, err := projectService.ListProjectEnvironments(listProjectEnvironmentsOptions)
+				Expect(err).To(BeNil())
+				Expect(response.StatusCode).To(Equal(200))
+				Expect(environmentCollection).ToNot(BeNil())
+				allResults = append(allResults, environmentCollection.Environments...)
+
+				listProjectEnvironmentsOptions.Start, err = environmentCollection.GetNextStart()
+				Expect(err).To(BeNil())
+
+				if listProjectEnvironmentsOptions.Start == nil {
+					break
+				}
+			}
+			fmt.Fprintf(GinkgoWriter, "Retrieved a total of %d item(s) with pagination.\n", len(allResults))
+		})
+		It(`ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) using ProjectEnvironmentsPager`, func(){
+			listProjectEnvironmentsOptions := &projectv1.ListProjectEnvironmentsOptions{
+				ProjectID: &projectIdLink,
+				Limit: core.Int64Ptr(int64(10)),
+			}
+
+			// Test GetNext().
+			pager, err := projectService.NewProjectEnvironmentsPager(listProjectEnvironmentsOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(environmentCollection).ToNot(BeNil())
+			Expect(pager).ToNot(BeNil())
+
+			var allResults []projectv1.Environment
+			for pager.HasNext() {
+				nextPage, err := pager.GetNext()
+				Expect(err).To(BeNil())
+				Expect(nextPage).ToNot(BeNil())
+				allResults = append(allResults, nextPage...)
+			}
+
+			// Test GetAll().
+			pager, err = projectService.NewProjectEnvironmentsPager(listProjectEnvironmentsOptions)
+			Expect(err).To(BeNil())
+			Expect(pager).ToNot(BeNil())
+
+			allItems, err := pager.GetAll()
+			Expect(err).To(BeNil())
+			Expect(allItems).ToNot(BeNil())
+
+			Expect(len(allItems)).To(Equal(len(allResults)))
+			fmt.Fprintf(GinkgoWriter, "ListProjectEnvironments() returned a total of %d item(s) using ProjectEnvironmentsPager.\n", len(allResults))
 		})
 	})
 
@@ -730,9 +780,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ID: &projectIdLink,
 			}
 
-			response, err := projectService.DeleteProject(deleteProjectOptions)
+			projectDeleteResponse, response, err := projectService.DeleteProject(deleteProjectOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(projectDeleteResponse).ToNot(BeNil())
 		})
 	})
 })
