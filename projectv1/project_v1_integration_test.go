@@ -104,7 +104,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				DestroyOnDelete: core.BoolPtr(true),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
-				MonitoringEnabled: core.BoolPtr(true),
+				MonitoringEnabled: core.BoolPtr(false),
 			}
 
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
@@ -123,9 +123,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
 				ComplianceProfile: projectComplianceProfileModel,
-				LocatorID: core.StringPtr("testString"),
-				Description: core.StringPtr("testString"),
-				Name: core.StringPtr("testString"),
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+				Description: core.StringPtr("The stage account configuration. The stage account hosts test environments pre-staging, performance, and staging. This configures services common to all these environments and regions. It's a terraform_template type of configuration that points to a Github repo that's hosting the Terraform modules that can be deployed by a Schematics workspace."),
+				Name: core.StringPtr("account-stage"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
@@ -329,9 +329,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`CreateProjectEnvironment(createProjectEnvironmentOptions *CreateProjectEnvironmentOptions)`, func() {
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("api_key"),
-				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+				TrustedProfileID: core.StringPtr("Profile-9ac10c5c-195c-41ef-b465-68a6b6dg5f12"),
+				Method: core.StringPtr("trusted_profile"),
+				ApiKey: core.StringPtr("testString"),
 			}
 
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
@@ -449,9 +449,9 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`UpdateProjectEnvironment(updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions)`, func() {
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				TrustedProfileID: core.StringPtr("testString"),
-				Method: core.StringPtr("api_key"),
-				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+				TrustedProfileID: core.StringPtr("Profile-9ac10c5c-195c-41ef-b465-68a6b6dg5f12"),
+				Method: core.StringPtr("trusted_profile"),
+				ApiKey: core.StringPtr("testString"),
 			}
 
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
@@ -487,15 +487,63 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`ListConfigs(listConfigsOptions *ListConfigsOptions)`, func() {
+		It(`ListConfigs(listConfigsOptions *ListConfigsOptions) with pagination`, func(){
 			listConfigsOptions := &projectv1.ListConfigsOptions{
 				ProjectID: &projectIdLink,
+				Start: core.StringPtr("testString"),
+				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
+			listConfigsOptions.Start = nil
+			listConfigsOptions.Limit = core.Int64Ptr(1)
+
+			var allResults []projectv1.ProjectConfigSummary
+			for {
+				projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
+				Expect(err).To(BeNil())
+				Expect(response.StatusCode).To(Equal(200))
+				Expect(projectConfigCollection).ToNot(BeNil())
+				allResults = append(allResults, projectConfigCollection.Configs...)
+
+				listConfigsOptions.Start, err = projectConfigCollection.GetNextStart()
+				Expect(err).To(BeNil())
+
+				if listConfigsOptions.Start == nil {
+					break
+				}
+			}
+			fmt.Fprintf(GinkgoWriter, "Retrieved a total of %d item(s) with pagination.\n", len(allResults))
+		})
+		It(`ListConfigs(listConfigsOptions *ListConfigsOptions) using ConfigsPager`, func(){
+			listConfigsOptions := &projectv1.ListConfigsOptions{
+				ProjectID: &projectIdLink,
+				Limit: core.Int64Ptr(int64(10)),
+			}
+
+			// Test GetNext().
+			pager, err := projectService.NewConfigsPager(listConfigsOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCollection).ToNot(BeNil())
+			Expect(pager).ToNot(BeNil())
+
+			var allResults []projectv1.ProjectConfigSummary
+			for pager.HasNext() {
+				nextPage, err := pager.GetNext()
+				Expect(err).To(BeNil())
+				Expect(nextPage).ToNot(BeNil())
+				allResults = append(allResults, nextPage...)
+			}
+
+			// Test GetAll().
+			pager, err = projectService.NewConfigsPager(listConfigsOptions)
+			Expect(err).To(BeNil())
+			Expect(pager).ToNot(BeNil())
+
+			allItems, err := pager.GetAll()
+			Expect(err).To(BeNil())
+			Expect(allItems).ToNot(BeNil())
+
+			Expect(len(allItems)).To(Equal(len(allResults)))
+			fmt.Fprintf(GinkgoWriter, "ListConfigs() returned a total of %d item(s) using ConfigsPager.\n", len(allResults))
 		})
 	})
 
