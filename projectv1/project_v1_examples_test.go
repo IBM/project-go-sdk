@@ -115,11 +115,22 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 			}
 
+			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
+				Description: core.StringPtr("The stage account configuration. The stage account hosts test environments pre-staging, performance, and staging. This configures services common to all these environments and regions. It's a terraform_template type of configuration that points to a Github repo that's hosting the Terraform modules that can be deployed by a Schematics workspace."),
+				Name: core.StringPtr("account-stage"),
+			}
+
+			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
+				Definition: projectConfigDefinitionBlockPrototypeModel,
+			}
+
 			createProjectOptions := projectService.NewCreateProjectOptions(
 				projectPrototypeDefinitionModel,
 				"us-south",
 				"Default",
 			)
+			createProjectOptions.SetConfigs([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel})
 
 			project, response, err := projectService.CreateProject(createProjectOptions)
 			if err != nil {
@@ -245,8 +256,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-create_project_environment
 
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				Method: core.StringPtr("api_key"),
-				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+				TrustedProfileID: core.StringPtr("Profile-9ac10c5c-195c-41ef-b465-68a6b6dg5f12"),
+				Method: core.StringPtr("trusted_profile"),
 			}
 
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
@@ -334,8 +345,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			// begin-update_project_environment
 
 			projectConfigAuthModel := &projectv1.ProjectConfigAuth{
-				Method: core.StringPtr("api_key"),
-				ApiKey: core.StringPtr("TbcdlprpFODhkpns9e0daOWnAwd2tXwSYtPn8rpEd8d9"),
+				TrustedProfileID: core.StringPtr("Profile-9ac10c5c-195c-41ef-b465-68a6b6dg5f12"),
+				Method: core.StringPtr("trusted_profile"),
 			}
 
 			projectComplianceProfileModel := &projectv1.ProjectComplianceProfile{
@@ -375,23 +386,27 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 		It(`ListConfigs request example`, func() {
 			fmt.Println("\nListConfigs() result:")
 			// begin-list_configs
+			listConfigsOptions := &projectv1.ListConfigsOptions{
+				ProjectID: &projectIdLink,
+				Limit: core.Int64Ptr(int64(10)),
+			}
 
-			listConfigsOptions := projectService.NewListConfigsOptions(
-				projectIdLink,
-			)
-
-			projectConfigCollection, response, err := projectService.ListConfigs(listConfigsOptions)
+			pager, err := projectService.NewConfigsPager(listConfigsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(projectConfigCollection, "", "  ")
+
+			var allResults []projectv1.ProjectConfigSummary
+			for pager.HasNext() {
+				nextPage, err := pager.GetNext()
+				if err != nil {
+					panic(err)
+				}
+				allResults = append(allResults, nextPage...)
+			}
+			b, _ := json.MarshalIndent(allResults, "", "  ")
 			fmt.Println(string(b))
-
 			// end-list_configs
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(projectConfigCollection).ToNot(BeNil())
 		})
 		It(`GetConfig request example`, func() {
 			fmt.Println("\nGetConfig() result:")

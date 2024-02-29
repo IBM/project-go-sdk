@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.85.0-75c38f8f-20240206-210220
+ * IBM OpenAPI SDK Code Generator Version: 3.86.0-bc6f14b3-20240221-193958
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -929,6 +929,13 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
+
+	if listConfigsOptions.Start != nil {
+		builder.AddQuery("start", fmt.Sprint(*listConfigsOptions.Start))
+	}
+	if listConfigsOptions.Limit != nil {
+		builder.AddQuery("limit", fmt.Sprint(*listConfigsOptions.Limit))
+	}
 
 	request, err := builder.Build()
 	if err != nil {
@@ -2240,8 +2247,20 @@ type CreateConfigOptions struct {
 
 	Definition ProjectConfigDefinitionBlockPrototypeIntf `json:"definition" validate:"required"`
 
-	// A Schematics workspace to use for deploying this configuration.
-	// Either schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A Schematics workspace to use for deploying this DA.
+	// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// >
+	// There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// >
+	// For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -2626,7 +2645,8 @@ type Environment struct {
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The target account ID derived from the authentication block values.
+	// The target account ID derived from the authentication block values. The target account only exists if the
+	// environment currently has an authorization block.
 	TargetAccount *string `json:"target_account,omitempty"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
@@ -3324,6 +3344,14 @@ type ListConfigsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
+	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
+	// is returned on the next page. If this parameter is not specified, the logical first page is returned.
+	Start *string `json:"start,omitempty"`
+
+	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
+	// exception of the last page.
+	Limit *int64 `json:"limit,omitempty"`
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -3338,6 +3366,18 @@ func (*ProjectV1) NewListConfigsOptions(projectID string) *ListConfigsOptions {
 // SetProjectID : Allow user to set ProjectID
 func (_options *ListConfigsOptions) SetProjectID(projectID string) *ListConfigsOptions {
 	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetStart : Allow user to set Start
+func (_options *ListConfigsOptions) SetStart(start string) *ListConfigsOptions {
+	_options.Start = core.StringPtr(start)
+	return _options
+}
+
+// SetLimit : Allow user to set Limit
+func (_options *ListConfigsOptions) SetLimit(limit int64) *ListConfigsOptions {
+	_options.Limit = core.Int64Ptr(limit)
 	return _options
 }
 
@@ -3902,18 +3942,15 @@ type ProjectConfig struct {
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
 
-	// The configuration UUIDs associated to this stack.
-	Members []string `json:"members,omitempty"`
-
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
 	Definition ProjectConfigResponseDefinitionIntf `json:"definition" validate:"required"`
 
-	// The project configuration version.
+	// A summary of a project configuration version.
 	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
 
-	// The project configuration version.
+	// A summary of a project configuration version.
 	DeployedVersion *ProjectConfigVersionSummary `json:"deployed_version,omitempty"`
 }
 
@@ -4014,10 +4051,6 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "members", &obj.Members)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		return
@@ -4078,6 +4111,15 @@ func UnmarshalProjectConfigAuth(m map[string]json.RawMessage, result interface{}
 
 // ProjectConfigCollection : The project configuration list.
 type ProjectConfigCollection struct {
+	// A pagination limit.
+	Limit *int64 `json:"limit" validate:"required"`
+
+	// A pagination link.
+	First *PaginationLink `json:"first" validate:"required"`
+
+	// A pagination link.
+	Next *PaginationLink `json:"next,omitempty"`
+
 	// The collection list operation response schema that should define the array property with the name "configs".
 	Configs []ProjectConfigSummary `json:"configs,omitempty"`
 }
@@ -4085,12 +4127,36 @@ type ProjectConfigCollection struct {
 // UnmarshalProjectConfigCollection unmarshals an instance of ProjectConfigCollection from the specified map of raw messages.
 func UnmarshalProjectConfigCollection(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigCollection)
+	err = core.UnmarshalPrimitive(m, "limit", &obj.Limit)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "first", &obj.First, UnmarshalPaginationLink)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "next", &obj.Next, UnmarshalPaginationLink)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "configs", &obj.Configs, UnmarshalProjectConfigSummary)
 	if err != nil {
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// Retrieve the value to be passed to a request to access the next page of results
+func (resp *ProjectConfigCollection) GetNextStart() (*string, error) {
+	if core.IsNil(resp.Next) {
+		return nil, nil
+	}
+	start, err := core.GetQueryParam(resp.Next.Href, "start")
+	if err != nil || start == nil {
+		return nil, err
+	}
+	return start, nil
 }
 
 // ProjectConfigDefinitionBlockPatch : ProjectConfigDefinitionBlockPatch struct
@@ -4101,8 +4167,18 @@ type ProjectConfigDefinitionBlockPatch struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
-	// schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
@@ -4186,8 +4262,18 @@ type ProjectConfigDefinitionBlockPrototype struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
-	// schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
@@ -4468,8 +4554,20 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 type ProjectConfigPrototype struct {
 	Definition ProjectConfigDefinitionBlockPrototypeIntf `json:"definition" validate:"required"`
 
-	// A Schematics workspace to use for deploying this configuration.
-	// Either schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A Schematics workspace to use for deploying this DA.
+	// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// >
+	// There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// >
+	// For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 }
 
@@ -4570,13 +4668,22 @@ func UnmarshalProjectConfigResourceCollection(m map[string]json.RawMessage, resu
 // Models which "extend" this model:
 // - ProjectConfigResponseDefinitionDAConfigDefinitionProperties
 // - ProjectConfigResponseDefinitionResourceConfigDefinitionProperties
-// - ProjectConfigResponseDefinitionStackConfigDefinitionProperties
 type ProjectConfigResponseDefinition struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
-	// schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
@@ -4654,10 +4761,10 @@ func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, resu
 
 // ProjectConfigSummary : ProjectConfigSummary struct
 type ProjectConfigSummary struct {
-	// The project configuration version.
+	// A summary of a project configuration version.
 	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
 
-	// The project configuration version.
+	// A summary of a project configuration version.
 	DeployedVersion *ProjectConfigVersionSummary `json:"deployed_version,omitempty"`
 
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
@@ -4680,7 +4787,7 @@ type ProjectConfigSummary struct {
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
-	// The name and description of a project configuration.
+	// The description of a project configuration.
 	Definition *ProjectConfigSummaryDefinition `json:"definition" validate:"required"`
 
 	// The project referenced by this resource.
@@ -4770,13 +4877,27 @@ func UnmarshalProjectConfigSummary(m map[string]json.RawMessage, result interfac
 	return
 }
 
-// ProjectConfigSummaryDefinition : The name and description of a project configuration.
+// ProjectConfigSummaryDefinition : The description of a project configuration.
 type ProjectConfigSummaryDefinition struct {
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
 	// The configuration name. It is unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
+
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
 }
 
 // UnmarshalProjectConfigSummaryDefinition unmarshals an instance of ProjectConfigSummaryDefinition from the specified map of raw messages.
@@ -4787,6 +4908,10 @@ func UnmarshalProjectConfigSummaryDefinition(m map[string]json.RawMessage, resul
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
 	if err != nil {
 		return
 	}
@@ -4852,9 +4977,6 @@ type ProjectConfigVersion struct {
 
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
-
-	// The configuration UUIDs associated to this stack.
-	Members []string `json:"members,omitempty"`
 
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -4959,10 +5081,6 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "members", &obj.Members)
-	if err != nil {
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		return
@@ -4975,8 +5093,39 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	return
 }
 
-// ProjectConfigVersionSummary : The project configuration version.
+// ProjectConfigVersionDefinitionSummary : A summary of the definition in a project configuration version.
+type ProjectConfigVersionDefinitionSummary struct {
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
+}
+
+// UnmarshalProjectConfigVersionDefinitionSummary unmarshals an instance of ProjectConfigVersionDefinitionSummary from the specified map of raw messages.
+func UnmarshalProjectConfigVersionDefinitionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigVersionDefinitionSummary)
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigVersionSummary : A summary of a project configuration version.
 type ProjectConfigVersionSummary struct {
+	// A summary of the definition in a project configuration version.
+	Definition *ProjectConfigVersionDefinitionSummary `json:"definition" validate:"required"`
+
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
@@ -5012,6 +5161,10 @@ const (
 // UnmarshalProjectConfigVersionSummary unmarshals an instance of ProjectConfigVersionSummary from the specified map of raw messages.
 func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummary)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigVersionDefinitionSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		return
@@ -5058,7 +5211,7 @@ type ProjectDefinitionProperties struct {
 	Description *string `json:"description" validate:"required"`
 
 	// A boolean flag to enable project monitoring.
-	MonitoringEnabled *bool `json:"monitoring_enabled" validate:"required"`
+	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
 }
 
 // UnmarshalProjectDefinitionProperties unmarshals an instance of ProjectDefinitionProperties from the specified map of raw messages.
@@ -5280,14 +5433,14 @@ type ProjectReference struct {
 	// The unique ID.
 	ID *string `json:"id" validate:"required"`
 
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+
 	// The definition of the project reference.
 	Definition *ProjectDefinitionReference `json:"definition" validate:"required"`
 
 	// An IBM Cloud resource name, which uniquely identifies a resource.
 	Crn *string `json:"crn" validate:"required"`
-
-	// A URL.
-	Href *string `json:"href" validate:"required"`
 }
 
 // UnmarshalProjectReference unmarshals an instance of ProjectReference from the specified map of raw messages.
@@ -5297,15 +5450,15 @@ func UnmarshalProjectReference(m map[string]json.RawMessage, result interface{})
 	if err != nil {
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionReference)
 	if err != nil {
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		return
 	}
@@ -5469,8 +5622,18 @@ func UnmarshalSchematicsMetadata(m map[string]json.RawMessage, result interface{
 	return
 }
 
-// SchematicsWorkspace : A Schematics workspace to use for deploying this configuration. Either schematics.workspace_crn,
-// definition.locator_id, or both must be specified.
+// SchematicsWorkspace : A Schematics workspace to use for deploying this DA.
+// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics workspace
+// has one.
+// > There are 3 scenarios:
+// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+// existing schematics workspace.
+// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+// template](/docs/schematics?topic=schematics-sch-create-wks).
 type SchematicsWorkspace struct {
 	// An IBM Cloud resource name, which uniquely identifies a resource.
 	WorkspaceCrn *string `json:"workspace_crn,omitempty"`
@@ -5527,8 +5690,20 @@ type SyncConfigOptions struct {
 	// The unique config ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// A Schematics workspace to use for deploying this configuration.
-	// Either schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A Schematics workspace to use for deploying this DA.
+	// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// >
+	// There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// >
+	// For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -5874,8 +6049,18 @@ type ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
-	// schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
@@ -6006,14 +6191,24 @@ func UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertie
 	return
 }
 
-// ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigDefinitionBlockPrototype
 type ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
-	// schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
@@ -6079,7 +6274,7 @@ func UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties(
 	return
 }
 
-// ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigDefinitionBlockPrototype
 type ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties struct {
 	// The CRNs of resources associated with this configuration.
@@ -6203,14 +6398,24 @@ func UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogsVersion204(m map[string]j
 	return
 }
 
-// ProjectConfigResponseDefinitionDAConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigResponseDefinitionDAConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigResponseDefinition
 type ProjectConfigResponseDefinitionDAConfigDefinitionProperties struct {
 	// The profile required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
-	// schematics.workspace_crn, definition.locator_id, or both must be specified.
+	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
+	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
+	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
+	// workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
+	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
@@ -6276,7 +6481,7 @@ func UnmarshalProjectConfigResponseDefinitionDAConfigDefinitionProperties(m map[
 	return
 }
 
-// ProjectConfigResponseDefinitionResourceConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigResponseDefinitionResourceConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigResponseDefinition
 type ProjectConfigResponseDefinitionResourceConfigDefinitionProperties struct {
 	// The CRNs of resources associated with this configuration.
@@ -6334,50 +6539,6 @@ func UnmarshalProjectConfigResponseDefinitionResourceConfigDefinitionProperties(
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigResponseDefinitionStackConfigDefinitionProperties : The name and description of a project configuration.
-// This model "extends" ProjectConfigResponseDefinition
-type ProjectConfigResponseDefinitionStackConfigDefinitionProperties struct {
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The configuration name. It is unique within the account across projects and regions.
-	Name *string `json:"name,omitempty"`
-
-	// A unique concatenation of catalogID.versionID that identifies the DA in the catalog. Either
-	// schematics.workspace_crn, definition.locator_id, or both must be specified.
-	LocatorID *string `json:"locator_id,omitempty"`
-
-	// The ID of the project environment.
-	EnvironmentID *string `json:"environment_id,omitempty"`
-}
-
-func (*ProjectConfigResponseDefinitionStackConfigDefinitionProperties) isaProjectConfigResponseDefinition() bool {
-	return true
-}
-
-// UnmarshalProjectConfigResponseDefinitionStackConfigDefinitionProperties unmarshals an instance of ProjectConfigResponseDefinitionStackConfigDefinitionProperties from the specified map of raw messages.
-func UnmarshalProjectConfigResponseDefinitionStackConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigResponseDefinitionStackConfigDefinitionProperties)
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
 	if err != nil {
 		return
 	}
@@ -6556,5 +6717,92 @@ func (pager *ProjectEnvironmentsPager) GetNext() (page []Environment, err error)
 
 // GetAll invokes GetAllWithContext() using context.Background() as the Context parameter.
 func (pager *ProjectEnvironmentsPager) GetAll() (allItems []Environment, err error) {
+	return pager.GetAllWithContext(context.Background())
+}
+
+//
+// ConfigsPager can be used to simplify the use of the "ListConfigs" method.
+//
+type ConfigsPager struct {
+	hasNext bool
+	options *ListConfigsOptions
+	client  *ProjectV1
+	pageContext struct {
+		next *string
+	}
+}
+
+// NewConfigsPager returns a new ConfigsPager instance.
+func (project *ProjectV1) NewConfigsPager(options *ListConfigsOptions) (pager *ConfigsPager, err error) {
+	if options.Start != nil && *options.Start != "" {
+		err = fmt.Errorf("the 'options.Start' field should not be set")
+		return
+	}
+
+	var optionsCopy ListConfigsOptions = *options
+	pager = &ConfigsPager{
+		hasNext: true,
+		options: &optionsCopy,
+		client:  project,
+	}
+	return
+}
+
+// HasNext returns true if there are potentially more results to be retrieved.
+func (pager *ConfigsPager) HasNext() bool {
+	return pager.hasNext
+}
+
+// GetNextWithContext returns the next page of results using the specified Context.
+func (pager *ConfigsPager) GetNextWithContext(ctx context.Context) (page []ProjectConfigSummary, err error) {
+	if !pager.HasNext() {
+		return nil, fmt.Errorf("no more results available")
+	}
+
+	pager.options.Start = pager.pageContext.next
+
+	result, _, err := pager.client.ListConfigsWithContext(ctx, pager.options)
+	if err != nil {
+		return
+	}
+
+	var next *string
+	if result.Next != nil {
+		var start *string
+		start, err = core.GetQueryParam(result.Next.Href, "start")
+		if err != nil {
+			err = fmt.Errorf("error retrieving 'start' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
+			return
+		}
+		next = start
+	}
+	pager.pageContext.next = next
+	pager.hasNext = (pager.pageContext.next != nil)
+	page = result.Configs
+
+	return
+}
+
+// GetAllWithContext returns all results by invoking GetNextWithContext() repeatedly
+// until all pages of results have been retrieved.
+func (pager *ConfigsPager) GetAllWithContext(ctx context.Context) (allItems []ProjectConfigSummary, err error) {
+	for pager.HasNext() {
+		var nextPage []ProjectConfigSummary
+		nextPage, err = pager.GetNextWithContext(ctx)
+		if err != nil {
+			return
+		}
+		allItems = append(allItems, nextPage...)
+	}
+	return
+}
+
+// GetNext invokes GetNextWithContext() using context.Background() as the Context parameter.
+func (pager *ConfigsPager) GetNext() (page []ProjectConfigSummary, err error) {
+	return pager.GetNextWithContext(context.Background())
+}
+
+// GetAll invokes GetAllWithContext() using context.Background() as the Context parameter.
+func (pager *ConfigsPager) GetAll() (allItems []ProjectConfigSummary, err error) {
 	return pager.GetAllWithContext(context.Background())
 }
