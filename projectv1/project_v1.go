@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.85.0-75c38f8f-20240206-210220
+ * IBM OpenAPI SDK Code Generator Version: 3.86.0-bc6f14b3-20240221-193958
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -163,6 +163,8 @@ func (project *ProjectV1) DisableRetries() {
 // CreateProject : Create a project
 // Create a new project and asynchronously setup the tools to manage it. Add a deployable architecture by customizing
 // the configuration. After the changes are validated and approved, deploy the resources that the project configures.
+// For more information, see [Creating a
+// project](/docs/secure-enterprise?topic=secure-enterprise-setup-project&interface=ui/docs-draft/secure-enterprise?topic=secure-enterprise-setup-project).
 func (project *ProjectV1) CreateProject(createProjectOptions *CreateProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
 	return project.CreateProjectWithContext(context.Background(), createProjectOptions)
 }
@@ -359,7 +361,7 @@ func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectO
 }
 
 // UpdateProject : Update a project
-// Update a project by the ID.
+// Update a project by specifying its ID.
 func (project *ProjectV1) UpdateProject(updateProjectOptions *UpdateProjectOptions) (result *Project, response *core.DetailedResponse, err error) {
 	return project.UpdateProjectWithContext(context.Background(), updateProjectOptions)
 }
@@ -429,7 +431,7 @@ func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updatePr
 }
 
 // DeleteProject : Delete a project
-// Delete a project document by the ID. A project can only be deleted after deleting all of its resources.
+// Delete a project document by specifying the ID. A project can be deleted only after you delete all of its resources.
 func (project *ProjectV1) DeleteProject(deleteProjectOptions *DeleteProjectOptions) (result *ProjectDeleteResponse, response *core.DetailedResponse, err error) {
 	return project.DeleteProjectWithContext(context.Background(), deleteProjectOptions)
 }
@@ -489,7 +491,8 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 }
 
 // CreateProjectEnvironment : Create an environment
-// Create an environment.
+// Create an environment to group related configurations together and share values across them for easier deployment.
+// For more information, see [Creating an environment](/docs/secure-enterprise?topic=secure-enterprise-create-env).
 func (project *ProjectV1) CreateProjectEnvironment(createProjectEnvironmentOptions *CreateProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
 	return project.CreateProjectEnvironmentWithContext(context.Background(), createProjectEnvironmentOptions)
 }
@@ -559,7 +562,8 @@ func (project *ProjectV1) CreateProjectEnvironmentWithContext(ctx context.Contex
 }
 
 // ListProjectEnvironments : List environments
-// Returns all environments.
+// List all available environments. For more information, see [Creating an
+// environment](/docs/secure-enterprise?topic=secure-enterprise-create-env).
 func (project *ProjectV1) ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) (result *EnvironmentCollection, response *core.DetailedResponse, err error) {
 	return project.ListProjectEnvironmentsWithContext(context.Background(), listProjectEnvironmentsOptions)
 }
@@ -626,7 +630,7 @@ func (project *ProjectV1) ListProjectEnvironmentsWithContext(ctx context.Context
 }
 
 // GetProjectEnvironment : Get an environment
-// Returns an environment.
+// Get an environment. [Learn more](/docs/secure-enterprise?topic=secure-enterprise-create-env).
 func (project *ProjectV1) GetProjectEnvironment(getProjectEnvironmentOptions *GetProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
 	return project.GetProjectEnvironmentWithContext(context.Background(), getProjectEnvironmentOptions)
 }
@@ -687,7 +691,7 @@ func (project *ProjectV1) GetProjectEnvironmentWithContext(ctx context.Context, 
 }
 
 // UpdateProjectEnvironment : Update an environment
-// Update an environment by the ID.
+// Update an environment by specifying its ID. [Learn more](/docs/secure-enterprise?topic=secure-enterprise-create-env).
 func (project *ProjectV1) UpdateProjectEnvironment(updateProjectEnvironmentOptions *UpdateProjectEnvironmentOptions) (result *Environment, response *core.DetailedResponse, err error) {
 	return project.UpdateProjectEnvironmentWithContext(context.Background(), updateProjectEnvironmentOptions)
 }
@@ -758,7 +762,7 @@ func (project *ProjectV1) UpdateProjectEnvironmentWithContext(ctx context.Contex
 }
 
 // DeleteProjectEnvironment : Delete an environment
-// Delete an environment in a project by ID.
+// Delete an environment in a project by specifying its ID.
 func (project *ProjectV1) DeleteProjectEnvironment(deleteProjectEnvironmentOptions *DeleteProjectEnvironmentOptions) (result *EnvironmentDeleteResponse, response *core.DetailedResponse, err error) {
 	return project.DeleteProjectEnvironmentWithContext(context.Background(), deleteProjectEnvironmentOptions)
 }
@@ -892,7 +896,7 @@ func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createCon
 }
 
 // ListConfigs : List all project configurations
-// The collection of configurations that are returned.
+// Retrieve the collection of configurations.
 func (project *ProjectV1) ListConfigs(listConfigsOptions *ListConfigsOptions) (result *ProjectConfigCollection, response *core.DetailedResponse, err error) {
 	return project.ListConfigsWithContext(context.Background(), listConfigsOptions)
 }
@@ -959,7 +963,9 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 }
 
 // GetConfig : Get a project configuration
-// Returns the specified project configuration in a specific project.
+// Retrieve the specified project configuration in a specific project. For more information about project
+// configurations, see [Monitoring the status of a configuration and its
+// resources](/docs/secure-enterprise?topic=secure-enterprise-monitor-status-projects).
 func (project *ProjectV1) GetConfig(getConfigOptions *GetConfigOptions) (result *ProjectConfig, response *core.DetailedResponse, err error) {
 	return project.GetConfigWithContext(context.Background(), getConfigOptions)
 }
@@ -1020,7 +1026,8 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 }
 
 // UpdateConfig : Update a configuration
-// Update a configuration in a project by the ID.
+// Update a configuration in a project by specifying the ID. [Learn
+// more](/docs/secure-enterprise?topic=secure-enterprise-config-project).
 func (project *ProjectV1) UpdateConfig(updateConfigOptions *UpdateConfigOptions) (result *ProjectConfig, response *core.DetailedResponse, err error) {
 	return project.UpdateConfigWithContext(context.Background(), updateConfigOptions)
 }
@@ -1090,8 +1097,8 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 	return
 }
 
-// DeleteConfig : Delete a configuration in a project by ID
-// Delete a configuration in a project.
+// DeleteConfig : Delete a configuration
+// Delete a configuration in a project by specifying its ID.
 func (project *ProjectV1) DeleteConfig(deleteConfigOptions *DeleteConfigOptions) (result *ProjectConfigDelete, response *core.DetailedResponse, err error) {
 	return project.DeleteConfigWithContext(context.Background(), deleteConfigOptions)
 }
@@ -1151,7 +1158,7 @@ func (project *ProjectV1) DeleteConfigWithContext(ctx context.Context, deleteCon
 	return
 }
 
-// ForceApprove : Force approve project configuration
+// ForceApprove : Force approve a project configuration
 // Force approve configuration edits to the main configuration with an approving comment.
 func (project *ProjectV1) ForceApprove(forceApproveOptions *ForceApproveOptions) (result *ProjectConfigVersion, response *core.DetailedResponse, err error) {
 	return project.ForceApproveWithContext(context.Background(), forceApproveOptions)
@@ -1294,8 +1301,8 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 }
 
 // ValidateConfig : Run a validation check
-// Run a validation check on a given configuration in project. The check includes creating or updating the associated
-// schematics workspace with a plan job, running the CRA scans, and cost estimatation.
+// Run a validation check on a specific configuration in the project. The check includes creating or updating the
+// associated Schematics workspace with a plan job, running the CRA scans, and cost estimation.
 func (project *ProjectV1) ValidateConfig(validateConfigOptions *ValidateConfigOptions) (result *ProjectConfigVersion, response *core.DetailedResponse, err error) {
 	return project.ValidateConfigWithContext(context.Background(), validateConfigOptions)
 }
@@ -1356,7 +1363,7 @@ func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validat
 }
 
 // DeployConfig : Deploy a configuration
-// Deploy a project's configuration. It's an asynchronous operation that can be tracked using the get project
+// Deploy a project's configuration. This operation is asynchronous and can be tracked by using the get project
 // configuration API with full metadata.
 func (project *ProjectV1) DeployConfig(deployConfigOptions *DeployConfigOptions) (result *ProjectConfigVersion, response *core.DetailedResponse, err error) {
 	return project.DeployConfigWithContext(context.Background(), deployConfigOptions)
@@ -1480,7 +1487,7 @@ func (project *ProjectV1) UndeployConfigWithContext(ctx context.Context, undeplo
 }
 
 // SyncConfig : Sync a project configuration
-// Sync a project configuration by analyzing the associated pipeline runs and schematics workspace logs to get the
+// Sync a project configuration by analyzing the associated pipeline runs and Schematics workspace logs to get the
 // configuration back to a working state.
 func (project *ProjectV1) SyncConfig(syncConfigOptions *SyncConfigOptions) (response *core.DetailedResponse, err error) {
 	return project.SyncConfigWithContext(context.Background(), syncConfigOptions)
@@ -1539,8 +1546,8 @@ func (project *ProjectV1) SyncConfigWithContext(ctx context.Context, syncConfigO
 	return
 }
 
-// ListConfigResources : List the resources deployed by a configuration
-// A list of resources deployed by a configuraton.
+// ListConfigResources : List all deployed resources
+// List resources that are deployed by a configuration.
 func (project *ProjectV1) ListConfigResources(listConfigResourcesOptions *ListConfigResourcesOptions) (result *ProjectConfigResourceCollection, response *core.DetailedResponse, err error) {
 	return project.ListConfigResourcesWithContext(context.Background(), listConfigResourcesOptions)
 }
@@ -1600,8 +1607,8 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 	return
 }
 
-// ListConfigVersions : Get a list of versions of a project configuration
-// Returns a list of previous and current versions of a project configuration in a specific project.
+// ListConfigVersions : Get a list of project configuration versions
+// Retrieve a list of previous and current versions of a project configuration in a specific project.
 func (project *ProjectV1) ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions) (result *ProjectConfigVersionSummaryCollection, response *core.DetailedResponse, err error) {
 	return project.ListConfigVersionsWithContext(context.Background(), listConfigVersionsOptions)
 }
@@ -1661,8 +1668,8 @@ func (project *ProjectV1) ListConfigVersionsWithContext(ctx context.Context, lis
 	return
 }
 
-// GetConfigVersion : Get a specific version of a project configuration
-// Returns a specific version of a project configuration in a specific project.
+// GetConfigVersion : Get a specific project configuration version
+// Retrieve a specific version of a configuration in a project.
 func (project *ProjectV1) GetConfigVersion(getConfigVersionOptions *GetConfigVersionOptions) (result *ProjectConfigVersion, response *core.DetailedResponse, err error) {
 	return project.GetConfigVersionWithContext(context.Background(), getConfigVersionOptions)
 }
@@ -1723,8 +1730,8 @@ func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getCo
 	return
 }
 
-// DeleteConfigVersion : Delete a configuration for the specified project ID and version
-// Delete a configuration in a project.
+// DeleteConfigVersion : Delete a project configuration version
+// Delete a configuration version by specifying the project ID.
 func (project *ProjectV1) DeleteConfigVersion(deleteConfigVersionOptions *DeleteConfigVersionOptions) (result *ProjectConfigDelete, response *core.DetailedResponse, err error) {
 	return project.DeleteConfigVersionWithContext(context.Background(), deleteConfigVersionOptions)
 }
@@ -1787,10 +1794,10 @@ func (project *ProjectV1) DeleteConfigVersionWithContext(ctx context.Context, de
 
 // ActionJobApplyMessagesSummary : The messages of apply jobs on the configuration.
 type ActionJobApplyMessagesSummary struct {
-	// The collection of error messages. This is only reported if schematics triggered a terraform apply job.
+	// The collection of error messages. This property is reported only if Schematics triggered a Terraform apply job.
 	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 
-	// The collection of success messages. This is only reported if schematics triggered a terraform apply job.
+	// The collection of success messages. This property is reported only if Schematics triggered a Terraform apply job.
 	SucessMessage []TerraformLogAnalyzerSuccessMessage `json:"sucess_message,omitempty"`
 }
 
@@ -1811,18 +1818,19 @@ func UnmarshalActionJobApplyMessagesSummary(m map[string]json.RawMessage, result
 
 // ActionJobApplySummary : The summary of the apply jobs on the configuration.
 type ActionJobApplySummary struct {
-	// The number of applied resources. This is only reported if schematics triggered a terraform apply job.
+	// The number of applied resources. This property is reported only if Schematics triggered a Terraform apply job.
 	Success *int64 `json:"success,omitempty"`
 
-	// The number of failed resources. The number of applied resources. This is only reported if schematics triggered a
-	// terraform apply job.
+	// The number of failed applied resources. This property is reported only if Schematics triggered a Terraform apply
+	// job.
 	Failed *int64 `json:"failed,omitempty"`
 
-	// The collection of successfully applied resources. This is only reported if schematics triggered a terraform apply
-	// job.
+	// The collection of successfully applied resources. This property is reported only if Schematics triggered a Terraform
+	// apply job.
 	SuccessResources []string `json:"success_resources,omitempty"`
 
-	// The collection of failed applied resources. This is only reported if schematics triggered a terraform apply job.
+	// The collection of failed applied resources. This property is reported only if Schematics triggered a Terraform apply
+	// job.
 	FailedResources []string `json:"failed_resources,omitempty"`
 }
 
@@ -1851,7 +1859,7 @@ func UnmarshalActionJobApplySummary(m map[string]json.RawMessage, result interfa
 
 // ActionJobDestroyMessagesSummary : The messages of destroy jobs on the configuration.
 type ActionJobDestroyMessagesSummary struct {
-	// The collection of error messages. This is only reported if schematics triggered a terraform destroy job.
+	// The collection of error messages. This property is reported only if Schematics triggered a Terraform destroy job.
 	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 }
 
@@ -1868,16 +1876,17 @@ func UnmarshalActionJobDestroyMessagesSummary(m map[string]json.RawMessage, resu
 
 // ActionJobDestroySummary : The summary of the destroy jobs on the configuration.
 type ActionJobDestroySummary struct {
-	// The number of destroyed resources. This is only reported if schematics triggered a terraform destroy job.
+	// The number of destroyed resources. This property is reported only if Schematics triggered a Terraform destroy job.
 	Success *int64 `json:"success,omitempty"`
 
-	// The number of failed resources. This is only reported if schematics triggered a terraform destroy job.
+	// The number of failed resources. This property is reported only if Schematics triggered a Terraform destroy job.
 	Failed *int64 `json:"failed,omitempty"`
 
-	// The number of tainted resources. This is only reported if schematics triggered a terraform destroy job.
+	// The number of tainted resources. This property is reported only if Schematics triggered a Terraform destroy job.
 	Tainted *int64 `json:"tainted,omitempty"`
 
-	// The destroy resources results from the job. This is only reported if schematics triggered a terraform destroy job.
+	// The summary of results from destroyed resources from the job. This property is reported only if Schematics triggered
+	// a Terraform destroy job.
 	Resources *ActionJobDestroySummaryResources `json:"resources,omitempty"`
 }
 
@@ -1904,15 +1913,17 @@ func UnmarshalActionJobDestroySummary(m map[string]json.RawMessage, result inter
 	return
 }
 
-// ActionJobDestroySummaryResources : The destroy resources results from the job. This is only reported if schematics triggered a terraform destroy job.
+// ActionJobDestroySummaryResources : The summary of results from destroyed resources from the job. This property is reported only if Schematics triggered
+// a Terraform destroy job.
 type ActionJobDestroySummaryResources struct {
-	// The collection of destroyed resources. This is only reported if schematics triggered a terraform destroy job.
+	// The collection of destroyed resources. This property is reported only if Schematics triggered a Terraform destroy
+	// job.
 	Success []string `json:"success,omitempty"`
 
-	// The collection of failed resources. This is only reported if schematics triggered a terraform destroy job.
+	// The collection of failed resources. This property is reported only if Schematics triggered a Terraform destroy job.
 	Failed []string `json:"failed,omitempty"`
 
-	// The collection of tainted resources. This is only reported if schematics triggered a terraform destroy job.
+	// The collection of tainted resources. This property is reported only if Schematics triggered a Terraform destroy job.
 	Tainted []string `json:"tainted,omitempty"`
 }
 
@@ -1937,13 +1948,13 @@ func UnmarshalActionJobDestroySummaryResources(m map[string]json.RawMessage, res
 
 // ActionJobMessageSummary : The message summaries of jobs on the configuration.
 type ActionJobMessageSummary struct {
-	// The number of info messages. This is only reported if schematics triggered a terraform job.
+	// The number of information messages. This property is reported only if Schematics triggered a Terraform job.
 	Info *int64 `json:"info,omitempty"`
 
-	// The number of debug messages. This is only reported if schematics triggered a terraform job.
+	// The number of debug messages. This property is reported only if Schematics triggered a Terraform job.
 	Debug *int64 `json:"debug,omitempty"`
 
-	// The number of error messages. This is only reported if schematics triggered a terraform job.
+	// The number of error messages. This property is reported only if Schematics triggered a Terraform job.
 	Error *int64 `json:"error,omitempty"`
 }
 
@@ -1968,16 +1979,16 @@ func UnmarshalActionJobMessageSummary(m map[string]json.RawMessage, result inter
 
 // ActionJobPlanMessagesSummary : The plan messages on the configuration.
 type ActionJobPlanMessagesSummary struct {
-	// The collection of error messages. This is only reported if schematics triggered a terraform plan job.
+	// The collection of error messages. This property is reported only if Schematics triggered a Terraform plan job.
 	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 
-	// The collection of success messages. This is only reported if schematics triggered a terraform plan job.
+	// The collection of success messages. This property is reported only if Schematics triggered a Terraform plan job.
 	SucessMessage []string `json:"sucess_message,omitempty"`
 
-	// The collection of update messages. This is only reported if schematics triggered a terraform plan job.
+	// The collection of update messages. This property is reported only if Schematics triggered a Terraform plan job.
 	UpdateMessage []string `json:"update_message,omitempty"`
 
-	// The collection of destroy messages. This is only reported if schematics triggered a terraform plan job.
+	// The collection of destroy messages. This property is reported only if Schematics triggered a Terraform plan job.
 	DestroyMessage []string `json:"destroy_message,omitempty"`
 }
 
@@ -2006,29 +2017,34 @@ func UnmarshalActionJobPlanMessagesSummary(m map[string]json.RawMessage, result 
 
 // ActionJobPlanSummary : The summary of the plan jobs on the configuration.
 type ActionJobPlanSummary struct {
-	// The number of resources to be added. This is only reported if schematics triggered a terraform plan job.
+	// The number of resources to be added. This property is reported only if Schematics triggered a terraform plan job.
 	Add *int64 `json:"add,omitempty"`
 
-	// The number of resources that failed during the plan job. This is only reported if schematics triggered a terraform
-	// plan job.
+	// The number of resources that failed during the plan job. This property is reported only if Schematics triggered a
+	// Terraform plan job.
 	Failed *int64 `json:"failed,omitempty"`
 
-	// The number of resources to be updated. This is only reported if schematics triggered a terraform plan job.
+	// The number of resources to be updated. This property is reported only if Schematics triggered a Terraform plan job.
 	Update *int64 `json:"update,omitempty"`
 
-	// The number of resources to be destroyed. This is only reported if schematics triggered a terraform plan job.
+	// The number of resources to be destroyed. This property is reported only if Schematics triggered a Terraform plan
+	// job.
 	Destroy *int64 `json:"destroy,omitempty"`
 
-	// The collection of planned added resources. This is only reported if schematics triggered a terraform plan job.
+	// The collection of planned added resources. This property is reported only if Schematics triggered a Terraform plan
+	// job.
 	AddResources []string `json:"add_resources,omitempty"`
 
-	// The collection of failed planned resources. This is only reported if schematics triggered a terraform plan job.
+	// The collection of failed planned resources. This property is reported only if Schematics triggered a Terraform plan
+	// job.
 	FailedResources []string `json:"failed_resources,omitempty"`
 
-	// The collection of planned updated resources. This is only reported if schematics triggered a terraform plan job.
+	// The collection of planned updated resources. This property is reported only if Schematics triggered a Terraform plan
+	// job.
 	UpdatedResources []string `json:"updated_resources,omitempty"`
 
-	// The collection of planned destroy resources. This is only reported if schematics triggered a terraform plan job.
+	// The collection of planned destroy resources. This property is reported only if Schematics triggered a Terraform plan
+	// job.
 	DestroyResources []string `json:"destroy_resources,omitempty"`
 }
 
@@ -2159,11 +2175,11 @@ type ApproveOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Notes on the project draft action. If this is a forced approve on the draft configuration, a non-empty comment is
-	// required.
+	// Notes on the project draft action. If this action is a force approve on the draft configuration, you must include a
+	// nonempty comment.
 	Comment *string `json:"comment,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -2202,7 +2218,7 @@ func (options *ApproveOptions) SetHeaders(param map[string]string) *ApproveOptio
 	return options
 }
 
-// CodeRiskAnalyzerLogsSummary : The Code Risk Analyzer logs summary of the configuration.
+// CodeRiskAnalyzerLogsSummary : The Code Risk Analyzer logs a summary of the configuration.
 type CodeRiskAnalyzerLogsSummary struct {
 	// The total number of Code Risk Analyzer rules that were applied in the scan.
 	Total *string `json:"total,omitempty"`
@@ -2247,19 +2263,19 @@ type CreateConfigOptions struct {
 
 	Definition ProjectConfigDefinitionBlockPrototypeIntf `json:"definition" validate:"required"`
 
-	// A Schematics workspace to use for deploying this DA.
-	// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A Schematics workspace to use for deploying this deployable architecture.
+	// > If you are importing data from an existing Schematics workspace that is not backed by cart, then you must provide
+	// a `locator_id`. If you are using a Schematics workspace that is backed by cart, a `locator_id` is not required
+	// because the Schematics workspace has one.
 	// >
 	// There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in
+	// the existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
+	// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
+	// workspace.
 	// >
-	// For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// For more information, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
@@ -2348,12 +2364,12 @@ type CreateProjectOptions struct {
 	// The resource group name where the project's data and tools are created.
 	ResourceGroup *string `json:"resource_group" validate:"required"`
 
-	// The project configurations. These configurations are only included in the response of creating a project if a
-	// configs array is specified in the request payload.
+	// The project configurations. These configurations are included in the response of creating a project only if a
+	// configuration array is specified in the request payload.
 	Configs []ProjectConfigPrototype `json:"configs,omitempty"`
 
-	// The project environments. These environments are only included in the response of creating a project if a
-	// environments array is specified in the request payload.
+	// The project environment. These environments are included in the response of creating a project only if an
+	// environment array is specified in the request payload.
 	Environments []EnvironmentPrototype `json:"environments,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -2410,7 +2426,7 @@ type CumulativeNeedsAttention struct {
 	// The event name.
 	Event *string `json:"event,omitempty"`
 
-	// A unique ID for that individual event.
+	// A unique ID for this individual event.
 	EventID *string `json:"event_id,omitempty"`
 
 	// A unique ID for the configuration.
@@ -2448,7 +2464,7 @@ type DeleteConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -2486,7 +2502,7 @@ type DeleteConfigVersionOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The configuration version.
@@ -2600,7 +2616,7 @@ type DeployConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -2635,20 +2651,21 @@ func (options *DeployConfigOptions) SetHeaders(param map[string]string) *DeployC
 
 // Environment : The definition of a project environment.
 type Environment struct {
-	// The environment id as a friendly name.
+	// The environment ID as a friendly name.
 	ID *string `json:"id" validate:"required"`
 
-	// The project referenced by this resource.
+	// The project that is referenced by this resource.
 	Project *ProjectReference `json:"project" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The target account ID derived from the authentication block values.
+	// The target account ID derived from the authentication block values. The target account exists only if the
+	// environment currently has an authorization block.
 	TargetAccount *string `json:"target_account,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
@@ -2705,7 +2722,7 @@ type EnvironmentCollection struct {
 	// A pagination link.
 	Next *PaginationLink `json:"next,omitempty"`
 
-	// The environments.
+	// The environment.
 	Environments []Environment `json:"environments,omitempty"`
 }
 
@@ -2744,21 +2761,21 @@ func (resp *EnvironmentCollection) GetNextStart() (*string, error) {
 	return start, nil
 }
 
-// EnvironmentDefinitionPropertiesPatch : The environment definition used for updates.
+// EnvironmentDefinitionPropertiesPatch : The environment definition that is used for updates.
 type EnvironmentDefinitionPropertiesPatch struct {
 	// The description of the environment.
 	Description *string `json:"description,omitempty"`
 
-	// The name of the environment.  It is unique within the account across projects and regions.
+	// The name of the environment. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 }
 
@@ -2794,16 +2811,16 @@ type EnvironmentDefinitionRequiredProperties struct {
 	// The description of the environment.
 	Description *string `json:"description,omitempty"`
 
-	// The name of the environment.  It is unique within the account across projects and regions.
+	// The name of the environment. It's unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
 
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 }
 
@@ -2843,9 +2860,9 @@ func UnmarshalEnvironmentDefinitionRequiredProperties(m map[string]json.RawMessa
 	return
 }
 
-// EnvironmentDeleteResponse : The delete environment response.
+// EnvironmentDeleteResponse : The response to a request to delete an environment.
 type EnvironmentDeleteResponse struct {
-	// The environment id as a friendly name.
+	// The environment ID as a friendly name.
 	ID *string `json:"id" validate:"required"`
 }
 
@@ -2891,11 +2908,11 @@ type ForceApproveOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Notes on the project draft action. If this is a forced approve on the draft configuration, a non-empty comment is
-	// required.
+	// Notes on the project draft action. If this action is a force approve on the draft configuration, you must include a
+	// nonempty comment.
 	Comment *string `json:"comment" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -2940,7 +2957,7 @@ type GetConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -2978,7 +2995,7 @@ type GetConfigVersionOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The configuration version.
@@ -3087,7 +3104,7 @@ func (options *GetProjectOptions) SetHeaders(param map[string]string) *GetProjec
 	return options
 }
 
-// LastActionWithSummary : The action job performed on the project configuration.
+// LastActionWithSummary : The href and results from the last action job that is performed on the project configuration.
 type LastActionWithSummary struct {
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -3098,10 +3115,10 @@ type LastActionWithSummary struct {
 	// A brief summary of an action.
 	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
 
-	// A brief summary of a pre/post action.
+	// A brief summary of a pre- and post-action.
 	PreJob *PrePostActionJobWithIdAndSummary `json:"pre_job,omitempty"`
 
-	// A brief summary of a pre/post action.
+	// A brief summary of a pre- and post-action.
 	PostJob *PrePostActionJobWithIdAndSummary `json:"post_job,omitempty"`
 }
 
@@ -3139,7 +3156,7 @@ func UnmarshalLastActionWithSummary(m map[string]json.RawMessage, result interfa
 	return
 }
 
-// LastDriftDetectionJobSummary : The drift detection job performed as part of the monitoring action.
+// LastDriftDetectionJobSummary : The summary for drift detection jobs that are performed as part of the last monitoring action.
 type LastDriftDetectionJobSummary struct {
 	// A brief summary of an action.
 	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
@@ -3156,7 +3173,7 @@ func UnmarshalLastDriftDetectionJobSummary(m map[string]json.RawMessage, result 
 	return
 }
 
-// LastMonitoringActionWithSummary : The monitoring action job performed on the project configuration.
+// LastMonitoringActionWithSummary : The summary from the last monitoring action job that is performed on the project configuration.
 type LastMonitoringActionWithSummary struct {
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -3164,7 +3181,7 @@ type LastMonitoringActionWithSummary struct {
 	// The result of the last action.
 	Result *string `json:"result,omitempty"`
 
-	// The drift detection job performed as part of the monitoring action.
+	// The summary for drift detection jobs that are performed as part of the last monitoring action.
 	DriftDetection *LastDriftDetectionJobSummary `json:"drift_detection,omitempty"`
 }
 
@@ -3194,7 +3211,7 @@ func UnmarshalLastMonitoringActionWithSummary(m map[string]json.RawMessage, resu
 	return
 }
 
-// LastValidatedActionWithSummary : The action job performed on the project configuration.
+// LastValidatedActionWithSummary : The href and results from the last action job that is performed on the project configuration.
 type LastValidatedActionWithSummary struct {
 	// A URL.
 	Href *string `json:"href" validate:"required"`
@@ -3205,18 +3222,19 @@ type LastValidatedActionWithSummary struct {
 	// A brief summary of an action.
 	Job *ActionJobWithIdAndSummary `json:"job,omitempty"`
 
-	// A brief summary of a pre/post action.
+	// A brief summary of a pre- and post-action.
 	PreJob *PrePostActionJobWithIdAndSummary `json:"pre_job,omitempty"`
 
-	// A brief summary of a pre/post action.
+	// A brief summary of a pre- and post-action.
 	PostJob *PrePostActionJobWithIdAndSummary `json:"post_job,omitempty"`
 
 	// The cost estimate of the configuration.
-	// It only exists after the first configuration validation.
+	// This property exists only after the first configuration validation.
 	CostEstimate *ProjectConfigMetadataCostEstimate `json:"cost_estimate,omitempty"`
 
-	// The Code Risk Analyzer logs from the compliance scan run for this validation. This is only populated after the
-	// compliance scan step is run for the validation. Note: cra is the abbreviated form of Code Risk Analyzer.
+	// The Code Risk Analyzer logs from the compliance scan that is run for this validation. This property is only
+	// populated after the compliance scan step is run for the validation. Note: `cra` is the abbreviated form of Code Risk
+	// Analyzer.
 	CraLogs ProjectConfigMetadataCodeRiskAnalyzerLogsIntf `json:"cra_logs,omitempty"`
 }
 
@@ -3267,7 +3285,7 @@ type ListConfigResourcesOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -3305,7 +3323,7 @@ type ListConfigVersionsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -3343,12 +3361,12 @@ type ListConfigsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
-	// is returned on the next page. If this parameter is not specified, the logical first page is returned.
+	// The last entry that is returned on the page. The server uses this parameter to determine the first entry that is
+	// returned on the next page. If this parameter is not specified, the logical first page is returned.
 	Start *string `json:"start,omitempty"`
 
-	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
-	// exception of the last page.
+	// The maximum number of resources to return. The number of resources that are returned is the same, except for the
+	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -3391,12 +3409,12 @@ type ListProjectEnvironmentsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
-	// is returned on the next page. If this parameter is not specified, the logical first page is returned.
+	// The last entry that is returned on the page. The server uses this parameter to determine the first entry that is
+	// returned on the next page. If this parameter is not specified, the logical first page is returned.
 	Start *string `json:"start,omitempty"`
 
-	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
-	// exception of the last page.
+	// The maximum number of resources to return. The number of resources that are returned is the same, except for the
+	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -3436,12 +3454,12 @@ func (options *ListProjectEnvironmentsOptions) SetHeaders(param map[string]strin
 
 // ListProjectsOptions : The ListProjects options.
 type ListProjectsOptions struct {
-	// Marks the last entry that is returned on the page. The server uses this parameter to determine the first entry that
-	// is returned on the next page. If this parameter is not specified, the logical first page is returned.
+	// The last entry that is returned on the page. The server uses this parameter to determine the first entry that is
+	// returned on the next page. If this parameter is not specified, the logical first page is returned.
 	Start *string `json:"start,omitempty"`
 
-	// Determine the maximum number of resources to return. The number of resources that are returned is the same, with the
-	// exception of the last page.
+	// The maximum number of resources to return. The number of resources that are returned is the same, except for the
+	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -3479,7 +3497,7 @@ type OutputValue struct {
 	// A short explanation of the output value.
 	Description *string `json:"description,omitempty"`
 
-	// Can be any value - a string, number, boolean, array, or object.
+	// This property can be any value - a string, number, boolean, array, or object.
 	Value map[string]interface{} `json:"value,omitempty"`
 }
 
@@ -3519,21 +3537,21 @@ func UnmarshalPaginationLink(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
-// PrePostActionJobSummary : A brief summary of a pre/post action job. This is only populated after an action is run as part of a validation,
-// deployment, or undeployment.
+// PrePostActionJobSummary : A brief summary of a pre- and post-action job. This property is populated only after an action is run as part of a
+// validation, deployment, or undeployment.
 type PrePostActionJobSummary struct {
-	// The ID of the Schematics action job that ran as part of the pre/post job.
+	// The ID of the Schematics action job that ran as part of the pre- and post-job.
 	JobID *string `json:"job_id" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	StartTime *strfmt.DateTime `json:"start_time,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	EndTime *strfmt.DateTime `json:"end_time,omitempty"`
 
-	// The number of tasks run in the job.
+	// The number of tasks that were run in the job.
 	Tasks *int64 `json:"tasks,omitempty"`
 
 	// The number of tasks that successfully ran in the job.
@@ -3595,22 +3613,22 @@ func UnmarshalPrePostActionJobSummary(m map[string]json.RawMessage, result inter
 	return
 }
 
-// PrePostActionJobSystemError : System level error captured in the Projects Pipelines for pre/post job.
+// PrePostActionJobSystemError : The system-level error that OS captured in the project pipelines for the pre- and post-job.
 type PrePostActionJobSystemError struct {
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	Timestamp *strfmt.DateTime `json:"timestamp" validate:"required"`
 
-	// Id of user that triggered pipeline that ran pre/post job.
+	// The ID of the user that triggered the pipeline that ran the pre- and post-job.
 	UserID *string `json:"user_id" validate:"required"`
 
-	// HTTP status code for the error.
+	// The HTTP status code for the error.
 	StatusCode *string `json:"status_code" validate:"required"`
 
-	// Summary description of the error.
+	// The summary description of the error.
 	Description *string `json:"description" validate:"required"`
 
-	// Detailed message from the source error.
+	// The detailed message from the source error.
 	ErrorResponse *string `json:"error_response,omitempty"`
 }
 
@@ -3641,13 +3659,13 @@ func UnmarshalPrePostActionJobSystemError(m map[string]json.RawMessage, result i
 	return
 }
 
-// PrePostActionJobWithIdAndSummary : A brief summary of a pre/post action.
+// PrePostActionJobWithIdAndSummary : A brief summary of a pre- and post-action.
 type PrePostActionJobWithIdAndSummary struct {
 	// The unique ID.
 	ID *string `json:"id" validate:"required"`
 
-	// A brief summary of a pre/post action job. This is only populated after an action is run as part of a validation,
-	// deployment, or undeployment.
+	// A brief summary of a pre- and post-action job. This property is populated only after an action is run as part of a
+	// validation, deployment, or undeployment.
 	Summary *PrePostActionJobSummary `json:"summary" validate:"required"`
 }
 
@@ -3666,21 +3684,21 @@ func UnmarshalPrePostActionJobWithIdAndSummary(m map[string]json.RawMessage, res
 	return
 }
 
-// Project : The canonical schema of a project.
+// Project : The standard schema of a project.
 type Project struct {
-	// An IBM Cloud resource name, which uniquely identifies a resource.
+	// An IBM Cloud resource name that uniquely identifies a resource.
 	Crn *string `json:"crn" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
-	// could be empty is returned.
+	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an empty or
+	// nonempty array is returned.
 	CumulativeNeedsAttentionView []CumulativeNeedsAttention `json:"cumulative_needs_attention_view" validate:"required"`
 
-	// True indicates that the fetch of the needs attention items failed. It only exists if there was an error while
-	// retrieving the cumulative needs attention view.
+	// A value of `true` indicates that the fetch of the needs attention items failed. This property only exists if there
+	// was an error when you retrieved the cumulative needs attention view.
 	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
 
 	// The unique project ID.
@@ -3689,7 +3707,7 @@ type Project struct {
 	// The IBM Cloud location where a resource is deployed.
 	Location *string `json:"location" validate:"required"`
 
-	// The resource group id where the project's data and tools are created.
+	// The resource group ID where the project's data and tools are created.
 	ResourceGroupID *string `json:"resource_group_id" validate:"required"`
 
 	// The project status value.
@@ -3701,14 +3719,14 @@ type Project struct {
 	// The resource group name where the project's data and tools are created.
 	ResourceGroup *string `json:"resource_group" validate:"required"`
 
-	// The CRN of the event notifications instance if one is connected to this project.
+	// The CRN of the Event Notifications instance if one is connected to this project.
 	EventNotificationsCrn *string `json:"event_notifications_crn,omitempty"`
 
 	// The project configurations. These configurations are only included in the response of creating a project if a
-	// configs array is specified in the request payload.
+	// configuration array is specified in the request payload.
 	Configs []ProjectConfigSummary `json:"configs" validate:"required"`
 
-	// The project environments. These environments are only included in the response if project environments were created
+	// The project environment. These environments are only included in the response if project environments were created
 	// on the project.
 	Environments []ProjectEnvironmentSummary `json:"environments" validate:"required"`
 
@@ -3837,12 +3855,12 @@ func (resp *ProjectCollection) GetNextStart() (*string, error) {
 	return start, nil
 }
 
-// ProjectComplianceProfile : The profile required for compliance.
+// ProjectComplianceProfile : The profile that is required for compliance.
 type ProjectComplianceProfile struct {
-	// The unique ID for that compliance profile.
+	// The unique ID for the compliance profile.
 	ID *string `json:"id,omitempty"`
 
-	// A unique ID for an instance of a compliance profile.
+	// A unique ID for the instance of a compliance profile.
 	InstanceID *string `json:"instance_id,omitempty"`
 
 	// The location of the compliance instance.
@@ -3882,7 +3900,7 @@ func UnmarshalProjectComplianceProfile(m map[string]json.RawMessage, result inte
 	return
 }
 
-// ProjectConfig : The canonical schema of a project configuration.
+// ProjectConfig : The standard schema of a project configuration.
 type ProjectConfig struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
 	ID *string `json:"id" validate:"required"`
@@ -3896,43 +3914,43 @@ type ProjectConfig struct {
 	// The needs attention state of a configuration.
 	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	LastSavedAt *strfmt.DateTime `json:"last_saved_at,omitempty"`
 
-	// The action job performed on the project configuration.
+	// The href and results from the last action job that is performed on the project configuration.
 	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
 
-	// The action job performed on the project configuration.
+	// The href and results from the last action job that is performed on the project configuration.
 	LastDeployed *LastActionWithSummary `json:"last_deployed,omitempty"`
 
-	// The action job performed on the project configuration.
+	// The href and results from the last action job that is performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
 
-	// The monitoring action job performed on the project configuration.
+	// The summary from the last monitoring action job that is performed on the project configuration.
 	LastMonitoring *LastMonitoringActionWithSummary `json:"last_monitoring,omitempty"`
 
 	// The outputs of a Schematics template property.
 	Outputs []OutputValue `json:"outputs" validate:"required"`
 
-	// The project referenced by this resource.
+	// The project that is referenced by this resource.
 	Project *ProjectReference `json:"project" validate:"required"`
 
-	// The references used in the config to resolve input values.
+	// The references that are used in the configuration to resolve input values.
 	References map[string]interface{} `json:"references,omitempty"`
 
-	// A schematics workspace associated to a project configuration, with scripts.
+	// A Schematics workspace that is associated to a project configuration, with scripts.
 	Schematics *SchematicsMetadata `json:"schematics,omitempty"`
 
 	// The state of the configuration.
@@ -3946,10 +3964,10 @@ type ProjectConfig struct {
 
 	Definition ProjectConfigResponseDefinitionIntf `json:"definition" validate:"required"`
 
-	// The project configuration version.
+	// A summary of a project configuration version.
 	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
 
-	// The project configuration version.
+	// A summary of a project configuration version.
 	DeployedVersion *ProjectConfigVersionSummary `json:"deployed_version,omitempty"`
 }
 
@@ -4078,7 +4096,7 @@ type ProjectConfigAuth struct {
 	// The authorization method. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Method *string `json:"method,omitempty"`
 
-	// The IBM Cloud API Key.
+	// The IBM Cloud API key for the project configuration.
 	ApiKey *string `json:"api_key,omitempty"`
 }
 
@@ -4119,7 +4137,7 @@ type ProjectConfigCollection struct {
 	// A pagination link.
 	Next *PaginationLink `json:"next,omitempty"`
 
-	// The collection list operation response schema that should define the array property with the name "configs".
+	// The response schema of the collection list operation that defines the array property with the name `configs`.
 	Configs []ProjectConfigSummary `json:"configs,omitempty"`
 }
 
@@ -4163,27 +4181,27 @@ func (resp *ProjectConfigCollection) GetNextStart() (*string, error) {
 // - ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch
 // - ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch
 type ProjectConfigDefinitionBlockPatch struct {
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
-	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
 	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
@@ -4192,14 +4210,14 @@ type ProjectConfigDefinitionBlockPatch struct {
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 
-	// The CRNs of resources associated with this configuration.
+	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 }
 func (*ProjectConfigDefinitionBlockPatch) isaProjectConfigDefinitionBlockPatch() bool {
@@ -4258,27 +4276,27 @@ func UnmarshalProjectConfigDefinitionBlockPatch(m map[string]json.RawMessage, re
 // - ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties
 // - ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties
 type ProjectConfigDefinitionBlockPrototype struct {
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
-	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
 	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
 
 	// The ID of the project environment.
@@ -4287,14 +4305,14 @@ type ProjectConfigDefinitionBlockPrototype struct {
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 
-	// The CRNs of resources associated with this configuration.
+	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 }
 func (*ProjectConfigDefinitionBlockPrototype) isaProjectConfigDefinitionBlockPrototype() bool {
@@ -4348,7 +4366,7 @@ func UnmarshalProjectConfigDefinitionBlockPrototype(m map[string]json.RawMessage
 	return
 }
 
-// ProjectConfigDelete : The ID of the deleted config.
+// ProjectConfigDelete : The ID of the deleted configuration.
 type ProjectConfigDelete struct {
 	// The ID of the deleted project or configuration.
 	ID *string `json:"id" validate:"required"`
@@ -4365,13 +4383,13 @@ func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface
 	return
 }
 
-// ProjectConfigMetadataCodeRiskAnalyzerLogs : The Code Risk Analyzer logs of the configuration. This is only populated after the validation step in which the Code
-// Risk Analyzer is run.
+// ProjectConfigMetadataCodeRiskAnalyzerLogs : The Code Risk Analyzer logs of the configuration. This property is populated only after the validation step when the
+// Code Risk Analyzer is run.
 // Models which "extend" this model:
 // - ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204
 type ProjectConfigMetadataCodeRiskAnalyzerLogs struct {
-	// The version of the Code Risk Analyzer logs of the configuration. The metadata for this schema is specific to cra
-	// version 2.0.4.
+	// The version of the Code Risk Analyzer logs of the configuration. The metadata for this schema is specific to Code
+	// Risk Analyzer version 2.0.4.
 	CraVersion *string `json:"cra_version,omitempty"`
 
 	// The schema version of Code Risk Analyzer logs of the configuration.
@@ -4380,10 +4398,10 @@ type ProjectConfigMetadataCodeRiskAnalyzerLogs struct {
 	// The status of the Code Risk Analyzer logs of the configuration.
 	Status *string `json:"status,omitempty"`
 
-	// The Code Risk Analyzer logs summary of the configuration.
+	// The Code Risk Analyzer logs a summary of the configuration.
 	Summary *CodeRiskAnalyzerLogsSummary `json:"summary,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	Timestamp *strfmt.DateTime `json:"timestamp,omitempty"`
 }
@@ -4429,7 +4447,7 @@ func UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogs(m map[string]json.RawMes
 	return
 }
 
-// ProjectConfigMetadataCostEstimate : The cost estimate of the configuration. It only exists after the first configuration validation.
+// ProjectConfigMetadataCostEstimate : The cost estimate of the configuration. This property exists only after the first configuration validation.
 type ProjectConfigMetadataCostEstimate struct {
 	// The version of the cost estimate of the configuration.
 	Version *string `json:"version,omitempty"`
@@ -4449,13 +4467,13 @@ type ProjectConfigMetadataCostEstimate struct {
 	// The past total monthly cost estimate of the configuration.
 	PastTotalMonthlyCost *string `json:"pastTotalMonthlyCost,omitempty"`
 
-	// The difference between current and past total hourly cost estimates of the configuration.
+	// The difference between the current and past total hourly cost estimates of the configuration.
 	DiffTotalHourlyCost *string `json:"diffTotalHourlyCost,omitempty"`
 
-	// The difference between current and past total monthly cost estimates of the configuration.
+	// The difference between the current and past total monthly cost estimates of the configuration.
 	DiffTotalMonthlyCost *string `json:"diffTotalMonthlyCost,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	TimeGenerated *strfmt.DateTime `json:"timeGenerated,omitempty"`
 
@@ -4512,11 +4530,11 @@ func UnmarshalProjectConfigMetadataCostEstimate(m map[string]json.RawMessage, re
 
 // ProjectConfigMetadataLastApproved : The last approved metadata of the configuration.
 type ProjectConfigMetadataLastApproved struct {
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	At *strfmt.DateTime `json:"at" validate:"required"`
 
-	// The comment left by the user who approved the configuration.
+	// The comment that is left by the user who approved the configuration.
 	Comment *string `json:"comment,omitempty"`
 
 	// The flag that indicates whether the approval was forced approved.
@@ -4553,19 +4571,19 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 type ProjectConfigPrototype struct {
 	Definition ProjectConfigDefinitionBlockPrototypeIntf `json:"definition" validate:"required"`
 
-	// A Schematics workspace to use for deploying this DA.
-	// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A Schematics workspace to use for deploying this deployable architecture.
+	// > If you are importing data from an existing Schematics workspace that is not backed by cart, then you must provide
+	// a `locator_id`. If you are using a Schematics workspace that is backed by cart, a `locator_id` is not required
+	// because the Schematics workspace has one.
 	// >
 	// There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in
+	// the existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
+	// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
+	// workspace.
 	// >
-	// For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// For more information, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 }
@@ -4596,7 +4614,7 @@ func UnmarshalProjectConfigPrototype(m map[string]json.RawMessage, result interf
 
 // ProjectConfigResource : ProjectConfigResource struct
 type ProjectConfigResource struct {
-	// An IBM Cloud resource name, which uniquely identifies a resource.
+	// An IBM Cloud resource name that uniquely identifies a resource.
 	ResourceCrn *string `json:"resource_crn,omitempty"`
 
 	// The name of the resource.
@@ -4644,7 +4662,7 @@ type ProjectConfigResourceCollection struct {
 	// The collection list operation response schema that defines the array property with the name `resources`.
 	Resources []ProjectConfigResource `json:"resources" validate:"required"`
 
-	// The total number of resources deployed by the configuration.
+	// The total number of resources that are deployed by the configuration.
 	ResourcesCount *int64 `json:"resources_count" validate:"required"`
 }
 
@@ -4667,29 +4685,28 @@ func UnmarshalProjectConfigResourceCollection(m map[string]json.RawMessage, resu
 // Models which "extend" this model:
 // - ProjectConfigResponseDefinitionDAConfigDefinitionProperties
 // - ProjectConfigResponseDefinitionResourceConfigDefinitionProperties
-// - ProjectConfigResponseDefinitionStackConfigDefinitionProperties
 type ProjectConfigResponseDefinition struct {
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
-	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
 	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
 
 	// The ID of the project environment.
@@ -4698,14 +4715,14 @@ type ProjectConfigResponseDefinition struct {
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 
-	// The CRNs of resources associated with this configuration.
+	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 }
 func (*ProjectConfigResponseDefinition) isaProjectConfigResponseDefinition() bool {
@@ -4761,10 +4778,10 @@ func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, resu
 
 // ProjectConfigSummary : ProjectConfigSummary struct
 type ProjectConfigSummary struct {
-	// The project configuration version.
+	// A summary of a project configuration version.
 	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
 
-	// The project configuration version.
+	// A summary of a project configuration version.
 	DeployedVersion *ProjectConfigVersionSummary `json:"deployed_version,omitempty"`
 
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
@@ -4776,21 +4793,21 @@ type ProjectConfigSummary struct {
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
-	// The name and description of a project configuration.
+	// The description of a project configuration.
 	Definition *ProjectConfigSummaryDefinition `json:"definition" validate:"required"`
 
-	// The project referenced by this resource.
+	// The project that is referenced by this resource.
 	Project *ProjectReference `json:"project" validate:"required"`
 
 	// The configuration type.
@@ -4877,13 +4894,27 @@ func UnmarshalProjectConfigSummary(m map[string]json.RawMessage, result interfac
 	return
 }
 
-// ProjectConfigSummaryDefinition : The name and description of a project configuration.
+// ProjectConfigSummaryDefinition : The description of a project configuration.
 type ProjectConfigSummaryDefinition struct {
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
+
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
 }
 
 // UnmarshalProjectConfigSummaryDefinition unmarshals an instance of ProjectConfigSummaryDefinition from the specified map of raw messages.
@@ -4894,6 +4925,10 @@ func UnmarshalProjectConfigSummaryDefinition(m map[string]json.RawMessage, resul
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
 	if err != nil {
 		return
 	}
@@ -4915,43 +4950,43 @@ type ProjectConfigVersion struct {
 	// The needs attention state of a configuration.
 	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
 	// The last approved metadata of the configuration.
 	LastApproved *ProjectConfigMetadataLastApproved `json:"last_approved,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	LastSavedAt *strfmt.DateTime `json:"last_saved_at,omitempty"`
 
-	// The action job performed on the project configuration.
+	// The href and results from the last action job that is performed on the project configuration.
 	LastValidated *LastValidatedActionWithSummary `json:"last_validated,omitempty"`
 
-	// The action job performed on the project configuration.
+	// The href and results from the last action job that is performed on the project configuration.
 	LastDeployed *LastActionWithSummary `json:"last_deployed,omitempty"`
 
-	// The action job performed on the project configuration.
+	// The href and results from the last action job that is performed on the project configuration.
 	LastUndeployed *LastActionWithSummary `json:"last_undeployed,omitempty"`
 
-	// The monitoring action job performed on the project configuration.
+	// The summary from the last monitoring action job that is performed on the project configuration.
 	LastMonitoring *LastMonitoringActionWithSummary `json:"last_monitoring,omitempty"`
 
 	// The outputs of a Schematics template property.
 	Outputs []OutputValue `json:"outputs" validate:"required"`
 
-	// The project referenced by this resource.
+	// The project that is referenced by this resource.
 	Project *ProjectReference `json:"project" validate:"required"`
 
-	// The references used in the config to resolve input values.
+	// The references that are used in the configuration to resolve input values.
 	References map[string]interface{} `json:"references,omitempty"`
 
-	// A schematics workspace associated to a project configuration, with scripts.
+	// A Schematics workspace that is associated to a project configuration, with scripts.
 	Schematics *SchematicsMetadata `json:"schematics,omitempty"`
 
 	// The state of the configuration.
@@ -5075,8 +5110,46 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	return
 }
 
-// ProjectConfigVersionSummary : The project configuration version.
+// ProjectConfigVersionDefinitionSummary : A summary of the definition in a project configuration version.
+type ProjectConfigVersionDefinitionSummary struct {
+	// The ID of the project environment.
+	EnvironmentID *string `json:"environment_id,omitempty"`
+
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
+}
+
+// UnmarshalProjectConfigVersionDefinitionSummary unmarshals an instance of ProjectConfigVersionDefinitionSummary from the specified map of raw messages.
+func UnmarshalProjectConfigVersionDefinitionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigVersionDefinitionSummary)
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigVersionSummary : A summary of a project configuration version.
 type ProjectConfigVersionSummary struct {
+	// A summary of the definition in a project configuration version.
+	Definition *ProjectConfigVersionDefinitionSummary `json:"definition" validate:"required"`
+
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
@@ -5112,6 +5185,10 @@ const (
 // UnmarshalProjectConfigVersionSummary unmarshals an instance of ProjectConfigVersionSummary from the specified map of raw messages.
 func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummary)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigVersionDefinitionSummary)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		return
@@ -5147,18 +5224,18 @@ func UnmarshalProjectConfigVersionSummaryCollection(m map[string]json.RawMessage
 
 // ProjectDefinitionProperties : The definition of the project.
 type ProjectDefinitionProperties struct {
-	// The name of the project.  It is unique within the account across regions.
+	// The name of the project.  It's unique within the account across regions.
 	Name *string `json:"name" validate:"required"`
 
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete" validate:"required"`
 
-	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
-	// a project without providing a description.
+	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
+	// without providing a description.
 	Description *string `json:"description" validate:"required"`
 
 	// A boolean flag to enable project monitoring.
-	MonitoringEnabled *bool `json:"monitoring_enabled" validate:"required"`
+	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
 }
 
 // UnmarshalProjectDefinitionProperties unmarshals an instance of ProjectDefinitionProperties from the specified map of raw messages.
@@ -5220,20 +5297,20 @@ func UnmarshalProjectDeleteResponse(m map[string]json.RawMessage, result interfa
 
 // ProjectEnvironmentSummary : The environment metadata.
 type ProjectEnvironmentSummary struct {
-	// The environment id as a friendly name.
+	// The environment ID as a friendly name.
 	ID *string `json:"id" validate:"required"`
 
-	// The project referenced by this resource.
+	// The project that is referenced by this resource.
 	Project *ProjectReference `json:"project" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
-	// The environment definition used in the project collection.
+	// The environment definition that is used in the project collection.
 	Definition *ProjectEnvironmentSummaryDefinition `json:"definition" validate:"required"`
 }
 
@@ -5264,12 +5341,12 @@ func UnmarshalProjectEnvironmentSummary(m map[string]json.RawMessage, result int
 	return
 }
 
-// ProjectEnvironmentSummaryDefinition : The environment definition used in the project collection.
+// ProjectEnvironmentSummaryDefinition : The environment definition that is used in the project collection.
 type ProjectEnvironmentSummaryDefinition struct {
 	// The description of the environment.
 	Description *string `json:"description,omitempty"`
 
-	// The name of the environment.  It is unique within the account across projects and regions.
+	// The name of the environment. It's unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
 }
 
@@ -5290,14 +5367,14 @@ func UnmarshalProjectEnvironmentSummaryDefinition(m map[string]json.RawMessage, 
 
 // ProjectPatchDefinitionBlock : The definition of the project.
 type ProjectPatchDefinitionBlock struct {
-	// The name of the project.  It is unique within the account across regions.
+	// The name of the project.  It's unique within the account across regions.
 	Name *string `json:"name,omitempty"`
 
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
-	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
-	// a project without providing a description.
+	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
+	// without providing a description.
 	Description *string `json:"description,omitempty"`
 
 	// A boolean flag to enable project monitoring.
@@ -5329,14 +5406,14 @@ func UnmarshalProjectPatchDefinitionBlock(m map[string]json.RawMessage, result i
 
 // ProjectPrototypeDefinition : The definition of the project.
 type ProjectPrototypeDefinition struct {
-	// The name of the project.  It is unique within the account across regions.
+	// The name of the project.  It's unique within the account across regions.
 	Name *string `json:"name" validate:"required"`
 
 	// The policy that indicates whether the resources are undeployed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
-	// A brief explanation of the project's use in the configuration of a deployable architecture. It is possible to create
-	// a project without providing a description.
+	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
+	// without providing a description.
 	Description *string `json:"description,omitempty"`
 
 	// A boolean flag to enable project monitoring.
@@ -5375,25 +5452,29 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 	return
 }
 
-// ProjectReference : The project referenced by this resource.
+// ProjectReference : The project that is referenced by this resource.
 type ProjectReference struct {
 	// The unique ID.
 	ID *string `json:"id" validate:"required"`
 
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+
 	// The definition of the project reference.
 	Definition *ProjectDefinitionReference `json:"definition" validate:"required"`
 
-	// An IBM Cloud resource name, which uniquely identifies a resource.
+	// An IBM Cloud resource name that uniquely identifies a resource.
 	Crn *string `json:"crn" validate:"required"`
-
-	// A URL.
-	Href *string `json:"href" validate:"required"`
 }
 
 // UnmarshalProjectReference unmarshals an instance of ProjectReference from the specified map of raw messages.
 func UnmarshalProjectReference(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectReference)
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		return
 	}
@@ -5405,29 +5486,25 @@ func UnmarshalProjectReference(m map[string]json.RawMessage, result interface{})
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
 // ProjectSummary : ProjectSummary struct
 type ProjectSummary struct {
-	// An IBM Cloud resource name, which uniquely identifies a resource.
+	// An IBM Cloud resource name that uniquely identifies a resource.
 	Crn *string `json:"crn" validate:"required"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an array which
-	// could be empty is returned.
+	// The cumulative list of needs attention items for a project. If the view is successfully retrieved, an empty or
+	// nonempty array is returned.
 	CumulativeNeedsAttentionView []CumulativeNeedsAttention `json:"cumulative_needs_attention_view" validate:"required"`
 
-	// True indicates that the fetch of the needs attention items failed. It only exists if there was an error while
-	// retrieving the cumulative needs attention view.
+	// A value of `true` indicates that the fetch of the needs attention items failed. This property only exists if there
+	// was an error when you retrieved the cumulative needs attention view.
 	CumulativeNeedsAttentionViewError *bool `json:"cumulative_needs_attention_view_error,omitempty"`
 
 	// The unique project ID.
@@ -5436,7 +5513,7 @@ type ProjectSummary struct {
 	// The IBM Cloud location where a resource is deployed.
 	Location *string `json:"location" validate:"required"`
 
-	// The resource group id where the project's data and tools are created.
+	// The resource group ID where the project's data and tools are created.
 	ResourceGroupID *string `json:"resource_group_id" validate:"required"`
 
 	// The project status value.
@@ -5504,33 +5581,33 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
-// SchematicsMetadata : A schematics workspace associated to a project configuration, with scripts.
+// SchematicsMetadata : A Schematics workspace that is associated to a project configuration, with scripts.
 type SchematicsMetadata struct {
-	// An IBM Cloud resource name, which uniquely identifies a resource.
+	// An IBM Cloud resource name that uniquely identifies a resource.
 	WorkspaceCrn *string `json:"workspace_crn,omitempty"`
 
-	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
-	// undeploy).
+	// A script to be run as part of a project configuration for a specific stage (pre or post) and action (validate,
+	// deploy, or undeploy).
 	ValidatePreScript *Script `json:"validate_pre_script,omitempty"`
 
-	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
-	// undeploy).
+	// A script to be run as part of a project configuration for a specific stage (pre or post) and action (validate,
+	// deploy, or undeploy).
 	ValidatePostScript *Script `json:"validate_post_script,omitempty"`
 
-	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
-	// undeploy).
+	// A script to be run as part of a project configuration for a specific stage (pre or post) and action (validate,
+	// deploy, or undeploy).
 	DeployPreScript *Script `json:"deploy_pre_script,omitempty"`
 
-	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
-	// undeploy).
+	// A script to be run as part of a project configuration for a specific stage (pre or post) and action (validate,
+	// deploy, or undeploy).
 	DeployPostScript *Script `json:"deploy_post_script,omitempty"`
 
-	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
-	// undeploy).
+	// A script to be run as part of a project configuration for a specific stage (pre or post) and action (validate,
+	// deploy, or undeploy).
 	UndeployPreScript *Script `json:"undeploy_pre_script,omitempty"`
 
-	// A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
-	// undeploy).
+	// A script to be run as part of a project configuration for a specific stage (pre or post) and action (validate,
+	// deploy, or undeploy).
 	UndeployPostScript *Script `json:"undeploy_post_script,omitempty"`
 }
 
@@ -5569,20 +5646,20 @@ func UnmarshalSchematicsMetadata(m map[string]json.RawMessage, result interface{
 	return
 }
 
-// SchematicsWorkspace : A Schematics workspace to use for deploying this DA.
-// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics workspace
-// has one.
+// SchematicsWorkspace : A Schematics workspace to use for deploying this deployable architecture.
+// > If you are importing data from an existing Schematics workspace that is not backed by cart, then you must provide a
+// `locator_id`. If you are using a Schematics workspace that is backed by cart, a `locator_id` is not required because
+// the Schematics workspace has one.
 // > There are 3 scenarios:
-// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-// existing schematics workspace.
-// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in the
+// existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
+// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
+// workspace.
+// > For more information, see [Creating workspaces and importing your Terraform
 // template](/docs/schematics?topic=schematics-sch-create-wks).
 type SchematicsWorkspace struct {
-	// An IBM Cloud resource name, which uniquely identifies a resource.
+	// An IBM Cloud resource name that uniquely identifies a resource.
 	WorkspaceCrn *string `json:"workspace_crn,omitempty"`
 }
 
@@ -5597,13 +5674,13 @@ func UnmarshalSchematicsWorkspace(m map[string]json.RawMessage, result interface
 	return
 }
 
-// Script : A script to be run as part of a Project configuration, for a given stage (pre, post) and action (validate, deploy,
-// undeploy).
+// Script : A script to be run as part of a project configuration for a specific stage (pre or post) and action (validate,
+// deploy, or undeploy).
 type Script struct {
 	// The type of the script.
 	Type *string `json:"type,omitempty"`
 
-	// The path to this script within the current version source.
+	// The path to this script is within the current version source.
 	Path *string `json:"path,omitempty"`
 
 	// The short description for this script.
@@ -5634,22 +5711,22 @@ type SyncConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// A Schematics workspace to use for deploying this DA.
-	// > If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A Schematics workspace to use for deploying this deployable architecture.
+	// > If you are importing data from an existing Schematics workspace that is not backed by cart, then you must provide
+	// a `locator_id`. If you are using a Schematics workspace that is backed by cart, a `locator_id` is not required
+	// because the Schematics workspace has one.
 	// >
 	// There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in
+	// the existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
+	// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
+	// workspace.
 	// >
-	// For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// For more information, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
@@ -5689,7 +5766,7 @@ func (options *SyncConfigOptions) SetHeaders(param map[string]string) *SyncConfi
 	return options
 }
 
-// TerraformLogAnalyzerErrorMessage : The error message parsed by the Terraform Log Analyzer.
+// TerraformLogAnalyzerErrorMessage : The error message that is parsed by the Terraform log analyzer.
 type TerraformLogAnalyzerErrorMessage struct {
 
 	// Allows users to set arbitrary properties
@@ -5750,15 +5827,15 @@ func UnmarshalTerraformLogAnalyzerErrorMessage(m map[string]json.RawMessage, res
 	return
 }
 
-// TerraformLogAnalyzerSuccessMessage : The success message parsed by the Terraform Log Analyzer.
+// TerraformLogAnalyzerSuccessMessage : The success message that is parsed by the terraform log analyzer.
 type TerraformLogAnalyzerSuccessMessage struct {
 	// The resource type.
 	ResourceType *string `json:"resource_type,omitempty"`
 
-	// The time taken.
+	// The time that is taken.
 	TimeTaken *string `json:"time-taken,omitempty"`
 
-	// The id.
+	// The ID.
 	ID *string `json:"id,omitempty"`
 }
 
@@ -5786,7 +5863,7 @@ type UndeployConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -5824,7 +5901,7 @@ type UpdateConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	Definition ProjectConfigDefinitionBlockPatchIntf `json:"definition" validate:"required"`
@@ -5874,7 +5951,7 @@ type UpdateProjectEnvironmentOptions struct {
 	// The environment ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// The environment definition used for updates.
+	// The environment definition that is used for updates.
 	Definition *EnvironmentDefinitionPropertiesPatch `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -5957,7 +6034,7 @@ type ValidateConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The unique config ID.
+	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -5993,27 +6070,27 @@ func (options *ValidateConfigOptions) SetHeaders(param map[string]string) *Valid
 // ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch : The name and description of a project configuration.
 // This model "extends" ProjectConfigDefinitionBlockPatch
 type ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch struct {
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
-	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
 	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
@@ -6022,11 +6099,11 @@ type ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch struct {
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
@@ -6076,13 +6153,13 @@ func UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch
 // ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch : The name and description of a project configuration.
 // This model "extends" ProjectConfigDefinitionBlockPatch
 type ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch struct {
-	// The CRNs of resources associated with this configuration.
+	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
@@ -6091,11 +6168,11 @@ type ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch st
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
@@ -6138,30 +6215,30 @@ func UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertie
 	return
 }
 
-// ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigDefinitionBlockPrototype
 type ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties struct {
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
-	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
 	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
@@ -6170,11 +6247,11 @@ type ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties struct {
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
@@ -6221,16 +6298,16 @@ func UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties(
 	return
 }
 
-// ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigDefinitionBlockPrototype
 type ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties struct {
-	// The CRNs of resources associated with this configuration.
+	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
@@ -6239,11 +6316,11 @@ type ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties str
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
@@ -6286,11 +6363,11 @@ func UnmarshalProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionPrope
 	return
 }
 
-// ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204 : The Code Risk Analyzer logs of the configuration per Code Risk Analyzer Version 2.0.4.
+// ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204 : The Code Risk Analyzer logs of the configuration based on Code Risk Analyzer version 2.0.4.
 // This model "extends" ProjectConfigMetadataCodeRiskAnalyzerLogs
 type ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204 struct {
-	// The version of the Code Risk Analyzer logs of the configuration. The metadata for this schema is specific to cra
-	// version 2.0.4.
+	// The version of the Code Risk Analyzer logs of the configuration. The metadata for this schema is specific to Code
+	// Risk Analyzer version 2.0.4.
 	CraVersion *string `json:"cra_version,omitempty"`
 
 	// The schema version of Code Risk Analyzer logs of the configuration.
@@ -6299,10 +6376,10 @@ type ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204 struct {
 	// The status of the Code Risk Analyzer logs of the configuration.
 	Status *string `json:"status,omitempty"`
 
-	// The Code Risk Analyzer logs summary of the configuration.
+	// The Code Risk Analyzer logs a summary of the configuration.
 	Summary *CodeRiskAnalyzerLogsSummary `json:"summary,omitempty"`
 
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ, matching the date and time
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	Timestamp *strfmt.DateTime `json:"timestamp,omitempty"`
 }
@@ -6345,30 +6422,30 @@ func UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogsVersion204(m map[string]j
 	return
 }
 
-// ProjectConfigResponseDefinitionDAConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigResponseDefinitionDAConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigResponseDefinition
 type ProjectConfigResponseDefinitionDAConfigDefinitionProperties struct {
-	// The profile required for compliance.
+	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
-	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
-	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
 	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing Schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	LocatorID *string `json:"locator_id,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
@@ -6377,11 +6454,11 @@ type ProjectConfigResponseDefinitionDAConfigDefinitionProperties struct {
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
@@ -6428,16 +6505,16 @@ func UnmarshalProjectConfigResponseDefinitionDAConfigDefinitionProperties(m map[
 	return
 }
 
-// ProjectConfigResponseDefinitionResourceConfigDefinitionProperties : The name and description of a project configuration.
+// ProjectConfigResponseDefinitionResourceConfigDefinitionProperties : The description of a project configuration.
 // This model "extends" ProjectConfigResponseDefinition
 type ProjectConfigResponseDefinitionResourceConfigDefinitionProperties struct {
-	// The CRNs of resources associated with this configuration.
+	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It is unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
@@ -6446,11 +6523,11 @@ type ProjectConfigResponseDefinitionResourceConfigDefinitionProperties struct {
 	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
-	// The input variables for configuration definition and environment.
+	// The input variables that are used for configuration definition and environment.
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
-	// Schematics environment variables to use to deploy the configuration. Settings are only available if they were
-	// specified when the configuration was initially created.
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
@@ -6486,60 +6563,6 @@ func UnmarshalProjectConfigResponseDefinitionResourceConfigDefinitionProperties(
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigResponseDefinitionStackConfigDefinitionProperties : The name and description of a project configuration.
-// This model "extends" ProjectConfigResponseDefinition
-type ProjectConfigResponseDefinitionStackConfigDefinitionProperties struct {
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The configuration name. It is unique within the account across projects and regions.
-	Name *string `json:"name,omitempty"`
-
-	// A unique concatenation of `catalogID.versionID` that identifies the DA in the catalog.
-	// >  If importing from an existing schematics workspace that it is not backed by cart, a `locator_id` is required. If
-	// using a schematics workspace that is backed by cart, a `locator_id` is not necessary because the schematics
-	// workspace has one.
-	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a schematics `workspace_crn` and a `locator_id` are specified, a `400` is returned if the specified
-	// `locator_id` does not agree with the `locator_id` in the existing schematics workspace.
-	// > For more information of creating a schematics workspace see [Creating workspaces and importing your Terraform
-	// template](/docs/schematics?topic=schematics-sch-create-wks).
-	LocatorID *string `json:"locator_id,omitempty"`
-
-	// The ID of the project environment.
-	EnvironmentID *string `json:"environment_id,omitempty"`
-}
-
-func (*ProjectConfigResponseDefinitionStackConfigDefinitionProperties) isaProjectConfigResponseDefinition() bool {
-	return true
-}
-
-// UnmarshalProjectConfigResponseDefinitionStackConfigDefinitionProperties unmarshals an instance of ProjectConfigResponseDefinitionStackConfigDefinitionProperties from the specified map of raw messages.
-func UnmarshalProjectConfigResponseDefinitionStackConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigResponseDefinitionStackConfigDefinitionProperties)
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
 	if err != nil {
 		return
 	}
