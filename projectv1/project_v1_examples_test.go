@@ -117,7 +117,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("The stage account configuration. The stage account hosts test environments pre-staging, performance, and staging. This configures services common to all these environments and regions. It's a terraform_template type of configuration that points to a Github repo that's hosting the Terraform modules that can be deployed by a Schematics workspace."),
+				Description: core.StringPtr("The stage account configuration."),
 				Name: core.StringPtr("account-stage"),
 			}
 
@@ -154,7 +154,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 
 			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("Stage environment configuration."),
+				Description: core.StringPtr("The stage environment configuration."),
 				Name: core.StringPtr("env-stage"),
 			}
 
@@ -269,7 +269,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
@@ -358,7 +358,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			environmentDefinitionPropertiesPatchModel := &projectv1.EnvironmentDefinitionPropertiesPatch{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
