@@ -1,4 +1,4 @@
-//go:build integration
+// +build integration
 
 /**
  * (C) Copyright IBM Corp. 2024.
@@ -121,10 +121,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ApiKey: core.StringPtr("testString"),
 			}
 
-			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+			projectConfigDefinitionPrototypeModel := &projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype{
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("The stage account configuration. The stage account hosts test environments pre-staging, performance, and staging. This configures services common to all these environments and regions. It's a terraform_template type of configuration that points to a Github repo that's hosting the Terraform modules that can be deployed by a Schematics workspace."),
+				Description: core.StringPtr("The stage account configuration."),
 				Name: core.StringPtr("account-stage"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
@@ -137,7 +137,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				Definition: projectConfigDefinitionBlockPrototypeModel,
+				Definition: projectConfigDefinitionPrototypeModel,
 				Schematics: schematicsWorkspaceModel,
 			}
 
@@ -190,10 +190,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ApiKey: core.StringPtr("testString"),
 			}
 
-			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+			projectConfigDefinitionPrototypeModel := &projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype{
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("Stage environment configuration."),
+				Description: core.StringPtr("The stage environment configuration."),
 				Name: core.StringPtr("env-stage"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
@@ -207,7 +207,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
-				Definition: projectConfigDefinitionBlockPrototypeModel,
+				Definition: projectConfigDefinitionPrototypeModel,
 				Schematics: schematicsWorkspaceModel,
 			}
 
@@ -343,7 +343,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
@@ -463,7 +463,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			environmentDefinitionPropertiesPatchModel := &projectv1.EnvironmentDefinitionPropertiesPatch{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
@@ -583,7 +583,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ApiKey: core.StringPtr("testString"),
 			}
 
-			projectConfigDefinitionBlockPatchModel := &projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch{
+			projectConfigDefinitionPatchModel := &projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch{
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
@@ -597,7 +597,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				Definition: projectConfigDefinitionBlockPatchModel,
+				Definition: projectConfigDefinitionPatchModel,
 			}
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
@@ -607,7 +607,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ForceApprove - Force approve project configuration`, func() {
+	Describe(`ForceApprove - Force approve a project configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -715,7 +715,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ListConfigResources - List the resources deployed by a configuration`, func() {
+	Describe(`ListConfigResources - List all deployed resources`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -732,7 +732,127 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ListConfigVersions - Get a list of versions of a project configuration`, func() {
+	Describe(`CreateConfigTemplate - Add a template to the configuration`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions)`, func() {
+			stackInputVariableModel := &projectv1.StackInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: map[string]interface{}{"anyKey": "anyValue"},
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackOutputVariableModel := &projectv1.StackOutputVariable{
+				Name: core.StringPtr("vpc_cluster_id"),
+				Type: core.StringPtr("string"),
+			}
+
+			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []string{"region", "cluster_name"},
+			}
+
+			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
+				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
+				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
+				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
+			}
+
+			createConfigTemplateOptions := &projectv1.CreateConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				Definition: stackTemplateDefinitionBlockPrototypeModel,
+			}
+
+			stackTemplate, response, err := projectService.CreateConfigTemplate(createConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+	})
+
+	Describe(`GetConfigTemplate - Get a configuration template`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions)`, func() {
+			getConfigTemplateOptions := &projectv1.GetConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+			}
+
+			stackTemplate, response, err := projectService.GetConfigTemplate(getConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateConfigTemplate - Update a configuration template`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions)`, func() {
+			stackInputVariableModel := &projectv1.StackInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: map[string]interface{}{"anyKey": "anyValue"},
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackOutputVariableModel := &projectv1.StackOutputVariable{
+				Name: core.StringPtr("testString"),
+				Type: core.StringPtr("array"),
+			}
+
+			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []string{"cluster_name"},
+			}
+
+			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
+				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
+				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
+				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
+			}
+
+			updateConfigTemplateOptions := &projectv1.UpdateConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				Definition: stackTemplateDefinitionBlockPrototypeModel,
+			}
+
+			stackTemplate, response, err := projectService.UpdateConfigTemplate(updateConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+	})
+
+	Describe(`PublishConfigTemplate - Publish a configuration template`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions)`, func() {
+			publishConfigTemplateOptions := &projectv1.PublishConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+			}
+
+			stackTemplate, response, err := projectService.PublishConfigTemplate(publishConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ListConfigVersions - Get a list of project configuration versions`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -749,7 +869,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`GetConfigVersion - Get a specific version of a project configuration`, func() {
+	Describe(`GetConfigVersion - Get a specific project configuration version`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -784,7 +904,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`DeleteConfig - Delete a configuration in a project by ID`, func() {
+	Describe(`DeleteConfig - Delete a configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -801,7 +921,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`DeleteConfigVersion - Delete a configuration for the specified project ID and version`, func() {
+	Describe(`DeleteConfigVersion - Delete a project configuration version`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})

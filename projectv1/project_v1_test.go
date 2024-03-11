@@ -19,7 +19,6 @@ package projectv1_test
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -208,16 +207,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -225,7 +224,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -332,16 +331,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -349,7 +348,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -464,16 +463,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -481,7 +480,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -541,16 +540,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -558,7 +557,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -639,16 +638,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -656,7 +655,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -3239,16 +3238,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3257,7 +3256,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -3337,16 +3336,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3355,7 +3354,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3443,16 +3442,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3461,7 +3460,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3494,16 +3493,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3512,7 +3511,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -3566,16 +3565,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3584,7 +3583,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -4184,22 +4183,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateConfig(updateConfigOptionsModel)
@@ -4278,22 +4277,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -4380,22 +4379,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -4427,22 +4426,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -4495,22 +4494,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -6215,6 +6214,1198 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 	})
+	Describe(`CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions) - Operation response error`, func() {
+		createConfigTemplatePath := "/v1/projects/testString/configs/testString/template"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createConfigTemplatePath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateConfigTemplate with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackOutputVariableModel.Type = core.StringPtr("string")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"region", "cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the CreateConfigTemplateOptions model
+				createConfigTemplateOptionsModel := new(projectv1.CreateConfigTemplateOptions)
+				createConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				createConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.CreateConfigTemplate(createConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.CreateConfigTemplate(createConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions)`, func() {
+		createConfigTemplatePath := "/v1/projects/testString/configs/testString/template"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createConfigTemplatePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke CreateConfigTemplate successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackOutputVariableModel.Type = core.StringPtr("string")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"region", "cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the CreateConfigTemplateOptions model
+				createConfigTemplateOptionsModel := new(projectv1.CreateConfigTemplateOptions)
+				createConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				createConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.CreateConfigTemplateWithContext(ctx, createConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.CreateConfigTemplate(createConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.CreateConfigTemplateWithContext(ctx, createConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createConfigTemplatePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke CreateConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.CreateConfigTemplate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackOutputVariableModel.Type = core.StringPtr("string")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"region", "cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the CreateConfigTemplateOptions model
+				createConfigTemplateOptionsModel := new(projectv1.CreateConfigTemplateOptions)
+				createConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				createConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.CreateConfigTemplate(createConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateConfigTemplate with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackOutputVariableModel.Type = core.StringPtr("string")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"region", "cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the CreateConfigTemplateOptions model
+				createConfigTemplateOptionsModel := new(projectv1.CreateConfigTemplateOptions)
+				createConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				createConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.CreateConfigTemplate(createConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateConfigTemplateOptions model with no property values
+				createConfigTemplateOptionsModelNew := new(projectv1.CreateConfigTemplateOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.CreateConfigTemplate(createConfigTemplateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackOutputVariableModel.Type = core.StringPtr("string")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"region", "cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the CreateConfigTemplateOptions model
+				createConfigTemplateOptionsModel := new(projectv1.CreateConfigTemplateOptions)
+				createConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				createConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				createConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.CreateConfigTemplate(createConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions) - Operation response error`, func() {
+		getConfigTemplatePath := "/v1/projects/testString/configs/testString/template"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getConfigTemplatePath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetConfigTemplate with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the GetConfigTemplateOptions model
+				getConfigTemplateOptionsModel := new(projectv1.GetConfigTemplateOptions)
+				getConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.GetConfigTemplate(getConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.GetConfigTemplate(getConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions)`, func() {
+		getConfigTemplatePath := "/v1/projects/testString/configs/testString/template"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getConfigTemplatePath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke GetConfigTemplate successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetConfigTemplateOptions model
+				getConfigTemplateOptionsModel := new(projectv1.GetConfigTemplateOptions)
+				getConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.GetConfigTemplateWithContext(ctx, getConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.GetConfigTemplate(getConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.GetConfigTemplateWithContext(ctx, getConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getConfigTemplatePath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke GetConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.GetConfigTemplate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetConfigTemplateOptions model
+				getConfigTemplateOptionsModel := new(projectv1.GetConfigTemplateOptions)
+				getConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.GetConfigTemplate(getConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetConfigTemplate with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the GetConfigTemplateOptions model
+				getConfigTemplateOptionsModel := new(projectv1.GetConfigTemplateOptions)
+				getConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.GetConfigTemplate(getConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetConfigTemplateOptions model with no property values
+				getConfigTemplateOptionsModelNew := new(projectv1.GetConfigTemplateOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.GetConfigTemplate(getConfigTemplateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the GetConfigTemplateOptions model
+				getConfigTemplateOptionsModel := new(projectv1.GetConfigTemplateOptions)
+				getConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				getConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.GetConfigTemplate(getConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions) - Operation response error`, func() {
+		updateConfigTemplatePath := "/v1/projects/testString/configs/testString/template"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateConfigTemplatePath))
+					Expect(req.Method).To(Equal("PATCH"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateConfigTemplate with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("testString")
+				stackOutputVariableModel.Type = core.StringPtr("array")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the UpdateConfigTemplateOptions model
+				updateConfigTemplateOptionsModel := new(projectv1.UpdateConfigTemplateOptions)
+				updateConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				updateConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.UpdateConfigTemplate(updateConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.UpdateConfigTemplate(updateConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions)`, func() {
+		updateConfigTemplatePath := "/v1/projects/testString/configs/testString/template"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateConfigTemplatePath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke UpdateConfigTemplate successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("testString")
+				stackOutputVariableModel.Type = core.StringPtr("array")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the UpdateConfigTemplateOptions model
+				updateConfigTemplateOptionsModel := new(projectv1.UpdateConfigTemplateOptions)
+				updateConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				updateConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.UpdateConfigTemplateWithContext(ctx, updateConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.UpdateConfigTemplate(updateConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.UpdateConfigTemplateWithContext(ctx, updateConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateConfigTemplatePath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke UpdateConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.UpdateConfigTemplate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("testString")
+				stackOutputVariableModel.Type = core.StringPtr("array")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the UpdateConfigTemplateOptions model
+				updateConfigTemplateOptionsModel := new(projectv1.UpdateConfigTemplateOptions)
+				updateConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				updateConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.UpdateConfigTemplate(updateConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateConfigTemplate with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("testString")
+				stackOutputVariableModel.Type = core.StringPtr("array")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the UpdateConfigTemplateOptions model
+				updateConfigTemplateOptionsModel := new(projectv1.UpdateConfigTemplateOptions)
+				updateConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				updateConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.UpdateConfigTemplate(updateConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateConfigTemplateOptions model with no property values
+				updateConfigTemplateOptionsModelNew := new(projectv1.UpdateConfigTemplateOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.UpdateConfigTemplate(updateConfigTemplateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				stackOutputVariableModel.Name = core.StringPtr("testString")
+				stackOutputVariableModel.Type = core.StringPtr("array")
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"cluster_name"}
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+
+				// Construct an instance of the UpdateConfigTemplateOptions model
+				updateConfigTemplateOptionsModel := new(projectv1.UpdateConfigTemplateOptions)
+				updateConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				updateConfigTemplateOptionsModel.Definition = stackTemplateDefinitionBlockPrototypeModel
+				updateConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.UpdateConfigTemplate(updateConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions) - Operation response error`, func() {
+		publishConfigTemplatePath := "/v1/projects/testString/configs/testString/template/publish"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(publishConfigTemplatePath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke PublishConfigTemplate with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the PublishConfigTemplateOptions model
+				publishConfigTemplateOptionsModel := new(projectv1.PublishConfigTemplateOptions)
+				publishConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.PublishConfigTemplate(publishConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.PublishConfigTemplate(publishConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions)`, func() {
+		publishConfigTemplatePath := "/v1/projects/testString/configs/testString/template/publish"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(publishConfigTemplatePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke PublishConfigTemplate successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the PublishConfigTemplateOptions model
+				publishConfigTemplateOptionsModel := new(projectv1.PublishConfigTemplateOptions)
+				publishConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.PublishConfigTemplateWithContext(ctx, publishConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.PublishConfigTemplate(publishConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.PublishConfigTemplateWithContext(ctx, publishConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(publishConfigTemplatePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": {"anyKey": "anyValue"}, "required": true, "hidden": true}], "outputs": [{"name": "Name", "type": "array"}], "member_inputs": [{"name": "Name", "inputs": ["Inputs"]}], "id": "ID", "members": [{"name": "Name", "locator_id": "LocatorID"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href"}`)
+				}))
+			})
+			It(`Invoke PublishConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.PublishConfigTemplate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the PublishConfigTemplateOptions model
+				publishConfigTemplateOptionsModel := new(projectv1.PublishConfigTemplateOptions)
+				publishConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.PublishConfigTemplate(publishConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke PublishConfigTemplate with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the PublishConfigTemplateOptions model
+				publishConfigTemplateOptionsModel := new(projectv1.PublishConfigTemplateOptions)
+				publishConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.PublishConfigTemplate(publishConfigTemplateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the PublishConfigTemplateOptions model with no property values
+				publishConfigTemplateOptionsModelNew := new(projectv1.PublishConfigTemplateOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.PublishConfigTemplate(publishConfigTemplateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke PublishConfigTemplate successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the PublishConfigTemplateOptions model
+				publishConfigTemplateOptionsModel := new(projectv1.PublishConfigTemplateOptions)
+				publishConfigTemplateOptionsModel.ProjectID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.ID = core.StringPtr("testString")
+				publishConfigTemplateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.PublishConfigTemplate(publishConfigTemplateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions) - Operation response error`, func() {
 		listConfigVersionsPath := "/v1/projects/testString/configs/testString/versions"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
@@ -6922,25 +8113,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("api_key")))
 				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				Expect(projectConfigDefinitionBlockPrototypeModel).ToNot(BeNil())
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
-				Expect(projectConfigDefinitionBlockPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Description).To(Equal(core.StringPtr("The stage environment configuration.")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Name).To(Equal(core.StringPtr("env-stage")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				Expect(projectConfigDefinitionPrototypeModel).ToNot(BeNil())
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				Expect(projectConfigDefinitionPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(projectConfigDefinitionPrototypeModel.Description).To(Equal(core.StringPtr("The stage environment configuration.")))
+				Expect(projectConfigDefinitionPrototypeModel.Name).To(Equal(core.StringPtr("env-stage")))
+				Expect(projectConfigDefinitionPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(projectConfigDefinitionPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -6950,17 +8141,75 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
-				var createConfigOptionsDefinition projectv1.ProjectConfigDefinitionBlockPrototypeIntf = nil
+				var createConfigOptionsDefinition projectv1.ProjectConfigDefinitionPrototypeIntf = nil
 				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID, createConfigOptionsDefinition)
 				createConfigOptionsModel.SetProjectID("testString")
-				createConfigOptionsModel.SetDefinition(projectConfigDefinitionBlockPrototypeModel)
+				createConfigOptionsModel.SetDefinition(projectConfigDefinitionPrototypeModel)
 				createConfigOptionsModel.SetSchematics(schematicsWorkspaceModel)
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createConfigOptionsModel).ToNot(BeNil())
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionBlockPrototypeModel))
+				Expect(createConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionPrototypeModel))
 				Expect(createConfigOptionsModel.Schematics).To(Equal(schematicsWorkspaceModel))
 				Expect(createConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewCreateConfigTemplateOptions successfully`, func() {
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				Expect(stackInputVariableModel).ToNot(BeNil())
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+				Expect(stackInputVariableModel.Name).To(Equal(core.StringPtr("region")))
+				Expect(stackInputVariableModel.Type).To(Equal(core.StringPtr("string")))
+				Expect(stackInputVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(stackInputVariableModel.Default).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(stackInputVariableModel.Required).To(Equal(core.BoolPtr(true)))
+				Expect(stackInputVariableModel.Hidden).To(Equal(core.BoolPtr(false)))
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				Expect(stackOutputVariableModel).ToNot(BeNil())
+				stackOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackOutputVariableModel.Type = core.StringPtr("string")
+				Expect(stackOutputVariableModel.Name).To(Equal(core.StringPtr("vpc_cluster_id")))
+				Expect(stackOutputVariableModel.Type).To(Equal(core.StringPtr("string")))
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				Expect(stackTemplateMemberInputModel).ToNot(BeNil())
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"region", "cluster_name"}
+				Expect(stackTemplateMemberInputModel.Name).To(Equal(core.StringPtr("foundation-deployable-architecture")))
+				Expect(stackTemplateMemberInputModel.Inputs).To(Equal([]string{"region", "cluster_name"}))
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				Expect(stackTemplateDefinitionBlockPrototypeModel).ToNot(BeNil())
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+				Expect(stackTemplateDefinitionBlockPrototypeModel.Inputs).To(Equal([]projectv1.StackInputVariable{*stackInputVariableModel}))
+				Expect(stackTemplateDefinitionBlockPrototypeModel.Outputs).To(Equal([]projectv1.StackOutputVariable{*stackOutputVariableModel}))
+				Expect(stackTemplateDefinitionBlockPrototypeModel.MemberInputs).To(Equal([]projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}))
+
+				// Construct an instance of the CreateConfigTemplateOptions model
+				projectID := "testString"
+				id := "testString"
+				var createConfigTemplateOptionsDefinition *projectv1.StackTemplateDefinitionBlockPrototype = nil
+				createConfigTemplateOptionsModel := projectService.NewCreateConfigTemplateOptions(projectID, id, createConfigTemplateOptionsDefinition)
+				createConfigTemplateOptionsModel.SetProjectID("testString")
+				createConfigTemplateOptionsModel.SetID("testString")
+				createConfigTemplateOptionsModel.SetDefinition(stackTemplateDefinitionBlockPrototypeModel)
+				createConfigTemplateOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createConfigTemplateOptionsModel).ToNot(BeNil())
+				Expect(createConfigTemplateOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(createConfigTemplateOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(createConfigTemplateOptionsModel.Definition).To(Equal(stackTemplateDefinitionBlockPrototypeModel))
+				Expect(createConfigTemplateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateProjectEnvironmentOptions successfully`, func() {
 				// Construct an instance of the ProjectConfigAuth model
@@ -7050,25 +8299,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("api_key")))
 				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				Expect(projectConfigDefinitionBlockPrototypeModel).ToNot(BeNil())
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
-				Expect(projectConfigDefinitionBlockPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Description).To(Equal(core.StringPtr("The stage account configuration.")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Name).To(Equal(core.StringPtr("account-stage")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				Expect(projectConfigDefinitionPrototypeModel).ToNot(BeNil())
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				Expect(projectConfigDefinitionPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(projectConfigDefinitionPrototypeModel.Description).To(Equal(core.StringPtr("The stage account configuration.")))
+				Expect(projectConfigDefinitionPrototypeModel.Name).To(Equal(core.StringPtr("account-stage")))
+				Expect(projectConfigDefinitionPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(projectConfigDefinitionPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -7079,9 +8328,9 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
 				Expect(projectConfigPrototypeModel).ToNot(BeNil())
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
-				Expect(projectConfigPrototypeModel.Definition).To(Equal(projectConfigDefinitionBlockPrototypeModel))
+				Expect(projectConfigPrototypeModel.Definition).To(Equal(projectConfigDefinitionPrototypeModel))
 				Expect(projectConfigPrototypeModel.Schematics).To(Equal(schematicsWorkspaceModel))
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -7228,6 +8477,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(getConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(getConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetConfigTemplateOptions successfully`, func() {
+				// Construct an instance of the GetConfigTemplateOptions model
+				projectID := "testString"
+				id := "testString"
+				getConfigTemplateOptionsModel := projectService.NewGetConfigTemplateOptions(projectID, id)
+				getConfigTemplateOptionsModel.SetProjectID("testString")
+				getConfigTemplateOptionsModel.SetID("testString")
+				getConfigTemplateOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getConfigTemplateOptionsModel).ToNot(BeNil())
+				Expect(getConfigTemplateOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(getConfigTemplateOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(getConfigTemplateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetConfigVersionOptions successfully`, func() {
 				// Construct an instance of the GetConfigVersionOptions model
 				projectID := "testString"
@@ -7333,13 +8595,47 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(listProjectsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewProjectConfigPrototype successfully`, func() {
-				var definition projectv1.ProjectConfigDefinitionBlockPrototypeIntf = nil
+				var definition projectv1.ProjectConfigDefinitionPrototypeIntf = nil
 				_, err := projectService.NewProjectConfigPrototype(definition)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewProjectPrototypeDefinition successfully`, func() {
 				name := "testString"
 				_model, err := projectService.NewProjectPrototypeDefinition(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewPublishConfigTemplateOptions successfully`, func() {
+				// Construct an instance of the PublishConfigTemplateOptions model
+				projectID := "testString"
+				id := "testString"
+				publishConfigTemplateOptionsModel := projectService.NewPublishConfigTemplateOptions(projectID, id)
+				publishConfigTemplateOptionsModel.SetProjectID("testString")
+				publishConfigTemplateOptionsModel.SetID("testString")
+				publishConfigTemplateOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(publishConfigTemplateOptionsModel).ToNot(BeNil())
+				Expect(publishConfigTemplateOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(publishConfigTemplateOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(publishConfigTemplateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewStackInputVariable successfully`, func() {
+				name := "testString"
+				typeVar := "array"
+				_model, err := projectService.NewStackInputVariable(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackOutputVariable successfully`, func() {
+				name := "testString"
+				typeVar := "array"
+				_model, err := projectService.NewStackOutputVariable(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackTemplateMemberInput successfully`, func() {
+				name := "testString"
+				inputs := []string{"testString"}
+				_model, err := projectService.NewStackTemplateMemberInput(name, inputs)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -7402,40 +8698,98 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("api_key")))
 				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				Expect(projectConfigDefinitionBlockPatchModel).ToNot(BeNil())
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
-				Expect(projectConfigDefinitionBlockPatchModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigDefinitionBlockPatchModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPatchModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPatchModel.Name).To(Equal(core.StringPtr("env-stage")))
-				Expect(projectConfigDefinitionBlockPatchModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPatchModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigDefinitionBlockPatchModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
-				Expect(projectConfigDefinitionBlockPatchModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				Expect(projectConfigDefinitionPatchModel).ToNot(BeNil())
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				Expect(projectConfigDefinitionPatchModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPatchModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPatchModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPatchModel.Name).To(Equal(core.StringPtr("env-stage")))
+				Expect(projectConfigDefinitionPatchModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPatchModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPatchModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(projectConfigDefinitionPatchModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 
 				// Construct an instance of the UpdateConfigOptions model
 				projectID := "testString"
 				id := "testString"
-				var updateConfigOptionsDefinition projectv1.ProjectConfigDefinitionBlockPatchIntf = nil
+				var updateConfigOptionsDefinition projectv1.ProjectConfigDefinitionPatchIntf = nil
 				updateConfigOptionsModel := projectService.NewUpdateConfigOptions(projectID, id, updateConfigOptionsDefinition)
 				updateConfigOptionsModel.SetProjectID("testString")
 				updateConfigOptionsModel.SetID("testString")
-				updateConfigOptionsModel.SetDefinition(projectConfigDefinitionBlockPatchModel)
+				updateConfigOptionsModel.SetDefinition(projectConfigDefinitionPatchModel)
 				updateConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateConfigOptionsModel).ToNot(BeNil())
 				Expect(updateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionBlockPatchModel))
+				Expect(updateConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionPatchModel))
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewUpdateConfigTemplateOptions successfully`, func() {
+				// Construct an instance of the StackInputVariable model
+				stackInputVariableModel := new(projectv1.StackInputVariable)
+				Expect(stackInputVariableModel).ToNot(BeNil())
+				stackInputVariableModel.Name = core.StringPtr("region")
+				stackInputVariableModel.Type = core.StringPtr("string")
+				stackInputVariableModel.Description = core.StringPtr("testString")
+				stackInputVariableModel.Default = map[string]interface{}{"anyKey": "anyValue"}
+				stackInputVariableModel.Required = core.BoolPtr(true)
+				stackInputVariableModel.Hidden = core.BoolPtr(false)
+				Expect(stackInputVariableModel.Name).To(Equal(core.StringPtr("region")))
+				Expect(stackInputVariableModel.Type).To(Equal(core.StringPtr("string")))
+				Expect(stackInputVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(stackInputVariableModel.Default).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(stackInputVariableModel.Required).To(Equal(core.BoolPtr(true)))
+				Expect(stackInputVariableModel.Hidden).To(Equal(core.BoolPtr(false)))
+
+				// Construct an instance of the StackOutputVariable model
+				stackOutputVariableModel := new(projectv1.StackOutputVariable)
+				Expect(stackOutputVariableModel).ToNot(BeNil())
+				stackOutputVariableModel.Name = core.StringPtr("testString")
+				stackOutputVariableModel.Type = core.StringPtr("array")
+				Expect(stackOutputVariableModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(stackOutputVariableModel.Type).To(Equal(core.StringPtr("array")))
+
+				// Construct an instance of the StackTemplateMemberInput model
+				stackTemplateMemberInputModel := new(projectv1.StackTemplateMemberInput)
+				Expect(stackTemplateMemberInputModel).ToNot(BeNil())
+				stackTemplateMemberInputModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackTemplateMemberInputModel.Inputs = []string{"cluster_name"}
+				Expect(stackTemplateMemberInputModel.Name).To(Equal(core.StringPtr("foundation-deployable-architecture")))
+				Expect(stackTemplateMemberInputModel.Inputs).To(Equal([]string{"cluster_name"}))
+
+				// Construct an instance of the StackTemplateDefinitionBlockPrototype model
+				stackTemplateDefinitionBlockPrototypeModel := new(projectv1.StackTemplateDefinitionBlockPrototype)
+				Expect(stackTemplateDefinitionBlockPrototypeModel).ToNot(BeNil())
+				stackTemplateDefinitionBlockPrototypeModel.Inputs = []projectv1.StackInputVariable{*stackInputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.Outputs = []projectv1.StackOutputVariable{*stackOutputVariableModel}
+				stackTemplateDefinitionBlockPrototypeModel.MemberInputs = []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}
+				Expect(stackTemplateDefinitionBlockPrototypeModel.Inputs).To(Equal([]projectv1.StackInputVariable{*stackInputVariableModel}))
+				Expect(stackTemplateDefinitionBlockPrototypeModel.Outputs).To(Equal([]projectv1.StackOutputVariable{*stackOutputVariableModel}))
+				Expect(stackTemplateDefinitionBlockPrototypeModel.MemberInputs).To(Equal([]projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel}))
+
+				// Construct an instance of the UpdateConfigTemplateOptions model
+				projectID := "testString"
+				id := "testString"
+				var updateConfigTemplateOptionsDefinition *projectv1.StackTemplateDefinitionBlockPrototype = nil
+				updateConfigTemplateOptionsModel := projectService.NewUpdateConfigTemplateOptions(projectID, id, updateConfigTemplateOptionsDefinition)
+				updateConfigTemplateOptionsModel.SetProjectID("testString")
+				updateConfigTemplateOptionsModel.SetID("testString")
+				updateConfigTemplateOptionsModel.SetDefinition(stackTemplateDefinitionBlockPrototypeModel)
+				updateConfigTemplateOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateConfigTemplateOptionsModel).ToNot(BeNil())
+				Expect(updateConfigTemplateOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(updateConfigTemplateOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(updateConfigTemplateOptionsModel.Definition).To(Equal(stackTemplateDefinitionBlockPrototypeModel))
+				Expect(updateConfigTemplateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateProjectEnvironmentOptions successfully`, func() {
 				// Construct an instance of the ProjectConfigAuth model
@@ -7529,344 +8883,20 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(validateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(validateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype successfully`, func() {
+				name := "testString"
+				_model, err := projectService.NewProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype successfully`, func() {
+				name := "testString"
+				_model, err := projectService.NewProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 		})
 	})
-	Describe(`Model unmarshaling tests`, func() {
-		It(`Invoke UnmarshalEnvironmentDefinitionPropertiesPatch successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.EnvironmentDefinitionPropertiesPatch)
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.ComplianceProfile = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.EnvironmentDefinitionPropertiesPatch
-			err = projectv1.UnmarshalEnvironmentDefinitionPropertiesPatch(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalEnvironmentDefinitionRequiredProperties successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.EnvironmentDefinitionRequiredProperties)
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.ComplianceProfile = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.EnvironmentDefinitionRequiredProperties
-			err = projectv1.UnmarshalEnvironmentDefinitionRequiredProperties(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalEnvironmentPrototype successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.EnvironmentPrototype)
-			model.Definition = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.EnvironmentPrototype
-			err = projectv1.UnmarshalEnvironmentPrototype(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectComplianceProfile successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectComplianceProfile)
-			model.ID = core.StringPtr("testString")
-			model.InstanceID = core.StringPtr("testString")
-			model.InstanceLocation = core.StringPtr("testString")
-			model.AttachmentID = core.StringPtr("testString")
-			model.ProfileName = core.StringPtr("testString")
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectComplianceProfile
-			err = projectv1.UnmarshalProjectComplianceProfile(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigAuth successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigAuth)
-			model.TrustedProfileID = core.StringPtr("testString")
-			model.Method = core.StringPtr("api_key")
-			model.ApiKey = core.StringPtr("testString")
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigAuth
-			err = projectv1.UnmarshalProjectConfigAuth(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPatch successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPatch)
-			model.ComplianceProfile = nil
-			model.LocatorID = core.StringPtr("testString")
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.EnvironmentID = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.Settings = map[string]interface{}{"anyKey": "anyValue"}
-			model.ResourceCrns = []string{"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigDefinitionBlockPatch
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPatch(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPrototype successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPrototype)
-			model.ComplianceProfile = nil
-			model.LocatorID = core.StringPtr("testString")
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.EnvironmentID = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.Settings = map[string]interface{}{"anyKey": "anyValue"}
-			model.ResourceCrns = []string{"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigDefinitionBlockPrototype
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPrototype(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigPrototype successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigPrototype)
-			model.Definition = nil
-			model.Schematics = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigPrototype
-			err = projectv1.UnmarshalProjectConfigPrototype(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectPatchDefinitionBlock successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectPatchDefinitionBlock)
-			model.Name = core.StringPtr("testString")
-			model.DestroyOnDelete = core.BoolPtr(true)
-			model.Description = core.StringPtr("testString")
-			model.MonitoringEnabled = core.BoolPtr(true)
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectPatchDefinitionBlock
-			err = projectv1.UnmarshalProjectPatchDefinitionBlock(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectPrototypeDefinition successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectPrototypeDefinition)
-			model.Name = core.StringPtr("testString")
-			model.DestroyOnDelete = core.BoolPtr(true)
-			model.Description = core.StringPtr("testString")
-			model.MonitoringEnabled = core.BoolPtr(false)
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectPrototypeDefinition
-			err = projectv1.UnmarshalProjectPrototypeDefinition(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalSchematicsWorkspace successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.SchematicsWorkspace)
-			model.WorkspaceCrn = core.StringPtr("crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::")
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.SchematicsWorkspace
-			err = projectv1.UnmarshalSchematicsWorkspace(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-			model.ComplianceProfile = nil
-			model.LocatorID = core.StringPtr("testString")
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.EnvironmentID = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.Settings = map[string]interface{}{"anyKey": "anyValue"}
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch)
-			model.ResourceCrns = []string{"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.EnvironmentID = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.Settings = map[string]interface{}{"anyKey": "anyValue"}
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-			model.ComplianceProfile = nil
-			model.LocatorID = core.StringPtr("testString")
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.EnvironmentID = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.Settings = map[string]interface{}{"anyKey": "anyValue"}
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties)
-			model.ResourceCrns = []string{"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}
-			model.Description = core.StringPtr("testString")
-			model.Name = core.StringPtr("testString")
-			model.EnvironmentID = core.StringPtr("testString")
-			model.Authorizations = nil
-			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-			model.Settings = map[string]interface{}{"anyKey": "anyValue"}
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-	})
-
 	Describe(`Utility function tests`, func() {
 		It(`Invoke CreateMockByteArray() successfully`, func() {
 			mockByteArray := CreateMockByteArray("This is a test")
@@ -7896,7 +8926,8 @@ var _ = Describe(`ProjectV1`, func() {
 //
 
 func CreateMockByteArray(mockData string) *[]byte {
-	ba := []byte(mockData)
+	ba := make([]byte, 0)
+	ba = append(ba, mockData...)
 	return &ba
 }
 

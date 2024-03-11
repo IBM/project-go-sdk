@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.86.0-bc6f14b3-20240221-193958
+ * IBM OpenAPI SDK Code Generator Version: 3.80.0-29334a73-20230925-151553
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -1607,6 +1607,270 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 	return
 }
 
+// CreateConfigTemplate : Add a template to the configuration
+// Add a template to the configuration of type stack.
+func (project *ProjectV1) CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	return project.CreateConfigTemplateWithContext(context.Background(), createConfigTemplateOptions)
+}
+
+// CreateConfigTemplateWithContext is an alternate form of the CreateConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) CreateConfigTemplateWithContext(ctx context.Context, createConfigTemplateOptions *CreateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createConfigTemplateOptions, "createConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(createConfigTemplateOptions, "createConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *createConfigTemplateOptions.ProjectID,
+		"id": *createConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range createConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createConfigTemplateOptions.Definition != nil {
+		body["definition"] = createConfigTemplateOptions.Definition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetConfigTemplate : Get a configuration template
+// Retrieve the template that is associated to the configuration.
+func (project *ProjectV1) GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	return project.GetConfigTemplateWithContext(context.Background(), getConfigTemplateOptions)
+}
+
+// GetConfigTemplateWithContext is an alternate form of the GetConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) GetConfigTemplateWithContext(ctx context.Context, getConfigTemplateOptions *GetConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getConfigTemplateOptions, "getConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(getConfigTemplateOptions, "getConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *getConfigTemplateOptions.ProjectID,
+		"id": *getConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range getConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateConfigTemplate : Update a configuration template
+// Update the template that is associated to the configuration.
+func (project *ProjectV1) UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	return project.UpdateConfigTemplateWithContext(context.Background(), updateConfigTemplateOptions)
+}
+
+// UpdateConfigTemplateWithContext is an alternate form of the UpdateConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) UpdateConfigTemplateWithContext(ctx context.Context, updateConfigTemplateOptions *UpdateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateConfigTemplateOptions, "updateConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(updateConfigTemplateOptions, "updateConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *updateConfigTemplateOptions.ProjectID,
+		"id": *updateConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range updateConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateConfigTemplateOptions.Definition != nil {
+		body["definition"] = updateConfigTemplateOptions.Definition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// PublishConfigTemplate : Publish a configuration template
+// Publish a configuration template to the private catalog.
+func (project *ProjectV1) PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	return project.PublishConfigTemplateWithContext(context.Background(), publishConfigTemplateOptions)
+}
+
+// PublishConfigTemplateWithContext is an alternate form of the PublishConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) PublishConfigTemplateWithContext(ctx context.Context, publishConfigTemplateOptions *PublishConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(publishConfigTemplateOptions, "publishConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(publishConfigTemplateOptions, "publishConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *publishConfigTemplateOptions.ProjectID,
+		"id": *publishConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template/publish`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range publishConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "PublishConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // ListConfigVersions : Get a list of project configuration versions
 // Retrieve a list of previous and current versions of a project configuration in a specific project.
 func (project *ProjectV1) ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions) (result *ProjectConfigVersionSummaryCollection, response *core.DetailedResponse, err error) {
@@ -2256,12 +2520,29 @@ func UnmarshalCodeRiskAnalyzerLogsSummary(m map[string]json.RawMessage, result i
 	return
 }
 
+// ConfigDefinitionReference : The definition of the config reference.
+type ConfigDefinitionReference struct {
+	// The name of the configuration.
+	Name *string `json:"name" validate:"required"`
+}
+
+// UnmarshalConfigDefinitionReference unmarshals an instance of ConfigDefinitionReference from the specified map of raw messages.
+func UnmarshalConfigDefinitionReference(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ConfigDefinitionReference)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // CreateConfigOptions : The CreateConfig options.
 type CreateConfigOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	Definition ProjectConfigDefinitionBlockPrototypeIntf `json:"definition" validate:"required"`
+	Definition ProjectConfigDefinitionPrototypeIntf `json:"definition" validate:"required"`
 
 	// A Schematics workspace to use for deploying this deployable architecture.
 	// > If you are importing data from an existing Schematics workspace that is not backed by cart, then you must provide
@@ -2270,10 +2551,10 @@ type CreateConfigOptions struct {
 	// >
 	// There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in
-	// the existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
-	// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
-	// workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400`code  is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// >
 	// For more information, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
@@ -2284,7 +2565,7 @@ type CreateConfigOptions struct {
 }
 
 // NewCreateConfigOptions : Instantiate CreateConfigOptions
-func (*ProjectV1) NewCreateConfigOptions(projectID string, definition ProjectConfigDefinitionBlockPrototypeIntf) *CreateConfigOptions {
+func (*ProjectV1) NewCreateConfigOptions(projectID string, definition ProjectConfigDefinitionPrototypeIntf) *CreateConfigOptions {
 	return &CreateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
 		Definition: definition,
@@ -2298,7 +2579,7 @@ func (_options *CreateConfigOptions) SetProjectID(projectID string) *CreateConfi
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *CreateConfigOptions) SetDefinition(definition ProjectConfigDefinitionBlockPrototypeIntf) *CreateConfigOptions {
+func (_options *CreateConfigOptions) SetDefinition(definition ProjectConfigDefinitionPrototypeIntf) *CreateConfigOptions {
 	_options.Definition = definition
 	return _options
 }
@@ -2311,6 +2592,54 @@ func (_options *CreateConfigOptions) SetSchematics(schematics *SchematicsWorkspa
 
 // SetHeaders : Allow user to set Headers
 func (options *CreateConfigOptions) SetHeaders(param map[string]string) *CreateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// CreateConfigTemplateOptions : The CreateConfigTemplate options.
+type CreateConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The definition block for a stack configuration template.
+	Definition *StackTemplateDefinitionBlockPrototype `json:"definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateConfigTemplateOptions : Instantiate CreateConfigTemplateOptions
+func (*ProjectV1) NewCreateConfigTemplateOptions(projectID string, id string, definition *StackTemplateDefinitionBlockPrototype) *CreateConfigTemplateOptions {
+	return &CreateConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		Definition: definition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *CreateConfigTemplateOptions) SetProjectID(projectID string) *CreateConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *CreateConfigTemplateOptions) SetID(id string) *CreateConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetDefinition : Allow user to set Definition
+func (_options *CreateConfigTemplateOptions) SetDefinition(definition *StackTemplateDefinitionBlockPrototype) *CreateConfigTemplateOptions {
+	_options.Definition = definition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateConfigTemplateOptions) SetHeaders(param map[string]string) *CreateConfigTemplateOptions {
 	options.Headers = param
 	return options
 }
@@ -2673,7 +3002,7 @@ type Environment struct {
 	Href *string `json:"href" validate:"required"`
 
 	// The environment definition.
-	Definition *EnvironmentDefinitionRequiredProperties `json:"definition" validate:"required"`
+	Definition *EnvironmentDefinitionRequiredPropertiesResponse `json:"definition" validate:"required"`
 }
 
 // UnmarshalEnvironment unmarshals an instance of Environment from the specified map of raw messages.
@@ -2703,7 +3032,7 @@ func UnmarshalEnvironment(m map[string]json.RawMessage, result interface{}) (err
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalEnvironmentDefinitionRequiredProperties)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalEnvironmentDefinitionRequiredPropertiesResponse)
 	if err != nil {
 		return
 	}
@@ -2860,6 +3189,51 @@ func UnmarshalEnvironmentDefinitionRequiredProperties(m map[string]json.RawMessa
 	return
 }
 
+// EnvironmentDefinitionRequiredPropertiesResponse : The environment definition.
+type EnvironmentDefinitionRequiredPropertiesResponse struct {
+	// The description of the environment.
+	Description *string `json:"description" validate:"required"`
+
+	// The name of the environment. It's unique within the account across projects and regions.
+	Name *string `json:"name" validate:"required"`
+
+	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The input variables that are used for configuration definition and environment.
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
+
+	// The profile that is required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+}
+
+// UnmarshalEnvironmentDefinitionRequiredPropertiesResponse unmarshals an instance of EnvironmentDefinitionRequiredPropertiesResponse from the specified map of raw messages.
+func UnmarshalEnvironmentDefinitionRequiredPropertiesResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnvironmentDefinitionRequiredPropertiesResponse)
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // EnvironmentDeleteResponse : The response to a request to delete an environment.
 type EnvironmentDeleteResponse struct {
 	// The environment ID as a friendly name.
@@ -2986,6 +3360,44 @@ func (_options *GetConfigOptions) SetID(id string) *GetConfigOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *GetConfigOptions) SetHeaders(param map[string]string) *GetConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// GetConfigTemplateOptions : The GetConfigTemplate options.
+type GetConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetConfigTemplateOptions : Instantiate GetConfigTemplateOptions
+func (*ProjectV1) NewGetConfigTemplateOptions(projectID string, id string) *GetConfigTemplateOptions {
+	return &GetConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *GetConfigTemplateOptions) SetProjectID(projectID string) *GetConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *GetConfigTemplateOptions) SetID(id string) *GetConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetConfigTemplateOptions) SetHeaders(param map[string]string) *GetConfigTemplateOptions {
 	options.Headers = param
 	return options
 }
@@ -3962,7 +4374,7 @@ type ProjectConfig struct {
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
-	Definition ProjectConfigResponseDefinitionIntf `json:"definition" validate:"required"`
+	Definition ProjectConfigDefinitionResponseIntf `json:"definition" validate:"required"`
 
 	// A summary of a project configuration version.
 	ApprovedVersion *ProjectConfigVersionSummary `json:"approved_version,omitempty"`
@@ -4072,7 +4484,7 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigResponseDefinition)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionResponse)
 	if err != nil {
 		return
 	}
@@ -4096,7 +4508,7 @@ type ProjectConfigAuth struct {
 	// The authorization method. You can authorize by using a trusted profile or an API key in Secrets Manager.
 	Method *string `json:"method,omitempty"`
 
-	// The IBM Cloud API key for the project configuration.
+	// The IBM Cloud API Key. It can be either raw or pulled from the catalog via a `CRN` or `JSON` blob.
 	ApiKey *string `json:"api_key,omitempty"`
 }
 
@@ -4176,11 +4588,11 @@ func (resp *ProjectConfigCollection) GetNextStart() (*string, error) {
 	return start, nil
 }
 
-// ProjectConfigDefinitionBlockPatch : ProjectConfigDefinitionBlockPatch struct
+// ProjectConfigDefinitionPatch : ProjectConfigDefinitionPatch struct
 // Models which "extend" this model:
-// - ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch
-// - ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch
-type ProjectConfigDefinitionBlockPatch struct {
+// - ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch
+// - ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch
+type ProjectConfigDefinitionPatch struct {
 	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
@@ -4190,8 +4602,8 @@ type ProjectConfigDefinitionBlockPatch struct {
 	// Schematics workspace has one.
 	// > There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
 	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
 	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
@@ -4220,17 +4632,17 @@ type ProjectConfigDefinitionBlockPatch struct {
 	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 }
-func (*ProjectConfigDefinitionBlockPatch) isaProjectConfigDefinitionBlockPatch() bool {
+func (*ProjectConfigDefinitionPatch) isaProjectConfigDefinitionPatch() bool {
 	return true
 }
 
-type ProjectConfigDefinitionBlockPatchIntf interface {
-	isaProjectConfigDefinitionBlockPatch() bool
+type ProjectConfigDefinitionPatchIntf interface {
+	isaProjectConfigDefinitionPatch() bool
 }
 
-// UnmarshalProjectConfigDefinitionBlockPatch unmarshals an instance of ProjectConfigDefinitionBlockPatch from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionBlockPatch(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionBlockPatch)
+// UnmarshalProjectConfigDefinitionPatch unmarshals an instance of ProjectConfigDefinitionPatch from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionPatch(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionPatch)
 	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
 	if err != nil {
 		return
@@ -4271,11 +4683,11 @@ func UnmarshalProjectConfigDefinitionBlockPatch(m map[string]json.RawMessage, re
 	return
 }
 
-// ProjectConfigDefinitionBlockPrototype : ProjectConfigDefinitionBlockPrototype struct
+// ProjectConfigDefinitionPrototype : ProjectConfigDefinitionPrototype struct
 // Models which "extend" this model:
-// - ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties
-// - ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties
-type ProjectConfigDefinitionBlockPrototype struct {
+// - ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype
+// - ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype
+type ProjectConfigDefinitionPrototype struct {
 	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
@@ -4285,8 +4697,8 @@ type ProjectConfigDefinitionBlockPrototype struct {
 	// Schematics workspace has one.
 	// > There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
 	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
 	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
@@ -4297,7 +4709,7 @@ type ProjectConfigDefinitionBlockPrototype struct {
 	Description *string `json:"description,omitempty"`
 
 	// The configuration name. It's unique within the account across projects and regions.
-	Name *string `json:"name" validate:"required"`
+	Name *string `json:"name,omitempty"`
 
 	// The ID of the project environment.
 	EnvironmentID *string `json:"environment_id,omitempty"`
@@ -4315,17 +4727,112 @@ type ProjectConfigDefinitionBlockPrototype struct {
 	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 }
-func (*ProjectConfigDefinitionBlockPrototype) isaProjectConfigDefinitionBlockPrototype() bool {
+func (*ProjectConfigDefinitionPrototype) isaProjectConfigDefinitionPrototype() bool {
 	return true
 }
 
-type ProjectConfigDefinitionBlockPrototypeIntf interface {
-	isaProjectConfigDefinitionBlockPrototype() bool
+type ProjectConfigDefinitionPrototypeIntf interface {
+	isaProjectConfigDefinitionPrototype() bool
 }
 
-// UnmarshalProjectConfigDefinitionBlockPrototype unmarshals an instance of ProjectConfigDefinitionBlockPrototype from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionBlockPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionBlockPrototype)
+// UnmarshalProjectConfigDefinitionPrototype unmarshals an instance of ProjectConfigDefinitionPrototype from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionPrototype)
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigDefinitionResponse : ProjectConfigDefinitionResponse struct
+// Models which "extend" this model:
+// - ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse
+// - ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse
+type ProjectConfigDefinitionResponse struct {
+	// The profile that is required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The configuration name. It's unique within the account across projects and regions.
+	Name *string `json:"name,omitempty"`
+
+	// The ID of the project environment.
+	EnvironmentID *string `json:"environment_id,omitempty"`
+
+	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The input variables that are used for configuration definition and environment.
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
+
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
+	Settings map[string]interface{} `json:"settings,omitempty"`
+
+	// The CRNs of the resources that are associated with this configuration.
+	ResourceCrns []string `json:"resource_crns,omitempty"`
+}
+func (*ProjectConfigDefinitionResponse) isaProjectConfigDefinitionResponse() bool {
+	return true
+}
+
+type ProjectConfigDefinitionResponseIntf interface {
+	isaProjectConfigDefinitionResponse() bool
+}
+
+// UnmarshalProjectConfigDefinitionResponse unmarshals an instance of ProjectConfigDefinitionResponse from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionResponse)
 	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
 	if err != nil {
 		return
@@ -4569,7 +5076,7 @@ func UnmarshalProjectConfigMetadataLastApproved(m map[string]json.RawMessage, re
 
 // ProjectConfigPrototype : The input of a project configuration.
 type ProjectConfigPrototype struct {
-	Definition ProjectConfigDefinitionBlockPrototypeIntf `json:"definition" validate:"required"`
+	Definition ProjectConfigDefinitionPrototypeIntf `json:"definition" validate:"required"`
 
 	// A Schematics workspace to use for deploying this deployable architecture.
 	// > If you are importing data from an existing Schematics workspace that is not backed by cart, then you must provide
@@ -4578,10 +5085,10 @@ type ProjectConfigPrototype struct {
 	// >
 	// There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in
-	// the existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
-	// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
-	// workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400`code  is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// >
 	// For more information, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
@@ -4589,7 +5096,7 @@ type ProjectConfigPrototype struct {
 }
 
 // NewProjectConfigPrototype : Instantiate ProjectConfigPrototype (Generic Model Constructor)
-func (*ProjectV1) NewProjectConfigPrototype(definition ProjectConfigDefinitionBlockPrototypeIntf) (_model *ProjectConfigPrototype, err error) {
+func (*ProjectV1) NewProjectConfigPrototype(definition ProjectConfigDefinitionPrototypeIntf) (_model *ProjectConfigPrototype, err error) {
 	_model = &ProjectConfigPrototype{
 		Definition: definition,
 	}
@@ -4600,7 +5107,7 @@ func (*ProjectV1) NewProjectConfigPrototype(definition ProjectConfigDefinitionBl
 // UnmarshalProjectConfigPrototype unmarshals an instance of ProjectConfigPrototype from the specified map of raw messages.
 func UnmarshalProjectConfigPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigPrototype)
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionBlockPrototype)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionPrototype)
 	if err != nil {
 		return
 	}
@@ -4674,101 +5181,6 @@ func UnmarshalProjectConfigResourceCollection(m map[string]json.RawMessage, resu
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "resources_count", &obj.ResourcesCount)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigResponseDefinition : ProjectConfigResponseDefinition struct
-// Models which "extend" this model:
-// - ProjectConfigResponseDefinitionDAConfigDefinitionProperties
-// - ProjectConfigResponseDefinitionResourceConfigDefinitionProperties
-type ProjectConfigResponseDefinition struct {
-	// The profile that is required for compliance.
-	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
-
-	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
-	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
-	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
-	// Schematics workspace has one.
-	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
-	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
-	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
-	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
-	// template](/docs/schematics?topic=schematics-sch-create-wks).
-	LocatorID *string `json:"locator_id,omitempty"`
-
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The configuration name. It's unique within the account across projects and regions.
-	Name *string `json:"name" validate:"required"`
-
-	// The ID of the project environment.
-	EnvironmentID *string `json:"environment_id,omitempty"`
-
-	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The input variables that are used for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
-
-	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
-	// specified when the configuration is initially created.
-	Settings map[string]interface{} `json:"settings,omitempty"`
-
-	// The CRNs of the resources that are associated with this configuration.
-	ResourceCrns []string `json:"resource_crns,omitempty"`
-}
-func (*ProjectConfigResponseDefinition) isaProjectConfigResponseDefinition() bool {
-	return true
-}
-
-type ProjectConfigResponseDefinitionIntf interface {
-	isaProjectConfigResponseDefinition() bool
-}
-
-// UnmarshalProjectConfigResponseDefinition unmarshals an instance of ProjectConfigResponseDefinition from the specified map of raw messages.
-func UnmarshalProjectConfigResponseDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigResponseDefinition)
-	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
 	if err != nil {
 		return
 	}
@@ -4897,10 +5309,10 @@ func UnmarshalProjectConfigSummary(m map[string]json.RawMessage, result interfac
 // ProjectConfigSummaryDefinition : The description of a project configuration.
 type ProjectConfigSummaryDefinition struct {
 	// A project configuration description.
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description" validate:"required"`
 
 	// The configuration name. It's unique within the account across projects and regions.
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name" validate:"required"`
 
 	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
 	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
@@ -4908,8 +5320,8 @@ type ProjectConfigSummaryDefinition struct {
 	// Schematics workspace has one.
 	// > There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
 	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
 	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
@@ -4998,7 +5410,7 @@ type ProjectConfigVersion struct {
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
-	Definition ProjectConfigResponseDefinitionIntf `json:"definition" validate:"required"`
+	Definition ProjectConfigDefinitionResponseIntf `json:"definition" validate:"required"`
 }
 
 // Constants associated with the ProjectConfigVersion.State property.
@@ -5102,7 +5514,7 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigResponseDefinition)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigDefinitionResponse)
 	if err != nil {
 		return
 	}
@@ -5121,8 +5533,8 @@ type ProjectConfigVersionDefinitionSummary struct {
 	// Schematics workspace has one.
 	// > There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
 	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
 	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
@@ -5344,7 +5756,7 @@ func UnmarshalProjectEnvironmentSummary(m map[string]json.RawMessage, result int
 // ProjectEnvironmentSummaryDefinition : The environment definition that is used in the project collection.
 type ProjectEnvironmentSummaryDefinition struct {
 	// The description of the environment.
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description" validate:"required"`
 
 	// The name of the environment. It's unique within the account across projects and regions.
 	Name *string `json:"name" validate:"required"`
@@ -5581,6 +5993,44 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
+// PublishConfigTemplateOptions : The PublishConfigTemplate options.
+type PublishConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewPublishConfigTemplateOptions : Instantiate PublishConfigTemplateOptions
+func (*ProjectV1) NewPublishConfigTemplateOptions(projectID string, id string) *PublishConfigTemplateOptions {
+	return &PublishConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *PublishConfigTemplateOptions) SetProjectID(projectID string) *PublishConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *PublishConfigTemplateOptions) SetID(id string) *PublishConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *PublishConfigTemplateOptions) SetHeaders(param map[string]string) *PublishConfigTemplateOptions {
+	options.Headers = param
+	return options
+}
+
 // SchematicsMetadata : A Schematics workspace that is associated to a project configuration, with scripts.
 type SchematicsMetadata struct {
 	// An IBM Cloud resource name that uniquely identifies a resource.
@@ -5652,10 +6102,10 @@ func UnmarshalSchematicsMetadata(m map[string]json.RawMessage, result interface{
 // the Schematics workspace has one.
 // > There are 3 scenarios:
 // > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in the
-// existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
-// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
-// workspace.
+// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+// existing schematics workspace.
+// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400`code  is returned if the specified
+// `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 // > For more information, see [Creating workspaces and importing your Terraform
 // template](/docs/schematics?topic=schematics-sch-create-wks).
 type SchematicsWorkspace struct {
@@ -5706,6 +6156,348 @@ func UnmarshalScript(m map[string]json.RawMessage, result interface{}) (err erro
 	return
 }
 
+// StackInputVariable : The input variables for a stack configuration template.
+type StackInputVariable struct {
+	// The variable name.
+	Name *string `json:"name" validate:"required"`
+
+	// The variable type.
+	Type *string `json:"type" validate:"required"`
+
+	// The description of the variable.
+	Description *string `json:"description,omitempty"`
+
+	// This property can be any value - a string, number, boolean, array, or object.
+	Default map[string]interface{} `json:"default,omitempty"`
+
+	// A boolean value to denote if the property is required.
+	Required *bool `json:"required,omitempty"`
+
+	// A boolean value to denote whether the property is hidden, as in not exposed to the user.
+	Hidden *bool `json:"hidden,omitempty"`
+}
+
+// Constants associated with the StackInputVariable.Type property.
+// The variable type.
+const (
+	StackInputVariable_Type_Array = "array"
+	StackInputVariable_Type_Boolean = "boolean"
+	StackInputVariable_Type_Float = "float"
+	StackInputVariable_Type_Int = "int"
+	StackInputVariable_Type_Number = "number"
+	StackInputVariable_Type_Object = "object"
+	StackInputVariable_Type_Password = "password"
+	StackInputVariable_Type_String = "string"
+)
+
+// NewStackInputVariable : Instantiate StackInputVariable (Generic Model Constructor)
+func (*ProjectV1) NewStackInputVariable(name string, typeVar string) (_model *StackInputVariable, err error) {
+	_model = &StackInputVariable{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalStackInputVariable unmarshals an instance of StackInputVariable from the specified map of raw messages.
+func UnmarshalStackInputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackInputVariable)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "default", &obj.Default)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "required", &obj.Required)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "hidden", &obj.Hidden)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackOutputVariable : The output variables for a stack configuration template.
+type StackOutputVariable struct {
+	// The variable name.
+	Name *string `json:"name" validate:"required"`
+
+	// The variable type.
+	Type *string `json:"type" validate:"required"`
+}
+
+// Constants associated with the StackOutputVariable.Type property.
+// The variable type.
+const (
+	StackOutputVariable_Type_Array = "array"
+	StackOutputVariable_Type_Boolean = "boolean"
+	StackOutputVariable_Type_Float = "float"
+	StackOutputVariable_Type_Int = "int"
+	StackOutputVariable_Type_Number = "number"
+	StackOutputVariable_Type_Object = "object"
+	StackOutputVariable_Type_Password = "password"
+	StackOutputVariable_Type_String = "string"
+)
+
+// NewStackOutputVariable : Instantiate StackOutputVariable (Generic Model Constructor)
+func (*ProjectV1) NewStackOutputVariable(name string, typeVar string) (_model *StackOutputVariable, err error) {
+	_model = &StackOutputVariable{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalStackOutputVariable unmarshals an instance of StackOutputVariable from the specified map of raw messages.
+func UnmarshalStackOutputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackOutputVariable)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplate : The input of a stack configuration template.
+type StackTemplate struct {
+	// The inputs associated with this stack definition.
+	Inputs []StackInputVariable `json:"inputs,omitempty"`
+
+	// The outputs associated with this stack definition.
+	Outputs []StackOutputVariable `json:"outputs,omitempty"`
+
+	// The outputs that are associated with this stack definition.
+	MemberInputs []StackTemplateMemberInput `json:"member_inputs,omitempty"`
+
+	// The ID of the template.
+	ID *string `json:"id" validate:"required"`
+
+	// The members associated with this stack definition.
+	Members []StackTemplateMember `json:"members" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
+	// format as specified by RFC 3339.
+	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
+
+	// The state for the stack template.
+	State *string `json:"state" validate:"required"`
+
+	// The configuration reference.
+	Configuration *StackTemplateMetadataConfiguration `json:"configuration" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+}
+
+// Constants associated with the StackTemplate.State property.
+// The state for the stack template.
+const (
+	StackTemplate_State_Draft = "draft"
+	StackTemplate_State_Published = "published"
+)
+
+// UnmarshalStackTemplate unmarshals an instance of StackTemplate from the specified map of raw messages.
+func UnmarshalStackTemplate(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplate)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackOutputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "member_inputs", &obj.MemberInputs, UnmarshalStackTemplateMemberInput)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackTemplateMember)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "configuration", &obj.Configuration, UnmarshalStackTemplateMetadataConfiguration)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplateDefinitionBlockPrototype : The definition block for a stack configuration template.
+type StackTemplateDefinitionBlockPrototype struct {
+	// The inputs associated with this stack definition.
+	Inputs []StackInputVariable `json:"inputs,omitempty"`
+
+	// The outputs associated with this stack definition.
+	Outputs []StackOutputVariable `json:"outputs,omitempty"`
+
+	// The outputs that are associated with this stack definition.
+	MemberInputs []StackTemplateMemberInput `json:"member_inputs,omitempty"`
+}
+
+// UnmarshalStackTemplateDefinitionBlockPrototype unmarshals an instance of StackTemplateDefinitionBlockPrototype from the specified map of raw messages.
+func UnmarshalStackTemplateDefinitionBlockPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplateDefinitionBlockPrototype)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackOutputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "member_inputs", &obj.MemberInputs, UnmarshalStackTemplateMemberInput)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplateMember : The member metadata that is associated with this stack template.
+type StackTemplateMember struct {
+	// The name matching the alias in the stack definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id" validate:"required"`
+}
+
+// UnmarshalStackTemplateMember unmarshals an instance of StackTemplateMember from the specified map of raw messages.
+func UnmarshalStackTemplateMember(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplateMember)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplateMemberInput : The member definition associated with this stack template.
+type StackTemplateMemberInput struct {
+	// The name matching the alias in the stack definition.
+	Name *string `json:"name" validate:"required"`
+
+	// The member inputs to expose in the stack template.
+	Inputs []string `json:"inputs" validate:"required"`
+}
+
+// NewStackTemplateMemberInput : Instantiate StackTemplateMemberInput (Generic Model Constructor)
+func (*ProjectV1) NewStackTemplateMemberInput(name string, inputs []string) (_model *StackTemplateMemberInput, err error) {
+	_model = &StackTemplateMemberInput{
+		Name: core.StringPtr(name),
+		Inputs: inputs,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalStackTemplateMemberInput unmarshals an instance of StackTemplateMemberInput from the specified map of raw messages.
+func UnmarshalStackTemplateMemberInput(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplateMemberInput)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplateMetadataConfiguration : The configuration reference.
+type StackTemplateMetadataConfiguration struct {
+	// The unique ID.
+	ID *string `json:"id" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+
+	// The definition of the config reference.
+	Definition *ConfigDefinitionReference `json:"definition" validate:"required"`
+}
+
+// UnmarshalStackTemplateMetadataConfiguration unmarshals an instance of StackTemplateMetadataConfiguration from the specified map of raw messages.
+func UnmarshalStackTemplateMetadataConfiguration(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplateMetadataConfiguration)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalConfigDefinitionReference)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // SyncConfigOptions : The SyncConfig options.
 type SyncConfigOptions struct {
 	// The unique project ID.
@@ -5721,10 +6513,10 @@ type SyncConfigOptions struct {
 	// >
 	// There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` code is returned if a `locator_id` is not found in
-	// the existing Schematics workspace. > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a
-	// `400`code  is returned if the specified `locator_id` does not agree with the `locator_id` in the existing Schematics
-	// workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400`code  is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// >
 	// For more information, see [Creating workspaces and importing your Terraform
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
@@ -5904,14 +6696,14 @@ type UpdateConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	Definition ProjectConfigDefinitionBlockPatchIntf `json:"definition" validate:"required"`
+	Definition ProjectConfigDefinitionPatchIntf `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewUpdateConfigOptions : Instantiate UpdateConfigOptions
-func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string, definition ProjectConfigDefinitionBlockPatchIntf) *UpdateConfigOptions {
+func (*ProjectV1) NewUpdateConfigOptions(projectID string, id string, definition ProjectConfigDefinitionPatchIntf) *UpdateConfigOptions {
 	return &UpdateConfigOptions{
 		ProjectID: core.StringPtr(projectID),
 		ID: core.StringPtr(id),
@@ -5932,13 +6724,61 @@ func (_options *UpdateConfigOptions) SetID(id string) *UpdateConfigOptions {
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *UpdateConfigOptions) SetDefinition(definition ProjectConfigDefinitionBlockPatchIntf) *UpdateConfigOptions {
+func (_options *UpdateConfigOptions) SetDefinition(definition ProjectConfigDefinitionPatchIntf) *UpdateConfigOptions {
 	_options.Definition = definition
 	return _options
 }
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateConfigTemplateOptions : The UpdateConfigTemplate options.
+type UpdateConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The definition block for a stack configuration template.
+	Definition *StackTemplateDefinitionBlockPrototype `json:"definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateConfigTemplateOptions : Instantiate UpdateConfigTemplateOptions
+func (*ProjectV1) NewUpdateConfigTemplateOptions(projectID string, id string, definition *StackTemplateDefinitionBlockPrototype) *UpdateConfigTemplateOptions {
+	return &UpdateConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		Definition: definition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *UpdateConfigTemplateOptions) SetProjectID(projectID string) *UpdateConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateConfigTemplateOptions) SetID(id string) *UpdateConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetDefinition : Allow user to set Definition
+func (_options *UpdateConfigTemplateOptions) SetDefinition(definition *StackTemplateDefinitionBlockPrototype) *UpdateConfigTemplateOptions {
+	_options.Definition = definition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateConfigTemplateOptions) SetHeaders(param map[string]string) *UpdateConfigTemplateOptions {
 	options.Headers = param
 	return options
 }
@@ -6067,9 +6907,9 @@ func (options *ValidateConfigOptions) SetHeaders(param map[string]string) *Valid
 	return options
 }
 
-// ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch : The name and description of a project configuration.
-// This model "extends" ProjectConfigDefinitionBlockPatch
-type ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch struct {
+// ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch : The name and description of a project configuration.
+// This model "extends" ProjectConfigDefinitionPatch
+type ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch struct {
 	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
@@ -6079,8 +6919,8 @@ type ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch struct {
 	// Schematics workspace has one.
 	// > There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
 	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
 	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
@@ -6107,13 +6947,13 @@ type ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch struct {
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
-func (*ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch) isaProjectConfigDefinitionBlockPatch() bool {
+func (*ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch) isaProjectConfigDefinitionPatch() bool {
 	return true
 }
 
-// UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch unmarshals an instance of ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
+// UnmarshalProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch unmarshals an instance of ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
 	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
 	if err != nil {
 		return
@@ -6150,9 +6990,9 @@ func UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch
 	return
 }
 
-// ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch : The name and description of a project configuration.
-// This model "extends" ProjectConfigDefinitionBlockPatch
-type ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch struct {
+// ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch : The name and description of a project configuration.
+// This model "extends" ProjectConfigDefinitionPatch
+type ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch struct {
 	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 
@@ -6176,13 +7016,13 @@ type ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch st
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
-func (*ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch) isaProjectConfigDefinitionBlockPatch() bool {
+func (*ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch) isaProjectConfigDefinitionPatch() bool {
 	return true
 }
 
-// UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch unmarshals an instance of ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch)
+// UnmarshalProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch unmarshals an instance of ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch)
 	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
 	if err != nil {
 		return
@@ -6215,9 +7055,9 @@ func UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertie
 	return
 }
 
-// ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties : The description of a project configuration.
-// This model "extends" ProjectConfigDefinitionBlockPrototype
-type ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties struct {
+// ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype : The description of a project configuration.
+// This model "extends" ProjectConfigDefinitionPrototype
+type ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype struct {
 	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
 
@@ -6227,8 +7067,8 @@ type ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties struct {
 	// Schematics workspace has one.
 	// > There are 3 scenarios:
 	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
 	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
 	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
 	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
@@ -6239,7 +7079,7 @@ type ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties struct {
 	Description *string `json:"description,omitempty"`
 
 	// The configuration name. It's unique within the account across projects and regions.
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name" validate:"required"`
 
 	// The ID of the project environment.
 	EnvironmentID *string `json:"environment_id,omitempty"`
@@ -6255,13 +7095,22 @@ type ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties struct {
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
-func (*ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties) isaProjectConfigDefinitionBlockPrototype() bool {
+// NewProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype : Instantiate ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype (Generic Model Constructor)
+func (*ProjectV1) NewProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype(name string) (_model *ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype, err error) {
+	_model = &ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype{
+		Name: core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+func (*ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype) isaProjectConfigDefinitionPrototype() bool {
 	return true
 }
 
-// UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties unmarshals an instance of ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
+// UnmarshalProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype unmarshals an instance of ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
 	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
 	if err != nil {
 		return
@@ -6298,9 +7147,9 @@ func UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties(
 	return
 }
 
-// ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties : The description of a project configuration.
-// This model "extends" ProjectConfigDefinitionBlockPrototype
-type ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties struct {
+// ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype : The description of a project configuration.
+// This model "extends" ProjectConfigDefinitionPrototype
+type ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype struct {
 	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
 
@@ -6308,7 +7157,7 @@ type ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties str
 	Description *string `json:"description,omitempty"`
 
 	// The configuration name. It's unique within the account across projects and regions.
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name" validate:"required"`
 
 	// The ID of the project environment.
 	EnvironmentID *string `json:"environment_id,omitempty"`
@@ -6324,13 +7173,170 @@ type ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties str
 	Settings map[string]interface{} `json:"settings,omitempty"`
 }
 
-func (*ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties) isaProjectConfigDefinitionBlockPrototype() bool {
+// NewProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype : Instantiate ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype (Generic Model Constructor)
+func (*ProjectV1) NewProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype(name string) (_model *ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype, err error) {
+	_model = &ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype{
+		Name: core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+func (*ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype) isaProjectConfigDefinitionPrototype() bool {
 	return true
 }
 
-// UnmarshalProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties unmarshals an instance of ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties from the specified map of raw messages.
-func UnmarshalProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties)
+// UnmarshalProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype unmarshals an instance of ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype)
+	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse : The description of a project configuration.
+// This model "extends" ProjectConfigDefinitionResponse
+type ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse struct {
+	// The profile that is required for compliance.
+	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
+
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description" validate:"required"`
+
+	// The configuration name. It's unique within the account across projects and regions.
+	Name *string `json:"name" validate:"required"`
+
+	// The ID of the project environment.
+	EnvironmentID *string `json:"environment_id,omitempty"`
+
+	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The input variables that are used for configuration definition and environment.
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
+
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
+	Settings map[string]interface{} `json:"settings,omitempty"`
+}
+
+func (*ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse) isaProjectConfigDefinitionResponse() bool {
+	return true
+}
+
+// UnmarshalProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse unmarshals an instance of ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse)
+	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse : The description of a project configuration.
+// This model "extends" ProjectConfigDefinitionResponse
+type ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse struct {
+	// The CRNs of the resources that are associated with this configuration.
+	ResourceCrns []string `json:"resource_crns,omitempty"`
+
+	// A project configuration description.
+	Description *string `json:"description" validate:"required"`
+
+	// The configuration name. It's unique within the account across projects and regions.
+	Name *string `json:"name" validate:"required"`
+
+	// The ID of the project environment.
+	EnvironmentID *string `json:"environment_id,omitempty"`
+
+	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
+	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
+
+	// The input variables that are used for configuration definition and environment.
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
+
+	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
+	// specified when the configuration is initially created.
+	Settings map[string]interface{} `json:"settings,omitempty"`
+}
+
+func (*ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse) isaProjectConfigDefinitionResponse() bool {
+	return true
+}
+
+// UnmarshalProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse unmarshals an instance of ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse)
 	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
 	if err != nil {
 		return
@@ -6415,154 +7421,6 @@ func UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogsVersion204(m map[string]j
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigResponseDefinitionDAConfigDefinitionProperties : The description of a project configuration.
-// This model "extends" ProjectConfigResponseDefinition
-type ProjectConfigResponseDefinitionDAConfigDefinitionProperties struct {
-	// The profile that is required for compliance.
-	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
-
-	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
-	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
-	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
-	// Schematics workspace has one.
-	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a Schematics `worspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing Schematics workspace.
-	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
-	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
-	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
-	// template](/docs/schematics?topic=schematics-sch-create-wks).
-	LocatorID *string `json:"locator_id,omitempty"`
-
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The configuration name. It's unique within the account across projects and regions.
-	Name *string `json:"name,omitempty"`
-
-	// The ID of the project environment.
-	EnvironmentID *string `json:"environment_id,omitempty"`
-
-	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The input variables that are used for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
-
-	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
-	// specified when the configuration is initially created.
-	Settings map[string]interface{} `json:"settings,omitempty"`
-}
-
-func (*ProjectConfigResponseDefinitionDAConfigDefinitionProperties) isaProjectConfigResponseDefinition() bool {
-	return true
-}
-
-// UnmarshalProjectConfigResponseDefinitionDAConfigDefinitionProperties unmarshals an instance of ProjectConfigResponseDefinitionDAConfigDefinitionProperties from the specified map of raw messages.
-func UnmarshalProjectConfigResponseDefinitionDAConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigResponseDefinitionDAConfigDefinitionProperties)
-	err = core.UnmarshalModel(m, "compliance_profile", &obj.ComplianceProfile, UnmarshalProjectComplianceProfile)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ProjectConfigResponseDefinitionResourceConfigDefinitionProperties : The description of a project configuration.
-// This model "extends" ProjectConfigResponseDefinition
-type ProjectConfigResponseDefinitionResourceConfigDefinitionProperties struct {
-	// The CRNs of the resources that are associated with this configuration.
-	ResourceCrns []string `json:"resource_crns,omitempty"`
-
-	// A project configuration description.
-	Description *string `json:"description,omitempty"`
-
-	// The configuration name. It's unique within the account across projects and regions.
-	Name *string `json:"name,omitempty"`
-
-	// The ID of the project environment.
-	EnvironmentID *string `json:"environment_id,omitempty"`
-
-	// The authorization details. You can authorize by using a trusted profile or an API key in Secrets Manager.
-	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
-
-	// The input variables that are used for configuration definition and environment.
-	Inputs map[string]interface{} `json:"inputs,omitempty"`
-
-	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
-	// specified when the configuration is initially created.
-	Settings map[string]interface{} `json:"settings,omitempty"`
-}
-
-func (*ProjectConfigResponseDefinitionResourceConfigDefinitionProperties) isaProjectConfigResponseDefinition() bool {
-	return true
-}
-
-// UnmarshalProjectConfigResponseDefinitionResourceConfigDefinitionProperties unmarshals an instance of ProjectConfigResponseDefinitionResourceConfigDefinitionProperties from the specified map of raw messages.
-func UnmarshalProjectConfigResponseDefinitionResourceConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectConfigResponseDefinitionResourceConfigDefinitionProperties)
-	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "authorizations", &obj.Authorizations, UnmarshalProjectConfigAuth)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "settings", &obj.Settings)
 	if err != nil {
 		return
 	}
