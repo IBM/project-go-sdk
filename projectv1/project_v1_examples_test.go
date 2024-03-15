@@ -251,6 +251,31 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(project).ToNot(BeNil())
 		})
+		It(`ListProjectResources request example`, func() {
+			fmt.Println("\nListProjectResources() result:")
+			// begin-list_project_resources
+			listProjectResourcesOptions := &projectv1.ListProjectResourcesOptions{
+				ID: &projectIdLink,
+				Limit: core.Int64Ptr(int64(10)),
+			}
+
+			pager, err := projectService.NewProjectResourcesPager(listProjectResourcesOptions)
+			if err != nil {
+				panic(err)
+			}
+
+			var allResults []projectv1.ProjectResourceSummary
+			for pager.HasNext() {
+				nextPage, err := pager.GetNext()
+				if err != nil {
+					panic(err)
+				}
+				allResults = append(allResults, nextPage...)
+			}
+			b, _ := json.MarshalIndent(allResults, "", "  ")
+			fmt.Println(string(b))
+			// end-list_project_resources
+		})
 		It(`CreateProjectEnvironment request example`, func() {
 			fmt.Println("\nCreateProjectEnvironment() result:")
 			// begin-create_project_environment
@@ -616,136 +641,6 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigResourceCollection).ToNot(BeNil())
-		})
-		It(`CreateConfigTemplate request example`, func() {
-			fmt.Println("\nCreateConfigTemplate() result:")
-			// begin-create_config_template
-
-			stackInputVariableModel := &projectv1.StackInputVariable{
-				Name: core.StringPtr("region"),
-				Type: core.StringPtr("string"),
-				Required: core.BoolPtr(true),
-				Hidden: core.BoolPtr(false),
-			}
-
-			stackOutputVariableModel := &projectv1.StackOutputVariable{
-				Name: core.StringPtr("vpc_cluster_id"),
-				Type: core.StringPtr("string"),
-			}
-
-			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
-				Name: core.StringPtr("foundation-deployable-architecture"),
-				Inputs: []string{"region", "cluster_name"},
-			}
-
-			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
-				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
-				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
-				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
-			}
-
-			createConfigTemplateOptions := projectService.NewCreateConfigTemplateOptions(
-				projectIdLink,
-				configIdLink,
-				stackTemplateDefinitionBlockPrototypeModel,
-			)
-
-			stackTemplate, response, err := projectService.CreateConfigTemplate(createConfigTemplateOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(stackTemplate, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_config_template
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(stackTemplate).ToNot(BeNil())
-		})
-		It(`GetConfigTemplate request example`, func() {
-			fmt.Println("\nGetConfigTemplate() result:")
-			// begin-get_config_template
-
-			getConfigTemplateOptions := projectService.NewGetConfigTemplateOptions(
-				projectIdLink,
-				configIdLink,
-			)
-
-			stackTemplate, response, err := projectService.GetConfigTemplate(getConfigTemplateOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(stackTemplate, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_config_template
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(stackTemplate).ToNot(BeNil())
-		})
-		It(`UpdateConfigTemplate request example`, func() {
-			fmt.Println("\nUpdateConfigTemplate() result:")
-			// begin-update_config_template
-
-			stackInputVariableModel := &projectv1.StackInputVariable{
-				Name: core.StringPtr("region"),
-				Type: core.StringPtr("string"),
-				Required: core.BoolPtr(true),
-				Hidden: core.BoolPtr(false),
-			}
-
-			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
-				Name: core.StringPtr("foundation-deployable-architecture"),
-				Inputs: []string{"cluster_name"},
-			}
-
-			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
-				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
-				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
-			}
-
-			updateConfigTemplateOptions := projectService.NewUpdateConfigTemplateOptions(
-				projectIdLink,
-				configIdLink,
-				stackTemplateDefinitionBlockPrototypeModel,
-			)
-
-			stackTemplate, response, err := projectService.UpdateConfigTemplate(updateConfigTemplateOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(stackTemplate, "", "  ")
-			fmt.Println(string(b))
-
-			// end-update_config_template
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(stackTemplate).ToNot(BeNil())
-		})
-		It(`PublishConfigTemplate request example`, func() {
-			fmt.Println("\nPublishConfigTemplate() result:")
-			// begin-publish_config_template
-
-			publishConfigTemplateOptions := projectService.NewPublishConfigTemplateOptions(
-				projectIdLink,
-				configIdLink,
-			)
-
-			stackTemplate, response, err := projectService.PublishConfigTemplate(publishConfigTemplateOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(stackTemplate, "", "  ")
-			fmt.Println(string(b))
-
-			// end-publish_config_template
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(stackTemplate).ToNot(BeNil())
 		})
 		It(`ListConfigVersions request example`, func() {
 			fmt.Println("\nListConfigVersions() result:")

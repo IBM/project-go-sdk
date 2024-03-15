@@ -272,8 +272,8 @@ func (project *ProjectV1) ListProjectsWithContext(ctx context.Context, listProje
 	}
 	builder.AddHeader("Accept", "application/json")
 
-	if listProjectsOptions.Start != nil {
-		builder.AddQuery("start", fmt.Sprint(*listProjectsOptions.Start))
+	if listProjectsOptions.Token != nil {
+		builder.AddQuery("token", fmt.Sprint(*listProjectsOptions.Token))
 	}
 	if listProjectsOptions.Limit != nil {
 		builder.AddQuery("limit", fmt.Sprint(*listProjectsOptions.Limit))
@@ -490,6 +490,73 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 	return
 }
 
+// ListProjectResources : List all project resources
+// List resources that are added to a project.
+func (project *ProjectV1) ListProjectResources(listProjectResourcesOptions *ListProjectResourcesOptions) (result *ProjectResourceCollection, response *core.DetailedResponse, err error) {
+	return project.ListProjectResourcesWithContext(context.Background(), listProjectResourcesOptions)
+}
+
+// ListProjectResourcesWithContext is an alternate form of the ListProjectResources method which supports a Context parameter
+func (project *ProjectV1) ListProjectResourcesWithContext(ctx context.Context, listProjectResourcesOptions *ListProjectResourcesOptions) (result *ProjectResourceCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(listProjectResourcesOptions, "listProjectResourcesOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(listProjectResourcesOptions, "listProjectResourcesOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *listProjectResourcesOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{id}/resources`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range listProjectResourcesOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListProjectResources")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	if listProjectResourcesOptions.Start != nil {
+		builder.AddQuery("start", fmt.Sprint(*listProjectResourcesOptions.Start))
+	}
+	if listProjectResourcesOptions.Limit != nil {
+		builder.AddQuery("limit", fmt.Sprint(*listProjectResourcesOptions.Limit))
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalProjectResourceCollection)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // CreateProjectEnvironment : Create an environment
 // Create an environment to group related configurations together and share values across them for easier deployment.
 // For more information, see [Creating an environment](/docs/secure-enterprise?topic=secure-enterprise-create-env).
@@ -601,8 +668,8 @@ func (project *ProjectV1) ListProjectEnvironmentsWithContext(ctx context.Context
 	}
 	builder.AddHeader("Accept", "application/json")
 
-	if listProjectEnvironmentsOptions.Start != nil {
-		builder.AddQuery("start", fmt.Sprint(*listProjectEnvironmentsOptions.Start))
+	if listProjectEnvironmentsOptions.Token != nil {
+		builder.AddQuery("token", fmt.Sprint(*listProjectEnvironmentsOptions.Token))
 	}
 	if listProjectEnvironmentsOptions.Limit != nil {
 		builder.AddQuery("limit", fmt.Sprint(*listProjectEnvironmentsOptions.Limit))
@@ -934,8 +1001,8 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 	}
 	builder.AddHeader("Accept", "application/json")
 
-	if listConfigsOptions.Start != nil {
-		builder.AddQuery("start", fmt.Sprint(*listConfigsOptions.Start))
+	if listConfigsOptions.Token != nil {
+		builder.AddQuery("token", fmt.Sprint(*listConfigsOptions.Token))
 	}
 	if listConfigsOptions.Limit != nil {
 		builder.AddQuery("limit", fmt.Sprint(*listConfigsOptions.Limit))
@@ -1607,270 +1674,6 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 	return
 }
 
-// CreateConfigTemplate : Add a template to the configuration
-// Add a template to the configuration of type stack.
-func (project *ProjectV1) CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	return project.CreateConfigTemplateWithContext(context.Background(), createConfigTemplateOptions)
-}
-
-// CreateConfigTemplateWithContext is an alternate form of the CreateConfigTemplate method which supports a Context parameter
-func (project *ProjectV1) CreateConfigTemplateWithContext(ctx context.Context, createConfigTemplateOptions *CreateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createConfigTemplateOptions, "createConfigTemplateOptions cannot be nil")
-	if err != nil {
-		return
-	}
-	err = core.ValidateStruct(createConfigTemplateOptions, "createConfigTemplateOptions")
-	if err != nil {
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"project_id": *createConfigTemplateOptions.ProjectID,
-		"id": *createConfigTemplateOptions.ID,
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
-	if err != nil {
-		return
-	}
-
-	for headerName, headerValue := range createConfigTemplateOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateConfigTemplate")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if createConfigTemplateOptions.Definition != nil {
-		body["definition"] = createConfigTemplateOptions.Definition
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = project.Service.Request(request, &rawResponse)
-	if err != nil {
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
-		if err != nil {
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// GetConfigTemplate : Get a configuration template
-// Retrieve the template that is associated to the configuration.
-func (project *ProjectV1) GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	return project.GetConfigTemplateWithContext(context.Background(), getConfigTemplateOptions)
-}
-
-// GetConfigTemplateWithContext is an alternate form of the GetConfigTemplate method which supports a Context parameter
-func (project *ProjectV1) GetConfigTemplateWithContext(ctx context.Context, getConfigTemplateOptions *GetConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getConfigTemplateOptions, "getConfigTemplateOptions cannot be nil")
-	if err != nil {
-		return
-	}
-	err = core.ValidateStruct(getConfigTemplateOptions, "getConfigTemplateOptions")
-	if err != nil {
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"project_id": *getConfigTemplateOptions.ProjectID,
-		"id": *getConfigTemplateOptions.ID,
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
-	if err != nil {
-		return
-	}
-
-	for headerName, headerValue := range getConfigTemplateOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetConfigTemplate")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = project.Service.Request(request, &rawResponse)
-	if err != nil {
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
-		if err != nil {
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// UpdateConfigTemplate : Update a configuration template
-// Update the template that is associated to the configuration.
-func (project *ProjectV1) UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	return project.UpdateConfigTemplateWithContext(context.Background(), updateConfigTemplateOptions)
-}
-
-// UpdateConfigTemplateWithContext is an alternate form of the UpdateConfigTemplate method which supports a Context parameter
-func (project *ProjectV1) UpdateConfigTemplateWithContext(ctx context.Context, updateConfigTemplateOptions *UpdateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(updateConfigTemplateOptions, "updateConfigTemplateOptions cannot be nil")
-	if err != nil {
-		return
-	}
-	err = core.ValidateStruct(updateConfigTemplateOptions, "updateConfigTemplateOptions")
-	if err != nil {
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"project_id": *updateConfigTemplateOptions.ProjectID,
-		"id": *updateConfigTemplateOptions.ID,
-	}
-
-	builder := core.NewRequestBuilder(core.PATCH)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
-	if err != nil {
-		return
-	}
-
-	for headerName, headerValue := range updateConfigTemplateOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateConfigTemplate")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if updateConfigTemplateOptions.Definition != nil {
-		body["definition"] = updateConfigTemplateOptions.Definition
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = project.Service.Request(request, &rawResponse)
-	if err != nil {
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
-		if err != nil {
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// PublishConfigTemplate : Publish a configuration template
-// Publish a configuration template to the private catalog.
-func (project *ProjectV1) PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	return project.PublishConfigTemplateWithContext(context.Background(), publishConfigTemplateOptions)
-}
-
-// PublishConfigTemplateWithContext is an alternate form of the PublishConfigTemplate method which supports a Context parameter
-func (project *ProjectV1) PublishConfigTemplateWithContext(ctx context.Context, publishConfigTemplateOptions *PublishConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(publishConfigTemplateOptions, "publishConfigTemplateOptions cannot be nil")
-	if err != nil {
-		return
-	}
-	err = core.ValidateStruct(publishConfigTemplateOptions, "publishConfigTemplateOptions")
-	if err != nil {
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"project_id": *publishConfigTemplateOptions.ProjectID,
-		"id": *publishConfigTemplateOptions.ID,
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = project.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template/publish`, pathParamsMap)
-	if err != nil {
-		return
-	}
-
-	for headerName, headerValue := range publishConfigTemplateOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "PublishConfigTemplate")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = project.Service.Request(request, &rawResponse)
-	if err != nil {
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
-		if err != nil {
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
 // ListConfigVersions : Get a list of project configuration versions
 // Retrieve a list of previous and current versions of a project configuration in a specific project.
 func (project *ProjectV1) ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions) (result *ProjectConfigVersionSummaryCollection, response *core.DetailedResponse, err error) {
@@ -2062,7 +1865,7 @@ type ActionJobApplyMessagesSummary struct {
 	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 
 	// The collection of success messages. This property is reported only if Schematics triggered a Terraform apply job.
-	SucessMessage []TerraformLogAnalyzerSuccessMessage `json:"sucess_message,omitempty"`
+	SuccessMessages []TerraformLogAnalyzerSuccessMessage `json:"success_messages,omitempty"`
 }
 
 // UnmarshalActionJobApplyMessagesSummary unmarshals an instance of ActionJobApplyMessagesSummary from the specified map of raw messages.
@@ -2072,7 +1875,7 @@ func UnmarshalActionJobApplyMessagesSummary(m map[string]json.RawMessage, result
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalModel(m, "sucess_message", &obj.SucessMessage, UnmarshalTerraformLogAnalyzerSuccessMessage)
+	err = core.UnmarshalModel(m, "success_messages", &obj.SuccessMessages, UnmarshalTerraformLogAnalyzerSuccessMessage)
 	if err != nil {
 		return
 	}
@@ -2247,13 +2050,13 @@ type ActionJobPlanMessagesSummary struct {
 	ErrorMessages []TerraformLogAnalyzerErrorMessage `json:"error_messages,omitempty"`
 
 	// The collection of success messages. This property is reported only if Schematics triggered a Terraform plan job.
-	SucessMessage []string `json:"sucess_message,omitempty"`
+	SuccessMessages []string `json:"success_messages,omitempty"`
 
 	// The collection of update messages. This property is reported only if Schematics triggered a Terraform plan job.
-	UpdateMessage []string `json:"update_message,omitempty"`
+	UpdateMessages []string `json:"update_messages,omitempty"`
 
 	// The collection of destroy messages. This property is reported only if Schematics triggered a Terraform plan job.
-	DestroyMessage []string `json:"destroy_message,omitempty"`
+	DestroyMessages []string `json:"destroy_messages,omitempty"`
 }
 
 // UnmarshalActionJobPlanMessagesSummary unmarshals an instance of ActionJobPlanMessagesSummary from the specified map of raw messages.
@@ -2263,15 +2066,15 @@ func UnmarshalActionJobPlanMessagesSummary(m map[string]json.RawMessage, result 
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "sucess_message", &obj.SucessMessage)
+	err = core.UnmarshalPrimitive(m, "success_messages", &obj.SuccessMessages)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "update_message", &obj.UpdateMessage)
+	err = core.UnmarshalPrimitive(m, "update_messages", &obj.UpdateMessages)
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "destroy_message", &obj.DestroyMessage)
+	err = core.UnmarshalPrimitive(m, "destroy_messages", &obj.DestroyMessages)
 	if err != nil {
 		return
 	}
@@ -2353,6 +2156,9 @@ func UnmarshalActionJobPlanSummary(m map[string]json.RawMessage, result interfac
 
 // ActionJobSummary : The summaries of jobs that were performed on the configuration.
 type ActionJobSummary struct {
+	// The version of the job summary.
+	Version *string `json:"version" validate:"required"`
+
 	// The summary of the plan jobs on the configuration.
 	PlanSummary *ActionJobPlanSummary `json:"plan_summary" validate:"required"`
 
@@ -2378,6 +2184,10 @@ type ActionJobSummary struct {
 // UnmarshalActionJobSummary unmarshals an instance of ActionJobSummary from the specified map of raw messages.
 func UnmarshalActionJobSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ActionJobSummary)
+	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
+	if err != nil {
+		return
+	}
 	err = core.UnmarshalModel(m, "plan_summary", &obj.PlanSummary, UnmarshalActionJobPlanSummary)
 	if err != nil {
 		return
@@ -2520,23 +2330,6 @@ func UnmarshalCodeRiskAnalyzerLogsSummary(m map[string]json.RawMessage, result i
 	return
 }
 
-// ConfigDefinitionReference : The definition of the config reference.
-type ConfigDefinitionReference struct {
-	// The name of the configuration.
-	Name *string `json:"name" validate:"required"`
-}
-
-// UnmarshalConfigDefinitionReference unmarshals an instance of ConfigDefinitionReference from the specified map of raw messages.
-func UnmarshalConfigDefinitionReference(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ConfigDefinitionReference)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // CreateConfigOptions : The CreateConfig options.
 type CreateConfigOptions struct {
 	// The unique project ID.
@@ -2592,54 +2385,6 @@ func (_options *CreateConfigOptions) SetSchematics(schematics *SchematicsWorkspa
 
 // SetHeaders : Allow user to set Headers
 func (options *CreateConfigOptions) SetHeaders(param map[string]string) *CreateConfigOptions {
-	options.Headers = param
-	return options
-}
-
-// CreateConfigTemplateOptions : The CreateConfigTemplate options.
-type CreateConfigTemplateOptions struct {
-	// The unique project ID.
-	ProjectID *string `json:"project_id" validate:"required,ne="`
-
-	// The unique configuration ID.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// The definition block for a stack configuration template.
-	Definition *StackTemplateDefinitionBlockPrototype `json:"definition" validate:"required"`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewCreateConfigTemplateOptions : Instantiate CreateConfigTemplateOptions
-func (*ProjectV1) NewCreateConfigTemplateOptions(projectID string, id string, definition *StackTemplateDefinitionBlockPrototype) *CreateConfigTemplateOptions {
-	return &CreateConfigTemplateOptions{
-		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
-		Definition: definition,
-	}
-}
-
-// SetProjectID : Allow user to set ProjectID
-func (_options *CreateConfigTemplateOptions) SetProjectID(projectID string) *CreateConfigTemplateOptions {
-	_options.ProjectID = core.StringPtr(projectID)
-	return _options
-}
-
-// SetID : Allow user to set ID
-func (_options *CreateConfigTemplateOptions) SetID(id string) *CreateConfigTemplateOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetDefinition : Allow user to set Definition
-func (_options *CreateConfigTemplateOptions) SetDefinition(definition *StackTemplateDefinitionBlockPrototype) *CreateConfigTemplateOptions {
-	_options.Definition = definition
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *CreateConfigTemplateOptions) SetHeaders(param map[string]string) *CreateConfigTemplateOptions {
 	options.Headers = param
 	return options
 }
@@ -3079,15 +2824,15 @@ func UnmarshalEnvironmentCollection(m map[string]json.RawMessage, result interfa
 }
 
 // Retrieve the value to be passed to a request to access the next page of results
-func (resp *EnvironmentCollection) GetNextStart() (*string, error) {
+func (resp *EnvironmentCollection) GetNextToken() (*string, error) {
 	if core.IsNil(resp.Next) {
 		return nil, nil
 	}
-	start, err := core.GetQueryParam(resp.Next.Href, "start")
-	if err != nil || start == nil {
+	token, err := core.GetQueryParam(resp.Next.Href, "token")
+	if err != nil || token == nil {
 		return nil, err
 	}
-	return start, nil
+	return token, nil
 }
 
 // EnvironmentDefinitionPropertiesPatch : The environment definition that is used for updates.
@@ -3364,44 +3109,6 @@ func (options *GetConfigOptions) SetHeaders(param map[string]string) *GetConfigO
 	return options
 }
 
-// GetConfigTemplateOptions : The GetConfigTemplate options.
-type GetConfigTemplateOptions struct {
-	// The unique project ID.
-	ProjectID *string `json:"project_id" validate:"required,ne="`
-
-	// The unique configuration ID.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewGetConfigTemplateOptions : Instantiate GetConfigTemplateOptions
-func (*ProjectV1) NewGetConfigTemplateOptions(projectID string, id string) *GetConfigTemplateOptions {
-	return &GetConfigTemplateOptions{
-		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
-	}
-}
-
-// SetProjectID : Allow user to set ProjectID
-func (_options *GetConfigTemplateOptions) SetProjectID(projectID string) *GetConfigTemplateOptions {
-	_options.ProjectID = core.StringPtr(projectID)
-	return _options
-}
-
-// SetID : Allow user to set ID
-func (_options *GetConfigTemplateOptions) SetID(id string) *GetConfigTemplateOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *GetConfigTemplateOptions) SetHeaders(param map[string]string) *GetConfigTemplateOptions {
-	options.Headers = param
-	return options
-}
-
 // GetConfigVersionOptions : The GetConfigVersion options.
 type GetConfigVersionOptions struct {
 	// The unique project ID.
@@ -3644,9 +3351,8 @@ type LastValidatedActionWithSummary struct {
 	// This property exists only after the first configuration validation.
 	CostEstimate *ProjectConfigMetadataCostEstimate `json:"cost_estimate,omitempty"`
 
-	// The Code Risk Analyzer logs from the compliance scan that is run for this validation. This property is only
-	// populated after the compliance scan step is run for the validation. Note: `cra` is the abbreviated form of Code Risk
-	// Analyzer.
+	// The Code Risk Analyzer logs of the configuration. This property is populated only after the validation step when the
+	// Code Risk Analyzer is run. Note: `cra` is the abbreviated form of Code Risk Analyzer.
 	CraLogs ProjectConfigMetadataCodeRiskAnalyzerLogsIntf `json:"cra_logs,omitempty"`
 }
 
@@ -3773,9 +3479,9 @@ type ListConfigsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The last entry that is returned on the page. The server uses this parameter to determine the first entry that is
-	// returned on the next page. If this parameter is not specified, the logical first page is returned.
-	Start *string `json:"start,omitempty"`
+	// The server uses this parameter to determine the first entry that is returned on the next page. If this parameter is
+	// not specified, the logical first page is returned.
+	Token *string `json:"token,omitempty"`
 
 	// The maximum number of resources to return. The number of resources that are returned is the same, except for the
 	// last page.
@@ -3798,9 +3504,9 @@ func (_options *ListConfigsOptions) SetProjectID(projectID string) *ListConfigsO
 	return _options
 }
 
-// SetStart : Allow user to set Start
-func (_options *ListConfigsOptions) SetStart(start string) *ListConfigsOptions {
-	_options.Start = core.StringPtr(start)
+// SetToken : Allow user to set Token
+func (_options *ListConfigsOptions) SetToken(token string) *ListConfigsOptions {
+	_options.Token = core.StringPtr(token)
 	return _options
 }
 
@@ -3821,9 +3527,9 @@ type ListProjectEnvironmentsOptions struct {
 	// The unique project ID.
 	ProjectID *string `json:"project_id" validate:"required,ne="`
 
-	// The last entry that is returned on the page. The server uses this parameter to determine the first entry that is
-	// returned on the next page. If this parameter is not specified, the logical first page is returned.
-	Start *string `json:"start,omitempty"`
+	// The server uses this parameter to determine the first entry that is returned on the next page. If this parameter is
+	// not specified, the logical first page is returned.
+	Token *string `json:"token,omitempty"`
 
 	// The maximum number of resources to return. The number of resources that are returned is the same, except for the
 	// last page.
@@ -3846,9 +3552,9 @@ func (_options *ListProjectEnvironmentsOptions) SetProjectID(projectID string) *
 	return _options
 }
 
-// SetStart : Allow user to set Start
-func (_options *ListProjectEnvironmentsOptions) SetStart(start string) *ListProjectEnvironmentsOptions {
-	_options.Start = core.StringPtr(start)
+// SetToken : Allow user to set Token
+func (_options *ListProjectEnvironmentsOptions) SetToken(token string) *ListProjectEnvironmentsOptions {
+	_options.Token = core.StringPtr(token)
 	return _options
 }
 
@@ -3864,11 +3570,59 @@ func (options *ListProjectEnvironmentsOptions) SetHeaders(param map[string]strin
 	return options
 }
 
-// ListProjectsOptions : The ListProjects options.
-type ListProjectsOptions struct {
+// ListProjectResourcesOptions : The ListProjectResources options.
+type ListProjectResourcesOptions struct {
+	// The unique project ID.
+	ID *string `json:"id" validate:"required,ne="`
+
 	// The last entry that is returned on the page. The server uses this parameter to determine the first entry that is
 	// returned on the next page. If this parameter is not specified, the logical first page is returned.
 	Start *string `json:"start,omitempty"`
+
+	// The maximum number of resources to return. The number of resources that are returned is the same, except for the
+	// last page.
+	Limit *int64 `json:"limit,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewListProjectResourcesOptions : Instantiate ListProjectResourcesOptions
+func (*ProjectV1) NewListProjectResourcesOptions(id string) *ListProjectResourcesOptions {
+	return &ListProjectResourcesOptions{
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *ListProjectResourcesOptions) SetID(id string) *ListProjectResourcesOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetStart : Allow user to set Start
+func (_options *ListProjectResourcesOptions) SetStart(start string) *ListProjectResourcesOptions {
+	_options.Start = core.StringPtr(start)
+	return _options
+}
+
+// SetLimit : Allow user to set Limit
+func (_options *ListProjectResourcesOptions) SetLimit(limit int64) *ListProjectResourcesOptions {
+	_options.Limit = core.Int64Ptr(limit)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ListProjectResourcesOptions) SetHeaders(param map[string]string) *ListProjectResourcesOptions {
+	options.Headers = param
+	return options
+}
+
+// ListProjectsOptions : The ListProjects options.
+type ListProjectsOptions struct {
+	// The server uses this parameter to determine the first entry that is returned on the next page. If this parameter is
+	// not specified, the logical first page is returned.
+	Token *string `json:"token,omitempty"`
 
 	// The maximum number of resources to return. The number of resources that are returned is the same, except for the
 	// last page.
@@ -3883,9 +3637,9 @@ func (*ProjectV1) NewListProjectsOptions() *ListProjectsOptions {
 	return &ListProjectsOptions{}
 }
 
-// SetStart : Allow user to set Start
-func (_options *ListProjectsOptions) SetStart(start string) *ListProjectsOptions {
-	_options.Start = core.StringPtr(start)
+// SetToken : Allow user to set Token
+func (_options *ListProjectsOptions) SetToken(token string) *ListProjectsOptions {
+	_options.Token = core.StringPtr(token)
 	return _options
 }
 
@@ -4256,15 +4010,15 @@ func UnmarshalProjectCollection(m map[string]json.RawMessage, result interface{}
 }
 
 // Retrieve the value to be passed to a request to access the next page of results
-func (resp *ProjectCollection) GetNextStart() (*string, error) {
+func (resp *ProjectCollection) GetNextToken() (*string, error) {
 	if core.IsNil(resp.Next) {
 		return nil, nil
 	}
-	start, err := core.GetQueryParam(resp.Next.Href, "start")
-	if err != nil || start == nil {
+	token, err := core.GetQueryParam(resp.Next.Href, "token")
+	if err != nil || token == nil {
 		return nil, err
 	}
-	return start, nil
+	return token, nil
 }
 
 // ProjectComplianceProfile : The profile that is required for compliance.
@@ -4577,15 +4331,15 @@ func UnmarshalProjectConfigCollection(m map[string]json.RawMessage, result inter
 }
 
 // Retrieve the value to be passed to a request to access the next page of results
-func (resp *ProjectConfigCollection) GetNextStart() (*string, error) {
+func (resp *ProjectConfigCollection) GetNextToken() (*string, error) {
 	if core.IsNil(resp.Next) {
 		return nil, nil
 	}
-	start, err := core.GetQueryParam(resp.Next.Href, "start")
-	if err != nil || start == nil {
+	token, err := core.GetQueryParam(resp.Next.Href, "token")
+	if err != nil || token == nil {
 		return nil, err
 	}
-	return start, nil
+	return token, nil
 }
 
 // ProjectConfigDefinitionPatch : ProjectConfigDefinitionPatch struct
@@ -4891,7 +4645,7 @@ func UnmarshalProjectConfigDelete(m map[string]json.RawMessage, result interface
 }
 
 // ProjectConfigMetadataCodeRiskAnalyzerLogs : The Code Risk Analyzer logs of the configuration. This property is populated only after the validation step when the
-// Code Risk Analyzer is run.
+// Code Risk Analyzer is run. Note: `cra` is the abbreviated form of Code Risk Analyzer.
 // Models which "extend" this model:
 // - ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204
 type ProjectConfigMetadataCodeRiskAnalyzerLogs struct {
@@ -5646,7 +5400,8 @@ type ProjectDefinitionProperties struct {
 	// without providing a description.
 	Description *string `json:"description" validate:"required"`
 
-	// A boolean flag to enable project monitoring.
+	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
+	// configurations to your deployed resources to detect any difference.
 	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
 }
 
@@ -5789,7 +5544,8 @@ type ProjectPatchDefinitionBlock struct {
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
 
-	// A boolean flag to enable project monitoring.
+	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
+	// configurations to your deployed resources to detect any difference.
 	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
 }
 
@@ -5828,7 +5584,8 @@ type ProjectPrototypeDefinition struct {
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
 
-	// A boolean flag to enable project monitoring.
+	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
+	// configurations to your deployed resources to detect any difference.
 	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
 }
 
@@ -5895,6 +5652,136 @@ func UnmarshalProjectReference(m map[string]json.RawMessage, result interface{})
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "crn", &obj.Crn)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectResourceCollection : The project resource list.
+type ProjectResourceCollection struct {
+	// The collection list operation response schema that defines the array property with the name `resources`.
+	Resources []ProjectResourceSummary `json:"resources" validate:"required"`
+
+	// A pagination token.
+	Token *string `json:"token,omitempty"`
+
+	// A pagination link.
+	First *PaginationLink `json:"first,omitempty"`
+
+	// A pagination link.
+	Next *PaginationLink `json:"next,omitempty"`
+}
+
+// UnmarshalProjectResourceCollection unmarshals an instance of ProjectResourceCollection from the specified map of raw messages.
+func UnmarshalProjectResourceCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectResourceCollection)
+	err = core.UnmarshalModel(m, "resources", &obj.Resources, UnmarshalProjectResourceSummary)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "token", &obj.Token)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "first", &obj.First, UnmarshalPaginationLink)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "next", &obj.Next, UnmarshalPaginationLink)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// Retrieve the value to be passed to a request to access the next page of results
+func (resp *ProjectResourceCollection) GetNextStart() (*string, error) {
+	if core.IsNil(resp.Next) {
+		return nil, nil
+	}
+	start, err := core.GetQueryParam(resp.Next.Href, "start")
+	if err != nil || start == nil {
+		return nil, err
+	}
+	return start, nil
+}
+
+// ProjectResourceSummary : ProjectResourceSummary struct
+type ProjectResourceSummary struct {
+	// An IBM Cloud resource name that uniquely identifies a resource.
+	ResourceCrn *string `json:"resource_crn,omitempty"`
+
+	// The name of the resource.
+	ResourceName *string `json:"resource_name,omitempty"`
+
+	// The ID of the account owning of the resource.
+	AccountID *string `json:"account_id,omitempty"`
+
+	// The location of the resource.
+	Location *string `json:"location,omitempty"`
+
+	// The resource type.
+	ResourceType *string `json:"resource_type,omitempty"`
+
+	// The status of the resource.
+	ResourceStatus *string `json:"resource_status,omitempty"`
+
+	// The ID of the resource's resource group.
+	ResourceGroupID *string `json:"resource_group_id,omitempty"`
+
+	// The collection of tags.
+	Tags []string `json:"tags,omitempty"`
+
+	// The collection of service tags.
+	ServiceTags []string `json:"service_tags,omitempty"`
+}
+
+// Constants associated with the ProjectResourceSummary.ResourceType property.
+// The resource type.
+const (
+	ProjectResourceSummary_ResourceType_ProjectDeployed = "project_deployed"
+	ProjectResourceSummary_ResourceType_UserDeployed = "user_deployed"
+)
+
+// UnmarshalProjectResourceSummary unmarshals an instance of ProjectResourceSummary from the specified map of raw messages.
+func UnmarshalProjectResourceSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectResourceSummary)
+	err = core.UnmarshalPrimitive(m, "resource_crn", &obj.ResourceCrn)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_name", &obj.ResourceName)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "account_id", &obj.AccountID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "location", &obj.Location)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_type", &obj.ResourceType)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_status", &obj.ResourceStatus)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_group_id", &obj.ResourceGroupID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tags", &obj.Tags)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "service_tags", &obj.ServiceTags)
 	if err != nil {
 		return
 	}
@@ -5991,44 +5878,6 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
-}
-
-// PublishConfigTemplateOptions : The PublishConfigTemplate options.
-type PublishConfigTemplateOptions struct {
-	// The unique project ID.
-	ProjectID *string `json:"project_id" validate:"required,ne="`
-
-	// The unique configuration ID.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewPublishConfigTemplateOptions : Instantiate PublishConfigTemplateOptions
-func (*ProjectV1) NewPublishConfigTemplateOptions(projectID string, id string) *PublishConfigTemplateOptions {
-	return &PublishConfigTemplateOptions{
-		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
-	}
-}
-
-// SetProjectID : Allow user to set ProjectID
-func (_options *PublishConfigTemplateOptions) SetProjectID(projectID string) *PublishConfigTemplateOptions {
-	_options.ProjectID = core.StringPtr(projectID)
-	return _options
-}
-
-// SetID : Allow user to set ID
-func (_options *PublishConfigTemplateOptions) SetID(id string) *PublishConfigTemplateOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *PublishConfigTemplateOptions) SetHeaders(param map[string]string) *PublishConfigTemplateOptions {
-	options.Headers = param
-	return options
 }
 
 // SchematicsMetadata : A Schematics workspace that is associated to a project configuration, with scripts.
@@ -6149,348 +5998,6 @@ func UnmarshalScript(m map[string]json.RawMessage, result interface{}) (err erro
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "short_description", &obj.ShortDescription)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackInputVariable : The input variables for a stack configuration template.
-type StackInputVariable struct {
-	// The variable name.
-	Name *string `json:"name" validate:"required"`
-
-	// The variable type.
-	Type *string `json:"type" validate:"required"`
-
-	// The description of the variable.
-	Description *string `json:"description,omitempty"`
-
-	// This property can be any value - a string, number, boolean, array, or object.
-	Default map[string]interface{} `json:"default,omitempty"`
-
-	// A boolean value to denote if the property is required.
-	Required *bool `json:"required,omitempty"`
-
-	// A boolean value to denote whether the property is hidden, as in not exposed to the user.
-	Hidden *bool `json:"hidden,omitempty"`
-}
-
-// Constants associated with the StackInputVariable.Type property.
-// The variable type.
-const (
-	StackInputVariable_Type_Array = "array"
-	StackInputVariable_Type_Boolean = "boolean"
-	StackInputVariable_Type_Float = "float"
-	StackInputVariable_Type_Int = "int"
-	StackInputVariable_Type_Number = "number"
-	StackInputVariable_Type_Object = "object"
-	StackInputVariable_Type_Password = "password"
-	StackInputVariable_Type_String = "string"
-)
-
-// NewStackInputVariable : Instantiate StackInputVariable (Generic Model Constructor)
-func (*ProjectV1) NewStackInputVariable(name string, typeVar string) (_model *StackInputVariable, err error) {
-	_model = &StackInputVariable{
-		Name: core.StringPtr(name),
-		Type: core.StringPtr(typeVar),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	return
-}
-
-// UnmarshalStackInputVariable unmarshals an instance of StackInputVariable from the specified map of raw messages.
-func UnmarshalStackInputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackInputVariable)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "default", &obj.Default)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "required", &obj.Required)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "hidden", &obj.Hidden)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackOutputVariable : The output variables for a stack configuration template.
-type StackOutputVariable struct {
-	// The variable name.
-	Name *string `json:"name" validate:"required"`
-
-	// The variable type.
-	Type *string `json:"type" validate:"required"`
-}
-
-// Constants associated with the StackOutputVariable.Type property.
-// The variable type.
-const (
-	StackOutputVariable_Type_Array = "array"
-	StackOutputVariable_Type_Boolean = "boolean"
-	StackOutputVariable_Type_Float = "float"
-	StackOutputVariable_Type_Int = "int"
-	StackOutputVariable_Type_Number = "number"
-	StackOutputVariable_Type_Object = "object"
-	StackOutputVariable_Type_Password = "password"
-	StackOutputVariable_Type_String = "string"
-)
-
-// NewStackOutputVariable : Instantiate StackOutputVariable (Generic Model Constructor)
-func (*ProjectV1) NewStackOutputVariable(name string, typeVar string) (_model *StackOutputVariable, err error) {
-	_model = &StackOutputVariable{
-		Name: core.StringPtr(name),
-		Type: core.StringPtr(typeVar),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	return
-}
-
-// UnmarshalStackOutputVariable unmarshals an instance of StackOutputVariable from the specified map of raw messages.
-func UnmarshalStackOutputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackOutputVariable)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackTemplate : The input of a stack configuration template.
-type StackTemplate struct {
-	// The inputs associated with this stack definition.
-	Inputs []StackInputVariable `json:"inputs,omitempty"`
-
-	// The outputs associated with this stack definition.
-	Outputs []StackOutputVariable `json:"outputs,omitempty"`
-
-	// The outputs that are associated with this stack definition.
-	MemberInputs []StackTemplateMemberInput `json:"member_inputs,omitempty"`
-
-	// The ID of the template.
-	ID *string `json:"id" validate:"required"`
-
-	// The members associated with this stack definition.
-	Members []StackTemplateMember `json:"members" validate:"required"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
-	// format as specified by RFC 3339.
-	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
-
-	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
-	// format as specified by RFC 3339.
-	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
-
-	// The state for the stack template.
-	State *string `json:"state" validate:"required"`
-
-	// The configuration reference.
-	Configuration *StackTemplateMetadataConfiguration `json:"configuration" validate:"required"`
-
-	// A URL.
-	Href *string `json:"href" validate:"required"`
-}
-
-// Constants associated with the StackTemplate.State property.
-// The state for the stack template.
-const (
-	StackTemplate_State_Draft = "draft"
-	StackTemplate_State_Published = "published"
-)
-
-// UnmarshalStackTemplate unmarshals an instance of StackTemplate from the specified map of raw messages.
-func UnmarshalStackTemplate(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackTemplate)
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackInputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackOutputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "member_inputs", &obj.MemberInputs, UnmarshalStackTemplateMemberInput)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackTemplateMember)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "configuration", &obj.Configuration, UnmarshalStackTemplateMetadataConfiguration)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackTemplateDefinitionBlockPrototype : The definition block for a stack configuration template.
-type StackTemplateDefinitionBlockPrototype struct {
-	// The inputs associated with this stack definition.
-	Inputs []StackInputVariable `json:"inputs,omitempty"`
-
-	// The outputs associated with this stack definition.
-	Outputs []StackOutputVariable `json:"outputs,omitempty"`
-
-	// The outputs that are associated with this stack definition.
-	MemberInputs []StackTemplateMemberInput `json:"member_inputs,omitempty"`
-}
-
-// UnmarshalStackTemplateDefinitionBlockPrototype unmarshals an instance of StackTemplateDefinitionBlockPrototype from the specified map of raw messages.
-func UnmarshalStackTemplateDefinitionBlockPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackTemplateDefinitionBlockPrototype)
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackInputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackOutputVariable)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "member_inputs", &obj.MemberInputs, UnmarshalStackTemplateMemberInput)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackTemplateMember : The member metadata that is associated with this stack template.
-type StackTemplateMember struct {
-	// The name matching the alias in the stack definition.
-	Name *string `json:"name" validate:"required"`
-
-	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
-	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
-	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
-	// Schematics workspace has one.
-	// > There are 3 scenarios:
-	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
-	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
-	// existing schematics workspace.
-	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
-	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
-	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
-	// template](/docs/schematics?topic=schematics-sch-create-wks).
-	LocatorID *string `json:"locator_id" validate:"required"`
-}
-
-// UnmarshalStackTemplateMember unmarshals an instance of StackTemplateMember from the specified map of raw messages.
-func UnmarshalStackTemplateMember(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackTemplateMember)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackTemplateMemberInput : The member definition associated with this stack template.
-type StackTemplateMemberInput struct {
-	// The name matching the alias in the stack definition.
-	Name *string `json:"name" validate:"required"`
-
-	// The member inputs to expose in the stack template.
-	Inputs []string `json:"inputs" validate:"required"`
-}
-
-// NewStackTemplateMemberInput : Instantiate StackTemplateMemberInput (Generic Model Constructor)
-func (*ProjectV1) NewStackTemplateMemberInput(name string, inputs []string) (_model *StackTemplateMemberInput, err error) {
-	_model = &StackTemplateMemberInput{
-		Name: core.StringPtr(name),
-		Inputs: inputs,
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	return
-}
-
-// UnmarshalStackTemplateMemberInput unmarshals an instance of StackTemplateMemberInput from the specified map of raw messages.
-func UnmarshalStackTemplateMemberInput(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackTemplateMemberInput)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackTemplateMetadataConfiguration : The configuration reference.
-type StackTemplateMetadataConfiguration struct {
-	// The unique ID.
-	ID *string `json:"id" validate:"required"`
-
-	// A URL.
-	Href *string `json:"href" validate:"required"`
-
-	// The definition of the config reference.
-	Definition *ConfigDefinitionReference `json:"definition" validate:"required"`
-}
-
-// UnmarshalStackTemplateMetadataConfiguration unmarshals an instance of StackTemplateMetadataConfiguration from the specified map of raw messages.
-func UnmarshalStackTemplateMetadataConfiguration(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackTemplateMetadataConfiguration)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalConfigDefinitionReference)
 	if err != nil {
 		return
 	}
@@ -6731,54 +6238,6 @@ func (_options *UpdateConfigOptions) SetDefinition(definition ProjectConfigDefin
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateConfigOptions {
-	options.Headers = param
-	return options
-}
-
-// UpdateConfigTemplateOptions : The UpdateConfigTemplate options.
-type UpdateConfigTemplateOptions struct {
-	// The unique project ID.
-	ProjectID *string `json:"project_id" validate:"required,ne="`
-
-	// The unique configuration ID.
-	ID *string `json:"id" validate:"required,ne="`
-
-	// The definition block for a stack configuration template.
-	Definition *StackTemplateDefinitionBlockPrototype `json:"definition" validate:"required"`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// NewUpdateConfigTemplateOptions : Instantiate UpdateConfigTemplateOptions
-func (*ProjectV1) NewUpdateConfigTemplateOptions(projectID string, id string, definition *StackTemplateDefinitionBlockPrototype) *UpdateConfigTemplateOptions {
-	return &UpdateConfigTemplateOptions{
-		ProjectID: core.StringPtr(projectID),
-		ID: core.StringPtr(id),
-		Definition: definition,
-	}
-}
-
-// SetProjectID : Allow user to set ProjectID
-func (_options *UpdateConfigTemplateOptions) SetProjectID(projectID string) *UpdateConfigTemplateOptions {
-	_options.ProjectID = core.StringPtr(projectID)
-	return _options
-}
-
-// SetID : Allow user to set ID
-func (_options *UpdateConfigTemplateOptions) SetID(id string) *UpdateConfigTemplateOptions {
-	_options.ID = core.StringPtr(id)
-	return _options
-}
-
-// SetDefinition : Allow user to set Definition
-func (_options *UpdateConfigTemplateOptions) SetDefinition(definition *StackTemplateDefinitionBlockPrototype) *UpdateConfigTemplateOptions {
-	_options.Definition = definition
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *UpdateConfigTemplateOptions) SetHeaders(param map[string]string) *UpdateConfigTemplateOptions {
 	options.Headers = param
 	return options
 }
@@ -7442,8 +6901,8 @@ type ProjectsPager struct {
 
 // NewProjectsPager returns a new ProjectsPager instance.
 func (project *ProjectV1) NewProjectsPager(options *ListProjectsOptions) (pager *ProjectsPager, err error) {
-	if options.Start != nil && *options.Start != "" {
-		err = fmt.Errorf("the 'options.Start' field should not be set")
+	if options.Token != nil && *options.Token != "" {
+		err = fmt.Errorf("the 'options.Token' field should not be set")
 		return
 	}
 
@@ -7467,7 +6926,7 @@ func (pager *ProjectsPager) GetNextWithContext(ctx context.Context) (page []Proj
 		return nil, fmt.Errorf("no more results available")
 	}
 
-	pager.options.Start = pager.pageContext.next
+	pager.options.Token = pager.pageContext.next
 
 	result, _, err := pager.client.ListProjectsWithContext(ctx, pager.options)
 	if err != nil {
@@ -7476,13 +6935,13 @@ func (pager *ProjectsPager) GetNextWithContext(ctx context.Context) (page []Proj
 
 	var next *string
 	if result.Next != nil {
-		var start *string
-		start, err = core.GetQueryParam(result.Next.Href, "start")
+		var token *string
+		token, err = core.GetQueryParam(result.Next.Href, "token")
 		if err != nil {
-			err = fmt.Errorf("error retrieving 'start' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
+			err = fmt.Errorf("error retrieving 'token' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
 			return
 		}
-		next = start
+		next = token
 	}
 	pager.pageContext.next = next
 	pager.hasNext = (pager.pageContext.next != nil)
@@ -7516,6 +6975,93 @@ func (pager *ProjectsPager) GetAll() (allItems []ProjectSummary, err error) {
 }
 
 //
+// ProjectResourcesPager can be used to simplify the use of the "ListProjectResources" method.
+//
+type ProjectResourcesPager struct {
+	hasNext bool
+	options *ListProjectResourcesOptions
+	client  *ProjectV1
+	pageContext struct {
+		next *string
+	}
+}
+
+// NewProjectResourcesPager returns a new ProjectResourcesPager instance.
+func (project *ProjectV1) NewProjectResourcesPager(options *ListProjectResourcesOptions) (pager *ProjectResourcesPager, err error) {
+	if options.Start != nil && *options.Start != "" {
+		err = fmt.Errorf("the 'options.Start' field should not be set")
+		return
+	}
+
+	var optionsCopy ListProjectResourcesOptions = *options
+	pager = &ProjectResourcesPager{
+		hasNext: true,
+		options: &optionsCopy,
+		client:  project,
+	}
+	return
+}
+
+// HasNext returns true if there are potentially more results to be retrieved.
+func (pager *ProjectResourcesPager) HasNext() bool {
+	return pager.hasNext
+}
+
+// GetNextWithContext returns the next page of results using the specified Context.
+func (pager *ProjectResourcesPager) GetNextWithContext(ctx context.Context) (page []ProjectResourceSummary, err error) {
+	if !pager.HasNext() {
+		return nil, fmt.Errorf("no more results available")
+	}
+
+	pager.options.Start = pager.pageContext.next
+
+	result, _, err := pager.client.ListProjectResourcesWithContext(ctx, pager.options)
+	if err != nil {
+		return
+	}
+
+	var next *string
+	if result.Next != nil {
+		var start *string
+		start, err = core.GetQueryParam(result.Next.Href, "start")
+		if err != nil {
+			err = fmt.Errorf("error retrieving 'start' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
+			return
+		}
+		next = start
+	}
+	pager.pageContext.next = next
+	pager.hasNext = (pager.pageContext.next != nil)
+	page = result.Resources
+
+	return
+}
+
+// GetAllWithContext returns all results by invoking GetNextWithContext() repeatedly
+// until all pages of results have been retrieved.
+func (pager *ProjectResourcesPager) GetAllWithContext(ctx context.Context) (allItems []ProjectResourceSummary, err error) {
+	for pager.HasNext() {
+		var nextPage []ProjectResourceSummary
+		nextPage, err = pager.GetNextWithContext(ctx)
+		if err != nil {
+			return
+		}
+		allItems = append(allItems, nextPage...)
+	}
+	return
+}
+
+// GetNext invokes GetNextWithContext() using context.Background() as the Context parameter.
+func (pager *ProjectResourcesPager) GetNext() (page []ProjectResourceSummary, err error) {
+	return pager.GetNextWithContext(context.Background())
+}
+
+// GetAll invokes GetAllWithContext() using context.Background() as the Context parameter.
+func (pager *ProjectResourcesPager) GetAll() (allItems []ProjectResourceSummary, err error) {
+	return pager.GetAllWithContext(context.Background())
+}
+
+//
 // ProjectEnvironmentsPager can be used to simplify the use of the "ListProjectEnvironments" method.
 //
 type ProjectEnvironmentsPager struct {
@@ -7529,8 +7075,8 @@ type ProjectEnvironmentsPager struct {
 
 // NewProjectEnvironmentsPager returns a new ProjectEnvironmentsPager instance.
 func (project *ProjectV1) NewProjectEnvironmentsPager(options *ListProjectEnvironmentsOptions) (pager *ProjectEnvironmentsPager, err error) {
-	if options.Start != nil && *options.Start != "" {
-		err = fmt.Errorf("the 'options.Start' field should not be set")
+	if options.Token != nil && *options.Token != "" {
+		err = fmt.Errorf("the 'options.Token' field should not be set")
 		return
 	}
 
@@ -7554,7 +7100,7 @@ func (pager *ProjectEnvironmentsPager) GetNextWithContext(ctx context.Context) (
 		return nil, fmt.Errorf("no more results available")
 	}
 
-	pager.options.Start = pager.pageContext.next
+	pager.options.Token = pager.pageContext.next
 
 	result, _, err := pager.client.ListProjectEnvironmentsWithContext(ctx, pager.options)
 	if err != nil {
@@ -7563,13 +7109,13 @@ func (pager *ProjectEnvironmentsPager) GetNextWithContext(ctx context.Context) (
 
 	var next *string
 	if result.Next != nil {
-		var start *string
-		start, err = core.GetQueryParam(result.Next.Href, "start")
+		var token *string
+		token, err = core.GetQueryParam(result.Next.Href, "token")
 		if err != nil {
-			err = fmt.Errorf("error retrieving 'start' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
+			err = fmt.Errorf("error retrieving 'token' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
 			return
 		}
-		next = start
+		next = token
 	}
 	pager.pageContext.next = next
 	pager.hasNext = (pager.pageContext.next != nil)
@@ -7616,8 +7162,8 @@ type ConfigsPager struct {
 
 // NewConfigsPager returns a new ConfigsPager instance.
 func (project *ProjectV1) NewConfigsPager(options *ListConfigsOptions) (pager *ConfigsPager, err error) {
-	if options.Start != nil && *options.Start != "" {
-		err = fmt.Errorf("the 'options.Start' field should not be set")
+	if options.Token != nil && *options.Token != "" {
+		err = fmt.Errorf("the 'options.Token' field should not be set")
 		return
 	}
 
@@ -7641,7 +7187,7 @@ func (pager *ConfigsPager) GetNextWithContext(ctx context.Context) (page []Proje
 		return nil, fmt.Errorf("no more results available")
 	}
 
-	pager.options.Start = pager.pageContext.next
+	pager.options.Token = pager.pageContext.next
 
 	result, _, err := pager.client.ListConfigsWithContext(ctx, pager.options)
 	if err != nil {
@@ -7650,13 +7196,13 @@ func (pager *ConfigsPager) GetNextWithContext(ctx context.Context) (page []Proje
 
 	var next *string
 	if result.Next != nil {
-		var start *string
-		start, err = core.GetQueryParam(result.Next.Href, "start")
+		var token *string
+		token, err = core.GetQueryParam(result.Next.Href, "token")
 		if err != nil {
-			err = fmt.Errorf("error retrieving 'start' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
+			err = fmt.Errorf("error retrieving 'token' query parameter from URL '%s': %s", *result.Next.Href, err.Error())
 			return
 		}
-		next = start
+		next = token
 	}
 	pager.pageContext.next = next
 	pager.hasNext = (pager.pageContext.next != nil)

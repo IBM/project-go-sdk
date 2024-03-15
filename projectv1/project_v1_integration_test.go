@@ -227,11 +227,11 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`ListProjects(listProjectsOptions *ListProjectsOptions) with pagination`, func(){
 			listProjectsOptions := &projectv1.ListProjectsOptions{
-				Start: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			listProjectsOptions.Start = nil
+			listProjectsOptions.Token = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []projectv1.ProjectSummary
@@ -242,10 +242,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Expect(projectCollection).ToNot(BeNil())
 				allResults = append(allResults, projectCollection.Projects...)
 
-				listProjectsOptions.Start, err = projectCollection.GetNextStart()
+				listProjectsOptions.Token, err = projectCollection.GetNextToken()
 				Expect(err).To(BeNil())
 
-				if listProjectsOptions.Start == nil {
+				if listProjectsOptions.Token == nil {
 					break
 				}
 			}
@@ -323,6 +323,70 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`ListProjectResources - List all project resources`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ListProjectResources(listProjectResourcesOptions *ListProjectResourcesOptions) with pagination`, func(){
+			listProjectResourcesOptions := &projectv1.ListProjectResourcesOptions{
+				ID: &projectIdLink,
+				Start: core.StringPtr("testString"),
+				Limit: core.Int64Ptr(int64(10)),
+			}
+
+			listProjectResourcesOptions.Start = nil
+			listProjectResourcesOptions.Limit = core.Int64Ptr(1)
+
+			var allResults []projectv1.ProjectResourceSummary
+			for {
+				projectResourceCollection, response, err := projectService.ListProjectResources(listProjectResourcesOptions)
+				Expect(err).To(BeNil())
+				Expect(response.StatusCode).To(Equal(200))
+				Expect(projectResourceCollection).ToNot(BeNil())
+				allResults = append(allResults, projectResourceCollection.Resources...)
+
+				listProjectResourcesOptions.Start, err = projectResourceCollection.GetNextStart()
+				Expect(err).To(BeNil())
+
+				if listProjectResourcesOptions.Start == nil {
+					break
+				}
+			}
+			fmt.Fprintf(GinkgoWriter, "Retrieved a total of %d item(s) with pagination.\n", len(allResults))
+		})
+		It(`ListProjectResources(listProjectResourcesOptions *ListProjectResourcesOptions) using ProjectResourcesPager`, func(){
+			listProjectResourcesOptions := &projectv1.ListProjectResourcesOptions{
+				ID: &projectIdLink,
+				Limit: core.Int64Ptr(int64(10)),
+			}
+
+			// Test GetNext().
+			pager, err := projectService.NewProjectResourcesPager(listProjectResourcesOptions)
+			Expect(err).To(BeNil())
+			Expect(pager).ToNot(BeNil())
+
+			var allResults []projectv1.ProjectResourceSummary
+			for pager.HasNext() {
+				nextPage, err := pager.GetNext()
+				Expect(err).To(BeNil())
+				Expect(nextPage).ToNot(BeNil())
+				allResults = append(allResults, nextPage...)
+			}
+
+			// Test GetAll().
+			pager, err = projectService.NewProjectResourcesPager(listProjectResourcesOptions)
+			Expect(err).To(BeNil())
+			Expect(pager).ToNot(BeNil())
+
+			allItems, err := pager.GetAll()
+			Expect(err).To(BeNil())
+			Expect(allItems).ToNot(BeNil())
+
+			Expect(len(allItems)).To(Equal(len(allResults)))
+			fmt.Fprintf(GinkgoWriter, "ListProjectResources() returned a total of %d item(s) using ProjectResourcesPager.\n", len(allResults))
+		})
+	})
+
 	Describe(`CreateProjectEnvironment - Create an environment`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -369,11 +433,11 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) with pagination`, func(){
 			listProjectEnvironmentsOptions := &projectv1.ListProjectEnvironmentsOptions{
 				ProjectID: &projectIdLink,
-				Start: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			listProjectEnvironmentsOptions.Start = nil
+			listProjectEnvironmentsOptions.Token = nil
 			listProjectEnvironmentsOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []projectv1.Environment
@@ -384,10 +448,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Expect(environmentCollection).ToNot(BeNil())
 				allResults = append(allResults, environmentCollection.Environments...)
 
-				listProjectEnvironmentsOptions.Start, err = environmentCollection.GetNextStart()
+				listProjectEnvironmentsOptions.Token, err = environmentCollection.GetNextToken()
 				Expect(err).To(BeNil())
 
-				if listProjectEnvironmentsOptions.Start == nil {
+				if listProjectEnvironmentsOptions.Token == nil {
 					break
 				}
 			}
@@ -490,11 +554,11 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`ListConfigs(listConfigsOptions *ListConfigsOptions) with pagination`, func(){
 			listConfigsOptions := &projectv1.ListConfigsOptions{
 				ProjectID: &projectIdLink,
-				Start: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			listConfigsOptions.Start = nil
+			listConfigsOptions.Token = nil
 			listConfigsOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []projectv1.ProjectConfigSummary
@@ -505,10 +569,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Expect(projectConfigCollection).ToNot(BeNil())
 				allResults = append(allResults, projectConfigCollection.Configs...)
 
-				listConfigsOptions.Start, err = projectConfigCollection.GetNextStart()
+				listConfigsOptions.Token, err = projectConfigCollection.GetNextToken()
 				Expect(err).To(BeNil())
 
-				if listConfigsOptions.Start == nil {
+				if listConfigsOptions.Token == nil {
 					break
 				}
 			}
@@ -729,126 +793,6 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigResourceCollection).ToNot(BeNil())
-		})
-	})
-
-	Describe(`CreateConfigTemplate - Add a template to the configuration`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions)`, func() {
-			stackInputVariableModel := &projectv1.StackInputVariable{
-				Name: core.StringPtr("region"),
-				Type: core.StringPtr("string"),
-				Description: core.StringPtr("testString"),
-				Default: map[string]interface{}{"anyKey": "anyValue"},
-				Required: core.BoolPtr(true),
-				Hidden: core.BoolPtr(false),
-			}
-
-			stackOutputVariableModel := &projectv1.StackOutputVariable{
-				Name: core.StringPtr("vpc_cluster_id"),
-				Type: core.StringPtr("string"),
-			}
-
-			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
-				Name: core.StringPtr("foundation-deployable-architecture"),
-				Inputs: []string{"region", "cluster_name"},
-			}
-
-			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
-				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
-				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
-				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
-			}
-
-			createConfigTemplateOptions := &projectv1.CreateConfigTemplateOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-				Definition: stackTemplateDefinitionBlockPrototypeModel,
-			}
-
-			stackTemplate, response, err := projectService.CreateConfigTemplate(createConfigTemplateOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(stackTemplate).ToNot(BeNil())
-		})
-	})
-
-	Describe(`GetConfigTemplate - Get a configuration template`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions)`, func() {
-			getConfigTemplateOptions := &projectv1.GetConfigTemplateOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-			}
-
-			stackTemplate, response, err := projectService.GetConfigTemplate(getConfigTemplateOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(stackTemplate).ToNot(BeNil())
-		})
-	})
-
-	Describe(`UpdateConfigTemplate - Update a configuration template`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions)`, func() {
-			stackInputVariableModel := &projectv1.StackInputVariable{
-				Name: core.StringPtr("region"),
-				Type: core.StringPtr("string"),
-				Description: core.StringPtr("testString"),
-				Default: map[string]interface{}{"anyKey": "anyValue"},
-				Required: core.BoolPtr(true),
-				Hidden: core.BoolPtr(false),
-			}
-
-			stackOutputVariableModel := &projectv1.StackOutputVariable{
-				Name: core.StringPtr("testString"),
-				Type: core.StringPtr("array"),
-			}
-
-			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
-				Name: core.StringPtr("foundation-deployable-architecture"),
-				Inputs: []string{"cluster_name"},
-			}
-
-			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
-				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
-				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
-				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
-			}
-
-			updateConfigTemplateOptions := &projectv1.UpdateConfigTemplateOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-				Definition: stackTemplateDefinitionBlockPrototypeModel,
-			}
-
-			stackTemplate, response, err := projectService.UpdateConfigTemplate(updateConfigTemplateOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(stackTemplate).ToNot(BeNil())
-		})
-	})
-
-	Describe(`PublishConfigTemplate - Publish a configuration template`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions)`, func() {
-			publishConfigTemplateOptions := &projectv1.PublishConfigTemplateOptions{
-				ProjectID: &projectIdLink,
-				ID: &configIdLink,
-			}
-
-			stackTemplate, response, err := projectService.PublishConfigTemplate(publishConfigTemplateOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(stackTemplate).ToNot(BeNil())
 		})
 	})
 
