@@ -796,6 +796,129 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`CreateConfigTemplate - Add a template to the configuration`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions)`, func() {
+			stackInputVariableModel := &projectv1.StackInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: core.StringPtr("testString"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackOutputVariableModel := &projectv1.StackOutputVariable{
+				Name: core.StringPtr("vpc_cluster_id"),
+				Value: core.StringPtr("cluster_id"),
+			}
+
+			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
+				ConfigID: core.StringPtr("293c3c36-a094-4115-a12b-de0a9ca39beX"),
+				Inputs: []string{"region", "cluster_name"},
+			}
+
+			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
+				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
+				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
+				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
+			}
+
+			createConfigTemplateOptions := &projectv1.CreateConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				Definition: stackTemplateDefinitionBlockPrototypeModel,
+			}
+
+			stackTemplate, response, err := projectService.CreateConfigTemplate(createConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+	})
+
+	Describe(`GetConfigTemplate - Get a configuration template`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions)`, func() {
+			getConfigTemplateOptions := &projectv1.GetConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+			}
+
+			stackTemplate, response, err := projectService.GetConfigTemplate(getConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateConfigTemplate - Update a configuration template`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions)`, func() {
+			stackInputVariableModel := &projectv1.StackInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: core.StringPtr("testString"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackOutputVariableModel := &projectv1.StackOutputVariable{
+				Name: core.StringPtr("testString"),
+				Value: core.StringPtr("testString"),
+			}
+
+			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
+				ConfigID: core.StringPtr("293c3c36-a094-4115-a12b-de0a9ca39beX"),
+				Inputs: []string{"cluster_name"},
+			}
+
+			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
+				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
+				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
+				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
+			}
+
+			updateConfigTemplateOptions := &projectv1.UpdateConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				Definition: stackTemplateDefinitionBlockPrototypeModel,
+			}
+
+			stackTemplate, response, err := projectService.UpdateConfigTemplate(updateConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+	})
+
+	Describe(`PublishConfigTemplate - Publish a configuration template`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions)`, func() {
+			publishConfigTemplateOptions := &projectv1.PublishConfigTemplateOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				CatalogID: core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c"),
+				OfferingID: core.StringPtr("testString"),
+				TargetVersion: core.StringPtr("testString"),
+			}
+
+			successfulResponse, response, err := projectService.PublishConfigTemplate(publishConfigTemplateOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(successfulResponse).ToNot(BeNil())
+		})
+	})
+
 	Describe(`ListConfigVersions - Get a list of project configuration versions`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()

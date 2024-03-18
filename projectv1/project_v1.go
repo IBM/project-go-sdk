@@ -1674,6 +1674,286 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 	return
 }
 
+// CreateConfigTemplate : Add a template to the configuration
+// Add a template to the configuration of type stack.
+func (project *ProjectV1) CreateConfigTemplate(createConfigTemplateOptions *CreateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	return project.CreateConfigTemplateWithContext(context.Background(), createConfigTemplateOptions)
+}
+
+// CreateConfigTemplateWithContext is an alternate form of the CreateConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) CreateConfigTemplateWithContext(ctx context.Context, createConfigTemplateOptions *CreateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createConfigTemplateOptions, "createConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(createConfigTemplateOptions, "createConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *createConfigTemplateOptions.ProjectID,
+		"id": *createConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range createConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createConfigTemplateOptions.Definition != nil {
+		body["definition"] = createConfigTemplateOptions.Definition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetConfigTemplate : Get a configuration template
+// Retrieve the template that is associated to the configuration.
+func (project *ProjectV1) GetConfigTemplate(getConfigTemplateOptions *GetConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	return project.GetConfigTemplateWithContext(context.Background(), getConfigTemplateOptions)
+}
+
+// GetConfigTemplateWithContext is an alternate form of the GetConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) GetConfigTemplateWithContext(ctx context.Context, getConfigTemplateOptions *GetConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getConfigTemplateOptions, "getConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(getConfigTemplateOptions, "getConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *getConfigTemplateOptions.ProjectID,
+		"id": *getConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range getConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateConfigTemplate : Update a configuration template
+// Update the template that is associated to the configuration.
+func (project *ProjectV1) UpdateConfigTemplate(updateConfigTemplateOptions *UpdateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	return project.UpdateConfigTemplateWithContext(context.Background(), updateConfigTemplateOptions)
+}
+
+// UpdateConfigTemplateWithContext is an alternate form of the UpdateConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) UpdateConfigTemplateWithContext(ctx context.Context, updateConfigTemplateOptions *UpdateConfigTemplateOptions) (result *StackTemplate, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateConfigTemplateOptions, "updateConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(updateConfigTemplateOptions, "updateConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *updateConfigTemplateOptions.ProjectID,
+		"id": *updateConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range updateConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateConfigTemplateOptions.Definition != nil {
+		body["definition"] = updateConfigTemplateOptions.Definition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackTemplate)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// PublishConfigTemplate : Publish a configuration template
+// Publish a configuration template to the private catalog.
+func (project *ProjectV1) PublishConfigTemplate(publishConfigTemplateOptions *PublishConfigTemplateOptions) (result *SuccessfulResponse, response *core.DetailedResponse, err error) {
+	return project.PublishConfigTemplateWithContext(context.Background(), publishConfigTemplateOptions)
+}
+
+// PublishConfigTemplateWithContext is an alternate form of the PublishConfigTemplate method which supports a Context parameter
+func (project *ProjectV1) PublishConfigTemplateWithContext(ctx context.Context, publishConfigTemplateOptions *PublishConfigTemplateOptions) (result *SuccessfulResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(publishConfigTemplateOptions, "publishConfigTemplateOptions cannot be nil")
+	if err != nil {
+		return
+	}
+	err = core.ValidateStruct(publishConfigTemplateOptions, "publishConfigTemplateOptions")
+	if err != nil {
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *publishConfigTemplateOptions.ProjectID,
+		"id": *publishConfigTemplateOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/template/publish`, pathParamsMap)
+	if err != nil {
+		return
+	}
+
+	for headerName, headerValue := range publishConfigTemplateOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "PublishConfigTemplate")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if publishConfigTemplateOptions.CatalogID != nil {
+		body["catalog_id"] = publishConfigTemplateOptions.CatalogID
+	}
+	if publishConfigTemplateOptions.OfferingID != nil {
+		body["offering_id"] = publishConfigTemplateOptions.OfferingID
+	}
+	if publishConfigTemplateOptions.TargetVersion != nil {
+		body["target_version"] = publishConfigTemplateOptions.TargetVersion
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalSuccessfulResponse)
+		if err != nil {
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // ListConfigVersions : Get a list of project configuration versions
 // Retrieve a list of previous and current versions of a project configuration in a specific project.
 func (project *ProjectV1) ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions) (result *ProjectConfigVersionSummaryCollection, response *core.DetailedResponse, err error) {
@@ -2330,6 +2610,23 @@ func UnmarshalCodeRiskAnalyzerLogsSummary(m map[string]json.RawMessage, result i
 	return
 }
 
+// ConfigDefinitionReference : The definition of the config reference.
+type ConfigDefinitionReference struct {
+	// The name of the configuration.
+	Name *string `json:"name" validate:"required"`
+}
+
+// UnmarshalConfigDefinitionReference unmarshals an instance of ConfigDefinitionReference from the specified map of raw messages.
+func UnmarshalConfigDefinitionReference(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ConfigDefinitionReference)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // CreateConfigOptions : The CreateConfig options.
 type CreateConfigOptions struct {
 	// The unique project ID.
@@ -2385,6 +2682,54 @@ func (_options *CreateConfigOptions) SetSchematics(schematics *SchematicsWorkspa
 
 // SetHeaders : Allow user to set Headers
 func (options *CreateConfigOptions) SetHeaders(param map[string]string) *CreateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// CreateConfigTemplateOptions : The CreateConfigTemplate options.
+type CreateConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The definition block for a stack configuration template.
+	Definition *StackTemplateDefinitionBlockPrototype `json:"definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateConfigTemplateOptions : Instantiate CreateConfigTemplateOptions
+func (*ProjectV1) NewCreateConfigTemplateOptions(projectID string, id string, definition *StackTemplateDefinitionBlockPrototype) *CreateConfigTemplateOptions {
+	return &CreateConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		Definition: definition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *CreateConfigTemplateOptions) SetProjectID(projectID string) *CreateConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *CreateConfigTemplateOptions) SetID(id string) *CreateConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetDefinition : Allow user to set Definition
+func (_options *CreateConfigTemplateOptions) SetDefinition(definition *StackTemplateDefinitionBlockPrototype) *CreateConfigTemplateOptions {
+	_options.Definition = definition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateConfigTemplateOptions) SetHeaders(param map[string]string) *CreateConfigTemplateOptions {
 	options.Headers = param
 	return options
 }
@@ -3109,6 +3454,44 @@ func (options *GetConfigOptions) SetHeaders(param map[string]string) *GetConfigO
 	return options
 }
 
+// GetConfigTemplateOptions : The GetConfigTemplate options.
+type GetConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetConfigTemplateOptions : Instantiate GetConfigTemplateOptions
+func (*ProjectV1) NewGetConfigTemplateOptions(projectID string, id string) *GetConfigTemplateOptions {
+	return &GetConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *GetConfigTemplateOptions) SetProjectID(projectID string) *GetConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *GetConfigTemplateOptions) SetID(id string) *GetConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetConfigTemplateOptions) SetHeaders(param map[string]string) *GetConfigTemplateOptions {
+	options.Headers = param
+	return options
+}
+
 // GetConfigVersionOptions : The GetConfigVersion options.
 type GetConfigVersionOptions struct {
 	// The unique project ID.
@@ -3664,7 +4047,7 @@ type OutputValue struct {
 	Description *string `json:"description,omitempty"`
 
 	// This property can be any value - a string, number, boolean, array, or object.
-	Value map[string]interface{} `json:"value,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // UnmarshalOutputValue unmarshals an instance of OutputValue from the specified map of raw messages.
@@ -4078,7 +4461,7 @@ type ProjectConfig struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state" validate:"required"`
+	NeedsAttentionState []interface{} `json:"needs_attention_state" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
@@ -5114,7 +5497,7 @@ type ProjectConfigVersion struct {
 	IsDraft *bool `json:"is_draft" validate:"required"`
 
 	// The needs attention state of a configuration.
-	NeedsAttentionState []map[string]interface{} `json:"needs_attention_state" validate:"required"`
+	NeedsAttentionState []interface{} `json:"needs_attention_state" validate:"required"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
@@ -5880,6 +6263,72 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 	return
 }
 
+// PublishConfigTemplateOptions : The PublishConfigTemplate options.
+type PublishConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The catalog ID to publish.
+	CatalogID *string `json:"catalog_id" validate:"required"`
+
+	// The offering ID to publish.
+	OfferingID *string `json:"offering_id,omitempty"`
+
+	// The semver value for this new version if the offering_id is supplied.
+	TargetVersion *string `json:"target_version,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewPublishConfigTemplateOptions : Instantiate PublishConfigTemplateOptions
+func (*ProjectV1) NewPublishConfigTemplateOptions(projectID string, id string, catalogID string) *PublishConfigTemplateOptions {
+	return &PublishConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		CatalogID: core.StringPtr(catalogID),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *PublishConfigTemplateOptions) SetProjectID(projectID string) *PublishConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *PublishConfigTemplateOptions) SetID(id string) *PublishConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetCatalogID : Allow user to set CatalogID
+func (_options *PublishConfigTemplateOptions) SetCatalogID(catalogID string) *PublishConfigTemplateOptions {
+	_options.CatalogID = core.StringPtr(catalogID)
+	return _options
+}
+
+// SetOfferingID : Allow user to set OfferingID
+func (_options *PublishConfigTemplateOptions) SetOfferingID(offeringID string) *PublishConfigTemplateOptions {
+	_options.OfferingID = core.StringPtr(offeringID)
+	return _options
+}
+
+// SetTargetVersion : Allow user to set TargetVersion
+func (_options *PublishConfigTemplateOptions) SetTargetVersion(targetVersion string) *PublishConfigTemplateOptions {
+	_options.TargetVersion = core.StringPtr(targetVersion)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *PublishConfigTemplateOptions) SetHeaders(param map[string]string) *PublishConfigTemplateOptions {
+	options.Headers = param
+	return options
+}
+
 // SchematicsMetadata : A Schematics workspace that is associated to a project configuration, with scripts.
 type SchematicsMetadata struct {
 	// An IBM Cloud resource name that uniquely identifies a resource.
@@ -6000,6 +6449,354 @@ func UnmarshalScript(m map[string]json.RawMessage, result interface{}) (err erro
 	err = core.UnmarshalPrimitive(m, "short_description", &obj.ShortDescription)
 	if err != nil {
 		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackInputVariable : The input variables for a stack configuration template.
+type StackInputVariable struct {
+	// The variable name.
+	Name *string `json:"name" validate:"required"`
+
+	// The variable type.
+	Type *string `json:"type" validate:"required"`
+
+	// The description of the variable.
+	Description *string `json:"description,omitempty"`
+
+	// This property can be any value - a string, number, boolean, array, or object.
+	Default interface{} `json:"default,omitempty"`
+
+	// A boolean value to denote if the property is required.
+	Required *bool `json:"required,omitempty"`
+
+	// A boolean value to denote whether the property is hidden, as in not exposed to the user.
+	Hidden *bool `json:"hidden,omitempty"`
+}
+
+// Constants associated with the StackInputVariable.Type property.
+// The variable type.
+const (
+	StackInputVariable_Type_Array = "array"
+	StackInputVariable_Type_Boolean = "boolean"
+	StackInputVariable_Type_Float = "float"
+	StackInputVariable_Type_Int = "int"
+	StackInputVariable_Type_Number = "number"
+	StackInputVariable_Type_Object = "object"
+	StackInputVariable_Type_Password = "password"
+	StackInputVariable_Type_String = "string"
+)
+
+// NewStackInputVariable : Instantiate StackInputVariable (Generic Model Constructor)
+func (*ProjectV1) NewStackInputVariable(name string, typeVar string) (_model *StackInputVariable, err error) {
+	_model = &StackInputVariable{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalStackInputVariable unmarshals an instance of StackInputVariable from the specified map of raw messages.
+func UnmarshalStackInputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackInputVariable)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "default", &obj.Default)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "required", &obj.Required)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "hidden", &obj.Hidden)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackOutputVariable : The output variables for a stack configuration template.
+type StackOutputVariable struct {
+	// The variable name.
+	Name *string `json:"name" validate:"required"`
+
+	// The value of the output variable.
+	Value *string `json:"value" validate:"required"`
+}
+
+// NewStackOutputVariable : Instantiate StackOutputVariable (Generic Model Constructor)
+func (*ProjectV1) NewStackOutputVariable(name string, value string) (_model *StackOutputVariable, err error) {
+	_model = &StackOutputVariable{
+		Name: core.StringPtr(name),
+		Value: core.StringPtr(value),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalStackOutputVariable unmarshals an instance of StackOutputVariable from the specified map of raw messages.
+func UnmarshalStackOutputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackOutputVariable)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplate : The input of a stack configuration template.
+type StackTemplate struct {
+	// The inputs associated with this stack definition.
+	Inputs []StackInputVariable `json:"inputs,omitempty"`
+
+	// The outputs associated with this stack definition.
+	Outputs []StackOutputVariable `json:"outputs,omitempty"`
+
+	// The outputs that are associated with this stack definition.
+	MemberInputs []StackTemplateMemberInput `json:"member_inputs,omitempty"`
+
+	// The ID of the template.
+	ID *string `json:"id" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
+	// format as specified by RFC 3339.
+	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
+
+	// The state for the stack template.
+	State *string `json:"state" validate:"required"`
+
+	// The configuration reference.
+	Configuration *StackTemplateMetadataConfiguration `json:"configuration" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+}
+
+// Constants associated with the StackTemplate.State property.
+// The state for the stack template.
+const (
+	StackTemplate_State_Draft = "draft"
+	StackTemplate_State_Published = "published"
+)
+
+// UnmarshalStackTemplate unmarshals an instance of StackTemplate from the specified map of raw messages.
+func UnmarshalStackTemplate(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplate)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackOutputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "member_inputs", &obj.MemberInputs, UnmarshalStackTemplateMemberInput)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "configuration", &obj.Configuration, UnmarshalStackTemplateMetadataConfiguration)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplateDefinitionBlockPrototype : The definition block for a stack configuration template.
+type StackTemplateDefinitionBlockPrototype struct {
+	// The inputs associated with this stack definition.
+	Inputs []StackInputVariable `json:"inputs,omitempty"`
+
+	// The outputs associated with this stack definition.
+	Outputs []StackOutputVariable `json:"outputs,omitempty"`
+
+	// The outputs that are associated with this stack definition.
+	MemberInputs []StackTemplateMemberInput `json:"member_inputs,omitempty"`
+}
+
+// UnmarshalStackTemplateDefinitionBlockPrototype unmarshals an instance of StackTemplateDefinitionBlockPrototype from the specified map of raw messages.
+func UnmarshalStackTemplateDefinitionBlockPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplateDefinitionBlockPrototype)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackInputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackOutputVariable)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "member_inputs", &obj.MemberInputs, UnmarshalStackTemplateMemberInput)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplateMemberInput : The member definition associated with this stack template.
+type StackTemplateMemberInput struct {
+	// The unique ID.
+	ConfigID *string `json:"config_id" validate:"required"`
+
+	// The member inputs to expose in the stack template.
+	Inputs []string `json:"inputs" validate:"required"`
+}
+
+// NewStackTemplateMemberInput : Instantiate StackTemplateMemberInput (Generic Model Constructor)
+func (*ProjectV1) NewStackTemplateMemberInput(configID string, inputs []string) (_model *StackTemplateMemberInput, err error) {
+	_model = &StackTemplateMemberInput{
+		ConfigID: core.StringPtr(configID),
+		Inputs: inputs,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	return
+}
+
+// UnmarshalStackTemplateMemberInput unmarshals an instance of StackTemplateMemberInput from the specified map of raw messages.
+func UnmarshalStackTemplateMemberInput(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplateMemberInput)
+	err = core.UnmarshalPrimitive(m, "config_id", &obj.ConfigID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackTemplateMetadataConfiguration : The configuration reference.
+type StackTemplateMetadataConfiguration struct {
+	// The unique ID.
+	ID *string `json:"id" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+
+	// The definition of the config reference.
+	Definition *ConfigDefinitionReference `json:"definition" validate:"required"`
+}
+
+// UnmarshalStackTemplateMetadataConfiguration unmarshals an instance of StackTemplateMetadataConfiguration from the specified map of raw messages.
+func UnmarshalStackTemplateMetadataConfiguration(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackTemplateMetadataConfiguration)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalConfigDefinitionReference)
+	if err != nil {
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// SuccessfulResponse : SuccessfulResponse struct
+type SuccessfulResponse struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of SuccessfulResponse
+func (o *SuccessfulResponse) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of SuccessfulResponse
+func (o *SuccessfulResponse) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of SuccessfulResponse
+func (o *SuccessfulResponse) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of SuccessfulResponse
+func (o *SuccessfulResponse) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of SuccessfulResponse
+func (o *SuccessfulResponse) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	return
+}
+
+// UnmarshalSuccessfulResponse unmarshals an instance of SuccessfulResponse from the specified map of raw messages.
+func UnmarshalSuccessfulResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(SuccessfulResponse)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = e
+			return
+		}
+		obj.SetProperty(k, v)
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
@@ -6238,6 +7035,54 @@ func (_options *UpdateConfigOptions) SetDefinition(definition ProjectConfigDefin
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateConfigOptions) SetHeaders(param map[string]string) *UpdateConfigOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateConfigTemplateOptions : The UpdateConfigTemplate options.
+type UpdateConfigTemplateOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The definition block for a stack configuration template.
+	Definition *StackTemplateDefinitionBlockPrototype `json:"definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateConfigTemplateOptions : Instantiate UpdateConfigTemplateOptions
+func (*ProjectV1) NewUpdateConfigTemplateOptions(projectID string, id string, definition *StackTemplateDefinitionBlockPrototype) *UpdateConfigTemplateOptions {
+	return &UpdateConfigTemplateOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		Definition: definition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *UpdateConfigTemplateOptions) SetProjectID(projectID string) *UpdateConfigTemplateOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateConfigTemplateOptions) SetID(id string) *UpdateConfigTemplateOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetDefinition : Allow user to set Definition
+func (_options *UpdateConfigTemplateOptions) SetDefinition(definition *StackTemplateDefinitionBlockPrototype) *UpdateConfigTemplateOptions {
+	_options.Definition = definition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateConfigTemplateOptions) SetHeaders(param map[string]string) *UpdateConfigTemplateOptions {
 	options.Headers = param
 	return options
 }

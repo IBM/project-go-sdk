@@ -642,6 +642,137 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigResourceCollection).ToNot(BeNil())
 		})
+		It(`CreateConfigTemplate request example`, func() {
+			fmt.Println("\nCreateConfigTemplate() result:")
+			// begin-create_config_template
+
+			stackInputVariableModel := &projectv1.StackInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackOutputVariableModel := &projectv1.StackOutputVariable{
+				Name: core.StringPtr("vpc_cluster_id"),
+				Value: core.StringPtr("cluster_id"),
+			}
+
+			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
+				ConfigID: core.StringPtr("293c3c36-a094-4115-a12b-de0a9ca39beX"),
+				Inputs: []string{"region", "cluster_name"},
+			}
+
+			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
+				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
+				Outputs: []projectv1.StackOutputVariable{*stackOutputVariableModel},
+				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
+			}
+
+			createConfigTemplateOptions := projectService.NewCreateConfigTemplateOptions(
+				projectIdLink,
+				configIdLink,
+				stackTemplateDefinitionBlockPrototypeModel,
+			)
+
+			stackTemplate, response, err := projectService.CreateConfigTemplate(createConfigTemplateOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stackTemplate, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_config_template
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+		It(`GetConfigTemplate request example`, func() {
+			fmt.Println("\nGetConfigTemplate() result:")
+			// begin-get_config_template
+
+			getConfigTemplateOptions := projectService.NewGetConfigTemplateOptions(
+				projectIdLink,
+				configIdLink,
+			)
+
+			stackTemplate, response, err := projectService.GetConfigTemplate(getConfigTemplateOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stackTemplate, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_config_template
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+		It(`UpdateConfigTemplate request example`, func() {
+			fmt.Println("\nUpdateConfigTemplate() result:")
+			// begin-update_config_template
+
+			stackInputVariableModel := &projectv1.StackInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackTemplateMemberInputModel := &projectv1.StackTemplateMemberInput{
+				ConfigID: core.StringPtr("293c3c36-a094-4115-a12b-de0a9ca39beX"),
+				Inputs: []string{"cluster_name"},
+			}
+
+			stackTemplateDefinitionBlockPrototypeModel := &projectv1.StackTemplateDefinitionBlockPrototype{
+				Inputs: []projectv1.StackInputVariable{*stackInputVariableModel},
+				MemberInputs: []projectv1.StackTemplateMemberInput{*stackTemplateMemberInputModel},
+			}
+
+			updateConfigTemplateOptions := projectService.NewUpdateConfigTemplateOptions(
+				projectIdLink,
+				configIdLink,
+				stackTemplateDefinitionBlockPrototypeModel,
+			)
+
+			stackTemplate, response, err := projectService.UpdateConfigTemplate(updateConfigTemplateOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stackTemplate, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_config_template
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackTemplate).ToNot(BeNil())
+		})
+		It(`PublishConfigTemplate request example`, func() {
+			fmt.Println("\nPublishConfigTemplate() result:")
+			// begin-publish_config_template
+
+			publishConfigTemplateOptions := projectService.NewPublishConfigTemplateOptions(
+				projectIdLink,
+				configIdLink,
+				"01e1a9ad-534b-4ab9-996a-b8f2a8653d5c",
+			)
+
+			successfulResponse, response, err := projectService.PublishConfigTemplate(publishConfigTemplateOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(successfulResponse, "", "  ")
+			fmt.Println(string(b))
+
+			// end-publish_config_template
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(successfulResponse).ToNot(BeNil())
+		})
 		It(`ListConfigVersions request example`, func() {
 			fmt.Println("\nListConfigVersions() result:")
 			// begin-list_config_versions
