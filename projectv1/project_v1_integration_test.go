@@ -732,6 +732,143 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`CreateStackDefinition - Create a stack definition`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateStackDefinition(createStackDefinitionOptions *CreateStackDefinitionOptions)`, func() {
+			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: core.StringPtr("us-south"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackDefinitionOutputVariableModel := &projectv1.StackDefinitionOutputVariable{
+				Name: core.StringPtr("vpc_cluster_id"),
+				Value: core.StringPtr("cluster_id"),
+			}
+
+			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
+				Name: core.StringPtr("region"),
+			}
+
+			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
+			}
+
+			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
+				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
+				Outputs: []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel},
+				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
+			}
+
+			createStackDefinitionOptions := &projectv1.CreateStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				StackDefinition: stackDefinitionBlockPrototypeModel,
+			}
+
+			stackDefinition, response, err := projectService.CreateStackDefinition(createStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+	})
+
+	Describe(`GetStackDefinition - Get a stack definition`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetStackDefinition(getStackDefinitionOptions *GetStackDefinitionOptions)`, func() {
+			getStackDefinitionOptions := &projectv1.GetStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+			}
+
+			stackDefinition, response, err := projectService.GetStackDefinition(getStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateStackDefinition - Update a stack definition`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateStackDefinition(updateStackDefinitionOptions *UpdateStackDefinitionOptions)`, func() {
+			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: core.StringPtr("eu-gb"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackDefinitionOutputVariableModel := &projectv1.StackDefinitionOutputVariable{
+				Name: core.StringPtr("testString"),
+				Value: core.StringPtr("testString"),
+			}
+
+			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
+				Name: core.StringPtr("cluster_name"),
+			}
+
+			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
+			}
+
+			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
+				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
+				Outputs: []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel},
+				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
+			}
+
+			updateStackDefinitionOptions := &projectv1.UpdateStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				StackDefinition: stackDefinitionBlockPrototypeModel,
+			}
+
+			stackDefinition, response, err := projectService.UpdateStackDefinition(updateStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ExportStackDefinition - Export a stack definition to the private catalog`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ExportStackDefinition(exportStackDefinitionOptions *ExportStackDefinitionOptions)`, func() {
+			stackDefinitionExportRequestModel := &projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest{
+				CatalogID: core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c"),
+				TargetVersion: core.StringPtr("testString"),
+				Variation: core.StringPtr("testString"),
+				Label: core.StringPtr("Stack Deployable Architecture"),
+				Tags: []string{"testString"},
+			}
+
+			exportStackDefinitionOptions := &projectv1.ExportStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				Settings: stackDefinitionExportRequestModel,
+			}
+
+			stackDefinitionExportResponse, response, err := projectService.ExportStackDefinition(exportStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinitionExportResponse).ToNot(BeNil())
+		})
+	})
+
 	Describe(`ListConfigVersions - Get a list of project configuration versions`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
