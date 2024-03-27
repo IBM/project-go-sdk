@@ -121,10 +121,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ApiKey: core.StringPtr("testString"),
 			}
 
-			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+			projectConfigDefinitionPrototypeModel := &projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype{
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("The stage account configuration. The stage account hosts test environments pre-staging, performance, and staging. This configures services common to all these environments and regions. It's a terraform_template type of configuration that points to a Github repo that's hosting the Terraform modules that can be deployed by a Schematics workspace."),
+				Description: core.StringPtr("The stage account configuration."),
 				Name: core.StringPtr("account-stage"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
@@ -137,7 +137,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				Definition: projectConfigDefinitionBlockPrototypeModel,
+				Definition: projectConfigDefinitionPrototypeModel,
 				Schematics: schematicsWorkspaceModel,
 			}
 
@@ -190,10 +190,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ApiKey: core.StringPtr("testString"),
 			}
 
-			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+			projectConfigDefinitionPrototypeModel := &projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype{
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("Stage environment configuration."),
+				Description: core.StringPtr("The stage environment configuration."),
 				Name: core.StringPtr("env-stage"),
 				EnvironmentID: core.StringPtr("testString"),
 				Authorizations: projectConfigAuthModel,
@@ -207,7 +207,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 
 			createConfigOptions := &projectv1.CreateConfigOptions{
 				ProjectID: &projectIdLink,
-				Definition: projectConfigDefinitionBlockPrototypeModel,
+				Definition: projectConfigDefinitionPrototypeModel,
 				Schematics: schematicsWorkspaceModel,
 			}
 
@@ -227,11 +227,11 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 		It(`ListProjects(listProjectsOptions *ListProjectsOptions) with pagination`, func(){
 			listProjectsOptions := &projectv1.ListProjectsOptions{
-				Start: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			listProjectsOptions.Start = nil
+			listProjectsOptions.Token = nil
 			listProjectsOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []projectv1.ProjectSummary
@@ -242,10 +242,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Expect(projectCollection).ToNot(BeNil())
 				allResults = append(allResults, projectCollection.Projects...)
 
-				listProjectsOptions.Start, err = projectCollection.GetNextStart()
+				listProjectsOptions.Token, err = projectCollection.GetNextToken()
 				Expect(err).To(BeNil())
 
-				if listProjectsOptions.Start == nil {
+				if listProjectsOptions.Token == nil {
 					break
 				}
 			}
@@ -343,7 +343,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
@@ -369,11 +369,11 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`ListProjectEnvironments(listProjectEnvironmentsOptions *ListProjectEnvironmentsOptions) with pagination`, func(){
 			listProjectEnvironmentsOptions := &projectv1.ListProjectEnvironmentsOptions{
 				ProjectID: &projectIdLink,
-				Start: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			listProjectEnvironmentsOptions.Start = nil
+			listProjectEnvironmentsOptions.Token = nil
 			listProjectEnvironmentsOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []projectv1.Environment
@@ -384,10 +384,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Expect(environmentCollection).ToNot(BeNil())
 				allResults = append(allResults, environmentCollection.Environments...)
 
-				listProjectEnvironmentsOptions.Start, err = environmentCollection.GetNextStart()
+				listProjectEnvironmentsOptions.Token, err = environmentCollection.GetNextToken()
 				Expect(err).To(BeNil())
 
-				if listProjectEnvironmentsOptions.Start == nil {
+				if listProjectEnvironmentsOptions.Token == nil {
 					break
 				}
 			}
@@ -463,7 +463,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			}
 
 			environmentDefinitionPropertiesPatchModel := &projectv1.EnvironmentDefinitionPropertiesPatch{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				Inputs: map[string]interface{}{"anyKey": "anyValue"},
@@ -490,11 +490,11 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		It(`ListConfigs(listConfigsOptions *ListConfigsOptions) with pagination`, func(){
 			listConfigsOptions := &projectv1.ListConfigsOptions{
 				ProjectID: &projectIdLink,
-				Start: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
-			listConfigsOptions.Start = nil
+			listConfigsOptions.Token = nil
 			listConfigsOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []projectv1.ProjectConfigSummary
@@ -505,10 +505,10 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Expect(projectConfigCollection).ToNot(BeNil())
 				allResults = append(allResults, projectConfigCollection.Configs...)
 
-				listConfigsOptions.Start, err = projectConfigCollection.GetNextStart()
+				listConfigsOptions.Token, err = projectConfigCollection.GetNextToken()
 				Expect(err).To(BeNil())
 
-				if listConfigsOptions.Start == nil {
+				if listConfigsOptions.Token == nil {
 					break
 				}
 			}
@@ -583,7 +583,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				ApiKey: core.StringPtr("testString"),
 			}
 
-			projectConfigDefinitionBlockPatchModel := &projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch{
+			projectConfigDefinitionPatchModel := &projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch{
 				ComplianceProfile: projectComplianceProfileModel,
 				LocatorID: core.StringPtr("testString"),
 				Description: core.StringPtr("testString"),
@@ -597,7 +597,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			updateConfigOptions := &projectv1.UpdateConfigOptions{
 				ProjectID: &projectIdLink,
 				ID: &configIdLink,
-				Definition: projectConfigDefinitionBlockPatchModel,
+				Definition: projectConfigDefinitionPatchModel,
 			}
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
@@ -607,7 +607,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ForceApprove - Force approve project configuration`, func() {
+	Describe(`ForceApprove - Force approve a project configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -715,7 +715,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ListConfigResources - List the resources deployed by a configuration`, func() {
+	Describe(`ListConfigResources - List all deployed resources`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -732,7 +732,144 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`ListConfigVersions - Get a list of versions of a project configuration`, func() {
+	Describe(`CreateStackDefinition - Create a stack definition`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateStackDefinition(createStackDefinitionOptions *CreateStackDefinitionOptions)`, func() {
+			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: core.StringPtr("us-south"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackDefinitionOutputVariableModel := &projectv1.StackDefinitionOutputVariable{
+				Name: core.StringPtr("vpc_cluster_id"),
+				Value: core.StringPtr("cluster_id"),
+			}
+
+			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
+				Name: core.StringPtr("region"),
+			}
+
+			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
+			}
+
+			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
+				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
+				Outputs: []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel},
+				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
+			}
+
+			createStackDefinitionOptions := &projectv1.CreateStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				StackDefinition: stackDefinitionBlockPrototypeModel,
+			}
+
+			stackDefinition, response, err := projectService.CreateStackDefinition(createStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+	})
+
+	Describe(`GetStackDefinition - Get a stack definition`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetStackDefinition(getStackDefinitionOptions *GetStackDefinitionOptions)`, func() {
+			getStackDefinitionOptions := &projectv1.GetStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+			}
+
+			stackDefinition, response, err := projectService.GetStackDefinition(getStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateStackDefinition - Update a stack definition`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateStackDefinition(updateStackDefinitionOptions *UpdateStackDefinitionOptions)`, func() {
+			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Description: core.StringPtr("testString"),
+				Default: core.StringPtr("eu-gb"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackDefinitionOutputVariableModel := &projectv1.StackDefinitionOutputVariable{
+				Name: core.StringPtr("testString"),
+				Value: "testString",
+			}
+
+			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
+				Name: core.StringPtr("cluster_name"),
+			}
+
+			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
+			}
+
+			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
+				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
+				Outputs: []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel},
+				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
+			}
+
+			updateStackDefinitionOptions := &projectv1.UpdateStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				StackDefinition: stackDefinitionBlockPrototypeModel,
+			}
+
+			stackDefinition, response, err := projectService.UpdateStackDefinition(updateStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ExportStackDefinition - Export a stack definition to the private catalog`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ExportStackDefinition(exportStackDefinitionOptions *ExportStackDefinitionOptions)`, func() {
+			stackDefinitionExportRequestModel := &projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest{
+				CatalogID: core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c"),
+				TargetVersion: core.StringPtr("testString"),
+				Variation: core.StringPtr("testString"),
+				Label: core.StringPtr("Stack Deployable Architecture"),
+				Tags: []string{"testString"},
+			}
+
+			exportStackDefinitionOptions := &projectv1.ExportStackDefinitionOptions{
+				ProjectID: &projectIdLink,
+				ID: &configIdLink,
+				Settings: stackDefinitionExportRequestModel,
+			}
+
+			stackDefinitionExportResponse, response, err := projectService.ExportStackDefinition(exportStackDefinitionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinitionExportResponse).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ListConfigVersions - Get a list of project configuration versions`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -749,7 +886,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`GetConfigVersion - Get a specific version of a project configuration`, func() {
+	Describe(`GetConfigVersion - Get a specific project configuration version`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -784,7 +921,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`DeleteConfig - Delete a configuration in a project by ID`, func() {
+	Describe(`DeleteConfig - Delete a configuration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
@@ -801,7 +938,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`DeleteConfigVersion - Delete a configuration for the specified project ID and version`, func() {
+	Describe(`DeleteConfigVersion - Delete a project configuration version`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})

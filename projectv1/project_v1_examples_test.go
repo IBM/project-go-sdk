@@ -115,14 +115,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 			}
 
-			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+			projectConfigDefinitionPrototypeModel := &projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype{
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("The stage account configuration. The stage account hosts test environments pre-staging, performance, and staging. This configures services common to all these environments and regions. It's a terraform_template type of configuration that points to a Github repo that's hosting the Terraform modules that can be deployed by a Schematics workspace."),
+				Description: core.StringPtr("The stage account configuration."),
 				Name: core.StringPtr("account-stage"),
 			}
 
 			projectConfigPrototypeModel := &projectv1.ProjectConfigPrototype{
-				Definition: projectConfigDefinitionBlockPrototypeModel,
+				Definition: projectConfigDefinitionPrototypeModel,
 			}
 
 			createProjectOptions := projectService.NewCreateProjectOptions(
@@ -152,15 +152,15 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nCreateConfig() result:")
 			// begin-create_config
 
-			projectConfigDefinitionBlockPrototypeModel := &projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties{
+			projectConfigDefinitionPrototypeModel := &projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype{
 				LocatorID: core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global"),
-				Description: core.StringPtr("Stage environment configuration."),
+				Description: core.StringPtr("The stage environment configuration."),
 				Name: core.StringPtr("env-stage"),
 			}
 
 			createConfigOptions := projectService.NewCreateConfigOptions(
 				projectIdLink,
-				projectConfigDefinitionBlockPrototypeModel,
+				projectConfigDefinitionPrototypeModel,
 			)
 
 			projectConfig, response, err := projectService.CreateConfig(createConfigOptions)
@@ -269,7 +269,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			environmentDefinitionRequiredPropertiesModel := &projectv1.EnvironmentDefinitionRequiredProperties{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
@@ -358,7 +358,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			}
 
 			environmentDefinitionPropertiesPatchModel := &projectv1.EnvironmentDefinitionPropertiesPatch{
-				Description: core.StringPtr("The environment 'development'"),
+				Description: core.StringPtr("The environment development."),
 				Name: core.StringPtr("development"),
 				Authorizations: projectConfigAuthModel,
 				ComplianceProfile: projectComplianceProfileModel,
@@ -434,14 +434,14 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			fmt.Println("\nUpdateConfig() result:")
 			// begin-update_config
 
-			projectConfigDefinitionBlockPatchModel := &projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch{
+			projectConfigDefinitionPatchModel := &projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch{
 				Name: core.StringPtr("env-stage"),
 			}
 
 			updateConfigOptions := projectService.NewUpdateConfigOptions(
 				projectIdLink,
 				configIdLink,
-				projectConfigDefinitionBlockPatchModel,
+				projectConfigDefinitionPatchModel,
 			)
 
 			projectConfig, response, err := projectService.UpdateConfig(updateConfigOptions)
@@ -616,6 +616,152 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(projectConfigResourceCollection).ToNot(BeNil())
+		})
+		It(`CreateStackDefinition request example`, func() {
+			fmt.Println("\nCreateStackDefinition() result:")
+			// begin-create_stack_definition
+
+			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Default: core.StringPtr("us-south"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackDefinitionOutputVariableModel := &projectv1.StackDefinitionOutputVariable{
+				Name: core.StringPtr("vpc_cluster_id"),
+				Value: core.StringPtr("cluster_id"),
+			}
+
+			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
+				Name: core.StringPtr("region"),
+			}
+
+			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
+			}
+
+			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
+				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
+				Outputs: []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel},
+				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
+			}
+
+			createStackDefinitionOptions := projectService.NewCreateStackDefinitionOptions(
+				projectIdLink,
+				configIdLink,
+				stackDefinitionBlockPrototypeModel,
+			)
+
+			stackDefinition, response, err := projectService.CreateStackDefinition(createStackDefinitionOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stackDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_stack_definition
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+		It(`GetStackDefinition request example`, func() {
+			fmt.Println("\nGetStackDefinition() result:")
+			// begin-get_stack_definition
+
+			getStackDefinitionOptions := projectService.NewGetStackDefinitionOptions(
+				projectIdLink,
+				configIdLink,
+			)
+
+			stackDefinition, response, err := projectService.GetStackDefinition(getStackDefinitionOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stackDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_stack_definition
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+		It(`UpdateStackDefinition request example`, func() {
+			fmt.Println("\nUpdateStackDefinition() result:")
+			// begin-update_stack_definition
+
+			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
+				Name: core.StringPtr("region"),
+				Type: core.StringPtr("string"),
+				Default: core.StringPtr("eu-gb"),
+				Required: core.BoolPtr(true),
+				Hidden: core.BoolPtr(false),
+			}
+
+			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
+				Name: core.StringPtr("cluster_name"),
+			}
+
+			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
+				Name: core.StringPtr("foundation-deployable-architecture"),
+				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
+			}
+
+			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
+				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
+				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
+			}
+
+			updateStackDefinitionOptions := projectService.NewUpdateStackDefinitionOptions(
+				projectIdLink,
+				configIdLink,
+				stackDefinitionBlockPrototypeModel,
+			)
+
+			stackDefinition, response, err := projectService.UpdateStackDefinition(updateStackDefinitionOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stackDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_stack_definition
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinition).ToNot(BeNil())
+		})
+		It(`ExportStackDefinition request example`, func() {
+			fmt.Println("\nExportStackDefinition() result:")
+			// begin-export_stack_definition
+
+			stackDefinitionExportRequestModel := &projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest{
+				CatalogID: core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c"),
+				Label: core.StringPtr("Stack Deployable Architecture"),
+			}
+
+			exportStackDefinitionOptions := projectService.NewExportStackDefinitionOptions(
+				projectIdLink,
+				configIdLink,
+				stackDefinitionExportRequestModel,
+			)
+
+			stackDefinitionExportResponse, response, err := projectService.ExportStackDefinition(exportStackDefinitionOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stackDefinitionExportResponse, "", "  ")
+			fmt.Println(string(b))
+
+			// end-export_stack_definition
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stackDefinitionExportResponse).ToNot(BeNil())
 		})
 		It(`ListConfigVersions request example`, func() {
 			fmt.Println("\nListConfigVersions() result:")
