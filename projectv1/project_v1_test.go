@@ -208,16 +208,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -225,7 +225,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -332,16 +332,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -349,7 +349,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -464,16 +464,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -481,7 +481,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -541,16 +541,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -558,7 +558,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -639,16 +639,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -656,7 +656,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -703,7 +703,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(listProjectsPath))
 					Expect(req.Method).To(Equal("GET"))
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -720,7 +720,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ListProjectsOptions model
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
-				listProjectsOptionsModel.Start = core.StringPtr("testString")
+				listProjectsOptionsModel.Token = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -752,7 +752,7 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listProjectsPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
@@ -774,7 +774,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ListProjectsOptions model
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
-				listProjectsOptionsModel.Start = core.StringPtr("testString")
+				listProjectsOptionsModel.Token = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -812,7 +812,7 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listProjectsPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
@@ -836,7 +836,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ListProjectsOptions model
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
-				listProjectsOptionsModel.Start = core.StringPtr("testString")
+				listProjectsOptionsModel.Token = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -857,7 +857,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ListProjectsOptions model
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
-				listProjectsOptionsModel.Start = core.StringPtr("testString")
+				listProjectsOptionsModel.Token = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -892,7 +892,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the ListProjectsOptions model
 				listProjectsOptionsModel := new(projectv1.ListProjectsOptions)
-				listProjectsOptionsModel.Start = core.StringPtr("testString")
+				listProjectsOptionsModel.Token = core.StringPtr("testString")
 				listProjectsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -909,30 +909,30 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 		Context(`Test pagination helper method on response`, func() {
-			It(`Invoke GetNextStart successfully`, func() {
+			It(`Invoke GetNextToken successfully`, func() {
 				responseObject := new(projectv1.ProjectCollection)
 				nextObject := new(projectv1.PaginationLink)
-				nextObject.Href = core.StringPtr("ibm.com?start=abc-123")
+				nextObject.Href = core.StringPtr("ibm.com?token=abc-123")
 				responseObject.Next = nextObject
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(Equal(core.StringPtr("abc-123")))
 			})
-			It(`Invoke GetNextStart without a "Next" property in the response`, func() {
+			It(`Invoke GetNextToken without a "Next" property in the response`, func() {
 				responseObject := new(projectv1.ProjectCollection)
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(BeNil())
 			})
-			It(`Invoke GetNextStart without any query params in the "Next" URL`, func() {
+			It(`Invoke GetNextToken without any query params in the "Next" URL`, func() {
 				responseObject := new(projectv1.ProjectCollection)
 				nextObject := new(projectv1.PaginationLink)
 				nextObject.Href = core.StringPtr("ibm.com")
 				responseObject.Next = nextObject
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(BeNil())
 			})
@@ -952,7 +952,7 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?start=1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group_id":"ResourceGroupID","state":"ready","href":"Href","definition":{"name":"Name","destroy_on_delete":false,"description":"Description","monitoring_enabled":false}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?token=1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group_id":"ResourceGroupID","state":"ready","href":"Href","definition":{"name":"Name","destroy_on_delete":false,"description":"Description","monitoring_enabled":false}}],"total_count":2,"limit":1}`)
 					} else if requestNumber == 2 {
 						fmt.Fprintf(res, "%s", `{"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group_id":"ResourceGroupID","state":"ready","href":"Href","definition":{"name":"Name","destroy_on_delete":false,"description":"Description","monitoring_enabled":false}}],"total_count":2,"limit":1}`)
 					} else {
@@ -2085,7 +2085,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(listProjectEnvironmentsPath))
 					Expect(req.Method).To(Equal("GET"))
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2103,7 +2103,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListProjectEnvironmentsOptions model
 				listProjectEnvironmentsOptionsModel := new(projectv1.ListProjectEnvironmentsOptions)
 				listProjectEnvironmentsOptionsModel.ProjectID = core.StringPtr("testString")
-				listProjectEnvironmentsOptionsModel.Start = core.StringPtr("testString")
+				listProjectEnvironmentsOptionsModel.Token = core.StringPtr("testString")
 				listProjectEnvironmentsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectEnvironmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -2135,7 +2135,7 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listProjectEnvironmentsPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
@@ -2158,7 +2158,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListProjectEnvironmentsOptions model
 				listProjectEnvironmentsOptionsModel := new(projectv1.ListProjectEnvironmentsOptions)
 				listProjectEnvironmentsOptionsModel.ProjectID = core.StringPtr("testString")
-				listProjectEnvironmentsOptionsModel.Start = core.StringPtr("testString")
+				listProjectEnvironmentsOptionsModel.Token = core.StringPtr("testString")
 				listProjectEnvironmentsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectEnvironmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2196,7 +2196,7 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listProjectEnvironmentsPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
@@ -2221,7 +2221,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListProjectEnvironmentsOptions model
 				listProjectEnvironmentsOptionsModel := new(projectv1.ListProjectEnvironmentsOptions)
 				listProjectEnvironmentsOptionsModel.ProjectID = core.StringPtr("testString")
-				listProjectEnvironmentsOptionsModel.Start = core.StringPtr("testString")
+				listProjectEnvironmentsOptionsModel.Token = core.StringPtr("testString")
 				listProjectEnvironmentsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectEnvironmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2243,7 +2243,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListProjectEnvironmentsOptions model
 				listProjectEnvironmentsOptionsModel := new(projectv1.ListProjectEnvironmentsOptions)
 				listProjectEnvironmentsOptionsModel.ProjectID = core.StringPtr("testString")
-				listProjectEnvironmentsOptionsModel.Start = core.StringPtr("testString")
+				listProjectEnvironmentsOptionsModel.Token = core.StringPtr("testString")
 				listProjectEnvironmentsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectEnvironmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -2286,7 +2286,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListProjectEnvironmentsOptions model
 				listProjectEnvironmentsOptionsModel := new(projectv1.ListProjectEnvironmentsOptions)
 				listProjectEnvironmentsOptionsModel.ProjectID = core.StringPtr("testString")
-				listProjectEnvironmentsOptionsModel.Start = core.StringPtr("testString")
+				listProjectEnvironmentsOptionsModel.Token = core.StringPtr("testString")
 				listProjectEnvironmentsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listProjectEnvironmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2303,30 +2303,30 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 		Context(`Test pagination helper method on response`, func() {
-			It(`Invoke GetNextStart successfully`, func() {
+			It(`Invoke GetNextToken successfully`, func() {
 				responseObject := new(projectv1.EnvironmentCollection)
 				nextObject := new(projectv1.PaginationLink)
-				nextObject.Href = core.StringPtr("ibm.com?start=abc-123")
+				nextObject.Href = core.StringPtr("ibm.com?token=abc-123")
 				responseObject.Next = nextObject
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(Equal(core.StringPtr("abc-123")))
 			})
-			It(`Invoke GetNextStart without a "Next" property in the response`, func() {
+			It(`Invoke GetNextToken without a "Next" property in the response`, func() {
 				responseObject := new(projectv1.EnvironmentCollection)
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(BeNil())
 			})
-			It(`Invoke GetNextStart without any query params in the "Next" URL`, func() {
+			It(`Invoke GetNextToken without any query params in the "Next" URL`, func() {
 				responseObject := new(projectv1.EnvironmentCollection)
 				nextObject := new(projectv1.PaginationLink)
 				nextObject.Href = core.StringPtr("ibm.com")
 				responseObject.Next = nextObject
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(BeNil())
 			})
@@ -2346,7 +2346,7 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?start=1"},"environments":[{"id":"ID","project":{"id":"ID","href":"Href","definition":{"name":"Name"},"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"},"created_at":"2019-01-01T12:00:00.000Z","target_account":"TargetAccount","modified_at":"2019-01-01T12:00:00.000Z","href":"Href","definition":{"description":"Description","name":"Name","authorizations":{"trusted_profile_id":"TrustedProfileID","method":"api_key","api_key":"ApiKey"},"inputs":{"anyKey":"anyValue"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"}}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?token=1"},"environments":[{"id":"ID","project":{"id":"ID","href":"Href","definition":{"name":"Name"},"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"},"created_at":"2019-01-01T12:00:00.000Z","target_account":"TargetAccount","modified_at":"2019-01-01T12:00:00.000Z","href":"Href","definition":{"description":"Description","name":"Name","authorizations":{"trusted_profile_id":"TrustedProfileID","method":"api_key","api_key":"ApiKey"},"inputs":{"anyKey":"anyValue"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"}}}],"total_count":2,"limit":1}`)
 					} else if requestNumber == 2 {
 						fmt.Fprintf(res, "%s", `{"environments":[{"id":"ID","project":{"id":"ID","href":"Href","definition":{"name":"Name"},"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"},"created_at":"2019-01-01T12:00:00.000Z","target_account":"TargetAccount","modified_at":"2019-01-01T12:00:00.000Z","href":"Href","definition":{"description":"Description","name":"Name","authorizations":{"trusted_profile_id":"TrustedProfileID","method":"api_key","api_key":"ApiKey"},"inputs":{"anyKey":"anyValue"},"compliance_profile":{"id":"ID","instance_id":"InstanceID","instance_location":"InstanceLocation","attachment_id":"AttachmentID","profile_name":"ProfileName"}}}],"total_count":2,"limit":1}`)
 					} else {
@@ -3239,16 +3239,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3257,7 +3257,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -3311,7 +3311,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully with retries`, func() {
@@ -3337,16 +3337,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3355,7 +3355,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3412,7 +3412,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
 				}))
 			})
 			It(`Invoke CreateConfig successfully`, func() {
@@ -3443,16 +3443,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3461,7 +3461,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3494,16 +3494,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3512,7 +3512,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -3566,16 +3566,16 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -3584,7 +3584,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the CreateConfigOptions model
 				createConfigOptionsModel := new(projectv1.CreateConfigOptions)
 				createConfigOptionsModel.ProjectID = core.StringPtr("testString")
-				createConfigOptionsModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				createConfigOptionsModel.Definition = projectConfigDefinitionPrototypeModel
 				createConfigOptionsModel.Schematics = schematicsWorkspaceModel
 				createConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3611,7 +3611,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(listConfigsPath))
 					Expect(req.Method).To(Equal("GET"))
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -3629,7 +3629,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigsOptions model
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigsOptionsModel.Start = core.StringPtr("testString")
+				listConfigsOptionsModel.Token = core.StringPtr("testString")
 				listConfigsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -3661,7 +3661,7 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listConfigsPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
@@ -3684,7 +3684,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigsOptions model
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigsOptionsModel.Start = core.StringPtr("testString")
+				listConfigsOptionsModel.Token = core.StringPtr("testString")
 				listConfigsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3722,7 +3722,7 @@ var _ = Describe(`ProjectV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listConfigsPath))
 					Expect(req.Method).To(Equal("GET"))
 
-					Expect(req.URL.Query()["start"]).To(Equal([]string{"testString"}))
+					Expect(req.URL.Query()["token"]).To(Equal([]string{"testString"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
@@ -3747,7 +3747,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigsOptions model
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigsOptionsModel.Start = core.StringPtr("testString")
+				listConfigsOptionsModel.Token = core.StringPtr("testString")
 				listConfigsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3769,7 +3769,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigsOptions model
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigsOptionsModel.Start = core.StringPtr("testString")
+				listConfigsOptionsModel.Token = core.StringPtr("testString")
 				listConfigsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -3812,7 +3812,7 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ListConfigsOptions model
 				listConfigsOptionsModel := new(projectv1.ListConfigsOptions)
 				listConfigsOptionsModel.ProjectID = core.StringPtr("testString")
-				listConfigsOptionsModel.Start = core.StringPtr("testString")
+				listConfigsOptionsModel.Token = core.StringPtr("testString")
 				listConfigsOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listConfigsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -3829,30 +3829,30 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 		Context(`Test pagination helper method on response`, func() {
-			It(`Invoke GetNextStart successfully`, func() {
+			It(`Invoke GetNextToken successfully`, func() {
 				responseObject := new(projectv1.ProjectConfigCollection)
 				nextObject := new(projectv1.PaginationLink)
-				nextObject.Href = core.StringPtr("ibm.com?start=abc-123")
+				nextObject.Href = core.StringPtr("ibm.com?token=abc-123")
 				responseObject.Next = nextObject
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(Equal(core.StringPtr("abc-123")))
 			})
-			It(`Invoke GetNextStart without a "Next" property in the response`, func() {
+			It(`Invoke GetNextToken without a "Next" property in the response`, func() {
 				responseObject := new(projectv1.ProjectConfigCollection)
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(BeNil())
 			})
-			It(`Invoke GetNextStart without any query params in the "Next" URL`, func() {
+			It(`Invoke GetNextToken without any query params in the "Next" URL`, func() {
 				responseObject := new(projectv1.ProjectConfigCollection)
 				nextObject := new(projectv1.PaginationLink)
 				nextObject.Href = core.StringPtr("ibm.com")
 				responseObject.Next = nextObject
 
-				value, err := responseObject.GetNextStart()
+				value, err := responseObject.GetNextToken()
 				Expect(err).To(BeNil())
 				Expect(value).To(BeNil())
 			})
@@ -3872,7 +3872,7 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?start=1"},"configs":[{"approved_version":{"definition":{"environment_id":"EnvironmentID","locator_id":"LocatorID"},"state":"approved","version":7,"href":"Href"},"deployed_version":{"definition":{"environment_id":"EnvironmentID","locator_id":"LocatorID"},"state":"approved","version":7,"href":"Href"},"id":"ID","version":7,"state":"approved","created_at":"2019-01-01T12:00:00.000Z","modified_at":"2019-01-01T12:00:00.000Z","href":"Href","definition":{"description":"Description","name":"Name","locator_id":"LocatorID"},"project":{"id":"ID","href":"Href","definition":{"name":"Name"},"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"},"deployment_model":"project_deployed"}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?token=1"},"configs":[{"approved_version":{"definition":{"environment_id":"EnvironmentID","locator_id":"LocatorID"},"state":"approved","version":7,"href":"Href"},"deployed_version":{"definition":{"environment_id":"EnvironmentID","locator_id":"LocatorID"},"state":"approved","version":7,"href":"Href"},"id":"ID","version":7,"state":"approved","created_at":"2019-01-01T12:00:00.000Z","modified_at":"2019-01-01T12:00:00.000Z","href":"Href","definition":{"description":"Description","name":"Name","locator_id":"LocatorID"},"project":{"id":"ID","href":"Href","definition":{"name":"Name"},"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"},"deployment_model":"project_deployed"}],"total_count":2,"limit":1}`)
 					} else if requestNumber == 2 {
 						fmt.Fprintf(res, "%s", `{"configs":[{"approved_version":{"definition":{"environment_id":"EnvironmentID","locator_id":"LocatorID"},"state":"approved","version":7,"href":"Href"},"deployed_version":{"definition":{"environment_id":"EnvironmentID","locator_id":"LocatorID"},"state":"approved","version":7,"href":"Href"},"id":"ID","version":7,"state":"approved","created_at":"2019-01-01T12:00:00.000Z","modified_at":"2019-01-01T12:00:00.000Z","href":"Href","definition":{"description":"Description","name":"Name","locator_id":"LocatorID"},"project":{"id":"ID","href":"Href","definition":{"name":"Name"},"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"},"deployment_model":"project_deployed"}],"total_count":2,"limit":1}`)
 					} else {
@@ -3993,7 +3993,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully with retries`, func() {
@@ -4048,7 +4048,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
 				}))
 			})
 			It(`Invoke GetConfig successfully`, func() {
@@ -4184,22 +4184,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateConfig(updateConfigOptionsModel)
@@ -4252,7 +4252,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully with retries`, func() {
@@ -4278,22 +4278,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -4349,7 +4349,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}, "approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 7, "href": "Href"}}`)
 				}))
 			})
 			It(`Invoke UpdateConfig successfully`, func() {
@@ -4380,22 +4380,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -4427,22 +4427,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -4495,22 +4495,22 @@ var _ = Describe(`ProjectV1`, func() {
 				projectConfigAuthModel.Method = core.StringPtr("api_key")
 				projectConfigAuthModel.ApiKey = core.StringPtr("testString")
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
 
 				// Construct an instance of the UpdateConfigOptions model
 				updateConfigOptionsModel := new(projectv1.UpdateConfigOptions)
 				updateConfigOptionsModel.ProjectID = core.StringPtr("testString")
 				updateConfigOptionsModel.ID = core.StringPtr("testString")
-				updateConfigOptionsModel.Definition = projectConfigDefinitionBlockPatchModel
+				updateConfigOptionsModel.Definition = projectConfigDefinitionPatchModel
 				updateConfigOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -4823,7 +4823,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke ForceApprove successfully with retries`, func() {
@@ -4895,7 +4895,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke ForceApprove successfully`, func() {
@@ -5077,7 +5077,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke Approve successfully with retries`, func() {
@@ -5149,7 +5149,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke Approve successfully`, func() {
@@ -5314,7 +5314,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke ValidateConfig successfully with retries`, func() {
@@ -5369,7 +5369,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke ValidateConfig successfully`, func() {
@@ -5531,7 +5531,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke DeployConfig successfully with retries`, func() {
@@ -5586,7 +5586,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke DeployConfig successfully`, func() {
@@ -5748,7 +5748,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke UndeployConfig successfully with retries`, func() {
@@ -5803,7 +5803,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke UndeployConfig successfully`, func() {
@@ -6215,6 +6215,1315 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 		})
 	})
+	Describe(`CreateStackDefinition(createStackDefinitionOptions *CreateStackDefinitionOptions) - Operation response error`, func() {
+		createStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createStackDefinitionPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateStackDefinition with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "us-south"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackDefinitionOutputVariableModel.Value = "cluster_id"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("region")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the CreateStackDefinitionOptions model
+				createStackDefinitionOptionsModel := new(projectv1.CreateStackDefinitionOptions)
+				createStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				createStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.CreateStackDefinition(createStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.CreateStackDefinition(createStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateStackDefinition(createStackDefinitionOptions *CreateStackDefinitionOptions)`, func() {
+		createStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createStackDefinitionPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+				}))
+			})
+			It(`Invoke CreateStackDefinition successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "us-south"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackDefinitionOutputVariableModel.Value = "cluster_id"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("region")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the CreateStackDefinitionOptions model
+				createStackDefinitionOptionsModel := new(projectv1.CreateStackDefinitionOptions)
+				createStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				createStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.CreateStackDefinitionWithContext(ctx, createStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.CreateStackDefinition(createStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.CreateStackDefinitionWithContext(ctx, createStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createStackDefinitionPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+				}))
+			})
+			It(`Invoke CreateStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.CreateStackDefinition(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "us-south"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackDefinitionOutputVariableModel.Value = "cluster_id"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("region")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the CreateStackDefinitionOptions model
+				createStackDefinitionOptionsModel := new(projectv1.CreateStackDefinitionOptions)
+				createStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				createStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.CreateStackDefinition(createStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateStackDefinition with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "us-south"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackDefinitionOutputVariableModel.Value = "cluster_id"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("region")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the CreateStackDefinitionOptions model
+				createStackDefinitionOptionsModel := new(projectv1.CreateStackDefinitionOptions)
+				createStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				createStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.CreateStackDefinition(createStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateStackDefinitionOptions model with no property values
+				createStackDefinitionOptionsModelNew := new(projectv1.CreateStackDefinitionOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.CreateStackDefinition(createStackDefinitionOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "us-south"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackDefinitionOutputVariableModel.Value = "cluster_id"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("region")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the CreateStackDefinitionOptions model
+				createStackDefinitionOptionsModel := new(projectv1.CreateStackDefinitionOptions)
+				createStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				createStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				createStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.CreateStackDefinition(createStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetStackDefinition(getStackDefinitionOptions *GetStackDefinitionOptions) - Operation response error`, func() {
+		getStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getStackDefinitionPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetStackDefinition with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the GetStackDefinitionOptions model
+				getStackDefinitionOptionsModel := new(projectv1.GetStackDefinitionOptions)
+				getStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.GetStackDefinition(getStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.GetStackDefinition(getStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetStackDefinition(getStackDefinitionOptions *GetStackDefinitionOptions)`, func() {
+		getStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getStackDefinitionPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+				}))
+			})
+			It(`Invoke GetStackDefinition successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetStackDefinitionOptions model
+				getStackDefinitionOptionsModel := new(projectv1.GetStackDefinitionOptions)
+				getStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.GetStackDefinitionWithContext(ctx, getStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.GetStackDefinition(getStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.GetStackDefinitionWithContext(ctx, getStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getStackDefinitionPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+				}))
+			})
+			It(`Invoke GetStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.GetStackDefinition(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetStackDefinitionOptions model
+				getStackDefinitionOptionsModel := new(projectv1.GetStackDefinitionOptions)
+				getStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.GetStackDefinition(getStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetStackDefinition with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the GetStackDefinitionOptions model
+				getStackDefinitionOptionsModel := new(projectv1.GetStackDefinitionOptions)
+				getStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.GetStackDefinition(getStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetStackDefinitionOptions model with no property values
+				getStackDefinitionOptionsModelNew := new(projectv1.GetStackDefinitionOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.GetStackDefinition(getStackDefinitionOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the GetStackDefinitionOptions model
+				getStackDefinitionOptionsModel := new(projectv1.GetStackDefinitionOptions)
+				getStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				getStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.GetStackDefinition(getStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateStackDefinition(updateStackDefinitionOptions *UpdateStackDefinitionOptions) - Operation response error`, func() {
+		updateStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateStackDefinitionPath))
+					Expect(req.Method).To(Equal("PATCH"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateStackDefinition with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "eu-gb"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("testString")
+				stackDefinitionOutputVariableModel.Value = "testString"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("cluster_name")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the UpdateStackDefinitionOptions model
+				updateStackDefinitionOptionsModel := new(projectv1.UpdateStackDefinitionOptions)
+				updateStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				updateStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.UpdateStackDefinition(updateStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.UpdateStackDefinition(updateStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateStackDefinition(updateStackDefinitionOptions *UpdateStackDefinitionOptions)`, func() {
+		updateStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateStackDefinitionPath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+				}))
+			})
+			It(`Invoke UpdateStackDefinition successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "eu-gb"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("testString")
+				stackDefinitionOutputVariableModel.Value = "testString"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("cluster_name")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the UpdateStackDefinitionOptions model
+				updateStackDefinitionOptionsModel := new(projectv1.UpdateStackDefinitionOptions)
+				updateStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				updateStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.UpdateStackDefinitionWithContext(ctx, updateStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.UpdateStackDefinition(updateStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.UpdateStackDefinitionWithContext(ctx, updateStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateStackDefinitionPath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+				}))
+			})
+			It(`Invoke UpdateStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.UpdateStackDefinition(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "eu-gb"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("testString")
+				stackDefinitionOutputVariableModel.Value = "testString"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("cluster_name")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the UpdateStackDefinitionOptions model
+				updateStackDefinitionOptionsModel := new(projectv1.UpdateStackDefinitionOptions)
+				updateStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				updateStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.UpdateStackDefinition(updateStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateStackDefinition with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "eu-gb"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("testString")
+				stackDefinitionOutputVariableModel.Value = "testString"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("cluster_name")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the UpdateStackDefinitionOptions model
+				updateStackDefinitionOptionsModel := new(projectv1.UpdateStackDefinitionOptions)
+				updateStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				updateStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.UpdateStackDefinition(updateStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateStackDefinitionOptions model with no property values
+				updateStackDefinitionOptionsModelNew := new(projectv1.UpdateStackDefinitionOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.UpdateStackDefinition(updateStackDefinitionOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "eu-gb"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("testString")
+				stackDefinitionOutputVariableModel.Value = "testString"
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("cluster_name")
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+
+				// Construct an instance of the UpdateStackDefinitionOptions model
+				updateStackDefinitionOptionsModel := new(projectv1.UpdateStackDefinitionOptions)
+				updateStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				updateStackDefinitionOptionsModel.StackDefinition = stackDefinitionBlockPrototypeModel
+				updateStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.UpdateStackDefinition(updateStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ExportStackDefinition(exportStackDefinitionOptions *ExportStackDefinitionOptions) - Operation response error`, func() {
+		exportStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition/export"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(exportStackDefinitionPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ExportStackDefinition with error: Operation response processing error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionExportRequestStackDefinitionExportCatalogRequest model
+				stackDefinitionExportRequestModel := new(projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+				stackDefinitionExportRequestModel.CatalogID = core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c")
+				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+
+				// Construct an instance of the ExportStackDefinitionOptions model
+				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
+				exportStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.Settings = stackDefinitionExportRequestModel
+				exportStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := projectService.ExportStackDefinition(exportStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				projectService.EnableRetries(0, 0)
+				result, response, operationErr = projectService.ExportStackDefinition(exportStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ExportStackDefinition(exportStackDefinitionOptions *ExportStackDefinitionOptions)`, func() {
+		exportStackDefinitionPath := "/v1/projects/testString/configs/testString/stack_definition/export"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(exportStackDefinitionPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"catalog_id": "CatalogID", "product_id": "ProductID", "version_locator": "VersionLocator", "kind": "Kind", "format": "Format"}`)
+				}))
+			})
+			It(`Invoke ExportStackDefinition successfully with retries`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+				projectService.EnableRetries(0, 0)
+
+				// Construct an instance of the StackDefinitionExportRequestStackDefinitionExportCatalogRequest model
+				stackDefinitionExportRequestModel := new(projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+				stackDefinitionExportRequestModel.CatalogID = core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c")
+				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+
+				// Construct an instance of the ExportStackDefinitionOptions model
+				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
+				exportStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.Settings = stackDefinitionExportRequestModel
+				exportStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := projectService.ExportStackDefinitionWithContext(ctx, exportStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				projectService.DisableRetries()
+				result, response, operationErr := projectService.ExportStackDefinition(exportStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = projectService.ExportStackDefinitionWithContext(ctx, exportStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(exportStackDefinitionPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"catalog_id": "CatalogID", "product_id": "ProductID", "version_locator": "VersionLocator", "kind": "Kind", "format": "Format"}`)
+				}))
+			})
+			It(`Invoke ExportStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := projectService.ExportStackDefinition(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the StackDefinitionExportRequestStackDefinitionExportCatalogRequest model
+				stackDefinitionExportRequestModel := new(projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+				stackDefinitionExportRequestModel.CatalogID = core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c")
+				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+
+				// Construct an instance of the ExportStackDefinitionOptions model
+				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
+				exportStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.Settings = stackDefinitionExportRequestModel
+				exportStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = projectService.ExportStackDefinition(exportStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ExportStackDefinition with error: Operation validation and request error`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionExportRequestStackDefinitionExportCatalogRequest model
+				stackDefinitionExportRequestModel := new(projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+				stackDefinitionExportRequestModel.CatalogID = core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c")
+				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+
+				// Construct an instance of the ExportStackDefinitionOptions model
+				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
+				exportStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.Settings = stackDefinitionExportRequestModel
+				exportStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := projectService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := projectService.ExportStackDefinition(exportStackDefinitionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ExportStackDefinitionOptions model with no property values
+				exportStackDefinitionOptionsModelNew := new(projectv1.ExportStackDefinitionOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = projectService.ExportStackDefinition(exportStackDefinitionOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ExportStackDefinition successfully`, func() {
+				projectService, serviceErr := projectv1.NewProjectV1(&projectv1.ProjectV1Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(projectService).ToNot(BeNil())
+
+				// Construct an instance of the StackDefinitionExportRequestStackDefinitionExportCatalogRequest model
+				stackDefinitionExportRequestModel := new(projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+				stackDefinitionExportRequestModel.CatalogID = core.StringPtr("01e1a9ad-534b-4ab9-996a-b8f2a8653d5c")
+				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+
+				// Construct an instance of the ExportStackDefinitionOptions model
+				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
+				exportStackDefinitionOptionsModel.ProjectID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.ID = core.StringPtr("testString")
+				exportStackDefinitionOptionsModel.Settings = stackDefinitionExportRequestModel
+				exportStackDefinitionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := projectService.ExportStackDefinition(exportStackDefinitionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions) - Operation response error`, func() {
 		listConfigVersionsPath := "/v1/projects/testString/configs/testString/versions"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
@@ -6496,7 +7805,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke GetConfigVersion successfully with retries`, func() {
@@ -6552,7 +7861,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"anyKey": "anyValue"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "sucess_message": ["SucessMessage"], "update_message": ["UpdateMessage"], "destroy_message": ["DestroyMessage"]}, "apply_messages": {"error_messages": [{}], "sucess_message": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": {"anyKey": "anyValue"}}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "version": 7, "is_draft": false, "needs_attention_state": [{"event_id": "EventID", "event": "Event", "severity": "INFO", "action_url": "ActionURL", "target": "Target", "triggered_by": "TriggeredBy", "timestamp": "Timestamp"}], "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "last_approved": {"at": "2019-01-01T12:00:00.000Z", "comment": "Comment", "is_forced": true, "user_id": "UserID"}, "last_saved_at": "2019-01-01T12:00:00.000Z", "last_validated": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "cost_estimate": {"version": "Version", "currency": "USD", "totalHourlyCost": "TotalHourlyCost", "totalMonthlyCost": "TotalMonthlyCost", "pastTotalHourlyCost": "PastTotalHourlyCost", "pastTotalMonthlyCost": "PastTotalMonthlyCost", "diffTotalHourlyCost": "DiffTotalHourlyCost", "diffTotalMonthlyCost": "DiffTotalMonthlyCost", "timeGenerated": "2019-01-01T12:00:00.000Z", "user_id": "UserID"}, "cra_logs": {"cra_version": "2.0.4", "schema_version": "SchemaVersion", "status": "passed", "summary": {"total": "Total", "passed": "Passed", "failed": "Failed", "skipped": "Skipped"}, "timestamp": "2019-01-01T12:00:00.000Z"}}, "last_deployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_undeployed": {"href": "Href", "result": "failed", "job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}, "pre_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}, "post_job": {"id": "ID", "summary": {"job_id": "JobID", "start_time": "2019-01-01T12:00:00.000Z", "end_time": "2019-01-01T12:00:00.000Z", "tasks": 5, "ok": 2, "failed": 6, "skipped": 7, "changed": 7, "project_error": {"timestamp": "2019-01-01T12:00:00.000Z", "user_id": "UserID", "status_code": "StatusCode", "description": "Description", "error_response": "ErrorResponse"}}}}, "last_monitoring": {"href": "Href", "result": "failed", "drift_detection": {"job": {"id": "ID", "summary": {"version": "Version", "plan_summary": {"add": 3, "failed": 6, "update": 6, "destroy": 7, "add_resources": ["AddResources"], "failed_resources": ["FailedResources"], "updated_resources": ["UpdatedResources"], "destroy_resources": ["DestroyResources"]}, "apply_summary": {"success": 7, "failed": 6, "success_resources": ["SuccessResources"], "failed_resources": ["FailedResources"]}, "destroy_summary": {"success": 7, "failed": 6, "tainted": 7, "resources": {"success": ["Success"], "failed": ["Failed"], "tainted": ["Tainted"]}}, "message_summary": {"info": 4, "debug": 5, "error": 5}, "plan_messages": {"error_messages": [{}], "success_messages": ["SuccessMessages"], "update_messages": ["UpdateMessages"], "destroy_messages": ["DestroyMessages"]}, "apply_messages": {"error_messages": [{}], "success_messages": [{"resource_type": "ResourceType", "time-taken": "TimeTaken", "id": "ID"}]}, "destroy_messages": {"error_messages": [{}]}}}}}, "outputs": [{"name": "Name", "description": "Description", "value": "anyValue"}], "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "references": {"anyKey": "anyValue"}, "schematics": {"workspace_crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "validate_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "validate_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "deploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_pre_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}, "undeploy_post_script": {"type": "ansible", "path": "scripts/validate-post-ansible-playbook.yaml", "short_description": "ShortDescription"}}, "state": "approved", "update_available": false, "template": {"id": "ID", "href": "Href"}, "href": "Href", "definition": {"compliance_profile": {"id": "ID", "instance_id": "InstanceID", "instance_location": "InstanceLocation", "attachment_id": "AttachmentID", "profile_name": "ProfileName"}, "locator_id": "LocatorID", "description": "Description", "name": "Name", "environment_id": "EnvironmentID", "authorizations": {"trusted_profile_id": "TrustedProfileID", "method": "api_key", "api_key": "ApiKey"}, "inputs": {"anyKey": "anyValue"}, "settings": {"anyKey": "anyValue"}}}`)
 				}))
 			})
 			It(`Invoke GetConfigVersion successfully`, func() {
@@ -6922,25 +8231,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("api_key")))
 				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				Expect(projectConfigDefinitionBlockPrototypeModel).ToNot(BeNil())
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
-				Expect(projectConfigDefinitionBlockPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Description).To(Equal(core.StringPtr("The stage environment configuration.")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Name).To(Equal(core.StringPtr("env-stage")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				Expect(projectConfigDefinitionPrototypeModel).ToNot(BeNil())
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage environment configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				Expect(projectConfigDefinitionPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(projectConfigDefinitionPrototypeModel.Description).To(Equal(core.StringPtr("The stage environment configuration.")))
+				Expect(projectConfigDefinitionPrototypeModel.Name).To(Equal(core.StringPtr("env-stage")))
+				Expect(projectConfigDefinitionPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(projectConfigDefinitionPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -6950,15 +8259,15 @@ var _ = Describe(`ProjectV1`, func() {
 
 				// Construct an instance of the CreateConfigOptions model
 				projectID := "testString"
-				var createConfigOptionsDefinition projectv1.ProjectConfigDefinitionBlockPrototypeIntf = nil
+				var createConfigOptionsDefinition projectv1.ProjectConfigDefinitionPrototypeIntf = nil
 				createConfigOptionsModel := projectService.NewCreateConfigOptions(projectID, createConfigOptionsDefinition)
 				createConfigOptionsModel.SetProjectID("testString")
-				createConfigOptionsModel.SetDefinition(projectConfigDefinitionBlockPrototypeModel)
+				createConfigOptionsModel.SetDefinition(projectConfigDefinitionPrototypeModel)
 				createConfigOptionsModel.SetSchematics(schematicsWorkspaceModel)
 				createConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createConfigOptionsModel).ToNot(BeNil())
 				Expect(createConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(createConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionBlockPrototypeModel))
+				Expect(createConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionPrototypeModel))
 				Expect(createConfigOptionsModel.Schematics).To(Equal(schematicsWorkspaceModel))
 				Expect(createConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -7050,25 +8359,25 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("api_key")))
 				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties model
-				projectConfigDefinitionBlockPrototypeModel := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
-				Expect(projectConfigDefinitionBlockPrototypeModel).ToNot(BeNil())
-				projectConfigDefinitionBlockPrototypeModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
-				projectConfigDefinitionBlockPrototypeModel.Description = core.StringPtr("The stage account configuration.")
-				projectConfigDefinitionBlockPrototypeModel.Name = core.StringPtr("account-stage")
-				projectConfigDefinitionBlockPrototypeModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPrototypeModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
-				Expect(projectConfigDefinitionBlockPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Description).To(Equal(core.StringPtr("The stage account configuration.")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Name).To(Equal(core.StringPtr("account-stage")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
-				Expect(projectConfigDefinitionBlockPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				// Construct an instance of the ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype model
+				projectConfigDefinitionPrototypeModel := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
+				Expect(projectConfigDefinitionPrototypeModel).ToNot(BeNil())
+				projectConfigDefinitionPrototypeModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPrototypeModel.LocatorID = core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")
+				projectConfigDefinitionPrototypeModel.Description = core.StringPtr("The stage account configuration.")
+				projectConfigDefinitionPrototypeModel.Name = core.StringPtr("account-stage")
+				projectConfigDefinitionPrototypeModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPrototypeModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPrototypeModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPrototypeModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				Expect(projectConfigDefinitionPrototypeModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPrototypeModel.LocatorID).To(Equal(core.StringPtr("1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.018edf04-e772-4ca2-9785-03e8e03bef72-global")))
+				Expect(projectConfigDefinitionPrototypeModel.Description).To(Equal(core.StringPtr("The stage account configuration.")))
+				Expect(projectConfigDefinitionPrototypeModel.Name).To(Equal(core.StringPtr("account-stage")))
+				Expect(projectConfigDefinitionPrototypeModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPrototypeModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPrototypeModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(projectConfigDefinitionPrototypeModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 
 				// Construct an instance of the SchematicsWorkspace model
 				schematicsWorkspaceModel := new(projectv1.SchematicsWorkspace)
@@ -7079,9 +8388,9 @@ var _ = Describe(`ProjectV1`, func() {
 				// Construct an instance of the ProjectConfigPrototype model
 				projectConfigPrototypeModel := new(projectv1.ProjectConfigPrototype)
 				Expect(projectConfigPrototypeModel).ToNot(BeNil())
-				projectConfigPrototypeModel.Definition = projectConfigDefinitionBlockPrototypeModel
+				projectConfigPrototypeModel.Definition = projectConfigDefinitionPrototypeModel
 				projectConfigPrototypeModel.Schematics = schematicsWorkspaceModel
-				Expect(projectConfigPrototypeModel.Definition).To(Equal(projectConfigDefinitionBlockPrototypeModel))
+				Expect(projectConfigPrototypeModel.Definition).To(Equal(projectConfigDefinitionPrototypeModel))
 				Expect(projectConfigPrototypeModel.Schematics).To(Equal(schematicsWorkspaceModel))
 
 				// Construct an instance of the EnvironmentDefinitionRequiredProperties model
@@ -7122,6 +8431,70 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(createProjectOptionsModel.Configs).To(Equal([]projectv1.ProjectConfigPrototype{*projectConfigPrototypeModel}))
 				Expect(createProjectOptionsModel.Environments).To(Equal([]projectv1.EnvironmentPrototype{*environmentPrototypeModel}))
 				Expect(createProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewCreateStackDefinitionOptions successfully`, func() {
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				Expect(stackDefinitionInputVariableModel).ToNot(BeNil())
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "us-south"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+				Expect(stackDefinitionInputVariableModel.Name).To(Equal(core.StringPtr("region")))
+				Expect(stackDefinitionInputVariableModel.Type).To(Equal(core.StringPtr("string")))
+				Expect(stackDefinitionInputVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionInputVariableModel.Default).To(Equal("us-south"))
+				Expect(stackDefinitionInputVariableModel.Required).To(Equal(core.BoolPtr(true)))
+				Expect(stackDefinitionInputVariableModel.Hidden).To(Equal(core.BoolPtr(false)))
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				Expect(stackDefinitionOutputVariableModel).ToNot(BeNil())
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("vpc_cluster_id")
+				stackDefinitionOutputVariableModel.Value = "cluster_id"
+				Expect(stackDefinitionOutputVariableModel.Name).To(Equal(core.StringPtr("vpc_cluster_id")))
+				Expect(stackDefinitionOutputVariableModel.Value).To(Equal("cluster_id"))
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				Expect(stackDefinitionMemberInputPrototypeModel).ToNot(BeNil())
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("region")
+				Expect(stackDefinitionMemberInputPrototypeModel.Name).To(Equal(core.StringPtr("region")))
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				Expect(stackDefinitionMemberPrototypeModel).ToNot(BeNil())
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+				Expect(stackDefinitionMemberPrototypeModel.Name).To(Equal(core.StringPtr("foundation-deployable-architecture")))
+				Expect(stackDefinitionMemberPrototypeModel.Inputs).To(Equal([]projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}))
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				Expect(stackDefinitionBlockPrototypeModel).ToNot(BeNil())
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+				Expect(stackDefinitionBlockPrototypeModel.Inputs).To(Equal([]projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}))
+				Expect(stackDefinitionBlockPrototypeModel.Outputs).To(Equal([]projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}))
+				Expect(stackDefinitionBlockPrototypeModel.Members).To(Equal([]projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}))
+
+				// Construct an instance of the CreateStackDefinitionOptions model
+				projectID := "testString"
+				id := "testString"
+				var createStackDefinitionOptionsStackDefinition *projectv1.StackDefinitionBlockPrototype = nil
+				createStackDefinitionOptionsModel := projectService.NewCreateStackDefinitionOptions(projectID, id, createStackDefinitionOptionsStackDefinition)
+				createStackDefinitionOptionsModel.SetProjectID("testString")
+				createStackDefinitionOptionsModel.SetID("testString")
+				createStackDefinitionOptionsModel.SetStackDefinition(stackDefinitionBlockPrototypeModel)
+				createStackDefinitionOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createStackDefinitionOptionsModel).ToNot(BeNil())
+				Expect(createStackDefinitionOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(createStackDefinitionOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(createStackDefinitionOptionsModel.StackDefinition).To(Equal(stackDefinitionBlockPrototypeModel))
+				Expect(createStackDefinitionOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteConfigOptions successfully`, func() {
 				// Construct an instance of the DeleteConfigOptions model
@@ -7199,6 +8572,36 @@ var _ = Describe(`ProjectV1`, func() {
 				_, err := projectService.NewEnvironmentPrototype(definition)
 				Expect(err).ToNot(BeNil())
 			})
+			It(`Invoke NewExportStackDefinitionOptions successfully`, func() {
+				// Construct an instance of the StackDefinitionExportRequestStackDefinitionExportCatalogRequest model
+				stackDefinitionExportRequestModel := new(projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+				Expect(stackDefinitionExportRequestModel).ToNot(BeNil())
+				stackDefinitionExportRequestModel.CatalogID = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Label = core.StringPtr("testString")
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+				Expect(stackDefinitionExportRequestModel.CatalogID).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionExportRequestModel.TargetVersion).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionExportRequestModel.Variation).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionExportRequestModel.Label).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionExportRequestModel.Tags).To(Equal([]string{"testString"}))
+
+				// Construct an instance of the ExportStackDefinitionOptions model
+				projectID := "testString"
+				id := "testString"
+				var settings projectv1.StackDefinitionExportRequestIntf = nil
+				exportStackDefinitionOptionsModel := projectService.NewExportStackDefinitionOptions(projectID, id, settings)
+				exportStackDefinitionOptionsModel.SetProjectID("testString")
+				exportStackDefinitionOptionsModel.SetID("testString")
+				exportStackDefinitionOptionsModel.SetSettings(stackDefinitionExportRequestModel)
+				exportStackDefinitionOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(exportStackDefinitionOptionsModel).ToNot(BeNil())
+				Expect(exportStackDefinitionOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(exportStackDefinitionOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(exportStackDefinitionOptionsModel.Settings).To(Equal(stackDefinitionExportRequestModel))
+				Expect(exportStackDefinitionOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewForceApproveOptions successfully`, func() {
 				// Construct an instance of the ForceApproveOptions model
 				projectID := "testString"
@@ -7267,6 +8670,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(getProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(getProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetStackDefinitionOptions successfully`, func() {
+				// Construct an instance of the GetStackDefinitionOptions model
+				projectID := "testString"
+				id := "testString"
+				getStackDefinitionOptionsModel := projectService.NewGetStackDefinitionOptions(projectID, id)
+				getStackDefinitionOptionsModel.SetProjectID("testString")
+				getStackDefinitionOptionsModel.SetID("testString")
+				getStackDefinitionOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getStackDefinitionOptionsModel).ToNot(BeNil())
+				Expect(getStackDefinitionOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(getStackDefinitionOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(getStackDefinitionOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewListConfigResourcesOptions successfully`, func() {
 				// Construct an instance of the ListConfigResourcesOptions model
 				projectID := "testString"
@@ -7298,12 +8714,12 @@ var _ = Describe(`ProjectV1`, func() {
 				projectID := "testString"
 				listConfigsOptionsModel := projectService.NewListConfigsOptions(projectID)
 				listConfigsOptionsModel.SetProjectID("testString")
-				listConfigsOptionsModel.SetStart("testString")
+				listConfigsOptionsModel.SetToken("testString")
 				listConfigsOptionsModel.SetLimit(int64(10))
 				listConfigsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listConfigsOptionsModel).ToNot(BeNil())
 				Expect(listConfigsOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(listConfigsOptionsModel.Start).To(Equal(core.StringPtr("testString")))
+				Expect(listConfigsOptionsModel.Token).To(Equal(core.StringPtr("testString")))
 				Expect(listConfigsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listConfigsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -7312,34 +8728,68 @@ var _ = Describe(`ProjectV1`, func() {
 				projectID := "testString"
 				listProjectEnvironmentsOptionsModel := projectService.NewListProjectEnvironmentsOptions(projectID)
 				listProjectEnvironmentsOptionsModel.SetProjectID("testString")
-				listProjectEnvironmentsOptionsModel.SetStart("testString")
+				listProjectEnvironmentsOptionsModel.SetToken("testString")
 				listProjectEnvironmentsOptionsModel.SetLimit(int64(10))
 				listProjectEnvironmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listProjectEnvironmentsOptionsModel).ToNot(BeNil())
 				Expect(listProjectEnvironmentsOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
-				Expect(listProjectEnvironmentsOptionsModel.Start).To(Equal(core.StringPtr("testString")))
+				Expect(listProjectEnvironmentsOptionsModel.Token).To(Equal(core.StringPtr("testString")))
 				Expect(listProjectEnvironmentsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listProjectEnvironmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListProjectsOptions successfully`, func() {
 				// Construct an instance of the ListProjectsOptions model
 				listProjectsOptionsModel := projectService.NewListProjectsOptions()
-				listProjectsOptionsModel.SetStart("testString")
+				listProjectsOptionsModel.SetToken("testString")
 				listProjectsOptionsModel.SetLimit(int64(10))
 				listProjectsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listProjectsOptionsModel).ToNot(BeNil())
-				Expect(listProjectsOptionsModel.Start).To(Equal(core.StringPtr("testString")))
+				Expect(listProjectsOptionsModel.Token).To(Equal(core.StringPtr("testString")))
 				Expect(listProjectsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listProjectsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewProjectConfigPrototype successfully`, func() {
-				var definition projectv1.ProjectConfigDefinitionBlockPrototypeIntf = nil
+				var definition projectv1.ProjectConfigDefinitionPrototypeIntf = nil
 				_, err := projectService.NewProjectConfigPrototype(definition)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewProjectPrototypeDefinition successfully`, func() {
 				name := "testString"
 				_model, err := projectService.NewProjectPrototypeDefinition(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackConfigMember successfully`, func() {
+				name := "testString"
+				configID := "testString"
+				_model, err := projectService.NewStackConfigMember(name, configID)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackDefinitionInputVariable successfully`, func() {
+				name := "testString"
+				typeVar := "array"
+				defaultVar := "testString"
+				_model, err := projectService.NewStackDefinitionInputVariable(name, typeVar, defaultVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackDefinitionMemberInputPrototype successfully`, func() {
+				name := "testString"
+				_model, err := projectService.NewStackDefinitionMemberInputPrototype(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackDefinitionMemberPrototype successfully`, func() {
+				name := "testString"
+				_model, err := projectService.NewStackDefinitionMemberPrototype(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackDefinitionOutputVariable successfully`, func() {
+				name := "testString"
+				value := "testString"
+				_model, err := projectService.NewStackDefinitionOutputVariable(name, value)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -7402,39 +8852,39 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectConfigAuthModel.Method).To(Equal(core.StringPtr("api_key")))
 				Expect(projectConfigAuthModel.ApiKey).To(Equal(core.StringPtr("testString")))
 
-				// Construct an instance of the ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch model
-				projectConfigDefinitionBlockPatchModel := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
-				Expect(projectConfigDefinitionBlockPatchModel).ToNot(BeNil())
-				projectConfigDefinitionBlockPatchModel.ComplianceProfile = projectComplianceProfileModel
-				projectConfigDefinitionBlockPatchModel.LocatorID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Description = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Name = core.StringPtr("env-stage")
-				projectConfigDefinitionBlockPatchModel.EnvironmentID = core.StringPtr("testString")
-				projectConfigDefinitionBlockPatchModel.Authorizations = projectConfigAuthModel
-				projectConfigDefinitionBlockPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
-				projectConfigDefinitionBlockPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
-				Expect(projectConfigDefinitionBlockPatchModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
-				Expect(projectConfigDefinitionBlockPatchModel.LocatorID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPatchModel.Description).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPatchModel.Name).To(Equal(core.StringPtr("env-stage")))
-				Expect(projectConfigDefinitionBlockPatchModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
-				Expect(projectConfigDefinitionBlockPatchModel.Authorizations).To(Equal(projectConfigAuthModel))
-				Expect(projectConfigDefinitionBlockPatchModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
-				Expect(projectConfigDefinitionBlockPatchModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				// Construct an instance of the ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch model
+				projectConfigDefinitionPatchModel := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
+				Expect(projectConfigDefinitionPatchModel).ToNot(BeNil())
+				projectConfigDefinitionPatchModel.ComplianceProfile = projectComplianceProfileModel
+				projectConfigDefinitionPatchModel.LocatorID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Description = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Name = core.StringPtr("env-stage")
+				projectConfigDefinitionPatchModel.EnvironmentID = core.StringPtr("testString")
+				projectConfigDefinitionPatchModel.Authorizations = projectConfigAuthModel
+				projectConfigDefinitionPatchModel.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+				projectConfigDefinitionPatchModel.Settings = map[string]interface{}{"anyKey": "anyValue"}
+				Expect(projectConfigDefinitionPatchModel.ComplianceProfile).To(Equal(projectComplianceProfileModel))
+				Expect(projectConfigDefinitionPatchModel.LocatorID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPatchModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPatchModel.Name).To(Equal(core.StringPtr("env-stage")))
+				Expect(projectConfigDefinitionPatchModel.EnvironmentID).To(Equal(core.StringPtr("testString")))
+				Expect(projectConfigDefinitionPatchModel.Authorizations).To(Equal(projectConfigAuthModel))
+				Expect(projectConfigDefinitionPatchModel.Inputs).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
+				Expect(projectConfigDefinitionPatchModel.Settings).To(Equal(map[string]interface{}{"anyKey": "anyValue"}))
 
 				// Construct an instance of the UpdateConfigOptions model
 				projectID := "testString"
 				id := "testString"
-				var updateConfigOptionsDefinition projectv1.ProjectConfigDefinitionBlockPatchIntf = nil
+				var updateConfigOptionsDefinition projectv1.ProjectConfigDefinitionPatchIntf = nil
 				updateConfigOptionsModel := projectService.NewUpdateConfigOptions(projectID, id, updateConfigOptionsDefinition)
 				updateConfigOptionsModel.SetProjectID("testString")
 				updateConfigOptionsModel.SetID("testString")
-				updateConfigOptionsModel.SetDefinition(projectConfigDefinitionBlockPatchModel)
+				updateConfigOptionsModel.SetDefinition(projectConfigDefinitionPatchModel)
 				updateConfigOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateConfigOptionsModel).ToNot(BeNil())
 				Expect(updateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(updateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionBlockPatchModel))
+				Expect(updateConfigOptionsModel.Definition).To(Equal(projectConfigDefinitionPatchModel))
 				Expect(updateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateProjectEnvironmentOptions successfully`, func() {
@@ -7516,6 +8966,70 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateProjectOptionsModel.Definition).To(Equal(projectPatchDefinitionBlockModel))
 				Expect(updateProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewUpdateStackDefinitionOptions successfully`, func() {
+				// Construct an instance of the StackDefinitionInputVariable model
+				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
+				Expect(stackDefinitionInputVariableModel).ToNot(BeNil())
+				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
+				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Default = "eu-gb"
+				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
+				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
+				Expect(stackDefinitionInputVariableModel.Name).To(Equal(core.StringPtr("region")))
+				Expect(stackDefinitionInputVariableModel.Type).To(Equal(core.StringPtr("string")))
+				Expect(stackDefinitionInputVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionInputVariableModel.Default).To(Equal("eu-gb"))
+				Expect(stackDefinitionInputVariableModel.Required).To(Equal(core.BoolPtr(true)))
+				Expect(stackDefinitionInputVariableModel.Hidden).To(Equal(core.BoolPtr(false)))
+
+				// Construct an instance of the StackDefinitionOutputVariable model
+				stackDefinitionOutputVariableModel := new(projectv1.StackDefinitionOutputVariable)
+				Expect(stackDefinitionOutputVariableModel).ToNot(BeNil())
+				stackDefinitionOutputVariableModel.Name = core.StringPtr("testString")
+				stackDefinitionOutputVariableModel.Value = "testString"
+				Expect(stackDefinitionOutputVariableModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionOutputVariableModel.Value).To(Equal("testString"))
+
+				// Construct an instance of the StackDefinitionMemberInputPrototype model
+				stackDefinitionMemberInputPrototypeModel := new(projectv1.StackDefinitionMemberInputPrototype)
+				Expect(stackDefinitionMemberInputPrototypeModel).ToNot(BeNil())
+				stackDefinitionMemberInputPrototypeModel.Name = core.StringPtr("cluster_name")
+				Expect(stackDefinitionMemberInputPrototypeModel.Name).To(Equal(core.StringPtr("cluster_name")))
+
+				// Construct an instance of the StackDefinitionMemberPrototype model
+				stackDefinitionMemberPrototypeModel := new(projectv1.StackDefinitionMemberPrototype)
+				Expect(stackDefinitionMemberPrototypeModel).ToNot(BeNil())
+				stackDefinitionMemberPrototypeModel.Name = core.StringPtr("foundation-deployable-architecture")
+				stackDefinitionMemberPrototypeModel.Inputs = []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}
+				Expect(stackDefinitionMemberPrototypeModel.Name).To(Equal(core.StringPtr("foundation-deployable-architecture")))
+				Expect(stackDefinitionMemberPrototypeModel.Inputs).To(Equal([]projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel}))
+
+				// Construct an instance of the StackDefinitionBlockPrototype model
+				stackDefinitionBlockPrototypeModel := new(projectv1.StackDefinitionBlockPrototype)
+				Expect(stackDefinitionBlockPrototypeModel).ToNot(BeNil())
+				stackDefinitionBlockPrototypeModel.Inputs = []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}
+				stackDefinitionBlockPrototypeModel.Outputs = []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}
+				stackDefinitionBlockPrototypeModel.Members = []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}
+				Expect(stackDefinitionBlockPrototypeModel.Inputs).To(Equal([]projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel}))
+				Expect(stackDefinitionBlockPrototypeModel.Outputs).To(Equal([]projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel}))
+				Expect(stackDefinitionBlockPrototypeModel.Members).To(Equal([]projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel}))
+
+				// Construct an instance of the UpdateStackDefinitionOptions model
+				projectID := "testString"
+				id := "testString"
+				var updateStackDefinitionOptionsStackDefinition *projectv1.StackDefinitionBlockPrototype = nil
+				updateStackDefinitionOptionsModel := projectService.NewUpdateStackDefinitionOptions(projectID, id, updateStackDefinitionOptionsStackDefinition)
+				updateStackDefinitionOptionsModel.SetProjectID("testString")
+				updateStackDefinitionOptionsModel.SetID("testString")
+				updateStackDefinitionOptionsModel.SetStackDefinition(stackDefinitionBlockPrototypeModel)
+				updateStackDefinitionOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateStackDefinitionOptionsModel).ToNot(BeNil())
+				Expect(updateStackDefinitionOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
+				Expect(updateStackDefinitionOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(updateStackDefinitionOptionsModel.StackDefinition).To(Equal(stackDefinitionBlockPrototypeModel))
+				Expect(updateStackDefinitionOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewValidateConfigOptions successfully`, func() {
 				// Construct an instance of the ValidateConfigOptions model
 				projectID := "testString"
@@ -7528,6 +9042,33 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(validateConfigOptionsModel.ProjectID).To(Equal(core.StringPtr("testString")))
 				Expect(validateConfigOptionsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(validateConfigOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype successfully`, func() {
+				name := "testString"
+				_model, err := projectService.NewProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype successfully`, func() {
+				name := "testString"
+				_model, err := projectService.NewProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackDefinitionExportRequestStackDefinitionExportCatalogRequest successfully`, func() {
+				catalogID := "testString"
+				label := "testString"
+				_model, err := projectService.NewStackDefinitionExportRequestStackDefinitionExportCatalogRequest(catalogID, label)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewStackDefinitionExportRequestStackDefinitionExportProductRequest successfully`, func() {
+				catalogID := "testString"
+				targetVersion := "testString"
+				productID := "testString"
+				_model, err := projectService.NewStackDefinitionExportRequestStackDefinitionExportProductRequest(catalogID, targetVersion, productID)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
 			})
 		})
 	})
@@ -7636,9 +9177,9 @@ var _ = Describe(`ProjectV1`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPatch successfully`, func() {
+		It(`Invoke UnmarshalProjectConfigDefinitionPatch successfully`, func() {
 			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPatch)
+			model := new(projectv1.ProjectConfigDefinitionPatch)
 			model.ComplianceProfile = nil
 			model.LocatorID = core.StringPtr("testString")
 			model.Description = core.StringPtr("testString")
@@ -7656,15 +9197,15 @@ var _ = Describe(`ProjectV1`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *projectv1.ProjectConfigDefinitionBlockPatch
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPatch(raw, &result)
+			var result *projectv1.ProjectConfigDefinitionPatch
+			err = projectv1.UnmarshalProjectConfigDefinitionPatch(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPrototype successfully`, func() {
+		It(`Invoke UnmarshalProjectConfigDefinitionPrototype successfully`, func() {
 			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPrototype)
+			model := new(projectv1.ProjectConfigDefinitionPrototype)
 			model.ComplianceProfile = nil
 			model.LocatorID = core.StringPtr("testString")
 			model.Description = core.StringPtr("testString")
@@ -7673,6 +9214,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.Authorizations = nil
 			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
 			model.Settings = map[string]interface{}{"anyKey": "anyValue"}
+			model.Members = nil
 			model.ResourceCrns = []string{"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}
 
 			b, err := json.Marshal(model)
@@ -7682,8 +9224,8 @@ var _ = Describe(`ProjectV1`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *projectv1.ProjectConfigDefinitionBlockPrototype
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPrototype(raw, &result)
+			var result *projectv1.ProjectConfigDefinitionPrototype
+			err = projectv1.UnmarshalProjectConfigDefinitionPrototype(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -7767,9 +9309,150 @@ var _ = Describe(`ProjectV1`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch successfully`, func() {
+		It(`Invoke UnmarshalStackConfigMember successfully`, func() {
 			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch)
+			model := new(projectv1.StackConfigMember)
+			model.Name = core.StringPtr("testString")
+			model.ConfigID = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackConfigMember
+			err = projectv1.UnmarshalStackConfigMember(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionBlockPrototype successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionBlockPrototype)
+			model.Inputs = nil
+			model.Outputs = nil
+			model.Members = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionBlockPrototype
+			err = projectv1.UnmarshalStackDefinitionBlockPrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionExportRequest successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionExportRequest)
+			model.CatalogID = core.StringPtr("testString")
+			model.TargetVersion = core.StringPtr("testString")
+			model.Variation = core.StringPtr("testString")
+			model.Label = core.StringPtr("testString")
+			model.Tags = []string{"testString"}
+			model.ProductID = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionExportRequest
+			err = projectv1.UnmarshalStackDefinitionExportRequest(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionInputVariable successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionInputVariable)
+			model.Name = core.StringPtr("testString")
+			model.Type = core.StringPtr("array")
+			model.Description = core.StringPtr("testString")
+			model.Default = "testString"
+			model.Required = core.BoolPtr(true)
+			model.Hidden = core.BoolPtr(true)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionInputVariable
+			err = projectv1.UnmarshalStackDefinitionInputVariable(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionMemberInputPrototype successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionMemberInputPrototype)
+			model.Name = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionMemberInputPrototype
+			err = projectv1.UnmarshalStackDefinitionMemberInputPrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionMemberPrototype successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionMemberPrototype)
+			model.Name = core.StringPtr("testString")
+			model.Inputs = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionMemberPrototype
+			err = projectv1.UnmarshalStackDefinitionMemberPrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionOutputVariable successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionOutputVariable)
+			model.Name = core.StringPtr("testString")
+			model.Value = "testString"
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionOutputVariable
+			err = projectv1.UnmarshalStackDefinitionOutputVariable(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch)
 			model.ComplianceProfile = nil
 			model.LocatorID = core.StringPtr("testString")
 			model.Description = core.StringPtr("testString")
@@ -7786,15 +9469,15 @@ var _ = Describe(`ProjectV1`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *projectv1.ProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPatchDAConfigDefinitionPropertiesPatch(raw, &result)
+			var result *projectv1.ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch
+			err = projectv1.UnmarshalProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch successfully`, func() {
+		It(`Invoke UnmarshalProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch successfully`, func() {
 			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch)
+			model := new(projectv1.ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch)
 			model.ResourceCrns = []string{"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}
 			model.Description = core.StringPtr("testString")
 			model.Name = core.StringPtr("testString")
@@ -7810,15 +9493,15 @@ var _ = Describe(`ProjectV1`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *projectv1.ProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPatchResourceConfigDefinitionPropertiesPatch(raw, &result)
+			var result *projectv1.ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch
+			err = projectv1.UnmarshalProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties successfully`, func() {
+		It(`Invoke UnmarshalProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype successfully`, func() {
 			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties)
+			model := new(projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype)
 			model.ComplianceProfile = nil
 			model.LocatorID = core.StringPtr("testString")
 			model.Description = core.StringPtr("testString")
@@ -7835,15 +9518,15 @@ var _ = Describe(`ProjectV1`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *projectv1.ProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPrototypeDAConfigDefinitionProperties(raw, &result)
+			var result *projectv1.ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype
+			err = projectv1.UnmarshalProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties successfully`, func() {
+		It(`Invoke UnmarshalProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype successfully`, func() {
 			// Construct an instance of the model.
-			model := new(projectv1.ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties)
+			model := new(projectv1.ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype)
 			model.ResourceCrns = []string{"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}
 			model.Description = core.StringPtr("testString")
 			model.Name = core.StringPtr("testString")
@@ -7859,14 +9542,79 @@ var _ = Describe(`ProjectV1`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *projectv1.ProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties
-			err = projectv1.UnmarshalProjectConfigDefinitionBlockPrototypeResourceConfigDefinitionProperties(raw, &result)
+			var result *projectv1.ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype
+			err = projectv1.UnmarshalProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalProjectConfigDefinitionPrototypeStackConfigDefinitionProperties successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties)
+			model.Description = core.StringPtr("testString")
+			model.Name = core.StringPtr("testString")
+			model.LocatorID = core.StringPtr("testString")
+			model.EnvironmentID = core.StringPtr("testString")
+			model.Inputs = map[string]interface{}{"anyKey": "anyValue"}
+			model.Members = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties
+			err = projectv1.UnmarshalProjectConfigDefinitionPrototypeStackConfigDefinitionProperties(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionExportRequestStackDefinitionExportCatalogRequest successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+			model.CatalogID = core.StringPtr("testString")
+			model.TargetVersion = core.StringPtr("testString")
+			model.Variation = core.StringPtr("testString")
+			model.Label = core.StringPtr("testString")
+			model.Tags = []string{"testString"}
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionExportRequestStackDefinitionExportCatalogRequest
+			err = projectv1.UnmarshalStackDefinitionExportRequestStackDefinitionExportCatalogRequest(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalStackDefinitionExportRequestStackDefinitionExportProductRequest successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.StackDefinitionExportRequestStackDefinitionExportProductRequest)
+			model.CatalogID = core.StringPtr("testString")
+			model.TargetVersion = core.StringPtr("testString")
+			model.Variation = core.StringPtr("testString")
+			model.ProductID = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.StackDefinitionExportRequestStackDefinitionExportProductRequest
+			err = projectv1.UnmarshalStackDefinitionExportRequestStackDefinitionExportProductRequest(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
 	})
-
 	Describe(`Utility function tests`, func() {
 		It(`Invoke CreateMockByteArray() successfully`, func() {
 			mockByteArray := CreateMockByteArray("This is a test")
