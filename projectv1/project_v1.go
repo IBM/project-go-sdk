@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.87.0-91c7c775-20240320-213027
+ * IBM OpenAPI SDK Code Generator Version: 3.89.1-ed9d96f4-20240417-193115
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -1825,6 +1825,320 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 	return
 }
 
+// CreateStackDefinition : Create a stack definition
+// Defines inputs at the stack level that users need to configure along with input values at the member level. These
+// values are included in the catalog entry when the deployable architecture stack is exported to a private catalog and
+// are required for the deployable architecture stack to deploy. You can add a reference to a value, or add the value
+// explicitly at the member level.
+func (project *ProjectV1) CreateStackDefinition(createStackDefinitionOptions *CreateStackDefinitionOptions) (result *StackDefinition, response *core.DetailedResponse, err error) {
+	result, response, err = project.CreateStackDefinitionWithContext(context.Background(), createStackDefinitionOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateStackDefinitionWithContext is an alternate form of the CreateStackDefinition method which supports a Context parameter
+func (project *ProjectV1) CreateStackDefinitionWithContext(ctx context.Context, createStackDefinitionOptions *CreateStackDefinitionOptions) (result *StackDefinition, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createStackDefinitionOptions, "createStackDefinitionOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createStackDefinitionOptions, "createStackDefinitionOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *createStackDefinitionOptions.ProjectID,
+		"id": *createStackDefinitionOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/stack_definition`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createStackDefinitionOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createStackDefinitionOptions.StackDefinition != nil {
+		body["stack_definition"] = createStackDefinitionOptions.StackDefinition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_stack_definition", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetStackDefinition : Get a stack definition
+// Retrieve the stack definition that is associated to the configuration.
+func (project *ProjectV1) GetStackDefinition(getStackDefinitionOptions *GetStackDefinitionOptions) (result *StackDefinition, response *core.DetailedResponse, err error) {
+	result, response, err = project.GetStackDefinitionWithContext(context.Background(), getStackDefinitionOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetStackDefinitionWithContext is an alternate form of the GetStackDefinition method which supports a Context parameter
+func (project *ProjectV1) GetStackDefinitionWithContext(ctx context.Context, getStackDefinitionOptions *GetStackDefinitionOptions) (result *StackDefinition, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getStackDefinitionOptions, "getStackDefinitionOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getStackDefinitionOptions, "getStackDefinitionOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *getStackDefinitionOptions.ProjectID,
+		"id": *getStackDefinitionOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/stack_definition`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getStackDefinitionOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_stack_definition", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateStackDefinition : Update a stack definition
+// Update the stack definition that is associated with the configuration.
+func (project *ProjectV1) UpdateStackDefinition(updateStackDefinitionOptions *UpdateStackDefinitionOptions) (result *StackDefinition, response *core.DetailedResponse, err error) {
+	result, response, err = project.UpdateStackDefinitionWithContext(context.Background(), updateStackDefinitionOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateStackDefinitionWithContext is an alternate form of the UpdateStackDefinition method which supports a Context parameter
+func (project *ProjectV1) UpdateStackDefinitionWithContext(ctx context.Context, updateStackDefinitionOptions *UpdateStackDefinitionOptions) (result *StackDefinition, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateStackDefinitionOptions, "updateStackDefinitionOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateStackDefinitionOptions, "updateStackDefinitionOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *updateStackDefinitionOptions.ProjectID,
+		"id": *updateStackDefinitionOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/stack_definition`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateStackDefinitionOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateStackDefinitionOptions.StackDefinition != nil {
+		body["stack_definition"] = updateStackDefinitionOptions.StackDefinition
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_stack_definition", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ExportStackDefinition : Export a deployable architecture stack to the private catalog
+// Exports the deployable architecture stack to a private catalog. All member deployable architectures within the stack
+// must be validated and deployed before the stack is exported. The stack definition must also exist before the stack is
+// exported. You can export the stack as a new product, or as a new version of an existing product.
+func (project *ProjectV1) ExportStackDefinition(exportStackDefinitionOptions *ExportStackDefinitionOptions) (result *StackDefinitionExportResponse, response *core.DetailedResponse, err error) {
+	result, response, err = project.ExportStackDefinitionWithContext(context.Background(), exportStackDefinitionOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ExportStackDefinitionWithContext is an alternate form of the ExportStackDefinition method which supports a Context parameter
+func (project *ProjectV1) ExportStackDefinitionWithContext(ctx context.Context, exportStackDefinitionOptions *ExportStackDefinitionOptions) (result *StackDefinitionExportResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(exportStackDefinitionOptions, "exportStackDefinitionOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(exportStackDefinitionOptions, "exportStackDefinitionOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"project_id": *exportStackDefinitionOptions.ProjectID,
+		"id": *exportStackDefinitionOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = project.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(project.Service.Options.URL, `/v1/projects/{project_id}/configs/{id}/stack_definition/export`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range exportStackDefinitionOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ExportStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(exportStackDefinitionOptions.Settings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = project.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "export_stack_definition", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStackDefinitionExportResponse)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // ListConfigVersions : Get a list of project configuration versions
 // Retrieve a list of previous and current versions of a project configuration in a specific project.
 func (project *ProjectV1) ListConfigVersions(listConfigVersionsOptions *ListConfigVersionsOptions) (result *ProjectConfigVersionSummaryCollection, response *core.DetailedResponse, err error) {
@@ -2554,6 +2868,24 @@ func UnmarshalCodeRiskAnalyzerLogsSummary(m map[string]json.RawMessage, result i
 	return
 }
 
+// ConfigDefinitionReference : The definition of the config reference.
+type ConfigDefinitionReference struct {
+	// The name of the configuration.
+	Name *string `json:"name" validate:"required"`
+}
+
+// UnmarshalConfigDefinitionReference unmarshals an instance of ConfigDefinitionReference from the specified map of raw messages.
+func UnmarshalConfigDefinitionReference(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ConfigDefinitionReference)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // CreateConfigOptions : The CreateConfig options.
 type CreateConfigOptions struct {
 	// The unique project ID.
@@ -2715,6 +3047,54 @@ func (_options *CreateProjectOptions) SetEnvironments(environments []Environment
 
 // SetHeaders : Allow user to set Headers
 func (options *CreateProjectOptions) SetHeaders(param map[string]string) *CreateProjectOptions {
+	options.Headers = param
+	return options
+}
+
+// CreateStackDefinitionOptions : The CreateStackDefinition options.
+type CreateStackDefinitionOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The definition block for a stack definition.
+	StackDefinition *StackDefinitionBlockPrototype `json:"stack_definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateStackDefinitionOptions : Instantiate CreateStackDefinitionOptions
+func (*ProjectV1) NewCreateStackDefinitionOptions(projectID string, id string, stackDefinition *StackDefinitionBlockPrototype) *CreateStackDefinitionOptions {
+	return &CreateStackDefinitionOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		StackDefinition: stackDefinition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *CreateStackDefinitionOptions) SetProjectID(projectID string) *CreateStackDefinitionOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *CreateStackDefinitionOptions) SetID(id string) *CreateStackDefinitionOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetStackDefinition : Allow user to set StackDefinition
+func (_options *CreateStackDefinitionOptions) SetStackDefinition(stackDefinition *StackDefinitionBlockPrototype) *CreateStackDefinitionOptions {
+	_options.StackDefinition = stackDefinition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateStackDefinitionOptions) SetHeaders(param map[string]string) *CreateStackDefinitionOptions {
 	options.Headers = param
 	return options
 }
@@ -3287,6 +3667,54 @@ func UnmarshalEnvironmentPrototype(m map[string]json.RawMessage, result interfac
 	return
 }
 
+// ExportStackDefinitionOptions : The ExportStackDefinition options.
+type ExportStackDefinitionOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The payload for the private catalog export request.
+	Settings StackDefinitionExportRequestIntf `json:"settings" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewExportStackDefinitionOptions : Instantiate ExportStackDefinitionOptions
+func (*ProjectV1) NewExportStackDefinitionOptions(projectID string, id string, settings StackDefinitionExportRequestIntf) *ExportStackDefinitionOptions {
+	return &ExportStackDefinitionOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		Settings: settings,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *ExportStackDefinitionOptions) SetProjectID(projectID string) *ExportStackDefinitionOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *ExportStackDefinitionOptions) SetID(id string) *ExportStackDefinitionOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetSettings : Allow user to set Settings
+func (_options *ExportStackDefinitionOptions) SetSettings(settings StackDefinitionExportRequestIntf) *ExportStackDefinitionOptions {
+	_options.Settings = settings
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ExportStackDefinitionOptions) SetHeaders(param map[string]string) *ExportStackDefinitionOptions {
+	options.Headers = param
+	return options
+}
+
 // ForceApproveOptions : The ForceApprove options.
 type ForceApproveOptions struct {
 	// The unique project ID.
@@ -3484,6 +3912,44 @@ func (_options *GetProjectOptions) SetID(id string) *GetProjectOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *GetProjectOptions) SetHeaders(param map[string]string) *GetProjectOptions {
+	options.Headers = param
+	return options
+}
+
+// GetStackDefinitionOptions : The GetStackDefinition options.
+type GetStackDefinitionOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetStackDefinitionOptions : Instantiate GetStackDefinitionOptions
+func (*ProjectV1) NewGetStackDefinitionOptions(projectID string, id string) *GetStackDefinitionOptions {
+	return &GetStackDefinitionOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *GetStackDefinitionOptions) SetProjectID(projectID string) *GetStackDefinitionOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *GetStackDefinitionOptions) SetID(id string) *GetStackDefinitionOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetStackDefinitionOptions) SetHeaders(param map[string]string) *GetStackDefinitionOptions {
 	options.Headers = param
 	return options
 }
@@ -4404,6 +4870,9 @@ type ProjectConfig struct {
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
 
+	// The template reference.
+	Template *ProjectObjectReference `json:"template,omitempty"`
+
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
@@ -4529,6 +4998,11 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "update_available-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "template", &obj.Template, UnmarshalProjectObjectReference)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "template-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
@@ -4760,6 +5234,7 @@ func UnmarshalProjectConfigDefinitionPatch(m map[string]json.RawMessage, result 
 // ProjectConfigDefinitionPrototype : ProjectConfigDefinitionPrototype struct
 // Models which "extend" this model:
 // - ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype
+// - ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties
 // - ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype
 type ProjectConfigDefinitionPrototype struct {
 	// The profile that is required for compliance.
@@ -4797,6 +5272,9 @@ type ProjectConfigDefinitionPrototype struct {
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
+
+	// The member deployabe architectures that are included in your stack.
+	Members []StackConfigMember `json:"members,omitempty"`
 
 	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
@@ -4852,6 +5330,11 @@ func UnmarshalProjectConfigDefinitionPrototype(m map[string]json.RawMessage, res
 		err = core.SDKErrorf(err, "", "settings-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackConfigMember)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "resource_crns-error", common.GetComponentInfo())
@@ -4865,6 +5348,7 @@ func UnmarshalProjectConfigDefinitionPrototype(m map[string]json.RawMessage, res
 // Models which "extend" this model:
 // - ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse
 // - ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse
+// - ProjectConfigDefinitionResponseStackConfigDefinitionProperties
 type ProjectConfigDefinitionResponse struct {
 	// The profile that is required for compliance.
 	ComplianceProfile *ProjectComplianceProfile `json:"compliance_profile,omitempty"`
@@ -4904,6 +5388,9 @@ type ProjectConfigDefinitionResponse struct {
 
 	// The CRNs of the resources that are associated with this configuration.
 	ResourceCrns []string `json:"resource_crns,omitempty"`
+
+	// The member deployabe architectures that are included in your stack.
+	Members []StackConfigMember `json:"members,omitempty"`
 }
 func (*ProjectConfigDefinitionResponse) isaProjectConfigDefinitionResponse() bool {
 	return true
@@ -4959,6 +5446,11 @@ func UnmarshalProjectConfigDefinitionResponse(m map[string]json.RawMessage, resu
 	err = core.UnmarshalPrimitive(m, "resource_crns", &obj.ResourceCrns)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "resource_crns-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackConfigMember)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -5454,6 +5946,7 @@ const (
 // The configuration type.
 const (
 	ProjectConfigSummary_DeploymentModel_ProjectDeployed = "project_deployed"
+	ProjectConfigSummary_DeploymentModel_Stack = "stack"
 	ProjectConfigSummary_DeploymentModel_UserDeployed = "user_deployed"
 )
 
@@ -5623,6 +6116,9 @@ type ProjectConfigVersion struct {
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
 
+	// The template reference.
+	Template *ProjectObjectReference `json:"template,omitempty"`
+
 	// A URL.
 	Href *string `json:"href" validate:"required"`
 
@@ -5742,6 +6238,11 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "update_available-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "template", &obj.Template, UnmarshalProjectObjectReference)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "template-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
@@ -6028,6 +6529,32 @@ func UnmarshalProjectEnvironmentSummaryDefinition(m map[string]json.RawMessage, 
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectObjectReference : ProjectObjectReference struct
+type ProjectObjectReference struct {
+	// The unique ID.
+	ID *string `json:"id" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+}
+
+// UnmarshalProjectObjectReference unmarshals an instance of ProjectObjectReference from the specified map of raw messages.
+func UnmarshalProjectObjectReference(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectObjectReference)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6413,6 +6940,595 @@ func UnmarshalScript(m map[string]json.RawMessage, result interface{}) (err erro
 	return
 }
 
+// StackConfigMember : A member deployable architecture that is included in your stack.
+type StackConfigMember struct {
+	// The name matching the alias in the stack definition.
+	Name *string `json:"name" validate:"required"`
+
+	// The unique ID.
+	ConfigID *string `json:"config_id" validate:"required"`
+}
+
+// NewStackConfigMember : Instantiate StackConfigMember (Generic Model Constructor)
+func (*ProjectV1) NewStackConfigMember(name string, configID string) (_model *StackConfigMember, err error) {
+	_model = &StackConfigMember{
+		Name: core.StringPtr(name),
+		ConfigID: core.StringPtr(configID),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalStackConfigMember unmarshals an instance of StackConfigMember from the specified map of raw messages.
+func UnmarshalStackConfigMember(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackConfigMember)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "config_id", &obj.ConfigID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "config_id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinition : The stack definition.
+type StackDefinition struct {
+	// The ID of the stack definition.
+	ID *string `json:"id" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
+	// format as specified by RFC 3339.
+	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
+
+	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
+	// format as specified by RFC 3339.
+	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
+
+	// The state for the stack definition.
+	State *string `json:"state" validate:"required"`
+
+	// The configuration reference.
+	Configuration *StackDefinitionMetadataConfiguration `json:"configuration" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+
+	// The definition block for a stack definition.
+	StackDefinition *StackDefinitionBlock `json:"stack_definition" validate:"required"`
+}
+
+// Constants associated with the StackDefinition.State property.
+// The state for the stack definition.
+const (
+	StackDefinition_State_Draft = "draft"
+	StackDefinition_State_Published = "published"
+)
+
+// UnmarshalStackDefinition unmarshals an instance of StackDefinition from the specified map of raw messages.
+func UnmarshalStackDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinition)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "modified_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "configuration", &obj.Configuration, UnmarshalStackDefinitionMetadataConfiguration)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "configuration-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "stack_definition", &obj.StackDefinition, UnmarshalStackDefinitionBlock)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "stack_definition-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionBlock : The definition block for a stack definition.
+type StackDefinitionBlock struct {
+	// Defines the inputs that users need to configure at the stack level. These inputs are included in the catalog entry
+	// when the deployable architecture stack is exported to a private catalog.
+	Inputs []StackDefinitionInputVariable `json:"inputs,omitempty"`
+
+	// The outputs associated with this stack definition.
+	Outputs []StackDefinitionOutputVariable `json:"outputs,omitempty"`
+
+	// The member deployabe architectures that are included in your stack.
+	Members []StackDefinitionMember `json:"members,omitempty"`
+}
+
+// UnmarshalStackDefinitionBlock unmarshals an instance of StackDefinitionBlock from the specified map of raw messages.
+func UnmarshalStackDefinitionBlock(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionBlock)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackDefinitionInputVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackDefinitionOutputVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "outputs-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackDefinitionMember)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionBlockPrototype : The definition block for a stack definition.
+type StackDefinitionBlockPrototype struct {
+	// Defines the inputs that users need to configure at the stack level. These inputs are included in the catalog entry
+	// when the deployable architecture stack is exported to a private catalog.
+	Inputs []StackDefinitionInputVariable `json:"inputs,omitempty"`
+
+	// The outputs associated with this stack definition.
+	Outputs []StackDefinitionOutputVariable `json:"outputs,omitempty"`
+
+	// Defines the member deployable architectures that are included in your stack.
+	Members []StackDefinitionMemberPrototype `json:"members,omitempty"`
+}
+
+// UnmarshalStackDefinitionBlockPrototype unmarshals an instance of StackDefinitionBlockPrototype from the specified map of raw messages.
+func UnmarshalStackDefinitionBlockPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionBlockPrototype)
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackDefinitionInputVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackDefinitionOutputVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "outputs-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackDefinitionMemberPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionExportRequest : The payload for the stack definition export request.
+// Models which "extend" this model:
+// - StackDefinitionExportRequestStackDefinitionExportCatalogRequest
+// - StackDefinitionExportRequestStackDefinitionExportProductRequest
+type StackDefinitionExportRequest struct {
+	// The catalog ID to publish.
+	CatalogID *string `json:"catalog_id,omitempty"`
+
+	// The semver value of this new version of the product.
+	TargetVersion *string `json:"target_version,omitempty"`
+
+	// The variation of this new version of the product.
+	Variation *string `json:"variation,omitempty"`
+
+	// The product label.
+	Label *string `json:"label,omitempty"`
+
+	// Tags associated with the catalog product.
+	Tags []string `json:"tags,omitempty"`
+
+	// The product ID to publish.
+	ProductID *string `json:"product_id,omitempty"`
+}
+func (*StackDefinitionExportRequest) isaStackDefinitionExportRequest() bool {
+	return true
+}
+
+type StackDefinitionExportRequestIntf interface {
+	isaStackDefinitionExportRequest() bool
+}
+
+// UnmarshalStackDefinitionExportRequest unmarshals an instance of StackDefinitionExportRequest from the specified map of raw messages.
+func UnmarshalStackDefinitionExportRequest(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionExportRequest)
+	err = core.UnmarshalPrimitive(m, "catalog_id", &obj.CatalogID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "catalog_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "target_version", &obj.TargetVersion)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "target_version-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "variation", &obj.Variation)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "variation-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "label", &obj.Label)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tags", &obj.Tags)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "tags-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "product_id", &obj.ProductID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "product_id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionExportResponse : The payload for the stack definition export response.
+type StackDefinitionExportResponse struct {
+	// The catalog ID to publish.
+	CatalogID *string `json:"catalog_id,omitempty"`
+
+	// The product ID to publish.
+	ProductID *string `json:"product_id,omitempty"`
+
+	// The version locator of the created deployable architecture.
+	VersionLocator *string `json:"version_locator,omitempty"`
+
+	// The product target kind value.
+	Kind *string `json:"kind,omitempty"`
+
+	// The product format kind value.
+	Format *string `json:"format,omitempty"`
+}
+
+// UnmarshalStackDefinitionExportResponse unmarshals an instance of StackDefinitionExportResponse from the specified map of raw messages.
+func UnmarshalStackDefinitionExportResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionExportResponse)
+	err = core.UnmarshalPrimitive(m, "catalog_id", &obj.CatalogID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "catalog_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "product_id", &obj.ProductID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "product_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "version_locator", &obj.VersionLocator)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "version_locator-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "kind", &obj.Kind)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "kind-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "format", &obj.Format)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "format-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionInputVariable : The input variables for a stack definition.
+type StackDefinitionInputVariable struct {
+	// The stack definition input name.
+	Name *string `json:"name" validate:"required"`
+
+	// The variable type.
+	Type *string `json:"type" validate:"required"`
+
+	// The description of the variable.
+	Description *string `json:"description,omitempty"`
+
+	// This property can be any value - a string, number, boolean, array, or object.
+	Default interface{} `json:"default" validate:"required"`
+
+	// A boolean value to denote if the property is required.
+	Required *bool `json:"required,omitempty"`
+
+	// A boolean value to denote whether the property is hidden, as in not exposed to the user.
+	Hidden *bool `json:"hidden,omitempty"`
+}
+
+// Constants associated with the StackDefinitionInputVariable.Type property.
+// The variable type.
+const (
+	StackDefinitionInputVariable_Type_Array = "array"
+	StackDefinitionInputVariable_Type_Boolean = "boolean"
+	StackDefinitionInputVariable_Type_Float = "float"
+	StackDefinitionInputVariable_Type_Int = "int"
+	StackDefinitionInputVariable_Type_Number = "number"
+	StackDefinitionInputVariable_Type_Object = "object"
+	StackDefinitionInputVariable_Type_Password = "password"
+	StackDefinitionInputVariable_Type_String = "string"
+)
+
+// NewStackDefinitionInputVariable : Instantiate StackDefinitionInputVariable (Generic Model Constructor)
+func (*ProjectV1) NewStackDefinitionInputVariable(name string, typeVar string, defaultVar interface{}) (_model *StackDefinitionInputVariable, err error) {
+	_model = &StackDefinitionInputVariable{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+		Default: defaultVar,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalStackDefinitionInputVariable unmarshals an instance of StackDefinitionInputVariable from the specified map of raw messages.
+func UnmarshalStackDefinitionInputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionInputVariable)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "default", &obj.Default)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "default-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "required", &obj.Required)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "required-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "hidden", &obj.Hidden)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "hidden-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionMember : The member definition associated with this stack definition.
+type StackDefinitionMember struct {
+	// The name matching the alias in the stack definition.
+	Name *string `json:"name" validate:"required"`
+
+	// The version locator of the member deployable architecture.
+	VersionLocator *string `json:"version_locator" validate:"required"`
+
+	// The member input names to use for the stack definition.
+	Inputs []StackDefinitionMemberInput `json:"inputs,omitempty"`
+}
+
+// UnmarshalStackDefinitionMember unmarshals an instance of StackDefinitionMember from the specified map of raw messages.
+func UnmarshalStackDefinitionMember(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionMember)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "version_locator", &obj.VersionLocator)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "version_locator-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackDefinitionMemberInput)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionMemberInput : The member input definition.
+type StackDefinitionMemberInput struct {
+	// The member input name to use.
+	Name *string `json:"name" validate:"required"`
+
+	// The value of the stack definition output.
+	Value interface{} `json:"value" validate:"required"`
+}
+
+// UnmarshalStackDefinitionMemberInput unmarshals an instance of StackDefinitionMemberInput from the specified map of raw messages.
+func UnmarshalStackDefinitionMemberInput(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionMemberInput)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionMemberInputPrototype : The member input definition.
+type StackDefinitionMemberInputPrototype struct {
+	// The member input name to use.
+	Name *string `json:"name" validate:"required"`
+}
+
+// NewStackDefinitionMemberInputPrototype : Instantiate StackDefinitionMemberInputPrototype (Generic Model Constructor)
+func (*ProjectV1) NewStackDefinitionMemberInputPrototype(name string) (_model *StackDefinitionMemberInputPrototype, err error) {
+	_model = &StackDefinitionMemberInputPrototype{
+		Name: core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalStackDefinitionMemberInputPrototype unmarshals an instance of StackDefinitionMemberInputPrototype from the specified map of raw messages.
+func UnmarshalStackDefinitionMemberInputPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionMemberInputPrototype)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionMemberPrototype : Defines the input values from member deployable architectures that are included in the catalog entry when the stack
+// is exported to a private catalog.
+type StackDefinitionMemberPrototype struct {
+	// The name matching the alias in the stack definition.
+	Name *string `json:"name" validate:"required"`
+
+	// The member input names to use for the deployable architecture stack definition.
+	Inputs []StackDefinitionMemberInputPrototype `json:"inputs,omitempty"`
+}
+
+// NewStackDefinitionMemberPrototype : Instantiate StackDefinitionMemberPrototype (Generic Model Constructor)
+func (*ProjectV1) NewStackDefinitionMemberPrototype(name string) (_model *StackDefinitionMemberPrototype, err error) {
+	_model = &StackDefinitionMemberPrototype{
+		Name: core.StringPtr(name),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalStackDefinitionMemberPrototype unmarshals an instance of StackDefinitionMemberPrototype from the specified map of raw messages.
+func UnmarshalStackDefinitionMemberPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionMemberPrototype)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackDefinitionMemberInputPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionMetadataConfiguration : The configuration reference.
+type StackDefinitionMetadataConfiguration struct {
+	// The unique ID.
+	ID *string `json:"id" validate:"required"`
+
+	// A URL.
+	Href *string `json:"href" validate:"required"`
+
+	// The definition of the config reference.
+	Definition *ConfigDefinitionReference `json:"definition" validate:"required"`
+}
+
+// UnmarshalStackDefinitionMetadataConfiguration unmarshals an instance of StackDefinitionMetadataConfiguration from the specified map of raw messages.
+func UnmarshalStackDefinitionMetadataConfiguration(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionMetadataConfiguration)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalConfigDefinitionReference)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "definition-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionOutputVariable : The output variables for a stack definition.
+type StackDefinitionOutputVariable struct {
+	// The stack definition output name.
+	Name *string `json:"name" validate:"required"`
+
+	// The value of the stack definition output.
+	Value interface{} `json:"value" validate:"required"`
+}
+
+// NewStackDefinitionOutputVariable : Instantiate StackDefinitionOutputVariable (Generic Model Constructor)
+func (*ProjectV1) NewStackDefinitionOutputVariable(name string, value interface{}) (_model *StackDefinitionOutputVariable, err error) {
+	_model = &StackDefinitionOutputVariable{
+		Name: core.StringPtr(name),
+		Value: value,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalStackDefinitionOutputVariable unmarshals an instance of StackDefinitionOutputVariable from the specified map of raw messages.
+func UnmarshalStackDefinitionOutputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionOutputVariable)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // SyncConfigOptions : The SyncConfig options.
 type SyncConfigOptions struct {
 	// The unique project ID.
@@ -6738,6 +7854,54 @@ func (_options *UpdateProjectOptions) SetDefinition(definition *ProjectPatchDefi
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateProjectOptions) SetHeaders(param map[string]string) *UpdateProjectOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateStackDefinitionOptions : The UpdateStackDefinition options.
+type UpdateStackDefinitionOptions struct {
+	// The unique project ID.
+	ProjectID *string `json:"project_id" validate:"required,ne="`
+
+	// The unique configuration ID.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The definition block for a stack definition.
+	StackDefinition *StackDefinitionBlockPrototype `json:"stack_definition" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateStackDefinitionOptions : Instantiate UpdateStackDefinitionOptions
+func (*ProjectV1) NewUpdateStackDefinitionOptions(projectID string, id string, stackDefinition *StackDefinitionBlockPrototype) *UpdateStackDefinitionOptions {
+	return &UpdateStackDefinitionOptions{
+		ProjectID: core.StringPtr(projectID),
+		ID: core.StringPtr(id),
+		StackDefinition: stackDefinition,
+	}
+}
+
+// SetProjectID : Allow user to set ProjectID
+func (_options *UpdateStackDefinitionOptions) SetProjectID(projectID string) *UpdateStackDefinitionOptions {
+	_options.ProjectID = core.StringPtr(projectID)
+	return _options
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateStackDefinitionOptions) SetID(id string) *UpdateStackDefinitionOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetStackDefinition : Allow user to set StackDefinition
+func (_options *UpdateStackDefinitionOptions) SetStackDefinition(stackDefinition *StackDefinitionBlockPrototype) *UpdateStackDefinitionOptions {
+	_options.StackDefinition = stackDefinition
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateStackDefinitionOptions) SetHeaders(param map[string]string) *UpdateStackDefinitionOptions {
 	options.Headers = param
 	return options
 }
@@ -7130,6 +8294,80 @@ func UnmarshalProjectConfigDefinitionPrototypeResourceConfigDefinitionProperties
 	return
 }
 
+// ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties : The description of a project configuration.
+// This model "extends" ProjectConfigDefinitionPrototype
+type ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties struct {
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The configuration name. It's unique within the account across projects and regions.
+	Name *string `json:"name,omitempty"`
+
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The ID of the project environment.
+	EnvironmentID *string `json:"environment_id,omitempty"`
+
+	// The input variables that are used for configuration definition and environment.
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
+
+	// The member deployabe architectures that are included in your stack.
+	Members []StackConfigMember `json:"members,omitempty"`
+}
+
+func (*ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties) isaProjectConfigDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalProjectConfigDefinitionPrototypeStackConfigDefinitionProperties unmarshals an instance of ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionPrototypeStackConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionPrototypeStackConfigDefinitionProperties)
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "locator_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "environment_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackConfigMember)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse : The description of a project configuration.
 // This model "extends" ProjectConfigDefinitionResponse
 type ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse struct {
@@ -7293,6 +8531,80 @@ func UnmarshalProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesR
 	return
 }
 
+// ProjectConfigDefinitionResponseStackConfigDefinitionProperties : The description of a project configuration.
+// This model "extends" ProjectConfigDefinitionResponse
+type ProjectConfigDefinitionResponseStackConfigDefinitionProperties struct {
+	// A project configuration description.
+	Description *string `json:"description,omitempty"`
+
+	// The configuration name. It's unique within the account across projects and regions.
+	Name *string `json:"name,omitempty"`
+
+	// A unique concatenation of the catalog ID and the version ID that identify the deployable architecture in the
+	// catalog. I you're importing from an existing Schematics workspace that is not backed by cart, a `locator_id` is
+	// required. If you're using a Schematics workspace that is backed by cart, a `locator_id` is not necessary because the
+	// Schematics workspace has one.
+	// > There are 3 scenarios:
+	// > 1. If only a `locator_id` is specified, a new Schematics workspace is instantiated with that `locator_id`.
+	// > 2. If only a schematics `workspace_crn` is specified, a `400` is returned if a `locator_id` is not found in the
+	// existing schematics workspace.
+	// > 3. If both a Schematics `workspace_crn` and a `locator_id` are specified, a `400` message is returned if the
+	// specified `locator_id` does not agree with the `locator_id` in the existing Schematics workspace.
+	// > For more information of creating a Schematics workspace, see [Creating workspaces and importing your Terraform
+	// template](/docs/schematics?topic=schematics-sch-create-wks).
+	LocatorID *string `json:"locator_id,omitempty"`
+
+	// The ID of the project environment.
+	EnvironmentID *string `json:"environment_id,omitempty"`
+
+	// The input variables that are used for configuration definition and environment.
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
+
+	// The member deployabe architectures that are included in your stack.
+	Members []StackConfigMember `json:"members,omitempty"`
+}
+
+func (*ProjectConfigDefinitionResponseStackConfigDefinitionProperties) isaProjectConfigDefinitionResponse() bool {
+	return true
+}
+
+// UnmarshalProjectConfigDefinitionResponseStackConfigDefinitionProperties unmarshals an instance of ProjectConfigDefinitionResponseStackConfigDefinitionProperties from the specified map of raw messages.
+func UnmarshalProjectConfigDefinitionResponseStackConfigDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigDefinitionResponseStackConfigDefinitionProperties)
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "locator_id", &obj.LocatorID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "locator_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "environment_id", &obj.EnvironmentID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "environment_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackConfigMember)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204 : The Code Risk Analyzer logs of the configuration based on Code Risk Analyzer version 2.0.4.
 // This model "extends" ProjectConfigMetadataCodeRiskAnalyzerLogs
 type ProjectConfigMetadataCodeRiskAnalyzerLogsVersion204 struct {
@@ -7351,6 +8663,135 @@ func UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogsVersion204(m map[string]j
 	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "timestamp-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionExportRequestStackDefinitionExportCatalogRequest : The payload for the stack definition export request to create a product.
+// This model "extends" StackDefinitionExportRequest
+type StackDefinitionExportRequestStackDefinitionExportCatalogRequest struct {
+	// The catalog ID to publish.
+	CatalogID *string `json:"catalog_id" validate:"required"`
+
+	// The semver value of this new version of the product.
+	TargetVersion *string `json:"target_version,omitempty"`
+
+	// The variation of this new version of the product.
+	Variation *string `json:"variation,omitempty"`
+
+	// The product label.
+	Label *string `json:"label" validate:"required"`
+
+	// Tags associated with the catalog product.
+	Tags []string `json:"tags,omitempty"`
+}
+
+// NewStackDefinitionExportRequestStackDefinitionExportCatalogRequest : Instantiate StackDefinitionExportRequestStackDefinitionExportCatalogRequest (Generic Model Constructor)
+func (*ProjectV1) NewStackDefinitionExportRequestStackDefinitionExportCatalogRequest(catalogID string, label string) (_model *StackDefinitionExportRequestStackDefinitionExportCatalogRequest, err error) {
+	_model = &StackDefinitionExportRequestStackDefinitionExportCatalogRequest{
+		CatalogID: core.StringPtr(catalogID),
+		Label: core.StringPtr(label),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*StackDefinitionExportRequestStackDefinitionExportCatalogRequest) isaStackDefinitionExportRequest() bool {
+	return true
+}
+
+// UnmarshalStackDefinitionExportRequestStackDefinitionExportCatalogRequest unmarshals an instance of StackDefinitionExportRequestStackDefinitionExportCatalogRequest from the specified map of raw messages.
+func UnmarshalStackDefinitionExportRequestStackDefinitionExportCatalogRequest(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionExportRequestStackDefinitionExportCatalogRequest)
+	err = core.UnmarshalPrimitive(m, "catalog_id", &obj.CatalogID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "catalog_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "target_version", &obj.TargetVersion)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "target_version-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "variation", &obj.Variation)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "variation-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "label", &obj.Label)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tags", &obj.Tags)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "tags-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StackDefinitionExportRequestStackDefinitionExportProductRequest : The payload for the stack definition export request to create a new product version.
+// This model "extends" StackDefinitionExportRequest
+type StackDefinitionExportRequestStackDefinitionExportProductRequest struct {
+	// The catalog ID to publish.
+	CatalogID *string `json:"catalog_id" validate:"required"`
+
+	// The semver value of this new version of the product.
+	TargetVersion *string `json:"target_version" validate:"required"`
+
+	// The variation of this new version of the product.
+	Variation *string `json:"variation,omitempty"`
+
+	// The product ID to publish.
+	ProductID *string `json:"product_id" validate:"required"`
+}
+
+// NewStackDefinitionExportRequestStackDefinitionExportProductRequest : Instantiate StackDefinitionExportRequestStackDefinitionExportProductRequest (Generic Model Constructor)
+func (*ProjectV1) NewStackDefinitionExportRequestStackDefinitionExportProductRequest(catalogID string, targetVersion string, productID string) (_model *StackDefinitionExportRequestStackDefinitionExportProductRequest, err error) {
+	_model = &StackDefinitionExportRequestStackDefinitionExportProductRequest{
+		CatalogID: core.StringPtr(catalogID),
+		TargetVersion: core.StringPtr(targetVersion),
+		ProductID: core.StringPtr(productID),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*StackDefinitionExportRequestStackDefinitionExportProductRequest) isaStackDefinitionExportRequest() bool {
+	return true
+}
+
+// UnmarshalStackDefinitionExportRequestStackDefinitionExportProductRequest unmarshals an instance of StackDefinitionExportRequestStackDefinitionExportProductRequest from the specified map of raw messages.
+func UnmarshalStackDefinitionExportRequestStackDefinitionExportProductRequest(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StackDefinitionExportRequestStackDefinitionExportProductRequest)
+	err = core.UnmarshalPrimitive(m, "catalog_id", &obj.CatalogID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "catalog_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "target_version", &obj.TargetVersion)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "target_version-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "variation", &obj.Variation)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "variation-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "product_id", &obj.ProductID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "product_id-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
