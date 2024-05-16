@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.89.1-ed9d96f4-20240417-193115
+ * IBM OpenAPI SDK Code Generator Version: 3.90.1-64fd3296-20240515-180710
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -4972,6 +4972,7 @@ const (
 	ProjectConfig_StateCode_AwaitingInput = "awaiting_input"
 	ProjectConfig_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
 	ProjectConfig_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfig_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
 	ProjectConfig_StateCode_AwaitingValidation = "awaiting_validation"
 )
 
@@ -6262,6 +6263,7 @@ const (
 	ProjectConfigVersion_StateCode_AwaitingInput = "awaiting_input"
 	ProjectConfigVersion_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
 	ProjectConfigVersion_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigVersion_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
 	ProjectConfigVersion_StateCode_AwaitingValidation = "awaiting_validation"
 )
 
@@ -6437,6 +6439,9 @@ type ProjectConfigVersionSummary struct {
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
+	// Computed state code clarifying the prerequisites for validation for the configuration.
+	StateCode *string `json:"state_code,omitempty"`
+
 	// The version number of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
@@ -6466,6 +6471,16 @@ const (
 	ProjectConfigVersionSummary_State_ValidatingFailed = "validating_failed"
 )
 
+// Constants associated with the ProjectConfigVersionSummary.StateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfigVersionSummary_StateCode_AwaitingInput = "awaiting_input"
+	ProjectConfigVersionSummary_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfigVersionSummary_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigVersionSummary_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfigVersionSummary_StateCode_AwaitingValidation = "awaiting_validation"
+)
+
 // UnmarshalProjectConfigVersionSummary unmarshals an instance of ProjectConfigVersionSummary from the specified map of raw messages.
 func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummary)
@@ -6477,6 +6492,11 @@ func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result i
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state_code", &obj.StateCode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "state_code-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
@@ -7230,9 +7250,6 @@ type StackDefinitionBlockPrototype struct {
 
 	// The outputs associated with this stack definition.
 	Outputs []StackDefinitionOutputVariable `json:"outputs,omitempty"`
-
-	// Defines the member deployable architectures that are included in your stack.
-	Members []StackDefinitionMemberPrototype `json:"members,omitempty"`
 }
 
 // UnmarshalStackDefinitionBlockPrototype unmarshals an instance of StackDefinitionBlockPrototype from the specified map of raw messages.
@@ -7246,11 +7263,6 @@ func UnmarshalStackDefinitionBlockPrototype(m map[string]json.RawMessage, result
 	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackDefinitionOutputVariable)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "outputs-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackDefinitionMemberPrototype)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -7468,7 +7480,7 @@ type StackDefinitionMember struct {
 	// The version locator of the member deployable architecture.
 	VersionLocator *string `json:"version_locator" validate:"required"`
 
-	// The member input names to use for the stack definition.
+	// The member inputs to use for the stack definition.
 	Inputs []StackDefinitionMemberInput `json:"inputs,omitempty"`
 }
 
@@ -7494,7 +7506,7 @@ func UnmarshalStackDefinitionMember(m map[string]json.RawMessage, result interfa
 	return
 }
 
-// StackDefinitionMemberInput : The member input definition.
+// StackDefinitionMemberInput : StackDefinitionMemberInput struct
 type StackDefinitionMemberInput struct {
 	// The member input name to use.
 	Name *string `json:"name" validate:"required"`
@@ -7514,75 +7526,6 @@ func UnmarshalStackDefinitionMemberInput(m map[string]json.RawMessage, result in
 	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackDefinitionMemberInputPrototype : The member input definition.
-type StackDefinitionMemberInputPrototype struct {
-	// The member input name to use.
-	Name *string `json:"name" validate:"required"`
-}
-
-// NewStackDefinitionMemberInputPrototype : Instantiate StackDefinitionMemberInputPrototype (Generic Model Constructor)
-func (*ProjectV1) NewStackDefinitionMemberInputPrototype(name string) (_model *StackDefinitionMemberInputPrototype, err error) {
-	_model = &StackDefinitionMemberInputPrototype{
-		Name: core.StringPtr(name),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalStackDefinitionMemberInputPrototype unmarshals an instance of StackDefinitionMemberInputPrototype from the specified map of raw messages.
-func UnmarshalStackDefinitionMemberInputPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackDefinitionMemberInputPrototype)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackDefinitionMemberPrototype : Defines the input values from member deployable architectures that are included in the catalog entry when the stack
-// is exported to a private catalog.
-type StackDefinitionMemberPrototype struct {
-	// The name matching the alias in the stack definition.
-	Name *string `json:"name" validate:"required"`
-
-	// The member input names to use for the deployable architecture stack definition.
-	Inputs []StackDefinitionMemberInputPrototype `json:"inputs,omitempty"`
-}
-
-// NewStackDefinitionMemberPrototype : Instantiate StackDefinitionMemberPrototype (Generic Model Constructor)
-func (*ProjectV1) NewStackDefinitionMemberPrototype(name string) (_model *StackDefinitionMemberPrototype, err error) {
-	_model = &StackDefinitionMemberPrototype{
-		Name: core.StringPtr(name),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalStackDefinitionMemberPrototype unmarshals an instance of StackDefinitionMemberPrototype from the specified map of raw messages.
-func UnmarshalStackDefinitionMemberPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackDefinitionMemberPrototype)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackDefinitionMemberInputPrototype)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))

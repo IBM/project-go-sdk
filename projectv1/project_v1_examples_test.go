@@ -634,19 +634,9 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Value: core.StringPtr("cluster_id"),
 			}
 
-			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
-				Name: core.StringPtr("region"),
-			}
-
-			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
-				Name: core.StringPtr("foundation-deployable-architecture"),
-				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
-			}
-
 			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
 				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
 				Outputs: []projectv1.StackDefinitionOutputVariable{*stackDefinitionOutputVariableModel},
-				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
 			}
 
 			createStackDefinitionOptions := projectService.NewCreateStackDefinitionOptions(
@@ -702,18 +692,8 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 				Hidden: core.BoolPtr(false),
 			}
 
-			stackDefinitionMemberInputPrototypeModel := &projectv1.StackDefinitionMemberInputPrototype{
-				Name: core.StringPtr("cluster_name"),
-			}
-
-			stackDefinitionMemberPrototypeModel := &projectv1.StackDefinitionMemberPrototype{
-				Name: core.StringPtr("foundation-deployable-architecture"),
-				Inputs: []projectv1.StackDefinitionMemberInputPrototype{*stackDefinitionMemberInputPrototypeModel},
-			}
-
 			stackDefinitionBlockPrototypeModel := &projectv1.StackDefinitionBlockPrototype{
 				Inputs: []projectv1.StackDefinitionInputVariable{*stackDefinitionInputVariableModel},
-				Members: []projectv1.StackDefinitionMemberPrototype{*stackDefinitionMemberPrototypeModel},
 			}
 
 			updateStackDefinitionOptions := projectService.NewUpdateStackDefinitionOptions(
