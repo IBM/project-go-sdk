@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.90.1-64fd3296-20240515-180710
+ * IBM OpenAPI SDK Code Generator Version: 3.91.0-d9755c53-20240605-153412
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -3006,6 +3006,16 @@ type CreateProjectOptions struct {
 	Headers map[string]string
 }
 
+// Constants associated with the CreateProjectOptions.Location property.
+// The IBM Cloud location where a resource is deployed.
+const (
+	CreateProjectOptions_Location_CaTor = "ca-tor"
+	CreateProjectOptions_Location_EuDe = "eu-de"
+	CreateProjectOptions_Location_EuGb = "eu-gb"
+	CreateProjectOptions_Location_UsEast = "us-east"
+	CreateProjectOptions_Location_UsSouth = "us-south"
+)
+
 // NewCreateProjectOptions : Instantiate CreateProjectOptions
 func (*ProjectV1) NewCreateProjectOptions(definition *ProjectPrototypeDefinition, location string, resourceGroup string) *CreateProjectOptions {
 	return &CreateProjectOptions{
@@ -4820,6 +4830,16 @@ type ProjectComplianceProfile struct {
 	// The name of the compliance profile.
 	ProfileName *string `json:"profile_name,omitempty"`
 }
+
+// Constants associated with the ProjectComplianceProfile.InstanceLocation property.
+// The location of the compliance instance.
+const (
+	ProjectComplianceProfile_InstanceLocation_CaTor = "ca-tor"
+	ProjectComplianceProfile_InstanceLocation_EuDe = "eu-de"
+	ProjectComplianceProfile_InstanceLocation_EuGb = "eu-gb"
+	ProjectComplianceProfile_InstanceLocation_UsEast = "us-east"
+	ProjectComplianceProfile_InstanceLocation_UsSouth = "us-south"
+)
 
 // UnmarshalProjectComplianceProfile unmarshals an instance of ProjectComplianceProfile from the specified map of raw messages.
 func UnmarshalProjectComplianceProfile(m map[string]json.RawMessage, result interface{}) (err error) {
