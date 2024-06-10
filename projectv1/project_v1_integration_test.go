@@ -104,6 +104,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				Name: core.StringPtr("acme-microservice"),
 				DestroyOnDelete: core.BoolPtr(true),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+				AutoDeploy: core.BoolPtr(false),
 				MonitoringEnabled: core.BoolPtr(false),
 			}
 
@@ -307,6 +308,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			projectPatchDefinitionBlockModel := &projectv1.ProjectPatchDefinitionBlock{
 				Name: core.StringPtr("acme-microservice"),
 				DestroyOnDelete: core.BoolPtr(true),
+				AutoDeploy: core.BoolPtr(true),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				MonitoringEnabled: core.BoolPtr(true),
 			}

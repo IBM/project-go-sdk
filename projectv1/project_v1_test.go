@@ -193,6 +193,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfile model
@@ -300,7 +301,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "auto_deploy": false, "monitoring_enabled": false}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -317,6 +318,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfile model
@@ -427,7 +429,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "auto_deploy": false, "monitoring_enabled": false}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -449,6 +451,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfile model
@@ -526,6 +529,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfile model
@@ -624,6 +628,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfile model
@@ -761,7 +766,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "first": {"href": "Href"}, "next": {"href": "Href"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "first": {"href": "Href"}, "next": {"href": "Href"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description"}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully with retries`, func() {
@@ -818,7 +823,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 10, "first": {"href": "Href"}, "next": {"href": "Href"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}]}`)
+					fmt.Fprintf(res, "%s", `{"limit": 10, "first": {"href": "Href"}, "next": {"href": "Href"}, "projects": [{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description"}}]}`)
 				}))
 			})
 			It(`Invoke ListProjects successfully`, func() {
@@ -953,9 +958,9 @@ var _ = Describe(`ProjectV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?token=1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group_id":"ResourceGroupID","state":"ready","href":"Href","definition":{"name":"Name","destroy_on_delete":false,"description":"Description","monitoring_enabled":false}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?token=1"},"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group_id":"ResourceGroupID","state":"ready","href":"Href","definition":{"name":"Name","destroy_on_delete":false,"description":"Description"}}],"total_count":2,"limit":1}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group_id":"ResourceGroupID","state":"ready","href":"Href","definition":{"name":"Name","destroy_on_delete":false,"description":"Description","monitoring_enabled":false}}],"total_count":2,"limit":1}`)
+						fmt.Fprintf(res, "%s", `{"projects":[{"crn":"crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::","created_at":"2019-01-01T12:00:00.000Z","cumulative_needs_attention_view":[{"event":"Event","event_id":"EventID","config_id":"ConfigID","config_version":13}],"cumulative_needs_attention_view_error":false,"id":"ID","location":"Location","resource_group_id":"ResourceGroupID","state":"ready","href":"Href","definition":{"name":"Name","destroy_on_delete":false,"description":"Description"}}],"total_count":2,"limit":1}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -1071,7 +1076,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "auto_deploy": false, "monitoring_enabled": false}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -1125,7 +1130,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "auto_deploy": false, "monitoring_enabled": false}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1248,6 +1253,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
 				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
 
@@ -1307,7 +1313,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "auto_deploy": false, "monitoring_enabled": false}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully with retries`, func() {
@@ -1323,6 +1329,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
 				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
 
@@ -1385,7 +1392,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "monitoring_enabled": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 13}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "state_code": "awaiting_input", "version": 7, "href": "Href"}, "id": "ID", "version": 7, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "destroy_on_delete": false, "description": "Description", "auto_deploy": false, "monitoring_enabled": false}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully`, func() {
@@ -1406,6 +1413,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
 				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
 
@@ -1434,6 +1442,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
 				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
 
@@ -1483,6 +1492,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
 				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
 
@@ -8230,10 +8240,12 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				Expect(projectPrototypeDefinitionModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(projectPrototypeDefinitionModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
 				Expect(projectPrototypeDefinitionModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
+				Expect(projectPrototypeDefinitionModel.AutoDeploy).To(Equal(core.BoolPtr(false)))
 				Expect(projectPrototypeDefinitionModel.MonitoringEnabled).To(Equal(core.BoolPtr(false)))
 
 				// Construct an instance of the ProjectComplianceProfile model
@@ -8820,10 +8832,12 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectPatchDefinitionBlockModel).ToNot(BeNil())
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
 				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
 				Expect(projectPatchDefinitionBlockModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(projectPatchDefinitionBlockModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
+				Expect(projectPatchDefinitionBlockModel.AutoDeploy).To(Equal(core.BoolPtr(true)))
 				Expect(projectPatchDefinitionBlockModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
 				Expect(projectPatchDefinitionBlockModel.MonitoringEnabled).To(Equal(core.BoolPtr(true)))
 
@@ -9118,6 +9132,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model := new(projectv1.ProjectPatchDefinitionBlock)
 			model.Name = core.StringPtr("testString")
 			model.DestroyOnDelete = core.BoolPtr(true)
+			model.AutoDeploy = core.BoolPtr(true)
 			model.Description = core.StringPtr("testString")
 			model.MonitoringEnabled = core.BoolPtr(true)
 
@@ -9140,6 +9155,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.Name = core.StringPtr("testString")
 			model.DestroyOnDelete = core.BoolPtr(true)
 			model.Description = core.StringPtr("testString")
+			model.AutoDeploy = core.BoolPtr(false)
 			model.MonitoringEnabled = core.BoolPtr(false)
 
 			b, err := json.Marshal(model)

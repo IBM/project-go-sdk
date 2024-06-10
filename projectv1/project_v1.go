@@ -6563,6 +6563,9 @@ type ProjectDefinitionProperties struct {
 	// without providing a description.
 	Description *string `json:"description" validate:"required"`
 
+	// A boolean flag to enable auto deploy.
+	AutoDeploy *bool `json:"auto_deploy" validate:"required"`
+
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
 	// configurations to your deployed resources to detect any difference.
 	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
@@ -6586,6 +6589,11 @@ func UnmarshalProjectDefinitionProperties(m map[string]json.RawMessage, result i
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "monitoring_enabled-error", common.GetComponentInfo())
@@ -6607,6 +6615,41 @@ func UnmarshalProjectDefinitionReference(m map[string]json.RawMessage, result in
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectDefinitionSummary : The definition of the project.
+type ProjectDefinitionSummary struct {
+	// The name of the project.  It's unique within the account across regions.
+	Name *string `json:"name" validate:"required"`
+
+	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
+	DestroyOnDelete *bool `json:"destroy_on_delete" validate:"required"`
+
+	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
+	// without providing a description.
+	Description *string `json:"description" validate:"required"`
+}
+
+// UnmarshalProjectDefinitionSummary unmarshals an instance of ProjectDefinitionSummary from the specified map of raw messages.
+func UnmarshalProjectDefinitionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDefinitionSummary)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6716,6 +6759,9 @@ type ProjectPatchDefinitionBlock struct {
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
+	// A boolean flag to enable auto deploy.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+
 	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
@@ -6736,6 +6782,11 @@ func UnmarshalProjectPatchDefinitionBlock(m map[string]json.RawMessage, result i
 	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -6763,6 +6814,9 @@ type ProjectPrototypeDefinition struct {
 	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
+
+	// A boolean flag to enable auto deploy.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
 	// configurations to your deployed resources to detect any difference.
@@ -6797,6 +6851,11 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
@@ -6883,7 +6942,7 @@ type ProjectSummary struct {
 	Href *string `json:"href" validate:"required"`
 
 	// The definition of the project.
-	Definition *ProjectDefinitionProperties `json:"definition" validate:"required"`
+	Definition *ProjectDefinitionSummary `json:"definition" validate:"required"`
 }
 
 // Constants associated with the ProjectSummary.State property.
@@ -6942,7 +7001,7 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionProperties)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionSummary)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "definition-error", common.GetComponentInfo())
 		return
