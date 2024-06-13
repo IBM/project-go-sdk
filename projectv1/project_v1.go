@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.89.1-ed9d96f4-20240417-193115
+ * IBM OpenAPI SDK Code Generator Version: 3.91.0-d9755c53-20240605-153412
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -3006,6 +3006,16 @@ type CreateProjectOptions struct {
 	Headers map[string]string
 }
 
+// Constants associated with the CreateProjectOptions.Location property.
+// The IBM Cloud location where a resource is deployed.
+const (
+	CreateProjectOptions_Location_CaTor = "ca-tor"
+	CreateProjectOptions_Location_EuDe = "eu-de"
+	CreateProjectOptions_Location_EuGb = "eu-gb"
+	CreateProjectOptions_Location_UsEast = "us-east"
+	CreateProjectOptions_Location_UsSouth = "us-south"
+)
+
 // NewCreateProjectOptions : Instantiate CreateProjectOptions
 func (*ProjectV1) NewCreateProjectOptions(definition *ProjectPrototypeDefinition, location string, resourceGroup string) *CreateProjectOptions {
 	return &CreateProjectOptions{
@@ -4821,6 +4831,16 @@ type ProjectComplianceProfile struct {
 	ProfileName *string `json:"profile_name,omitempty"`
 }
 
+// Constants associated with the ProjectComplianceProfile.InstanceLocation property.
+// The location of the compliance instance.
+const (
+	ProjectComplianceProfile_InstanceLocation_CaTor = "ca-tor"
+	ProjectComplianceProfile_InstanceLocation_EuDe = "eu-de"
+	ProjectComplianceProfile_InstanceLocation_EuGb = "eu-gb"
+	ProjectComplianceProfile_InstanceLocation_UsEast = "us-east"
+	ProjectComplianceProfile_InstanceLocation_UsSouth = "us-south"
+)
+
 // UnmarshalProjectComplianceProfile unmarshals an instance of ProjectComplianceProfile from the specified map of raw messages.
 func UnmarshalProjectComplianceProfile(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectComplianceProfile)
@@ -4972,6 +4992,7 @@ const (
 	ProjectConfig_StateCode_AwaitingInput = "awaiting_input"
 	ProjectConfig_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
 	ProjectConfig_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfig_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
 	ProjectConfig_StateCode_AwaitingValidation = "awaiting_validation"
 )
 
@@ -6262,6 +6283,7 @@ const (
 	ProjectConfigVersion_StateCode_AwaitingInput = "awaiting_input"
 	ProjectConfigVersion_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
 	ProjectConfigVersion_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigVersion_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
 	ProjectConfigVersion_StateCode_AwaitingValidation = "awaiting_validation"
 )
 
@@ -6437,6 +6459,9 @@ type ProjectConfigVersionSummary struct {
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
+	// Computed state code clarifying the prerequisites for validation for the configuration.
+	StateCode *string `json:"state_code,omitempty"`
+
 	// The version number of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
@@ -6466,6 +6491,16 @@ const (
 	ProjectConfigVersionSummary_State_ValidatingFailed = "validating_failed"
 )
 
+// Constants associated with the ProjectConfigVersionSummary.StateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfigVersionSummary_StateCode_AwaitingInput = "awaiting_input"
+	ProjectConfigVersionSummary_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfigVersionSummary_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigVersionSummary_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfigVersionSummary_StateCode_AwaitingValidation = "awaiting_validation"
+)
+
 // UnmarshalProjectConfigVersionSummary unmarshals an instance of ProjectConfigVersionSummary from the specified map of raw messages.
 func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ProjectConfigVersionSummary)
@@ -6477,6 +6512,11 @@ func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result i
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state_code", &obj.StateCode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "state_code-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
@@ -6523,6 +6563,9 @@ type ProjectDefinitionProperties struct {
 	// without providing a description.
 	Description *string `json:"description" validate:"required"`
 
+	// A boolean flag to enable auto deploy.
+	AutoDeploy *bool `json:"auto_deploy" validate:"required"`
+
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
 	// configurations to your deployed resources to detect any difference.
 	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
@@ -6546,6 +6589,11 @@ func UnmarshalProjectDefinitionProperties(m map[string]json.RawMessage, result i
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "monitoring_enabled-error", common.GetComponentInfo())
@@ -6567,6 +6615,41 @@ func UnmarshalProjectDefinitionReference(m map[string]json.RawMessage, result in
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectDefinitionSummary : The definition of the project.
+type ProjectDefinitionSummary struct {
+	// The name of the project.  It's unique within the account across regions.
+	Name *string `json:"name" validate:"required"`
+
+	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
+	DestroyOnDelete *bool `json:"destroy_on_delete" validate:"required"`
+
+	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
+	// without providing a description.
+	Description *string `json:"description" validate:"required"`
+}
+
+// UnmarshalProjectDefinitionSummary unmarshals an instance of ProjectDefinitionSummary from the specified map of raw messages.
+func UnmarshalProjectDefinitionSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDefinitionSummary)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6676,6 +6759,9 @@ type ProjectPatchDefinitionBlock struct {
 	// The policy that indicates whether the resources are destroyed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
+	// A boolean flag to enable auto deploy.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+
 	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
@@ -6696,6 +6782,11 @@ func UnmarshalProjectPatchDefinitionBlock(m map[string]json.RawMessage, result i
 	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -6723,6 +6814,9 @@ type ProjectPrototypeDefinition struct {
 	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
+
+	// A boolean flag to enable auto deploy.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
 	// configurations to your deployed resources to detect any difference.
@@ -6757,6 +6851,11 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
@@ -6843,7 +6942,7 @@ type ProjectSummary struct {
 	Href *string `json:"href" validate:"required"`
 
 	// The definition of the project.
-	Definition *ProjectDefinitionProperties `json:"definition" validate:"required"`
+	Definition *ProjectDefinitionSummary `json:"definition" validate:"required"`
 }
 
 // Constants associated with the ProjectSummary.State property.
@@ -6902,7 +7001,7 @@ func UnmarshalProjectSummary(m map[string]json.RawMessage, result interface{}) (
 		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionProperties)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionSummary)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "definition-error", common.GetComponentInfo())
 		return
@@ -7230,9 +7329,6 @@ type StackDefinitionBlockPrototype struct {
 
 	// The outputs associated with this stack definition.
 	Outputs []StackDefinitionOutputVariable `json:"outputs,omitempty"`
-
-	// Defines the member deployable architectures that are included in your stack.
-	Members []StackDefinitionMemberPrototype `json:"members,omitempty"`
 }
 
 // UnmarshalStackDefinitionBlockPrototype unmarshals an instance of StackDefinitionBlockPrototype from the specified map of raw messages.
@@ -7246,11 +7342,6 @@ func UnmarshalStackDefinitionBlockPrototype(m map[string]json.RawMessage, result
 	err = core.UnmarshalModel(m, "outputs", &obj.Outputs, UnmarshalStackDefinitionOutputVariable)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "outputs-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackDefinitionMemberPrototype)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -7468,7 +7559,7 @@ type StackDefinitionMember struct {
 	// The version locator of the member deployable architecture.
 	VersionLocator *string `json:"version_locator" validate:"required"`
 
-	// The member input names to use for the stack definition.
+	// The member inputs to use for the stack definition.
 	Inputs []StackDefinitionMemberInput `json:"inputs,omitempty"`
 }
 
@@ -7494,7 +7585,7 @@ func UnmarshalStackDefinitionMember(m map[string]json.RawMessage, result interfa
 	return
 }
 
-// StackDefinitionMemberInput : The member input definition.
+// StackDefinitionMemberInput : StackDefinitionMemberInput struct
 type StackDefinitionMemberInput struct {
 	// The member input name to use.
 	Name *string `json:"name" validate:"required"`
@@ -7514,75 +7605,6 @@ func UnmarshalStackDefinitionMemberInput(m map[string]json.RawMessage, result in
 	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackDefinitionMemberInputPrototype : The member input definition.
-type StackDefinitionMemberInputPrototype struct {
-	// The member input name to use.
-	Name *string `json:"name" validate:"required"`
-}
-
-// NewStackDefinitionMemberInputPrototype : Instantiate StackDefinitionMemberInputPrototype (Generic Model Constructor)
-func (*ProjectV1) NewStackDefinitionMemberInputPrototype(name string) (_model *StackDefinitionMemberInputPrototype, err error) {
-	_model = &StackDefinitionMemberInputPrototype{
-		Name: core.StringPtr(name),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalStackDefinitionMemberInputPrototype unmarshals an instance of StackDefinitionMemberInputPrototype from the specified map of raw messages.
-func UnmarshalStackDefinitionMemberInputPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackDefinitionMemberInputPrototype)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// StackDefinitionMemberPrototype : Defines the input values from member deployable architectures that are included in the catalog entry when the stack
-// is exported to a private catalog.
-type StackDefinitionMemberPrototype struct {
-	// The name matching the alias in the stack definition.
-	Name *string `json:"name" validate:"required"`
-
-	// The member input names to use for the deployable architecture stack definition.
-	Inputs []StackDefinitionMemberInputPrototype `json:"inputs,omitempty"`
-}
-
-// NewStackDefinitionMemberPrototype : Instantiate StackDefinitionMemberPrototype (Generic Model Constructor)
-func (*ProjectV1) NewStackDefinitionMemberPrototype(name string) (_model *StackDefinitionMemberPrototype, err error) {
-	_model = &StackDefinitionMemberPrototype{
-		Name: core.StringPtr(name),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalStackDefinitionMemberPrototype unmarshals an instance of StackDefinitionMemberPrototype from the specified map of raw messages.
-func UnmarshalStackDefinitionMemberPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(StackDefinitionMemberPrototype)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalStackDefinitionMemberInputPrototype)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
