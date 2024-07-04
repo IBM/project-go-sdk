@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.91.0-d9755c53-20240605-153412
+ * IBM OpenAPI SDK Code Generator Version: 3.92.1-44330004-20240620-143510
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -6564,7 +6564,7 @@ type ProjectDefinitionProperties struct {
 	Description *string `json:"description" validate:"required"`
 
 	// A boolean flag to enable auto deploy.
-	AutoDeploy *bool `json:"auto_deploy" validate:"required"`
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
 	// configurations to your deployed resources to detect any difference.
