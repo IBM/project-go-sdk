@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.92.1-44330004-20240620-143510
+ * IBM OpenAPI SDK Code Generator Version: 3.94.1-71478489-20240820-161623
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -2790,7 +2790,7 @@ type ApproveOptions struct {
 	// nonempty comment.
 	Comment *string `json:"comment,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -2909,7 +2909,7 @@ type CreateConfigOptions struct {
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -2953,7 +2953,7 @@ type CreateProjectEnvironmentOptions struct {
 	// The environment definition.
 	Definition *EnvironmentDefinitionRequiredProperties `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3002,7 +3002,7 @@ type CreateProjectOptions struct {
 	// environment array is specified in the request payload.
 	Environments []EnvironmentPrototype `json:"environments,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3072,7 +3072,7 @@ type CreateStackDefinitionOptions struct {
 	// The definition block for a stack definition.
 	StackDefinition *StackDefinitionBlockPrototype `json:"stack_definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3159,7 +3159,7 @@ type DeleteConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3200,7 +3200,7 @@ type DeleteConfigVersionOptions struct {
 	// The configuration version.
 	Version *int64 `json:"version" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3245,7 +3245,7 @@ type DeleteProjectEnvironmentOptions struct {
 	// The environment ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3280,7 +3280,7 @@ type DeleteProjectOptions struct {
 	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3311,7 +3311,7 @@ type DeployConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3688,7 +3688,7 @@ type ExportStackDefinitionOptions struct {
 	// The payload for the private catalog export request.
 	Settings StackDefinitionExportRequestIntf `json:"settings" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3737,7 +3737,7 @@ type ForceApproveOptions struct {
 	// nonempty comment.
 	Comment *string `json:"comment" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3782,7 +3782,7 @@ type GetConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3823,7 +3823,7 @@ type GetConfigVersionOptions struct {
 	// The configuration version.
 	Version *int64 `json:"version" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3868,7 +3868,7 @@ type GetProjectEnvironmentOptions struct {
 	// The environment ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3903,7 +3903,7 @@ type GetProjectOptions struct {
 	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3934,7 +3934,7 @@ type GetStackDefinitionOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4163,7 +4163,7 @@ type ListConfigResourcesOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4201,7 +4201,7 @@ type ListConfigVersionsOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4244,7 +4244,7 @@ type ListConfigsOptions struct {
 	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4292,7 +4292,7 @@ type ListProjectEnvironmentsOptions struct {
 	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4337,7 +4337,7 @@ type ListProjectsOptions struct {
 	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -6621,6 +6621,69 @@ func UnmarshalProjectDefinitionReference(m map[string]json.RawMessage, result in
 	return
 }
 
+// ProjectDefinitionStore : The details required to custom store project configs.
+type ProjectDefinitionStore struct {
+	// The type of store used for the project.
+	Type *string `json:"type" validate:"required"`
+
+	// A URL.
+	URL *string `json:"url" validate:"required"`
+
+	// The IBM Cloud API Key. It can be either raw or pulled from the catalog via a `CRN` or `JSON` blob.
+	Token *string `json:"token,omitempty"`
+
+	// The directory where project configs are stored.
+	ConfigDirectory *string `json:"config_directory,omitempty"`
+}
+
+// Constants associated with the ProjectDefinitionStore.Type property.
+// The type of store used for the project.
+const (
+	ProjectDefinitionStore_Type_Gh = "gh"
+	ProjectDefinitionStore_Type_Ghe = "ghe"
+	ProjectDefinitionStore_Type_Gitlab = "gitlab"
+)
+
+// NewProjectDefinitionStore : Instantiate ProjectDefinitionStore (Generic Model Constructor)
+func (*ProjectV1) NewProjectDefinitionStore(typeVar string, url string) (_model *ProjectDefinitionStore, err error) {
+	_model = &ProjectDefinitionStore{
+		Type: core.StringPtr(typeVar),
+		URL: core.StringPtr(url),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalProjectDefinitionStore unmarshals an instance of ProjectDefinitionStore from the specified map of raw messages.
+func UnmarshalProjectDefinitionStore(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDefinitionStore)
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "url", &obj.URL)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "token", &obj.Token)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "token-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "config_directory", &obj.ConfigDirectory)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "config_directory-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ProjectDefinitionSummary : The definition of the project.
 type ProjectDefinitionSummary struct {
 	// The name of the project.  It's unique within the account across regions.
@@ -6769,6 +6832,9 @@ type ProjectPatchDefinitionBlock struct {
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare your
 	// configurations to your deployed resources to detect any difference.
 	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
+
+	// The details required to custom store project configs.
+	Store *ProjectDefinitionStore `json:"store,omitempty"`
 }
 
 // UnmarshalProjectPatchDefinitionBlock unmarshals an instance of ProjectPatchDefinitionBlock from the specified map of raw messages.
@@ -6799,6 +6865,11 @@ func UnmarshalProjectPatchDefinitionBlock(m map[string]json.RawMessage, result i
 		err = core.SDKErrorf(err, "", "monitoring_enabled-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalModel(m, "store", &obj.Store, UnmarshalProjectDefinitionStore)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "store-error", common.GetComponentInfo())
+		return
+	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
@@ -6814,6 +6885,9 @@ type ProjectPrototypeDefinition struct {
 	// A brief explanation of the project's use in the configuration of a deployable architecture. You can create a project
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
+
+	// The details required to custom store project configs.
+	Store *ProjectDefinitionStore `json:"store,omitempty"`
 
 	// A boolean flag to enable auto deploy.
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
@@ -6851,6 +6925,11 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "store", &obj.Store, UnmarshalProjectDefinitionStore)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "store-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
@@ -7224,25 +7303,15 @@ type StackDefinition struct {
 	// format as specified by RFC 3339.
 	ModifiedAt *strfmt.DateTime `json:"modified_at" validate:"required"`
 
-	// The state for the stack definition.
-	State *string `json:"state" validate:"required"`
-
-	// The configuration reference.
+	// The stack parent configiguration to which the stack definition belongs.
 	Configuration *StackDefinitionMetadataConfiguration `json:"configuration" validate:"required"`
 
-	// A URL.
+	// The resource path to retrieve the stack definition.
 	Href *string `json:"href" validate:"required"`
 
 	// The definition block for a stack definition.
 	StackDefinition *StackDefinitionBlock `json:"stack_definition" validate:"required"`
 }
-
-// Constants associated with the StackDefinition.State property.
-// The state for the stack definition.
-const (
-	StackDefinition_State_Draft = "draft"
-	StackDefinition_State_Published = "published"
-)
 
 // UnmarshalStackDefinition unmarshals an instance of StackDefinition from the specified map of raw messages.
 func UnmarshalStackDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -7260,11 +7329,6 @@ func UnmarshalStackDefinition(m map[string]json.RawMessage, result interface{}) 
 	err = core.UnmarshalPrimitive(m, "modified_at", &obj.ModifiedAt)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "modified_at-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalModel(m, "configuration", &obj.Configuration, UnmarshalStackDefinitionMetadataConfiguration)
@@ -7290,13 +7354,13 @@ func UnmarshalStackDefinition(m map[string]json.RawMessage, result interface{}) 
 type StackDefinitionBlock struct {
 	// Defines the inputs that users need to configure at the stack level. These inputs are included in the catalog entry
 	// when the deployable architecture stack is exported to a private catalog.
-	Inputs []StackDefinitionInputVariable `json:"inputs,omitempty"`
+	Inputs []StackDefinitionInputVariable `json:"inputs" validate:"required"`
 
 	// The outputs associated with this stack definition.
-	Outputs []StackDefinitionOutputVariable `json:"outputs,omitempty"`
+	Outputs []StackDefinitionOutputVariable `json:"outputs" validate:"required"`
 
 	// The member deployabe architectures that are included in your stack.
-	Members []StackDefinitionMember `json:"members,omitempty"`
+	Members []StackDefinitionMember `json:"members" validate:"required"`
 }
 
 // UnmarshalStackDefinitionBlock unmarshals an instance of StackDefinitionBlock from the specified map of raw messages.
@@ -7359,7 +7423,8 @@ type StackDefinitionExportRequest struct {
 	// The semver value of this new version of the product.
 	TargetVersion *string `json:"target_version,omitempty"`
 
-	// The variation of this new version of the product.
+	// The variation of the current software being onboarded. Only valid if the Product kind is module or solution. See
+	// `flavor` in [Catalog's import offering](/apidocs/resource-catalog/private-catalog#import-offering).
 	Variation *string `json:"variation,omitempty"`
 
 	// The product label.
@@ -7419,19 +7484,32 @@ func UnmarshalStackDefinitionExportRequest(m map[string]json.RawMessage, result 
 // StackDefinitionExportResponse : The payload for the stack definition export response.
 type StackDefinitionExportResponse struct {
 	// The catalog ID to publish.
-	CatalogID *string `json:"catalog_id,omitempty"`
+	CatalogID *string `json:"catalog_id" validate:"required"`
+
+	// The semver value of this new version of the product.
+	TargetVersion *string `json:"target_version,omitempty"`
+
+	// The variation of the current software being onboarded. Only valid if the Product kind is module or solution. See
+	// `flavor` in [Catalog's import offering](/apidocs/resource-catalog/private-catalog#import-offering).
+	Variation *string `json:"variation,omitempty"`
 
 	// The product ID to publish.
-	ProductID *string `json:"product_id,omitempty"`
+	ProductID *string `json:"product_id" validate:"required"`
 
 	// The version locator of the created deployable architecture.
-	VersionLocator *string `json:"version_locator,omitempty"`
+	VersionLocator *string `json:"version_locator" validate:"required"`
 
-	// The product target kind value.
+	// The type of catalog entry, typically terraform.
 	Kind *string `json:"kind,omitempty"`
 
-	// The product format kind value.
+	// Content kind, e.g., stack, helm, vm image.
 	Format *string `json:"format,omitempty"`
+
+	// The product label.
+	Label *string `json:"label,omitempty"`
+
+	// Tags associated with the catalog product.
+	Tags []string `json:"tags,omitempty"`
 }
 
 // UnmarshalStackDefinitionExportResponse unmarshals an instance of StackDefinitionExportResponse from the specified map of raw messages.
@@ -7440,6 +7518,16 @@ func UnmarshalStackDefinitionExportResponse(m map[string]json.RawMessage, result
 	err = core.UnmarshalPrimitive(m, "catalog_id", &obj.CatalogID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "catalog_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "target_version", &obj.TargetVersion)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "target_version-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "variation", &obj.Variation)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "variation-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "product_id", &obj.ProductID)
@@ -7462,6 +7550,16 @@ func UnmarshalStackDefinitionExportResponse(m map[string]json.RawMessage, result
 		err = core.SDKErrorf(err, "", "format-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "label", &obj.Label)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tags", &obj.Tags)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "tags-error", common.GetComponentInfo())
+		return
+	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
@@ -7475,16 +7573,16 @@ type StackDefinitionInputVariable struct {
 	Type *string `json:"type" validate:"required"`
 
 	// The description of the variable.
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description" validate:"required"`
 
 	// This property can be any value - a string, number, boolean, array, or object.
 	Default interface{} `json:"default" validate:"required"`
 
 	// A boolean value to denote if the property is required.
-	Required *bool `json:"required,omitempty"`
+	Required *bool `json:"required" validate:"required"`
 
 	// A boolean value to denote whether the property is hidden, as in not exposed to the user.
-	Hidden *bool `json:"hidden,omitempty"`
+	Hidden *bool `json:"hidden" validate:"required"`
 }
 
 // Constants associated with the StackDefinitionInputVariable.Type property.
@@ -7501,11 +7599,14 @@ const (
 )
 
 // NewStackDefinitionInputVariable : Instantiate StackDefinitionInputVariable (Generic Model Constructor)
-func (*ProjectV1) NewStackDefinitionInputVariable(name string, typeVar string, defaultVar interface{}) (_model *StackDefinitionInputVariable, err error) {
+func (*ProjectV1) NewStackDefinitionInputVariable(name string, typeVar string, description string, defaultVar interface{}, required bool, hidden bool) (_model *StackDefinitionInputVariable, err error) {
 	_model = &StackDefinitionInputVariable{
 		Name: core.StringPtr(name),
 		Type: core.StringPtr(typeVar),
+		Description: core.StringPtr(description),
 		Default: defaultVar,
+		Required: core.BoolPtr(required),
+		Hidden: core.BoolPtr(hidden),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
 	if err != nil {
@@ -7611,12 +7712,12 @@ func UnmarshalStackDefinitionMemberInput(m map[string]json.RawMessage, result in
 	return
 }
 
-// StackDefinitionMetadataConfiguration : The configuration reference.
+// StackDefinitionMetadataConfiguration : The stack parent configiguration to which the stack definition belongs.
 type StackDefinitionMetadataConfiguration struct {
-	// The unique ID.
+	// The unique ID of the stack parent configuration.
 	ID *string `json:"id" validate:"required"`
 
-	// A URL.
+	// The resource path to retrieve the stack parent configuration.
 	Href *string `json:"href" validate:"required"`
 
 	// The definition of the config reference.
@@ -7708,7 +7809,7 @@ type SyncConfigOptions struct {
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7745,13 +7846,14 @@ func (options *SyncConfigOptions) SetHeaders(param map[string]string) *SyncConfi
 }
 
 // TerraformLogAnalyzerErrorMessage : The error message that is parsed by the Terraform log analyzer.
+// This type supports additional properties of type interface{}.
 type TerraformLogAnalyzerErrorMessage struct {
 
-	// Allows users to set arbitrary properties
+	// Allows users to set arbitrary properties of type interface{}.
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of TerraformLogAnalyzerErrorMessage
+// SetProperty allows the user to set an arbitrary property on an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
@@ -7759,7 +7861,7 @@ func (o *TerraformLogAnalyzerErrorMessage) SetProperty(key string, value interfa
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of TerraformLogAnalyzerErrorMessage
+// SetProperties allows the user to set a map of arbitrary properties on an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
@@ -7767,12 +7869,12 @@ func (o *TerraformLogAnalyzerErrorMessage) SetProperties(m map[string]interface{
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of TerraformLogAnalyzerErrorMessage
+// GetProperty allows the user to retrieve an arbitrary property from an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of TerraformLogAnalyzerErrorMessage
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
@@ -7850,7 +7952,7 @@ type UndeployConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7890,7 +7992,7 @@ type UpdateConfigOptions struct {
 
 	Definition ProjectConfigDefinitionPatchIntf `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7938,7 +8040,7 @@ type UpdateProjectEnvironmentOptions struct {
 	// The environment definition that is used for updates.
 	Definition *EnvironmentDefinitionPropertiesPatch `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7983,7 +8085,7 @@ type UpdateProjectOptions struct {
 	// The definition of the project.
 	Definition *ProjectPatchDefinitionBlock `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -8024,7 +8126,7 @@ type UpdateStackDefinitionOptions struct {
 	// The definition block for a stack definition.
 	StackDefinition *StackDefinitionBlockPrototype `json:"stack_definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -8069,7 +8171,7 @@ type ValidateConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -8994,7 +9096,8 @@ type StackDefinitionExportRequestStackDefinitionExportCatalogRequest struct {
 	// The semver value of this new version of the product.
 	TargetVersion *string `json:"target_version,omitempty"`
 
-	// The variation of this new version of the product.
+	// The variation of the current software being onboarded. Only valid if the Product kind is module or solution. See
+	// `flavor` in [Catalog's import offering](/apidocs/resource-catalog/private-catalog#import-offering).
 	Variation *string `json:"variation,omitempty"`
 
 	// The product label.
@@ -9062,7 +9165,8 @@ type StackDefinitionExportRequestStackDefinitionExportProductRequest struct {
 	// The semver value of this new version of the product.
 	TargetVersion *string `json:"target_version" validate:"required"`
 
-	// The variation of this new version of the product.
+	// The variation of the current software being onboarded. Only valid if the Product kind is module or solution. See
+	// `flavor` in [Catalog's import offering](/apidocs/resource-catalog/private-catalog#import-offering).
 	Variation *string `json:"variation,omitempty"`
 
 	// The product ID to publish.

@@ -188,11 +188,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPrototypeDefinition model
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
@@ -313,11 +321,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPrototypeDefinition model
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
@@ -446,11 +462,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPrototypeDefinition model
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
@@ -524,11 +548,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPrototypeDefinition model
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
@@ -623,11 +655,19 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPrototypeDefinition model
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 
@@ -1249,6 +1289,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPatchDefinitionBlock model
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
@@ -1256,6 +1303,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1325,6 +1373,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectService).ToNot(BeNil())
 				projectService.EnableRetries(0, 0)
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPatchDefinitionBlock model
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
@@ -1332,6 +1387,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1409,6 +1465,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPatchDefinitionBlock model
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
@@ -1416,6 +1479,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1438,6 +1502,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPatchDefinitionBlock model
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
@@ -1445,6 +1516,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -1488,6 +1560,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
 
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+
 				// Construct an instance of the ProjectPatchDefinitionBlock model
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
@@ -1495,6 +1574,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
@@ -6253,7 +6333,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "us-south"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -6325,7 +6405,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": false, "hidden": false}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
 				}))
 			})
 			It(`Invoke CreateStackDefinition successfully with retries`, func() {
@@ -6341,7 +6421,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "us-south"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -6416,7 +6496,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": false, "hidden": false}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
 				}))
 			})
 			It(`Invoke CreateStackDefinition successfully`, func() {
@@ -6437,7 +6517,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "us-south"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -6478,7 +6558,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "us-south"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -6540,7 +6620,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "us-south"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -6638,7 +6718,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": false, "hidden": false}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
 				}))
 			})
 			It(`Invoke GetStackDefinition successfully with retries`, func() {
@@ -6693,7 +6773,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": false, "hidden": false}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
 				}))
 			})
 			It(`Invoke GetStackDefinition successfully`, func() {
@@ -6819,7 +6899,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "eu-gb"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -6891,7 +6971,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": false, "hidden": false}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
 				}))
 			})
 			It(`Invoke UpdateStackDefinition successfully with retries`, func() {
@@ -6907,7 +6987,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "eu-gb"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -6982,7 +7062,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "state": "draft", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": true, "hidden": true}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "configuration": {"id": "ID", "href": "Href", "definition": {"name": "Name"}}, "href": "Href", "stack_definition": {"inputs": [{"name": "Name", "type": "array", "description": "Description", "default": "anyValue", "required": false, "hidden": false}], "outputs": [{"name": "Name", "value": "anyValue"}], "members": [{"name": "Name", "version_locator": "VersionLocator", "inputs": [{"name": "Name", "value": "anyValue"}]}]}}`)
 				}))
 			})
 			It(`Invoke UpdateStackDefinition successfully`, func() {
@@ -7003,7 +7083,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "eu-gb"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -7044,7 +7124,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "eu-gb"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -7106,7 +7186,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionInputVariableModel := new(projectv1.StackDefinitionInputVariable)
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "eu-gb"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
@@ -7170,7 +7250,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+				stackDefinitionExportRequestModel.Tags = []string{}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -7229,7 +7309,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"catalog_id": "CatalogID", "product_id": "ProductID", "version_locator": "VersionLocator", "kind": "Kind", "format": "Format"}`)
+					fmt.Fprintf(res, "%s", `{"catalog_id": "CatalogID", "target_version": "TargetVersion", "variation": "Variation", "product_id": "ProductID", "version_locator": "VersionLocator", "kind": "Kind", "format": "Format", "label": "Label", "tags": ["Tags"]}`)
 				}))
 			})
 			It(`Invoke ExportStackDefinition successfully with retries`, func() {
@@ -7247,7 +7327,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+				stackDefinitionExportRequestModel.Tags = []string{}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -7309,7 +7389,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"catalog_id": "CatalogID", "product_id": "ProductID", "version_locator": "VersionLocator", "kind": "Kind", "format": "Format"}`)
+					fmt.Fprintf(res, "%s", `{"catalog_id": "CatalogID", "target_version": "TargetVersion", "variation": "Variation", "product_id": "ProductID", "version_locator": "VersionLocator", "kind": "Kind", "format": "Format", "label": "Label", "tags": ["Tags"]}`)
 				}))
 			})
 			It(`Invoke ExportStackDefinition successfully`, func() {
@@ -7332,7 +7412,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+				stackDefinitionExportRequestModel.Tags = []string{}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -7362,7 +7442,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+				stackDefinitionExportRequestModel.Tags = []string{}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -7413,7 +7493,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+				stackDefinitionExportRequestModel.Tags = []string{}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8234,17 +8314,31 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(createProjectEnvironmentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateProjectOptions successfully`, func() {
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				Expect(projectDefinitionStoreModel).ToNot(BeNil())
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+				Expect(projectDefinitionStoreModel.Type).To(Equal(core.StringPtr("gh")))
+				Expect(projectDefinitionStoreModel.URL).To(Equal(core.StringPtr("testString")))
+				Expect(projectDefinitionStoreModel.Token).To(Equal(core.StringPtr("testString")))
+				Expect(projectDefinitionStoreModel.ConfigDirectory).To(Equal(core.StringPtr("testString")))
+
 				// Construct an instance of the ProjectPrototypeDefinition model
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				Expect(projectPrototypeDefinitionModel).ToNot(BeNil())
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				Expect(projectPrototypeDefinitionModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(projectPrototypeDefinitionModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
 				Expect(projectPrototypeDefinitionModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
+				Expect(projectPrototypeDefinitionModel.Store).To(Equal(projectDefinitionStoreModel))
 				Expect(projectPrototypeDefinitionModel.AutoDeploy).To(Equal(core.BoolPtr(false)))
 				Expect(projectPrototypeDefinitionModel.MonitoringEnabled).To(Equal(core.BoolPtr(false)))
 
@@ -8351,13 +8445,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(stackDefinitionInputVariableModel).ToNot(BeNil())
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "us-south"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
 				Expect(stackDefinitionInputVariableModel.Name).To(Equal(core.StringPtr("region")))
 				Expect(stackDefinitionInputVariableModel.Type).To(Equal(core.StringPtr("string")))
-				Expect(stackDefinitionInputVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionInputVariableModel.Description).To(Equal(core.StringPtr("The IBM Cloud location where a resource is deployed.")))
 				Expect(stackDefinitionInputVariableModel.Default).To(Equal("us-south"))
 				Expect(stackDefinitionInputVariableModel.Required).To(Equal(core.BoolPtr(true)))
 				Expect(stackDefinitionInputVariableModel.Hidden).To(Equal(core.BoolPtr(false)))
@@ -8477,12 +8571,12 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("testString")
-				stackDefinitionExportRequestModel.Tags = []string{"testString"}
+				stackDefinitionExportRequestModel.Tags = []string{}
 				Expect(stackDefinitionExportRequestModel.CatalogID).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.TargetVersion).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.Variation).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.Label).To(Equal(core.StringPtr("testString")))
-				Expect(stackDefinitionExportRequestModel.Tags).To(Equal([]string{"testString"}))
+				Expect(stackDefinitionExportRequestModel.Tags).To(Equal([]string{}))
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				projectID := "testString"
@@ -8650,6 +8744,13 @@ var _ = Describe(`ProjectV1`, func() {
 				_, err := projectService.NewProjectConfigPrototype(definition)
 				Expect(err).ToNot(BeNil())
 			})
+			It(`Invoke NewProjectDefinitionStore successfully`, func() {
+				typeVar := "gh"
+				url := "testString"
+				_model, err := projectService.NewProjectDefinitionStore(typeVar, url)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 			It(`Invoke NewProjectPrototypeDefinition successfully`, func() {
 				name := "testString"
 				_model, err := projectService.NewProjectPrototypeDefinition(name)
@@ -8666,8 +8767,11 @@ var _ = Describe(`ProjectV1`, func() {
 			It(`Invoke NewStackDefinitionInputVariable successfully`, func() {
 				name := "testString"
 				typeVar := "array"
+				description := "testString"
 				defaultVar := "testString"
-				_model, err := projectService.NewStackDefinitionInputVariable(name, typeVar, defaultVar)
+				required := false
+				hidden := false
+				_model, err := projectService.NewStackDefinitionInputVariable(name, typeVar, description, defaultVar, required, hidden)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -8827,6 +8931,18 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(updateProjectEnvironmentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateProjectOptions successfully`, func() {
+				// Construct an instance of the ProjectDefinitionStore model
+				projectDefinitionStoreModel := new(projectv1.ProjectDefinitionStore)
+				Expect(projectDefinitionStoreModel).ToNot(BeNil())
+				projectDefinitionStoreModel.Type = core.StringPtr("gh")
+				projectDefinitionStoreModel.URL = core.StringPtr("testString")
+				projectDefinitionStoreModel.Token = core.StringPtr("testString")
+				projectDefinitionStoreModel.ConfigDirectory = core.StringPtr("testString")
+				Expect(projectDefinitionStoreModel.Type).To(Equal(core.StringPtr("gh")))
+				Expect(projectDefinitionStoreModel.URL).To(Equal(core.StringPtr("testString")))
+				Expect(projectDefinitionStoreModel.Token).To(Equal(core.StringPtr("testString")))
+				Expect(projectDefinitionStoreModel.ConfigDirectory).To(Equal(core.StringPtr("testString")))
+
 				// Construct an instance of the ProjectPatchDefinitionBlock model
 				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
 				Expect(projectPatchDefinitionBlockModel).ToNot(BeNil())
@@ -8835,11 +8951,13 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
 				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
 				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
+				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
 				Expect(projectPatchDefinitionBlockModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(projectPatchDefinitionBlockModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
 				Expect(projectPatchDefinitionBlockModel.AutoDeploy).To(Equal(core.BoolPtr(true)))
 				Expect(projectPatchDefinitionBlockModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
 				Expect(projectPatchDefinitionBlockModel.MonitoringEnabled).To(Equal(core.BoolPtr(true)))
+				Expect(projectPatchDefinitionBlockModel.Store).To(Equal(projectDefinitionStoreModel))
 
 				// Construct an instance of the UpdateProjectOptions model
 				id := "testString"
@@ -8859,13 +8977,13 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(stackDefinitionInputVariableModel).ToNot(BeNil())
 				stackDefinitionInputVariableModel.Name = core.StringPtr("region")
 				stackDefinitionInputVariableModel.Type = core.StringPtr("string")
-				stackDefinitionInputVariableModel.Description = core.StringPtr("testString")
+				stackDefinitionInputVariableModel.Description = core.StringPtr("The IBM Cloud location where a resource is deployed.")
 				stackDefinitionInputVariableModel.Default = "eu-gb"
 				stackDefinitionInputVariableModel.Required = core.BoolPtr(true)
 				stackDefinitionInputVariableModel.Hidden = core.BoolPtr(false)
 				Expect(stackDefinitionInputVariableModel.Name).To(Equal(core.StringPtr("region")))
 				Expect(stackDefinitionInputVariableModel.Type).To(Equal(core.StringPtr("string")))
-				Expect(stackDefinitionInputVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(stackDefinitionInputVariableModel.Description).To(Equal(core.StringPtr("The IBM Cloud location where a resource is deployed.")))
 				Expect(stackDefinitionInputVariableModel.Default).To(Equal("eu-gb"))
 				Expect(stackDefinitionInputVariableModel.Required).To(Equal(core.BoolPtr(true)))
 				Expect(stackDefinitionInputVariableModel.Hidden).To(Equal(core.BoolPtr(false)))
@@ -9127,6 +9245,27 @@ var _ = Describe(`ProjectV1`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalProjectDefinitionStore successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.ProjectDefinitionStore)
+			model.Type = core.StringPtr("gh")
+			model.URL = core.StringPtr("testString")
+			model.Token = core.StringPtr("testString")
+			model.ConfigDirectory = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.ProjectDefinitionStore
+			err = projectv1.UnmarshalProjectDefinitionStore(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalProjectPatchDefinitionBlock successfully`, func() {
 			// Construct an instance of the model.
 			model := new(projectv1.ProjectPatchDefinitionBlock)
@@ -9135,6 +9274,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.AutoDeploy = core.BoolPtr(true)
 			model.Description = core.StringPtr("testString")
 			model.MonitoringEnabled = core.BoolPtr(true)
+			model.Store = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -9155,6 +9295,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.Name = core.StringPtr("testString")
 			model.DestroyOnDelete = core.BoolPtr(true)
 			model.Description = core.StringPtr("testString")
+			model.Store = nil
 			model.AutoDeploy = core.BoolPtr(false)
 			model.MonitoringEnabled = core.BoolPtr(false)
 
@@ -9234,7 +9375,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
-			model.Tags = []string{"testString"}
+			model.Tags = []string{}
 			model.ProductID = core.StringPtr("testString")
 
 			b, err := json.Marshal(model)
@@ -9257,8 +9398,8 @@ var _ = Describe(`ProjectV1`, func() {
 			model.Type = core.StringPtr("array")
 			model.Description = core.StringPtr("testString")
 			model.Default = "testString"
-			model.Required = core.BoolPtr(true)
-			model.Hidden = core.BoolPtr(true)
+			model.Required = core.BoolPtr(false)
+			model.Hidden = core.BoolPtr(false)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -9449,7 +9590,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
-			model.Tags = []string{"testString"}
+			model.Tags = []string{}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())

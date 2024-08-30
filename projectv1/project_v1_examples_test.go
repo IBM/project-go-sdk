@@ -624,6 +624,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
 				Name: core.StringPtr("region"),
 				Type: core.StringPtr("string"),
+				Description: core.StringPtr("The IBM Cloud location where a resource is deployed."),
 				Default: core.StringPtr("us-south"),
 				Required: core.BoolPtr(true),
 				Hidden: core.BoolPtr(false),
@@ -687,6 +688,7 @@ var _ = Describe(`ProjectV1 Examples Tests`, func() {
 			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
 				Name: core.StringPtr("region"),
 				Type: core.StringPtr("string"),
+				Description: core.StringPtr("The IBM Cloud location where a resource is deployed."),
 				Default: core.StringPtr("eu-gb"),
 				Required: core.BoolPtr(true),
 				Hidden: core.BoolPtr(false),

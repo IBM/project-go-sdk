@@ -100,10 +100,18 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateProject(createProjectOptions *CreateProjectOptions)`, func() {
+			projectDefinitionStoreModel := &projectv1.ProjectDefinitionStore{
+				Type: core.StringPtr("gh"),
+				URL: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
+				ConfigDirectory: core.StringPtr("testString"),
+			}
+
 			projectPrototypeDefinitionModel := &projectv1.ProjectPrototypeDefinition{
 				Name: core.StringPtr("acme-microservice"),
 				DestroyOnDelete: core.BoolPtr(true),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
+				Store: projectDefinitionStoreModel,
 				AutoDeploy: core.BoolPtr(false),
 				MonitoringEnabled: core.BoolPtr(false),
 			}
@@ -305,12 +313,20 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`UpdateProject(updateProjectOptions *UpdateProjectOptions)`, func() {
+			projectDefinitionStoreModel := &projectv1.ProjectDefinitionStore{
+				Type: core.StringPtr("gh"),
+				URL: core.StringPtr("testString"),
+				Token: core.StringPtr("testString"),
+				ConfigDirectory: core.StringPtr("testString"),
+			}
+
 			projectPatchDefinitionBlockModel := &projectv1.ProjectPatchDefinitionBlock{
 				Name: core.StringPtr("acme-microservice"),
 				DestroyOnDelete: core.BoolPtr(true),
 				AutoDeploy: core.BoolPtr(true),
 				Description: core.StringPtr("A microservice to deploy on top of ACME infrastructure."),
 				MonitoringEnabled: core.BoolPtr(true),
+				Store: projectDefinitionStoreModel,
 			}
 
 			updateProjectOptions := &projectv1.UpdateProjectOptions{
@@ -742,7 +758,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
 				Name: core.StringPtr("region"),
 				Type: core.StringPtr("string"),
-				Description: core.StringPtr("testString"),
+				Description: core.StringPtr("The IBM Cloud location where a resource is deployed."),
 				Default: core.StringPtr("us-south"),
 				Required: core.BoolPtr(true),
 				Hidden: core.BoolPtr(false),
@@ -796,7 +812,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 			stackDefinitionInputVariableModel := &projectv1.StackDefinitionInputVariable{
 				Name: core.StringPtr("region"),
 				Type: core.StringPtr("string"),
-				Description: core.StringPtr("testString"),
+				Description: core.StringPtr("The IBM Cloud location where a resource is deployed."),
 				Default: core.StringPtr("eu-gb"),
 				Required: core.BoolPtr(true),
 				Hidden: core.BoolPtr(false),
@@ -835,7 +851,7 @@ var _ = Describe(`ProjectV1 Integration Tests`, func() {
 				TargetVersion: core.StringPtr("testString"),
 				Variation: core.StringPtr("testString"),
 				Label: core.StringPtr("Stack Deployable Architecture"),
-				Tags: []string{"testString"},
+				Tags: []string{},
 			}
 
 			exportStackDefinitionOptions := &projectv1.ExportStackDefinitionOptions{
