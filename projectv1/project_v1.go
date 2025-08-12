@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.91.0-d9755c53-20240605-153412
+ * IBM OpenAPI SDK Code Generator Version: 3.107.0-b68ebf7a-20250811-145645
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -203,12 +203,12 @@ func (project *ProjectV1) CreateProjectWithContext(ctx context.Context, createPr
 		return
 	}
 
-	for headerName, headerValue := range createProjectOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateProject")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateProject")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range createProjectOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -286,12 +286,12 @@ func (project *ProjectV1) ListProjectsWithContext(ctx context.Context, listProje
 		return
 	}
 
-	for headerName, headerValue := range listProjectsOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListProjects")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListProjects")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range listProjectsOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -362,12 +362,12 @@ func (project *ProjectV1) GetProjectWithContext(ctx context.Context, getProjectO
 		return
 	}
 
-	for headerName, headerValue := range getProjectOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetProject")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetProject")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range getProjectOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -431,12 +431,12 @@ func (project *ProjectV1) UpdateProjectWithContext(ctx context.Context, updatePr
 		return
 	}
 
-	for headerName, headerValue := range updateProjectOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateProject")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateProject")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range updateProjectOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -511,12 +511,12 @@ func (project *ProjectV1) DeleteProjectWithContext(ctx context.Context, deletePr
 		return
 	}
 
-	for headerName, headerValue := range deleteProjectOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteProject")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteProject")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range deleteProjectOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -581,12 +581,12 @@ func (project *ProjectV1) CreateProjectEnvironmentWithContext(ctx context.Contex
 		return
 	}
 
-	for headerName, headerValue := range createProjectEnvironmentOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateProjectEnvironment")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range createProjectEnvironmentOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -662,12 +662,12 @@ func (project *ProjectV1) ListProjectEnvironmentsWithContext(ctx context.Context
 		return
 	}
 
-	for headerName, headerValue := range listProjectEnvironmentsOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListProjectEnvironments")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListProjectEnvironments")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range listProjectEnvironmentsOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -739,12 +739,12 @@ func (project *ProjectV1) GetProjectEnvironmentWithContext(ctx context.Context, 
 		return
 	}
 
-	for headerName, headerValue := range getProjectEnvironmentOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetProjectEnvironment")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range getProjectEnvironmentOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -809,12 +809,12 @@ func (project *ProjectV1) UpdateProjectEnvironmentWithContext(ctx context.Contex
 		return
 	}
 
-	for headerName, headerValue := range updateProjectEnvironmentOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateProjectEnvironment")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range updateProjectEnvironmentOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -890,12 +890,12 @@ func (project *ProjectV1) DeleteProjectEnvironmentWithContext(ctx context.Contex
 		return
 	}
 
-	for headerName, headerValue := range deleteProjectEnvironmentOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteProjectEnvironment")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteProjectEnvironment")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range deleteProjectEnvironmentOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -959,12 +959,12 @@ func (project *ProjectV1) CreateConfigWithContext(ctx context.Context, createCon
 		return
 	}
 
-	for headerName, headerValue := range createConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range createConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1042,12 +1042,12 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 		return
 	}
 
-	for headerName, headerValue := range listConfigsOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListConfigs")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListConfigs")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range listConfigsOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1121,12 +1121,12 @@ func (project *ProjectV1) GetConfigWithContext(ctx context.Context, getConfigOpt
 		return
 	}
 
-	for headerName, headerValue := range getConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range getConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1192,12 +1192,12 @@ func (project *ProjectV1) UpdateConfigWithContext(ctx context.Context, updateCon
 		return
 	}
 
-	for headerName, headerValue := range updateConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range updateConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1273,12 +1273,12 @@ func (project *ProjectV1) DeleteConfigWithContext(ctx context.Context, deleteCon
 		return
 	}
 
-	for headerName, headerValue := range deleteConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range deleteConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1343,12 +1343,12 @@ func (project *ProjectV1) ForceApproveWithContext(ctx context.Context, forceAppr
 		return
 	}
 
-	for headerName, headerValue := range forceApproveOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ForceApprove")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ForceApprove")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range forceApproveOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1424,12 +1424,12 @@ func (project *ProjectV1) ApproveWithContext(ctx context.Context, approveOptions
 		return
 	}
 
-	for headerName, headerValue := range approveOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "Approve")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "Approve")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range approveOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1506,12 +1506,12 @@ func (project *ProjectV1) ValidateConfigWithContext(ctx context.Context, validat
 		return
 	}
 
-	for headerName, headerValue := range validateConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ValidateConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ValidateConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range validateConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1577,12 +1577,12 @@ func (project *ProjectV1) DeployConfigWithContext(ctx context.Context, deployCon
 		return
 	}
 
-	for headerName, headerValue := range deployConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeployConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeployConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range deployConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1648,12 +1648,12 @@ func (project *ProjectV1) UndeployConfigWithContext(ctx context.Context, undeplo
 		return
 	}
 
-	for headerName, headerValue := range undeployConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UndeployConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "UndeployConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range undeployConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1719,12 +1719,12 @@ func (project *ProjectV1) SyncConfigWithContext(ctx context.Context, syncConfigO
 		return
 	}
 
-	for headerName, headerValue := range syncConfigOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "SyncConfig")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "SyncConfig")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range syncConfigOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Content-Type", "application/json")
@@ -1790,12 +1790,12 @@ func (project *ProjectV1) ListConfigResourcesWithContext(ctx context.Context, li
 		return
 	}
 
-	for headerName, headerValue := range listConfigResourcesOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListConfigResources")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListConfigResources")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range listConfigResourcesOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1863,12 +1863,12 @@ func (project *ProjectV1) CreateStackDefinitionWithContext(ctx context.Context, 
 		return
 	}
 
-	for headerName, headerValue := range createStackDefinitionOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "CreateStackDefinition")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range createStackDefinitionOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -1944,12 +1944,12 @@ func (project *ProjectV1) GetStackDefinitionWithContext(ctx context.Context, get
 		return
 	}
 
-	for headerName, headerValue := range getStackDefinitionOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetStackDefinition")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range getStackDefinitionOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -2014,12 +2014,12 @@ func (project *ProjectV1) UpdateStackDefinitionWithContext(ctx context.Context, 
 		return
 	}
 
-	for headerName, headerValue := range updateStackDefinitionOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "UpdateStackDefinition")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range updateStackDefinitionOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -2097,12 +2097,12 @@ func (project *ProjectV1) ExportStackDefinitionWithContext(ctx context.Context, 
 		return
 	}
 
-	for headerName, headerValue := range exportStackDefinitionOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ExportStackDefinition")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ExportStackDefinition")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range exportStackDefinitionOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -2174,12 +2174,12 @@ func (project *ProjectV1) ListConfigVersionsWithContext(ctx context.Context, lis
 		return
 	}
 
-	for headerName, headerValue := range listConfigVersionsOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListConfigVersions")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "ListConfigVersions")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range listConfigVersionsOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -2245,12 +2245,12 @@ func (project *ProjectV1) GetConfigVersionWithContext(ctx context.Context, getCo
 		return
 	}
 
-	for headerName, headerValue := range getConfigVersionOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetConfigVersion")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "GetConfigVersion")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range getConfigVersionOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -2316,12 +2316,12 @@ func (project *ProjectV1) DeleteConfigVersionWithContext(ctx context.Context, de
 		return
 	}
 
-	for headerName, headerValue := range deleteConfigVersionOptions.Headers {
+	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteConfigVersion")
+	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("project", "V1", "DeleteConfigVersion")
-	for headerName, headerValue := range sdkHeaders {
+	for headerName, headerValue := range deleteConfigVersionOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
@@ -2790,7 +2790,7 @@ type ApproveOptions struct {
 	// nonempty comment.
 	Comment *string `json:"comment,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -2909,7 +2909,7 @@ type CreateConfigOptions struct {
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -2953,7 +2953,7 @@ type CreateProjectEnvironmentOptions struct {
 	// The environment definition.
 	Definition *EnvironmentDefinitionRequiredProperties `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3002,7 +3002,7 @@ type CreateProjectOptions struct {
 	// environment array is specified in the request payload.
 	Environments []EnvironmentPrototype `json:"environments,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3072,7 +3072,7 @@ type CreateStackDefinitionOptions struct {
 	// The definition block for a stack definition.
 	StackDefinition *StackDefinitionBlockPrototype `json:"stack_definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3159,7 +3159,7 @@ type DeleteConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3200,7 +3200,7 @@ type DeleteConfigVersionOptions struct {
 	// The configuration version.
 	Version *int64 `json:"version" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3245,7 +3245,7 @@ type DeleteProjectEnvironmentOptions struct {
 	// The environment ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3280,7 +3280,7 @@ type DeleteProjectOptions struct {
 	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3311,7 +3311,7 @@ type DeployConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3688,7 +3688,7 @@ type ExportStackDefinitionOptions struct {
 	// The payload for the private catalog export request.
 	Settings StackDefinitionExportRequestIntf `json:"settings" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3737,7 +3737,7 @@ type ForceApproveOptions struct {
 	// nonempty comment.
 	Comment *string `json:"comment" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3782,7 +3782,7 @@ type GetConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3823,7 +3823,7 @@ type GetConfigVersionOptions struct {
 	// The configuration version.
 	Version *int64 `json:"version" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3868,7 +3868,7 @@ type GetProjectEnvironmentOptions struct {
 	// The environment ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3903,7 +3903,7 @@ type GetProjectOptions struct {
 	// The unique project ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -3934,7 +3934,7 @@ type GetStackDefinitionOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4163,7 +4163,7 @@ type ListConfigResourcesOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4201,7 +4201,7 @@ type ListConfigVersionsOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4244,7 +4244,7 @@ type ListConfigsOptions struct {
 	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4292,7 +4292,7 @@ type ListProjectEnvironmentsOptions struct {
 	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -4337,7 +4337,7 @@ type ListProjectsOptions struct {
 	// last page.
 	Limit *int64 `json:"limit,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7708,7 +7708,7 @@ type SyncConfigOptions struct {
 	// template](/docs/schematics?topic=schematics-sch-create-wks).
 	Schematics *SchematicsWorkspace `json:"schematics,omitempty"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7745,13 +7745,14 @@ func (options *SyncConfigOptions) SetHeaders(param map[string]string) *SyncConfi
 }
 
 // TerraformLogAnalyzerErrorMessage : The error message that is parsed by the Terraform log analyzer.
+// This type supports additional properties of type interface{}.
 type TerraformLogAnalyzerErrorMessage struct {
 
-	// Allows users to set arbitrary properties
+	// Allows users to set arbitrary properties of type interface{}.
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of TerraformLogAnalyzerErrorMessage
+// SetProperty allows the user to set an arbitrary property on an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
@@ -7759,7 +7760,7 @@ func (o *TerraformLogAnalyzerErrorMessage) SetProperty(key string, value interfa
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of TerraformLogAnalyzerErrorMessage
+// SetProperties allows the user to set a map of arbitrary properties on an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
@@ -7767,12 +7768,12 @@ func (o *TerraformLogAnalyzerErrorMessage) SetProperties(m map[string]interface{
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of TerraformLogAnalyzerErrorMessage
+// GetProperty allows the user to retrieve an arbitrary property from an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of TerraformLogAnalyzerErrorMessage
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of TerraformLogAnalyzerErrorMessage.
 func (o *TerraformLogAnalyzerErrorMessage) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
@@ -7850,7 +7851,7 @@ type UndeployConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7890,7 +7891,7 @@ type UpdateConfigOptions struct {
 
 	Definition ProjectConfigDefinitionPatchIntf `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7938,7 +7939,7 @@ type UpdateProjectEnvironmentOptions struct {
 	// The environment definition that is used for updates.
 	Definition *EnvironmentDefinitionPropertiesPatch `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -7983,7 +7984,7 @@ type UpdateProjectOptions struct {
 	// The definition of the project.
 	Definition *ProjectPatchDefinitionBlock `json:"definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -8024,7 +8025,7 @@ type UpdateStackDefinitionOptions struct {
 	// The definition block for a stack definition.
 	StackDefinition *StackDefinitionBlockPrototype `json:"stack_definition" validate:"required"`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
@@ -8069,7 +8070,7 @@ type ValidateConfigOptions struct {
 	// The unique configuration ID.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// Allows users to set headers on API requests
+	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
