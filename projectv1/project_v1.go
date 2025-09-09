@@ -6626,7 +6626,7 @@ type ProjectConfigResource struct {
 	ResourceStatus *string `json:"resource_status,omitempty"`
 
 	// The collection of tags.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags" validate:"required"`
 
 	// The collection of catalog tags.
 	CatalogTags []string `json:"catalog_tags" validate:"required"`
@@ -8349,7 +8349,7 @@ type StackDefinitionExportResponse struct {
 	Label *string `json:"label,omitempty"`
 
 	// Tags associated with the catalog product.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags" validate:"required"`
 }
 
 // UnmarshalStackDefinitionExportResponse unmarshals an instance of StackDefinitionExportResponse from the specified map of raw messages.
