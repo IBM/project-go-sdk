@@ -3824,7 +3824,7 @@ type EnvironmentDefinitionPropertiesPatch struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The profile that is required for compliance.
 	ComplianceProfile ProjectComplianceProfileIntf `json:"compliance_profile,omitempty"`
@@ -3848,7 +3848,7 @@ func UnmarshalEnvironmentDefinitionPropertiesPatch(m map[string]json.RawMessage,
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -3874,7 +3874,7 @@ type EnvironmentDefinitionRequiredProperties struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The profile that is required for compliance.
 	ComplianceProfile ProjectComplianceProfileIntf `json:"compliance_profile,omitempty"`
@@ -3910,7 +3910,7 @@ func UnmarshalEnvironmentDefinitionRequiredProperties(m map[string]json.RawMessa
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -3936,7 +3936,7 @@ type EnvironmentDefinitionRequiredPropertiesResponse struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The profile that is required for compliance.
 	ComplianceProfile ProjectComplianceProfileIntf `json:"compliance_profile,omitempty"`
@@ -3960,7 +3960,7 @@ func UnmarshalEnvironmentDefinitionRequiredPropertiesResponse(m map[string]json.
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -4355,71 +4355,6 @@ func (_options *GetStackDefinitionOptions) SetID(id string) *GetStackDefinitionO
 func (options *GetStackDefinitionOptions) SetHeaders(param map[string]string) *GetStackDefinitionOptions {
 	options.Headers = param
 	return options
-}
-
-// InputVariable : The input variables that are used for configuration definition and environment.
-// This type supports additional properties of type interface{}.
-type InputVariable struct {
-
-	// Allows users to set arbitrary properties of type interface{}.
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of InputVariable.
-func (o *InputVariable) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of InputVariable.
-func (o *InputVariable) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of InputVariable.
-func (o *InputVariable) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of InputVariable.
-func (o *InputVariable) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of InputVariable
-func (o *InputVariable) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalInputVariable unmarshals an instance of InputVariable from the specified map of raw messages.
-func UnmarshalInputVariable(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(InputVariable)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
 }
 
 // LastActionWithSummary : The href and results from the last action job that is performed on the project configuration.
@@ -5868,7 +5803,7 @@ type ProjectConfigDefinitionPatch struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -5921,7 +5856,7 @@ func UnmarshalProjectConfigDefinitionPatch(m map[string]json.RawMessage, result 
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -5980,7 +5915,7 @@ type ProjectConfigDefinitionPrototype struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -6033,7 +5968,7 @@ func UnmarshalProjectConfigDefinitionPrototype(m map[string]json.RawMessage, res
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -6092,7 +6027,7 @@ type ProjectConfigDefinitionResponse struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -6145,7 +6080,7 @@ func UnmarshalProjectConfigDefinitionResponse(m map[string]json.RawMessage, resu
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -9260,7 +9195,7 @@ type ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch struct {
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -9307,7 +9242,7 @@ func UnmarshalProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch(m ma
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -9342,7 +9277,7 @@ type ProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatch struct 
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -9379,7 +9314,7 @@ func UnmarshalProjectConfigDefinitionPatchResourceConfigDefinitionPropertiesPatc
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -9431,7 +9366,7 @@ type ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype struc
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -9490,7 +9425,7 @@ func UnmarshalProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesProtot
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -9525,7 +9460,7 @@ type ProjectConfigDefinitionPrototypeResourceConfigDefinitionPropertiesPrototype
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -9574,7 +9509,7 @@ func UnmarshalProjectConfigDefinitionPrototypeResourceConfigDefinitionProperties
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -9626,7 +9561,7 @@ type ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse struct 
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -9673,7 +9608,7 @@ func UnmarshalProjectConfigDefinitionResponseDAConfigDefinitionPropertiesRespons
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
@@ -9708,7 +9643,7 @@ type ProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesResponse s
 	Authorizations *ProjectConfigAuth `json:"authorizations,omitempty"`
 
 	// The input variables that are used for configuration definition and environment.
-	Inputs *InputVariable `json:"inputs,omitempty"`
+	Inputs map[string]interface{} `json:"inputs,omitempty"`
 
 	// The Schematics environment variables to use to deploy the configuration. Settings are only available if they are
 	// specified when the configuration is initially created.
@@ -9745,7 +9680,7 @@ func UnmarshalProjectConfigDefinitionResponseResourceConfigDefinitionPropertiesR
 		err = core.SDKErrorf(err, "", "authorizations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "inputs", &obj.Inputs, UnmarshalInputVariable)
+	err = core.UnmarshalPrimitive(m, "inputs", &obj.Inputs)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "inputs-error", common.GetComponentInfo())
 		return
