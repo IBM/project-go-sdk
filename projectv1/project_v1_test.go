@@ -204,11 +204,12 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
+				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfileNullableObject model
 				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfileNullableObject)
@@ -316,7 +317,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy": false, "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -344,11 +345,12 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
+				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfileNullableObject model
 				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfileNullableObject)
@@ -459,7 +461,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy": false, "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -492,11 +494,12 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
+				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfileNullableObject model
 				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfileNullableObject)
@@ -585,11 +588,12 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
+				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfileNullableObject model
 				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfileNullableObject)
@@ -699,11 +703,12 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel := new(projectv1.ProjectPrototypeDefinition)
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
+				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 
 				// Construct an instance of the ProjectComplianceProfileNullableObject model
 				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfileNullableObject)
@@ -1151,7 +1156,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy": false, "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -1205,7 +1210,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy": false, "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1336,20 +1341,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectTerraformEngineSettingsModel.ID = core.StringPtr("testString")
 				projectTerraformEngineSettingsModel.Type = core.StringPtr("terraform-enterprise")
 
-				// Construct an instance of the ProjectPatchDefinitionBlock model
-				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
-				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
-				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
-				projectPatchDefinitionBlockModel.TerraformEngine = projectTerraformEngineSettingsModel
+				// Construct an instance of the ProjectDefinitionPatch model
+				projectDefinitionPatchModel := new(projectv1.ProjectDefinitionPatch)
+				projectDefinitionPatchModel.Name = core.StringPtr("acme-microservice")
+				projectDefinitionPatchModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
+				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
+				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
+				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Definition = projectPatchDefinitionBlockModel
+				updateProjectOptionsModel.Definition = projectDefinitionPatchModel
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := projectService.UpdateProject(updateProjectOptionsModel)
@@ -1402,7 +1408,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy": false, "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully with retries`, func() {
@@ -1426,20 +1432,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectTerraformEngineSettingsModel.ID = core.StringPtr("testString")
 				projectTerraformEngineSettingsModel.Type = core.StringPtr("terraform-enterprise")
 
-				// Construct an instance of the ProjectPatchDefinitionBlock model
-				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
-				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
-				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
-				projectPatchDefinitionBlockModel.TerraformEngine = projectTerraformEngineSettingsModel
+				// Construct an instance of the ProjectDefinitionPatch model
+				projectDefinitionPatchModel := new(projectv1.ProjectDefinitionPatch)
+				projectDefinitionPatchModel.Name = core.StringPtr("acme-microservice")
+				projectDefinitionPatchModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
+				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
+				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
+				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Definition = projectPatchDefinitionBlockModel
+				updateProjectOptionsModel.Definition = projectDefinitionPatchModel
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -1495,7 +1502,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy": false, "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "state": "approved", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully`, func() {
@@ -1524,20 +1531,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectTerraformEngineSettingsModel.ID = core.StringPtr("testString")
 				projectTerraformEngineSettingsModel.Type = core.StringPtr("terraform-enterprise")
 
-				// Construct an instance of the ProjectPatchDefinitionBlock model
-				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
-				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
-				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
-				projectPatchDefinitionBlockModel.TerraformEngine = projectTerraformEngineSettingsModel
+				// Construct an instance of the ProjectDefinitionPatch model
+				projectDefinitionPatchModel := new(projectv1.ProjectDefinitionPatch)
+				projectDefinitionPatchModel.Name = core.StringPtr("acme-microservice")
+				projectDefinitionPatchModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
+				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
+				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
+				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Definition = projectPatchDefinitionBlockModel
+				updateProjectOptionsModel.Definition = projectDefinitionPatchModel
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -1567,20 +1575,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectTerraformEngineSettingsModel.ID = core.StringPtr("testString")
 				projectTerraformEngineSettingsModel.Type = core.StringPtr("terraform-enterprise")
 
-				// Construct an instance of the ProjectPatchDefinitionBlock model
-				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
-				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
-				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
-				projectPatchDefinitionBlockModel.TerraformEngine = projectTerraformEngineSettingsModel
+				// Construct an instance of the ProjectDefinitionPatch model
+				projectDefinitionPatchModel := new(projectv1.ProjectDefinitionPatch)
+				projectDefinitionPatchModel.Name = core.StringPtr("acme-microservice")
+				projectDefinitionPatchModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
+				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
+				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
+				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Definition = projectPatchDefinitionBlockModel
+				updateProjectOptionsModel.Definition = projectDefinitionPatchModel
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := projectService.SetServiceURL("")
@@ -1631,20 +1640,21 @@ var _ = Describe(`ProjectV1`, func() {
 				projectTerraformEngineSettingsModel.ID = core.StringPtr("testString")
 				projectTerraformEngineSettingsModel.Type = core.StringPtr("terraform-enterprise")
 
-				// Construct an instance of the ProjectPatchDefinitionBlock model
-				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
-				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
-				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
-				projectPatchDefinitionBlockModel.TerraformEngine = projectTerraformEngineSettingsModel
+				// Construct an instance of the ProjectDefinitionPatch model
+				projectDefinitionPatchModel := new(projectv1.ProjectDefinitionPatch)
+				projectDefinitionPatchModel.Name = core.StringPtr("acme-microservice")
+				projectDefinitionPatchModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
+				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
+				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
+				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
 
 				// Construct an instance of the UpdateProjectOptions model
 				updateProjectOptionsModel := new(projectv1.UpdateProjectOptions)
 				updateProjectOptionsModel.ID = core.StringPtr("testString")
-				updateProjectOptionsModel.Definition = projectPatchDefinitionBlockModel
+				updateProjectOptionsModel.Definition = projectDefinitionPatchModel
 				updateProjectOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -9419,18 +9429,20 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectPrototypeDefinitionModel).ToNot(BeNil())
 				projectPrototypeDefinitionModel.Name = core.StringPtr("acme-microservice")
 				projectPrototypeDefinitionModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
+				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
 				Expect(projectPrototypeDefinitionModel.Name).To(Equal(core.StringPtr("acme-microservice")))
 				Expect(projectPrototypeDefinitionModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
-				Expect(projectPrototypeDefinitionModel.AutoDeploy).To(Equal(core.BoolPtr(false)))
+				Expect(projectPrototypeDefinitionModel.AutoDeployMode).To(Equal(core.StringPtr("manual_approval")))
 				Expect(projectPrototypeDefinitionModel.MonitoringEnabled).To(Equal(core.BoolPtr(false)))
 				Expect(projectPrototypeDefinitionModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
 				Expect(projectPrototypeDefinitionModel.Store).To(Equal(projectDefinitionStoreModel))
 				Expect(projectPrototypeDefinitionModel.TerraformEngine).To(Equal(projectTerraformEngineSettingsModel))
+				Expect(projectPrototypeDefinitionModel.AutoDeploy).To(Equal(core.BoolPtr(false)))
 
 				// Construct an instance of the ProjectComplianceProfileNullableObject model
 				projectComplianceProfileModel := new(projectv1.ProjectComplianceProfileNullableObject)
@@ -10094,34 +10106,36 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectTerraformEngineSettingsModel.ID).To(Equal(core.StringPtr("testString")))
 				Expect(projectTerraformEngineSettingsModel.Type).To(Equal(core.StringPtr("terraform-enterprise")))
 
-				// Construct an instance of the ProjectPatchDefinitionBlock model
-				projectPatchDefinitionBlockModel := new(projectv1.ProjectPatchDefinitionBlock)
-				Expect(projectPatchDefinitionBlockModel).ToNot(BeNil())
-				projectPatchDefinitionBlockModel.Name = core.StringPtr("acme-microservice")
-				projectPatchDefinitionBlockModel.AutoDeploy = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
-				projectPatchDefinitionBlockModel.MonitoringEnabled = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.DestroyOnDelete = core.BoolPtr(true)
-				projectPatchDefinitionBlockModel.Store = projectDefinitionStoreModel
-				projectPatchDefinitionBlockModel.TerraformEngine = projectTerraformEngineSettingsModel
-				Expect(projectPatchDefinitionBlockModel.Name).To(Equal(core.StringPtr("acme-microservice")))
-				Expect(projectPatchDefinitionBlockModel.AutoDeploy).To(Equal(core.BoolPtr(true)))
-				Expect(projectPatchDefinitionBlockModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
-				Expect(projectPatchDefinitionBlockModel.MonitoringEnabled).To(Equal(core.BoolPtr(true)))
-				Expect(projectPatchDefinitionBlockModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
-				Expect(projectPatchDefinitionBlockModel.Store).To(Equal(projectDefinitionStoreModel))
-				Expect(projectPatchDefinitionBlockModel.TerraformEngine).To(Equal(projectTerraformEngineSettingsModel))
+				// Construct an instance of the ProjectDefinitionPatch model
+				projectDefinitionPatchModel := new(projectv1.ProjectDefinitionPatch)
+				Expect(projectDefinitionPatchModel).ToNot(BeNil())
+				projectDefinitionPatchModel.Name = core.StringPtr("acme-microservice")
+				projectDefinitionPatchModel.Description = core.StringPtr("A microservice to deploy on top of ACME infrastructure.")
+				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
+				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
+				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
+				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
+				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
+				Expect(projectDefinitionPatchModel.Name).To(Equal(core.StringPtr("acme-microservice")))
+				Expect(projectDefinitionPatchModel.Description).To(Equal(core.StringPtr("A microservice to deploy on top of ACME infrastructure.")))
+				Expect(projectDefinitionPatchModel.AutoDeployMode).To(Equal(core.StringPtr("auto_approval")))
+				Expect(projectDefinitionPatchModel.MonitoringEnabled).To(Equal(core.BoolPtr(true)))
+				Expect(projectDefinitionPatchModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
+				Expect(projectDefinitionPatchModel.Store).To(Equal(projectDefinitionStoreModel))
+				Expect(projectDefinitionPatchModel.TerraformEngine).To(Equal(projectTerraformEngineSettingsModel))
+				Expect(projectDefinitionPatchModel.AutoDeploy).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the UpdateProjectOptions model
 				id := "testString"
-				var updateProjectOptionsDefinition *projectv1.ProjectPatchDefinitionBlock = nil
+				var updateProjectOptionsDefinition *projectv1.ProjectDefinitionPatch = nil
 				updateProjectOptionsModel := projectService.NewUpdateProjectOptions(id, updateProjectOptionsDefinition)
 				updateProjectOptionsModel.SetID("testString")
-				updateProjectOptionsModel.SetDefinition(projectPatchDefinitionBlockModel)
+				updateProjectOptionsModel.SetDefinition(projectDefinitionPatchModel)
 				updateProjectOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateProjectOptionsModel).ToNot(BeNil())
 				Expect(updateProjectOptionsModel.ID).To(Equal(core.StringPtr("testString")))
-				Expect(updateProjectOptionsModel.Definition).To(Equal(projectPatchDefinitionBlockModel))
+				Expect(updateProjectOptionsModel.Definition).To(Equal(projectDefinitionPatchModel))
 				Expect(updateProjectOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateStackDefinitionOptions successfully`, func() {
@@ -10399,6 +10413,31 @@ var _ = Describe(`ProjectV1`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalProjectDefinitionPatch successfully`, func() {
+			// Construct an instance of the model.
+			model := new(projectv1.ProjectDefinitionPatch)
+			model.Name = core.StringPtr("testString")
+			model.Description = core.StringPtr("testString")
+			model.AutoDeployMode = core.StringPtr("auto_approval")
+			model.MonitoringEnabled = core.BoolPtr(true)
+			model.DestroyOnDelete = core.BoolPtr(true)
+			model.Store = nil
+			model.TerraformEngine = nil
+			model.AutoDeploy = core.BoolPtr(true)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *projectv1.ProjectDefinitionPatch
+			err = projectv1.UnmarshalProjectDefinitionPatch(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalProjectDefinitionStore successfully`, func() {
 			// Construct an instance of the model.
 			model := new(projectv1.ProjectDefinitionStore)
@@ -10420,40 +10459,17 @@ var _ = Describe(`ProjectV1`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalProjectPatchDefinitionBlock successfully`, func() {
-			// Construct an instance of the model.
-			model := new(projectv1.ProjectPatchDefinitionBlock)
-			model.Name = core.StringPtr("testString")
-			model.AutoDeploy = core.BoolPtr(true)
-			model.Description = core.StringPtr("testString")
-			model.MonitoringEnabled = core.BoolPtr(true)
-			model.DestroyOnDelete = core.BoolPtr(true)
-			model.Store = nil
-			model.TerraformEngine = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *projectv1.ProjectPatchDefinitionBlock
-			err = projectv1.UnmarshalProjectPatchDefinitionBlock(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
 		It(`Invoke UnmarshalProjectPrototypeDefinition successfully`, func() {
 			// Construct an instance of the model.
 			model := new(projectv1.ProjectPrototypeDefinition)
 			model.Name = core.StringPtr("testString")
 			model.Description = core.StringPtr("testString")
-			model.AutoDeploy = core.BoolPtr(false)
+			model.AutoDeployMode = core.StringPtr("manual_approval")
 			model.MonitoringEnabled = core.BoolPtr(false)
 			model.DestroyOnDelete = core.BoolPtr(true)
 			model.Store = nil
 			model.TerraformEngine = nil
+			model.AutoDeploy = core.BoolPtr(false)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())

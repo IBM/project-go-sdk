@@ -5128,7 +5128,7 @@ type Project struct {
 	Environments []ProjectEnvironmentSummary `json:"environments" validate:"required"`
 
 	// The definition of the project.
-	Definition *ProjectDefinitionProperties `json:"definition" validate:"required"`
+	Definition *ProjectDefinition `json:"definition" validate:"required"`
 }
 
 // Constants associated with the Project.State property.
@@ -5207,7 +5207,7 @@ func UnmarshalProject(m map[string]json.RawMessage, result interface{}) (err err
 		err = core.SDKErrorf(err, "", "environments-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinitionProperties)
+	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectDefinition)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "definition-error", common.GetComponentInfo())
 		return
@@ -7204,8 +7204,8 @@ func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result i
 	return
 }
 
-// ProjectDefinitionProperties : The definition of the project.
-type ProjectDefinitionProperties struct {
+// ProjectDefinition : The definition of the project.
+type ProjectDefinition struct {
 	// The name of the project.  It's unique within the account across regions.
 	Name *string `json:"name,omitempty"`
 
@@ -7213,8 +7213,12 @@ type ProjectDefinitionProperties struct {
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
 
-	// A boolean flag to enable auto deploy.
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	// This is an advanced setting to auto deploy to tell how auto deploy should behave when it is enabled. There are 2
+	// options:
+	// > 1. `auto_approval` will automatically approve the configuration after validated without user confirmation.
+	// > 2. `manual_approval` will require user confirmation to approve the configuration after validated before deploying
+	// the configuration starts.
+	AutoDeployMode *string `json:"auto_deploy_mode" validate:"required"`
 
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare the
 	// configurations to those deployed resources to detect any difference.
@@ -7228,11 +7232,25 @@ type ProjectDefinitionProperties struct {
 
 	// Experimental schema - this is for prototyping purposes.
 	TerraformEngine *ProjectTerraformEngineSettings `json:"terraform_engine,omitempty"`
+
+	// A boolean flag to enable deploying configurations automatically.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
 
-// UnmarshalProjectDefinitionProperties unmarshals an instance of ProjectDefinitionProperties from the specified map of raw messages.
-func UnmarshalProjectDefinitionProperties(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectDefinitionProperties)
+// Constants associated with the ProjectDefinition.AutoDeployMode property.
+// This is an advanced setting to auto deploy to tell how auto deploy should behave when it is enabled. There are 2
+// options:
+// > 1. `auto_approval` will automatically approve the configuration after validated without user confirmation.
+// > 2. `manual_approval` will require user confirmation to approve the configuration after validated before deploying
+// the configuration starts.
+const (
+	ProjectDefinition_AutoDeployMode_AutoApproval = "auto_approval"
+	ProjectDefinition_AutoDeployMode_ManualApproval = "manual_approval"
+)
+
+// UnmarshalProjectDefinition unmarshals an instance of ProjectDefinition from the specified map of raw messages.
+func UnmarshalProjectDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDefinition)
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
@@ -7243,9 +7261,9 @@ func UnmarshalProjectDefinitionProperties(m map[string]json.RawMessage, result i
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	err = core.UnmarshalPrimitive(m, "auto_deploy_mode", &obj.AutoDeployMode)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "auto_deploy_mode-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
@@ -7266,6 +7284,102 @@ func UnmarshalProjectDefinitionProperties(m map[string]json.RawMessage, result i
 	err = core.UnmarshalModel(m, "terraform_engine", &obj.TerraformEngine, UnmarshalProjectTerraformEngineSettings)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "terraform_engine-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ProjectDefinitionPatch : The definition of the project.
+type ProjectDefinitionPatch struct {
+	// The name of the project.  It's unique within the account across regions.
+	Name *string `json:"name,omitempty"`
+
+	// A brief explanation of the project's use in the configuration of a deployable architecture. A project can be created
+	// without providing a description.
+	Description *string `json:"description,omitempty"`
+
+	// This is an advanced setting to auto deploy to tell how auto deploy should behave when it is enabled. There are 2
+	// options:
+	// > 1. `auto_approval` will automatically approve the configuration after validated without user confirmation.
+	// > 2. `manual_approval` will require user confirmation to approve the configuration after validated before deploying
+	// the configuration starts.
+	AutoDeployMode *string `json:"auto_deploy_mode,omitempty"`
+
+	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare the
+	// configurations to the deployed resources to detect any difference.
+	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
+
+	// The policy that indicates whether the resources are undeployed or not when a project is deleted.
+	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
+
+	// The details required to custom store project configs.
+	Store *ProjectDefinitionStore `json:"store,omitempty"`
+
+	// Experimental schema - this is for prototyping purposes.
+	TerraformEngine *ProjectTerraformEngineSettings `json:"terraform_engine,omitempty"`
+
+	// A boolean flag to enable deploying configurations automatically.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+}
+
+// Constants associated with the ProjectDefinitionPatch.AutoDeployMode property.
+// This is an advanced setting to auto deploy to tell how auto deploy should behave when it is enabled. There are 2
+// options:
+// > 1. `auto_approval` will automatically approve the configuration after validated without user confirmation.
+// > 2. `manual_approval` will require user confirmation to approve the configuration after validated before deploying
+// the configuration starts.
+const (
+	ProjectDefinitionPatch_AutoDeployMode_AutoApproval = "auto_approval"
+	ProjectDefinitionPatch_AutoDeployMode_ManualApproval = "manual_approval"
+)
+
+// UnmarshalProjectDefinitionPatch unmarshals an instance of ProjectDefinitionPatch from the specified map of raw messages.
+func UnmarshalProjectDefinitionPatch(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectDefinitionPatch)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy_mode", &obj.AutoDeployMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "monitoring_enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "store", &obj.Store, UnmarshalProjectDefinitionStore)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "store-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "terraform_engine", &obj.TerraformEngine, UnmarshalProjectTerraformEngineSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "terraform_engine-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -7353,7 +7467,7 @@ func UnmarshalProjectDefinitionStore(m map[string]json.RawMessage, result interf
 	return
 }
 
-// ProjectDefinitionSummary : The definition of the project.
+// ProjectDefinitionSummary : The definition summary of the project.
 type ProjectDefinitionSummary struct {
 	// The name of the project.  It's unique within the account across regions.
 	Name *string `json:"name" validate:"required"`
@@ -7483,74 +7597,6 @@ func UnmarshalProjectEnvironmentSummaryDefinition(m map[string]json.RawMessage, 
 	return
 }
 
-// ProjectPatchDefinitionBlock : The definition of the project.
-type ProjectPatchDefinitionBlock struct {
-	// The name of the project.  It's unique within the account across regions.
-	Name *string `json:"name,omitempty"`
-
-	// A boolean flag to enable auto deploy.
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
-
-	// A brief explanation of the project's use in the configuration of a deployable architecture. A project can be created
-	// without providing a description.
-	Description *string `json:"description,omitempty"`
-
-	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare the
-	// configurations to the deployed resources to detect any difference.
-	MonitoringEnabled *bool `json:"monitoring_enabled,omitempty"`
-
-	// The policy that indicates whether the resources are undeployed or not when a project is deleted.
-	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
-
-	// The details required to custom store project configs.
-	Store *ProjectDefinitionStore `json:"store,omitempty"`
-
-	// Experimental schema - this is for prototyping purposes.
-	TerraformEngine *ProjectTerraformEngineSettings `json:"terraform_engine,omitempty"`
-}
-
-// UnmarshalProjectPatchDefinitionBlock unmarshals an instance of ProjectPatchDefinitionBlock from the specified map of raw messages.
-func UnmarshalProjectPatchDefinitionBlock(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ProjectPatchDefinitionBlock)
-	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "monitoring_enabled-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "destroy_on_delete", &obj.DestroyOnDelete)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "store", &obj.Store, UnmarshalProjectDefinitionStore)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "store-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "terraform_engine", &obj.TerraformEngine, UnmarshalProjectTerraformEngineSettings)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "terraform_engine-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ProjectPrototypeDefinition : The definition of the project.
 type ProjectPrototypeDefinition struct {
 	// The name of the project.  It's unique within the account across regions.
@@ -7560,8 +7606,12 @@ type ProjectPrototypeDefinition struct {
 	// without providing a description.
 	Description *string `json:"description,omitempty"`
 
-	// A boolean flag to enable auto deploy.
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	// This is an advanced setting to auto deploy to tell how auto deploy should behave when it is enabled. There are 2
+	// options:
+	// > 1. `auto_approval` will automatically approve the configuration after validated without user confirmation.
+	// > 2. `manual_approval` will require user confirmation to approve the configuration after validated before deploying
+	// the configuration starts.
+	AutoDeployMode *string `json:"auto_deploy_mode,omitempty"`
 
 	// A boolean flag to enable automatic drift detection. Use this field to run a daily check to compare the
 	// configurations to those deployed resources to detect any difference.
@@ -7575,7 +7625,21 @@ type ProjectPrototypeDefinition struct {
 
 	// Experimental schema - this is for prototyping purposes.
 	TerraformEngine *ProjectTerraformEngineSettings `json:"terraform_engine,omitempty"`
+
+	// A boolean flag to enable deploying configurations automatically.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
+
+// Constants associated with the ProjectPrototypeDefinition.AutoDeployMode property.
+// This is an advanced setting to auto deploy to tell how auto deploy should behave when it is enabled. There are 2
+// options:
+// > 1. `auto_approval` will automatically approve the configuration after validated without user confirmation.
+// > 2. `manual_approval` will require user confirmation to approve the configuration after validated before deploying
+// the configuration starts.
+const (
+	ProjectPrototypeDefinition_AutoDeployMode_AutoApproval = "auto_approval"
+	ProjectPrototypeDefinition_AutoDeployMode_ManualApproval = "manual_approval"
+)
 
 // NewProjectPrototypeDefinition : Instantiate ProjectPrototypeDefinition (Generic Model Constructor)
 func (*ProjectV1) NewProjectPrototypeDefinition(name string) (_model *ProjectPrototypeDefinition, err error) {
@@ -7602,9 +7666,9 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	err = core.UnmarshalPrimitive(m, "auto_deploy_mode", &obj.AutoDeployMode)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "auto_deploy_mode-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "monitoring_enabled", &obj.MonitoringEnabled)
@@ -7625,6 +7689,11 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 	err = core.UnmarshalModel(m, "terraform_engine", &obj.TerraformEngine, UnmarshalProjectTerraformEngineSettings)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "terraform_engine-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_deploy-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -7705,7 +7774,7 @@ type ProjectSummary struct {
 	// A Url.
 	Href *string `json:"href" validate:"required"`
 
-	// The definition of the project.
+	// The definition summary of the project.
 	Definition *ProjectDefinitionSummary `json:"definition" validate:"required"`
 }
 
@@ -8897,14 +8966,14 @@ type UpdateProjectOptions struct {
 	ID *string `json:"id" validate:"required,ne="`
 
 	// The definition of the project.
-	Definition *ProjectPatchDefinitionBlock `json:"definition" validate:"required"`
+	Definition *ProjectDefinitionPatch `json:"definition" validate:"required"`
 
 	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
 
 // NewUpdateProjectOptions : Instantiate UpdateProjectOptions
-func (*ProjectV1) NewUpdateProjectOptions(id string, definition *ProjectPatchDefinitionBlock) *UpdateProjectOptions {
+func (*ProjectV1) NewUpdateProjectOptions(id string, definition *ProjectDefinitionPatch) *UpdateProjectOptions {
 	return &UpdateProjectOptions{
 		ID: core.StringPtr(id),
 		Definition: definition,
@@ -8918,7 +8987,7 @@ func (_options *UpdateProjectOptions) SetID(id string) *UpdateProjectOptions {
 }
 
 // SetDefinition : Allow user to set Definition
-func (_options *UpdateProjectOptions) SetDefinition(definition *ProjectPatchDefinitionBlock) *UpdateProjectOptions {
+func (_options *UpdateProjectOptions) SetDefinition(definition *ProjectDefinitionPatch) *UpdateProjectOptions {
 	_options.Definition = definition
 	return _options
 }
