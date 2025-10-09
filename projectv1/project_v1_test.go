@@ -68,14 +68,13 @@ var _ = Describe(`ProjectV1`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"PROJECT_URL": "https://projectv1/api",
+				"PROJECT_URL":       "https://projectv1/api",
 				"PROJECT_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				projectService, serviceErr := projectv1.NewProjectV1UsingExternalConfig(&projectv1.ProjectV1Options{
-				})
+				projectService, serviceErr := projectv1.NewProjectV1UsingExternalConfig(&projectv1.ProjectV1Options{})
 				Expect(projectService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
@@ -104,8 +103,7 @@ var _ = Describe(`ProjectV1`, func() {
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				projectService, serviceErr := projectv1.NewProjectV1UsingExternalConfig(&projectv1.ProjectV1Options{
-				})
+				projectService, serviceErr := projectv1.NewProjectV1UsingExternalConfig(&projectv1.ProjectV1Options{})
 				err := projectService.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
 				Expect(projectService).ToNot(BeNil())
@@ -123,13 +121,12 @@ var _ = Describe(`ProjectV1`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"PROJECT_URL": "https://projectv1/api",
+				"PROJECT_URL":       "https://projectv1/api",
 				"PROJECT_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			projectService, serviceErr := projectv1.NewProjectV1UsingExternalConfig(&projectv1.ProjectV1Options{
-			})
+			projectService, serviceErr := projectv1.NewProjectV1UsingExternalConfig(&projectv1.ProjectV1Options{})
 
 			It(`Instantiate service client with error`, func() {
 				Expect(projectService).To(BeNil())
@@ -140,7 +137,7 @@ var _ = Describe(`ProjectV1`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"PROJECT_AUTH_TYPE":   "NOAuth",
+				"PROJECT_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
@@ -2565,7 +2562,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				listProjectEnvironmentsOptionsModel := &projectv1.ListProjectEnvironmentsOptions{
 					ProjectID: core.StringPtr("testString"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:     core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := projectService.NewProjectEnvironmentsPager(listProjectEnvironmentsOptionsModel)
@@ -2591,7 +2588,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				listProjectEnvironmentsOptionsModel := &projectv1.ListProjectEnvironmentsOptions{
 					ProjectID: core.StringPtr("testString"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:     core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := projectService.NewProjectEnvironmentsPager(listProjectEnvironmentsOptionsModel)
@@ -4131,7 +4128,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				listConfigsOptionsModel := &projectv1.ListConfigsOptions{
 					ProjectID: core.StringPtr("testString"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:     core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := projectService.NewConfigsPager(listConfigsOptionsModel)
@@ -4157,7 +4154,7 @@ var _ = Describe(`ProjectV1`, func() {
 
 				listConfigsOptionsModel := &projectv1.ListConfigsOptions{
 					ProjectID: core.StringPtr("testString"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:     core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := projectService.NewConfigsPager(listConfigsOptionsModel)
@@ -10547,7 +10544,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
-			model.Tags = []string{}
+			model.Tags = nil
 			model.ProductID = core.StringPtr("testString")
 
 			b, err := json.Marshal(model)
@@ -10777,7 +10774,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
-			model.Tags = []string{}
+			model.Tags = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
