@@ -10735,7 +10735,6 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
-			model.Tags = []string{}
 			model.ProductID = core.StringPtr("testString")
 
 			b, err := json.Marshal(model)
@@ -10967,7 +10966,6 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
-			model.Tags = []string{}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
