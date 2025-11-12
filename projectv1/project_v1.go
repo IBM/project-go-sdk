@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.107.1-41b0fbd0-20250825-080732
+ * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -2987,7 +2987,18 @@ type ActionJobWithIdAndSummary struct {
 
 	// The summaries of jobs that were performed on the configuration.
 	Summary *ActionJobSummary `json:"summary" validate:"required"`
+
+	// The result of the last action.
+	Result *string `json:"result,omitempty"`
 }
+
+// Constants associated with the ActionJobWithIdAndSummary.Result property.
+// The result of the last action.
+const (
+	ActionJobWithIdAndSummary_Result_Failed = "failed"
+	ActionJobWithIdAndSummary_Result_Indeterminate = "indeterminate"
+	ActionJobWithIdAndSummary_Result_Succeeded = "succeeded"
+)
 
 // UnmarshalActionJobWithIdAndSummary unmarshals an instance of ActionJobWithIdAndSummary from the specified map of raw messages.
 func UnmarshalActionJobWithIdAndSummary(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -3000,6 +3011,11 @@ func UnmarshalActionJobWithIdAndSummary(m map[string]json.RawMessage, result int
 	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalActionJobSummary)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "summary-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "result-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -4379,7 +4395,8 @@ type LastActionWithSummary struct {
 // The result of the last action.
 const (
 	LastActionWithSummary_Result_Failed = "failed"
-	LastActionWithSummary_Result_Passed = "passed"
+	LastActionWithSummary_Result_Indeterminate = "indeterminate"
+	LastActionWithSummary_Result_Succeeded = "succeeded"
 )
 
 // UnmarshalLastActionWithSummary unmarshals an instance of LastActionWithSummary from the specified map of raw messages.
@@ -4448,7 +4465,8 @@ type LastMonitoringActionWithSummary struct {
 // The result of the last action.
 const (
 	LastMonitoringActionWithSummary_Result_Failed = "failed"
-	LastMonitoringActionWithSummary_Result_Passed = "passed"
+	LastMonitoringActionWithSummary_Result_Indeterminate = "indeterminate"
+	LastMonitoringActionWithSummary_Result_Succeeded = "succeeded"
 )
 
 // UnmarshalLastMonitoringActionWithSummary unmarshals an instance of LastMonitoringActionWithSummary from the specified map of raw messages.
@@ -4503,7 +4521,8 @@ type LastValidatedActionWithSummary struct {
 // The result of the last action.
 const (
 	LastValidatedActionWithSummary_Result_Failed = "failed"
-	LastValidatedActionWithSummary_Result_Passed = "passed"
+	LastValidatedActionWithSummary_Result_Indeterminate = "indeterminate"
+	LastValidatedActionWithSummary_Result_Succeeded = "succeeded"
 )
 
 // UnmarshalLastValidatedActionWithSummary unmarshals an instance of LastValidatedActionWithSummary from the specified map of raw messages.
@@ -4809,6 +4828,9 @@ type OutputValue struct {
 
 	// This property can be any value - a string, number, boolean, array, or object.
 	Value interface{} `json:"value,omitempty"`
+
+	// Flag if the output value is sensitive. If not present, the output sensitivity is indeterminate.
+	Sensitive *bool `json:"sensitive,omitempty"`
 }
 
 // UnmarshalOutputValue unmarshals an instance of OutputValue from the specified map of raw messages.
@@ -4827,6 +4849,11 @@ func UnmarshalOutputValue(m map[string]json.RawMessage, result interface{}) (err
 	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "sensitive", &obj.Sensitive)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "sensitive-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -4995,7 +5022,18 @@ type PrePostActionJobWithIdAndSummary struct {
 	// A brief summary of a pre- and post-action job. This property is populated only after an action is run as part of a
 	// validation, deployment, or undeployment.
 	Summary *PrePostActionJobSummary `json:"summary" validate:"required"`
+
+	// The result of the last action.
+	Result *string `json:"result,omitempty"`
 }
+
+// Constants associated with the PrePostActionJobWithIdAndSummary.Result property.
+// The result of the last action.
+const (
+	PrePostActionJobWithIdAndSummary_Result_Failed = "failed"
+	PrePostActionJobWithIdAndSummary_Result_Indeterminate = "indeterminate"
+	PrePostActionJobWithIdAndSummary_Result_Succeeded = "succeeded"
+)
 
 // UnmarshalPrePostActionJobWithIdAndSummary unmarshals an instance of PrePostActionJobWithIdAndSummary from the specified map of raw messages.
 func UnmarshalPrePostActionJobWithIdAndSummary(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -5008,6 +5046,11 @@ func UnmarshalPrePostActionJobWithIdAndSummary(m map[string]json.RawMessage, res
 	err = core.UnmarshalModel(m, "summary", &obj.Summary, UnmarshalPrePostActionJobSummary)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "summary-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "result-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -5041,7 +5084,8 @@ type PrevalidateGetResponse struct {
 // The result of the last action.
 const (
 	PrevalidateGetResponse_Result_Failed = "failed"
-	PrevalidateGetResponse_Result_Passed = "passed"
+	PrevalidateGetResponse_Result_Indeterminate = "indeterminate"
+	PrevalidateGetResponse_Result_Succeeded = "succeeded"
 )
 
 // UnmarshalPrevalidateGetResponse unmarshals an instance of PrevalidateGetResponse from the specified map of raw messages.
@@ -5434,9 +5478,6 @@ type ProjectConfig struct {
 	// The resolved references that are used by the configuration.
 	References *ReferenceValue `json:"references" validate:"required"`
 
-	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
-
 	// Computed state code clarifying the prerequisites for validation for the configuration.
 	StateCode *string `json:"state_code,omitempty"`
 
@@ -5445,6 +5486,12 @@ type ProjectConfig struct {
 
 	// A Url.
 	Href *string `json:"href" validate:"required"`
+
+	// The aggregate state from all deployabe architectures that are included in this configuration.
+	ContainerState *string `json:"container_state,omitempty"`
+
+	// Computed state code clarifying the prerequisites for validation for the configuration.
+	ContainerStateCode *string `json:"container_state_code,omitempty"`
 
 	// The flag that indicates whether the version of the configuration is draft, or active.
 	IsDraft *bool `json:"is_draft" validate:"required"`
@@ -5474,6 +5521,9 @@ type ProjectConfig struct {
 	// A Schematics workspace that is associated to a project configuration, with scripts.
 	Schematics *SchematicsMetadata `json:"schematics,omitempty"`
 
+	// The state of the configuration.
+	State *string `json:"state" validate:"required"`
+
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
 
@@ -5495,6 +5545,47 @@ type ProjectConfig struct {
 	DeployedVersion *ProjectConfigVersionSummary `json:"deployed_version,omitempty"`
 }
 
+// Constants associated with the ProjectConfig.StateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfig_StateCode_AwaitingInput = "awaiting_input"
+	ProjectConfig_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfig_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfig_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfig_StateCode_AwaitingValidation = "awaiting_validation"
+)
+
+// Constants associated with the ProjectConfig.ContainerState property.
+// The aggregate state from all deployabe architectures that are included in this configuration.
+const (
+	ProjectConfig_ContainerState_Approved = "approved"
+	ProjectConfig_ContainerState_Deleted = "deleted"
+	ProjectConfig_ContainerState_Deleting = "deleting"
+	ProjectConfig_ContainerState_DeletingFailed = "deleting_failed"
+	ProjectConfig_ContainerState_Deployed = "deployed"
+	ProjectConfig_ContainerState_Deploying = "deploying"
+	ProjectConfig_ContainerState_DeployingFailed = "deploying_failed"
+	ProjectConfig_ContainerState_Discarded = "discarded"
+	ProjectConfig_ContainerState_Draft = "draft"
+	ProjectConfig_ContainerState_Superseded = "superseded"
+	ProjectConfig_ContainerState_Undeploying = "undeploying"
+	ProjectConfig_ContainerState_UndeployingFailed = "undeploying_failed"
+	ProjectConfig_ContainerState_Validated = "validated"
+	ProjectConfig_ContainerState_Validating = "validating"
+	ProjectConfig_ContainerState_ValidatingFailed = "validating_failed"
+	ProjectConfig_ContainerState_Working = "working"
+)
+
+// Constants associated with the ProjectConfig.ContainerStateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfig_ContainerStateCode_AwaitingInput = "awaiting_input"
+	ProjectConfig_ContainerStateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfig_ContainerStateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfig_ContainerStateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfig_ContainerStateCode_AwaitingValidation = "awaiting_validation"
+)
+
 // Constants associated with the ProjectConfig.State property.
 // The state of the configuration.
 const (
@@ -5515,16 +5606,6 @@ const (
 	ProjectConfig_State_Validated = "validated"
 	ProjectConfig_State_Validating = "validating"
 	ProjectConfig_State_ValidatingFailed = "validating_failed"
-)
-
-// Constants associated with the ProjectConfig.StateCode property.
-// Computed state code clarifying the prerequisites for validation for the configuration.
-const (
-	ProjectConfig_StateCode_AwaitingInput = "awaiting_input"
-	ProjectConfig_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
-	ProjectConfig_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
-	ProjectConfig_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
-	ProjectConfig_StateCode_AwaitingValidation = "awaiting_validation"
 )
 
 // Constants associated with the ProjectConfig.DeploymentModel property.
@@ -5573,11 +5654,6 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 		err = core.SDKErrorf(err, "", "references-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "state_code", &obj.StateCode)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "state_code-error", common.GetComponentInfo())
@@ -5591,6 +5667,16 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "container_state", &obj.ContainerState)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "container_state-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "container_state_code", &obj.ContainerStateCode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "container_state_code-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
@@ -5636,6 +5722,11 @@ func UnmarshalProjectConfig(m map[string]json.RawMessage, result interface{}) (e
 	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsMetadata)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "schematics-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
@@ -5793,6 +5884,9 @@ type ProjectConfigDefinitionPatch struct {
 	// The member deployabe architectures that are included in the stack.
 	Members []StackMember `json:"members,omitempty"`
 
+	// The depending deployabe architectures that are referenced by this configuration.
+	Uses []ProjectConfigUses `json:"uses,omitempty"`
+
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
@@ -5839,6 +5933,11 @@ func UnmarshalProjectConfigDefinitionPatch(m map[string]json.RawMessage, result 
 	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackMember)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "uses", &obj.Uses, UnmarshalProjectConfigUses)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "uses-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -5905,6 +6004,9 @@ type ProjectConfigDefinitionPrototype struct {
 	// The member deployabe architectures that are included in the stack.
 	Members []StackMember `json:"members,omitempty"`
 
+	// The depending deployabe architectures that are referenced by this configuration.
+	Uses []ProjectConfigUses `json:"uses,omitempty"`
+
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
@@ -5951,6 +6053,11 @@ func UnmarshalProjectConfigDefinitionPrototype(m map[string]json.RawMessage, res
 	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackMember)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "uses", &obj.Uses, UnmarshalProjectConfigUses)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "uses-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -6017,6 +6124,9 @@ type ProjectConfigDefinitionResponse struct {
 	// The member deployabe architectures that are included in the stack.
 	Members []StackMember `json:"members,omitempty"`
 
+	// The depending deployabe architectures that are referenced by this configuration.
+	Uses []ProjectConfigUses `json:"uses,omitempty"`
+
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
@@ -6063,6 +6173,11 @@ func UnmarshalProjectConfigDefinitionResponse(m map[string]json.RawMessage, resu
 	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackMember)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "uses", &obj.Uses, UnmarshalProjectConfigUses)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "uses-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -6232,6 +6347,9 @@ type ProjectConfigMetadataCodeRiskAnalyzerLogs struct {
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
 	Timestamp *strfmt.DateTime `json:"timestamp,omitempty"`
+
+	// The result of the last action.
+	Result *string `json:"result,omitempty"`
 }
 
 // Constants associated with the ProjectConfigMetadataCodeRiskAnalyzerLogs.Status property.
@@ -6239,6 +6357,14 @@ type ProjectConfigMetadataCodeRiskAnalyzerLogs struct {
 const (
 	ProjectConfigMetadataCodeRiskAnalyzerLogs_Status_Failed = "failed"
 	ProjectConfigMetadataCodeRiskAnalyzerLogs_Status_Passed = "passed"
+)
+
+// Constants associated with the ProjectConfigMetadataCodeRiskAnalyzerLogs.Result property.
+// The result of the last action.
+const (
+	ProjectConfigMetadataCodeRiskAnalyzerLogs_Result_Failed = "failed"
+	ProjectConfigMetadataCodeRiskAnalyzerLogs_Result_Indeterminate = "indeterminate"
+	ProjectConfigMetadataCodeRiskAnalyzerLogs_Result_Succeeded = "succeeded"
 )
 
 // UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogs unmarshals an instance of ProjectConfigMetadataCodeRiskAnalyzerLogs from the specified map of raw messages.
@@ -6267,6 +6393,11 @@ func UnmarshalProjectConfigMetadataCodeRiskAnalyzerLogs(m map[string]json.RawMes
 	err = core.UnmarshalPrimitive(m, "timestamp", &obj.Timestamp)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "timestamp-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "result-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6305,7 +6436,18 @@ type ProjectConfigMetadataCostEstimate struct {
 
 	// The unique ID.
 	UserID *string `json:"user_id,omitempty"`
+
+	// The result of the last action.
+	Result *string `json:"result,omitempty"`
 }
+
+// Constants associated with the ProjectConfigMetadataCostEstimate.Result property.
+// The result of the last action.
+const (
+	ProjectConfigMetadataCostEstimate_Result_Failed = "failed"
+	ProjectConfigMetadataCostEstimate_Result_Indeterminate = "indeterminate"
+	ProjectConfigMetadataCostEstimate_Result_Succeeded = "succeeded"
+)
 
 // UnmarshalProjectConfigMetadataCostEstimate unmarshals an instance of ProjectConfigMetadataCostEstimate from the specified map of raw messages.
 func UnmarshalProjectConfigMetadataCostEstimate(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -6358,6 +6500,11 @@ func UnmarshalProjectConfigMetadataCostEstimate(m map[string]json.RawMessage, re
 	err = core.UnmarshalPrimitive(m, "user_id", &obj.UserID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "user_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "result", &obj.Result)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "result-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6672,8 +6819,17 @@ type ProjectConfigSummary struct {
 	// The version of the configuration.
 	Version *int64 `json:"version" validate:"required"`
 
+	// The aggregate state from all deployabe architectures that are included in this configuration.
+	ContainerState *string `json:"container_state,omitempty"`
+
+	// Computed state code clarifying the prerequisites for validation for the configuration.
+	ContainerStateCode *string `json:"container_state_code,omitempty"`
+
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
+
+	// Computed state code clarifying the prerequisites for validation for the configuration.
+	StateCode *string `json:"state_code,omitempty"`
 
 	// A date and time value in the format YYYY-MM-DDTHH:mm:ssZ or YYYY-MM-DDTHH:mm:ss.sssZ to match the date and time
 	// format as specified by RFC 3339.
@@ -6696,6 +6852,37 @@ type ProjectConfigSummary struct {
 	DeploymentModel *string `json:"deployment_model" validate:"required"`
 }
 
+// Constants associated with the ProjectConfigSummary.ContainerState property.
+// The aggregate state from all deployabe architectures that are included in this configuration.
+const (
+	ProjectConfigSummary_ContainerState_Approved = "approved"
+	ProjectConfigSummary_ContainerState_Deleted = "deleted"
+	ProjectConfigSummary_ContainerState_Deleting = "deleting"
+	ProjectConfigSummary_ContainerState_DeletingFailed = "deleting_failed"
+	ProjectConfigSummary_ContainerState_Deployed = "deployed"
+	ProjectConfigSummary_ContainerState_Deploying = "deploying"
+	ProjectConfigSummary_ContainerState_DeployingFailed = "deploying_failed"
+	ProjectConfigSummary_ContainerState_Discarded = "discarded"
+	ProjectConfigSummary_ContainerState_Draft = "draft"
+	ProjectConfigSummary_ContainerState_Superseded = "superseded"
+	ProjectConfigSummary_ContainerState_Undeploying = "undeploying"
+	ProjectConfigSummary_ContainerState_UndeployingFailed = "undeploying_failed"
+	ProjectConfigSummary_ContainerState_Validated = "validated"
+	ProjectConfigSummary_ContainerState_Validating = "validating"
+	ProjectConfigSummary_ContainerState_ValidatingFailed = "validating_failed"
+	ProjectConfigSummary_ContainerState_Working = "working"
+)
+
+// Constants associated with the ProjectConfigSummary.ContainerStateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfigSummary_ContainerStateCode_AwaitingInput = "awaiting_input"
+	ProjectConfigSummary_ContainerStateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfigSummary_ContainerStateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigSummary_ContainerStateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfigSummary_ContainerStateCode_AwaitingValidation = "awaiting_validation"
+)
+
 // Constants associated with the ProjectConfigSummary.State property.
 // The state of the configuration.
 const (
@@ -6716,6 +6903,16 @@ const (
 	ProjectConfigSummary_State_Validated = "validated"
 	ProjectConfigSummary_State_Validating = "validating"
 	ProjectConfigSummary_State_ValidatingFailed = "validating_failed"
+)
+
+// Constants associated with the ProjectConfigSummary.StateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfigSummary_StateCode_AwaitingInput = "awaiting_input"
+	ProjectConfigSummary_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfigSummary_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigSummary_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfigSummary_StateCode_AwaitingValidation = "awaiting_validation"
 )
 
 // Constants associated with the ProjectConfigSummary.DeploymentModel property.
@@ -6749,9 +6946,24 @@ func UnmarshalProjectConfigSummary(m map[string]json.RawMessage, result interfac
 		err = core.SDKErrorf(err, "", "version-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "container_state", &obj.ContainerState)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "container_state-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "container_state_code", &obj.ContainerStateCode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "container_state_code-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state_code", &obj.StateCode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "state_code-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
@@ -6833,6 +7045,45 @@ func UnmarshalProjectConfigSummaryDefinition(m map[string]json.RawMessage, resul
 	return
 }
 
+// ProjectConfigUses : A depending deployable architecture that is referenced by a configuration.
+type ProjectConfigUses struct {
+	// The unique ID.
+	ConfigID *string `json:"config_id" validate:"required"`
+
+	// The unique ID.
+	ProjectID *string `json:"project_id" validate:"required"`
+}
+
+// NewProjectConfigUses : Instantiate ProjectConfigUses (Generic Model Constructor)
+func (*ProjectV1) NewProjectConfigUses(configID string, projectID string) (_model *ProjectConfigUses, err error) {
+	_model = &ProjectConfigUses{
+		ConfigID: core.StringPtr(configID),
+		ProjectID: core.StringPtr(projectID),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalProjectConfigUses unmarshals an instance of ProjectConfigUses from the specified map of raw messages.
+func UnmarshalProjectConfigUses(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ProjectConfigUses)
+	err = core.UnmarshalPrimitive(m, "config_id", &obj.ConfigID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "config_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "project_id", &obj.ProjectID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "project_id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ProjectConfigVersion : A specific version of a project configuration.
 type ProjectConfigVersion struct {
 	// The ID of the configuration. If this parameter is empty, an ID is automatically created for the configuration.
@@ -6858,9 +7109,6 @@ type ProjectConfigVersion struct {
 	// The resolved references that are used by the configuration.
 	References *ReferenceValue `json:"references" validate:"required"`
 
-	// The state of the configuration.
-	State *string `json:"state" validate:"required"`
-
 	// Computed state code clarifying the prerequisites for validation for the configuration.
 	StateCode *string `json:"state_code,omitempty"`
 
@@ -6869,6 +7117,12 @@ type ProjectConfigVersion struct {
 
 	// A Url.
 	Href *string `json:"href" validate:"required"`
+
+	// The aggregate state from all deployabe architectures that are included in this configuration.
+	ContainerState *string `json:"container_state,omitempty"`
+
+	// Computed state code clarifying the prerequisites for validation for the configuration.
+	ContainerStateCode *string `json:"container_state_code,omitempty"`
 
 	// The flag that indicates whether the version of the configuration is draft, or active.
 	IsDraft *bool `json:"is_draft" validate:"required"`
@@ -6898,6 +7152,9 @@ type ProjectConfigVersion struct {
 	// A Schematics workspace that is associated to a project configuration, with scripts.
 	Schematics *SchematicsMetadata `json:"schematics,omitempty"`
 
+	// The state of the configuration.
+	State *string `json:"state" validate:"required"`
+
 	// The flag that indicates whether a configuration update is available.
 	UpdateAvailable *bool `json:"update_available,omitempty"`
 
@@ -6912,6 +7169,47 @@ type ProjectConfigVersion struct {
 
 	Definition ProjectConfigDefinitionResponseIntf `json:"definition" validate:"required"`
 }
+
+// Constants associated with the ProjectConfigVersion.StateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfigVersion_StateCode_AwaitingInput = "awaiting_input"
+	ProjectConfigVersion_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfigVersion_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigVersion_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfigVersion_StateCode_AwaitingValidation = "awaiting_validation"
+)
+
+// Constants associated with the ProjectConfigVersion.ContainerState property.
+// The aggregate state from all deployabe architectures that are included in this configuration.
+const (
+	ProjectConfigVersion_ContainerState_Approved = "approved"
+	ProjectConfigVersion_ContainerState_Deleted = "deleted"
+	ProjectConfigVersion_ContainerState_Deleting = "deleting"
+	ProjectConfigVersion_ContainerState_DeletingFailed = "deleting_failed"
+	ProjectConfigVersion_ContainerState_Deployed = "deployed"
+	ProjectConfigVersion_ContainerState_Deploying = "deploying"
+	ProjectConfigVersion_ContainerState_DeployingFailed = "deploying_failed"
+	ProjectConfigVersion_ContainerState_Discarded = "discarded"
+	ProjectConfigVersion_ContainerState_Draft = "draft"
+	ProjectConfigVersion_ContainerState_Superseded = "superseded"
+	ProjectConfigVersion_ContainerState_Undeploying = "undeploying"
+	ProjectConfigVersion_ContainerState_UndeployingFailed = "undeploying_failed"
+	ProjectConfigVersion_ContainerState_Validated = "validated"
+	ProjectConfigVersion_ContainerState_Validating = "validating"
+	ProjectConfigVersion_ContainerState_ValidatingFailed = "validating_failed"
+	ProjectConfigVersion_ContainerState_Working = "working"
+)
+
+// Constants associated with the ProjectConfigVersion.ContainerStateCode property.
+// Computed state code clarifying the prerequisites for validation for the configuration.
+const (
+	ProjectConfigVersion_ContainerStateCode_AwaitingInput = "awaiting_input"
+	ProjectConfigVersion_ContainerStateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
+	ProjectConfigVersion_ContainerStateCode_AwaitingPrerequisite = "awaiting_prerequisite"
+	ProjectConfigVersion_ContainerStateCode_AwaitingStackSetup = "awaiting_stack_setup"
+	ProjectConfigVersion_ContainerStateCode_AwaitingValidation = "awaiting_validation"
+)
 
 // Constants associated with the ProjectConfigVersion.State property.
 // The state of the configuration.
@@ -6933,16 +7231,6 @@ const (
 	ProjectConfigVersion_State_Validated = "validated"
 	ProjectConfigVersion_State_Validating = "validating"
 	ProjectConfigVersion_State_ValidatingFailed = "validating_failed"
-)
-
-// Constants associated with the ProjectConfigVersion.StateCode property.
-// Computed state code clarifying the prerequisites for validation for the configuration.
-const (
-	ProjectConfigVersion_StateCode_AwaitingInput = "awaiting_input"
-	ProjectConfigVersion_StateCode_AwaitingMemberDeployment = "awaiting_member_deployment"
-	ProjectConfigVersion_StateCode_AwaitingPrerequisite = "awaiting_prerequisite"
-	ProjectConfigVersion_StateCode_AwaitingStackSetup = "awaiting_stack_setup"
-	ProjectConfigVersion_StateCode_AwaitingValidation = "awaiting_validation"
 )
 
 // Constants associated with the ProjectConfigVersion.DeploymentModel property.
@@ -6991,11 +7279,6 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 		err = core.SDKErrorf(err, "", "references-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "state", &obj.State)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "state_code", &obj.StateCode)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "state_code-error", common.GetComponentInfo())
@@ -7009,6 +7292,16 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "container_state", &obj.ContainerState)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "container_state-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "container_state_code", &obj.ContainerStateCode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "container_state_code-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "is_draft", &obj.IsDraft)
@@ -7054,6 +7347,11 @@ func UnmarshalProjectConfigVersion(m map[string]json.RawMessage, result interfac
 	err = core.UnmarshalModel(m, "schematics", &obj.Schematics, UnmarshalSchematicsMetadata)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "schematics-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "state", &obj.State)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "state-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "update_available", &obj.UpdateAvailable)
@@ -7145,6 +7443,9 @@ type ProjectConfigVersionSummary struct {
 	// A summary of the definition in a project configuration version.
 	Definition *ProjectConfigVersionDefinitionSummary `json:"definition" validate:"required"`
 
+	// The aggregate state from all deployabe architectures that are included in this configuration.
+	ContainerState *string `json:"container_state,omitempty"`
+
 	// The state of the configuration.
 	State *string `json:"state" validate:"required"`
 
@@ -7154,6 +7455,27 @@ type ProjectConfigVersionSummary struct {
 	// A Url.
 	Href *string `json:"href" validate:"required"`
 }
+
+// Constants associated with the ProjectConfigVersionSummary.ContainerState property.
+// The aggregate state from all deployabe architectures that are included in this configuration.
+const (
+	ProjectConfigVersionSummary_ContainerState_Approved = "approved"
+	ProjectConfigVersionSummary_ContainerState_Deleted = "deleted"
+	ProjectConfigVersionSummary_ContainerState_Deleting = "deleting"
+	ProjectConfigVersionSummary_ContainerState_DeletingFailed = "deleting_failed"
+	ProjectConfigVersionSummary_ContainerState_Deployed = "deployed"
+	ProjectConfigVersionSummary_ContainerState_Deploying = "deploying"
+	ProjectConfigVersionSummary_ContainerState_DeployingFailed = "deploying_failed"
+	ProjectConfigVersionSummary_ContainerState_Discarded = "discarded"
+	ProjectConfigVersionSummary_ContainerState_Draft = "draft"
+	ProjectConfigVersionSummary_ContainerState_Superseded = "superseded"
+	ProjectConfigVersionSummary_ContainerState_Undeploying = "undeploying"
+	ProjectConfigVersionSummary_ContainerState_UndeployingFailed = "undeploying_failed"
+	ProjectConfigVersionSummary_ContainerState_Validated = "validated"
+	ProjectConfigVersionSummary_ContainerState_Validating = "validating"
+	ProjectConfigVersionSummary_ContainerState_ValidatingFailed = "validating_failed"
+	ProjectConfigVersionSummary_ContainerState_Working = "working"
+)
 
 // Constants associated with the ProjectConfigVersionSummary.State property.
 // The state of the configuration.
@@ -7183,6 +7505,11 @@ func UnmarshalProjectConfigVersionSummary(m map[string]json.RawMessage, result i
 	err = core.UnmarshalModel(m, "definition", &obj.Definition, UnmarshalProjectConfigVersionDefinitionSummary)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "definition-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "container_state", &obj.ContainerState)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "container_state-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "state", &obj.State)
@@ -9254,6 +9581,9 @@ type ProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch struct {
 	// The member deployabe architectures that are included in the stack.
 	Members []StackMember `json:"members,omitempty"`
 
+	// The depending deployabe architectures that are referenced by this configuration.
+	Uses []ProjectConfigUses `json:"uses,omitempty"`
+
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
@@ -9294,6 +9624,11 @@ func UnmarshalProjectConfigDefinitionPatchDAConfigDefinitionPropertiesPatch(m ma
 	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackMember)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "uses", &obj.Uses, UnmarshalProjectConfigUses)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "uses-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -9425,6 +9760,9 @@ type ProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesPrototype struc
 	// The member deployabe architectures that are included in the stack.
 	Members []StackMember `json:"members,omitempty"`
 
+	// The depending deployabe architectures that are referenced by this configuration.
+	Uses []ProjectConfigUses `json:"uses,omitempty"`
+
 	// A project configuration description.
 	Description *string `json:"description,omitempty"`
 
@@ -9477,6 +9815,11 @@ func UnmarshalProjectConfigDefinitionPrototypeDAConfigDefinitionPropertiesProtot
 	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackMember)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "uses", &obj.Uses, UnmarshalProjectConfigUses)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "uses-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -9620,6 +9963,9 @@ type ProjectConfigDefinitionResponseDAConfigDefinitionPropertiesResponse struct 
 	// The member deployabe architectures that are included in the stack.
 	Members []StackMember `json:"members,omitempty"`
 
+	// The depending deployabe architectures that are referenced by this configuration.
+	Uses []ProjectConfigUses `json:"uses,omitempty"`
+
 	// A project configuration description.
 	Description *string `json:"description" validate:"required"`
 
@@ -9660,6 +10006,11 @@ func UnmarshalProjectConfigDefinitionResponseDAConfigDefinitionPropertiesRespons
 	err = core.UnmarshalModel(m, "members", &obj.Members, UnmarshalStackMember)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "members-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "uses", &obj.Uses, UnmarshalProjectConfigUses)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "uses-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
