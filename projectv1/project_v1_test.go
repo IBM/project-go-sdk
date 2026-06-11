@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -207,6 +207,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPrototypeDefinitionModel.Owner = core.StringPtr("testString")
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
@@ -323,7 +324,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "owner": "Owner", "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully with retries`, func() {
@@ -354,6 +355,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPrototypeDefinitionModel.Owner = core.StringPtr("testString")
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
@@ -473,7 +475,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "owner": "Owner", "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke CreateProject successfully`, func() {
@@ -509,6 +511,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPrototypeDefinitionModel.Owner = core.StringPtr("testString")
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
@@ -609,6 +612,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPrototypeDefinitionModel.Owner = core.StringPtr("testString")
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
@@ -730,6 +734,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPrototypeDefinitionModel.Owner = core.StringPtr("testString")
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
@@ -1186,7 +1191,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "owner": "Owner", "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully with retries`, func() {
@@ -1240,7 +1245,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "owner": "Owner", "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke GetProject successfully`, func() {
@@ -1378,6 +1383,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
 				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
 				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Owner = core.StringPtr("IBMid-31982730TY")
 				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
 				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
@@ -1438,7 +1444,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "owner": "Owner", "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully with retries`, func() {
@@ -1469,6 +1475,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
 				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
 				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Owner = core.StringPtr("IBMid-31982730TY")
 				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
 				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
@@ -1532,7 +1539,7 @@ var _ = Describe(`ProjectV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
+					fmt.Fprintf(res, "%s", `{"crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::", "created_at": "2019-01-01T12:00:00.000Z", "cumulative_needs_attention_view": [{"event": "Event", "event_id": "EventID", "config_id": "ConfigID", "config_version": 0}], "cumulative_needs_attention_view_error": false, "id": "ID", "location": "Location", "resource_group_id": "ResourceGroupID", "state": "ready", "href": "Href", "resource_group": "ResourceGroup", "event_notifications_crn": "EventNotificationsCrn", "configs": [{"approved_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "deployed_version": {"definition": {"environment_id": "EnvironmentID", "locator_id": "LocatorID"}, "container_state": "approved", "state": "approved", "version": 0, "href": "Href"}, "id": "ID", "version": 0, "container_state": "approved", "container_state_code": "awaiting_input", "state": "approved", "state_code": "awaiting_input", "created_at": "2019-01-01T12:00:00.000Z", "modified_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name", "locator_id": "LocatorID"}, "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "deployment_model": "project_deployed"}], "environments": [{"id": "ID", "project": {"id": "ID", "href": "Href", "definition": {"name": "Name"}, "crn": "crn:v1:staging:public:project:us-south:a/4e1c48fcf8ac33c0a2441e4139f189ae:bf40ad13-b107-446a-8286-c6d576183bb1::"}, "created_at": "2019-01-01T12:00:00.000Z", "href": "Href", "definition": {"description": "Description", "name": "Name"}}], "definition": {"name": "Name", "description": "Description", "auto_deploy_mode": "manual_approval", "monitoring_enabled": false, "destroy_on_delete": true, "owner": "Owner", "store": {"type": "gh", "url": "URL", "token": "Token", "config_directory": "ConfigDirectory"}, "terraform_engine": {"id": "ID", "type": "terraform-enterprise"}, "auto_deploy": false}}`)
 				}))
 			})
 			It(`Invoke UpdateProject successfully`, func() {
@@ -1568,6 +1575,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
 				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
 				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Owner = core.StringPtr("IBMid-31982730TY")
 				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
 				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
@@ -1612,6 +1620,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
 				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
 				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Owner = core.StringPtr("IBMid-31982730TY")
 				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
 				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
@@ -1677,6 +1686,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
 				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
 				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Owner = core.StringPtr("IBMid-31982730TY")
 				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
 				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
@@ -8156,7 +8166,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8233,7 +8243,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8318,7 +8328,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8348,7 +8358,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8399,7 +8409,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -9572,6 +9582,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectPrototypeDefinitionModel.AutoDeployMode = core.StringPtr("manual_approval")
 				projectPrototypeDefinitionModel.MonitoringEnabled = core.BoolPtr(false)
 				projectPrototypeDefinitionModel.DestroyOnDelete = core.BoolPtr(true)
+				projectPrototypeDefinitionModel.Owner = core.StringPtr("testString")
 				projectPrototypeDefinitionModel.Store = projectDefinitionStoreModel
 				projectPrototypeDefinitionModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectPrototypeDefinitionModel.AutoDeploy = core.BoolPtr(false)
@@ -9580,6 +9591,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectPrototypeDefinitionModel.AutoDeployMode).To(Equal(core.StringPtr("manual_approval")))
 				Expect(projectPrototypeDefinitionModel.MonitoringEnabled).To(Equal(core.BoolPtr(false)))
 				Expect(projectPrototypeDefinitionModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
+				Expect(projectPrototypeDefinitionModel.Owner).To(Equal(core.StringPtr("testString")))
 				Expect(projectPrototypeDefinitionModel.Store).To(Equal(projectDefinitionStoreModel))
 				Expect(projectPrototypeDefinitionModel.TerraformEngine).To(Equal(projectTerraformEngineSettingsModel))
 				Expect(projectPrototypeDefinitionModel.AutoDeploy).To(Equal(core.BoolPtr(false)))
@@ -9839,12 +9851,12 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("testString")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 				Expect(stackDefinitionExportRequestModel.CatalogID).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.TargetVersion).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.Variation).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.Label).To(Equal(core.StringPtr("testString")))
-				Expect(stackDefinitionExportRequestModel.Tags).To(Equal([]string{}))
+				Expect(stackDefinitionExportRequestModel.Tags).To(Equal([]string{"testString"}))
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				projectID := "testString"
@@ -10281,6 +10293,7 @@ var _ = Describe(`ProjectV1`, func() {
 				projectDefinitionPatchModel.AutoDeployMode = core.StringPtr("auto_approval")
 				projectDefinitionPatchModel.MonitoringEnabled = core.BoolPtr(true)
 				projectDefinitionPatchModel.DestroyOnDelete = core.BoolPtr(true)
+				projectDefinitionPatchModel.Owner = core.StringPtr("IBMid-31982730TY")
 				projectDefinitionPatchModel.Store = projectDefinitionStoreModel
 				projectDefinitionPatchModel.TerraformEngine = projectTerraformEngineSettingsModel
 				projectDefinitionPatchModel.AutoDeploy = core.BoolPtr(true)
@@ -10289,6 +10302,7 @@ var _ = Describe(`ProjectV1`, func() {
 				Expect(projectDefinitionPatchModel.AutoDeployMode).To(Equal(core.StringPtr("auto_approval")))
 				Expect(projectDefinitionPatchModel.MonitoringEnabled).To(Equal(core.BoolPtr(true)))
 				Expect(projectDefinitionPatchModel.DestroyOnDelete).To(Equal(core.BoolPtr(true)))
+				Expect(projectDefinitionPatchModel.Owner).To(Equal(core.StringPtr("IBMid-31982730TY")))
 				Expect(projectDefinitionPatchModel.Store).To(Equal(projectDefinitionStoreModel))
 				Expect(projectDefinitionPatchModel.TerraformEngine).To(Equal(projectTerraformEngineSettingsModel))
 				Expect(projectDefinitionPatchModel.AutoDeploy).To(Equal(core.BoolPtr(true)))
@@ -10609,6 +10623,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.AutoDeployMode = core.StringPtr("auto_approval")
 			model.MonitoringEnabled = core.BoolPtr(true)
 			model.DestroyOnDelete = core.BoolPtr(true)
+			model.Owner = core.StringPtr("testString")
 			model.Store = nil
 			model.TerraformEngine = nil
 			model.AutoDeploy = core.BoolPtr(true)
@@ -10655,6 +10670,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.AutoDeployMode = core.StringPtr("manual_approval")
 			model.MonitoringEnabled = core.BoolPtr(false)
 			model.DestroyOnDelete = core.BoolPtr(true)
+			model.Owner = core.StringPtr("testString")
 			model.Store = nil
 			model.TerraformEngine = nil
 			model.AutoDeploy = core.BoolPtr(false)
@@ -10735,6 +10751,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
+			model.Tags = []string{"testString"}
 			model.ProductID = core.StringPtr("testString")
 
 			b, err := json.Marshal(model)
@@ -10966,6 +10983,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
+			model.Tags = []string{"testString"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
