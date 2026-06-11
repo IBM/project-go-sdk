@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
+ * IBM OpenAPI SDK Code Generator Version: 3.114.3-943fbc81-20260603-173645
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -5887,10 +5887,11 @@ type ProjectConfigDefinitionPatch struct {
 	// The depending deployabe architectures that are referenced by this configuration.
 	Uses []ProjectConfigUses `json:"uses,omitempty"`
 
-	// A project configuration description.
+	// A project configuration description or a project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It's unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions or the configuration name. It's
+	// unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The authorization details. It can authorize by using a trusted profile or an API key in Secrets Manager.
@@ -5903,7 +5904,7 @@ type ProjectConfigDefinitionPatch struct {
 	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 
-	// The ID of the project environment.
+	// The ID of the project environment or the ID of the project environment.
 	EnvironmentID *string `json:"environment_id,omitempty"`
 
 	// The CRNs of the resources that are associated with this configuration.
@@ -6007,10 +6008,11 @@ type ProjectConfigDefinitionPrototype struct {
 	// The depending deployabe architectures that are referenced by this configuration.
 	Uses []ProjectConfigUses `json:"uses,omitempty"`
 
-	// A project configuration description.
+	// A project configuration description or a project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It's unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions or the configuration name. It's
+	// unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The authorization details. It can authorize by using a trusted profile or an API key in Secrets Manager.
@@ -6023,7 +6025,7 @@ type ProjectConfigDefinitionPrototype struct {
 	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 
-	// The ID of the project environment.
+	// The ID of the project environment or the ID of the project environment.
 	EnvironmentID *string `json:"environment_id,omitempty"`
 
 	// The CRNs of the resources that are associated with this configuration.
@@ -6127,10 +6129,11 @@ type ProjectConfigDefinitionResponse struct {
 	// The depending deployabe architectures that are referenced by this configuration.
 	Uses []ProjectConfigUses `json:"uses,omitempty"`
 
-	// A project configuration description.
+	// A project configuration description or a project configuration description.
 	Description *string `json:"description,omitempty"`
 
-	// The configuration name. It's unique within the account across projects and regions.
+	// The configuration name. It's unique within the account across projects and regions or the configuration name. It's
+	// unique within the account across projects and regions.
 	Name *string `json:"name,omitempty"`
 
 	// The authorization details. It can authorize by using a trusted profile or an API key in Secrets Manager.
@@ -6143,7 +6146,7 @@ type ProjectConfigDefinitionResponse struct {
 	// specified when the configuration is initially created.
 	Settings map[string]interface{} `json:"settings,omitempty"`
 
-	// The ID of the project environment.
+	// The ID of the project environment or the ID of the project environment.
 	EnvironmentID *string `json:"environment_id,omitempty"`
 
 	// The CRNs of the resources that are associated with this configuration.

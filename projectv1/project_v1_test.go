@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -8156,7 +8156,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8233,7 +8233,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8318,7 +8318,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8348,7 +8348,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -8399,7 +8399,7 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("Stack Deployable Architecture")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				exportStackDefinitionOptionsModel := new(projectv1.ExportStackDefinitionOptions)
@@ -9839,12 +9839,12 @@ var _ = Describe(`ProjectV1`, func() {
 				stackDefinitionExportRequestModel.TargetVersion = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Variation = core.StringPtr("testString")
 				stackDefinitionExportRequestModel.Label = core.StringPtr("testString")
-				stackDefinitionExportRequestModel.Tags = []string{}
+				stackDefinitionExportRequestModel.Tags = []string{"testString"}
 				Expect(stackDefinitionExportRequestModel.CatalogID).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.TargetVersion).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.Variation).To(Equal(core.StringPtr("testString")))
 				Expect(stackDefinitionExportRequestModel.Label).To(Equal(core.StringPtr("testString")))
-				Expect(stackDefinitionExportRequestModel.Tags).To(Equal([]string{}))
+				Expect(stackDefinitionExportRequestModel.Tags).To(Equal([]string{"testString"}))
 
 				// Construct an instance of the ExportStackDefinitionOptions model
 				projectID := "testString"
@@ -10735,6 +10735,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
+			model.Tags = []string{"testString"}
 			model.ProductID = core.StringPtr("testString")
 
 			b, err := json.Marshal(model)
@@ -10966,6 +10967,7 @@ var _ = Describe(`ProjectV1`, func() {
 			model.TargetVersion = core.StringPtr("testString")
 			model.Variation = core.StringPtr("testString")
 			model.Label = core.StringPtr("testString")
+			model.Tags = []string{"testString"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
