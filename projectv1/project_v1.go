@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.114.3-943fbc81-20260603-173645
+ * IBM OpenAPI SDK Code Generator Version: 3.115.0-a8d44b59-20260713-123033
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -7557,14 +7557,14 @@ type ProjectDefinition struct {
 	// The policy that indicates whether the resources are undeployed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
-	// The owner of the project.
-	Owner *string `json:"owner,omitempty"`
-
 	// The details required to custom store project configs.
 	Store *ProjectDefinitionStore `json:"store,omitempty"`
 
 	// Experimental schema - this is for prototyping purposes.
 	TerraformEngine *ProjectTerraformEngineSettings `json:"terraform_engine,omitempty"`
+
+	// The owner of the project.
+	Owner *string `json:"owner,omitempty"`
 
 	// A boolean flag to enable deploying configurations automatically.
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
@@ -7609,11 +7609,6 @@ func UnmarshalProjectDefinition(m map[string]json.RawMessage, result interface{}
 		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "owner", &obj.Owner)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "owner-error", common.GetComponentInfo())
-		return
-	}
 	err = core.UnmarshalModel(m, "store", &obj.Store, UnmarshalProjectDefinitionStore)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "store-error", common.GetComponentInfo())
@@ -7622,6 +7617,11 @@ func UnmarshalProjectDefinition(m map[string]json.RawMessage, result interface{}
 	err = core.UnmarshalModel(m, "terraform_engine", &obj.TerraformEngine, UnmarshalProjectTerraformEngineSettings)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "terraform_engine-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "owner", &obj.Owner)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "owner-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
@@ -7656,14 +7656,14 @@ type ProjectDefinitionPatch struct {
 	// The policy that indicates whether the resources are undeployed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
-	// The owner of the project.
-	Owner *string `json:"owner,omitempty"`
-
 	// The details required to custom store project configs.
 	Store *ProjectDefinitionStore `json:"store,omitempty"`
 
 	// Experimental schema - this is for prototyping purposes.
 	TerraformEngine *ProjectTerraformEngineSettings `json:"terraform_engine,omitempty"`
+
+	// The owner of the project.
+	Owner *string `json:"owner,omitempty"`
 
 	// A boolean flag to enable deploying configurations automatically.
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
@@ -7708,11 +7708,6 @@ func UnmarshalProjectDefinitionPatch(m map[string]json.RawMessage, result interf
 		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "owner", &obj.Owner)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "owner-error", common.GetComponentInfo())
-		return
-	}
 	err = core.UnmarshalModel(m, "store", &obj.Store, UnmarshalProjectDefinitionStore)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "store-error", common.GetComponentInfo())
@@ -7721,6 +7716,11 @@ func UnmarshalProjectDefinitionPatch(m map[string]json.RawMessage, result interf
 	err = core.UnmarshalModel(m, "terraform_engine", &obj.TerraformEngine, UnmarshalProjectTerraformEngineSettings)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "terraform_engine-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "owner", &obj.Owner)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "owner-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
@@ -7966,14 +7966,14 @@ type ProjectPrototypeDefinition struct {
 	// The policy that indicates whether the resources are undeployed or not when a project is deleted.
 	DestroyOnDelete *bool `json:"destroy_on_delete,omitempty"`
 
-	// The owner of the project.
-	Owner *string `json:"owner,omitempty"`
-
 	// The details required to custom store project configs.
 	Store *ProjectDefinitionStore `json:"store,omitempty"`
 
 	// Experimental schema - this is for prototyping purposes.
 	TerraformEngine *ProjectTerraformEngineSettings `json:"terraform_engine,omitempty"`
+
+	// The owner of the project.
+	Owner *string `json:"owner,omitempty"`
 
 	// A boolean flag to enable deploying configurations automatically.
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
@@ -8030,11 +8030,6 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 		err = core.SDKErrorf(err, "", "destroy_on_delete-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "owner", &obj.Owner)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "owner-error", common.GetComponentInfo())
-		return
-	}
 	err = core.UnmarshalModel(m, "store", &obj.Store, UnmarshalProjectDefinitionStore)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "store-error", common.GetComponentInfo())
@@ -8043,6 +8038,11 @@ func UnmarshalProjectPrototypeDefinition(m map[string]json.RawMessage, result in
 	err = core.UnmarshalModel(m, "terraform_engine", &obj.TerraformEngine, UnmarshalProjectTerraformEngineSettings)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "terraform_engine-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "owner", &obj.Owner)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "owner-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "auto_deploy", &obj.AutoDeploy)
@@ -10296,7 +10296,7 @@ func (project *ProjectV1) NewProjectsPager(options *ListProjectsOptions) (pager 
 		return
 	}
 
-	var optionsCopy ListProjectsOptions = *options
+	optionsCopy := *options
 	pager = &ProjectsPager{
 		hasNext: true,
 		options: &optionsCopy,
@@ -10390,7 +10390,7 @@ func (project *ProjectV1) NewProjectEnvironmentsPager(options *ListProjectEnviro
 		return
 	}
 
-	var optionsCopy ListProjectEnvironmentsOptions = *options
+	optionsCopy := *options
 	pager = &ProjectEnvironmentsPager{
 		hasNext: true,
 		options: &optionsCopy,
@@ -10484,7 +10484,7 @@ func (project *ProjectV1) NewConfigsPager(options *ListConfigsOptions) (pager *C
 		return
 	}
 
-	var optionsCopy ListConfigsOptions = *options
+	optionsCopy := *options
 	pager = &ConfigsPager{
 		hasNext: true,
 		options: &optionsCopy,
