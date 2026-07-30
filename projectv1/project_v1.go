@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.114.3-943fbc81-20260603-173645
+ * IBM OpenAPI SDK Code Generator Version: 3.115.0-a8d44b59-20260713-123033
  */
 
 // Package projectv1 : Operations and models for the ProjectV1 service
@@ -1085,9 +1085,7 @@ func (project *ProjectV1) ListConfigsWithContext(ctx context.Context, listConfig
 }
 
 // GetConfig : Get a project configuration
-// Retrieve the specified project configuration in a specific project. For more information about project
-// configurations, see [Monitoring the status of a configuration and its
-// resources](/docs/secure-enterprise?topic=secure-enterprise-monitor-status-projects).
+// Retrieve the specified project configuration in a specific project.
 func (project *ProjectV1) GetConfig(getConfigOptions *GetConfigOptions) (result *ProjectConfig, response *core.DetailedResponse, err error) {
 	result, response, err = project.GetConfigWithContext(context.Background(), getConfigOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -2846,6 +2844,10 @@ type ActionJobPlanSummary struct {
 	// job.
 	AddResources []string `json:"add_resources,omitempty"`
 
+	// The collection of planned added resources with their configuration blocks. This property is reported only if
+	// Schematics triggered a Terraform plan job.
+	AddResourcesExtended []ActionJobPlanSummaryResourcesExtended `json:"add_resources_extended,omitempty"`
+
 	// The collection of failed planned resources. This property is reported only if Schematics triggered a Terraform plan
 	// job.
 	FailedResources []string `json:"failed_resources,omitempty"`
@@ -2854,9 +2856,29 @@ type ActionJobPlanSummary struct {
 	// job.
 	UpdatedResources []string `json:"updated_resources,omitempty"`
 
+	// The collection of planned updated resources with their configuration blocks. This property is reported only if
+	// Schematics triggered a Terraform plan job.
+	UpdatedResourcesExtended []ActionJobPlanSummaryResourcesExtended `json:"updated_resources_extended,omitempty"`
+
 	// The collection of planned destroy resources. This property is reported only if Schematics triggered a Terraform plan
 	// job.
 	DestroyResources []string `json:"destroy_resources,omitempty"`
+
+	// The collection of planned destroy resources with their configuration blocks. This property is reported only if
+	// Schematics triggered a Terraform plan job.
+	DestroyResourcesExtended []ActionJobPlanSummaryResourcesExtended `json:"destroy_resources_extended,omitempty"`
+
+	// The number of resources to be replaced (destroyed and recreated). This property is reported only if Schematics
+	// triggered a Terraform plan job.
+	Replace *int64 `json:"replace,omitempty"`
+
+	// The collection of planned replace resources. This property is reported only if Schematics triggered a Terraform plan
+	// job.
+	ReplaceResources []string `json:"replace_resources,omitempty"`
+
+	// The collection of planned replace resources with their configuration blocks. This property is reported only if
+	// Schematics triggered a Terraform plan job.
+	ReplaceResourcesExtended []ActionJobPlanSummaryResourcesExtended `json:"replace_resources_extended,omitempty"`
 }
 
 // UnmarshalActionJobPlanSummary unmarshals an instance of ActionJobPlanSummary from the specified map of raw messages.
@@ -2887,6 +2909,11 @@ func UnmarshalActionJobPlanSummary(m map[string]json.RawMessage, result interfac
 		err = core.SDKErrorf(err, "", "add_resources-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalModel(m, "add_resources_extended", &obj.AddResourcesExtended, UnmarshalActionJobPlanSummaryResourcesExtended)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "add_resources_extended-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "failed_resources", &obj.FailedResources)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "failed_resources-error", common.GetComponentInfo())
@@ -2897,9 +2924,60 @@ func UnmarshalActionJobPlanSummary(m map[string]json.RawMessage, result interfac
 		err = core.SDKErrorf(err, "", "updated_resources-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalModel(m, "updated_resources_extended", &obj.UpdatedResourcesExtended, UnmarshalActionJobPlanSummaryResourcesExtended)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_resources_extended-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "destroy_resources", &obj.DestroyResources)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "destroy_resources-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "destroy_resources_extended", &obj.DestroyResourcesExtended, UnmarshalActionJobPlanSummaryResourcesExtended)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "destroy_resources_extended-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "replace", &obj.Replace)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "replace-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "replace_resources", &obj.ReplaceResources)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "replace_resources-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "replace_resources_extended", &obj.ReplaceResourcesExtended, UnmarshalActionJobPlanSummaryResourcesExtended)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "replace_resources_extended-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ActionJobPlanSummaryResourcesExtended : A Terraform resource with its configuration block for detailed analysis.
+type ActionJobPlanSummaryResourcesExtended struct {
+	// The Terraform resource address (e.g., 'ibm_cos_bucket.my_bucket').
+	ResourceAddress *string `json:"resource_address" validate:"required"`
+
+	// The complete Terraform resource configuration block extracted from the plan/apply/destroy log.
+	ResourceBlock *string `json:"resource_block" validate:"required"`
+}
+
+// UnmarshalActionJobPlanSummaryResourcesExtended unmarshals an instance of ActionJobPlanSummaryResourcesExtended from the specified map of raw messages.
+func UnmarshalActionJobPlanSummaryResourcesExtended(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ActionJobPlanSummaryResourcesExtended)
+	err = core.UnmarshalPrimitive(m, "resource_address", &obj.ResourceAddress)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "resource_address-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "resource_block", &obj.ResourceBlock)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "resource_block-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -10296,7 +10374,7 @@ func (project *ProjectV1) NewProjectsPager(options *ListProjectsOptions) (pager 
 		return
 	}
 
-	var optionsCopy ListProjectsOptions = *options
+	optionsCopy := *options
 	pager = &ProjectsPager{
 		hasNext: true,
 		options: &optionsCopy,
@@ -10390,7 +10468,7 @@ func (project *ProjectV1) NewProjectEnvironmentsPager(options *ListProjectEnviro
 		return
 	}
 
-	var optionsCopy ListProjectEnvironmentsOptions = *options
+	optionsCopy := *options
 	pager = &ProjectEnvironmentsPager{
 		hasNext: true,
 		options: &optionsCopy,
@@ -10484,7 +10562,7 @@ func (project *ProjectV1) NewConfigsPager(options *ListConfigsOptions) (pager *C
 		return
 	}
 
-	var optionsCopy ListConfigsOptions = *options
+	optionsCopy := *options
 	pager = &ConfigsPager{
 		hasNext: true,
 		options: &optionsCopy,
